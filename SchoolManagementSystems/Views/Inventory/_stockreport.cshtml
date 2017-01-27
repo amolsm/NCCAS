@@ -1,0 +1,42 @@
+﻿@model Entity.Stockviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav">
+    <tr>        
+        <th>
+            <span class="sptext">@Html.DisplayNameFor(model => model.catname)</span>
+        </th> 
+        <th>
+            <span class="sptext">@Html.DisplayNameFor(model => model.Product)</span>
+        </th>        
+        <th>
+            <span class="sptext">@Html.DisplayNameFor(model => model.totalstock)</span>
+        </th>        
+        <th>
+            <span class="sptext">@Html.DisplayNameFor(model => model.usedstock)</span>
+        </th>        
+        <th>
+            <span class="sptext">@Html.DisplayNameFor(model => model.remainingstock)</span>
+        </th>        
+    </tr>
+    @foreach (var item in Model._stocklist)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.catname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalstock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usedstock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remainingstock)
+            </td>
+        </tr>
+    }
+</table>
+</div>

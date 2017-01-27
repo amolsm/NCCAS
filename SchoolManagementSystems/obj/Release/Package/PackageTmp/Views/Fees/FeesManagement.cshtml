@@ -1,0 +1,539 @@
+﻿@model Entity.feesviewmodel
+@{
+    ViewBag.Title = "Fees Management";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#lblmsg").text('');
+        $('#totalFees input').attr("readonly", true);
+        $('#feesid input').attr("readonly", true);
+        if ($("#feesid input").val() == "0") {
+            $("#feesid").hide();
+        }
+
+        $("#result").on("click", ".btn_edit", function (evt) {
+            var Feesid = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillFeessetupDetails")',
+                dataType: 'JSON',
+                data: { Feesid: Feesid },
+                success: function (data) {
+                    $("#feesid").show();
+                    $("#feesid input").val(data.Feesid);
+                    $("#Classid").val(data.Classid);
+                    $("#PTypeid").val(data.PTypeid);
+                    //                    $("#LFees").val(data.LFees);
+                    //                    $("#TFees").val(data.TFees);
+                    //                    $("#UFees").val(data.UFees);
+                    //                    $("#HFees").val(data.HFees);
+                    //                    $("#OFees").val(data.OFees);
+                    $("#TotalFees").val(data.TotalFees);
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("FillFeesLabels")',
+                        dataType: 'JSON',
+                        data: { Classid: $("#Classid").val() },
+                        success: function (data) {
+                            $("#ctrlcnt").val(data.length);
+                            var table = $('#dynamiclbl');
+                            table.html('');
+                            $.each(data, function (i, dt) {
+                                table.append('<div class="control-group"><label class="col-md-6 form_out">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
+                            });
+                            $.ajax({
+                                type: 'GET',
+                                url: '@Url.Action("FillFeesAmount")',
+                                dataType: 'JSON',
+                                data: { feesid: $("#feesid input").val() },
+                                success: function (data) {
+                                    $.each(data, function (i, dt) {
+                                        $("#Fees" + i).val(dt);
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        function clear() {
+            var table = $('#dynamiclbl');
+            table.html('');
+            $("#PTypeid").val('');
+            $("#feesid").hide();
+            $('#feesid input').val('0');
+            $("#Classid").val('');
+            //            $("#LFees").val('0');
+            //            $("#TFees").val('0');
+            //            $("#UFees").val('0');
+            //            $("#HFees").val('0');
+            //            $("#OFees").val('0');
+            $("#TotalFees").val('0');
+        }
+
+        FillFeesMaster();
+
+        function FillFeesMaster() {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillFeesLabels")',
+                dataType: 'JSON',
+                data: { Classid: 0 },
+                success: function (data) {
+                    $("#ctrlcnt").val(data.length);
+                    var table = $('#dynamiclbl');
+                    table.html('');
+                    $.each(data, function (i, dt) {
+                        table.append('<div class="control-group"><label class="col-md-6 form_out">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
+                    });
+                }
+            });
+        }
+
+
+        $('#Classid').change(function () {
+            $("#lblmsg").text("");
+            var Classid = $('#Classid').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_Class")',
+                dataType: 'JSON',
+                data: { Classid: Classid },
+                success: function (data) {
+                    if (data != null) {
+                        $("#lblmsg").text("Fees Setup Already Exists for this class!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#Classid').val('');
+                        return false;
+                    }
+                    else {
+                        //                        $.ajax({
+                        //                            type: 'GET',
+                        //                            url: '@Url.Action("FillFeesLabels")',
+                        //                            dataType: 'JSON',
+                        //                            data: { Classid: Classid },
+                        //                            success: function (data) {
+                        //                                $("#ctrlcnt").val(data.length);
+                        //                                var table = $('#dynamiclbl');
+                        //                                table.html('');
+                        //                                $.each(data, function (i, dt) {
+                        //                                    table.append('<div class="control-group"><label class="col-md-6 form_out">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
+                        //                                });
+                        //                            }
+                        //                        });
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            validations();
+            var ctrlcnt = $('#ctrlcnt').val();
+            if (ctrlcnt > 0) {
+                var FeesLabels;
+                for (var i = 0; i < ctrlcnt; i++) {
+                    FeesLabels += $("#Fees" + i).val() + '|';
+                }
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLFeessetup")',
+                data: $('#frm').serialize() + "&evt=submit&id=0&FeesLabels=" + FeesLabels,
+                success: function (result) {
+                    $("#lblmsg").text("Fees Setup updated successfully!..");
+                    $("#lblmsg").css({ "color": "lime" });
+                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#result").html(result);
+                    clear();
+                    ReloadPaging();
+                }
+            });
+        });
+
+        $("#reset").click(function () {
+            clear();
+            FillFeesMaster();
+        });
+
+        $(document).on(".dynamic").each(function () {
+            $(this).keyup(function () {
+                calculateSum();
+            });
+        });
+
+        function calculateSum() {
+            var sum = 0;
+            $(".dynamic").each(function () {
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    sum += parseInt(this.value);
+                }
+            });
+            $("#TotalFees").val(sum);
+        }
+
+        $("#result").on("click", ".btn_delete", function (evt) {
+            var Classid = this.id;
+            var flag = confirm('Are you sure you want to delete this Class?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLClass")',
+                    data: $('#frm').serialize() + "&evt=Delete&id=" + Classid + "",
+                    success: function (result) {
+                        $("#lblmsg").text("Class deleted successfully!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                        ReloadPaging();
+                    }
+                });
+            }
+        });
+
+        function validations() {
+            var cnt = 0;
+
+            if ($("#Classid").val() == '') {
+                cnt++;
+                $("#Classid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Classid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#PTypeid").val() == '') {
+                cnt++;
+                $("#PTypeid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#PTypeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            var ctrlcnt = $('#ctrlcnt').val();
+            if (ctrlcnt > 0) {
+                for (var i = 0; i < ctrlcnt; i++) {
+                    if ($("#Fees" + i).val() == '0' || $("#Fees" + i).val() == '') {
+                        cnt++;
+                        $("#Fees" + i).css({
+                            "border": "2px solid red"
+                        });
+                    }
+                    else {
+                        $("#Fees" + i).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                }
+            }
+
+            //            if ($("#LFees").val() == '0' || $("#LFees").val() == '') {
+            //                cnt++;
+            //                $("#LFees").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#LFees").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#TFees").val() == '0' || $("#TFees").val() == '') {
+            //                cnt++;
+            //                $("#TFees").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#TFees").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#UFees").val() == '0' || $("#UFees").val() == '') {
+            //                cnt++;
+            //                $("#UFees").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#UFees").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#HFees").val() == '0' || $("#HFees").val() == '') {
+            //                cnt++;
+            //                $("#HFees").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#HFees").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#OFees").val() == '0' || $("#OFees").val() == '') {
+            //                cnt++;
+            //                $("#OFees").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#OFees").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            if ($("#TotalFees").val() == '0' || $("#TotalFees").val() == '') {
+                cnt++;
+                $("#TotalFees").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#TotalFees").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+
+        $(document).on("keypress", ".dynamic", function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+
+        //        $("#LFees").keypress(function (e) {
+        //            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //                return false;
+        //            }
+        //        });
+
+        //        $("#TFees").keypress(function (e) {
+        //            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //                return false;
+        //            }
+        //        });
+
+        //        $("#UFees").keypress(function (e) {
+        //            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //                return false;
+        //            }
+        //        });
+
+        //        $("#HFees").keypress(function (e) {
+        //            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //                return false;
+        //            }
+        //        });
+
+        //        $("#OFees").keypress(function (e) {
+        //            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //                return false;
+        //            }
+        //        });
+
+        $("#TotalFees").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        //        $("#LFees").change(function () {
+        //            CalculateTotalFees();
+        //        });
+        //        $("#TFees").change(function () {
+        //            CalculateTotalFees();
+        //        });
+        //        $("#UFees").change(function () {
+        //            CalculateTotalFees();
+        //        });
+        //        $("#HFees").change(function () {
+        //            CalculateTotalFees();
+        //        });
+        //        $("#OFees").change(function () {
+        //            CalculateTotalFees();
+        //        });
+
+        function CalculateTotalFees() {
+            //            var LFees = $("#LFees").val();
+            //            var TFees = $("#TFees").val();
+            //            var UFees = $("#UFees").val();
+            //            var HFees = $("#HFees").val();
+            //            var OFees = $("#OFees").val();
+            var total = parseInt((parseInt(LFees) + parseInt(TFees) + parseInt(UFees) + parseInt(HFees) + parseInt(OFees)));
+            $("#TotalFees").val(total);
+        }
+        ReloadPaging();
+    });
+</script>
+@Html.HiddenFor(m => m.Feesid)
+@Html.Hidden("ctrlcnt")
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+                       @Html.Partial("_FeesSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+              
+             
+            
+                    <ul class="breadcrumb">
+                   <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                    @Html.ActionLink("Fees Management", "Index", "Fees", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Fees Setup</li>
+                        <div style="float: right;">
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                                <input type="submit" value="Find" />
+                            }
+                        </div>
+                    </ul>
+                     <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                        @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class="form-horizontal" }))
+                        {
+                            @Html.ValidationSummary(true)
+                            <div id="lblmsg" class="control-group">
+                            </div>
+                            <div id="feesid" class="control-group">
+                                @Html.LabelFor(model => model.Feesid, new { @class = "control-label" })
+                                 <div class="controls"> 
+                                @Html.EditorFor(model => model.Feesid, new { @class = "col-md-5 form-control form_in" })
+                                @Html.ValidationMessageFor(model => model.Feesid)
+                                     </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.PTypeid, new { @class = "control-label" })
+                                 <div class="controls"> 
+                                @Html.DropDownListFor(model => model.PTypeid, new SelectList(Model.ptypelist, "paytermid", "paytermname", "Select Payment Type"), "Select Payment Type", new { @class = "form-control form_in col-md-5" })
+                                @Html.ValidationMessageFor(model => model.PTypeid)
+                                     </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
+                                 <div class="controls"> 
+                                @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                @Html.ValidationMessageFor(model => model.Classid)
+                                     </div>
+                            </div>
+@*<div class="control-group">
+                                    @Html.LabelFor(model => model.LFees, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.LFees, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.LFees)
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TFees, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.TFees, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.TFees)
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.UFees, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.UFees, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.UFees)
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.HFees, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.HFees, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.HFees)
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.OFees, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.OFees, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.OFees)
+                                </div>*@
+                            <div id="dynamiclbl">
+                            </div>
+                            <div id="totalFees" class="control-group">
+                                @Html.LabelFor(model => model.TotalFees, new { @class = "control-label" })
+                                 <div class="controls"> 
+                                @Html.EditorFor(model => model.TotalFees, new { @class = "col-md-5 form-control form_in" })
+                                @Html.ValidationMessageFor(model => model.TotalFees)
+                                     </div>
+                            </div>
+                             <div class="form-actions">
+                                <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                            </div>
+                        }
+                        </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                        <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                            @Html.Partial("_FeesSetupList")
+                        </div>
+                  </div>
+                                             
+                                                
+
+                                         </div>
+        </div>
+             
+    </div>
+</div>
+   
+            </div>

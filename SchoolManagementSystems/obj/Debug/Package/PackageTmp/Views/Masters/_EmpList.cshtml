@@ -1,0 +1,77 @@
+﻿@model Entity.employeeviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    state
+                </th>
+                <th>
+                    city
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Emailid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MobileNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quallification)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Typeid)
+                </th>
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._emplist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empid)
+                    </td>
+                    <td>
+                        <span class="sptext">@Html.DisplayFor(modelItem => item.FirstName)</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stateid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cityid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emailid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quallification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Typeid)
+                    </td>
+                    <td>
+                        <input type="button" id="@item.Empid" class="btn btn-default edit" value="Edit" />
+                        @*<input type="button" id="@item.Empid" class="btn btn-default delete" value="Delete" />*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

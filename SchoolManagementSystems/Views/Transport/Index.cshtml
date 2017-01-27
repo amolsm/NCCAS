@@ -1,0 +1,144 @@
+﻿@model Entity.transportviewmodel
+@{
+    ViewBag.Title = "Transport Management";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $(".btn_edit").click(function () {
+            var busid = this.id;
+            location.href = '/Transport/NewBusInfo?busid=' + busid;
+        });
+        $(".btn_delete").click(function () {
+            var busid = this.id;
+            var act = 'Delete';
+            var flag = confirm('Are you sure you want to delete this Bus Information?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLTransport")',
+                    dataType: 'json',
+                    data: { evt: act, id: busid },
+                    success: function () {
+                    }
+                });
+            }
+        });
+        ReloadPaging();
+    });
+</script>
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+                  @Html.Partial("_TransportSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+                
+             
+            
+                    <ul class="breadcrumb">
+                      <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                      @Html.ActionLink("Transport Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Bus Information</li>
+                        <div style="float: right;">
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                                <input type="submit" value="Find" />
+                            }
+                        </div>
+                    </ul>
+                    <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+					
+                            <!-- table start -->
+                            <div id="result" class="table-responsive">
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayName("ID")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Number")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Route")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.busDriverNm)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.busDrivercontact)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.busRTONo)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.busDateTime)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.status)
+                                            </th>
+                                            <th class="edt">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model._transportlist)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busid)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busNo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busRoute)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busDriverNm)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busDrivercontact)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busRTONo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.busDateTime)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.status)
+                                                </td>
+                                                <td>
+                                                    <input type="button" id="@item.busid" class="btn btn-default btn_edit" value="Edit" />
+                                                    @*<input type="button" id="@item.busid" class="btn btn-default btn_delete" value="Delete" />*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                           		</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                </div>
+        </div>
+            </div>
+    </div>

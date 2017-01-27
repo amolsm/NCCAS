@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel;
+
+namespace Entity
+{
+    public class timetableviewmodel
+    {
+        [DisplayName("Timetable ID ")]
+        public int Tid { get; set; }
+
+        [DisplayName("Class Name ")]
+        public int Classid { get; set; }
+
+        [DisplayName("Day ")]
+        public int Day { get; set; }
+
+        [DisplayName("Lecture No ")]
+        public int LecNo { get; set; }
+
+        [DisplayName("Subject Name ")]
+        public int Subjectid { get; set; }
+
+        [DisplayName("Lecture Start Time ")]
+        public string LecTime { get; set; }
+
+        [DisplayName("Lecture End Time ")]
+        public string LecETime { get; set; }
+
+        [DisplayName("Teacher Name ")]
+        public int Empid { get; set; }
+
+        public List<sp_gettimetable_Result> _Timetablelist { get; set; }
+
+        public List<sp_gettimetable_pivot_Result> _Timetablelistpivot { get; set; }
+
+        public List<tbl_class> Classlist { get; set; }
+
+        public List<tbl_subject> subjectlist { get; set; }
+
+        public List<sp_getteachers_Result> Emplist { get; set; }
+
+        public List<tbl_days> Daylist { get; set; }
+
+        public List<string> parentemails { get; set; }
+
+        public List<sp_getteacheremail_Result> teacheremails { get; set; }        
+    }
+}

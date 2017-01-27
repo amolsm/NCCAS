@@ -1,0 +1,121 @@
+﻿@model Entity.Studentviewmodel
+@{
+    ViewBag.Title = "Student Management - Manage Student";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $(".btn_edit").click(function () {
+            var Studid = this.id;
+            location.href = '/Student/Admission?Studid=' + Studid;
+        });
+        $(".btn_delete").click(function () {
+            var Studid = this.id;
+            var act = 'delete';
+            var flag = confirm('Are you sure you want to delete this Student?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Admission_DML")',
+                    dataType: 'json',
+                    data: { action: act, id: Studid },
+                    success: function () {
+                    }
+                });
+            }
+        });
+        ReloadPaging();
+    });    
+</script>
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+              @Html.Partial("_StudentSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+            
+                    <ul class="breadcrumb">
+                      <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Student Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Manage Student</li>
+                     @*   <div style="float: right;">*@
+                          @*  @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                                <input type="submit" value="Find" />
+                            }*@
+                      @*  </div>*@
+                    </ul>
+                  <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						
+                            <div id="result" class="table-responsive">
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayName("ID")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Student Name")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Email ID")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Contact No")
+                                            </th>
+                                            <th class="edt">
+                                                @Html.DisplayName("Action")
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.StudentDataCollection)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @System.DateTime.Now.Year@Html.Label("0000")@Html.DisplayFor(modelItem => item.Studid)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Studnm)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.StudEmail)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FatherContact)
+                                                </td>
+                                                <td>
+                                                    <input type="button" id="@item.Studid" class="btn btn-default btn_edit" value="Edit" />
+                                                    @*<input type="button" id="@item.Studid" class="btn btn-default btn_delete" value="Delete" />*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                  
+                            <!-- table end -->
+                         </div>
+                        
+                
+        </div>
+        </div>
+    </div>
+</div>
+   
+            </div>
+    </div>

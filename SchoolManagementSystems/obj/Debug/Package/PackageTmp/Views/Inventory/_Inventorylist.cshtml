@@ -1,0 +1,53 @@
+﻿@model Entity.Categoryviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+     <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventoryid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.catname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th class="edt">
+                @Html.DisplayName("Action")
+            </th>
+        </tr></thead>
+        <tbody>
+        @foreach (var item in Model._Inventorylist)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventoryid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.catname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                <td>
+                    <input type="button" id="@item.Inventoryid" class="btn btn-default btn_edit" value="Edit" />
+                    @*<input type="button" id="@item.Inventoryid" class="btn btn-default btn_delete" value="Delete" />*@
+                </td>
+            </tr>
+        } </tbody>
+    </table>
+</div>

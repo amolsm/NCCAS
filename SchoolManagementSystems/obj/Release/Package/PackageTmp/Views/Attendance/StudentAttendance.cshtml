@@ -1,0 +1,167 @@
+﻿@model Entity.Attendanceviewmodel
+@{
+    ViewBag.Title = "StudentAttendance";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<style type="text/css">
+    .ui-datepicker-calendar {
+        background-color: antiquewhite;
+    }
+
+    .ui-datepicker-title {
+        background-color: antiquewhite;
+    }
+
+    .ui-icon ui-icon-circle-triangle-w {
+        background-color: antiquewhite;
+    }
+
+    #ui-datepicker-div {
+        display: none;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#insert").click(function (e) {
+            Validations(e);
+        });
+
+        $('#datepicker').attr("readonly", true);
+
+
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'mm/dd/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker').datepicker('setDate', new Date());
+
+        $('#StaffAbsent').change(function () {
+            if ($(this).is(":checked")) {
+                $('#staffreason').css('display', 'block');
+            }
+            else {
+                $('#staffreason').css('display', 'none');
+            }
+        });
+
+        $('#ui-datepicker-div').hide();
+
+        function Validations(e) {
+            var cnt = 0;
+            if ($("#Empid").val() == '') {
+                cnt++;
+                $("#Empid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Empid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#AttendanceDate").val() == '') {
+                cnt++;
+                $("#AttendanceDate").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#AttendanceDate").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0) {
+                e.preventDefault();
+            }
+        }
+    });
+</script>
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+           @Html.Partial("_AttendanceMenuList")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+                <td class="col-md-9" style=" padding-top: 30px;">
+                    <ul class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Attendace", "staff", "Staff", "")</li>
+                        <li class="active">Student Absent</li>
+                    </ul>
+                    <div class="col-md-10" style="width:100%;">
+                        <center>
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        @using (Html.BeginForm("StudentAttendance", "Attendance", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-inline" }))
+                                        {
+                                            @Html.ValidationSummary(true)
+
+                                            <div id="lblmsg" class="form-group col-md-9">
+                                                @TempData["ErrorMessage"]
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.Studentid, new { @class = "col-md-6 form_out" })
+                                                @Html.TextBoxFor(model => model.Studentid, new { placeholder = "Enter Student ID", @class = "col-md-5 form-control form_in", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.Studentid)
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                <span class="col-md-6 form_out" style="padding-top:5px;">
+                                                    <b>Student Name</b>
+                                                </span>
+                                                @Html.DisplayFor(model => model.StudentName, new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.StudentName)
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.AttendanceDate, new { @class = "col-md-6 form_out" })
+                                                @Html.TextBoxFor(model => model.AttendanceDate, new { id = "datepicker", placeholder = "Select Date of Attendance", @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.AttendanceDate)
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.CheckBoxFor(model => model.StaffAbsent, new { id = "StaffAbsent", @class = "col-md-6 form_out" })
+                                                @Html.LabelFor(model => model.StaffAbsent, new { @class = "", @style = "border:none;" })
+                                                @Html.ValidationMessageFor(model => model.StaffAbsent)
+                                            </div>
+                                            <div class="form-group col-md-9" id="staffreason" style="display:none;">
+                                                @Html.LabelFor(model => model.StaffReason, new { @class = "col-md-6 form_out" })
+                                                @Html.TextAreaFor(model => model.StaffReason, new { id = "StaffReason" })
+                                                @Html.ValidationMessageFor(model => model.StaffReason)
+                                            </div>
+                                            <div class="form-group col-md-9" style="text-align:center;">
+                                                <input type="submit" action="insert" class="btn btn-primary" id="insert" value="Submit" />
+                                            </div>
+                                            <div class="form-group col-md-9" style="text-align:center;">
+                                                &nbsp;
+                                            </div>
+
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </td>
+          </div>
+        
+    </div>
+</div>
+</div>
+

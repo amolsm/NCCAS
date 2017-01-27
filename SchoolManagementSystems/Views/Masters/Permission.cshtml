@@ -1,0 +1,285 @@
+﻿@model Entity.UserPermissionviewmodel
+@{
+    ViewBag.Title = "Role Permission";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        //FillinnerPermission();
+        $("#divLoading").bind("ajaxSend", function () {
+            $(this).show();
+        }).bind("ajaxStop", function () {
+            $(this).hide();
+        }).bind("ajaxError", function () {
+            $(this).hide();
+        });
+
+
+        function HideDeleteoptions() {
+            var mod = $("#modules").val();
+            for (var i = 1; i <= mod; i++) {
+                $("#Delete_" + i + "").hide();
+            }
+        }
+
+        function FillinnerPermission() {
+            if ($("#Add").val() == "Allow") { $("#AddForm").show(); }
+            else { $("#AddForm").hide(); }
+
+            if ($("#Modify").val() == "Allow") { $(".btn_edit").show(); $(".edt").show(); }
+            else { $(".btn_edit").hide(); $(".edt").hide(); }
+
+            if ($("#View").val() == "Allow") { $("#result").show(); }
+            else { $("#result").hide(); }
+
+            if ($("#Delete").val() == "Allow") { $(".btn_delete").show(); }
+            else { $(".btn_delete").hide(); }
+        }
+        $("#status").prop('checked', true);
+        $("#lblmsg").text('');
+        $("#insert").hide();
+
+        $("#insert").click(function () {
+            $("#divLoading").show();
+            var mod = $("#modules").val();
+            var UserRoleid;
+            var Permissionid;
+            var moduleid = mod;
+            UserRoleid = $('#UserRoleid').val();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteAllPermission")',
+                data: { UserRoleid: UserRoleid, Permissionid: 0, moduleid: 0 },
+                success: function (result) {
+
+                }
+            });
+
+            var str = "";
+
+            for (var i = 1; i <= mod; i++) {
+                Permissionid = 0;
+                if ($("#Add_" + i + "").is(":checked")) {
+                    Permissionid = 1;
+                    str = str + UserRoleid + ',' + i + ',' + Permissionid + '|';
+                }
+                if ($("#View_" + i + "").is(":checked")) {
+                    Permissionid = 3;
+                    str = str + UserRoleid + ',' + i + ',' + Permissionid + '|';
+                }
+                if ($("#Modify_" + i + "").is(":checked")) {
+                    Permissionid = 2;
+                    str = str + UserRoleid + ',' + i + ',' + Permissionid + '|';
+                }
+                if ($("#Delete_" + i + "").is(":checked")) {
+                    Permissionid = 4;
+                    str = str + UserRoleid + ',' + i + ',' + Permissionid + '|';
+                }
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLPermission")',
+                data: { str: str },
+                success:
+                function (result) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Permission updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html('');
+                    $('#UserRoleid').val('');
+                }
+            });
+        });
+
+        function FillPermission() {
+            var mod = $("#modules").val();
+            var modid1;
+            var i;
+            for (i = 1; i <= mod; i++) {
+                modid1 = i;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetPermission")',
+                    data: { UserRoleid: $('#UserRoleid').val(), moduleid: i },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            for (var j = 0; j < data.length; j++) {
+                                if (data[j].Permissionid == 1) {
+                                    $("#Add_" + data[j].moduleid + "").prop('checked', true);
+                                }
+                                else if (data[j].Permissionid == 2) {
+                                    $("#Modify_" + data[j].moduleid + "").prop('checked', true);
+                                }
+                                else if (data[j].Permissionid == 3) {
+                                    $("#View_" + data[j].moduleid + "").prop('checked', true);
+                                }
+                                else if (data[j].Permissionid == 4) {
+                                    $("#Delete_" + data[j].moduleid + "").prop('checked', true);
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+
+        //                $("#Add_header").change(function () {
+        //                    alert("M");
+        //                    //$(".addcls").prop('checked', true);
+        //                });
+        //                    else {
+        //                        $(".Addcls").prop('checked', false);
+        //                    }
+        $("#header").click(function () {
+            if ($("#Modify_header").is(":checked")) {
+                $(".modifycls").prop('checked', true);
+            }
+            else {
+                $(".modifycls").prop('checked', false);
+            }
+            if ($("#View_header").is(":checked")) {
+                $(".viewcls").prop('checked', true);
+            }
+            else {
+                $(".viewcls").prop('checked', false);
+            }
+
+            if ($("#Add_header").is(":checked")) {
+                $(".addcls").prop('checked', true);
+            }
+            else {
+                $(".addcls").prop('checked', false);
+            }
+
+        });
+
+
+        $('#UserRoleid').change(function () {
+            $("#divLoading").show();
+            $("#insert").show();
+            var roleid = $('#UserRoleid').val();
+            if (roleid == '') {
+                $("#insert").hide();
+                $('#result').html('');
+            }
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("Fill_Modules_With_Permission")',
+                dataType: 'JSON',
+                cache: false,
+                contentType: false,
+                data: { roleid: roleid },
+                success: function (data) {
+                    var result = $('#result');
+                    var head = $('#header');
+                    var table; var header
+                    var modid;
+                    result.html('');
+                    $("#modules").val(data.length);
+                    header = "<table style='margin: 0;' class='table tb-parshav tablesorter'><thead><tr><th width='593px;'>Module Names</th><th width='93px'>Add<input type='checkbox' id='Add_header' /></th><th width='100px'>View<input type='checkbox' id='View_header'/></th><th>Modify<input type='checkbox' id='Modify_header'/></th><th class='del'>Delete</th></thead></table>";
+                    head.html(header);
+                    table = "<table style='margin: 0;' class='table tb-parshav tablesorter'><tbody>";
+                    for (var i = 0; i < data.length; i++) {
+                        modid = data[i].Moduleid;
+                        //                        <td><input type='checkbox' class='' name='Delete_" + data[i].Moduleid.toString() + "' id='Delete_" + data[i].Moduleid.toString() + "' value='Delete_" + data[i].ModuleName.toString() + "'></td></tr>";
+                        table += "<tr id=" + data[i].Moduleid + "><td width='593px;'>" + data[i].ModuleName.toString() + "</td><td width='93px;'><input class='addcls' type='checkbox' id='Add_" + data[i].Moduleid.toString() + "' name='Add_" + data[i].Moduleid.toString() + "' value='Add_" + data[i].ModuleName.toString() + "'></td><td><input class='viewcls' type='checkbox' name='View_" + data[i].Moduleid.toString() + "' id='View_" + data[i].Moduleid.toString() + "' value='View_" + data[i].ModuleName.toString() + "'></td><td><input class='modifycls' type='checkbox' name='Modify_" + data[i].Moduleid.toString() + "' id='Modify_" + data[i].Moduleid.toString() + "' value='Modify_" + data[i].ModuleName.toString() + "'></td></tr>";
+                    }
+                    table += "</tbody><table>";
+                    result.html(table);
+                    FillPermission();
+                    HideDeleteoptions();
+                    $(".del").hide();
+                }
+
+            });
+        });
+
+    });
+</script>
+@Html.Hidden("modules")@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+             @Html.Partial("_MasterSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+   
+            <ul class="breadcrumb">
+              <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                <li>@Html.ActionLink("Masters", "Permisson", "Masters", "")<i class="icon-angle-right"></i></li>
+                <li class="active">Permission Master</li>
+            </ul>
+
+                 <div class="panel-body"> 
+<div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+	<strong><label id="lblmsg"></label></strong> 
+	</div>
+  <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+	<strong><label id="lblmsgs"></label></strong> 
+</div>
+</div>
+          <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                                    @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                                    {
+                                        @Html.ValidationSummary(true)
+                                      
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.UserRoleid, new { @class="control-label" })
+                                              <div class="controls">
+                                            @Html.DropDownListFor(m => m.UserRoleid, new SelectList(Model._roleslist, "Roleid", "RoleName", "Select Role"), "Select Role", new { @class = "col-md-5 form-control form_in" })
+                                        </div>
+                                            </div>
+                                        
+                                          <div class="form-actions">
+                                            <input type="button" class="btn btn-primary" id="insert" value="Save All" />
+                                        </div>
+                                    }
+                              
+                           </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                              <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                                        <div id="header" class="table-responsive">
+                                        </div>
+                                        <div id="result" class="table-responsive">
+                                        </div>
+                                   </div>
+                        
+                
+        </div>
+        </div>
+    </div>
+</div>
+   
+            </div>
+    </div>

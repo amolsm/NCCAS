@@ -1,0 +1,234 @@
+﻿@model Entity.positionviewmodel
+@{
+    ViewBag.Title = "Designation";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $('#status').attr('checked', true);
+        $("#M_Position td").css({ "background-color": "orange" });
+        $("#lblmsg").text('');
+        $('#positionid input').attr("readonly", true);
+        if ($("#posid").val() == "0") {
+            $("#positionid").hide();
+        }
+
+        $("#result").on("click", ".btn_edit", function (evt) {
+            var posid = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillPositionDetails")',
+                dataType: 'JSON',
+                data: { posid: posid },
+                success: function (data) {
+                    $("#positionid").show();
+                    $('#positionid input').val(data.posid);
+                    $("#posname").val(data.posname);
+                    $("#status").prop('checked', data.status);
+                    //$("#academicyear").val(data.academicyear);
+                }
+            });
+        });
+
+        function clear() {
+            $("#positionid").hide();
+            $('#positionid input').val('0');
+            $("#posname").val('');
+            //            $("#status").prop('checked', false);
+            //$("#academicyear").val('');
+        }
+
+        $('#posname').blur(function () {
+            var posname = $('#posname').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_position")',
+                dataType: 'JSON',
+                data: { posname: posname },
+                success: function (data) {
+                    if (data.posname != null) {
+                        $("#lblmsg").text("Designation Name Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#posname').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            setTimeout(function () {
+                validations();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLPosition")',
+                    data: $('#frm').serialize() + "&evt=submit&id=0",
+                    success: function (result) {
+                        $("#lblmsg").text("Designation updated successfully!..");
+                        $("#lblmsg").css({ "color": "lime" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                        ReloadPaging();
+                    }
+                });
+            }, 1000);
+        });
+
+        $("#reset").click(function () {
+            clear();
+        });
+
+        $("#result").on("click", ".btn_delete", function (evt) {
+            var posid = this.id;
+            var flag = confirm('Are you sure you want to delete this Designation?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLPosition")',
+                    data: $('#frm').serialize() + "&evt=Delete&id=" + posid + "",
+                    success: function (result) {
+                        $("#lblmsg").text("Designation deleted successfully!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                        ReloadPaging();
+                    }
+                });
+            }
+        });
+
+        function validations() {
+            $("#lblmsg").text('');
+            var cnt = 0;
+
+            if ($("#posname").val() == '') {
+                cnt++;
+                $("#posname").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#posname").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            //            if ($("#academicyear").val() == '') {
+            //                cnt++;
+            //                $("#academicyear").css({
+            //                    "border": "2px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#academicyear").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+
+        ReloadPaging();
+    });
+</script>
+@Html.HiddenFor(m => m.posid)@Html.Partial("_PermissionHiddenFlds")
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 well blbg" style="margin-top: 38px; margin-bottom:90px;">
+            @* <div class="well blbg">
+            <a href="~/Login/Login">Back to Home</a>*@
+            @Html.Partial("_MasterSubMenu")
+            @*</div>*@
+        </div>
+        <div class="col-md-9" style="padding-top: 75px;">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home", "Login", "Login")</li>
+                <li>@Html.ActionLink("Masters", "Position", "Masters", "")</li>
+                <li class="active">Designation Master</li>
+                <div style="float: right;">
+                    @using (Html.BeginForm())
+                    {
+
+                        @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Find" />
+                    }
+                </div>
+            </ul>
+            <div class="col-md-10" style="width: 100%;">
+                <center>
+                    <table width="100%">
+                        <tr>
+                            <td><div id="AddForm" style="display: none;">
+                                @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-inline" }))
+                                {
+                                    @Html.ValidationSummary(true)
+                                    <div id="lblmsg" class="form-group col-md-9">
+                                    </div>
+                                    <div id="positionid" class="form-group col-md-9">
+                                        @Html.LabelFor(model => model.posid, new { @class = "col-md-6 form_out" })
+                                        @Html.EditorFor(model => model.posid, new { @class = "col-md-5 form-control form_in" })
+                                        @Html.ValidationMessageFor(model => model.posid)
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        @Html.LabelFor(model => model.posname, new { @class = "col-md-6 form_out" })
+                                        @Html.EditorFor(model => model.posname, new { @class = "col-md-5 form-control form_in" })
+                                        @Html.ValidationMessageFor(model => model.posname)
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        @Html.LabelFor(model => model.status, new { @class = "col-md-6 form_out" })
+                                        @Html.CheckBoxFor(model => model.status, new { @class = "col-md-5 form-control form_in" })
+                                        @Html.ValidationMessageFor(model => model.status)
+                                    </div>
+                                    <div class="form-group col-md-9" style="text-align: center;">
+                                        <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                        <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                    </div>
+                                }</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <div class="" style=" color: #23527c">
+                                        @Html.Partial("_positionList")
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="pager" class="col-md-4 col-md-offset-8" style="position: none;">
+                        <img src="../../Content/images/first.png" style="width: 19px;" class="first" />
+                        <img src="../../Content/images/prev.png" style="width: 19px;" class="prev" />
+                        <input type="text" style="width: 50px;" disabled="disabled" class="pagedisplay" />
+                        <img src="../../Content/images/next.png" style="width: 19px;" class="next" />
+                        <img src="../../Content/images/last.png" style="width: 19px;" class="last" />
+                        <select style="border-color: Blue;" class="pagesize">
+                            <option selected="selected" value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <!-- table end -->
+        @*</div>*@
+    </div>
+</div>
+</div> 

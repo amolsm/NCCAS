@@ -1,0 +1,2367 @@
+﻿@model Entity.Studentviewmodel
+@{
+    TempData["Docs"] = TempData["Docs"];
+}
+@{
+    ViewBag.Title = "Admission";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+    });
+    $(document).ready(function () {
+        FillPermission();
+        $("#insert").click(function (e) {
+            Validations(e);
+        });
+        $("#Busid").hide();
+        $("#BusNo").hide();
+        $("#attach").hide();
+
+        //        $("#tabss").find("#tab3").addClass("ui-tabs-active ui-state-active");
+        //        $("#tabs - 3").attr("display", "block");
+        //        $("#tabs - 2").attr("display", "none");
+        //        $("#tabs - 3").attr("aria-hidden",false);
+        //        $("#tabs - 1").attr("display", "none");
+        $("#StudEmail").change(function () {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("CheckStudEmail")',
+                dataType: 'JSON',
+                data: { Email: $("#StudEmail").val() },
+                success: function (data) {
+                    if (data.StudEmail != "") {
+                        $("#StudEmail").val('');
+                        alert("Student Email Already Exists in our Database!");
+                    }
+                }
+            });
+        });
+        function fillsubcats() {
+            $("#products").html('');
+            if ($("#categories").val() != "") {
+                $("#cats").val($("#categories").val());
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetSubcats")',
+                    dataType: 'json',
+                    data: { cats: $("#cats").val() },
+                    success: function (data) {
+                        $("#subcategories").html('');
+                        if (data.subcats != "") {
+                            var item = '';
+                            $.each(data.subcats, function (i, subcat) {
+                                item += '<option value="' + subcat.Value + '">' + subcat.Text + '</option>';
+                            });
+                            $("#subcategories").append(item);
+                        }
+                        if (data.prds != "") {
+                            $("#exclude").val("Yes");
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("GetProductsexclude")',
+                                dataType: 'json',
+                                data: { subcats: data.prds },
+                                success: function (prds) {
+                                    $("#products").html('');
+                                    if (prds != "") {
+                                        var item = '';
+                                        $.each(prds, function (i, prd) {
+                                            item += '<option value="' + prd.Value + '">' + prd.Text + '</option>';
+                                        });
+                                        $("#products").append(item);
+                                    }
+                                },
+                                error: function (ex) {
+                                    alert('Failed to retrieve products.' + ex);
+                                }
+                            });
+                        }
+                        else {
+                            $("#exclude").val("No");
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve sub categories.' + ex);
+                    }
+                });
+            }
+        }
+
+        function fillprds() {
+            if ($("#subcategories").val() != "") {
+                $("#subcats").val($("#subcategories").val());
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetProducts")',
+                    dataType: 'json',
+                    data: { subcats: $("#subcats").val() },
+                    success: function (prds) {
+                        $("#products").html('');
+                        if ($("#exclude").val() == "No") {
+                            $("#products").html('');
+                        }
+                        if (prds != "") {
+                            var item = '';
+                            $.each(prds, function (i, prd) {
+                                item += '<option value="' + prd.Value + '">' + prd.Text + '</option>';
+                            });
+                            $("#products").append(item);
+                        }
+                        else {
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve products.' + ex);
+                    }
+                });
+
+                if ($("#categories").val() != "") {
+                    $("#cats").val($("#categories").val());
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetSubcats")',
+                        dataType: 'json',
+                        data: { cats: $("#cats").val() },
+                        success: function (data) {
+                            if (data.prds != "") {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("GetProductsexclude")',
+                                    dataType: 'json',
+                                    data: { subcats: data.prds },
+                                    success: function (prds) {
+                                        //$("#products").html('');
+                                        if (prds != "") {
+                                            var item = '';
+                                            $.each(prds, function (i, prd) {
+                                                item += '<option value="' + prd.Value + '">' + prd.Text + '</option>';
+                                            });
+                                            $("#products").append(item);
+                                        }
+                                    },
+                                    error: function (ex) {
+                                        alert('Failed to retrieve products.' + ex);
+                                    }
+                                });
+                            }
+                            else {
+                                $("#exclude").val("No");
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve sub categories.' + ex);
+                        }
+                    });
+                }
+
+            }
+        }
+
+        $("#categories").change(function () {
+            fillsubcats();
+        });
+        $("#subcategories").change(function () {
+            fillprds();
+        });
+
+        $("#lblmsg").text('');
+        $('#studid input').attr("readonly", true);
+        if ($("#studid input").val() == "0") {
+            $("#studid").hide();
+        }
+        else {
+            if ($("#FormType").val() == "O_type") {
+                act = '@Url.Action("FillOnlineStudentDetails")';
+                $("#stat").show();
+            }
+            else {
+                act = '@Url.Action("FillStudentDetails")';
+                $("#stat").hide();
+                $('input:radio[name=group1]').filter('[value=0]').prop("checked", true);
+                $('input:radio[name=group1]').filter('[value=0]').prop("checked", false);
+            }
+            var studid = $("#studid input").val();
+            $.ajax({
+                type: 'GET',
+                url: act,
+                dataType: 'JSON',
+                data: { studid: studid },
+                success: function (data) {
+                    $("#Studnm").val(data.Studnm);
+                    $("#Studfathernm").val(data.Studfathernm);
+                    $("#Studmothernm").val(data.Studmothernm);
+                    var value = new Date(parseInt(data.DOB.substr(6)));
+                    $('#datepicker').datepicker('setDate', value);
+                    //$('#datepicker').focus();
+                    $("#Weight").val(data.Weight);
+                    $("#Height").val(data.Height);
+                    $("#StudBldGrp").val(data.StudBldGrp);
+                    $("#StudEmail").val(data.StudEmail);
+                    $("#Disease").val(data.Disease);
+                    $("#Religionid").val(data.Religionid);
+                    $("#Casteid").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetCastes")',
+                        dataType: 'json',
+                        data: { id: $("#Religionid").val() },
+                        success: function (castes) {
+                            if (castes != "") {
+                                var item = '<option value="0">select caste</option>';
+                                $.each(castes, function (i, caste) {
+                                    item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
+                                });
+                                $("#Casteid").append(item);
+                                $("#Casteid").val(data.Casteid);
+                            }
+                            else {
+                                var item = '<option value="0">select caste</option>';
+                                $("#Casteid").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve castes.' + ex);
+                        }
+                    });
+                    if (data.Classid == 0) {
+                        data.Classid = "";
+                    }
+                    $("#Classid").val(data.Classid);
+                    $("#RollNo").val(data.RollNo);
+                    if (data.Gender == 1) {
+                        $("#male").prop("checked", "checked");
+                    }
+                    else {
+                        $("#female").prop("checked", "checked");
+                    }
+                    $("#MotherTongue").val(data.MotherTongue);
+                    $("#PreviousSchool").val(data.PreviousSchool);
+                    $("#SchoolAddress").val(data.SchoolAddress);
+                    //                    if (data.LastClass == "0") {
+                    //                        $("#LastClass").val('');
+                    //                    }
+                    //                    else {
+                    //                        $("#LastClass").val(data.LastClass);
+                    //                    }
+                    $("#LastClass").val(data.LastClass);
+                    $("#Grade").val(data.Grade);
+                    $("#LeaveYear").val(data.LeaveYear);
+                    $("#LeaveReason").val(data.LeaveReason);
+                    $("#PrincipalNm").val(data.PrincipalNm);
+                    $("#ReferenceNm").val(data.ReferenceNm);
+                    $("#RCode").val(data.RCode);
+                    $("#ReferenceContact").val(data.ReferenceContact);
+                    $("#BusFacility").prop('checked', data.BusFacility);
+                    if ($("#BusFacility").prop('checked') == true) {
+                        $("#busid").val(data.busid);
+                        $("#Busid").show();
+                        $("#BusNo").show();
+                        FillTransDetail();
+                    }
+                    else {
+                        $("#Busid").hide();
+                        $("#BusNo").hide();
+                    }
+                    $("#BusNo").val(data.BusNo);
+                    $("#BusRTONo").val(data.BusRTONo);
+                    $("#EmergencyPhysicianNm").val(data.EmergencyPhysicianNm);
+                    $("#ECode").val(data.ECode);
+                    $("#EmergencyPhysicianContact").val(data.EmergencyPhysicianContact);
+                    $("#EmergencyAddress").val(data.EmergencyAddress);
+                    if (data.FatherOccpationid == 0) {
+                        data.FatherOccpationid = "";
+                    }
+                    $("#FatherOccpationid").val(data.FatherOccpationid);
+                    if (data.FatherQualificationid == 0) {
+                        data.FatherQualificationid = "";
+                    }
+                    $("#FatherQualificationid").val(data.FatherQualificationid);
+                    $("#FatherEmail").val(data.FatherEmail);
+                    $("#FatherOfficeAddress").val(data.FatherOfficeAddress);
+                    $("#FCode").val(data.FCode);
+                    $("#FatherContact").val(data.FatherContact);
+
+                    if (data.GuardianOccpationid == 0) {
+                        data.GuardianOccpationid = "";
+                    }
+                    $("#GuardianOccpationid").val(data.GuardianOccpationid);
+                    if (data.GuardianQualificationid == 0) {
+                        data.GuardianQualificationid = "";
+                    }
+
+                    $("#GuardianName").val(data.GuardianName);
+                    $("#GuardianQualificationid").val(data.GuardianQualificationid);
+                    $("#GuardianEmail").val(data.GuardianEmail);
+                    $("#GuardianOfficeAddress").val(data.GuardianOfficeAddress);
+                    $("#GCode").val(data.GCode);
+                    $("#GuardianContact").val(data.GuardianContact);
+
+                    if (data.FatherBldGrpid == 0) {
+                        data.FatherBldGrpid = "";
+                    }
+                    $("#FatherBldGrpid").val(data.FatherBldGrpid);
+                    if (data.MotherOccpationid == 0) {
+                        data.MotherOccpationid = "";
+                    }
+                    $("#MotherOccpationid").val(data.MotherOccpationid);
+                    if (data.MotherQualificationid == 0) {
+                        data.MotherQualificationid = "";
+                    }
+                    $("#MotherQualificationid").val(data.MotherQualificationid);
+                    $("#MotherEmail").val(data.MotherEmail);
+                    $("#MotherOfficeAddress").val(data.MotherOfficeAddress);
+                    $("#MCode").val(data.MCode);
+                    $("#MotherContact").val(data.MotherContact);
+                    if (data.MotherBldGrpid == 0) {
+                        data.MotherBldGrpid = "";
+                    }
+                    $("#MotherBldGrpid").val(data.MotherBldGrpid);
+                    $("#Docs").val(data.Docs);
+
+                    if ($("#Docs").val() != "") {
+                        $("#attach").show();
+                    }
+                    else {
+                        $("#attach").hide();
+                    }
+                    $("#pic1").append('<img src="/Student/getImg1/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Father Pic">');
+                    $("#pic2").append('<img src="/Student/getImg2/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Mothers Pic">');
+                    $("#pic3").append('<img src="/Student/getImg3/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Student Pic">');
+
+                    var selectedValues = new Array();
+                    var array = data.cats.split(",");
+                    $.each(array, function (i) {
+                        if (array[i] != "") {
+                            selectedValues[i] = array[i];
+                        }
+                    });
+                    $("#categories").val(selectedValues);
+
+                    var scats = data.subcats;
+                    var p = data.prds;
+
+                    if ($("#categories").val() != "") {
+                        $("#cats").val($("#categories").val());
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("GetSubcats")',
+                            dataType: 'json',
+                            data: { cats: $("#cats").val() },
+                            success: function (data) {
+                                $("#subcategories").html('');
+                                if (data.subcats != "") {
+                                    var item = '';
+                                    $.each(data.subcats, function (i, subcat) {
+                                        item += '<option value="' + subcat.Value + '">' + subcat.Text + '</option>';
+                                    });
+                                    $("#subcategories").append(item);
+                                    var s = new Array();
+                                    var arr = scats.split(",");
+                                    $.each(arr, function (j) {
+                                        if (arr[j] != "") {
+                                            s[j] = arr[j];
+                                        }
+                                    });
+                                    $("#subcategories").val(s);
+                                }
+
+                                if (data.prds != "") {
+                                    $("#exclude").val("Yes");
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '@Url.Action("GetProductsexclude")',
+                                        dataType: 'json',
+                                        data: { subcats: data.prds },
+                                        success: function (prds) {
+                                            $("#products").html('');
+                                            if (prds != "") {
+                                                var item = '';
+                                                $.each(prds, function (i, prd) {
+                                                    item += '<option value="' + prd.Value + '">' + prd.Text + '</option>';
+                                                });
+                                                $("#products").append(item);
+                                                var t = new Array();
+                                                var arr1 = p.split(",");
+                                                $.each(arr1, function (j) {
+                                                    if (arr1[j] != "") {
+                                                        t[j] = arr1[j];
+                                                    }
+                                                });
+
+                                                $("#products").val(t);
+                                            }
+                                        },
+                                        error: function (ex) {
+                                            alert('Failed to retrieve products.' + ex);
+                                        }
+                                    });
+                                }
+                                else {
+                                    $("#exclude").val("No");
+                                }
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("GetProducts")',
+                                    dataType: 'json',
+                                    data: { subcats: scats },
+                                    success: function (prds) {
+                                        if (prds != "") {
+                                            var item = '';
+                                            $.each(prds, function (i, prd) {
+                                                item += '<option value="' + prd.Value + '">' + prd.Text + '</option>';
+                                            });
+                                            $("#products").append(item);
+                                            var t = new Array();
+                                            var arr1 = p.split(",");
+                                            $.each(arr1, function (j) {
+                                                if (arr1[j] != "") {
+                                                    t[j] = arr1[j];
+                                                }
+                                            });
+
+                                            $("#products").val(t);
+                                        }
+                                        else {
+                                        }
+                                    },
+                                    error: function (ex) {
+                                        alert('Failed to retrieve products.' + ex);
+                                    }
+                                });
+                            },
+                            error: function (ex) {
+                                alert('Failed to retrieve sub categories.' + ex);
+                            }
+                        });
+                    }
+
+                    $("#StudCategoryid").val(data.StudCategoryid);
+                    $("#Countryid").val(data.Countryid);
+                    $("#Stateid").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetStates")',
+                        dataType: 'json',
+                        data: { id: data.Countryid },
+                        success: function (states) {
+                            if (states != "") {
+                                var item = '<option value="0">select State</option>';
+                                $.each(states, function (i, state) {
+                                    item += '<option value="' + state.Value + '">' + state.Text + '</option>';
+                                });
+                                $("#Stateid").append(item);
+                                $("#Stateid").val(data.Stateid);
+                            }
+                            else {
+                                var item = '<option value="0">select State</option>';
+                                $("#Stateid").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                    $("#Cityid").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetCities")',
+                        dataType: 'json',
+                        data: { id: data.Stateid },
+                        success: function (cities) {
+                            if (cities != "") {
+                                var item = '<option value="0">select City</option>';
+                                $.each(cities, function (i, city) {
+                                    item += '<option value="' + city.Value + '">' + city.Text + '</option>';
+                                });
+                                $("#Cityid").append(item);
+                                $("#Cityid").val(data.Cityid);
+                            }
+                            else {
+                                var item = '<option value="0">select City</option>';
+                                $("#Cityid").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                    $("#CurrentAddress").val(data.CurrentAddress);
+                    $("#PermanentAddress").val(data.PermanentAddress);
+                    $("#academicyear").val(data.academicyear);
+                }
+            });
+        }
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker').datepicker('setDate', new Date());
+
+        $("#ui-datepicker-div").hide();
+
+        function Validations(e) {
+            var cnt = 0;
+            if ($("#Studnm").val() == '') {
+                cnt++;
+                $("#Studnm").css({
+                    "border": "1px solid red"
+                });
+                alert("Student Name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Studnm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Classid").val() == '') {
+                cnt++;
+                $("#Classid").css({
+                    "border": "1px solid red"
+                });
+                alert("Class Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Classid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Studfathernm").val() == '') {
+                cnt++;
+                $("#Studfathernm").css({
+                    "border": "1px solid red"
+                });
+                alert("Father Name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Studfathernm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Studmothernm").val() == '') {
+                cnt++;
+                $("#Studmothernm").css({
+                    "border": "1px solid red"
+                });
+                alert("Mother Name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Studmothernm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#datepicker").val() == '') {
+                cnt++;
+                $("#datepicker").css({
+                    "border": "1px solid red"
+                });
+                alert("DOB Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#datepicker").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Weight").val() == '0') {
+                cnt++;
+                $("#Weight").css({
+                    "border": "1px solid red"
+                });
+                alert("weight Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Weight").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Height").val() == '0') {
+                cnt++;
+                $("#Height").css({
+                    "border": "1px solid red"
+                });
+                alert("height Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Height").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#StudBldGrp").val() == '') {
+                cnt++;
+                $("#StudBldGrp").css({
+                    "border": "1px solid red"
+                });
+                alert("blood group Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#StudBldGrp").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#StudEmail").val() == '') {
+                cnt++;
+                $("#StudEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("student email Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#StudEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Disease").val() == '') {
+                cnt++;
+                $("#Disease").css({
+                    "border": "1px solid red"
+                });
+                alert("disease Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Disease").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Religionid").val() == '') {
+                cnt++;
+                $("#Religionid").css({
+                    "border": "1px solid red"
+                });
+                alert("religion Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Religionid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#StudCategoryid").val() == '') {
+                cnt++;
+                $("#StudCategoryid").css({
+                    "border": "1px solid red"
+                });
+                alert("category Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#StudCategoryid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Casteid").val() == '') {
+                cnt++;
+                $("#Casteid").css({
+                    "border": "1px solid red"
+                });
+                alert("caste Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Casteid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#RollNo").val() == '0') {
+                cnt++;
+                $("#RollNo").css({
+                    "border": "1px solid red"
+                });
+                alert("roll no Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#RollNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherTongue").val() == '') {
+                cnt++;
+                $("#MotherTongue").css({
+                    "border": "1px solid red"
+                });
+                alert("mother tongue Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherTongue").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            //            if ($("#PreviousSchool").val() == '') {
+            //                cnt++;
+            //                $("#PreviousSchool").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#PreviousSchool").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#SchoolAddress").val() == '') {
+            //                cnt++;
+            //                $("#SchoolAddress").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#SchoolAddress").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#LastClass").val() == '') {
+            //                cnt++;
+            //                $("#LastClass").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#LastClass").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#Grade").val() == '') {
+            //                cnt++;
+            //                $("#Grade").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#Grade").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#LeaveYear").val() == '') {
+            //                cnt++;
+            //                $("#LeaveYear").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#LeaveYear").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#LeaveReason").val() == '') {
+            //                cnt++;
+            //                $("#LeaveReason").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#LeaveReason").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#PrincipalNm").val() == '') {
+            //                cnt++;
+            //                $("#PrincipalNm").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#PrincipalNm").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#ReferenceNm").val() == '') {
+            //                cnt++;
+            //                $("#ReferenceNm").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#ReferenceNm").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#ReferenceContact").val() == '') {
+            //                cnt++;
+            //                $("#ReferenceContact").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#ReferenceContact").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            if ($("#BusFacility").val() == '') {
+                cnt++;
+                $("#BusFacility").css({
+                    "border": "1px solid red"
+                });
+                alert("bus facility Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#BusFacility").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            //            if ($("#BusNo").val() == '') {
+            //                cnt++;
+            //                $("#BusNo").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#BusNo").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            //            if ($("#BusRTONo").val() == '') {
+            //                cnt++;
+            //                $("#BusRTONo").css({
+            //                    "border": "1px solid red"
+            //                });
+            //            }
+            //            else {
+            //                $("#BusRTONo").css({
+            //                    "border": "",
+            //                    "background": ""
+            //                });
+            //            }
+
+            if ($("#EmergencyPhysicianNm").val() == '') {
+                cnt++;
+                $("#EmergencyPhysicianNm").css({
+                    "border": "1px solid red"
+                });
+                alert("physician name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#EmergencyPhysicianNm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#EmergencyPhysicianContact").val() == '') {
+                cnt++;
+                $("#EmergencyPhysicianContact").css({
+                    "border": "1px solid red"
+                });
+                alert("physician contact Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#EmergencyPhysicianContact").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ECode").val() == '') {
+                cnt++;
+                $("#ECode").css({
+                    "border": "1px solid red"
+                });
+                alert("physician contact Code Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#ECode").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#EmergencyAddress").val() == '') {
+                cnt++;
+                $("#EmergencyAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("emergency address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#EmergencyAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FatherOccpationid").val() == '') {
+                cnt++;
+                $("#FatherOccpationid").css({
+                    "border": "1px solid red"
+                });
+                alert("father occupation Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherOccpationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FatherQualificationid").val() == '') {
+                cnt++;
+                $("#FatherQualificationid").css({
+                    "border": "1px solid red"
+                });
+                alert("father qualification Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherQualificationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FatherEmail").val() == '') {
+                cnt++;
+                $("#FatherEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("father email Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+
+            if ($("#FatherOfficeAddress").val() == '') {
+                cnt++;
+                $("#FatherOfficeAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("office address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherOfficeAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FatherContact").val() == '') {
+                cnt++;
+                $("#FatherContact").css({
+                    "border": "1px solid red"
+                });
+                alert("father contact Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherContact").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FCode").val() == '') {
+                cnt++;
+                $("#FCode").css({
+                    "border": "1px solid red"
+                });
+                alert("father contact Code Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FCode").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            //=============================
+
+
+            if ($("#GuardianName").val() == '') {
+                cnt++;
+                $("#GuardianName").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianName").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#GuardianOccpationid").val() == '') {
+                cnt++;
+                $("#GuardianOccpationid").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian occupation Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianOccpationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#GuardianQualificationid").val() == '') {
+                cnt++;
+                $("#GuardianQualificationid").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian qualification Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianQualificationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#GuardianEmail").val() == '') {
+                cnt++;
+                $("#GuardianEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian email Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+
+            if ($("#GuardianOfficeAddress").val() == '') {
+                cnt++;
+                $("#GuardianOfficeAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian office address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianOfficeAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#GuardianContact").val() == '') {
+                cnt++;
+                $("#GuardianContact").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian conatact Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GuardianContact").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#GCode").val() == '') {
+                cnt++;
+                $("#GCode").css({
+                    "border": "1px solid red"
+                });
+                alert("guardian conatact Code Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#GCode").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#FatherBldGrpid").val() == '') {
+                cnt++;
+                $("#FatherBldGrpid").css({
+                    "border": "1px solid red"
+                });
+                alert("father blood group Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#FatherBldGrpid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherOccpationid").val() == '') {
+                cnt++;
+                $("#MotherOccpationid").css({
+                    "border": "1px solid red"
+                });
+                alert("mother occuaption Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherOccpationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherQualificationid").val() == '') {
+                cnt++;
+                $("#MotherQualificationid").css({
+                    "border": "1px solid red"
+                });
+                alert("mother qualification Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherQualificationid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherEmail").val() == '') {
+                cnt++;
+                $("#MotherEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("mother email Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherOfficeAddress").val() == '') {
+                cnt++;
+                $("#MotherOfficeAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("mother office address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherOfficeAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherContact").val() == '') {
+                cnt++;
+                $("#MotherContact").css({
+                    "border": "1px solid red"
+                });
+                alert("mother contact Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherContact").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MCode").val() == '') {
+                cnt++;
+                $("#MCode").css({
+                    "border": "1px solid red"
+                });
+                alert("mother contact Code Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MCode").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#MotherBldGrpid").val() == '') {
+                cnt++;
+                $("#MotherBldGrpid").css({
+                    "border": "1px solid red"
+                });
+                alert("mother blood group Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#MotherBldGrpid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Countryid").val() == '') {
+                cnt++;
+                $("#Countryid").css({
+                    "border": "1px solid red"
+                });
+                alert("country Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Countryid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Stateid").val() == '') {
+                cnt++;
+                $("#Stateid").css({
+                    "border": "1px solid red"
+                });
+                alert("state Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Stateid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Cityid").val() == '') {
+                cnt++;
+                $("#Cityid").css({
+                    "border": "1px solid red"
+                });
+                alert("city Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#Cityid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#CurrentAddress").val() == '') {
+                cnt++;
+                $("#CurrentAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("current address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#CurrentAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#PermanentAddress").val() == '') {
+                cnt++;
+                $("#PermanentAddress").css({
+                    "border": "1px solid red"
+                });
+                alert("permanent address Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#PermanentAddress").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#BusFacility").prop('checked') == true) {
+                if ($("#busid").val() == '') {
+                    cnt++;
+                    $("#busid").css({
+                        "border": "1px solid red"
+                    });
+                    alert("bus facility Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#busid").css({
+                        "border": "",
+                        "background": ""
+                    });
+                }
+            }
+
+            if ($("#academicyear").val() == '') {
+                cnt++;
+                $("#academicyear").css({
+                    "border": "1px solid red"
+                });
+                alert("academic year Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#academicyear").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+
+            if (cnt != 0) {
+                e.preventDefault();
+            }
+        }
+
+        $("#BusFacility").change(function () {
+            $("#trans_details").hide();
+            $("#busid").val('');
+            if ($("#BusFacility").prop('checked') == true) {
+                $("#Busid").show();
+                $("#BusNo").show();
+            }
+            else {
+                $("#Busid").hide();
+                $("#BusNo").hide();
+            }
+        });
+
+        function FillTransDetail() {
+            if ($("#busid").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetTransportDetails")',
+                    dataType: 'json',
+                    data: { busid: $("#busid").val() },
+                    success: function (data) {
+                        $("#trans_details").html('');
+                        if (data != "") {
+                            $("#trans_details").show();
+                            var html = '<div class="form-group col-xs-3"><label class="maru-size" for="busRoute"> Bus Route : </label></div>';
+                            html = html + "<div class='form-group col-xs-3'><label class='form-control mar' for='busRoute'>" + data.busRoute + "</label></div>";
+                            html = html + '<div class="form-group col-xs-3"><label class="maru-size" for="busDriverNm"> Bus Driver Name : </label></div>';
+                            html = html + "<div class='form-group col-xs-3'><label class='form-control mar' for='busRoute'>" + data.busDriverNm + "</label></div>";
+                            html = html + '<div class="form-group col-xs-3"><label class="maru-size" for="busDrivercontact"> Bus Driver Contact: </label></div>';
+                            html = html + "<div class='form-group col-xs-3'><label class='form-control mar' for='busRoute'>" + data.busDrivercontact + "</label></div>";
+                            html = html + '<div class="form-group col-xs-3"><label class="maru-size" for="busRTONo"> Bus RTO Number: </label></div>';
+                            html = html + "<div class='form-group col-xs-3'><label class='form-control mar' for='busRoute'>" + data.busRTONo + "</label></div>";
+                            html = html + '<div class="form-group col-xs-3"><label class="maru-size" for="busDateTime"> Bus Time: </label></div>';
+                            var dateString = data.busDateTime.substr(6);
+                            var currentTime = new Date(parseInt(dateString));
+                            var hrs = currentTime.getHours();
+                            var min = currentTime.getMinutes();
+                            var time = hrs + ":" + min;
+                            html = html + "<div class='form-group col-xs-3'><label class='form-control mar' for='busRoute'>" + time + "</label></div>";
+                            $("#trans_details").append(html);
+                        }
+                        else {
+                            $("#trans_details").hide();
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve transport details.' + ex);
+                    }
+                });
+            }
+            else {
+                $("#trans_details").hide();
+            }
+        }
+
+        $("#busid").change(function () {
+            FillTransDetail();
+        });
+
+        $("#Religionid").change(function () {
+            if ($("#Religionid").val() == "") {
+                $("#Casteid").empty();
+                var item = '<option value="0">select Caste</option>';
+                $("#Casteid").append(item);
+            }
+            else {
+                $("#Casteid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCastes")',
+                    dataType: 'json',
+                    data: { id: $("#Religionid").val() },
+                    success: function (castes) {
+                        if (castes != "") {
+                            var item = '<option value="0">select caste</option>';
+                            $.each(castes, function (i, caste) {
+                                item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
+                            });
+                            $("#Casteid").append(item);
+                        }
+                        else {
+                            var item = '<option value="0">select caste</option>';
+                            $("#Casteid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve castes.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        $("#Countryid").change(function () {
+            if ($("#Countryid").val() == "") {
+                $("#Stateid").empty();
+                var item = '<option value="0">select State</option>';
+                $("#Stateid").append(item);
+                $("#Cityid").empty();
+                var item = '<option value="0">select City</option>';
+                $("#Cityid").append(item);
+                $("#state").val('')
+                $("#city").val('')
+            }
+            else {
+                $("#Stateid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetStates")',
+                    dataType: 'json',
+                    data: { id: $("#Countryid").val() },
+                    success: function (states) {
+                        if (states != "") {
+                            var item = '<option value="0">select State</option>';
+                            $.each(states, function (i, state) {
+                                item += '<option value="' + state.Value + '">' + state.Text + '</option>';
+                            });
+                            $("#Stateid").append(item);
+                        }
+                        else {
+                            var item = '<option value="0">select State</option>';
+                            $("#Stateid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        $("#Stateid").change(function () {
+            $("#Cityid").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCities")',
+                dataType: 'json',
+                data: { id: $("#Stateid").val() },
+                success: function (cities) {
+                    if (cities != "") {
+                        var item = '<option value="0">select City</option>';
+                        $.each(cities, function (i, city) {
+                            item += '<option value="' + city.Value + '">' + city.Text + '</option>';
+                        });
+                        $("#Cityid").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">select City</option>';
+                        $("#Cityid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+        $("#Weight").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#Height").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#FatherContact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#GuardianContact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#MotherContact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#FCode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#GCode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#MCode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#RollNo").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#academicyear").keypress(function (e) {
+            if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#ECode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#EmergencyPhysicianContact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#LeaveYear").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#RCode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#ReferenceContact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        function ValidateEmail(email) {
+            var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return expr.test(email);
+        };
+
+        $('#FatherEmail').blur(function () {
+            if (!ValidateEmail($("#FatherEmail").val())) {
+                $("#FatherEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("Father's Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#FatherEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+
+        $('#GuardianEmail').blur(function () {
+            if (!ValidateEmail($("#GuardianEmail").val())) {
+                $("#GuardianEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("Guardian's Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#GuardianEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+
+        $('#StudEmail').blur(function () {
+            if (!ValidateEmail($("#StudEmail").val())) {
+                $("#StudEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("Student's Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#StudEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+
+        $('#MotherEmail').blur(function () {
+            if (!ValidateEmail($("#MotherEmail").val())) {
+                $("#MotherEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("Mother's Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#MotherEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+
+    });
+</script>
+<style type="text/css">
+    fieldset
+    {
+        border: 1px solid #777;
+    }
+    
+    legend
+    {
+        float: left;
+        margin-right: 0.5em;
+        padding-top: 0.2em;
+        text-align: left;
+        font-size: 18px;
+        background-color: gainsboro;
+    }
+    
+    .ui-datepicker-calendar
+    {
+        background-color: antiquewhite;
+    }
+    .ui-datepicker-title
+    {
+        background-color: antiquewhite;
+    }
+    .ui-icon ui-icon-circle-triangle-w
+    {
+        background-color: antiquewhite;
+    }
+</style>
+@Html.Hidden("cats")
+@Html.Hidden("exclude")
+@Html.Hidden("subcats")
+@Html.Hidden("Docs")
+@Html.Partial("_PermissionHiddenFlds")
+@Html.Hidden("FormType", TempData["FormType"])
+<div class="container">
+    <div class="row">
+        <table cellpadding="0" cellspacing="0" style="margin-top: 38px; margin-bottom: 72px;">
+            <tr>
+                <td class="col-md-2 well blbg" style="margin-top: 50px; margin-bottom: 90px;" valign="top">
+                    @Html.Partial("_StudentSubMenu")
+                </td>
+                <td class="col-md-9" style="padding-top: 30px; margin-bottom: 90px;">
+                    <ul class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Student Management", "Index", "Student", "")</li>
+                        <li class="active">Manage Student</li>
+                    </ul>
+                    <div class="col-md-10" style="width: 100%;">
+                        <div id="tabs" class="collapse navbar-collapse" style="width: 100%;">
+                            <ul id="tabss" class="nav navbar-nav">
+                                <li id="tab1" class="active back"><a href="#tabs-1" style="color: white;">Personal Details</a></li>
+                                <li id="tab2" class="back"><a href="#tabs-2" style="color: white;">Student Details</a></li>
+                                <li id="tab3" class="back"><a href="#tabs-3" style="color: white;">Previous Education
+                                    Details</a></li>
+                            </ul>
+                            <div id="AddForm" style="display: none;">
+                                @using (Html.BeginForm("Admission_DML", "Student", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-inline" }))
+                                {
+                                    @Html.ValidationSummary(true)
+                                    var fromdt = Convert.ToString(System.DateTime.Now.Year);
+                                    var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
+                                    var session = Convert.ToString(fromdt + "-" + todt);
+                                    <div id="lblmsg">
+                                    </div>
+                                    <div id="tabs-1">
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Student Details</legend>
+                                            <div id="studid">
+                                                <div class="form-group col-xs-3">
+                                                    @Html.LabelFor(model => model.Studid, new { @class = "maru-size" })
+                                                </div>
+                                                <div class="form-group col-xs-3">
+                                                    @Html.TextBoxFor(model => model.Studid, new { placeholder = "Enter Student ID", @class = "form-control mar" })
+                                                    @Html.ValidationMessageFor(model => model.Studid)
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Studnm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Studnm, new { placeholder = "Enter Student Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Studnm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.DOB, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", placeholder = "Select Date of birth", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.DOB)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Weight, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Weight, new { placeholder = "Enter Weight in Kg", maxlength = "3", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Weight)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Height, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Height, new { placeholder = "Enter Height in Cms", maxlength = "3", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Height)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.StudBldGrp, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.StudBldGrp, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.StudBldGrp)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.StudEmail, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.StudEmail, new { placeholder = "Enter Student's Email", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.StudEmail)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Disease, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.Disease, new { placeholder = "Enter Disease", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Disease)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.StudCategoryid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.StudCategoryid, new SelectList(Model.categorylist, "StudCategoryid", "StudCategoryname", "Select Category"), "Select Category", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.StudCategoryid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Religionid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Religionid, new SelectList(Model.religionlist, "Religionid", "Religionnm", "Select Religion"), "Select Religion", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Religionid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Casteid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Casteid, new SelectList(Model.castelist, "Casteid", "CasteName", "Select Caste"), "Select Caste", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Casteid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherTongue, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.MotherTongue, new { placeholder = "Enter Mother Tongue", maxlength = "45", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherTongue)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Father's Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Studfathernm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Studfathernm, new { placeholder = "Enter Father's Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Studfathernm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherOccpationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.FatherOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.FatherOccpationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherQualificationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.FatherQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.FatherQualificationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherEmail, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.FatherEmail, new { placeholder = "Enter Father's Email", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.FatherEmail)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherOfficeAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.FatherOfficeAddress, new { placeholder = "Enter Father's Office Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.FatherOfficeAddress)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherPic, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                <input type="file" name="files1" id="FatherPic" />
+                                                <div id="pic1">
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.FatherPic)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherContact, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.FCode, new { placeholder = "Code", maxlength = "4", @class = "form-control mar", @Style = "width:30%" })
+                                                @Html.TextBoxFor(model => model.FatherContact, new { placeholder = "Father's Contact Number", maxlength = "10", @class = "form-control mar", @Style = "width:63%" })
+                                                @Html.ValidationMessageFor(model => model.FatherContact)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.FatherBldGrpid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.FatherBldGrpid, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.FatherBldGrpid)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Guardian's Detail</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianName, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.GuardianName, new { placeholder = "Enter Guardian Name", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.GuardianName)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianOccpationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.GuardianOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.GuardianOccpationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianQualificationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.GuardianQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.GuardianQualificationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianEmail, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.GuardianEmail, new { placeholder = "Enter Guardian's Email", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.GuardianEmail)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianOfficeAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.GuardianOfficeAddress, new { placeholder = "Enter Guardian's Office Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.GuardianOfficeAddress)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.GuardianContact, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.GCode, new { placeholder = "Code", maxlength = "4", @class = "form-control mar", @Style = "width:30%" })
+                                                @Html.TextBoxFor(model => model.GuardianContact, new { placeholder = "Guardian's Contact Number", maxlength = "10", @class = "form-control mar", @Style = "width:63%" })
+                                                @Html.ValidationMessageFor(model => model.GuardianContact)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Mother's Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Studmothernm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Studmothernm, new { placeholder = "Enter Mother's Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Studmothernm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherOccpationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.MotherOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherOccpationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherQualificationid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.MotherQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherQualificationid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherEmail, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.MotherEmail, new { placeholder = "Enter Mother's Email", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherEmail)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherOfficeAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.MotherOfficeAddress, new { placeholder = "Enter Mother's Office Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherOfficeAddress)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherPic, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                <input type="file" name="files2" id="MotherPic" />
+                                                <div id="pic2">
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.MotherPic)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherContact, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.MCode, new { placeholder = "Code", maxlength = "4", @class = "form-control mar", @Style = "width:30%" })
+                                                @Html.TextBoxFor(model => model.MotherContact, new { placeholder = "Mother's Contact Number", maxlength = "10", @class = "form-control mar", @Style = "width:63%" })
+                                                @Html.ValidationMessageFor(model => model.MotherContact)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.MotherBldGrpid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.MotherBldGrpid, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.MotherBldGrpid)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Location Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Countryid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Countryid, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Countryid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Stateid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Stateid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Cityid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Cityid, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select City", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Cityid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.CurrentAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.CurrentAddress, new { placeholder = "Enter Current Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.CurrentAddress)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.PermanentAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.PermanentAddress, new { placeholder = "Enter Permanent Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.PermanentAddress)
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div id="tabs-2">
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Student Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Classid, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.Classid, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Classid)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.RollNo, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.RollNo, new { placeholder = "Enter Roll No", maxlength = "3", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.RollNo)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Gender, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                <div class="pull-left">
+                                                    @Html.RadioButtonFor(model => model.Gender, "true", new { id = "male" })
+                                                    Male
+                                                    @Html.RadioButtonFor(model => model.Gender, "false", new { id = "female" }) FeMale
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.Gender)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.academicyear, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @*@Html.TextBoxFor(model => model.academicyear, new { placeholder = "Enter Academic Year", maxlength = "9", @class = "form-control mar" })*@
+                                                @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.academicyear), "Select Year", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.academicyear)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.StudPic, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                <input type="file" name="files3" id="file" />
+                                                <div id="pic3">
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.StudPic)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Transport Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.BusFacility, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.CheckBoxFor(model => model.BusFacility)
+                                                @Html.ValidationMessageFor(model => model.BusFacility)
+                                            </div>
+                                            <div id="Busid" class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.busid, new { @class = "maru-size" })
+                                            </div>
+                                            <div id="BusNo" class="form-group col-xs-3">
+                                                @Html.DropDownListFor(m => m.busid, new SelectList(Model.Translist, "busid", "busNo", "Select Bus"), "Select Bus", new { @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.busid)
+                                            </div>
+                                            <div id="trans_details">
+                                            </div>
+                                            <div style="display: none;" class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.BusNo, new { @class = "maru-size" })
+                                            </div>
+                                            <div style="display: none;" class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.BusNo, new { placeholder = "Enter Bus No.", maxlength = "15", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.BusNo)
+                                            </div>
+                                            <div style="display: none;" class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.BusRTONo, new { @class = "maru-size" })
+                                            </div>
+                                            <div style="display: none;" class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.BusRTONo, new { placeholder = "Enter Bus RTO No.", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.BusRTONo)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Emergency Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.EmergencyPhysicianNm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.EmergencyPhysicianNm, new { placeholder = "Enter Emergency Physician Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.EmergencyPhysicianNm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.EmergencyPhysicianContact, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.ECode, new { placeholder = "Code", maxlength = "4", @class = "form-control mar", @Style = "width:30%" })
+                                                @Html.TextBoxFor(model => model.EmergencyPhysicianContact, new { placeholder = "Enter Emergency Physician Contact", maxlength = "10", @class = "form-control mar", @Style = "width:63%" })
+                                                @Html.ValidationMessageFor(model => model.EmergencyPhysicianContact)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.EmergencyAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.EmergencyAddress, new { placeholder = "Enter Emergency Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.EmergencyAddress)
+                                            </div>
+                                        </fieldset>
+                                        <br />
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Inventory Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.cats, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.ListBoxFor(m => m.categories,
+    new MultiSelectList((List<SelectListItem>)ViewData["appList"], "Value", "Text"),
+new { style = "display:block;width:200px;height:178px;", @class = "form-control mar" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.subcats, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.ListBoxFor(m => m.subcategories,
+ new MultiSelectList((List<SelectListItem>)ViewData["subcatList"], "Value", "Text"),
+new { style = "display:block;width:200px;height:178px;", @class = "form-control mar" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.prds, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.ListBoxFor(m => m.products,
+ new MultiSelectList((List<SelectListItem>)ViewData["prdList"], "Value", "Text"),
+new { style = "display:block;width:200px;height:178px;", @class = "form-control mar" })
+                                            </div>
+                                            @Html.Partial("_MultipleAttachments")
+                                        </fieldset>
+                                    </div>
+                                    <div id="tabs-3">
+                                        <fieldset class="test" style="width: 100%;">
+                                            <legend>Previous Education Details</legend>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.PreviousSchool, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.PreviousSchool, new { placeholder = "Enter Previous School", maxlength = "30", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.PreviousSchool)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.SchoolAddress, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.SchoolAddress, new { placeholder = "Enter School Address", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.SchoolAddress)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.LastClass, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @*@Html.DropDownListFor(m => m.LastClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "form-control mar" })*@
+                                                @Html.TextBoxFor(model => model.LastClass, new { placeholder = "Class during Leaving", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.LastClass)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.Grade, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.Grade, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.Grade)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.LeaveYear, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.LeaveYear, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.LeaveYear)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.LeaveReason, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextAreaFor(model => model.LeaveReason, new { placeholder = "Enter Leave Reason", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.LeaveReason)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.PrincipalNm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.PrincipalNm, new { placeholder = "Enter Principal Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.PrincipalNm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.ReferenceNm, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.ReferenceNm, new { placeholder = "Enter Reference Contact Name", maxlength = "20", @class = "form-control mar" })
+                                                @Html.ValidationMessageFor(model => model.ReferenceNm)
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.LabelFor(model => model.ReferenceContact, new { @class = "maru-size" })
+                                            </div>
+                                            <div class="form-group col-xs-3">
+                                                @Html.TextBoxFor(model => model.RCode, new { placeholder = "Code", maxlength = "4", @class = "form-control mar", @Style = "width:30%" })
+                                                @Html.TextBoxFor(model => model.ReferenceContact, new { placeholder = "Enter Reference Contact Number", maxlength = "10", @class = "form-control mar", @Style = "width:63%" })
+                                                @Html.ValidationMessageFor(model => model.ReferenceContact)
+                                            </div>
+                                        </fieldset>
+                                        <div class="form-group col-xs-4">
+                                            <input type="submit" action="insert" class="btn btn-primary" id="insert" value="Submit" />
+                                            <div id="stat">
+                                                <input type="radio" checked="checked" name="group1" value="1" />&nbsp;Approve
+                                                <input type="radio" name="group1" value="0" />&nbsp;Unapprove
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

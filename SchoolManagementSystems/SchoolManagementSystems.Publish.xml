@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\DOCUMENTS\Soibrandz\Publish\School Management System" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Views/Masters/Leave.cshtml" publishTime="05/09/2016 01:00:43" />
+    <file relUrl="img/icons/Final/report 1.png" publishTime="02/06/2016 16:41:22" />
+    <file relUrl="Views/Masters/_routeList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="Scripts/jquery-1.7.1.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Masters/Permission.cshtml" publishTime="05/19/2016 22:15:50" />
+    <file relUrl="bin/Antlr3.Runtime.dll" publishTime="08/07/2015 09:31:29" />
+    <file relUrl="bin/System.Web.WebPages.dll" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="bin/Entity.dll" publishTime="06/01/2016 21:49:59" />
+    <file relUrl="Views/Masters/Country.cshtml" publishTime="05/14/2016 23:38:24" />
+    <file relUrl="bin/System.Web.Helpers.xml" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="img/06_back.png" publishTime="02/04/2016 11:54:10" />
+    <file relUrl="Views/shared/_ExaminationMenuList.cshtml" publishTime="03/23/2016 21:05:26" />
+    <file relUrl="Views/Attendance/Leave.cshtml" publishTime="05/19/2016 22:21:01" />
+    <file relUrl="Content/images/prev.png" publishTime="02/04/2011 10:27:16" />
+    <file relUrl="Views/shared/_Header.cshtml" publishTime="03/05/2016 01:20:24" />
+    <file relUrl="Views/Masters/Qualification.cshtml" publishTime="05/14/2016 23:40:42" />
+    <file relUrl="img/fb.png" publishTime="02/04/2016 11:53:54" />
+    <file relUrl="img/icons/Final/Transport management 2.png" publishTime="02/06/2016 16:29:26" />
+    <file relUrl="img/09_back.png" publishTime="02/04/2016 11:54:06" />
+    <file relUrl="img/twit.png" publishTime="02/04/2016 11:53:52" />
+    <file relUrl="img/icons/ImportExport.png" publishTime="02/06/2016 16:27:28" />
+    <file relUrl="Scripts/_references.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/shared/_FeesSubMenu.cshtml" publishTime="03/23/2016 21:06:06" />
+    <file relUrl="Scripts/jquery.tablesorter.pager.js" publishTime="02/04/2011 10:21:56" />
+    <file relUrl="Views/Masters/Position.cshtml" publishTime="05/14/2016 23:40:05" />
+    <file relUrl="Views/Masters/Category.cshtml" publishTime="05/14/2016 23:37:38" />
+    <file relUrl="Views/Student/Admission.cshtml" publishTime="06/02/2016 22:30:44" />
+    <file relUrl="img/icons/Exammanagement.png" publishTime="02/06/2016 16:15:40" />
+    <file relUrl="Views/Attendance/_LeaveList.cshtml" publishTime="05/24/2016 22:24:19" />
+    <file relUrl="img/icons/Event.png" publishTime="02/06/2016 16:39:16" />
+    <file relUrl="Scripts/jquery-1.10.2.js" publishTime="01/27/2016 21:47:20" />
+    <file relUrl="bin/System.Net.Http.xml" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="img/icons/Final/Inventory management 3.png" publishTime="02/06/2016 16:21:42" />
+    <file relUrl="img/icons/Hostelmanagement.png" publishTime="02/06/2016 16:36:20" />
+    <file relUrl="Views/Inventory/_stockreport.cshtml" publishTime="03/23/2016 02:01:10" />
+    <file relUrl="Views/Masters/FeesLabels.cshtml" publishTime="05/24/2016 00:19:38" />
+    <file relUrl="bin/System.Web.Razor.dll" publishTime="01/12/2016 00:23:50" />
+    <file relUrl="bin/System.Web.Http.WebHost.dll" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Scripts/jquery.validate.min.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Home/Index.cshtml" publishTime="03/04/2016 00:47:14" />
+    <file relUrl="bin/System.Net.Http.Formatting.xml" publishTime="01/12/2016 00:23:52" />
+    <file relUrl="Views/Masters/User.cshtml" publishTime="05/15/2016 00:04:38" />
+    <file relUrl="Scripts/jquery.simple-dtpicker.js" publishTime="02/27/2016 19:57:51" />
+    <file relUrl="img/05_back.png" publishTime="02/04/2016 11:54:14" />
+    <file relUrl="img/newimages/img9.jpg" publishTime="04/28/2016 11:42:56" />
+    <file relUrl="img/icons/Setting Icon/Setting Icon 2.png" publishTime="02/06/2016 17:53:38" />
+    <file relUrl="WebForm1.aspx" publishTime="01/21/2016 00:18:26" />
+    <file relUrl="Views/Inventory/Product.cshtml" publishTime="05/07/2016 19:02:24" />
+    <file relUrl="Views/Timetable/Index.cshtml" publishTime="05/01/2016 16:41:30" />
+    <file relUrl="Views/Masters/State.cshtml" publishTime="05/14/2016 23:41:49" />
+    <file relUrl="img/newimages/IMG_4939.jpg" publishTime="04/28/2016 11:37:08" />
+    <file relUrl="Views/Inventory/Category.cshtml" publishTime="05/08/2016 14:47:37" />
+    <file relUrl="img/newimages/img6.jpg" publishTime="04/28/2016 11:36:42" />
+    <file relUrl="Views/Masters/_EmpList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/bnr_1.jpg" publishTime="02/04/2016 11:54:00" />
+    <file relUrl="img/icons/Final/Inventory management 1.png" publishTime="02/06/2016 16:21:14" />
+    <file relUrl="img/icons/Final/Staff management 2.png" publishTime="02/06/2016 16:52:52" />
+    <file relUrl="Views/Timetable/publish.cshtml" publishTime="05/08/2016 14:47:19" />
+    <file relUrl="img/icons/Final/DashBoard 2.png" publishTime="02/06/2016 15:44:20" />
+    <file relUrl="Content/images/asc.png" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="Scripts/ReloadPagination.js" publishTime="04/20/2016 16:39:34" />
+    <file relUrl="img/07_back.png" publishTime="02/04/2016 11:54:10" />
+    <file relUrl="img/newimages/CH-sports-21.JPG" publishTime="04/28/2016 11:37:00" />
+    <file relUrl="img/02_back.png" publishTime="02/04/2016 11:54:18" />
+    <file relUrl="Views/shared/_StudentSubMenu.cshtml" publishTime="06/01/2016 19:43:12" />
+    <file relUrl="Views/Masters/_CityList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="bin/System.Web.Http.dll" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="img/icons/Iocn.png" publishTime="02/06/2016 17:53:18" />
+    <file relUrl="img/icons/Final/Fees Mnagement2.png" publishTime="02/06/2016 16:31:12" />
+    <file relUrl="Views/shared/_TimetableSubMenu.cshtml" publishTime="03/23/2016 21:06:06" />
+    <file relUrl="img/icons/Setting Icon/Iocn.png" publishTime="02/06/2016 17:53:18" />
+    <file relUrl="bin/System.Web.WebPages.xml" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="Scripts/knockout-2.1.0.debug.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Scripts/jquery-ui.js" publishTime="01/27/2016 21:48:22" />
+    <file relUrl="Content/images/first.png" publishTime="02/04/2011 10:27:16" />
+    <file relUrl="img/newimages/1425243_10151718346481640_1143575479_o.jpg" publishTime="04/28/2016 11:35:02" />
+    <file relUrl="Views/Examination/ShowMarks.cshtml" publishTime="05/01/2016 16:41:35" />
+    <file relUrl="img/newimages/8F5A5691_ag_sm-2.jpg" publishTime="04/28/2016 11:32:14" />
+    <file relUrl="img/newimages/img5.jpg" publishTime="04/28/2016 11:43:32" />
+    <file relUrl="img/icons/Final/Attandence mamanement2.png" publishTime="02/06/2016 16:05:54" />
+    <file relUrl="Views/Masters/_positionList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/Final/Time Report.png" publishTime="02/06/2016 16:44:36" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="01/12/2016 00:23:49" />
+    <file relUrl="fonts/glyphicons-halflings-regular.svg" publishTime="02/04/2016 11:53:52" />
+    <file relUrl="img/bnr_3.jpg" publishTime="02/04/2016 11:54:08" />
+    <file relUrl="Scripts/jquery-ui-1.8.20.min.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Transport/NewBusInfo.cshtml" publishTime="05/08/2016 14:47:19" />
+    <file relUrl="Views/Student/Index.cshtml" publishTime="05/01/2016 16:41:30" />
+    <file relUrl="img/icons/FeesMnagement.png" publishTime="02/06/2016 16:31:02" />
+    <file relUrl="Scripts/jquery-1.4.4.min.js" publishTime="02/03/2011 08:36:46" />
+    <file relUrl="Global.asax" publishTime="01/12/2016 00:23:45" />
+    <file relUrl="Content/images/asc.gif" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="03/06/2016 23:33:22" />
+    <file relUrl="img/01_back.png" publishTime="02/04/2016 11:54:18" />
+    <file relUrl="Views/Transport/Index.cshtml" publishTime="05/01/2016 16:10:06" />
+    <file relUrl="Views/Inventory/_Productlist.cshtml" publishTime="04/30/2016 15:18:23" />
+    <file relUrl="bin/Entity.pdb" publishTime="06/01/2016 21:49:59" />
+    <file relUrl="CSS/style_new.css" publishTime="04/29/2016 23:39:14" />
+    <file relUrl="Scripts/jquery.validate.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="bin/Ionic.Zip.dll" publishTime="08/07/2011 07:31:40" />
+    <file relUrl="Views/Timetable/NewTimetableInfo.cshtml" publishTime="05/01/2016 16:41:30" />
+    <file relUrl="Content/images/last.png" publishTime="02/04/2011 10:27:16" />
+    <file relUrl="Web.config" publishTime="05/19/2016 22:33:43" />
+    <file relUrl="Views/Masters/_ClassList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/Library management/Library management.png" publishTime="02/06/2016 17:56:30" />
+    <file relUrl="img/icons/Inventorymanagement1.png" publishTime="02/06/2016 16:21:14" />
+    <file relUrl="img/newimages/img7.jpg" publishTime="04/28/2016 11:42:36" />
+    <file relUrl="Copy of Demo.htm" publishTime="01/23/2016 00:26:56" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="packages.config" publishTime="03/06/2016 23:33:37" />
+    <file relUrl="img/bnr_2.jpg" publishTime="02/04/2016 11:53:58" />
+    <file relUrl="Content/images/bg.png" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="img/icons/Final/SMS management.png" publishTime="02/06/2016 16:24:34" />
+    <file relUrl="img/03_back.png" publishTime="02/04/2016 11:54:16" />
+    <file relUrl="Views/Sms/Sms.cshtml" publishTime="05/02/2016 02:49:11" />
+    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="01/12/2016 00:23:49" />
+    <file relUrl="Views/shared/_Footer.cshtml" publishTime="03/05/2016 01:54:34" />
+    <file relUrl="bin/System.Web.Helpers.dll" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="bin/BAL.dll" publishTime="06/01/2016 21:50:00" />
+    <file relUrl="img/08_back.png" publishTime="02/04/2016 11:54:08" />
+    <file relUrl="Scripts/bootstrap-datetimepicker.min.js" publishTime="03/13/2016 18:39:58" />
+    <file relUrl="Views/Masters/Employee.cshtml" publishTime="05/31/2016 22:40:32" />
+    <file relUrl="images/Home.png" publishTime="01/22/2016 21:55:06" />
+    <file relUrl="Content/images/desc.gif" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="Views/Masters/_UserList.cshtml" publishTime="05/14/2016 23:43:42" />
+    <file relUrl="Views/shared/_Banner.cshtml" publishTime="04/30/2016 23:59:04" />
+    <file relUrl="bin/System.Web.Optimization.dll" publishTime="08/07/2015 09:31:27" />
+    <file relUrl="img/icons/Final/Time Table 1.png" publishTime="02/06/2016 16:17:54" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="bin/System.Web.Mvc.xml" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="Views/Masters/Bloodgroup.cshtml" publishTime="05/14/2016 23:36:51" />
+    <file relUrl="Demo.htm" publishTime="03/01/2016 22:05:31" />
+    <file relUrl="Views/shared/_SharedLayout.cshtml" publishTime="05/19/2016 22:16:04" />
+    <file relUrl="Views/Masters/_StateList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="Views/Attendance/Index.cshtml" publishTime="05/01/2016 17:58:01" />
+    <file relUrl="bin/SchoolManagementSystems.dll" publishTime="06/02/2016 22:34:34" />
+    <file relUrl="bin/EntityFramework.SqlServer.xml" publishTime="03/06/2016 23:33:22" />
+    <file relUrl="Views/Login/Dashboard.cshtml" publishTime="03/27/2016 01:16:36" />
+    <file relUrl="CSS/style_old.css" publishTime="03/13/2016 21:30:16" />
+    <file relUrl="Views/Inventory/SubCategory.cshtml" publishTime="05/07/2016 19:02:24" />
+    <file relUrl="img/icons/Final/DashBoard 3.png" publishTime="02/06/2016 16:46:58" />
+    <file relUrl="img/icons/report.png" publishTime="02/06/2016 16:41:10" />
+    <file relUrl="img/newimages/img2.jpg" publishTime="04/28/2016 11:27:58" />
+    <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="01/12/2016 00:23:50" />
+    <file relUrl="Views/Inventory/_SubcategoryList.cshtml" publishTime="04/30/2016 15:19:31" />
+    <file relUrl="Views/Student/Online_Admission.cshtml" publishTime="06/01/2016 20:36:39" />
+    <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="bin/System.Web.Razor.xml" publishTime="01/12/2016 00:23:50" />
+    <file relUrl="CSS/bootstrap_old.css" publishTime="03/09/2016 01:33:06" />
+    <file relUrl="img/icons/Studentmanagement2.png" publishTime="02/06/2016 15:47:54" />
+    <file relUrl="Views/Student/Online_student_Mgmt.cshtml" publishTime="06/01/2016 21:08:52" />
+    <file relUrl="Scripts/jquery.simple-dtpicker.css" publishTime="02/27/2016 19:57:51" />
+    <file relUrl="Views/Masters/_CountryList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/Final/Event1.png" publishTime="02/06/2016 16:39:38" />
+    <file relUrl="Scripts/jquery-1.7.1-vsdoc.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="img/icons/Staffmanagement.png" publishTime="02/06/2016 16:01:54" />
+    <file relUrl="img/icons/DashBoard.png" publishTime="02/06/2016 15:44:06" />
+    <file relUrl="CSS/bootstrap.min.css" publishTime="03/25/2016 21:29:32" />
+    <file relUrl="CSS/bootstrap-datetimepicker.min.css" publishTime="03/13/2016 18:40:14" />
+    <file relUrl="CSS/style_new_old.css" publishTime="02/05/2016 17:11:56" />
+    <file relUrl="images/loader.gif" publishTime="03/13/2016 21:24:22" />
+    <file relUrl="Views/Fees/_Feespaymentlist.cshtml" publishTime="04/30/2016 15:09:15" />
+    <file relUrl="CSS/bootstrap.css" publishTime="05/01/2016 17:54:53" />
+    <file relUrl="img/icons/Final/Student management 2.png" publishTime="02/06/2016 15:47:54" />
+    <file relUrl="Content/images/next.png" publishTime="02/04/2011 10:27:16" />
+    <file relUrl="img/newimages/img4.jpg" publishTime="04/28/2016 11:29:06" />
+    <file relUrl="Views/Attendance/Staff.cshtml" publishTime="05/31/2016 22:36:46" />
+    <file relUrl="Views/Masters/_CasteList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/Attandencemamanement.png" publishTime="02/06/2016 16:05:30" />
+    <file relUrl="bin/System.Web.WebPages.Razor.xml" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="Views/shared/_InventorySubMenu.cshtml" publishTime="04/10/2016 21:50:22" />
+    <file relUrl="img/icons/Final/Hostel management 2.png" publishTime="02/06/2016 16:36:26" />
+    <file relUrl="Views/shared/_TransportSubMenu.cshtml" publishTime="03/23/2016 21:06:04" />
+    <file relUrl="Views/Fees/FeesManagement.cshtml" publishTime="05/24/2016 00:33:55" />
+    <file relUrl="img/icons/Librarymanagement.png" publishTime="02/06/2016 17:56:30" />
+    <file relUrl="Views/Timetable/_Timetablelist.cshtml" publishTime="04/30/2016 01:44:02" />
+    <file relUrl="bin/System.Net.Http.Formatting.dll" publishTime="01/12/2016 00:23:52" />
+    <file relUrl="img/newimages/img8.jpg" publishTime="04/28/2016 11:34:42" />
+    <file relUrl="bin/WebGrease.dll" publishTime="08/07/2015 09:31:29" />
+    <file relUrl="Views/Masters/Religion.cshtml" publishTime="05/14/2016 23:41:49" />
+    <file relUrl="Views/Masters/Payterm.cshtml" publishTime="05/14/2016 23:39:16" />
+    <file relUrl="Views/Masters/_FeesLabelsList.cshtml" publishTime="05/24/2016 00:21:03" />
+    <file relUrl="img/icons/Final/Import  Export 2.png" publishTime="02/06/2016 16:27:36" />
+    <file relUrl="Views/Masters/Caste.cshtml" publishTime="05/14/2016 23:37:20" />
+    <file relUrl="img/01.png" publishTime="02/04/2016 11:54:26" />
+    <file relUrl="Scripts/jquery.tablesorter.js" publishTime="02/04/2011 10:21:32" />
+    <file relUrl="images/Banner.jpg" publishTime="01/12/2016 22:06:30" />
+    <file relUrl="img/04_back.png" publishTime="02/04/2016 11:54:16" />
+    <file relUrl="Views/Examination/Index.cshtml" publishTime="05/01/2016 17:58:01" />
+    <file relUrl="Views/Examination/ExamMarksAllotment.cshtml" publishTime="05/08/2016 14:47:37" />
+    <file relUrl="Scripts/Permission.js" publishTime="04/30/2016 10:20:18" />
+    <file relUrl="Views/Masters/Route.cshtml" publishTime="05/14/2016 23:41:49" />
+    <file relUrl="bin/System.Net.Http.dll" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Views/Student/PromoteStudent.cshtml" publishTime="05/08/2016 14:47:19" />
+    <file relUrl="Views/Masters/City.cshtml" publishTime="05/14/2016 23:37:57" />
+    <file relUrl="Views/shared/_AttendanceMenuList.cshtml" publishTime="04/04/2016 20:49:04" />
+    <file relUrl="Scripts/npm.js" publishTime="02/04/2016 11:54:22" />
+    <file relUrl="Views/Examination/ExamTimeTable.cshtml" publishTime="05/08/2016 14:47:37" />
+    <file relUrl="img/icons/Final/Inventory management.png" publishTime="02/06/2016 16:21:24" />
+    <file relUrl="Views/Masters/_categoryList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="Views/Masters/_OccupationList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/SMSmanagement.png" publishTime="02/06/2016 16:24:34" />
+    <file relUrl="bin/System.Net.Http.WebRequest.xml" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Views/Attendance/StudentAttendance.cshtml" publishTime="05/08/2016 14:47:37" />
+    <file relUrl="Views/shared/_MenuItems.cshtml" publishTime="05/02/2016 00:19:22" />
+    <file relUrl="img/newimages/Child-in-tube-1200x661.jpg" publishTime="04/28/2016 11:43:40" />
+    <file relUrl="img/newimages/img10.jpg" publishTime="04/28/2016 11:36:48" />
+    <file relUrl="Views/Masters/_SubjectList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="01/12/2016 00:23:51" />
+    <file relUrl="images/sessionout.png" publishTime="03/24/2016 16:33:03" />
+    <file relUrl="img/gplus.png" publishTime="02/04/2016 11:53:54" />
+    <file relUrl="Views/Fees/Index.cshtml" publishTime="05/01/2016 16:10:07" />
+    <file relUrl="bin/SchoolManagementSystems.pdb" publishTime="06/02/2016 22:34:32" />
+    <file relUrl="img/icons/Student management 3.png" publishTime="02/06/2016 16:54:40" />
+    <file relUrl="Content/images/desc.png" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="Views/Inventory/Inventory.cshtml" publishTime="05/01/2016 16:41:35" />
+    <file relUrl="Views/Masters/Class.cshtml" publishTime="05/16/2016 23:07:10" />
+    <file relUrl="bin/EntityFramework.SqlServer.dll" publishTime="03/06/2016 23:33:22" />
+    <file relUrl="CSS/font-awesome.css" publishTime="03/17/2016 22:17:16" />
+    <file relUrl="img/10_back.png" publishTime="02/04/2016 11:54:02" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="03/06/2016 23:33:22" />
+    <file relUrl="Views/Inventory/_categoryList.cshtml" publishTime="04/30/2016 15:16:39" />
+    <file relUrl="Views/Inventory/Stock_Report.cshtml" publishTime="05/01/2016 17:58:01" />
+    <file relUrl="bin/System.Web.Http.WebHost.xml" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Content/images/bg.gif" publishTime="02/04/2011 10:26:26" />
+    <file relUrl="Scripts/jquery-ui-1.8.20.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Scripts/jQuery.print.js" publishTime="04/02/2016 22:02:33" />
+    <file relUrl="img/icons/Final/SMS management 2.png" publishTime="02/06/2016 16:24:40" />
+    <file relUrl="Scripts/modernizr-2.5.3.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Masters/_ReligionList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/newimages/bg1.jpg" publishTime="04/28/2016 11:28:08" />
+    <file relUrl="bin/System.Web.Http.xml" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Scripts/bootstrap.min.js" publishTime="02/04/2016 11:54:22" />
+    <file relUrl="Views/Examination/ShowExamTimeTable.cshtml" publishTime="05/08/2016 14:47:37" />
+    <file relUrl="img/icons/Transportmanagement.png" publishTime="02/06/2016 16:29:16" />
+    <file relUrl="Views/shared/_PermissionHiddenFlds.cshtml" publishTime="04/30/2016 10:25:18" />
+    <file relUrl="Views/Attendance/Student.cshtml" publishTime="05/19/2016 22:21:01" />
+    <file relUrl="CSS/custom.css" publishTime="05/01/2016 16:29:35" />
+    <file relUrl="Views/Masters/Occupation.cshtml" publishTime="05/14/2016 23:39:04" />
+    <file relUrl="img/icons/Final/DashBoard 4.png" publishTime="02/06/2016 16:47:08" />
+    <file relUrl="Views/Masters/_paytermList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="Scripts/knockout-2.1.0.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Student/GuardianList.cshtml" publishTime="05/07/2016 20:02:10" />
+    <file relUrl="img/icons/TimeReport1.png" publishTime="02/06/2016 16:44:24" />
+    <file relUrl="bin/System.Net.Http.WebRequest.dll" publishTime="01/12/2016 00:23:53" />
+    <file relUrl="Views/shared/_MasterSubMenu.cshtml" publishTime="04/30/2016 23:59:38" />
+    <file relUrl="Scripts/jquery-1.7.1.min.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="img/icons/Final/Exam management 2.png" publishTime="02/06/2016 16:15:52" />
+    <file relUrl="img/newimages/4529933084_569f1e1153_b.jpg" publishTime="04/28/2016 11:38:22" />
+    <file relUrl="Views/Login/ForgotPassword.cshtml" publishTime="01/26/2016 17:53:10" />
+    <file relUrl="img/newimages/img1.jpg" publishTime="04/28/2016 11:28:54" />
+    <file relUrl="Views/Fees/_FeesSetupList.cshtml" publishTime="04/30/2016 15:09:03" />
+    <file relUrl="img/icons/Final/Inventory management 2.png" publishTime="02/06/2016 16:21:34" />
+    <file relUrl="img/icons/Final/Student management.png" publishTime="02/06/2016 15:57:08" />
+    <file relUrl="img/icons/01.png" publishTime="02/06/2016 16:46:10" />
+    <file relUrl="Views/Web.config" publishTime="01/12/2016 23:03:02" />
+    <file relUrl="Views/Masters/_BloodgroupList.cshtml" publishTime="04/30/2016 15:21:03" />
+    <file relUrl="bin/BAL.pdb" publishTime="06/01/2016 21:50:00" />
+    <file relUrl="Views/Attendance/ApproveLeave.cshtml" publishTime="05/09/2016 01:30:14" />
+    <file relUrl="Views/Timetable/_publishedtimetable.cshtml" publishTime="04/26/2016 14:16:42" />
+    <file relUrl="Views/Masters/_QualificationList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="img/icons/Final/Time Table.png" publishTime="02/06/2016 16:18:04" />
+    <file relUrl="img/newimages/img3.jpg" publishTime="04/28/2016 11:34:48" />
+    <file relUrl="img/newimages/9619122_orig.jpg" publishTime="04/28/2016 11:27:54" />
+    <file relUrl="img/newimages/mixed-group.jpg" publishTime="04/28/2016 11:42:50" />
+    <file relUrl="Views/Masters/_leaveList.cshtml" publishTime="04/30/2016 15:22:39" />
+    <file relUrl="CSS/style.css" publishTime="05/01/2016 16:37:11" />
+    <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="01/21/2016 22:36:57" />
+    <file relUrl="Views/Login/Index.cshtml" publishTime="04/30/2016 23:49:52" />
+    <file relUrl="CSS/jquery-ui.css" publishTime="03/15/2016 23:18:32" />
+    <file relUrl="images/loading-x.gif" publishTime="05/19/2016 22:15:17" />
+    <file relUrl="Views/Masters/Subject.cshtml" publishTime="05/16/2016 22:55:04" />
+    <file relUrl="Views/Fees/FeesPayment.cshtml" publishTime="05/01/2016 16:10:07" />
+    <file relUrl="Views/Login/ChangePassword.cshtml" publishTime="01/27/2016 21:44:26" />
+    <file relUrl="Views/Inventory/_Inventorylist.cshtml" publishTime="04/30/2016 15:17:35" />
+    <file relUrl="Views/Student/_MultipleAttachments.cshtml" publishTime="03/31/2016 00:29:39" />
+    <file relUrl="img/icons/Library management/Library management 2.png" publishTime="02/06/2016 17:56:46" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.xml" publishTime="01/12/2016 00:23:51" />
+  </publishProfile>
+</publishData>

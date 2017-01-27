@@ -1,0 +1,45 @@
+﻿@model Entity.Categoryviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+     <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.subcatid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.catname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subcatname)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+            <th class="edt">
+                @Html.DisplayName("Action")
+            </th>
+        </tr></thead>
+        <tbody>
+        @foreach (var item in Model._SubCategorylist)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategoryid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.catname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategoryname)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                <td>
+                    <input type="button" id="@item.SubCategoryid" class="btn btn-default btn_edit" value="Edit" />
+                    @*<input type="button" id="@item.SubCategoryid" class="btn btn-default btn_delete" value="Delete" />*@
+                </td>
+            </tr>
+        }</tbody>
+    </table>
+</div>

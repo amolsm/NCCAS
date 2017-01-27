@@ -1,0 +1,47 @@
+﻿@model Entity.leaveviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.leaveid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.leavename)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model.leaveBalance)
+                    </th>
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._Leavelist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.leaveid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.leavename)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.leaveBalance)
+                        </td>
+                    <td>
+                        <input type="button" id="@item.leaveid" class="btn btn-default btn_edit edit" value="Edit" />
+                        @*<input type="button" id="@item.leaveid" class="btn btn-default btn_delete delete" value="Delete" />*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

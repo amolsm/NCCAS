@@ -1,0 +1,248 @@
+﻿@model Entity.Studentviewmodel
+@{
+    ViewBag.Title = "PromoteStudent";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<style>
+    .drop {
+        margin: 18px 0px 0px 85px;
+    }
+
+    .t {
+        padding: 0px 60px 0px 20px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#Cancel").click(function () {
+            location.href = '/Student';
+        });
+
+        $("#insert").click(function () {
+            location.href = '/Student';
+        });
+        
+        $('#From').on("change", "input.move", function () {
+            var id = this.id;
+            var Classid = $("#ToClass").val();
+            var FromClass = $("#FromClass").val();
+            if (Classid == '') {
+                alert('Please select To class to promote the Students!!');
+                return false;
+            }
+            if ($(this).prop("checked") == true) {
+                var d = 1;
+            }
+
+            else if ($(this).prop("checked") == false) {
+                var d = 0;
+            }
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("MoveStudent")',
+                dataType: 'JSON',
+                data: { Studentid: id, ToClass: Classid, FromClassid: FromClass, act: d },
+                success: function (data) {
+
+                    if (data != null) {
+                    }
+                    else {
+                    }
+                }
+            });
+        });
+
+        $('#FromClass').change(function () {
+            $("#From").empty();
+            var ToClass = $('#ToClass').val();
+            var FromClass = $("#FromClass").val();
+            if (ToClass == FromClass && ToClass != '' && FromClass != '') {
+                $("#FromClass").val('');
+                $("#ToClass").val('');
+                alert('From class and To class should be different!!!');
+                return false;
+            }
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("ClassStudent")',
+                dataType: 'JSON',
+                data: { Class: FromClass },
+                success: function (data) {
+
+                    if (data != null) {
+
+                        var item = '<tr><th></th><th>Student id</th><th>Student Name</th></tr>';
+                        $.each(data, function (i, d) {
+
+                            item += '<tr>'
+                            item += '<td><input class="move" type="checkbox"  id="' + d.Studid + '"> </input></td>';
+                            item += '<td>' + d.Studid + '</td>';
+                            item += '<td>' + d.Studnm + '</td>';
+
+                        });
+                        $("#From").append(item);
+
+                        return false;
+                    }
+                    else {
+                        var item = '<span value="0">No record found!!!</span>';
+                        $("#From").append(item);
+                    }
+                }
+            });
+        });
+
+
+        $('#ToClass').change(function () {
+            $("#To").empty();
+            var ToClass = $('#ToClass').val();
+            var FromClass = $("#FromClass").val();
+            if (ToClass == FromClass && ToClass != '' && FromClass != '') {
+                $("#FromClass").val('');
+                $("#ToClass").val('');
+                alert('From class and To class should be different!!!');
+                return false;
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("ClassStudent")',
+                dataType: 'JSON',
+                data: { Class: ToClass },
+                success: function (data) {
+
+                    if (data != null) {
+
+                        var item = '<tr><th>Student id</th><th>Student Name</th></tr>';
+                        $.each(data, function (i, d) {
+
+                            item += '<tr>'
+                            item += '<td>' + d.Studid + '</td>';
+                            item += '<td>' + d.Studnm + '</td>';
+
+                        });
+                        $("#To").append(item);
+
+                        return false;
+                    }
+                    else {
+                        var item = '<span value="0">No record found!!!</span>';
+                        $("#To").append(item);
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+              @Html.Partial("_StudentSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+               
+                    <ul class="breadcrumb">
+                   <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Promote Student", "PromoteStudent", "Student", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Promote Student</li>
+                    </ul>
+                <div class="panel-body"> 
+                 <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+	            <strong><label id="lblmsg"></label></strong> 
+	           </div>
+              <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+	           <strong><label id="lblmsgs"></label></strong> 
+            </div>
+         </div>
+
+                       <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                                        @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                                        {
+                                            @Html.ValidationSummary(true)
+                                          
+                                            <div class="control-group span5">
+                                                    
+                                                @Html.LabelFor(model => model.FromClass, new {@class="control-label" })
+                                                     <div class="controls">  
+                                               @Html.DropDownListFor(model => model.FromClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select From Class"), "Select From Class")
+                                                @Html.ValidationMessageFor(model => model.FromClass)
+                                                       </div>
+                                                  </div>
+                                        <div class="control-group span5">
+                                           @Html.LabelFor(model => model.ToClass, new { @class="control-label"  })
+                                              
+                                                   <div class="controls">
+                                                @Html.DropDownListFor(model => model.ToClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select To Class"), "Select To Class")
+                                                @Html.ValidationMessageFor(model => model.ToClass)
+                                                      
+                                                   </div>
+                                                </div>
+                                              
+                                           <div class="control-group">
+
+                                            </div>
+                                              <div class="form-actions">
+                                                  <div class="control-group offset7">
+                                                <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                                <input type="button" class="btn btn-primary" id="Cancel" value="Cancel" />
+                                            </div>
+                                                  </div>
+                                        }
+                                            </fieldset>
+                                </form>
+					
+					</div>
+			
+                  </div>
+                           </div>
+                  <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                                              <div class="box-content">
+                                                <div id="result" class="table-responsive" style="width:48%; float:left;">
+                                                    <table id="From" class="table tb-parshav">
+                                                        <tr>
+                                                            <td> &nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="result" class="table-responsive" style="width:48%; float:left; margin-left:4%;">
+                                                    <table id="To" class="table tb-parshav">
+                                                        <tr>
+                                                            <td> &nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                      </div>
+        </div>
+    </div>
+</div>
+   
+            </div>
+    </div>

@@ -1,0 +1,109 @@
+﻿@model Entity.timetableviewmodel
+@{
+    ViewBag.Title = "Publish Timetable";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#result").hide();
+        FillPermission();
+        $("#Send").click(function () {
+            validations();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SendTimetable")',
+                data: $('#frm').serialize(),
+                success: function (result) {
+                    $("#lblmsg").text("Timetable link sent successfully!..");
+                    $("#lblmsg").css({ "color": "lime" });
+                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#result").html(result);
+                    clear();
+                }
+            });
+        });
+
+        function validations() {
+            var cnt = 0;
+
+            if ($("#Classid").val() == '') {
+                cnt++;
+                $("#Classid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Classid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+
+        $('#Classid').change(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("FillTimetable_classwise")',
+                data: $('#frm').serialize() + "",
+                success: function (result) {
+                    $("#result").html(result);
+                    $("#result").show();
+                }
+            });
+        });
+    });
+</script>
+@Html.Hidden("Add", ViewData["Add"])
+@Html.Hidden("Modify", ViewData["Modify"])
+@Html.Hidden("View", ViewData["View"])
+@Html.Hidden("Delete", ViewData["Delete"])
+<div class="container">
+    <div class="row">
+        <table cellpadding="0" cellspacing="0" style="margin-top: 38px; margin-bottom:90px;">
+            <tr>
+                <td class="col-md-2 well blbg" style="margin-top:50px;" valign="top">
+                    @Html.Partial("_TimetableSubMenu")
+                </td>
+                <td class="col-md-9" style=" padding-top: 30px;">
+                    <ul class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Timetable Management", "Index", "Student", "")</li>
+                        <li class="active">Publish Timetable</li>
+                    </ul>
+
+                    <div class="col-md-10" style="width:100%; text-align:left;">
+                        <center>
+                        <div id="AddForm" style="display: none;">
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-inline" }))
+                            {
+                                <div id="lblmsg" class="form-group col-md-9">
+                                </div>
+                                <div class="form-group col-md-9">
+                                    @Html.LabelFor(model => model.Classid, new { @class = "col-md-6 form_out" })
+                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Classid)
+                                </div>
+
+                                <div class="form-group col-md-9">
+                                    <input type="button" class="btn btn-primary" id="Send" value="Send selected class Timetable To parents & Teachers" />
+                                    <br />
+                                    <br />
+                                </div>
+                            }
+                            </div>
+                        </center>
+
+                        <div id="disptable">
+                            <div class="" style="color: #23527c;">
+                                @Html.Partial("_publishedtimetable")
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

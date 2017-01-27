@@ -1,0 +1,41 @@
+﻿@model Entity.feeslabelviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+     <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            @*<th>
+                @Html.DisplayName("Class")
+            </th>*@
+            <th>
+                    @Html.DisplayName("Fees Name List")
+                </th>
+            <th class="edt">
+                @Html.DisplayName("Action")
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model._feeslabellist)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.feeslblid)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.classid)
+                </td>*@
+                <td>
+                        @Html.DisplayFor(modelItem => item.Controls)
+                    </td>
+                <td>
+                    <input type="button" id="@item.feeslblid" class="btn btn-default btn_edit" value="Edit" />
+                    @*<input type="button" id="@item.feeslblid" class="btn btn-default btn_delete" value="Delete" />*@
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

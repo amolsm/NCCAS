@@ -1,0 +1,144 @@
+﻿@model Entity.MarkAllocation
+@{
+    ViewBag.Title = "ShowMarks";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        FillPermission();
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+
+        var aExamyear = GetParameterValues('ExamYear');
+        var aExamTypeid = GetParameterValues('ExamTypeid');
+        var aClassid = GetParameterValues('Classid');
+
+        $("#display").click(function (e) {
+            if (Validations(e) == false)
+                return false;
+            $("#tblExamTimeTable").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ShowStudentMarks")',
+                dataType: 'json',
+                data: { Classid: aClassid, ExamTypeid: aExamTypeid, ExamYear: aExamyear, Studentid: $("#Studentid").val() },
+                success: function (ShowStudentMark) {
+                    if (ShowStudentMark != "") {
+                        var item = '<tr><th>Student Roll No</th><th>Student Name</th><th>Subject Name</th><th>Marks</th><th>Total Marks</th></tr>';
+                        $.each(ShowStudentMark, function (i, stud) {
+                            item += '<tr>'
+                            item += '<td>' + stud.RollNo + '</td>';
+                            item += '<td>' + stud.studentname + '</td>';
+                            item += '<td>' + stud.Sub + '</td>';
+                            item += '<td>' + stud.Marks + ' </td>';
+                            item += '<td>' + stud.TotalMarks + ' </td>';
+                            item += '</tr>'
+                        });
+                        $("#tblExamTimeTable").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">No record found</option>';
+                        $("#tblExamTimeTable").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+        });
+
+        function Validations(e) {
+            var cnt = 0;
+
+            if ($("#Studentid").val() == '' || $("#Studentid").val() == '0') {
+                cnt++;
+                $("#Studentid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Studentid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0) {
+                return false;
+            }
+        }
+    });
+</script>
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container">
+    <div class="row">
+        <table cellpadding="0" cellspacing="0" style="margin-top: 38px;">
+            <tr>
+                <td class="col-md-2 well blbg" style="margin-top: 50px;" valign="top">
+                    @Html.Partial("_ExaminationMenuList")
+                </td>
+                <td class="col-md-9" style="padding-top: 30px;">
+                    <ul class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Examination Management", "Index", "Attendance", "")</li>
+                        <li class="active">Exam Time Table</li>
+                    </ul>
+                    <div class="col-md-10" style="width: 100%;">
+                        <center>
+                            <div id="AddForm" style="display: none;">
+                                <table width="100%">
+                                    <tr>
+                                        <td valign="top">
+                                            <div class="form-group col-md-9">
+                                                @TempData["ErrorMessage"]
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.Classname)
+                                                @Html.TextBoxFor(model => model.Classname, new { id = "Classid", disabled = "disabled" })
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.ExamType)
+                                                @Html.TextBoxFor(model => model.ExamType, new { id = "ExamType", disabled = "disabled" })
+                                                @Html.TextBoxFor(model => model.ExaminationTypeid, new { id = "ExamTypeid", style = "display:none" })
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.ExamYear)
+                                                @Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", disabled = "disabled" })
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                @Html.LabelFor(model => model.Studentid)
+                                                @Html.DropDownListFor(model => model.Studentid, new SelectList(Model.StudentDetail, "Studid", "Studnm", "Select Student"), "Select Student")
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                <input type="submit" action="display" class="btn btn-primary" id="display" value="Display" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="table-responsive" style=" color: #23527c;">
+                                    <table class="table tb-parshav" id="tblExamTimeTable">
+                                        <tr>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

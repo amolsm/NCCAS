@@ -1,0 +1,47 @@
+﻿@model Entity.bloodgroupviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.bloodgroupid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.bloodgroupnm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.academicyear)
+                    </th>*@
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._bloodgrouplist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bloodgroupid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bloodgroupnm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.academicyear)
+                        </td>*@
+                    <td>
+                        <input type="button" id="@item.Bloodgroupid" class="btn btn-default btn_edit edit" value="Edit" />
+                        @*<input type="button" id="@item.Bloodgroupid" class="btn btn-default btn_delete delete" value="Delete" />*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SMS">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=PESHAVARIYA;Initial Catalog=SchoolMgmtSys;</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>b1ae0596-8d5a-409f-b3ed-6701789df942</DataSourceID>
+</RptDataSource>
