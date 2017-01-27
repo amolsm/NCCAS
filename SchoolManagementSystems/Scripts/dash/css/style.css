@@ -39,8 +39,8 @@
 .progress.black .ui-progressbar-value
 .sliderVertical.black .ui-slider-range,
 .progressSlim.black .ui-progressbar-value {
-	background: #222 !important;
-	border-color: #222 !important;
+	background: #08579e !important;
+	border-color: #08579e !important;
 	color: #fff;
 }
 
@@ -149,9 +149,9 @@
 .progressSlim.blue .ui-progressbar-value,
 .label-info,
 .badge-info {
-	background: #1F7ACE !important;
-	border-color: #1F7ACE !important;
-	color: #fff;
+	background: #fafafa;
+	border-color:  #fafafa;
+	color: #141f75;
 }
 
 .blueDark,
@@ -236,8 +236,8 @@
 =================================================================== */
 
 body {
-	background: #F5F5F5;
-	color: #333;
+	background: #fafafa;
+	color: #7075c1;
 	border: none;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
@@ -308,7 +308,7 @@ h6 {
   	padding-right: 20px;
   	padding-left: 20px;
 	/*background: #080808;*/
-    background:#1F7ACE;
+    background:#08579e;
 	filter: none;
 	text-shadow: 1px 1px 1px #0a0c0e;
 	border: none;
@@ -462,8 +462,8 @@ a.brand span {
 
 .nav-tabs.nav-stacked  > li.active > a,
 .nav-tabs.nav-stacked  > li > ul > li.active > a {
-  	background: #2D89EF;
-	border-bottom: 1px solid #2D89EF;
+  	background: #08579e;
+	border-bottom: 1px solid #08579e;
 }
 
 .nav-tabs.nav-stacked  > li.active > a:hover,
@@ -705,7 +705,7 @@ ul.messages li .message {
 .breadcrumb {
 	margin: -28px -28px 28px -28px;
 	line-height: 34px;
-	background: #eee;
+	background: #797a7d;
 	border: 0px;
 	color: #aaa;
 	-webkit-box-shadow: none;
@@ -721,8 +721,8 @@ ul.messages li .message {
 }
 
 .breadcrumb a {
-	color: #aaa;
-	text-shadow: 0px 1px 1px #fff;	
+	color: #fafafa;
+	text-shadow: 0px 1px 1px #292727;	
 }
 
 .breadcrumb a:hover {
@@ -824,7 +824,7 @@ ul.messages li .message {
 	font-size: 16px;
 	line-height: 16px;
   	padding: 10px;
-  	background: #eee;
+  	background: #797a7d;
 	-webkit-box-shadow: none;
      	-moz-box-shadow: none;
           box-shadow: none;
@@ -1498,7 +1498,7 @@ ul.chat.metro li.right .message .arrow {
 .form-actions {
   	padding: 19px 20px 20px;
   	margin: 20px -10px -30px -10px;
-  	background-color: #eee;
+  	background-color: #797a7d;
   	border-top: 1px solid #eee;
   	*zoom: 1;
 }
@@ -1635,8 +1635,8 @@ fieldset[disabled] .btn:active {
 }
 
 .btn-primary {
-  background-color: #2D89EF;
-  border-color: #2D89EF;
+  background-color: #08579e;
+  border-color: #08579e
 }
 
 .btn-primary:hover,

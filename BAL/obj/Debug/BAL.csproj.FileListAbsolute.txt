@@ -68,3 +68,17 @@ D:\SchoolManagementSystem\SchoolManagementSystems\BAL\bin\Debug\EntityFramework.
 D:\SchoolManagementSystem\SchoolManagementSystems\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
 D:\SchoolManagementSystem\SchoolManagementSystems\BAL\obj\Debug\BAL.dll
 D:\SchoolManagementSystem\SchoolManagementSystems\BAL\obj\Debug\BAL.pdb
+D:\NCCAS\BAL\bin\Debug\BAL.dll.config
+D:\NCCAS\BAL\bin\Debug\BAL.dll
+D:\NCCAS\BAL\bin\Debug\BAL.pdb
+D:\NCCAS\BAL\bin\Debug\DAL.dll
+D:\NCCAS\BAL\bin\Debug\Entity.dll
+D:\NCCAS\BAL\bin\Debug\EntityFramework.dll
+D:\NCCAS\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCAS\BAL\bin\Debug\DAL.pdb
+D:\NCCAS\BAL\bin\Debug\Entity.pdb
+D:\NCCAS\BAL\bin\Debug\EntityFramework.xml
+D:\NCCAS\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCAS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+D:\NCCAS\BAL\obj\Debug\BAL.dll
+D:\NCCAS\BAL\obj\Debug\BAL.pdb

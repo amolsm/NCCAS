@@ -59,3 +59,13 @@ D:\SchoolManagementSystem\SchoolManagementSystems\Entity\bin\Debug\System.Web.We
 D:\SchoolManagementSystem\SchoolManagementSystems\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 D:\SchoolManagementSystem\SchoolManagementSystems\Entity\obj\Debug\Entity.dll
 D:\SchoolManagementSystem\SchoolManagementSystems\Entity\obj\Debug\Entity.pdb
+D:\NCCAS\Entity\bin\Debug\Entity.dll.config
+D:\NCCAS\Entity\bin\Debug\Entity.dll
+D:\NCCAS\Entity\bin\Debug\Entity.pdb
+D:\NCCAS\Entity\bin\Debug\EntityFramework.dll
+D:\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCAS\Entity\bin\Debug\EntityFramework.xml
+D:\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\NCCAS\Entity\obj\Debug\Entity.dll
+D:\NCCAS\Entity\obj\Debug\Entity.pdb

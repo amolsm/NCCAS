@@ -32,39 +32,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_employee">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_employee">
-        <MappingFragment StoreEntitySet="tbl_employee">
-          <ScalarProperty Name="OtherQualification" ColumnName="OtherQualification" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
-          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
-          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Quallification" ColumnName="Quallification" />
-          <ScalarProperty Name="Subjects" ColumnName="Subjects" />
-          <ScalarProperty Name="TeachStandard" ColumnName="TeachStandard" />
-          <ScalarProperty Name="Payroll" ColumnName="Payroll" />
-          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
-          <ScalarProperty Name="SysDt" ColumnName="SysDt" />
-          <ScalarProperty Name="Payrollid" ColumnName="Payrollid" />
-          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_fees">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_fees">
         <MappingFragment StoreEntitySet="tbl_fees">
@@ -1041,7 +1008,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
     <FunctionImportMapping FunctionImportName="sp_news_DML" FunctionName="SchoolMgmtSysModel.Store.sp_news_DML" />
     <FunctionImportMapping FunctionImportName="sp_getNewslist" FunctionName="SchoolMgmtSysModel.Store.sp_getNewslist">
       <ResultMapping>
@@ -1322,5 +1288,109 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+    <EntitySetMapping Name="tbl_employee">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_employee">
+        <MappingFragment StoreEntitySet="tbl_employee">
+          <ScalarProperty Name="empmothertongue" ColumnName="empmothertongue" />
+          <ScalarProperty Name="empcast" ColumnName="empcast" />
+          <ScalarProperty Name="empcategory" ColumnName="empcategory" />
+          <ScalarProperty Name="empreligion" ColumnName="empreligion" />
+          <ScalarProperty Name="empemail" ColumnName="empemail" />
+          <ScalarProperty Name="ctotalexperience" ColumnName="ctotalexperience" />
+          <ScalarProperty Name="clastdate" ColumnName="clastdate" />
+          <ScalarProperty Name="cjoiningdate" ColumnName="cjoiningdate" />
+          <ScalarProperty Name="clastdesignation" ColumnName="clastdesignation" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="lastdesignation" ColumnName="lastdesignation" />
+          <ScalarProperty Name="totalexperience" ColumnName="totalexperience" />
+          <ScalarProperty Name="lastdate" ColumnName="lastdate" />
+          <ScalarProperty Name="joiningdate" ColumnName="joiningdate" />
+          <ScalarProperty Name="affliateduniversity" ColumnName="affliateduniversity" />
+          <ScalarProperty Name="collagename" ColumnName="collagename" />
+          <ScalarProperty Name="accountname" ColumnName="accountname" />
+          <ScalarProperty Name="accountno" ColumnName="accountno" />
+          <ScalarProperty Name="ifsccode" ColumnName="ifsccode" />
+          <ScalarProperty Name="branch" ColumnName="branch" />
+          <ScalarProperty Name="bankname" ColumnName="bankname" />
+          <ScalarProperty Name="cmobile" ColumnName="cmobile" />
+          <ScalarProperty Name="cmobilecode" ColumnName="cmobilecode" />
+          <ScalarProperty Name="homecontact" ColumnName="homecontact" />
+          <ScalarProperty Name="homecode" ColumnName="homecode" />
+          <ScalarProperty Name="cpin" ColumnName="cpin" />
+          <ScalarProperty Name="ccountry" ColumnName="ccountry" />
+          <ScalarProperty Name="cstate" ColumnName="cstate" />
+          <ScalarProperty Name="ccity" ColumnName="ccity" />
+          <ScalarProperty Name="cstreet" ColumnName="cstreet" />
+          <ScalarProperty Name="ppin" ColumnName="ppin" />
+          <ScalarProperty Name="pcountry" ColumnName="pcountry" />
+          <ScalarProperty Name="pstate" ColumnName="pstate" />
+          <ScalarProperty Name="pcity" ColumnName="pcity" />
+          <ScalarProperty Name="pstreet" ColumnName="pstreet" />
+          <ScalarProperty Name="parentspic" ColumnName="parentspic" />
+          <ScalarProperty Name="parentscontact" ColumnName="parentscontact" />
+          <ScalarProperty Name="parentscode" ColumnName="parentscode" />
+          <ScalarProperty Name="parentsaddress" ColumnName="parentsaddress" />
+          <ScalarProperty Name="parentsemail" ColumnName="parentsemail" />
+          <ScalarProperty Name="parentqualification" ColumnName="parentqualification" />
+          <ScalarProperty Name="parentoccupation" ColumnName="parentoccupation" />
+          <ScalarProperty Name="parentsname" ColumnName="parentsname" />
+          <ScalarProperty Name="relation" ColumnName="relation" />
+          <ScalarProperty Name="doctoraddress" ColumnName="doctoraddress" />
+          <ScalarProperty Name="doctorcontact" ColumnName="doctorcontact" />
+          <ScalarProperty Name="doctorcode" ColumnName="doctorcode" />
+          <ScalarProperty Name="doctorname" ColumnName="doctorname" />
+          <ScalarProperty Name="eidtype" ColumnName="eidtype" />
+          <ScalarProperty Name="emppic" ColumnName="emppic" />
+          <ScalarProperty Name="heightc" ColumnName="heightc" />
+          <ScalarProperty Name="weightinkg" ColumnName="weightinkg" />
+          <ScalarProperty Name="yearpasing4" ColumnName="yearpasing4" />
+          <ScalarProperty Name="precentage4" ColumnName="precentage4" />
+          <ScalarProperty Name="university4" ColumnName="university4" />
+          <ScalarProperty Name="qualication4" ColumnName="qualication4" />
+          <ScalarProperty Name="yearpasing3" ColumnName="yearpasing3" />
+          <ScalarProperty Name="precentage3" ColumnName="precentage3" />
+          <ScalarProperty Name="university3" ColumnName="university3" />
+          <ScalarProperty Name="qualication3" ColumnName="qualication3" />
+          <ScalarProperty Name="yearpasing2" ColumnName="yearpasing2" />
+          <ScalarProperty Name="precentage2" ColumnName="precentage2" />
+          <ScalarProperty Name="university2" ColumnName="university2" />
+          <ScalarProperty Name="qualication2" ColumnName="qualication2" />
+          <ScalarProperty Name="yearpasing1" ColumnName="yearpasing1" />
+          <ScalarProperty Name="precentage1" ColumnName="precentage1" />
+          <ScalarProperty Name="university1" ColumnName="university1" />
+          <ScalarProperty Name="qualication1" ColumnName="qualication1" />
+          <ScalarProperty Name="bloodgroup" ColumnName="bloodgroup" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="OtherQualification" ColumnName="OtherQualification" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
+          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+          <ScalarProperty Name="Payrollid" ColumnName="Payrollid" />
+          <ScalarProperty Name="SysDt" ColumnName="SysDt" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="Payroll" ColumnName="Payroll" />
+          <ScalarProperty Name="TeachStandard" ColumnName="TeachStandard" />
+          <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+          <ScalarProperty Name="Quallification" ColumnName="Quallification" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
   </EntityContainerMapping>
 </Mapping>
