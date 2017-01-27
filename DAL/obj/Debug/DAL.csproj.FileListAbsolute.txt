@@ -58,6 +58,7 @@ D:\SchoolManagementSystem\SchoolManagementSystems\DAL\bin\Debug\EntityFramework.
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.dll
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.pdb
+<<<<<<< HEAD
 D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.dll.config
 D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.dll
 D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.pdb
@@ -70,3 +71,17 @@ D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.dll
 D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.pdb
+=======
+D:\NCCAS\DAL\bin\Debug\DAL.dll.config
+D:\NCCAS\DAL\bin\Debug\DAL.dll
+D:\NCCAS\DAL\bin\Debug\DAL.pdb
+D:\NCCAS\DAL\bin\Debug\Entity.dll
+D:\NCCAS\DAL\bin\Debug\EntityFramework.dll
+D:\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCAS\DAL\bin\Debug\Entity.pdb
+D:\NCCAS\DAL\bin\Debug\EntityFramework.xml
+D:\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\NCCAS\DAL\obj\Debug\DAL.dll
+D:\NCCAS\DAL\obj\Debug\DAL.pdb
+>>>>>>> origin/master

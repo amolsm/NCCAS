@@ -6,7 +6,7 @@
 @*     @Styles.Render("~/CSS/bundledcss")*@
 
 <link href="@Url.Content("~/CSS/StyleSheetForMinuItem.css")" rel="stylesheet" type="text/css" />
-
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
 @{
     string roleid;
@@ -24,7 +24,8 @@
                             <div class="span2">
 
                                 <div>
-                                    <i class="fa fa-user-plus fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                   @* <i class="fa fa-user-plus fa-5x img-circle img-thumbnail" aria-hidden="true"></i>*@
+                                    <i class="ion-ios-people-outline fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
                                     @*  <img src="../../img/captain-256.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
 
                                     <h2>@Html.ActionLink("Masters Management", "Position", "Masters")</h2>
@@ -33,7 +34,9 @@
                             <div class="span2">
                                 <div>
                                     @*  <img src="../../img/35778-200.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-graduation-cap fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                   @* <i class="fa fa-graduation-cap fa-5x img-circle img-thumbnail" aria-hidden="true"></i>*@
+                                    <i class="ion-compose fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    
                                     <h2>@Html.ActionLink("Student Management", "Index", "Student")</h2>
                                 </div>
                             </div>
@@ -43,7 +46,7 @@
                             <div class="span2">
                                 <div>
                                     @* <img src="../../img/125742-200.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-users fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <i class="ion-android-done fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
 
                                     <h2>  @Html.ActionLink("Attendance Management", "Staff", "Attendance")</h2>
                                 </div>
@@ -51,14 +54,14 @@
                             <div class="span2">
                                 <div>
                                     @*<img src="../../img/83825-200.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-check fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <i class="ion-clipboard fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
                                     <h2> @Html.ActionLink("Examination Management", "ExamTimeTable", "Examination")</h2>
                                 </div>
                             </div>
                             <div class="span2">
                                 <div>
                                     @*  <img src="../../img/65055-work-timetable-200x200.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-calendar fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <i class="ion-ios-calendar-outline fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
 
                                     <h2> @Html.ActionLink("Time Table Management", "Index", "Timetable")</h2>
                                 </div>
@@ -66,7 +69,7 @@
                             <div class="span2">
                                 <div>
                                     @* <img src="../../img/21720-200.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-archive fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <i class="ion-ios-box-outline fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
 
                                     <h2> @Html.ActionLink("Inventory Management", "Category", "Inventory")</h2>
                                 </div>
@@ -81,7 +84,7 @@
                                 <div>
                                     @* <img src="../../img/sms.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
                                     <i class="img-circle img-thumbnail">
-                                        <i class="fa fa-comment-o fa-5x img-circle img-thumbnail"></i>
+                                        <i class="ion-ios-chatbubble-outline fa-5x img-circle img-thumbnail"></i>
                                     </i>
                                     <h2> @Html.ActionLink("Sms Management","Sms","Sms")</h2>
                                 </div>
@@ -89,7 +92,7 @@
                             <div class="span2">
                                 <div>
                                     @* <img src="../../img/trans.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-bus fa-5x img-circle img-thumbnail"></i>
+                                    <i class="ion-ios-location-outline fa-5x img-circle img-thumbnail"></i>
                                     <h2>@Html.ActionLink("Transport Management", "Index", "Transport")</h2>
                                 </div>
                             </div>
@@ -99,7 +102,7 @@
                             <div class="span2">
                                 <div>
                                     @*  <img src="../../img/fees.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-rupee fa-5x img-circle img-thumbnail"></i>
+                                    <i class="ion-social-usd-outline fa-5x img-circle img-thumbnail"></i>
                                     <h2>@Html.ActionLink("Fees Management", "Index", "Fees") </h2>
                                 </div>
                             </div>
@@ -107,7 +110,7 @@
                             <div class="span2">
                                 <div>
                                     @*   <img src="../../img/report.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-file-text fa-5x img-circle img-thumbnail"></i>
+                                    <i class="ion-ios-paper-outline fa-5x img-circle img-thumbnail"></i>
                                     <h2>
                                         @Html.ActionLink("Report Setup","#","#")
                                     </h2>
@@ -116,14 +119,23 @@
                             <div class="span2">
                                 <div>
                                     @*<img src="../../img/Dashboard.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
-                                    <i class="fa fa-tachometer fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <i class="ion-android-folder-open fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
                                     <h2>
                                         @Html.ActionLink("Dashboard", "Index", "DashBoard")
                                     </h2>
 
                                 </div>
                             </div>
+                            <div class="span2">
+                                <div>
+                                    @*<img src="../../img/Dashboard.png" alt="Texto Alternativo" class="img-circle img-thumbnail">*@
+                                    <i class="ion-ios-personadd-outline fa-5x img-circle img-thumbnail" aria-hidden="true"></i>
+                                    <h2>
+                                        @Html.ActionLink("Employee Management", "Employee", "Masters")
+                                    </h2>
 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

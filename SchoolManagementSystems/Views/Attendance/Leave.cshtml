@@ -226,13 +226,13 @@
                 <div class="container-fluid-full">
              
 		<div class="row-fluid">
-           @Html.Partial("_AttendanceMenuList")
+          @Html.Partial("_EmployeeSubMenuList")
 	<div id="content" class="span10">
         	<div class="row-fluid">
                
                     <ul class="breadcrumb">
                           <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
-                        @Html.ActionLink("Attendance Management", "Index", "Attendance", "")<i class="icon-angle-right"></i></li>
+                        @Html.ActionLink("Employee Management", "Index", "Attendance", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Apply for Leave</li>
                     </ul>
 
@@ -267,14 +267,14 @@
                                                 <div class="control-group">
                                                     @Html.LabelFor(model => model.LeaveStartDate, new { @class = "control-label" })
                                                           <div class="controls">
-                                                    @Html.TextBoxFor(model => model.LeaveStartDate, new { id = "datepicker", placeholder = "Select Date of Leave Start Date" , @class="input-xlarge focused" })
+                                                    @Html.TextBoxFor(model => model.LeaveStartDate, new { id = "datepicker", placeholder = "Select Date of Leave Start Date" , @class="focused" })
                                                     @Html.ValidationMessageFor(model => model.LeaveStartDate)
                                                               </div>
                                                 </div>
                                                 <div class="control-group">
                                                     @Html.LabelFor(model => model.LeaveEndDate, new { @class = "control-label" })
                                                           <div class="controls">
-                                                    @Html.TextBoxFor(model => model.LeaveEndDate, new { id = "datepicker1", placeholder = "Select Date of Leave End Date" , @class="input-xlarge focused"})
+                                                    @Html.TextBoxFor(model => model.LeaveEndDate, new { id = "datepicker1", placeholder = "Select Date of Leave End Date" , @class="focused"})
                                                     @Html.ValidationMessageFor(model => model.LeaveEndDate)
                                                               </div>
                                                 </div>
@@ -290,7 +290,7 @@
                                                 <div class="control-group">
                                                     @Html.LabelFor(model => model.Description, new { @class = "control-label" })
                                                      <div class="controls">
-                                                    @Html.TextAreaFor(model => model.Description, new { id = "Description",  @class="input-xlarge focused"})
+                                                    @Html.TextAreaFor(model => model.Description, new { id = "Description",  @class="focused"})
                                                     @Html.ValidationMessageFor(model => model.Description)
                                                          </div>
                                                 </div>
@@ -316,9 +316,11 @@
 						
 						</div>
 					</div> 
-                    <div class="box-content">
+                   <div class="box-content span11">
+                      <div class="box-content span12">
                                                 @Html.Partial("_LeaveList")
                                         </div>
+                       </div>
         </div>
     </div>
 </div>

@@ -702,8 +702,12 @@
     <Content Include="Views\Sms\Divisionwise_sms.cshtml" />
     <Content Include="Views\Sms\Classwise_sms.cshtml" />
     <Content Include="Views\shared\_Message.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Masters\Department.cshtml" />
     <Content Include="Views\Masters\_departmentlist.cshtml" />
+=======
+    <Content Include="Views\shared\_EmployeeSubMenuList.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -721,7 +725,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5818</DevelopmentServerPort>
+          <DevelopmentServerPort>5794</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

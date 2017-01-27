@@ -164,12 +164,12 @@
 <div class="container-fluid-full">
              
 		<div class="row-fluid">
-             @Html.Partial("_MasterSubMenu")
+              @Html.Partial("_EmployeeSubMenuList")
 	<div id="content" class="span10">
         	<div class="row-fluid">
           <ul class="breadcrumb">
                  <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
-                @Html.ActionLink("Masters", "Leave", "Masters", "")<i class="icon-angle-right"></i>
+                @Html.ActionLink("Employee Management", "Leave", "Masters", "")<i class="icon-angle-right"></i>
                 <li class="active">Leave Master</li>
             @*    <div style="float: right;">
                     @using (Html.BeginForm())
@@ -259,7 +259,9 @@
 						
 						</div>
 					</div> 
-                  <div class="box-content">
+                 <div class="box-content span11">
+                      <div class="box-content span12">
+                                               
                                   	<form class="form-horizontal">
                                             <fieldset>
                                                      <div class="control-group">
@@ -267,6 +269,7 @@
                                    </div>
                                 </fieldset>
                            </form>
+                          </div>
            </div>
                         
                 
