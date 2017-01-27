@@ -143,7 +143,7 @@ namespace SchoolManagementSystems.Controllers
                 _cvm._Classlist = db.sp_getClass().ToList();
             else
                 _cvm._Classlist = db.sp_getClass().Where(x => x.Classnm.ToUpper().Contains(Search_Data.ToUpper())
-                                                        || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+                        || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             return View(_cvm);
         }
         public JsonResult FillClassDetails(int Classid)
@@ -161,13 +161,13 @@ namespace SchoolManagementSystems.Controllers
             string yr = _cvm.academicyear[0].ToString();
             if (evt == "submit")
             {
-                db.sp_class_DML(_cvm.Classid, _cvm.Classnm, _cvm.status, yr, "").ToString();
+                db.sp_class_DML(_cvm.Classid, _cvm.Classnm,_cvm.Dept_Id, _cvm.status, yr, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_class_DML(id, _cvm.Classnm, _cvm.status, yr, "del").ToString();
+                db.sp_class_DML(id, _cvm.Classnm,_cvm.Dept_Id, _cvm.status, yr, "del").ToString();
             }
-            _cvm._Classlist = db.sp_getClass().ToList();
+            //_cvm._Classlist = db.sp_getClass().ToList();
             return PartialView("_ClassList", _cvm);
         }
         #endregion
@@ -672,12 +672,13 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_employee.Where(m => m.Emailid == Emailid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+      
         public ActionResult DMLEmp(employeeviewmodel _bgv, string evt, int id)
         {
             if (evt == "submit")
             {
                 //db.sp_bloodgroup_DML(_bgv.bloodgroupid, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "").ToString();
-                db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid,Convert.ToInt32(_bgv.Code), _bgv.OQualification, "NA").ToString();
+              //  db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid,Convert.ToInt32(_bgv.Code), _bgv.OQualification, "NA").ToString();
                 //if (_bgv.Empid == 0)
                 //{
                 //    int Empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
@@ -688,7 +689,7 @@ namespace SchoolManagementSystems.Controllers
             else if (evt == "Delete")
             {
                 //db.sp_bloodgroup_DML(id, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "del").ToString();
-                db.sp_employee_DML(id, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "del").ToString();
+             //   db.sp_employee_DML(id, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "del").ToString();
             }
             _bgv._emplist = db.sp_getemp().ToList();
             return PartialView("_EmpList", _bgv);
@@ -973,6 +974,46 @@ namespace SchoolManagementSystems.Controllers
             }
             _svm._DivisionList = db.sp_getDivision().ToList();
             return PartialView("_DivisionList", _svm);
+        }
+        #endregion
+
+
+        #region Department master
+        public ActionResult Department(string Search_Data)
+        {
+            departmentviewmodel _dvm = new departmentviewmodel();
+           
+            FillPermission(52);
+            if (String.IsNullOrEmpty(Search_Data))
+                _dvm._Departmentlist = db.sp_getDepartment().ToList();
+            else
+                _dvm._Departmentlist = db.sp_getDepartment().Where(x => x.Dept_name.ToUpper().Contains(Search_Data.ToUpper())
+                                                        || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            return View(_dvm);
+        }
+        public JsonResult FillDepartmentDetails(int DeptId)
+        {
+            var data = db.tblDepartment.Where(m => m.Dept_id == DeptId).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_Department(string Dept_name)
+        {
+            var data = db.tblDepartment.Where(m => m.Dept_name == Dept_name).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLDepartment(departmentviewmodel _dvm, string evt, int id)
+        {
+
+            if (evt == "submit")
+            {
+                db.sp_department_DML(_dvm.Dept_id, _dvm.Dept_name, _dvm.status, "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_department_DML(_dvm.Dept_id, _dvm.Dept_name, _dvm.status, "del").ToString();
+            }
+            _dvm._Departmentlist = db.sp_getDepartment().ToList();
+            return PartialView("_departmentlist", _dvm);
         }
         #endregion
     }

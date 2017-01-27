@@ -58,3 +58,15 @@ D:\SchoolManagementSystem\SchoolManagementSystems\DAL\bin\Debug\EntityFramework.
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.dll
 D:\SchoolManagementSystem\SchoolManagementSystems\DAL\obj\Debug\DAL.pdb
+D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.dll.config
+D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.dll
+D:\NCCProject\NCCAS\DAL\bin\Debug\DAL.pdb
+D:\NCCProject\NCCAS\DAL\bin\Debug\Entity.dll
+D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.dll
+D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCProject\NCCAS\DAL\bin\Debug\Entity.pdb
+D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.xml
+D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.dll
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.pdb

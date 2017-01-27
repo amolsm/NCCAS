@@ -114,8 +114,8 @@
         $('#datepicker1').datepicker('setDate', new Date());
         $('#datepicker').focus();
 
-        $("#insert").click(function () {
-            Validations();
+        $("#insert").click(function (e) {
+            Validations(e);
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("DMLEmp")',
@@ -540,12 +540,12 @@
 						</div>
 					</div>
                                		<div class="box-content">
-						<form id="frm" class="form-horizontal">
+						<div id="AddForm" class="form-horizontal">
                               
 						
                                   <fieldset>
-                                    @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class="form-horizontal" }))
-                                    {
+                                   @using (Html.BeginForm("DMLEmp", "Masters", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                   { 
                                         @Html.ValidationSummary(true)
                                         var fromdt = Convert.ToString(System.DateTime.Now.Year);
                                         var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
@@ -716,7 +716,7 @@
                                       
                                     }
                           </fieldset>
-                                </form>
+                                </div>
 					
 					</div>
 				</div><!--/span-->

@@ -10,6 +10,9 @@
                     @Html.DisplayNameFor(model => model.Classnm)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Dept_Id)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.status)
                 </th>
                 <th>
@@ -20,25 +23,28 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+       <tbody>
             @foreach (var item in Model._Classlist)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Classid)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Classnm)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.academicyear)
-                    </td>
-                    <td>
-                        <input type="button" id="@item.Classid" class="btn btn-default btn_edit edit" value="Edit" />
-                        @*<input type="button" id="@item.Classid" class="btn btn-default btn_delete delete" value="Delete" />*@
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classnm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dept_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.academicyear)
+            </td>
+            <td>
+                <input type="button" id="@item.Classid" class="btn btn-default btn_edit edit" value="Edit" />
+                @*<input type="button" id="@item.Classid" class="btn btn-default btn_delete delete" value="Delete" />*@
                     </td>
                 </tr>
             }

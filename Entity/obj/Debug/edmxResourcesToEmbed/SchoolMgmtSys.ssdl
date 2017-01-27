@@ -93,9 +93,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
       <PropertyRef Name="Classid" />
     </Key>
     <Property Name="Classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Classnm" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Classnm" Type="varchar" MaxLength="100" />
+    <Property Name="Dept_id" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="academicyear" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbl_country">
     <Key>
@@ -154,6 +155,76 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="int" />
     <Property Name="OtherQualification" Type="varchar(max)" />
+    <Property Name="department" Type="int" />
+    <Property Name="bloodgroup" Type="int" />
+    <Property Name="qualication1" Type="int" />
+    <Property Name="university1" Type="varchar" MaxLength="50" />
+    <Property Name="precentage1" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing1" Type="varchar" MaxLength="10" />
+    <Property Name="qualication2" Type="int" />
+    <Property Name="university2" Type="varchar" MaxLength="50" />
+    <Property Name="precentage2" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing2" Type="varchar" MaxLength="10" />
+    <Property Name="qualication3" Type="int" />
+    <Property Name="university3" Type="varchar" MaxLength="50" />
+    <Property Name="precentage3" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing3" Type="varchar" MaxLength="10" />
+    <Property Name="qualication4" Type="int" />
+    <Property Name="university4" Type="varchar" MaxLength="50" />
+    <Property Name="precentage4" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing4" Type="varchar" MaxLength="10" />
+    <Property Name="weightinkg" Type="varchar" MaxLength="10" />
+    <Property Name="heightc" Type="varchar" MaxLength="10" />
+    <Property Name="emppic" Type="image" />
+    <Property Name="eidtype" Type="int" />
+    <Property Name="doctorname" Type="varchar" MaxLength="50" />
+    <Property Name="doctorcode" Type="varchar" MaxLength="5" />
+    <Property Name="doctorcontact" Type="varchar" MaxLength="15" />
+    <Property Name="doctoraddress" Type="text" />
+    <Property Name="relation" Type="int" />
+    <Property Name="parentsname" Type="varchar" MaxLength="50" />
+    <Property Name="parentoccupation" Type="varchar" MaxLength="50" />
+    <Property Name="parentqualification" Type="varchar" MaxLength="50" />
+    <Property Name="parentsemail" Type="varchar" MaxLength="50" />
+    <Property Name="parentsaddress" Type="text" />
+    <Property Name="parentscode" Type="int" />
+    <Property Name="parentscontact" Type="varchar" MaxLength="15" />
+    <Property Name="parentspic" Type="image" />
+    <Property Name="pstreet" Type="text" />
+    <Property Name="pcity" Type="int" />
+    <Property Name="pstate" Type="int" />
+    <Property Name="pcountry" Type="int" />
+    <Property Name="ppin" Type="varchar" MaxLength="6" />
+    <Property Name="cstreet" Type="text" />
+    <Property Name="ccity" Type="int" />
+    <Property Name="cstate" Type="int" />
+    <Property Name="ccountry" Type="int" />
+    <Property Name="cpin" Type="varchar" MaxLength="6" />
+    <Property Name="homecode" Type="int" />
+    <Property Name="homecontact" Type="varchar" MaxLength="15" />
+    <Property Name="cmobilecode" Type="int" />
+    <Property Name="cmobile" Type="varchar" MaxLength="15" />
+    <Property Name="bankname" Type="varchar" MaxLength="50" />
+    <Property Name="branch" Type="varchar" MaxLength="50" />
+    <Property Name="ifsccode" Type="varchar" MaxLength="30" />
+    <Property Name="accountno" Type="varchar" MaxLength="30" />
+    <Property Name="accountname" Type="varchar" MaxLength="50" />
+    <Property Name="collagename" Type="varchar" MaxLength="50" />
+    <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
+    <Property Name="joiningdate" Type="datetime" />
+    <Property Name="lastdate" Type="datetime" />
+    <Property Name="totalexperience" Type="varchar" MaxLength="30" />
+    <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
+    <Property Name="companyname" Type="varchar" MaxLength="50" />
+    <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate" Type="datetime" />
+    <Property Name="clastdate" Type="datetime" />
+    <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
+    <Property Name="empemail" Type="varchar" MaxLength="50" />
+    <Property Name="empreligion" Type="int" />
+    <Property Name="empcategory" Type="int" />
+    <Property Name="empcast" Type="int" />
+    <Property Name="empmothertongue" Type="int" />
   </EntityType>
   <EntityType Name="tbl_EmployeeLeave">
     <Key>
@@ -699,6 +770,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="Dept_id" />
+    </Key>
+    <Property Name="Dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dept_name" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
   <Association Name="FK_tbl_city_tbl_country">
     <End Role="tbl_country" Type="Self.tbl_country" Multiplicity="1" />
     <End Role="tbl_city" Type="Self.tbl_city" Multiplicity="*" />
@@ -794,6 +873,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   <Function Name="sp_class_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="Classnm" Type="varchar" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
@@ -801,6 +881,12 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   <Function Name="sp_Country_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Countryid" Type="int" Mode="In" />
     <Parameter Name="CountryName" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_department_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeptId" Type="int" Mode="In" />
+    <Parameter Name="Deptname" Type="varchar" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
@@ -831,6 +917,76 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="Code" Type="int" Mode="In" />
     <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="bloodgroup" Type="int" Mode="In" />
+    <Parameter Name="qualication1" Type="int" Mode="In" />
+    <Parameter Name="university1" Type="varchar" Mode="In" />
+    <Parameter Name="precentage1" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing1" Type="varchar" Mode="In" />
+    <Parameter Name="qualication2" Type="int" Mode="In" />
+    <Parameter Name="university2" Type="varchar" Mode="In" />
+    <Parameter Name="precentage2" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing2" Type="varchar" Mode="In" />
+    <Parameter Name="qualication3" Type="int" Mode="In" />
+    <Parameter Name="university3" Type="varchar" Mode="In" />
+    <Parameter Name="precentage3" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing3" Type="varchar" Mode="In" />
+    <Parameter Name="qualication4" Type="int" Mode="In" />
+    <Parameter Name="university4" Type="varchar" Mode="In" />
+    <Parameter Name="precentage4" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing4" Type="varchar" Mode="In" />
+    <Parameter Name="weightinkg" Type="varchar" Mode="In" />
+    <Parameter Name="heightc" Type="varchar" Mode="In" />
+    <Parameter Name="emppic" Type="image" Mode="In" />
+    <Parameter Name="eidtype" Type="int" Mode="In" />
+    <Parameter Name="doctorname" Type="varchar" Mode="In" />
+    <Parameter Name="doctorcode" Type="varchar" Mode="In" />
+    <Parameter Name="doctorcontact" Type="varchar" Mode="In" />
+    <Parameter Name="doctoraddress" Type="text" Mode="In" />
+    <Parameter Name="relation" Type="int" Mode="In" />
+    <Parameter Name="parentsname" Type="varchar" Mode="In" />
+    <Parameter Name="parentoccupation" Type="varchar" Mode="In" />
+    <Parameter Name="parentqualification" Type="varchar" Mode="In" />
+    <Parameter Name="parentsemail" Type="varchar" Mode="In" />
+    <Parameter Name="parentsaddress" Type="text" Mode="In" />
+    <Parameter Name="parentscode" Type="int" Mode="In" />
+    <Parameter Name="parentscontact" Type="varchar" Mode="In" />
+    <Parameter Name="parentspic" Type="image" Mode="In" />
+    <Parameter Name="pstreet" Type="text" Mode="In" />
+    <Parameter Name="pcity" Type="int" Mode="In" />
+    <Parameter Name="pstate" Type="int" Mode="In" />
+    <Parameter Name="pcountry" Type="int" Mode="In" />
+    <Parameter Name="ppin" Type="varchar" Mode="In" />
+    <Parameter Name="cstreet" Type="text" Mode="In" />
+    <Parameter Name="ccity" Type="int" Mode="In" />
+    <Parameter Name="cstate" Type="int" Mode="In" />
+    <Parameter Name="ccountry" Type="int" Mode="In" />
+    <Parameter Name="cpin" Type="varchar" Mode="In" />
+    <Parameter Name="homecode" Type="int" Mode="In" />
+    <Parameter Name="homecontact" Type="varchar" Mode="In" />
+    <Parameter Name="cmobilecode" Type="int" Mode="In" />
+    <Parameter Name="cmobile" Type="varchar" Mode="In" />
+    <Parameter Name="bankname" Type="varchar" Mode="In" />
+    <Parameter Name="branch" Type="varchar" Mode="In" />
+    <Parameter Name="ifsccode" Type="varchar" Mode="In" />
+    <Parameter Name="accountno" Type="varchar" Mode="In" />
+    <Parameter Name="accountname" Type="varchar" Mode="In" />
+    <Parameter Name="collagename" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate" Type="datetime" Mode="In" />
+    <Parameter Name="lastdate" Type="datetime" Mode="In" />
+    <Parameter Name="totalexperience" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
+    <Parameter Name="companyname" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate" Type="datetime" Mode="In" />
+    <Parameter Name="clastdate" Type="datetime" Mode="In" />
+    <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
+    <Parameter Name="empemail" Type="varchar" Mode="In" />
+    <Parameter Name="empreligion" Type="int" Mode="In" />
+    <Parameter Name="empcategory" Type="int" Mode="In" />
+    <Parameter Name="empcast" Type="int" Mode="In" />
+    <Parameter Name="empmothertongue" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_EmployeeAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
@@ -902,6 +1058,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getDivision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetEmpLeaveDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1360,6 +1517,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <EntitySet Name="tbl_timetable" EntityType="Self.tbl_timetable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_transport" EntityType="Self.tbl_transport" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sys_UserPermission].[moduleid] AS [moduleid], 
