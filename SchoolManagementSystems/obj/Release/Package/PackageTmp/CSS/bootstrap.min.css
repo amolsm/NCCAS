@@ -4299,7 +4299,7 @@ button.btn, input[type="submit"].btn {
     .breadcrumb > li {
         display: inline-block;
         *display: inline;
-        text-shadow: 0 1px 0 #fff;
+        text-shadow: 0 1px 0 #333;
         *zoom: 1;
     }
 
@@ -4309,7 +4309,8 @@ button.btn, input[type="submit"].btn {
         }
 
     .breadcrumb > .active {
-        color: #999;
+           text-shadow: 0px 1px 1px white;
+    color: #fafafa;
     }
 
 .pagination {

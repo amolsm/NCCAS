@@ -22,8 +22,8 @@ namespace Entity
 
         [DisplayName("Academic Year ")]
         public List<string> academicyear { get; set; }
-
         public List<tblDepartment> departmentlistdetails { get; set; }
+      
 
         public List<sp_getClass_Result> _Classlist { get; set; }
     }

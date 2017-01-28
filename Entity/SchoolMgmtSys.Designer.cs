@@ -108,20 +108,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
-        public ObjectSet<tbl_employee> tbl_employee
-        {
-            get
-            {
-                if ((_tbl_employee == null))
-                {
-                    _tbl_employee = base.CreateObjectSet<tbl_employee>("tbl_employee");
-                }
-                return _tbl_employee;
-            }
-        }
-        private ObjectSet<tbl_employee> _tbl_employee;
-=======
         public ObjectSet<tbl_class> tbl_class
         {
             get
@@ -134,7 +120,22 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_class> _tbl_class;
->>>>>>> origin/master
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_employee> tbl_employee
+        {
+            get
+            {
+                if ((_tbl_employee == null))
+                {
+                    _tbl_employee = base.CreateObjectSet<tbl_employee>("tbl_employee");
+                }
+                return _tbl_employee;
+            }
+        }
+        private ObjectSet<tbl_employee> _tbl_employee;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -859,7 +860,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
         public ObjectSet<tblDepartment> tblDepartment
         {
             get
@@ -872,36 +872,6 @@ namespace Entity
             }
         }
         private ObjectSet<tblDepartment> _tblDepartment;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_class> tbl_class
-        {
-            get
-            {
-                if ((_tbl_class == null))
-                {
-                    _tbl_class = base.CreateObjectSet<tbl_class>("tbl_class");
-                }
-                return _tbl_class;
-            }
-        }
-        private ObjectSet<tbl_class> _tbl_class;
-=======
-        public ObjectSet<tbl_employee> tbl_employee
-        {
-            get
-            {
-                if ((_tbl_employee == null))
-                {
-                    _tbl_employee = base.CreateObjectSet<tbl_employee>("tbl_employee");
-                }
-                return _tbl_employee;
-            }
-        }
-        private ObjectSet<tbl_employee> _tbl_employee;
->>>>>>> origin/master
 
         #endregion
 
@@ -924,19 +894,19 @@ namespace Entity
         }
     
         /// <summary>
-<<<<<<< HEAD
-        /// Deprecated Method for adding a new object to the tbl_employee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_employee(tbl_employee tbl_employee)
-        {
-            base.AddObject("tbl_employee", tbl_employee);
-=======
         /// Deprecated Method for adding a new object to the tbl_class EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_class(tbl_class tbl_class)
         {
             base.AddObject("tbl_class", tbl_class);
->>>>>>> origin/master
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_employee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_employee(tbl_employee tbl_employee)
+        {
+            base.AddObject("tbl_employee", tbl_employee);
         }
     
         /// <summary>
@@ -1300,27 +1270,11 @@ namespace Entity
         }
     
         /// <summary>
-<<<<<<< HEAD
         /// Deprecated Method for adding a new object to the tblDepartment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotblDepartment(tblDepartment tblDepartment)
         {
             base.AddObject("tblDepartment", tblDepartment);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_class EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_class(tbl_class tbl_class)
-        {
-            base.AddObject("tbl_class", tbl_class);
-=======
-        /// Deprecated Method for adding a new object to the tbl_employee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_employee(tbl_employee tbl_employee)
-        {
-            base.AddObject("tbl_employee", tbl_employee);
->>>>>>> origin/master
         }
 
         #endregion
@@ -2218,6 +2172,80 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_Country_DML", countryidParameter, countryNameParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="classnm">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="academicyear">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_class_DML(Nullable<global::System.Int32> classid, global::System.String classnm, Nullable<global::System.Int32> deptid, Nullable<global::System.Boolean> status, global::System.String academicyear, global::System.String act)
+        {
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("Classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter classnmParameter;
+            if (classnm != null)
+            {
+                classnmParameter = new ObjectParameter("Classnm", classnm);
+            }
+            else
+            {
+                classnmParameter = new ObjectParameter("Classnm", typeof(global::System.String));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter academicyearParameter;
+            if (academicyear != null)
+            {
+                academicyearParameter = new ObjectParameter("academicyear", academicyear);
+            }
+            else
+            {
+                academicyearParameter = new ObjectParameter("academicyear", typeof(global::System.String));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_class_DML", classidParameter, classnmParameter, deptidParameter, statusParameter, academicyearParameter, actParameter);
         }
     
         /// <summary>
@@ -4009,77 +4037,25 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="studid">No Metadata Documentation available.</param>
-        /// <param name="studnm">No Metadata Documentation available.</param>
-        /// <param name="studfathernm">No Metadata Documentation available.</param>
-        /// <param name="studmothernm">No Metadata Documentation available.</param>
-        /// <param name="dOB">No Metadata Documentation available.</param>
-        /// <param name="weight">No Metadata Documentation available.</param>
-        /// <param name="height">No Metadata Documentation available.</param>
-        /// <param name="studBldGrp">No Metadata Documentation available.</param>
-        /// <param name="studEmail">No Metadata Documentation available.</param>
-        /// <param name="disease">No Metadata Documentation available.</param>
-        /// <param name="religionid">No Metadata Documentation available.</param>
-        /// <param name="casteid">No Metadata Documentation available.</param>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="rollNo">No Metadata Documentation available.</param>
-        /// <param name="gender">No Metadata Documentation available.</param>
-        /// <param name="motherTongue">No Metadata Documentation available.</param>
-        /// <param name="previousSchool">No Metadata Documentation available.</param>
-        /// <param name="schoolAddress">No Metadata Documentation available.</param>
-        /// <param name="lastClass">No Metadata Documentation available.</param>
-        /// <param name="grade">No Metadata Documentation available.</param>
-        /// <param name="leaveYear">No Metadata Documentation available.</param>
-        /// <param name="leaveReason">No Metadata Documentation available.</param>
-        /// <param name="principalNm">No Metadata Documentation available.</param>
-        /// <param name="referenceNm">No Metadata Documentation available.</param>
-        /// <param name="referenceContact">No Metadata Documentation available.</param>
-        /// <param name="busFacility">No Metadata Documentation available.</param>
-        /// <param name="busNo">No Metadata Documentation available.</param>
-        /// <param name="busRTONo">No Metadata Documentation available.</param>
-        /// <param name="emergencyPhysicianNm">No Metadata Documentation available.</param>
-        /// <param name="emergencyPhysicianContact">No Metadata Documentation available.</param>
-        /// <param name="emergencyAddress">No Metadata Documentation available.</param>
-        /// <param name="studPic">No Metadata Documentation available.</param>
-        /// <param name="fatherOccpationid">No Metadata Documentation available.</param>
-        /// <param name="fatherQualificationid">No Metadata Documentation available.</param>
-        /// <param name="fatherEmail">No Metadata Documentation available.</param>
-        /// <param name="fatherOfficeAddress">No Metadata Documentation available.</param>
-        /// <param name="fatherContact">No Metadata Documentation available.</param>
-        /// <param name="fatherBldGrpid">No Metadata Documentation available.</param>
-        /// <param name="fatherPic">No Metadata Documentation available.</param>
-        /// <param name="motherOccpationid">No Metadata Documentation available.</param>
-        /// <param name="motherQualificationid">No Metadata Documentation available.</param>
-        /// <param name="motherEmail">No Metadata Documentation available.</param>
-        /// <param name="motherOfficeAddress">No Metadata Documentation available.</param>
-        /// <param name="motherContact">No Metadata Documentation available.</param>
-        /// <param name="motherBldGrpid">No Metadata Documentation available.</param>
-        /// <param name="motherPic">No Metadata Documentation available.</param>
-        /// <param name="countryid">No Metadata Documentation available.</param>
-        /// <param name="stateid">No Metadata Documentation available.</param>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="firstName">No Metadata Documentation available.</param>
+        /// <param name="middleName">No Metadata Documentation available.</param>
+        /// <param name="lastName">No Metadata Documentation available.</param>
         /// <param name="cityid">No Metadata Documentation available.</param>
-        /// <param name="currentAddress">No Metadata Documentation available.</param>
-        /// <param name="permanentAddress">No Metadata Documentation available.</param>
-        /// <param name="academicyear">No Metadata Documentation available.</param>
-        /// <param name="busid">No Metadata Documentation available.</param>
-        /// <param name="cats">No Metadata Documentation available.</param>
-        /// <param name="prds">No Metadata Documentation available.</param>
-        /// <param name="docs">No Metadata Documentation available.</param>
-        /// <param name="subcats">No Metadata Documentation available.</param>
-        /// <param name="studCategoryid">No Metadata Documentation available.</param>
-        /// <param name="guardianOccpationid">No Metadata Documentation available.</param>
-        /// <param name="guardianQualificationid">No Metadata Documentation available.</param>
-        /// <param name="guardianEmail">No Metadata Documentation available.</param>
-        /// <param name="guardianOfficeAddress">No Metadata Documentation available.</param>
-        /// <param name="guardianContact">No Metadata Documentation available.</param>
-        /// <param name="guardianName">No Metadata Documentation available.</param>
-        /// <param name="fCode">No Metadata Documentation available.</param>
-        /// <param name="mCode">No Metadata Documentation available.</param>
-        /// <param name="gCode">No Metadata Documentation available.</param>
-        /// <param name="eCode">No Metadata Documentation available.</param>
-        /// <param name="rCode">No Metadata Documentation available.</param>
+        /// <param name="stateid">No Metadata Documentation available.</param>
+        /// <param name="zipcode">No Metadata Documentation available.</param>
+        /// <param name="emailid">No Metadata Documentation available.</param>
+        /// <param name="phoneNo">No Metadata Documentation available.</param>
+        /// <param name="mobileNo">No Metadata Documentation available.</param>
+        /// <param name="address">No Metadata Documentation available.</param>
+        /// <param name="dOB">No Metadata Documentation available.</param>
+        /// <param name="gender">No Metadata Documentation available.</param>
+        /// <param name="quallification">No Metadata Documentation available.</param>
+        /// <param name="dateOfJoin">No Metadata Documentation available.</param>
+        /// <param name="typeid">No Metadata Documentation available.</param>
+        /// <param name="code">No Metadata Documentation available.</param>
+        /// <param name="oQualification">No Metadata Documentation available.</param>
         /// <param name="act">No Metadata Documentation available.</param>
-<<<<<<< HEAD
         /// <param name="department">No Metadata Documentation available.</param>
         /// <param name="bloodgroup">No Metadata Documentation available.</param>
         /// <param name="qualication1">No Metadata Documentation available.</param>
@@ -4151,48 +4127,115 @@ namespace Entity
         /// <param name="empcast">No Metadata Documentation available.</param>
         /// <param name="empmothertongue">No Metadata Documentation available.</param>
         public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, Nullable<global::System.DateTime> joiningdate, Nullable<global::System.DateTime> lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, Nullable<global::System.DateTime> cjoiningdate, Nullable<global::System.DateTime> clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, Nullable<global::System.Int32> empmothertongue)
-=======
-        public int sp_student_online_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act)
->>>>>>> origin/master
         {
-            ObjectParameter studidParameter;
-            if (studid.HasValue)
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
             {
-                studidParameter = new ObjectParameter("Studid", studid);
+                empidParameter = new ObjectParameter("Empid", empid);
             }
             else
             {
-                studidParameter = new ObjectParameter("Studid", typeof(global::System.Int32));
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
             }
     
-            ObjectParameter studnmParameter;
-            if (studnm != null)
+            ObjectParameter firstNameParameter;
+            if (firstName != null)
             {
-                studnmParameter = new ObjectParameter("Studnm", studnm);
+                firstNameParameter = new ObjectParameter("FirstName", firstName);
             }
             else
             {
-                studnmParameter = new ObjectParameter("Studnm", typeof(global::System.String));
+                firstNameParameter = new ObjectParameter("FirstName", typeof(global::System.String));
             }
     
-            ObjectParameter studfathernmParameter;
-            if (studfathernm != null)
+            ObjectParameter middleNameParameter;
+            if (middleName != null)
             {
-                studfathernmParameter = new ObjectParameter("Studfathernm", studfathernm);
+                middleNameParameter = new ObjectParameter("MiddleName", middleName);
             }
             else
             {
-                studfathernmParameter = new ObjectParameter("Studfathernm", typeof(global::System.String));
+                middleNameParameter = new ObjectParameter("MiddleName", typeof(global::System.String));
             }
     
-            ObjectParameter studmothernmParameter;
-            if (studmothernm != null)
+            ObjectParameter lastNameParameter;
+            if (lastName != null)
             {
-                studmothernmParameter = new ObjectParameter("Studmothernm", studmothernm);
+                lastNameParameter = new ObjectParameter("LastName", lastName);
             }
             else
             {
-                studmothernmParameter = new ObjectParameter("Studmothernm", typeof(global::System.String));
+                lastNameParameter = new ObjectParameter("LastName", typeof(global::System.String));
+            }
+    
+            ObjectParameter cityidParameter;
+            if (cityid.HasValue)
+            {
+                cityidParameter = new ObjectParameter("Cityid", cityid);
+            }
+            else
+            {
+                cityidParameter = new ObjectParameter("Cityid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter stateidParameter;
+            if (stateid.HasValue)
+            {
+                stateidParameter = new ObjectParameter("Stateid", stateid);
+            }
+            else
+            {
+                stateidParameter = new ObjectParameter("Stateid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter zipcodeParameter;
+            if (zipcode != null)
+            {
+                zipcodeParameter = new ObjectParameter("Zipcode", zipcode);
+            }
+            else
+            {
+                zipcodeParameter = new ObjectParameter("Zipcode", typeof(global::System.String));
+            }
+    
+            ObjectParameter emailidParameter;
+            if (emailid != null)
+            {
+                emailidParameter = new ObjectParameter("Emailid", emailid);
+            }
+            else
+            {
+                emailidParameter = new ObjectParameter("Emailid", typeof(global::System.String));
+            }
+    
+            ObjectParameter phoneNoParameter;
+            if (phoneNo != null)
+            {
+                phoneNoParameter = new ObjectParameter("PhoneNo", phoneNo);
+            }
+            else
+            {
+                phoneNoParameter = new ObjectParameter("PhoneNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter mobileNoParameter;
+            if (mobileNo != null)
+            {
+                mobileNoParameter = new ObjectParameter("MobileNo", mobileNo);
+            }
+            else
+            {
+                mobileNoParameter = new ObjectParameter("MobileNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter addressParameter;
+            if (address != null)
+            {
+                addressParameter = new ObjectParameter("Address", address);
+            }
+            else
+            {
+                addressParameter = new ObjectParameter("Address", typeof(global::System.String));
             }
     
             ObjectParameter dOBParameter;
@@ -4205,96 +4248,6 @@ namespace Entity
                 dOBParameter = new ObjectParameter("DOB", typeof(global::System.DateTime));
             }
     
-            ObjectParameter weightParameter;
-            if (weight.HasValue)
-            {
-                weightParameter = new ObjectParameter("Weight", weight);
-            }
-            else
-            {
-                weightParameter = new ObjectParameter("Weight", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter heightParameter;
-            if (height.HasValue)
-            {
-                heightParameter = new ObjectParameter("Height", height);
-            }
-            else
-            {
-                heightParameter = new ObjectParameter("Height", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter studBldGrpParameter;
-            if (studBldGrp.HasValue)
-            {
-                studBldGrpParameter = new ObjectParameter("StudBldGrp", studBldGrp);
-            }
-            else
-            {
-                studBldGrpParameter = new ObjectParameter("StudBldGrp", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter studEmailParameter;
-            if (studEmail != null)
-            {
-                studEmailParameter = new ObjectParameter("StudEmail", studEmail);
-            }
-            else
-            {
-                studEmailParameter = new ObjectParameter("StudEmail", typeof(global::System.String));
-            }
-    
-            ObjectParameter diseaseParameter;
-            if (disease != null)
-            {
-                diseaseParameter = new ObjectParameter("Disease", disease);
-            }
-            else
-            {
-                diseaseParameter = new ObjectParameter("Disease", typeof(global::System.String));
-            }
-    
-            ObjectParameter religionidParameter;
-            if (religionid.HasValue)
-            {
-                religionidParameter = new ObjectParameter("Religionid", religionid);
-            }
-            else
-            {
-                religionidParameter = new ObjectParameter("Religionid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter casteidParameter;
-            if (casteid.HasValue)
-            {
-                casteidParameter = new ObjectParameter("Casteid", casteid);
-            }
-            else
-            {
-                casteidParameter = new ObjectParameter("Casteid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("Classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter rollNoParameter;
-            if (rollNo.HasValue)
-            {
-                rollNoParameter = new ObjectParameter("RollNo", rollNo);
-            }
-            else
-            {
-                rollNoParameter = new ObjectParameter("RollNo", typeof(global::System.Int32));
-            }
-    
             ObjectParameter genderParameter;
             if (gender.HasValue)
             {
@@ -4305,47 +4258,66 @@ namespace Entity
                 genderParameter = new ObjectParameter("Gender", typeof(global::System.Int32));
             }
     
-            ObjectParameter motherTongueParameter;
-            if (motherTongue != null)
+            ObjectParameter quallificationParameter;
+            if (quallification.HasValue)
             {
-                motherTongueParameter = new ObjectParameter("MotherTongue", motherTongue);
+                quallificationParameter = new ObjectParameter("Quallification", quallification);
             }
             else
             {
-                motherTongueParameter = new ObjectParameter("MotherTongue", typeof(global::System.String));
+                quallificationParameter = new ObjectParameter("Quallification", typeof(global::System.Int32));
             }
     
-            ObjectParameter previousSchoolParameter;
-            if (previousSchool != null)
+            ObjectParameter dateOfJoinParameter;
+            if (dateOfJoin.HasValue)
             {
-                previousSchoolParameter = new ObjectParameter("PreviousSchool", previousSchool);
+                dateOfJoinParameter = new ObjectParameter("DateOfJoin", dateOfJoin);
             }
             else
             {
-                previousSchoolParameter = new ObjectParameter("PreviousSchool", typeof(global::System.String));
+                dateOfJoinParameter = new ObjectParameter("DateOfJoin", typeof(global::System.DateTime));
             }
     
-            ObjectParameter schoolAddressParameter;
-            if (schoolAddress != null)
+            ObjectParameter typeidParameter;
+            if (typeid.HasValue)
             {
-                schoolAddressParameter = new ObjectParameter("SchoolAddress", schoolAddress);
+                typeidParameter = new ObjectParameter("Typeid", typeid);
             }
             else
             {
-                schoolAddressParameter = new ObjectParameter("SchoolAddress", typeof(global::System.String));
+                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
             }
     
-            ObjectParameter lastClassParameter;
-            if (lastClass != null)
+            ObjectParameter codeParameter;
+            if (code.HasValue)
             {
-                lastClassParameter = new ObjectParameter("LastClass", lastClass);
+                codeParameter = new ObjectParameter("Code", code);
             }
             else
             {
-                lastClassParameter = new ObjectParameter("LastClass", typeof(global::System.String));
+                codeParameter = new ObjectParameter("Code", typeof(global::System.Int32));
             }
     
-<<<<<<< HEAD
+            ObjectParameter oQualificationParameter;
+            if (oQualification != null)
+            {
+                oQualificationParameter = new ObjectParameter("OQualification", oQualification);
+            }
+            else
+            {
+                oQualificationParameter = new ObjectParameter("OQualification", typeof(global::System.String));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
             ObjectParameter departmentParameter;
             if (department.HasValue)
             {
@@ -4720,192 +4692,6 @@ namespace Entity
             if (pstate.HasValue)
             {
                 pstateParameter = new ObjectParameter("pstate", pstate);
-=======
-            ObjectParameter gradeParameter;
-            if (grade != null)
-            {
-                gradeParameter = new ObjectParameter("Grade", grade);
-            }
-            else
-            {
-                gradeParameter = new ObjectParameter("Grade", typeof(global::System.String));
-            }
-    
-            ObjectParameter leaveYearParameter;
-            if (leaveYear != null)
-            {
-                leaveYearParameter = new ObjectParameter("LeaveYear", leaveYear);
-            }
-            else
-            {
-                leaveYearParameter = new ObjectParameter("LeaveYear", typeof(global::System.String));
-            }
-    
-            ObjectParameter leaveReasonParameter;
-            if (leaveReason != null)
-            {
-                leaveReasonParameter = new ObjectParameter("LeaveReason", leaveReason);
-            }
-            else
-            {
-                leaveReasonParameter = new ObjectParameter("LeaveReason", typeof(global::System.String));
-            }
-    
-            ObjectParameter principalNmParameter;
-            if (principalNm != null)
-            {
-                principalNmParameter = new ObjectParameter("PrincipalNm", principalNm);
-            }
-            else
-            {
-                principalNmParameter = new ObjectParameter("PrincipalNm", typeof(global::System.String));
-            }
-    
-            ObjectParameter referenceNmParameter;
-            if (referenceNm != null)
-            {
-                referenceNmParameter = new ObjectParameter("ReferenceNm", referenceNm);
-            }
-            else
-            {
-                referenceNmParameter = new ObjectParameter("ReferenceNm", typeof(global::System.String));
-            }
-    
-            ObjectParameter referenceContactParameter;
-            if (referenceContact != null)
-            {
-                referenceContactParameter = new ObjectParameter("ReferenceContact", referenceContact);
-            }
-            else
-            {
-                referenceContactParameter = new ObjectParameter("ReferenceContact", typeof(global::System.String));
-            }
-    
-            ObjectParameter busFacilityParameter;
-            if (busFacility.HasValue)
-            {
-                busFacilityParameter = new ObjectParameter("BusFacility", busFacility);
-            }
-            else
-            {
-                busFacilityParameter = new ObjectParameter("BusFacility", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter busNoParameter;
-            if (busNo != null)
-            {
-                busNoParameter = new ObjectParameter("BusNo", busNo);
-            }
-            else
-            {
-                busNoParameter = new ObjectParameter("BusNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter busRTONoParameter;
-            if (busRTONo != null)
-            {
-                busRTONoParameter = new ObjectParameter("BusRTONo", busRTONo);
-            }
-            else
-            {
-                busRTONoParameter = new ObjectParameter("BusRTONo", typeof(global::System.String));
-            }
-    
-            ObjectParameter emergencyPhysicianNmParameter;
-            if (emergencyPhysicianNm != null)
-            {
-                emergencyPhysicianNmParameter = new ObjectParameter("EmergencyPhysicianNm", emergencyPhysicianNm);
-            }
-            else
-            {
-                emergencyPhysicianNmParameter = new ObjectParameter("EmergencyPhysicianNm", typeof(global::System.String));
-            }
-    
-            ObjectParameter emergencyPhysicianContactParameter;
-            if (emergencyPhysicianContact != null)
-            {
-                emergencyPhysicianContactParameter = new ObjectParameter("EmergencyPhysicianContact", emergencyPhysicianContact);
-            }
-            else
-            {
-                emergencyPhysicianContactParameter = new ObjectParameter("EmergencyPhysicianContact", typeof(global::System.String));
-            }
-    
-            ObjectParameter emergencyAddressParameter;
-            if (emergencyAddress != null)
-            {
-                emergencyAddressParameter = new ObjectParameter("EmergencyAddress", emergencyAddress);
-            }
-            else
-            {
-                emergencyAddressParameter = new ObjectParameter("EmergencyAddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter studPicParameter;
-            if (studPic != null)
-            {
-                studPicParameter = new ObjectParameter("StudPic", studPic);
-            }
-            else
-            {
-                studPicParameter = new ObjectParameter("StudPic", typeof(global::System.Byte[]));
-            }
-    
-            ObjectParameter fatherOccpationidParameter;
-            if (fatherOccpationid.HasValue)
-            {
-                fatherOccpationidParameter = new ObjectParameter("FatherOccpationid", fatherOccpationid);
-            }
-            else
-            {
-                fatherOccpationidParameter = new ObjectParameter("FatherOccpationid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter fatherQualificationidParameter;
-            if (fatherQualificationid.HasValue)
-            {
-                fatherQualificationidParameter = new ObjectParameter("FatherQualificationid", fatherQualificationid);
-            }
-            else
-            {
-                fatherQualificationidParameter = new ObjectParameter("FatherQualificationid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter fatherEmailParameter;
-            if (fatherEmail != null)
-            {
-                fatherEmailParameter = new ObjectParameter("FatherEmail", fatherEmail);
-            }
-            else
-            {
-                fatherEmailParameter = new ObjectParameter("FatherEmail", typeof(global::System.String));
-            }
-    
-            ObjectParameter fatherOfficeAddressParameter;
-            if (fatherOfficeAddress != null)
-            {
-                fatherOfficeAddressParameter = new ObjectParameter("FatherOfficeAddress", fatherOfficeAddress);
-            }
-            else
-            {
-                fatherOfficeAddressParameter = new ObjectParameter("FatherOfficeAddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter fatherContactParameter;
-            if (fatherContact != null)
-            {
-                fatherContactParameter = new ObjectParameter("FatherContact", fatherContact);
-            }
-            else
-            {
-                fatherContactParameter = new ObjectParameter("FatherContact", typeof(global::System.String));
-            }
-    
-            ObjectParameter fatherBldGrpidParameter;
-            if (fatherBldGrpid.HasValue)
-            {
-                fatherBldGrpidParameter = new ObjectParameter("FatherBldGrpid", fatherBldGrpid);
->>>>>>> origin/master
             }
             else
             {
@@ -7740,7 +7526,6 @@ namespace Entity
                 guardianQualificationidParameter = new ObjectParameter("GuardianQualificationid", typeof(global::System.Int32));
             }
     
-<<<<<<< HEAD
             ObjectParameter guardianEmailParameter;
             if (guardianEmail != null)
             {
@@ -8513,88 +8298,6 @@ namespace Entity
         {
             return base.ExecuteFunction<sp_getDepartment_Result>("sp_getDepartment");
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="classnm">No Metadata Documentation available.</param>
-        /// <param name="deptid">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="academicyear">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_class_DML(Nullable<global::System.Int32> classid, global::System.String classnm, Nullable<global::System.Int32> deptid, Nullable<global::System.Boolean> status, global::System.String academicyear, global::System.String act)
-        {
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("Classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter classnmParameter;
-            if (classnm != null)
-            {
-                classnmParameter = new ObjectParameter("Classnm", classnm);
-            }
-            else
-            {
-                classnmParameter = new ObjectParameter("Classnm", typeof(global::System.String));
-            }
-    
-            ObjectParameter deptidParameter;
-            if (deptid.HasValue)
-            {
-                deptidParameter = new ObjectParameter("deptid", deptid);
-            }
-            else
-            {
-                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter academicyearParameter;
-            if (academicyear != null)
-            {
-                academicyearParameter = new ObjectParameter("academicyear", academicyear);
-            }
-            else
-            {
-                academicyearParameter = new ObjectParameter("academicyear", typeof(global::System.String));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_class_DML", classidParameter, classnmParameter, deptidParameter, statusParameter, academicyearParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getClass_Result> sp_getClass()
-        {
-            return base.ExecuteFunction<sp_getClass_Result>("sp_getClass");
-        }
 
         #endregion
 
@@ -8651,1053 +8354,6 @@ namespace Entity
                     OnModuleidChanged();
                 }
             }
-=======
-            return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="empid">No Metadata Documentation available.</param>
-        /// <param name="firstName">No Metadata Documentation available.</param>
-        /// <param name="middleName">No Metadata Documentation available.</param>
-        /// <param name="lastName">No Metadata Documentation available.</param>
-        /// <param name="cityid">No Metadata Documentation available.</param>
-        /// <param name="stateid">No Metadata Documentation available.</param>
-        /// <param name="zipcode">No Metadata Documentation available.</param>
-        /// <param name="emailid">No Metadata Documentation available.</param>
-        /// <param name="phoneNo">No Metadata Documentation available.</param>
-        /// <param name="mobileNo">No Metadata Documentation available.</param>
-        /// <param name="address">No Metadata Documentation available.</param>
-        /// <param name="dOB">No Metadata Documentation available.</param>
-        /// <param name="gender">No Metadata Documentation available.</param>
-        /// <param name="quallification">No Metadata Documentation available.</param>
-        /// <param name="dateOfJoin">No Metadata Documentation available.</param>
-        /// <param name="typeid">No Metadata Documentation available.</param>
-        /// <param name="code">No Metadata Documentation available.</param>
-        /// <param name="oQualification">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        /// <param name="department">No Metadata Documentation available.</param>
-        /// <param name="bloodgroup">No Metadata Documentation available.</param>
-        /// <param name="qualication1">No Metadata Documentation available.</param>
-        /// <param name="university1">No Metadata Documentation available.</param>
-        /// <param name="precentage1">No Metadata Documentation available.</param>
-        /// <param name="yearpasing1">No Metadata Documentation available.</param>
-        /// <param name="qualication2">No Metadata Documentation available.</param>
-        /// <param name="university2">No Metadata Documentation available.</param>
-        /// <param name="precentage2">No Metadata Documentation available.</param>
-        /// <param name="yearpasing2">No Metadata Documentation available.</param>
-        /// <param name="qualication3">No Metadata Documentation available.</param>
-        /// <param name="university3">No Metadata Documentation available.</param>
-        /// <param name="precentage3">No Metadata Documentation available.</param>
-        /// <param name="yearpasing3">No Metadata Documentation available.</param>
-        /// <param name="qualication4">No Metadata Documentation available.</param>
-        /// <param name="university4">No Metadata Documentation available.</param>
-        /// <param name="precentage4">No Metadata Documentation available.</param>
-        /// <param name="yearpasing4">No Metadata Documentation available.</param>
-        /// <param name="weightinkg">No Metadata Documentation available.</param>
-        /// <param name="heightc">No Metadata Documentation available.</param>
-        /// <param name="emppic">No Metadata Documentation available.</param>
-        /// <param name="eidtype">No Metadata Documentation available.</param>
-        /// <param name="doctorname">No Metadata Documentation available.</param>
-        /// <param name="doctorcode">No Metadata Documentation available.</param>
-        /// <param name="doctorcontact">No Metadata Documentation available.</param>
-        /// <param name="doctoraddress">No Metadata Documentation available.</param>
-        /// <param name="relation">No Metadata Documentation available.</param>
-        /// <param name="parentsname">No Metadata Documentation available.</param>
-        /// <param name="parentoccupation">No Metadata Documentation available.</param>
-        /// <param name="parentqualification">No Metadata Documentation available.</param>
-        /// <param name="parentsemail">No Metadata Documentation available.</param>
-        /// <param name="parentsaddress">No Metadata Documentation available.</param>
-        /// <param name="parentscode">No Metadata Documentation available.</param>
-        /// <param name="parentscontact">No Metadata Documentation available.</param>
-        /// <param name="parentspic">No Metadata Documentation available.</param>
-        /// <param name="pstreet">No Metadata Documentation available.</param>
-        /// <param name="pcity">No Metadata Documentation available.</param>
-        /// <param name="pstate">No Metadata Documentation available.</param>
-        /// <param name="pcountry">No Metadata Documentation available.</param>
-        /// <param name="ppin">No Metadata Documentation available.</param>
-        /// <param name="cstreet">No Metadata Documentation available.</param>
-        /// <param name="ccity">No Metadata Documentation available.</param>
-        /// <param name="cstate">No Metadata Documentation available.</param>
-        /// <param name="ccountry">No Metadata Documentation available.</param>
-        /// <param name="cpin">No Metadata Documentation available.</param>
-        /// <param name="homecode">No Metadata Documentation available.</param>
-        /// <param name="homecontact">No Metadata Documentation available.</param>
-        /// <param name="cmobilecode">No Metadata Documentation available.</param>
-        /// <param name="cmobile">No Metadata Documentation available.</param>
-        /// <param name="bankname">No Metadata Documentation available.</param>
-        /// <param name="branch">No Metadata Documentation available.</param>
-        /// <param name="ifsccode">No Metadata Documentation available.</param>
-        /// <param name="accountno">No Metadata Documentation available.</param>
-        /// <param name="accountname">No Metadata Documentation available.</param>
-        /// <param name="collagename">No Metadata Documentation available.</param>
-        /// <param name="affliateduniversity">No Metadata Documentation available.</param>
-        /// <param name="joiningdate">No Metadata Documentation available.</param>
-        /// <param name="lastdate">No Metadata Documentation available.</param>
-        /// <param name="totalexperience">No Metadata Documentation available.</param>
-        /// <param name="lastdesignation">No Metadata Documentation available.</param>
-        /// <param name="companyname">No Metadata Documentation available.</param>
-        /// <param name="clastdesignation">No Metadata Documentation available.</param>
-        /// <param name="cjoiningdate">No Metadata Documentation available.</param>
-        /// <param name="clastdate">No Metadata Documentation available.</param>
-        /// <param name="ctotalexperience">No Metadata Documentation available.</param>
-        /// <param name="empemail">No Metadata Documentation available.</param>
-        /// <param name="empreligion">No Metadata Documentation available.</param>
-        /// <param name="empcategory">No Metadata Documentation available.</param>
-        /// <param name="empcast">No Metadata Documentation available.</param>
-        /// <param name="empmothertongue">No Metadata Documentation available.</param>
-        public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, Nullable<global::System.DateTime> joiningdate, Nullable<global::System.DateTime> lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, Nullable<global::System.DateTime> cjoiningdate, Nullable<global::System.DateTime> clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, Nullable<global::System.Int32> empmothertongue)
-        {
-            ObjectParameter empidParameter;
-            if (empid.HasValue)
-            {
-                empidParameter = new ObjectParameter("Empid", empid);
-            }
-            else
-            {
-                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter firstNameParameter;
-            if (firstName != null)
-            {
-                firstNameParameter = new ObjectParameter("FirstName", firstName);
-            }
-            else
-            {
-                firstNameParameter = new ObjectParameter("FirstName", typeof(global::System.String));
-            }
-    
-            ObjectParameter middleNameParameter;
-            if (middleName != null)
-            {
-                middleNameParameter = new ObjectParameter("MiddleName", middleName);
-            }
-            else
-            {
-                middleNameParameter = new ObjectParameter("MiddleName", typeof(global::System.String));
-            }
-    
-            ObjectParameter lastNameParameter;
-            if (lastName != null)
-            {
-                lastNameParameter = new ObjectParameter("LastName", lastName);
-            }
-            else
-            {
-                lastNameParameter = new ObjectParameter("LastName", typeof(global::System.String));
-            }
-    
-            ObjectParameter cityidParameter;
-            if (cityid.HasValue)
-            {
-                cityidParameter = new ObjectParameter("Cityid", cityid);
-            }
-            else
-            {
-                cityidParameter = new ObjectParameter("Cityid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter stateidParameter;
-            if (stateid.HasValue)
-            {
-                stateidParameter = new ObjectParameter("Stateid", stateid);
-            }
-            else
-            {
-                stateidParameter = new ObjectParameter("Stateid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter zipcodeParameter;
-            if (zipcode != null)
-            {
-                zipcodeParameter = new ObjectParameter("Zipcode", zipcode);
-            }
-            else
-            {
-                zipcodeParameter = new ObjectParameter("Zipcode", typeof(global::System.String));
-            }
-    
-            ObjectParameter emailidParameter;
-            if (emailid != null)
-            {
-                emailidParameter = new ObjectParameter("Emailid", emailid);
-            }
-            else
-            {
-                emailidParameter = new ObjectParameter("Emailid", typeof(global::System.String));
-            }
-    
-            ObjectParameter phoneNoParameter;
-            if (phoneNo != null)
-            {
-                phoneNoParameter = new ObjectParameter("PhoneNo", phoneNo);
-            }
-            else
-            {
-                phoneNoParameter = new ObjectParameter("PhoneNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter mobileNoParameter;
-            if (mobileNo != null)
-            {
-                mobileNoParameter = new ObjectParameter("MobileNo", mobileNo);
-            }
-            else
-            {
-                mobileNoParameter = new ObjectParameter("MobileNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter addressParameter;
-            if (address != null)
-            {
-                addressParameter = new ObjectParameter("Address", address);
-            }
-            else
-            {
-                addressParameter = new ObjectParameter("Address", typeof(global::System.String));
-            }
-    
-            ObjectParameter dOBParameter;
-            if (dOB.HasValue)
-            {
-                dOBParameter = new ObjectParameter("DOB", dOB);
-            }
-            else
-            {
-                dOBParameter = new ObjectParameter("DOB", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter genderParameter;
-            if (gender.HasValue)
-            {
-                genderParameter = new ObjectParameter("Gender", gender);
-            }
-            else
-            {
-                genderParameter = new ObjectParameter("Gender", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter quallificationParameter;
-            if (quallification.HasValue)
-            {
-                quallificationParameter = new ObjectParameter("Quallification", quallification);
-            }
-            else
-            {
-                quallificationParameter = new ObjectParameter("Quallification", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter dateOfJoinParameter;
-            if (dateOfJoin.HasValue)
-            {
-                dateOfJoinParameter = new ObjectParameter("DateOfJoin", dateOfJoin);
-            }
-            else
-            {
-                dateOfJoinParameter = new ObjectParameter("DateOfJoin", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter typeidParameter;
-            if (typeid.HasValue)
-            {
-                typeidParameter = new ObjectParameter("Typeid", typeid);
-            }
-            else
-            {
-                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter codeParameter;
-            if (code.HasValue)
-            {
-                codeParameter = new ObjectParameter("Code", code);
-            }
-            else
-            {
-                codeParameter = new ObjectParameter("Code", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter oQualificationParameter;
-            if (oQualification != null)
-            {
-                oQualificationParameter = new ObjectParameter("OQualification", oQualification);
-            }
-            else
-            {
-                oQualificationParameter = new ObjectParameter("OQualification", typeof(global::System.String));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            ObjectParameter departmentParameter;
-            if (department.HasValue)
-            {
-                departmentParameter = new ObjectParameter("department", department);
-            }
-            else
-            {
-                departmentParameter = new ObjectParameter("department", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter bloodgroupParameter;
-            if (bloodgroup.HasValue)
-            {
-                bloodgroupParameter = new ObjectParameter("bloodgroup", bloodgroup);
-            }
-            else
-            {
-                bloodgroupParameter = new ObjectParameter("bloodgroup", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter qualication1Parameter;
-            if (qualication1.HasValue)
-            {
-                qualication1Parameter = new ObjectParameter("qualication1", qualication1);
-            }
-            else
-            {
-                qualication1Parameter = new ObjectParameter("qualication1", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university1Parameter;
-            if (university1 != null)
-            {
-                university1Parameter = new ObjectParameter("university1", university1);
-            }
-            else
-            {
-                university1Parameter = new ObjectParameter("university1", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage1Parameter;
-            if (precentage1 != null)
-            {
-                precentage1Parameter = new ObjectParameter("precentage1", precentage1);
-            }
-            else
-            {
-                precentage1Parameter = new ObjectParameter("precentage1", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing1Parameter;
-            if (yearpasing1 != null)
-            {
-                yearpasing1Parameter = new ObjectParameter("yearpasing1", yearpasing1);
-            }
-            else
-            {
-                yearpasing1Parameter = new ObjectParameter("yearpasing1", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication2Parameter;
-            if (qualication2.HasValue)
-            {
-                qualication2Parameter = new ObjectParameter("qualication2", qualication2);
-            }
-            else
-            {
-                qualication2Parameter = new ObjectParameter("qualication2", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university2Parameter;
-            if (university2 != null)
-            {
-                university2Parameter = new ObjectParameter("university2", university2);
-            }
-            else
-            {
-                university2Parameter = new ObjectParameter("university2", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage2Parameter;
-            if (precentage2 != null)
-            {
-                precentage2Parameter = new ObjectParameter("precentage2", precentage2);
-            }
-            else
-            {
-                precentage2Parameter = new ObjectParameter("precentage2", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing2Parameter;
-            if (yearpasing2 != null)
-            {
-                yearpasing2Parameter = new ObjectParameter("yearpasing2", yearpasing2);
-            }
-            else
-            {
-                yearpasing2Parameter = new ObjectParameter("yearpasing2", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication3Parameter;
-            if (qualication3.HasValue)
-            {
-                qualication3Parameter = new ObjectParameter("qualication3", qualication3);
-            }
-            else
-            {
-                qualication3Parameter = new ObjectParameter("qualication3", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university3Parameter;
-            if (university3 != null)
-            {
-                university3Parameter = new ObjectParameter("university3", university3);
-            }
-            else
-            {
-                university3Parameter = new ObjectParameter("university3", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage3Parameter;
-            if (precentage3 != null)
-            {
-                precentage3Parameter = new ObjectParameter("precentage3", precentage3);
-            }
-            else
-            {
-                precentage3Parameter = new ObjectParameter("precentage3", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing3Parameter;
-            if (yearpasing3 != null)
-            {
-                yearpasing3Parameter = new ObjectParameter("yearpasing3", yearpasing3);
-            }
-            else
-            {
-                yearpasing3Parameter = new ObjectParameter("yearpasing3", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication4Parameter;
-            if (qualication4.HasValue)
-            {
-                qualication4Parameter = new ObjectParameter("qualication4", qualication4);
-            }
-            else
-            {
-                qualication4Parameter = new ObjectParameter("qualication4", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university4Parameter;
-            if (university4 != null)
-            {
-                university4Parameter = new ObjectParameter("university4", university4);
-            }
-            else
-            {
-                university4Parameter = new ObjectParameter("university4", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage4Parameter;
-            if (precentage4 != null)
-            {
-                precentage4Parameter = new ObjectParameter("precentage4", precentage4);
-            }
-            else
-            {
-                precentage4Parameter = new ObjectParameter("precentage4", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing4Parameter;
-            if (yearpasing4 != null)
-            {
-                yearpasing4Parameter = new ObjectParameter("yearpasing4", yearpasing4);
-            }
-            else
-            {
-                yearpasing4Parameter = new ObjectParameter("yearpasing4", typeof(global::System.String));
-            }
-    
-            ObjectParameter weightinkgParameter;
-            if (weightinkg != null)
-            {
-                weightinkgParameter = new ObjectParameter("weightinkg", weightinkg);
-            }
-            else
-            {
-                weightinkgParameter = new ObjectParameter("weightinkg", typeof(global::System.String));
-            }
-    
-            ObjectParameter heightcParameter;
-            if (heightc != null)
-            {
-                heightcParameter = new ObjectParameter("heightc", heightc);
-            }
-            else
-            {
-                heightcParameter = new ObjectParameter("heightc", typeof(global::System.String));
-            }
-    
-            ObjectParameter emppicParameter;
-            if (emppic != null)
-            {
-                emppicParameter = new ObjectParameter("emppic", emppic);
-            }
-            else
-            {
-                emppicParameter = new ObjectParameter("emppic", typeof(global::System.Byte[]));
-            }
-    
-            ObjectParameter eidtypeParameter;
-            if (eidtype.HasValue)
-            {
-                eidtypeParameter = new ObjectParameter("eidtype", eidtype);
-            }
-            else
-            {
-                eidtypeParameter = new ObjectParameter("eidtype", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter doctornameParameter;
-            if (doctorname != null)
-            {
-                doctornameParameter = new ObjectParameter("doctorname", doctorname);
-            }
-            else
-            {
-                doctornameParameter = new ObjectParameter("doctorname", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctorcodeParameter;
-            if (doctorcode != null)
-            {
-                doctorcodeParameter = new ObjectParameter("doctorcode", doctorcode);
-            }
-            else
-            {
-                doctorcodeParameter = new ObjectParameter("doctorcode", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctorcontactParameter;
-            if (doctorcontact != null)
-            {
-                doctorcontactParameter = new ObjectParameter("doctorcontact", doctorcontact);
-            }
-            else
-            {
-                doctorcontactParameter = new ObjectParameter("doctorcontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctoraddressParameter;
-            if (doctoraddress != null)
-            {
-                doctoraddressParameter = new ObjectParameter("doctoraddress", doctoraddress);
-            }
-            else
-            {
-                doctoraddressParameter = new ObjectParameter("doctoraddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter relationParameter;
-            if (relation.HasValue)
-            {
-                relationParameter = new ObjectParameter("relation", relation);
-            }
-            else
-            {
-                relationParameter = new ObjectParameter("relation", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter parentsnameParameter;
-            if (parentsname != null)
-            {
-                parentsnameParameter = new ObjectParameter("parentsname", parentsname);
-            }
-            else
-            {
-                parentsnameParameter = new ObjectParameter("parentsname", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentoccupationParameter;
-            if (parentoccupation != null)
-            {
-                parentoccupationParameter = new ObjectParameter("parentoccupation", parentoccupation);
-            }
-            else
-            {
-                parentoccupationParameter = new ObjectParameter("parentoccupation", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentqualificationParameter;
-            if (parentqualification != null)
-            {
-                parentqualificationParameter = new ObjectParameter("parentqualification", parentqualification);
-            }
-            else
-            {
-                parentqualificationParameter = new ObjectParameter("parentqualification", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentsemailParameter;
-            if (parentsemail != null)
-            {
-                parentsemailParameter = new ObjectParameter("parentsemail", parentsemail);
-            }
-            else
-            {
-                parentsemailParameter = new ObjectParameter("parentsemail", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentsaddressParameter;
-            if (parentsaddress != null)
-            {
-                parentsaddressParameter = new ObjectParameter("parentsaddress", parentsaddress);
-            }
-            else
-            {
-                parentsaddressParameter = new ObjectParameter("parentsaddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentscodeParameter;
-            if (parentscode.HasValue)
-            {
-                parentscodeParameter = new ObjectParameter("parentscode", parentscode);
-            }
-            else
-            {
-                parentscodeParameter = new ObjectParameter("parentscode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter parentscontactParameter;
-            if (parentscontact != null)
-            {
-                parentscontactParameter = new ObjectParameter("parentscontact", parentscontact);
-            }
-            else
-            {
-                parentscontactParameter = new ObjectParameter("parentscontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentspicParameter;
-            if (parentspic != null)
-            {
-                parentspicParameter = new ObjectParameter("parentspic", parentspic);
-            }
-            else
-            {
-                parentspicParameter = new ObjectParameter("parentspic", typeof(global::System.Byte[]));
-            }
-    
-            ObjectParameter pstreetParameter;
-            if (pstreet != null)
-            {
-                pstreetParameter = new ObjectParameter("pstreet", pstreet);
-            }
-            else
-            {
-                pstreetParameter = new ObjectParameter("pstreet", typeof(global::System.String));
-            }
-    
-            ObjectParameter pcityParameter;
-            if (pcity.HasValue)
-            {
-                pcityParameter = new ObjectParameter("pcity", pcity);
-            }
-            else
-            {
-                pcityParameter = new ObjectParameter("pcity", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pstateParameter;
-            if (pstate.HasValue)
-            {
-                pstateParameter = new ObjectParameter("pstate", pstate);
-            }
-            else
-            {
-                pstateParameter = new ObjectParameter("pstate", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pcountryParameter;
-            if (pcountry.HasValue)
-            {
-                pcountryParameter = new ObjectParameter("pcountry", pcountry);
-            }
-            else
-            {
-                pcountryParameter = new ObjectParameter("pcountry", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter ppinParameter;
-            if (ppin != null)
-            {
-                ppinParameter = new ObjectParameter("ppin", ppin);
-            }
-            else
-            {
-                ppinParameter = new ObjectParameter("ppin", typeof(global::System.String));
-            }
-    
-            ObjectParameter cstreetParameter;
-            if (cstreet != null)
-            {
-                cstreetParameter = new ObjectParameter("cstreet", cstreet);
-            }
-            else
-            {
-                cstreetParameter = new ObjectParameter("cstreet", typeof(global::System.String));
-            }
-    
-            ObjectParameter ccityParameter;
-            if (ccity.HasValue)
-            {
-                ccityParameter = new ObjectParameter("ccity", ccity);
-            }
-            else
-            {
-                ccityParameter = new ObjectParameter("ccity", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cstateParameter;
-            if (cstate.HasValue)
-            {
-                cstateParameter = new ObjectParameter("cstate", cstate);
-            }
-            else
-            {
-                cstateParameter = new ObjectParameter("cstate", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter ccountryParameter;
-            if (ccountry.HasValue)
-            {
-                ccountryParameter = new ObjectParameter("ccountry", ccountry);
-            }
-            else
-            {
-                ccountryParameter = new ObjectParameter("ccountry", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cpinParameter;
-            if (cpin != null)
-            {
-                cpinParameter = new ObjectParameter("cpin", cpin);
-            }
-            else
-            {
-                cpinParameter = new ObjectParameter("cpin", typeof(global::System.String));
-            }
-    
-            ObjectParameter homecodeParameter;
-            if (homecode.HasValue)
-            {
-                homecodeParameter = new ObjectParameter("homecode", homecode);
-            }
-            else
-            {
-                homecodeParameter = new ObjectParameter("homecode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter homecontactParameter;
-            if (homecontact != null)
-            {
-                homecontactParameter = new ObjectParameter("homecontact", homecontact);
-            }
-            else
-            {
-                homecontactParameter = new ObjectParameter("homecontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter cmobilecodeParameter;
-            if (cmobilecode.HasValue)
-            {
-                cmobilecodeParameter = new ObjectParameter("cmobilecode", cmobilecode);
-            }
-            else
-            {
-                cmobilecodeParameter = new ObjectParameter("cmobilecode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cmobileParameter;
-            if (cmobile != null)
-            {
-                cmobileParameter = new ObjectParameter("cmobile", cmobile);
-            }
-            else
-            {
-                cmobileParameter = new ObjectParameter("cmobile", typeof(global::System.String));
-            }
-    
-            ObjectParameter banknameParameter;
-            if (bankname != null)
-            {
-                banknameParameter = new ObjectParameter("bankname", bankname);
-            }
-            else
-            {
-                banknameParameter = new ObjectParameter("bankname", typeof(global::System.String));
-            }
-    
-            ObjectParameter branchParameter;
-            if (branch != null)
-            {
-                branchParameter = new ObjectParameter("branch", branch);
-            }
-            else
-            {
-                branchParameter = new ObjectParameter("branch", typeof(global::System.String));
-            }
-    
-            ObjectParameter ifsccodeParameter;
-            if (ifsccode != null)
-            {
-                ifsccodeParameter = new ObjectParameter("ifsccode", ifsccode);
-            }
-            else
-            {
-                ifsccodeParameter = new ObjectParameter("ifsccode", typeof(global::System.String));
-            }
-    
-            ObjectParameter accountnoParameter;
-            if (accountno != null)
-            {
-                accountnoParameter = new ObjectParameter("accountno", accountno);
-            }
-            else
-            {
-                accountnoParameter = new ObjectParameter("accountno", typeof(global::System.String));
-            }
-    
-            ObjectParameter accountnameParameter;
-            if (accountname != null)
-            {
-                accountnameParameter = new ObjectParameter("accountname", accountname);
-            }
-            else
-            {
-                accountnameParameter = new ObjectParameter("accountname", typeof(global::System.String));
-            }
-    
-            ObjectParameter collagenameParameter;
-            if (collagename != null)
-            {
-                collagenameParameter = new ObjectParameter("collagename", collagename);
-            }
-            else
-            {
-                collagenameParameter = new ObjectParameter("collagename", typeof(global::System.String));
-            }
-    
-            ObjectParameter affliateduniversityParameter;
-            if (affliateduniversity != null)
-            {
-                affliateduniversityParameter = new ObjectParameter("affliateduniversity", affliateduniversity);
-            }
-            else
-            {
-                affliateduniversityParameter = new ObjectParameter("affliateduniversity", typeof(global::System.String));
-            }
-    
-            ObjectParameter joiningdateParameter;
-            if (joiningdate.HasValue)
-            {
-                joiningdateParameter = new ObjectParameter("joiningdate", joiningdate);
-            }
-            else
-            {
-                joiningdateParameter = new ObjectParameter("joiningdate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter lastdateParameter;
-            if (lastdate.HasValue)
-            {
-                lastdateParameter = new ObjectParameter("lastdate", lastdate);
-            }
-            else
-            {
-                lastdateParameter = new ObjectParameter("lastdate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter totalexperienceParameter;
-            if (totalexperience != null)
-            {
-                totalexperienceParameter = new ObjectParameter("totalexperience", totalexperience);
-            }
-            else
-            {
-                totalexperienceParameter = new ObjectParameter("totalexperience", typeof(global::System.String));
-            }
-    
-            ObjectParameter lastdesignationParameter;
-            if (lastdesignation != null)
-            {
-                lastdesignationParameter = new ObjectParameter("lastdesignation", lastdesignation);
-            }
-            else
-            {
-                lastdesignationParameter = new ObjectParameter("lastdesignation", typeof(global::System.String));
-            }
-    
-            ObjectParameter companynameParameter;
-            if (companyname != null)
-            {
-                companynameParameter = new ObjectParameter("companyname", companyname);
-            }
-            else
-            {
-                companynameParameter = new ObjectParameter("companyname", typeof(global::System.String));
-            }
-    
-            ObjectParameter clastdesignationParameter;
-            if (clastdesignation != null)
-            {
-                clastdesignationParameter = new ObjectParameter("clastdesignation", clastdesignation);
-            }
-            else
-            {
-                clastdesignationParameter = new ObjectParameter("clastdesignation", typeof(global::System.String));
-            }
-    
-            ObjectParameter cjoiningdateParameter;
-            if (cjoiningdate.HasValue)
-            {
-                cjoiningdateParameter = new ObjectParameter("cjoiningdate", cjoiningdate);
-            }
-            else
-            {
-                cjoiningdateParameter = new ObjectParameter("cjoiningdate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter clastdateParameter;
-            if (clastdate.HasValue)
-            {
-                clastdateParameter = new ObjectParameter("clastdate", clastdate);
-            }
-            else
-            {
-                clastdateParameter = new ObjectParameter("clastdate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter ctotalexperienceParameter;
-            if (ctotalexperience != null)
-            {
-                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", ctotalexperience);
-            }
-            else
-            {
-                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", typeof(global::System.String));
-            }
-    
-            ObjectParameter empemailParameter;
-            if (empemail != null)
-            {
-                empemailParameter = new ObjectParameter("empemail", empemail);
-            }
-            else
-            {
-                empemailParameter = new ObjectParameter("empemail", typeof(global::System.String));
-            }
-    
-            ObjectParameter empreligionParameter;
-            if (empreligion.HasValue)
-            {
-                empreligionParameter = new ObjectParameter("empreligion", empreligion);
-            }
-            else
-            {
-                empreligionParameter = new ObjectParameter("empreligion", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empcategoryParameter;
-            if (empcategory.HasValue)
-            {
-                empcategoryParameter = new ObjectParameter("empcategory", empcategory);
-            }
-            else
-            {
-                empcategoryParameter = new ObjectParameter("empcategory", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empcastParameter;
-            if (empcast.HasValue)
-            {
-                empcastParameter = new ObjectParameter("empcast", empcast);
-            }
-            else
-            {
-                empcastParameter = new ObjectParameter("empcast", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empmothertongueParameter;
-            if (empmothertongue.HasValue)
-            {
-                empmothertongueParameter = new ObjectParameter("empmothertongue", empmothertongue);
-            }
-            else
-            {
-                empmothertongueParameter = new ObjectParameter("empmothertongue", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter);
-        }
-
-        #endregion
-
-    }
-
-    #endregion
-
-    #region Entities
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sys_Module")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class sys_Module : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sys_Module object.
-        /// </summary>
-        /// <param name="moduleid">Initial value of the Moduleid property.</param>
-        public static sys_Module Createsys_Module(global::System.Int32 moduleid)
-        {
-            sys_Module sys_Module = new sys_Module();
-            sys_Module.Moduleid = moduleid;
-            return sys_Module;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Moduleid
-        {
-            get
-            {
-                return _Moduleid;
-            }
-            set
-            {
-                if (_Moduleid != value)
-                {
-                    OnModuleidChanging(value);
-                    ReportPropertyChanging("Moduleid");
-                    _Moduleid = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Moduleid");
-                    OnModuleidChanged();
-                }
-            }
->>>>>>> origin/master
         }
         private global::System.Int32 _Moduleid;
         partial void OnModuleidChanging(global::System.Int32 value);
@@ -10957,21 +9613,10 @@ namespace Entity
         /// Create a new tbl_class object.
         /// </summary>
         /// <param name="classid">Initial value of the Classid property.</param>
-<<<<<<< HEAD
         public static tbl_class Createtbl_class(global::System.Int32 classid)
         {
             tbl_class tbl_class = new tbl_class();
             tbl_class.Classid = classid;
-=======
-        /// <param name="status">Initial value of the status property.</param>
-        /// <param name="academicyear">Initial value of the academicyear property.</param>
-        public static tbl_class Createtbl_class(global::System.Int32 classid, global::System.Boolean status, global::System.String academicyear)
-        {
-            tbl_class tbl_class = new tbl_class();
-            tbl_class.Classid = classid;
-            tbl_class.status = status;
-            tbl_class.academicyear = academicyear;
->>>>>>> origin/master
             return tbl_class;
         }
 
@@ -11033,7 +9678,54 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _status;
+        partial void OnstatusChanging(Nullable<global::System.Boolean> value);
+        partial void OnstatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String academicyear
+        {
+            get
+            {
+                return _academicyear;
+            }
+            set
+            {
+                OnacademicyearChanging(value);
+                ReportPropertyChanging("academicyear");
+                _academicyear = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("academicyear");
+                OnacademicyearChanged();
+            }
+        }
+        private global::System.String _academicyear;
+        partial void OnacademicyearChanging(global::System.String value);
+        partial void OnacademicyearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Dept_id
@@ -11054,72 +9746,6 @@ namespace Entity
         private Nullable<global::System.Int32> _Dept_id;
         partial void OnDept_idChanging(Nullable<global::System.Int32> value);
         partial void OnDept_idChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> status
-=======
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean status
->>>>>>> origin/master
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                OnstatusChanging(value);
-                ReportPropertyChanging("status");
-                _status = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("status");
-                OnstatusChanged();
-            }
-        }
-<<<<<<< HEAD
-        private Nullable<global::System.Boolean> _status;
-        partial void OnstatusChanging(Nullable<global::System.Boolean> value);
-=======
-        private global::System.Boolean _status;
-        partial void OnstatusChanging(global::System.Boolean value);
->>>>>>> origin/master
-        partial void OnstatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-<<<<<<< HEAD
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-=======
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/master
-        [DataMemberAttribute()]
-        public global::System.String academicyear
-        {
-            get
-            {
-                return _academicyear;
-            }
-            set
-            {
-                OnacademicyearChanging(value);
-                ReportPropertyChanging("academicyear");
-<<<<<<< HEAD
-                _academicyear = StructuralObject.SetValidValue(value, true);
-=======
-                _academicyear = StructuralObject.SetValidValue(value, false);
->>>>>>> origin/master
-                ReportPropertyChanged("academicyear");
-                OnacademicyearChanged();
-            }
-        }
-        private global::System.String _academicyear;
-        partial void OnacademicyearChanging(global::System.String value);
-        partial void OnacademicyearChanged();
 
         #endregion
 
@@ -11554,7 +10180,6 @@ namespace Entity
         private global::System.Int32 _Empid;
         partial void OnEmpidChanging(global::System.Int32 value);
         partial void OnEmpidChanged();
-<<<<<<< HEAD
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11699,215 +10324,6 @@ namespace Entity
         private global::System.String _Zipcode;
         partial void OnZipcodeChanging(global::System.String value);
         partial void OnZipcodeChanged();
-=======
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String Emailid
-        {
-            get
-            {
-                return _Emailid;
-            }
-            set
-            {
-                OnEmailidChanging(value);
-                ReportPropertyChanging("Emailid");
-                _Emailid = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Emailid");
-                OnEmailidChanged();
-            }
-        }
-        private global::System.String _Emailid;
-        partial void OnEmailidChanging(global::System.String value);
-        partial void OnEmailidChanged();
-=======
-        public global::System.String FirstName
-        {
-            get
-            {
-                return _FirstName;
-            }
-            set
-            {
-                OnFirstNameChanging(value);
-                ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("FirstName");
-                OnFirstNameChanged();
-            }
-        }
-        private global::System.String _FirstName;
-        partial void OnFirstNameChanging(global::System.String value);
-        partial void OnFirstNameChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String PhoneNo
-        {
-            get
-            {
-                return _PhoneNo;
-            }
-            set
-            {
-                OnPhoneNoChanging(value);
-                ReportPropertyChanging("PhoneNo");
-                _PhoneNo = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PhoneNo");
-                OnPhoneNoChanged();
-            }
-        }
-        private global::System.String _PhoneNo;
-        partial void OnPhoneNoChanging(global::System.String value);
-        partial void OnPhoneNoChanged();
-=======
-        public global::System.String MiddleName
-        {
-            get
-            {
-                return _MiddleName;
-            }
-            set
-            {
-                OnMiddleNameChanging(value);
-                ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("MiddleName");
-                OnMiddleNameChanged();
-            }
-        }
-        private global::System.String _MiddleName;
-        partial void OnMiddleNameChanging(global::System.String value);
-        partial void OnMiddleNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String LastName
-        {
-            get
-            {
-                return _LastName;
-            }
-            set
-            {
-                OnLastNameChanging(value);
-                ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("LastName");
-                OnLastNameChanged();
-            }
-        }
-        private global::System.String _LastName;
-        partial void OnLastNameChanging(global::System.String value);
-        partial void OnLastNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Cityid
-        {
-            get
-            {
-                return _Cityid;
-            }
-            set
-            {
-                OnCityidChanging(value);
-                ReportPropertyChanging("Cityid");
-                _Cityid = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Cityid");
-                OnCityidChanged();
-            }
-        }
-        private global::System.Int32 _Cityid;
-        partial void OnCityidChanging(global::System.Int32 value);
-        partial void OnCityidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Stateid
-        {
-            get
-            {
-                return _Stateid;
-            }
-            set
-            {
-                OnStateidChanging(value);
-                ReportPropertyChanging("Stateid");
-                _Stateid = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Stateid");
-                OnStateidChanged();
-            }
-        }
-        private global::System.Int32 _Stateid;
-        partial void OnStateidChanging(global::System.Int32 value);
-        partial void OnStateidChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-<<<<<<< HEAD
-        [DataMemberAttribute()]
-        public global::System.String MobileNo
-        {
-            get
-            {
-                return _MobileNo;
-            }
-            set
-            {
-                OnMobileNoChanging(value);
-                ReportPropertyChanging("MobileNo");
-                _MobileNo = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("MobileNo");
-                OnMobileNoChanged();
-            }
-        }
-        private global::System.String _MobileNo;
-        partial void OnMobileNoChanging(global::System.String value);
-        partial void OnMobileNoChanged();
-=======
-        [DataMemberAttribute()]
-        public global::System.String Zipcode
-        {
-            get
-            {
-                return _Zipcode;
-            }
-            set
-            {
-                OnZipcodeChanging(value);
-                ReportPropertyChanging("Zipcode");
-                _Zipcode = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Zipcode");
-                OnZipcodeChanged();
-            }
-        }
-        private global::System.String _Zipcode;
-        partial void OnZipcodeChanging(global::System.String value);
-        partial void OnZipcodeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12004,32 +10420,6 @@ namespace Entity
         private global::System.String _Address;
         partial void OnAddressChanging(global::System.String value);
         partial void OnAddressChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String Address
-        {
-            get
-            {
-                return _Address;
-            }
-            set
-            {
-                OnAddressChanging(value);
-                ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Address");
-                OnAddressChanged();
-            }
-        }
-        private global::System.String _Address;
-        partial void OnAddressChanging(global::System.String value);
-        partial void OnAddressChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12051,23 +10441,6 @@ namespace Entity
                 OnFaxChanged();
             }
         }
-=======
-        public global::System.String Fax
-        {
-            get
-            {
-                return _Fax;
-            }
-            set
-            {
-                OnFaxChanging(value);
-                ReportPropertyChanging("Fax");
-                _Fax = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Fax");
-                OnFaxChanged();
-            }
-        }
->>>>>>> origin/master
         private global::System.String _Fax;
         partial void OnFaxChanging(global::System.String value);
         partial void OnFaxChanged();
@@ -12527,8 +10900,6 @@ namespace Entity
         private global::System.String _university1;
         partial void Onuniversity1Changing(global::System.String value);
         partial void Onuniversity1Changed();
-<<<<<<< HEAD
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12553,33 +10924,12 @@ namespace Entity
         private global::System.String _precentage1;
         partial void Onprecentage1Changing(global::System.String value);
         partial void Onprecentage1Changed();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String precentage1
-        {
-            get
-            {
-                return _precentage1;
-            }
-            set
-            {
-                Onprecentage1Changing(value);
-                ReportPropertyChanging("precentage1");
-                _precentage1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("precentage1");
-                Onprecentage1Changed();
-            }
-        }
-        private global::System.String _precentage1;
-        partial void Onprecentage1Changing(global::System.String value);
-        partial void Onprecentage1Changed();
-=======
         public global::System.String yearpasing1
         {
             get
@@ -12598,33 +10948,12 @@ namespace Entity
         private global::System.String _yearpasing1;
         partial void Onyearpasing1Changing(global::System.String value);
         partial void Onyearpasing1Changed();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String yearpasing1
-        {
-            get
-            {
-                return _yearpasing1;
-            }
-            set
-            {
-                Onyearpasing1Changing(value);
-                ReportPropertyChanging("yearpasing1");
-                _yearpasing1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("yearpasing1");
-                Onyearpasing1Changed();
-            }
-        }
-        private global::System.String _yearpasing1;
-        partial void Onyearpasing1Changing(global::System.String value);
-        partial void Onyearpasing1Changed();
-=======
         public Nullable<global::System.Int32> qualication2
         {
             get
@@ -12643,33 +10972,12 @@ namespace Entity
         private Nullable<global::System.Int32> _qualication2;
         partial void Onqualication2Changing(Nullable<global::System.Int32> value);
         partial void Onqualication2Changed();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public Nullable<global::System.Int32> qualication2
-        {
-            get
-            {
-                return _qualication2;
-            }
-            set
-            {
-                Onqualication2Changing(value);
-                ReportPropertyChanging("qualication2");
-                _qualication2 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("qualication2");
-                Onqualication2Changed();
-            }
-        }
-        private Nullable<global::System.Int32> _qualication2;
-        partial void Onqualication2Changing(Nullable<global::System.Int32> value);
-        partial void Onqualication2Changed();
-=======
         public global::System.String university2
         {
             get
@@ -12688,59 +10996,12 @@ namespace Entity
         private global::System.String _university2;
         partial void Onuniversity2Changing(global::System.String value);
         partial void Onuniversity2Changed();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String university2
-        {
-            get
-            {
-                return _university2;
-            }
-            set
-            {
-                Onuniversity2Changing(value);
-                ReportPropertyChanging("university2");
-                _university2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("university2");
-                Onuniversity2Changed();
-            }
-        }
-        private global::System.String _university2;
-        partial void Onuniversity2Changing(global::System.String value);
-        partial void Onuniversity2Changed();
-=======
-        public global::System.String precentage2
-        {
-            get
-            {
-                return _precentage2;
-            }
-            set
-            {
-                Onprecentage2Changing(value);
-                ReportPropertyChanging("precentage2");
-                _precentage2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("precentage2");
-                Onprecentage2Changed();
-            }
-        }
-        private global::System.String _precentage2;
-        partial void Onprecentage2Changing(global::System.String value);
-        partial void Onprecentage2Changed();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
         public global::System.String precentage2
         {
             get
@@ -12780,23 +11041,6 @@ namespace Entity
                 Onyearpasing2Changed();
             }
         }
-=======
-        public global::System.String yearpasing2
-        {
-            get
-            {
-                return _yearpasing2;
-            }
-            set
-            {
-                Onyearpasing2Changing(value);
-                ReportPropertyChanging("yearpasing2");
-                _yearpasing2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("yearpasing2");
-                Onyearpasing2Changed();
-            }
-        }
->>>>>>> origin/master
         private global::System.String _yearpasing2;
         partial void Onyearpasing2Changing(global::System.String value);
         partial void Onyearpasing2Changed();
@@ -13256,8 +11500,6 @@ namespace Entity
         private global::System.String _parentoccupation;
         partial void OnparentoccupationChanging(global::System.String value);
         partial void OnparentoccupationChanged();
-<<<<<<< HEAD
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13282,33 +11524,12 @@ namespace Entity
         private global::System.String _parentqualification;
         partial void OnparentqualificationChanging(global::System.String value);
         partial void OnparentqualificationChanged();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String parentqualification
-        {
-            get
-            {
-                return _parentqualification;
-            }
-            set
-            {
-                OnparentqualificationChanging(value);
-                ReportPropertyChanging("parentqualification");
-                _parentqualification = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("parentqualification");
-                OnparentqualificationChanged();
-            }
-        }
-        private global::System.String _parentqualification;
-        partial void OnparentqualificationChanging(global::System.String value);
-        partial void OnparentqualificationChanged();
-=======
         public global::System.String parentsemail
         {
             get
@@ -13351,33 +11572,12 @@ namespace Entity
         private global::System.String _parentsaddress;
         partial void OnparentsaddressChanging(global::System.String value);
         partial void OnparentsaddressChanged();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String parentsemail
-        {
-            get
-            {
-                return _parentsemail;
-            }
-            set
-            {
-                OnparentsemailChanging(value);
-                ReportPropertyChanging("parentsemail");
-                _parentsemail = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("parentsemail");
-                OnparentsemailChanged();
-            }
-        }
-        private global::System.String _parentsemail;
-        partial void OnparentsemailChanging(global::System.String value);
-        partial void OnparentsemailChanged();
-=======
         public Nullable<global::System.Int32> parentscode
         {
             get
@@ -13396,104 +11596,12 @@ namespace Entity
         private Nullable<global::System.Int32> _parentscode;
         partial void OnparentscodeChanging(Nullable<global::System.Int32> value);
         partial void OnparentscodeChanged();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String parentsaddress
-        {
-            get
-            {
-                return _parentsaddress;
-            }
-            set
-            {
-                OnparentsaddressChanging(value);
-                ReportPropertyChanging("parentsaddress");
-                _parentsaddress = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("parentsaddress");
-                OnparentsaddressChanged();
-            }
-        }
-        private global::System.String _parentsaddress;
-        partial void OnparentsaddressChanging(global::System.String value);
-        partial void OnparentsaddressChanged();
-=======
-        public global::System.String parentscontact
-        {
-            get
-            {
-                return _parentscontact;
-            }
-            set
-            {
-                OnparentscontactChanging(value);
-                ReportPropertyChanging("parentscontact");
-                _parentscontact = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("parentscontact");
-                OnparentscontactChanged();
-            }
-        }
-        private global::System.String _parentscontact;
-        partial void OnparentscontactChanging(global::System.String value);
-        partial void OnparentscontactChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
-        public Nullable<global::System.Int32> parentscode
-        {
-            get
-            {
-                return _parentscode;
-            }
-            set
-            {
-                OnparentscodeChanging(value);
-                ReportPropertyChanging("parentscode");
-                _parentscode = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("parentscode");
-                OnparentscodeChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _parentscode;
-        partial void OnparentscodeChanging(Nullable<global::System.Int32> value);
-        partial void OnparentscodeChanged();
-=======
-        public global::System.Byte[] parentspic
-        {
-            get
-            {
-                return StructuralObject.GetValidValue(_parentspic);
-            }
-            set
-            {
-                OnparentspicChanging(value);
-                ReportPropertyChanging("parentspic");
-                _parentspic = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("parentspic");
-                OnparentspicChanged();
-            }
-        }
-        private global::System.Byte[] _parentspic;
-        partial void OnparentspicChanging(global::System.Byte[] value);
-        partial void OnparentspicChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
         public global::System.String parentscontact
         {
             get
@@ -13536,7 +11644,12 @@ namespace Entity
         private global::System.Byte[] _parentspic;
         partial void OnparentspicChanging(global::System.Byte[] value);
         partial void OnparentspicChanged();
-=======
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String pstreet
         {
             get
@@ -13555,59 +11668,12 @@ namespace Entity
         private global::System.String _pstreet;
         partial void OnpstreetChanging(global::System.String value);
         partial void OnpstreetChanged();
->>>>>>> origin/master
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
-        public global::System.String pstreet
-        {
-            get
-            {
-                return _pstreet;
-            }
-            set
-            {
-                OnpstreetChanging(value);
-                ReportPropertyChanging("pstreet");
-                _pstreet = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("pstreet");
-                OnpstreetChanged();
-            }
-        }
-        private global::System.String _pstreet;
-        partial void OnpstreetChanging(global::System.String value);
-        partial void OnpstreetChanged();
-=======
-        public Nullable<global::System.Int32> pcity
-        {
-            get
-            {
-                return _pcity;
-            }
-            set
-            {
-                OnpcityChanging(value);
-                ReportPropertyChanging("pcity");
-                _pcity = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("pcity");
-                OnpcityChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _pcity;
-        partial void OnpcityChanging(Nullable<global::System.Int32> value);
-        partial void OnpcityChanged();
->>>>>>> origin/master
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-<<<<<<< HEAD
         public Nullable<global::System.Int32> pcity
         {
             get
@@ -13647,23 +11713,6 @@ namespace Entity
                 OnpstateChanged();
             }
         }
-=======
-        public Nullable<global::System.Int32> pstate
-        {
-            get
-            {
-                return _pstate;
-            }
-            set
-            {
-                OnpstateChanging(value);
-                ReportPropertyChanging("pstate");
-                _pstate = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("pstate");
-                OnpstateChanged();
-            }
-        }
->>>>>>> origin/master
         private Nullable<global::System.Int32> _pstate;
         partial void OnpstateChanging(Nullable<global::System.Int32> value);
         partial void OnpstateChanged();
@@ -26436,157 +24485,6 @@ namespace Entity
         private global::System.String _status;
         partial void OnstatusChanging(global::System.String value);
         partial void OnstatusChanged();
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getClass_Result")]
-    [DataContractAttribute(IsReference=true)]
-    [Serializable()]
-    public partial class sp_getClass_Result : ComplexObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sp_getClass_Result object.
-        /// </summary>
-        /// <param name="classid">Initial value of the Classid property.</param>
-        /// <param name="status">Initial value of the status property.</param>
-        public static sp_getClass_Result Createsp_getClass_Result(global::System.Int32 classid, global::System.String status)
-        {
-            sp_getClass_Result sp_getClass_Result = new sp_getClass_Result();
-            sp_getClass_Result.Classid = classid;
-            sp_getClass_Result.status = status;
-            return sp_getClass_Result;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Classid
-        {
-            get
-            {
-                return _Classid;
-            }
-            set
-            {
-                OnClassidChanging(value);
-                ReportPropertyChanging("Classid");
-                _Classid = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Classid");
-                OnClassidChanged();
-            }
-        }
-        private global::System.Int32 _Classid;
-        partial void OnClassidChanging(global::System.Int32 value);
-        partial void OnClassidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Classnm
-        {
-            get
-            {
-                return _Classnm;
-            }
-            set
-            {
-                OnClassnmChanging(value);
-                ReportPropertyChanging("Classnm");
-                _Classnm = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Classnm");
-                OnClassnmChanged();
-            }
-        }
-        private global::System.String _Classnm;
-        partial void OnClassnmChanging(global::System.String value);
-        partial void OnClassnmChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Dept_name
-        {
-            get
-            {
-                return _Dept_name;
-            }
-            set
-            {
-                OnDept_nameChanging(value);
-                ReportPropertyChanging("Dept_name");
-                _Dept_name = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Dept_name");
-                OnDept_nameChanged();
-            }
-        }
-        private global::System.String _Dept_name;
-        partial void OnDept_nameChanging(global::System.String value);
-        partial void OnDept_nameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String status
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                OnstatusChanging(value);
-                ReportPropertyChanging("status");
-                _status = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("status");
-                OnstatusChanged();
-            }
-        }
-        private global::System.String _status;
-        partial void OnstatusChanging(global::System.String value);
-        partial void OnstatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String academicyear
-        {
-            get
-            {
-                return _academicyear;
-            }
-            set
-            {
-                OnacademicyearChanging(value);
-                ReportPropertyChanging("academicyear");
-                _academicyear = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("academicyear");
-                OnacademicyearChanged();
-            }
-        }
-        private global::System.String _academicyear;
-        partial void OnacademicyearChanging(global::System.String value);
-        partial void OnacademicyearChanged();
 
         #endregion
 

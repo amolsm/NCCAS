@@ -161,7 +161,7 @@
             <ul class="breadcrumb">
                 <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                 @Html.ActionLink("Masters", "Class", "Masters", "")<i class="icon-angle-right"></i></li>
-                <li class="active">Class Master</li>
+                <li class="active">Course Master</li>
              @*   <div style="float:right; ">
                     @using (Html.BeginForm())
                     {
@@ -212,6 +212,14 @@
                                         @Html.EditorFor(model => model.Classnm, new { @class="input-xlarge focused" ,@id="focusedInput", @type="text" })
                                         @Html.ValidationMessageFor(model => model.Classnm)
                                                  </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.Dept_Id, new { @class = "control-label", @for = "focusedInput" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(model => model.Dept_Id, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.Dept_Id)
+                                        </div>
                                     </div>
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.academicyear, new { @class="control-label"})

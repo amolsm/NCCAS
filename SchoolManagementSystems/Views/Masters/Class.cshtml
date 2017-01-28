@@ -224,7 +224,7 @@
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.academicyear, new { @class="control-label"})
                                              <div class="controls">
-                                        @*@Html.EditorFor(model => model.academicyear, new { @class = "col-md-5 form-control form_in" })*@
+                                      
                                         @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.academicyear), "Select Year", new { @class = "form-control mar" })
                                         @Html.ValidationMessageFor(model => model.academicyear)
                                                  </div>
