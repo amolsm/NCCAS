@@ -1,5 +1,6 @@
 ﻿@model Entity.employeeviewmodel
 @{
+    
     ViewBag.Title = "Employee Master";
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }
@@ -11,18 +12,139 @@
     });
     $(document).ready(function () {
         FillPermission();
+      
         FillType();
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker').datepicker('setDate', new Date());
+
+        $('#datepicker1').attr("readonly", true);
+
+        $('#datepicker1').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker1').datepicker('setDate', new Date());
+
+        $('#datepicker5').attr("readonly", true);
+
+        $('.date1').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('.date1').datepicker('setDate', new Date());
+
+        $('.date1').attr("readonly", true);
+
+        $('#datepicker5').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker5').datepicker('setDate', new Date());
+        $('#datepicker6').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker6').datepicker('setDate', new Date());
+        $('#datepicker2').attr("readonly", true);
+
+        $('#datepicker2').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker2').datepicker('setDate', new Date());
+
+        $('#datepicker3').attr("readonly", true);
+
+        $('#datepicker3').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker3').datepicker('setDate', new Date());
+
+        $('#datepicker4').attr("readonly", true);
+
+        $('#datepicker4').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker4').datepicker('setDate', new Date());
+
+
         function FillType() {
             var item = '<option value="">select Type</option>';
             item += '<option value="4">Teacher</option>';
             item += '<option value="5">Employee</option>';
             $("#Typeid").append(item);
         }
+       
         $("#lblmsg").text('');
         $('#empid input').attr("readonly", true);
         if ($("#empid input").val() == "0") {
             $("#empid").hide();
         }
+
+
 
         $("#result").on("click", ".edit", function (evt) {
             var Empid = this.id;
@@ -57,8 +179,8 @@
                     $("#PhoneNo").val(data.PhoneNo);
                     $("#MobileNo").val(data.MobileNo);
                     $("#Code").val(data.Code);
-                    $("#Typeid").val(data.Typeid)
-                    $("#Zipcode").val(data.Zipcode)
+                    $("#Typeid").val(data.Typeid);
+                    $("#Zipcode").val(data.Zipcode);
                     $("#Stateid").val(data.Stateid);
                     $("#Cityid").empty();
                     $.ajax({
@@ -84,6 +206,78 @@
                             alert('Failed to retrieve cities.' + ex);
                         }
                     });
+                    $("#Gender").val(data.Gender);
+                    $('#edepartment').val(data.department);
+                    $("#collagename").val(data.collagename);
+                    $("#total").val(data.totalexperience);
+                    $("#ctotal").val(data.ctotalexperience);
+                    $("#university").val(data.affliateduniversity);
+                    $("#joiningdate").val(data.joiningdate);
+                    $("#lastdate").val(data.lastdate);
+                    $("#cjoiningdate").val(data.cjoiningdate);
+                    $("#clastdate").val(data.clastdate);
+                    $("#ldesignation").val(data.lastdesignation);
+                    $("#companyname").val(data.companyname);
+                    $("#clastdesignatio").val(data.clastdesignatio);
+                    $("#employeeemail").val(data.empemail);
+                    $("#empreligion").val(data.empreligion);
+                    $("#empcategory").val(data.empcategory);
+                    $("#empcast").val(data.empcast);
+                    $("#mtongue").val(data.empmothertongue);
+                    $("#eweight").val(data.weightinkg);
+                    $("#eheight").val(data.heightc);
+                    $("#eidtype").val(data.eidtype);
+                    $("#relationship").val(data.relation);
+                    $("#dname").val(data.doctorname);
+                    $("#dcontact").val(data.doctorcontact);
+                    $("#daddress").val(data.doctoraddress);
+                    $("#DCode").val(data.doctorcode);
+                    $("#eblood").val(data.bloodgroup);
+                    $("#equalification1").val(data.qualication1);
+                    $("#euniversity1").val(data.university1);
+                    $("#eprecentage1").val(data.precentage1);
+                    $("#eYearofpassing1").val(data.yearpasing1);
+                    $("#equalification2").val(data.qualication2);
+                    $("#euniversity2").val(data.university2);
+                    $("#eprecentage2").val(data.precentage2);
+                    $("#eYearofpassing2").val(data.yearpasing2);
+                    $("#equalification3").val(data.qualication3);
+                    $("#euniversity3").val(data.university3);
+                    $("#eprecentage3").val(data.precentage3);
+                    $("#eYearofpassing3").val(data.yearpasing3);
+                    $("#equalification4").val(data.qualication4);
+                    $("#euniversity4").val(data.university4);
+                    $("#eprecentage4").val(data.precentage4);
+                    $("#eYearofpassing4").val(data.yearpasing4);
+                    $("#pname").val(data.parentsname);
+                    $("#poccupation").val(data.parentoccupation);
+                    $("#pqualification").val(data.parentqualification);
+                    $("#pemail").val(data.parentsemail);
+                    $("#pofficeaddress").val(data.parentsaddress);
+                    $("#pcontact").val(data.parentscontact);
+                    $("#PCODE").val(data.parentscode);
+                    //$("#ppic").val('');
+                    $("#pastreet").val(data.pstreet);
+                    $("#pacity").val(data.pcity);
+                    $("#pastate").val(data.pstate);
+                    $("#pacountry").val(data.pcountry);
+                    $("#papin").val(data.ppin);
+                    $("#cstreet").val(data.cstreet);
+                    $("#ccity").val(data.ccity);
+                    $("#cstate").val(data.cstate);
+
+                    $("#ccountry ").val(data.ccountry);
+                    $("#cpin ").val(data.cpin);
+                    $("#phome ").val(data.homecontact);
+                    $("#PHCODE ").val(data.homecode);
+                    $("#hmobile ").val(data.cmobile);
+                    $("#MCODE ").val(data.cmobilecode);
+                    $("#bankname ").val(data.bankname);
+                    $("#branch ").val(data.branch);
+                    $("#ifsccode ").val(data.ifsccode);
+                    $("#accountno").val(data.accountno);
+                    $("#acname").val(data.accountname);
+
                 }
             });
         });
@@ -117,13 +311,13 @@
         $('#datepicker1').datepicker('setDate', new Date());
         $('#datepicker').focus();
 
-<<<<<<< HEAD
         $("#insert").click(function (e) {
-            Validations(e);
-            $.ajax({
+           Validations(e);
+          $.ajax({
                 type: 'POST',
                 url: '@Url.Action("DMLEmp")',
                 data: $('#frm').serialize() + "&evt=submit&id=0",
+                error: function () { alert("doh!"); },
                 success: function (result) {
                     $("#msgs").show();
                     $("#lblmsgs").text("Employee Info updated successfully!..");
@@ -135,30 +329,7 @@
                 }
             });
         });
-=======
         
-            $("#insert").click(function () {
-                setTimeout(function () {
-                    validations();
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("DMLEmp")',
-                    data: $('#frm').serialize() + "&evt=submit&id=0",
-                    success: function (result) {
-                        $("#msgs").show();
-                        $("#lblmsgs").text("Employee updated successfully!..");
-                        $("#lblmsgs").css({ "color": "green" });
-                        $("#lblmsgs").css({ "font-size": "15px" });
-                        $("#result").html(result);
-                        clear();
-                        ReloadPaging();
-                    }
-                });
-            }, 1000);
-             });
-    
->>>>>>> origin/master
-
         $("#reset").click(function () {
             clear();
             clearmsg();
@@ -208,6 +379,79 @@
             $("#Typeid").val('');
             $('#datepicker').datepicker('setDate', new Date());
             $('#datepicker1').datepicker('setDate', new Date());
+            $("#Gender").val('0');
+            $('#edepartment').val('0');
+            $("#collagename").val('');
+            $("#MiddleName").val('');
+            $("#total").val('');
+            $("#ctotal").val('');
+            $("#university").val('');
+            $("#joiningdate").val('');
+            $("#lastdate").val('');
+            $("#cjoiningdate").val('');
+            $("#clastdate").val('');
+            $("#ldesignation").val('');
+            $("#companyname").val('');
+            $("#clastdesignatio").val('');
+            $("#employeeemail").val('');
+            $("#empreligion").val('0');
+            $("#empcategory").val('0');
+            $("#empcast").val('0');
+            $("#mtongue").val('0');
+            $("#eweight").val('');
+            $("#eheight").val('');
+            $("#emppic").val('');
+            $("#eidtype").val('0');
+            $("#relationship").val('0');
+            $("#dname").val('');
+            $("#dcontact").val('');
+            $("#daddress").val('');
+            $("#DCode").val('');
+            $("#eblood").val('0');
+            $("#equalification1").val('0');
+            $("#euniversity1").val('');
+            $("#eprecentage1").val('');
+            $("#eYearofpassing1").val('');
+            $("#equalification2").val('0');
+            $("#euniversity2").val('');
+            $("#eprecentage2").val('');
+            $("#eYearofpassing2").val('');
+            $("#equalification3").val('0');
+            $("#euniversity3").val('');
+            $("#eprecentage3").val('');
+            $("#eYearofpassing3").val('');
+            $("#equalification4").val('0');
+            $("#euniversity4").val('');
+            $("#eprecentage4").val('');
+            $("#eYearofpassing4").val('');
+            $("#pname").val('');
+            $("#poccupation").val('');
+            $("#pqualification").val('');
+            $("#pemail").val('');
+            $("#pofficeaddress").val('');
+            $("#pcontact").val('');
+            $("#PCODE").val('');
+            $("#ppic").val('');
+            $("#pastreet").val('');
+            $("#pacity").val('0');
+            $("#pastate").val('0');
+            $("#pacountry").val('0');
+            $("#papin").val('');
+            $("#cstreet").val('0');
+            $("#ccity").val('0');
+            $("#cstate").val('0');
+
+            $("#ccountry ").val('0');
+            $("#cpin ").val('');
+            $("#phome ").val('');
+            $("#PHCODE ").val('');
+            $("#hmobile ").val('');
+            $("#MCODE ").val('');
+            $("#bankname ").val('');
+            $("#branch ").val('');
+            $("#ifsccode ").val('');
+            $("#accountno").val('');
+            $("#acname").val('');
         }
 
         function Validations(e) {
@@ -217,7 +461,7 @@
                 $("#FirstName").css({
                     "border": "1px solid red"
                 });
-                alert("academic year Mandatory!");
+                alert("First Name Mandatory!");
                 e.preventDefault();
                 return false;
             }
@@ -227,217 +471,198 @@
                     "background": ""
                 });
             }
-            if (cnt != 0) {
+
+            var cnt = 0;
+            if ($("#LastName").val() == '') {
+                cnt++;
+                $("#LastName").css({
+                    "border": "1px solid red"
+                });
+                alert("Last Name Mandatory!");
                 e.preventDefault();
+                return false;
+            }
+            else {
+                $("#LastName").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            
+
+            if ($("#MiddleName").val() == '') {
+                cnt++;
+                $("#MiddleName").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#MiddleName").css({
+                    "border": "",
+                    "background": ""
+                });
+            } 
+
+            if ($("#Emailid").val() == '') {
+                cnt++;
+                $("#Emailid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Emailid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#PhoneNo").val() == '') {
+                cnt++;
+                $("#PhoneNo").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#PhoneNo").css({
+                    "border": "",
+                    "background": ""
+                });
             }
 
-        //    if ($("#MiddleName").val() == '') {
-        //        cnt++;
-        //        $("#MiddleName").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#MiddleName").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
+            if ($("#MobileNo").val() == '') {
+                cnt++;
+                $("#MobileNo").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#MobileNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-        //    if ($("#LastName").val() == '') {
-        //        cnt++;
-        //        $("#LastName").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#LastName").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
+            if ($("#Code").val() == '') {
+                cnt++;
+                $("#Code").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Code").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-        //    if ($("#datepicker").val() == '') {
-        //        cnt++;
-        //        $("#datepicker").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#datepicker").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
+            if ($("#Typeid").val() == '' || $("#Typeid").val() == '0') {
+                cnt++;
+                $("#Typeid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Typeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#eidtype").val() == '' || $("#eidtype").val() == '0') {
+                cnt++;
+                $("#eidtype").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#eidtype").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#equalification1").val() == '' || $("#equalification1").val() == '0') {
+                cnt++;
+                $("#equalification1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#equalification1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#euniversity1").val() == '' || $("#euniversity1").val() == '0') {
+                cnt++;
+                $("#euniversity1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#euniversity1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#eprecentage1").val() == '' || $("#eprecentage1").val() == '0') {
+                cnt++;
+                $("#eprecentage1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#eprecentage1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#eYearofpassing1").val() == '' || $("#eYearofpassing1").val() == '0') {
+                cnt++;
+                $("#eYearofpassing1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#eYearofpassing1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#relationship").val() == '' || $("#relationship").val() == '0') {
+                cnt++;
+                $("#relationship").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#relationship").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-        //    if ($("#datepicker1").val() == '') {
-        //        cnt++;
-        //        $("#datepicker1").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#datepicker1").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Emailid").val() == '') {
-        //        cnt++;
-        //        $("#Emailid").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Emailid").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Quallification").val() == '') {
-        //        cnt++;
-        //        $("#Quallification").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Quallification").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Address").val() == '') {
-        //        cnt++;
-        //        $("#Address").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Address").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Zipcode").val() == '') {
-        //        cnt++;
-        //        $("#Zipcode").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Zipcode").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#PhoneNo").val() == '') {
-        //        cnt++;
-        //        $("#PhoneNo").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#PhoneNo").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#MobileNo").val() == '') {
-        //        cnt++;
-        //        $("#MobileNo").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#MobileNo").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Code").val() == '') {
-        //        cnt++;
-        //        $("#Code").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Code").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-
-        //    if ($("#Stateid").val() == '' || $("#Stateid").val() == '0') {
-        //        cnt++;
-        //        $("#Stateid").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Stateid").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Cityid").val() == '' || $("#Cityid").val() == '0') {
-        //        cnt++;
-        //        $("#Cityid").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Cityid").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-        //    if ($("#Typeid").val() == '' || $("#Typeid").val() == '0') {
-        //        cnt++;
-        //        $("#Typeid").css({
-        //            "border": "1px solid red"
-        //        });
-        //    }
-        //    else {
-        //        $("#Typeid").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-
-
-        //    if (cnt != 0) {
-        //        e.preventDefault();
-        //    }
+            if (cnt != 0) {
+                e.preventDefault();
+                
+            }
         }
 
-        $("#Stateid").change(function () {
-            $("#Cityid").empty();
+        $("#pastate").change(function () {
+            $("#pacity").empty();
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GetCities")',
                 dataType: 'json',
-                data: { id: $("#Stateid").val() },
+                data: { id: $("#pastate").val() },
                 success: function (cities) {
                     if (cities != "") {
                         var item = '<option value="0">select City</option>';
                         $.each(cities, function (i, city) {
                             item += '<option value="' + city.Value + '">' + city.Text + '</option>';
                         });
-                        $("#Cityid").append(item);
+                        $("#pacity").append(item);
                     }
                     else {
                         var item = '<option value="0">select City</option>';
-                        $("#Cityid").append(item);
+                        $("#pacity").append(item);
                     }
                 },
                 error: function (ex) {
@@ -446,7 +671,32 @@
             });
             return false;
         })
-
+        $("#cstate").change(function () {
+            $("#ccity").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCities")',
+                dataType: 'json',
+                data: { id: $("#cstate").val() },
+                success: function (cities) {
+                    if (cities != "") {
+                        var item = '<option value="0">select City</option>';
+                        $.each(cities, function (i, city) {
+                            item += '<option value="' + city.Value + '">' + city.Text + '</option>';
+                        });
+                        $("#ccity").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">select City</option>';
+                        $("#ccity").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve cities.' + ex);
+                }
+            });
+            return false;
+        })
         $('#Emailid').change(function () {
             $("#lblmsg").text("");
             var Emailid = $('#Emailid').val();
@@ -481,45 +731,57 @@
         //    }
         //});
 
-        //$("#MobileNo").keypress(function (e) {
-        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-        //        return false;
-        //    }
-        //});
+        $("#MobileNo").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
 
-        //$("#Code").keypress(function (e) {
-        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-        //        return false;
-        //    }
-        //});
+        $("#Code").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
 
-        //function ValidateEmail(email) {
-        //    var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-        //    return expr.test(email);
-        //};
+        function ValidateEmail(email) {
+            var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return expr.test(email);
+        };
 
-        //$('#Emailid').blur(function () {
-        //    if (!ValidateEmail($("#Emailid").val())) {
-        //        $("#Emailid").css({
-        //            "border": "1px solid red"
-        //        });
-        //        $('#Emailid').val('');
-        //        alert("Email address is invalid!..");
-        //        return false;
-        //    }
-        //    else {
-        //        $("#Emailid").css({
-        //            "border": "",
-        //            "background": ""
-        //        });
-        //    }
-        //});
+        $('#Emailid').blur(function () {
+            if (!ValidateEmail($("#Emailid").val())) {
+                $("#Emailid").css({
+                    "border": "1px solid red"
+                });
+                $('#Emailid').val('');
+                alert("Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#Emailid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
 
-        $("#clastdate").change(function () {
-            var c = $("#cjoiningdate").val();
-            var d = $("#clastdate").val();
+        $('#datepicker5').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker5').datepicker('setDate', new Date());
+        $("#datepicker5").change(function () {
+            var c = $("#datepicker2").val();
+            var d = $("#datepicker5").val();
             var a = new Date(c);
             var b = new Date(d);
             var day = Math.round(Math.abs((a.getDate() - b.getDate())));
@@ -527,15 +789,19 @@
             var month = Math.round(Math.abs((a.getMonth() - b.getMonth())));
             $("#total").val(day + " Days " + month + " Months " + year + " Years");
         });
-        $("#lastdate").change(function () {
-            var c = $("#joiningdate").val();
-            var d = $("#lastdate").val();
-            var a = new Date(c);
-            var b = new Date(d);
+        $("#clastdate").change(function () {
+            debugger;
+            
+            var a = $("#cjoiningdate").val();
+            var b = $("#clastdate").val();
+            var c = new Date(a);
+            var d = new Date(b);
             var day = Math.round(Math.abs((a.getDate() - b.getDate())));
             var year = Math.round(Math.abs((a.getYear() - b.getYear())));
             var month = Math.round(Math.abs((a.getMonth() - b.getMonth())));
             $("#ctotal").val(day + " Days " + month + " Months " + year + " Years");
+
+           
         });
         ReloadPaging();
 
@@ -618,19 +884,11 @@
 						</div>
 					</div>
                                		<div class="box-content">
-<<<<<<< HEAD
-						<div id="AddForm" class="form-horizontal">
-                              
+
 						
-                                  <fieldset>
-                                   @using (Html.BeginForm("DMLEmp", "Masters", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
-                                   { 
-=======
-						<div id="frm" class="form-horizontal">
-                              
-						
-                                  <fieldset>
-                                       <div id="tabs">
+						<form id="frm" class="form-horizontal">
+                              <fieldset>
+                                  <div id="tabs">
                                         <ul id="tabss" class="nav navbar-nav">
                                             <li id="tab1" class="active back"><a href="#tabs-1" style="color: blue;">Employee Details</a></li>
                                             <li id="tab2" class="back"><a href="#tabs-2" style="color: blue;">Personal Details</a></li>
@@ -638,16 +896,16 @@
                                                 <a href="#tabs-3" style="color: blue;">Previous Experience Details</a>
                                             </li>
                                         </ul>  
-                                      <div id="AddForm" style="display: none;">
-                                   @using (Html.BeginForm("DMLEmp", "Masters", FormMethod.Post, new { id = "frm", enctype = "multipart/form-data", @class = "form-horizontal" }))
-                                   {
-                                         
->>>>>>> origin/master
+                                      <div id="AddForm" style="display: none;">   
+                                   @using (Html.BeginForm("DMLEmp", "Masters", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                            {
+                                        
                                         @Html.ValidationSummary(true)
                                        var fromdt = Convert.ToString(System.DateTime.Now.Year);
                                        var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
                                        var session = Convert.ToString(fromdt + "-" + todt);
-                                   
+                                    
+                                        
                                       <div id="tabs-1">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Employee Details</legend>
@@ -688,10 +946,35 @@
                                                 @Html.LabelFor(model => model.DOB, new { @class = "control-label" })
                                           
                                             <div  class="controls">
-                                                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", placeholder = "Select Date of birth" })
+                                                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker6", @readonly="readonly", placeholder = "Select Date of birth" })
                                                 @Html.ValidationMessageFor(model => model.DOB)
                                             </div>
                                                       </div>
+
+                                                        
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Emailid, new { @class = "control-label" })
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.Emailid, new { placeholder = "Enter Email", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.Emailid)
+                                            </div>
+                                                </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.PhoneNo, new { @class = "control-label" })
+                                             <div  class="controls">
+                                                @Html.TextBoxFor(model => model.PhoneNo, new { placeholder = "Enter Phone Number", maxlength = "12", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.PhoneNo)
+                                            </div>
+                                                </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.MobileNo, new { @class = "control-label" })
+                                           <div  class="controls">
+                                                @Html.TextBoxFor(model => model.Code, new { placeholder = "Code", maxlength = "4", @class = "input-small" })
+                                                @Html.TextBoxFor(model => model.MobileNo, new { placeholder = "Mobile Number", maxlength = "10", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.MobileNo)
+                                            </div>
+                                                </div>
+                                           
                                             <div class="control-group span5">
                                                 @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
                                               <div  class="controls">
@@ -715,13 +998,7 @@
                                            Selected = true
                                        }); }                                               
                                      @Html.DropDownListFor(model => model.Gender, listItems, "-- Select Gender --")
-                                                
-                                               
-                                                @*    @Html.RadioButtonFor(model => model.SelectGender,Model.Gender,Model.Gender.  new { id = "male" })
-                                                    Male*@
-                                             
-                                                 @*   @Html.RadioButtonFor(model => model.SelectGender, Model.Gender, new { id = "female" }) FeMale*@
-                                                
+                                              
                                                 @Html.ValidationMessageFor(model => model.Gender)
                                                       </div>
                                             </div>  
@@ -733,22 +1010,6 @@
                                             </div>
                                                 </div> 
                                             <div class="control-group span5">
-<<<<<<< HEAD
-                                                @Html.LabelFor(model => model.OQualification, new { @class="control-label" })
-                                             <div  class="controls">
-                                                @Html.TextAreaFor(model => model.OQualification, new {@class="input" })
-                                                @Html.ValidationMessageFor(model => model.OQualification)
-                                            </div>
-                                                </div>
-                                         
-                                           <div class="form-actions span10">
-                                                <input type="button" class="btn btn-primary" id="insert" value="Submit" />
-                                                <input type="button" class="btn btn-primary" id="reset" value="Reset" />
-                                            </div>
-                                      
-                                    }
-                          </fieldset>
-=======
                                                 @Html.LabelFor(model => model.edepartment, new { @class = "control-label" })
                                               <div  class="controls">
                                                   @{
@@ -802,68 +1063,6 @@
                                                 @Html.ValidationMessageFor(model => model.eblood)
                                                       </div>
                                             </div>
-
-                                            
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Quallification, new { @class = "control-label" })
-                                             <div  class="controls">
-                                                @Html.DropDownListFor(m => m.Quallification, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification")
-                                                @Html.ValidationMessageFor(model => model.Quallification)
-                                            </div>
-                                                  </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Stateid, new { @class = "control-label" })
-                                        
-                                            <div  class="controls"> 
-                                                @Html.DropDownListFor(m => m.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
-                                                @Html.ValidationMessageFor(model => model.Stateid)
-                                            </div>
-                                                    </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Cityid, new { @class = "control-label" })
-                                             <div  class="controls">
-                                                @Html.DropDownListFor(m => m.Cityid, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
-                                                @Html.ValidationMessageFor(model => model.Cityid)
-                                            </div>
-                                               </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Zipcode, new { @class = "control-label" })
-                                           
-                                              <div  class="controls">
-                                                @Html.TextBoxFor(model => model.Zipcode, new { placeholder = "Enter Zipcode", maxlength = "6", @class = "input" })
-                                                @Html.ValidationMessageFor(model => model.Zipcode)
-                                            </div>
-                                                    </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Emailid, new { @class = "control-label" })
-                                            <div  class="controls">
-                                                @Html.TextBoxFor(model => model.Emailid, new { placeholder = "Enter Email", maxlength = "30", @class = "input" })
-                                                @Html.ValidationMessageFor(model => model.Emailid)
-                                            </div>
-                                                </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.PhoneNo, new { @class = "control-label" })
-                                             <div  class="controls">
-                                                @Html.TextBoxFor(model => model.PhoneNo, new { placeholder = "Enter Phone Number", maxlength = "12", @class = "input" })
-                                                @Html.ValidationMessageFor(model => model.PhoneNo)
-                                            </div>
-                                                </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.MobileNo, new { @class = "control-label" })
-                                           <div  class="controls" >
-                                                @Html.TextBoxFor(model => model.Code, new { placeholder = "Code", maxlength = "4", @class = "input-small" })
-                                               </div><div  class="controls">
-                                                @Html.TextBoxFor(model => model.MobileNo, new { placeholder = "Mobile Number", maxlength = "10", @class = "input" })
-                                                @Html.ValidationMessageFor(model => model.MobileNo)
-                                            </div>
-                                                </div>
-                                            <div class="control-group span5">
-                                                @Html.LabelFor(model => model.Address, new { @class = "control-label" })
-                                              <div  class="controls">
-                                                @Html.TextAreaFor(model => model.Address, new { placeholder = "Enter Address", @class = "input" })
-                                                @Html.ValidationMessageFor(model => model.Address)
-                                            </div>
-                                                </div>                            
                                             <div class="control-group span5">
                                                 @Html.LabelFor(model => model.Typeid, new { @class = "control-label" })
                                                <div  class="controls">
@@ -871,13 +1070,13 @@
                                                 @Html.ValidationMessageFor(model => model.Typeid)
                                             </div>
                                                    </div>
-                                            <div class="control-group span5">
+                                            @* <div class="control-group span5">
                                                 @Html.LabelFor(model => model.OQualification, new { @class = "control-label" })
                                              <div  class="controls">
                                                 @Html.TextAreaFor(model => model.OQualification, new { @class = "input", placeholder = "Qualification" })
                                                 @Html.ValidationMessageFor(model => model.OQualification)
                                             </div>
-                                                </div>  
+                                                </div> *@ 
                                             </fieldset>
                                             <br />
                                             <fieldset class="test" style="width: 100%;">
@@ -1319,32 +1518,35 @@
                                           <br />
                                           <fieldset class="test" style="width: 100%;">
                                              <legend>Permanant Address</legend>
-                                               <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pastreet, new { @class = "control-label" })
+                                                
+                                              <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pacountry, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.TextAreaFor(model => model.pastreet, new { placeholder = "Enter Street", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.pastreet)
-                                                            </div>
-                                                        </div> 
-                                               <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pacity, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.pacity, new SelectList("Select City"), "Select City")
-                                                                @Html.ValidationMessageFor(model => model.pacity)
+                                                           
+                                                                  @Html.DropDownListFor(m => m.pacountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.pacountry)
                                                             </div>
                                                         </div>
                                                <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pastate, new { @class = "control-label", @for = "select" })
+                                                            <div  class="controls"> 
+                                                @Html.DropDownListFor(m => m.pastate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                @Html.ValidationMessageFor(model => model.pastate)
+                                            </div>
+                                                        </div>
+                                               <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pacity, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.pastate, new SelectList("Select State"), "Select State")
-                                                                @Html.ValidationMessageFor(model => model.pastate)
+                                                                @Html.DropDownListFor(m => m.pacity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                                @Html.ValidationMessageFor(model => model.pacity)
                                                             </div>
                                                         </div>
+                                              
                                               <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pacountry, new { @class = "control-label", @for = "select" })
+                                                            @Html.LabelFor(model => model.pastreet, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.pacountry, new SelectList("Select Country"), "Select Country")
-                                                                @Html.ValidationMessageFor(model => model.pacountry)
+                                                                @Html.TextAreaFor(model => model.pastreet, new { placeholder = "Enter Street", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.pastreet)
                                                             </div>
                                                         </div>
                                                <div class="control-group span5">
@@ -1358,7 +1560,30 @@
                                           <br />
                                           <fieldset class="test" style="width: 100%;">
                                              <legend>Current Address</legend>
+                                               
+                                                    <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ccountry, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.ccountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.ccountry)
+                                                            </div>
+                                                        </div>
                                                <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cstate, new { @class = "control-label", @for = "select" })
+                                                            <div  class="controls"> 
+                                                @Html.DropDownListFor(m => m.cstate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                @Html.ValidationMessageFor(model => model.cstate)
+                                            </div>
+                                                        </div>
+                                                 
+                                               <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ccity, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.ccity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                                @Html.ValidationMessageFor(model => model.ccity)
+                                                            </div>
+                                                        </div>
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.cstreet, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.cstreet, new { placeholder = "Enter Street", @class = "input" })
@@ -1366,33 +1591,13 @@
                                                             </div>
                                                         </div> 
                                                <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.ccity, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.ccity, new SelectList("Select City"), "Select City")
-                                                                @Html.ValidationMessageFor(model => model.ccity)
-                                                            </div>
-                                                        </div>
-                                               <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.cstate, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.cstate, new SelectList("Select State"), "Select State")
-                                                                @Html.ValidationMessageFor(model => model.cstate)
-                                                            </div>
-                                                        </div>
-                                              <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.ccountry, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.ccountry, new SelectList("Select Country"), "Select Country")
-                                                                @Html.ValidationMessageFor(model => model.ccountry)
-                                                            </div>
-                                                        </div>
-                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.cpin, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.cpin, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.cpin)
                                                             </div>
-                                                        </div>
+                                                        </div>  
+                                             
                                                <div class="control-group span5">
                                                             @Html.LabelFor(model => model.phome, new { @class = "control-label" })
                                                             <div class="controls" style="width:25%">
@@ -1412,7 +1617,7 @@
                                                                 @Html.ValidationMessageFor(model => model.hmobile)
                                                             </div>
                                                         </div> 
-
+                                        
                                               </fieldset>
                                           <br />
                                           <fieldset class="test" style="width: 100%;">
@@ -1459,7 +1664,7 @@
                                           </div>
                                       <div id="tabs-3">
                                                     <fieldset class="test" style="width: 100%;">
-                                                        <legend>College/Corporate</legend>
+                                                        <legend>College</legend>
                                                          <div class="control-group span5">
                                                 @Html.LabelFor(model => model.collagename, new { @class = "control-label", @for = "focusedInput" })
                                            
@@ -1480,7 +1685,7 @@
                                                 @Html.LabelFor(model => model.joiningdate, new { @class = "control-label" })
                                            
                                             <div  class="controls">
-                                                @Html.TextBoxFor(model => model.joiningdate, new { @class = "datepicker", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker4", @readonly = "readonly", placeholder = "Select Date of Joining" })
                                                 @Html.ValidationMessageFor(model => model.joiningdate)
                                             </div>
                                                  </div>
@@ -1488,7 +1693,7 @@
                                                 @Html.LabelFor(model => model.lastdate, new { @class = "control-label" })
                                            
                                              <div class="controls">
-                                                @Html.TextBoxFor(model => model.lastdate, new { @class = "datepicker", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker3", @readonly = "readonly", placeholder = "Select Last Date" })
                                                 @Html.ValidationMessageFor(model => model.lastdate)
                                             </div>
                                                  </div>
@@ -1508,6 +1713,11 @@
                                                 @Html.ValidationMessageFor(model => model.ldesignation)
                                             </div>
                                                  </div>
+                                                         </fieldset>
+                                          <br />
+                                                        <fieldset>
+                                                            <legend>Corporate</legend>
+                                                       
                                             <div class="control-group span5">
                                                 @Html.LabelFor(model => model.companyname, new { @class = "control-label" })
                                            
@@ -1528,7 +1738,7 @@
                                                 @Html.LabelFor(model => model.cjoiningdate, new { @class = "control-label" })
                                            
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.cjoiningdate, new { @class = "datepicker", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                @Html.TextBoxFor(model => model.cjoiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining" })
                                                 @Html.ValidationMessageFor(model => model.cjoiningdate)
                                             </div>
                                                  </div>
@@ -1536,7 +1746,7 @@
                                                 @Html.LabelFor(model => model.clastdate, new { @class = "control-label" })
                                            
                                             <div  class="controls">
-                                                @Html.TextBoxFor(model => model.clastdate, new { @class = "datepicker", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.TextBoxFor(model => model.clastdate, new {@class = "datepicker", @readonly = "readonly", placeholder = "Select Last Date" })
                                                 @Html.ValidationMessageFor(model => model.clastdate)
                                             </div>
                                                  </div>
@@ -1668,48 +1878,31 @@
                                                 @Html.ValidationMessageFor(model => model.mtongue)
                                                       </div>
                                             </div> 
-                                       
                                                          </fieldset> 
-
-                                          <div class="form-actions">
+                                          <br />           
+                                         
+                                    
+                                       
+                                        <div class="form-actions">
                                         <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
                                         <input type="button" class="btn btn-primary" id="reset" value="Reset" />
                                     </div>
-                                          <br />           
-                                          </div>
-                                    
-                                        
+                                           </div>
                                         
                                    }
-                                          </div>
-                                          </div>
+                                           </div>
+                                      </div>
                                   </fieldset>
->>>>>>> origin/master
-                                </div>
-					
-					</div>
-				</div><!--/span-->
-			
-			</div><!--/row-->
-                <div class="row-fluid sortable">
-              <div class="box span12">
-                  	<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
-						<div class="box-icon">
-						
-							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-						
-						</div>
-					</div> 
-                  <div class="box-content">
-                                        @Html.Partial("_EmpList")
-                           </div>
-                        
-                
-        </div>
-        </div>
-    </div>
-</div>
-   
+                            
+                            </form>
+                                    </div>
+                               
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-    </div>
+        </div>
+  

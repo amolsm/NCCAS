@@ -422,16 +422,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_getCity" FunctionName="SchoolMgmtSysModel.Store.sp_getCity">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCity_Result">
@@ -1412,5 +1402,48 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_CourseYearMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
+        <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_YearMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
+        <MappingFragment StoreEntitySet="tbl_YearMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
   </EntityContainerMapping>
 </Mapping>

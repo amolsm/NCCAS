@@ -15,13 +15,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:26</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>01/27/2017 21:10:52</publishTime>
+      <publishTime>01/28/2017 20:28:09</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
       <publishTime>06/01/2016 21:50:00</publishTime>
     </File>
     <File Include="bin/Entity.dll">
-      <publishTime>01/27/2017 21:10:52</publishTime>
+      <publishTime>01/28/2017 20:28:09</publishTime>
     </File>
     <File Include="bin/Entity.pdb">
       <publishTime>06/01/2016 21:49:59</publishTime>
@@ -51,7 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2016 00:23:49</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.dll">
-      <publishTime>01/27/2017 21:10:53</publishTime>
+      <publishTime>01/28/2017 20:28:10</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.pdb">
       <publishTime>06/02/2016 22:34:32</publishTime>
@@ -126,7 +126,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2016 00:23:51</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>01/27/2017 20:04:26</publishTime>
+      <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="Content/images/asc.gif">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -558,7 +558,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/27/2017 20:04:26</publishTime>
+      <publishTime>01/28/2017 20:25:02</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datetimepicker.min.js">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -633,7 +633,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Scripts/dash/css/style.css">
-      <publishTime>01/27/2017 20:04:23</publishTime>
+      <publishTime>01/28/2017 20:19:38</publishTime>
     </File>
     <File Include="Scripts/dash/css/uniform.default.css">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1176,10 +1176,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Masters/Class.cshtml">
-      <publishTime>01/27/2017 20:04:23</publishTime>
+      <publishTime>01/28/2017 20:19:35</publishTime>
     </File>
     <File Include="Views/Masters/Country.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
+    </File>
+    <File Include="Views/Masters/CourseYear.cshtml">
+      <publishTime>01/28/2017 20:19:35</publishTime>
     </File>
     <File Include="Views/Masters/Department.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1188,7 +1191,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Masters/Employee.cshtml">
-      <publishTime>01/27/2017 20:04:23</publishTime>
+      <publishTime>01/28/2017 20:19:38</publishTime>
     </File>
     <File Include="Views/Masters/FeesLabels.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1244,6 +1247,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Masters/_CountryList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
+    <File Include="Views/Masters/_CourseYearList.cshtml">
+      <publishTime>01/28/2017 20:19:35</publishTime>
+    </File>
     <File Include="Views/Masters/_departmentlist.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
@@ -1295,6 +1301,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/shared/_DashboardSubMenu.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
+    <File Include="Views/shared/_EmployeeSubMenuList.cshtml">
+      <publishTime>01/27/2017 20:04:24</publishTime>
+    </File>
     <File Include="Views/shared/_ExaminationMenuList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
@@ -1311,10 +1320,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Views/shared/_MasterSubMenu.cshtml">
-      <publishTime>01/27/2017 20:04:24</publishTime>
+      <publishTime>01/28/2017 20:19:35</publishTime>
     </File>
     <File Include="Views/shared/_MenuItems.cshtml">
-      <publishTime>01/27/2017 20:04:24</publishTime>
+      <publishTime>01/28/2017 20:27:09</publishTime>
     </File>
     <File Include="Views/shared/_Message.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1398,7 +1407,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/27/2017 21:10:54</publishTime>
+      <publishTime>01/28/2017 20:28:10</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>01/27/2017 20:04:24</publishTime>

@@ -94,7 +94,6 @@
     <FunctionImport Name="sp_getOccupation" ReturnType="Collection(SchoolMgmtSysModel.sp_getOccupation_Result)" />
     <FunctionImport Name="sp_getFeespaymentlist" ReturnType="Collection(SchoolMgmtSysModel.sp_getFeespaymentlist_Result)" />
     <FunctionImport Name="sp_getCountry" ReturnType="Collection(SchoolMgmtSysModel.sp_getCountry_Result)" />
-    <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
     <FunctionImport Name="sp_getCity" ReturnType="Collection(SchoolMgmtSysModel.sp_getCity_Result)" />
     <FunctionImport Name="sp_getCaste" ReturnType="Collection(SchoolMgmtSysModel.sp_getCaste_Result)" />
     <FunctionImport Name="sp_getBloodgroup" ReturnType="Collection(SchoolMgmtSysModel.sp_getBloodgroup_Result)" />
@@ -780,6 +779,18 @@
     </FunctionImport>
     <FunctionImport Name="sp_getDepartment" ReturnType="Collection(SchoolMgmtSysModel.sp_getDepartment_Result)" />
     <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.tblDepartment" />
+    <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
+    <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" />
+    <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.tbl_YearMaster" />
+    <FunctionImport Name="sp_getCourseYear" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseYear_Result)" />
+    <FunctionImport Name="sp_CourseYearMaster_DML">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="dept_id" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="academicyear" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1131,12 +1142,6 @@
     <Property Type="Int32" Name="Countryid" Nullable="false" />
     <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <ComplexType Name="sp_getClass_Result">
-    <Property Type="Int32" Name="Classid" Nullable="false" />
-    <Property Type="String" Name="Classnm" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-    <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="sp_getCity_Result">
     <Property Type="Int32" Name="Cityid" Nullable="false" />
@@ -2078,4 +2083,36 @@
     <Property Name="Dept_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="Boolean" />
   </EntityType>
+  <ComplexType Name="sp_getClass_Result">
+    <Property Type="Int32" Name="Classid" Nullable="false" />
+    <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="tbl_CourseYearMaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="academicyear" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_YearMaster">
+    <Key>
+      <PropertyRef Name="yearid" />
+    </Key>
+    <Property Name="yearid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YearName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getCourseYear_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+  </ComplexType>
 </Schema>

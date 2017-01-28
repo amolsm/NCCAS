@@ -362,6 +362,97 @@
     <FunctionImport Name="sp_GetAvailableEmpLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetAvailableEmpLeave_Result)">
       <Parameter Name="Empid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_employee_DML">
+      <Parameter Name="Empid" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Cityid" Mode="In" Type="Int32" />
+      <Parameter Name="Stateid" Mode="In" Type="Int32" />
+      <Parameter Name="Zipcode" Mode="In" Type="String" />
+      <Parameter Name="Emailid" Mode="In" Type="String" />
+      <Parameter Name="PhoneNo" Mode="In" Type="String" />
+      <Parameter Name="MobileNo" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Gender" Mode="In" Type="Int32" />
+      <Parameter Name="Quallification" Mode="In" Type="Int32" />
+      <Parameter Name="DateOfJoin" Mode="In" Type="DateTime" />
+      <Parameter Name="Typeid" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="Int32" />
+      <Parameter Name="OQualification" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="bloodgroup" Mode="In" Type="Int32" />
+      <Parameter Name="qualication1" Mode="In" Type="Int32" />
+      <Parameter Name="university1" Mode="In" Type="String" />
+      <Parameter Name="precentage1" Mode="In" Type="String" />
+      <Parameter Name="yearpasing1" Mode="In" Type="String" />
+      <Parameter Name="qualication2" Mode="In" Type="Int32" />
+      <Parameter Name="university2" Mode="In" Type="String" />
+      <Parameter Name="precentage2" Mode="In" Type="String" />
+      <Parameter Name="yearpasing2" Mode="In" Type="String" />
+      <Parameter Name="qualication3" Mode="In" Type="Int32" />
+      <Parameter Name="university3" Mode="In" Type="String" />
+      <Parameter Name="precentage3" Mode="In" Type="String" />
+      <Parameter Name="yearpasing3" Mode="In" Type="String" />
+      <Parameter Name="qualication4" Mode="In" Type="Int32" />
+      <Parameter Name="university4" Mode="In" Type="String" />
+      <Parameter Name="precentage4" Mode="In" Type="String" />
+      <Parameter Name="yearpasing4" Mode="In" Type="String" />
+      <Parameter Name="weightinkg" Mode="In" Type="String" />
+      <Parameter Name="heightc" Mode="In" Type="String" />
+      <Parameter Name="emppic" Mode="In" Type="Binary" />
+      <Parameter Name="eidtype" Mode="In" Type="Int32" />
+      <Parameter Name="doctorname" Mode="In" Type="String" />
+      <Parameter Name="doctorcode" Mode="In" Type="String" />
+      <Parameter Name="doctorcontact" Mode="In" Type="String" />
+      <Parameter Name="doctoraddress" Mode="In" Type="String" />
+      <Parameter Name="relation" Mode="In" Type="Int32" />
+      <Parameter Name="parentsname" Mode="In" Type="String" />
+      <Parameter Name="parentoccupation" Mode="In" Type="String" />
+      <Parameter Name="parentqualification" Mode="In" Type="String" />
+      <Parameter Name="parentsemail" Mode="In" Type="String" />
+      <Parameter Name="parentsaddress" Mode="In" Type="String" />
+      <Parameter Name="parentscode" Mode="In" Type="Int32" />
+      <Parameter Name="parentscontact" Mode="In" Type="String" />
+      <Parameter Name="parentspic" Mode="In" Type="Binary" />
+      <Parameter Name="pstreet" Mode="In" Type="String" />
+      <Parameter Name="pcity" Mode="In" Type="Int32" />
+      <Parameter Name="pstate" Mode="In" Type="Int32" />
+      <Parameter Name="pcountry" Mode="In" Type="Int32" />
+      <Parameter Name="ppin" Mode="In" Type="String" />
+      <Parameter Name="cstreet" Mode="In" Type="String" />
+      <Parameter Name="ccity" Mode="In" Type="Int32" />
+      <Parameter Name="cstate" Mode="In" Type="Int32" />
+      <Parameter Name="ccountry" Mode="In" Type="Int32" />
+      <Parameter Name="cpin" Mode="In" Type="String" />
+      <Parameter Name="homecode" Mode="In" Type="Int32" />
+      <Parameter Name="homecontact" Mode="In" Type="String" />
+      <Parameter Name="cmobilecode" Mode="In" Type="Int32" />
+      <Parameter Name="cmobile" Mode="In" Type="String" />
+      <Parameter Name="bankname" Mode="In" Type="String" />
+      <Parameter Name="branch" Mode="In" Type="String" />
+      <Parameter Name="ifsccode" Mode="In" Type="String" />
+      <Parameter Name="accountno" Mode="In" Type="String" />
+      <Parameter Name="accountname" Mode="In" Type="String" />
+      <Parameter Name="collagename" Mode="In" Type="String" />
+      <Parameter Name="affliateduniversity" Mode="In" Type="String" />
+      <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
+      <Parameter Name="lastdate" Mode="In" Type="DateTime" />
+      <Parameter Name="totalexperience" Mode="In" Type="String" />
+      <Parameter Name="lastdesignation" Mode="In" Type="String" />
+      <Parameter Name="companyname" Mode="In" Type="String" />
+      <Parameter Name="clastdesignation" Mode="In" Type="String" />
+      <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
+      <Parameter Name="clastdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ctotalexperience" Mode="In" Type="String" />
+      <Parameter Name="empemail" Mode="In" Type="String" />
+      <Parameter Name="empreligion" Mode="In" Type="Int32" />
+      <Parameter Name="empcategory" Mode="In" Type="Int32" />
+      <Parameter Name="empcast" Mode="In" Type="Int32" />
+      <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_student_online_admission">
       <Parameter Name="Studid" Mode="In" Type="Int32" />
       <Parameter Name="Studnm" Mode="In" Type="String" />
@@ -689,7 +780,6 @@
     <FunctionImport Name="sp_getDepartment" ReturnType="Collection(SchoolMgmtSysModel.sp_getDepartment_Result)" />
     <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.tblDepartment" />
     <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
-<<<<<<< HEAD
     <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" />
     <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.tbl_YearMaster" />
     <FunctionImport Name="sp_getCourseYear" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseYear_Result)" />
@@ -700,98 +790,6 @@
       <Parameter Name="academicyear" Mode="In" Type="Int32" />
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="act" Mode="In" Type="String" />
-=======
-    <FunctionImport Name="sp_employee_DML">
-      <Parameter Name="Empid" Mode="In" Type="Int32" />
-      <Parameter Name="FirstName" Mode="In" Type="String" />
-      <Parameter Name="MiddleName" Mode="In" Type="String" />
-      <Parameter Name="LastName" Mode="In" Type="String" />
-      <Parameter Name="Cityid" Mode="In" Type="Int32" />
-      <Parameter Name="Stateid" Mode="In" Type="Int32" />
-      <Parameter Name="Zipcode" Mode="In" Type="String" />
-      <Parameter Name="Emailid" Mode="In" Type="String" />
-      <Parameter Name="PhoneNo" Mode="In" Type="String" />
-      <Parameter Name="MobileNo" Mode="In" Type="String" />
-      <Parameter Name="Address" Mode="In" Type="String" />
-      <Parameter Name="DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Gender" Mode="In" Type="Int32" />
-      <Parameter Name="Quallification" Mode="In" Type="Int32" />
-      <Parameter Name="DateOfJoin" Mode="In" Type="DateTime" />
-      <Parameter Name="Typeid" Mode="In" Type="Int32" />
-      <Parameter Name="Code" Mode="In" Type="Int32" />
-      <Parameter Name="OQualification" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
-      <Parameter Name="department" Mode="In" Type="Int32" />
-      <Parameter Name="bloodgroup" Mode="In" Type="Int32" />
-      <Parameter Name="qualication1" Mode="In" Type="Int32" />
-      <Parameter Name="university1" Mode="In" Type="String" />
-      <Parameter Name="precentage1" Mode="In" Type="String" />
-      <Parameter Name="yearpasing1" Mode="In" Type="String" />
-      <Parameter Name="qualication2" Mode="In" Type="Int32" />
-      <Parameter Name="university2" Mode="In" Type="String" />
-      <Parameter Name="precentage2" Mode="In" Type="String" />
-      <Parameter Name="yearpasing2" Mode="In" Type="String" />
-      <Parameter Name="qualication3" Mode="In" Type="Int32" />
-      <Parameter Name="university3" Mode="In" Type="String" />
-      <Parameter Name="precentage3" Mode="In" Type="String" />
-      <Parameter Name="yearpasing3" Mode="In" Type="String" />
-      <Parameter Name="qualication4" Mode="In" Type="Int32" />
-      <Parameter Name="university4" Mode="In" Type="String" />
-      <Parameter Name="precentage4" Mode="In" Type="String" />
-      <Parameter Name="yearpasing4" Mode="In" Type="String" />
-      <Parameter Name="weightinkg" Mode="In" Type="String" />
-      <Parameter Name="heightc" Mode="In" Type="String" />
-      <Parameter Name="emppic" Mode="In" Type="Binary" />
-      <Parameter Name="eidtype" Mode="In" Type="Int32" />
-      <Parameter Name="doctorname" Mode="In" Type="String" />
-      <Parameter Name="doctorcode" Mode="In" Type="String" />
-      <Parameter Name="doctorcontact" Mode="In" Type="String" />
-      <Parameter Name="doctoraddress" Mode="In" Type="String" />
-      <Parameter Name="relation" Mode="In" Type="Int32" />
-      <Parameter Name="parentsname" Mode="In" Type="String" />
-      <Parameter Name="parentoccupation" Mode="In" Type="String" />
-      <Parameter Name="parentqualification" Mode="In" Type="String" />
-      <Parameter Name="parentsemail" Mode="In" Type="String" />
-      <Parameter Name="parentsaddress" Mode="In" Type="String" />
-      <Parameter Name="parentscode" Mode="In" Type="Int32" />
-      <Parameter Name="parentscontact" Mode="In" Type="String" />
-      <Parameter Name="parentspic" Mode="In" Type="Binary" />
-      <Parameter Name="pstreet" Mode="In" Type="String" />
-      <Parameter Name="pcity" Mode="In" Type="Int32" />
-      <Parameter Name="pstate" Mode="In" Type="Int32" />
-      <Parameter Name="pcountry" Mode="In" Type="Int32" />
-      <Parameter Name="ppin" Mode="In" Type="String" />
-      <Parameter Name="cstreet" Mode="In" Type="String" />
-      <Parameter Name="ccity" Mode="In" Type="Int32" />
-      <Parameter Name="cstate" Mode="In" Type="Int32" />
-      <Parameter Name="ccountry" Mode="In" Type="Int32" />
-      <Parameter Name="cpin" Mode="In" Type="String" />
-      <Parameter Name="homecode" Mode="In" Type="Int32" />
-      <Parameter Name="homecontact" Mode="In" Type="String" />
-      <Parameter Name="cmobilecode" Mode="In" Type="Int32" />
-      <Parameter Name="cmobile" Mode="In" Type="String" />
-      <Parameter Name="bankname" Mode="In" Type="String" />
-      <Parameter Name="branch" Mode="In" Type="String" />
-      <Parameter Name="ifsccode" Mode="In" Type="String" />
-      <Parameter Name="accountno" Mode="In" Type="String" />
-      <Parameter Name="accountname" Mode="In" Type="String" />
-      <Parameter Name="collagename" Mode="In" Type="String" />
-      <Parameter Name="affliateduniversity" Mode="In" Type="String" />
-      <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate" Mode="In" Type="DateTime" />
-      <Parameter Name="totalexperience" Mode="In" Type="String" />
-      <Parameter Name="lastdesignation" Mode="In" Type="String" />
-      <Parameter Name="companyname" Mode="In" Type="String" />
-      <Parameter Name="clastdesignation" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate" Mode="In" Type="DateTime" />
-      <Parameter Name="ctotalexperience" Mode="In" Type="String" />
-      <Parameter Name="empemail" Mode="In" Type="String" />
-      <Parameter Name="empreligion" Mode="In" Type="Int32" />
-      <Parameter Name="empcategory" Mode="In" Type="Int32" />
-      <Parameter Name="empcast" Mode="In" Type="Int32" />
-      <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
->>>>>>> origin/master
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2092,7 +2090,6 @@
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
     <Property Type="String" Name="academicyear" Nullable="true" MaxLength="100" />
   </ComplexType>
-<<<<<<< HEAD
   <EntityType Name="tbl_CourseYearMaster">
     <Key>
       <PropertyRef Name="id" />
@@ -2118,6 +2115,4 @@
     <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
   </ComplexType>
-=======
->>>>>>> origin/master
 </Schema>

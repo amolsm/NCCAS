@@ -29,6 +29,7 @@
                     $("#classid").show();
                     $("#classid input").val(data.Classid);
                     $("#Classnm").val(data.Classnm);
+                    $("#Dept_Id").val(data.Dept_id);
                     $("#status").prop('checked', data.status);
                     $("#academicyear").val(data.academicyear);
                 }
@@ -39,6 +40,8 @@
             $("#classid").hide();
             $('#classid input').val('0');
             $("#Classnm").val('');
+            $("#Dept_Id").val('');
+          
             //            $("#status").prop('checked', false);
             $("#academicyear").val('');
         }
@@ -224,7 +227,7 @@
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.academicyear, new { @class="control-label"})
                                              <div class="controls">
-                                        @*@Html.EditorFor(model => model.academicyear, new { @class = "col-md-5 form-control form_in" })*@
+                                      
                                         @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.academicyear), "Select Year", new { @class = "form-control mar" })
                                         @Html.ValidationMessageFor(model => model.academicyear)
                                                  </div>
