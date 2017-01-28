@@ -29,6 +29,7 @@
                     $("#classid").show();
                     $("#classid input").val(data.Classid);
                     $("#Classnm").val(data.Classnm);
+                    $("#Dept_Id").val(data.Dept_id);
                     $("#status").prop('checked', data.status);
                     $("#academicyear").val(data.academicyear);
                 }
@@ -39,6 +40,8 @@
             $("#classid").hide();
             $('#classid input').val('0');
             $("#Classnm").val('');
+            $("#Dept_Id").val('');
+          
             //            $("#status").prop('checked', false);
             $("#academicyear").val('');
         }

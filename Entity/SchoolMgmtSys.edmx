@@ -111,6 +111,16 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
           <Property Name="CountryName" Type="varchar" MaxLength="100" />
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_CourseYearMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dept_id" Type="int" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="academicyear" Type="int" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbl_days">
@@ -775,6 +785,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_YearMaster">
+          <Key>
+            <PropertyRef Name="yearid" />
+          </Key>
+          <Property Name="yearid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YearName" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
         <EntityType Name="tblDepartment">
           <Key>
             <PropertyRef Name="Dept_id" />
@@ -886,6 +904,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
         <Function Name="sp_Country_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Countryid" Type="int" Mode="In" />
           <Parameter Name="CountryName" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="act" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CourseYearMaster_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="dept_id" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+          <Parameter Name="academicyear" Type="int" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
         </Function>
@@ -1061,8 +1087,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
         <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        
+        <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getCourseYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getDivision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1488,6 +1515,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_EmployeeLeave" EntityType="Self.tbl_EmployeeLeave" Schema="dbo" store:Type="Tables" />
@@ -1522,6 +1550,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <EntitySet Name="tbl_timetable" EntityType="Self.tbl_timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_transport" EntityType="Self.tbl_transport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -2345,6 +2374,18 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           </FunctionImport>
           <FunctionImport Name="sp_getDepartment" ReturnType="Collection(SchoolMgmtSysModel.sp_getDepartment_Result)" />
           <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.tblDepartment" />
+          <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
+          <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" />
+          <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.tbl_YearMaster" />
+          <FunctionImport Name="sp_getCourseYear" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseYear_Result)" />
+          <FunctionImport Name="sp_CourseYearMaster_DML">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="dept_id" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="academicyear" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -3637,6 +3678,38 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="Dept_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Boolean" />
         </EntityType>
+        <ComplexType Name="sp_getClass_Result">
+          <Property Type="Int32" Name="Classid" Nullable="false" />
+          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="academicyear" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tbl_CourseYearMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dept_id" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="academicyear" Type="Int32" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_YearMaster">
+          <Key>
+            <PropertyRef Name="yearid" />
+          </Key>
+          <Property Name="yearid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getCourseYear_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5044,6 +5117,49 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
+                <ScalarProperty Name="Classid" ColumnName="Classid" />
+                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_CourseYearMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
+              <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_YearMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
+              <MappingFragment StoreEntitySet="tbl_YearMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5119,6 +5235,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_online_student" Width="1.5" PointX="17.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tblDepartment" Width="1.5" PointX="9.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_YearMaster" Width="1.5" PointX="19.375" PointY="0.75" />
       </Diagram>
     </Diagrams>
   </Designer>

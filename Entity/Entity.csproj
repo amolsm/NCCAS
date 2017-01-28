@@ -62,6 +62,7 @@
     <Compile Include="casteviewmodel.cs" />
     <Compile Include="bloodgroupviewmodel.cs" />
     <Compile Include="Categoryviewmodel.cs" />
+    <Compile Include="CourseYearviewmodel.cs" />
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="smsviewmodel.cs" />

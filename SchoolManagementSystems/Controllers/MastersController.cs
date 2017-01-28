@@ -172,7 +172,7 @@ namespace SchoolManagementSystems.Controllers
             {
                 db.sp_class_DML(id, _cvm.Classnm,_cvm.Dept_Id, _cvm.status, yr, "del").ToString();
             }
-            //_cvm._Classlist = db.sp_getClass().ToList();
+            _cvm._Classlist = db.sp_getClass().ToList();
             return PartialView("_ClassList", _cvm);
         }
         #endregion
@@ -1064,6 +1064,62 @@ namespace SchoolManagementSystems.Controllers
             }
             _dvm._Departmentlist = db.sp_getDepartment().ToList();
             return PartialView("_departmentlist", _dvm);
+        }
+        #endregion
+
+
+        #region CourseYear master
+        public ActionResult CourseYear(string Search_Data)
+        {
+            CourseYearviewmodel _cym = new CourseYearviewmodel();
+            //_cym.academicyear = GetYear();
+           //FillPermission(53);
+            if (String.IsNullOrEmpty(Search_Data))
+                _cym._courseyear = db.sp_getCourseYear().ToList();
+            else
+                _cym._courseyear = db.sp_getCourseYear().Where(x => x.Dept_name.ToUpper().Contains(Search_Data.ToUpper())
+                        || x.Classnm.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            _cym.deptlist = db.tblDepartment.ToList();
+            _cym.yearlist = db.tbl_YearMaster.ToList();
+            _cym.courselist = db.tbl_class.ToList();
+
+            return View(_cym);
+        }
+        public JsonResult FillCourseYearDetails(int courseyearid)
+        {
+            var data = db.tbl_CourseYearMaster.Where(m => m.id == courseyearid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_Class(int dept_id,int courseid, int academicyear)
+        {
+            var data = db.tbl_CourseYearMaster.Where(m => (m.dept_id == dept_id)&& (m.courseid == courseid)&&(m.academicyear == academicyear)).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+           
+        }
+        public ActionResult DMLCourseYear(CourseYearviewmodel _cym, string evt, int id)
+        {
+          
+            if (evt == "submit")
+            {
+               db.sp_CourseYearMaster_DML(_cym.Id,_cym.DeptId, _cym.CourseId, _cym.academicyear, _cym.status,  "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+              db.sp_CourseYearMaster_DML(id, _cym.DeptId, _cym.CourseId, _cym.academicyear, _cym.status, "del").ToString();
+            }
+            _cym._courseyear = db.sp_getCourseYear().ToList();
+            return PartialView("_CourseYearList", _cym);
+        }
+
+        public JsonResult GetCourse(string id)
+        {
+            int depid = 0;
+            if (id != null && id != "")
+            {
+                depid = Convert.ToInt32(id);
+            }
+            var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+            return Json(new SelectList(course, "Classid", "Classname"));
         }
         #endregion
     }

@@ -693,6 +693,9 @@
     <Content Include="Views\shared\_Message.cshtml" />
     <Content Include="Views\Masters\Department.cshtml" />
     <Content Include="Views\Masters\_departmentlist.cshtml" />
+    <Content Include="Views\Masters\CourseYear.cshtml" />
+    <Content Include="Views\Masters\_CourseYearList.cshtml" />
+    <Content Include="Views\shared\_EmployeeSubMenuList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
