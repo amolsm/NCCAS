@@ -683,6 +683,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="sc_tcno" Type="nvarchar" MaxLength="50" />
           <Property Name="prug_regno" Type="nvarchar" MaxLength="50" />
           <Property Name="prpg_regno" Type="nvarchar" MaxLength="50" />
+          <Property Name="doc_typename" Type="varchar" MaxLength="100" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="courseyearid" Type="int" />
         </EntityType>
         <EntityType Name="tbl_StudentAttendance">
           <Key>
@@ -940,10 +943,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
           <Parameter Name="MobileNo" Type="varchar" Mode="In" />
           <Parameter Name="Address" Type="varchar(max)" Mode="In" />
-          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="DOB" Type="date" Mode="In" />
           <Parameter Name="Gender" Type="int" Mode="In" />
           <Parameter Name="Quallification" Type="int" Mode="In" />
-          <Parameter Name="DateOfJoin" Type="datetime" Mode="In" />
+          <Parameter Name="DateOfJoin" Type="date" Mode="In" />
           <Parameter Name="Typeid" Type="int" Mode="In" />
           <Parameter Name="Code" Type="int" Mode="In" />
           <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
@@ -1004,14 +1007,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="accountname" Type="varchar" Mode="In" />
           <Parameter Name="collagename" Type="varchar" Mode="In" />
           <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
-          <Parameter Name="joiningdate" Type="datetime" Mode="In" />
-          <Parameter Name="lastdate" Type="datetime" Mode="In" />
+          <Parameter Name="joiningdate" Type="varchar" Mode="In" />
+          <Parameter Name="lastdate" Type="varchar" Mode="In" />
           <Parameter Name="totalexperience" Type="varchar" Mode="In" />
           <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
           <Parameter Name="companyname" Type="varchar" Mode="In" />
           <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
-          <Parameter Name="cjoiningdate" Type="datetime" Mode="In" />
-          <Parameter Name="clastdate" Type="datetime" Mode="In" />
+          <Parameter Name="cjoiningdate" Type="varchar" Mode="In" />
+          <Parameter Name="clastdate" Type="varchar" Mode="In" />
           <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
           <Parameter Name="empemail" Type="varchar" Mode="In" />
           <Parameter Name="empreligion" Type="int" Mode="In" />
@@ -1367,6 +1370,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="sc_tcno" Type="nvarchar" Mode="In" />
           <Parameter Name="prug_regno" Type="nvarchar" Mode="In" />
           <Parameter Name="prpg_regno" Type="nvarchar" Mode="In" />
+          <Parameter Name="doc_typename" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Studid" Type="int" Mode="In" />
@@ -2033,14 +2037,14 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="accountname" Mode="In" Type="String" />
             <Parameter Name="collagename" Mode="In" Type="String" />
             <Parameter Name="affliateduniversity" Mode="In" Type="String" />
-            <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
-            <Parameter Name="lastdate" Mode="In" Type="DateTime" />
+            <Parameter Name="joiningdate" Mode="In" Type="String" />
+            <Parameter Name="lastdate" Mode="In" Type="String" />
             <Parameter Name="totalexperience" Mode="In" Type="String" />
             <Parameter Name="lastdesignation" Mode="In" Type="String" />
             <Parameter Name="companyname" Mode="In" Type="String" />
             <Parameter Name="clastdesignation" Mode="In" Type="String" />
-            <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
-            <Parameter Name="clastdate" Mode="In" Type="DateTime" />
+            <Parameter Name="cjoiningdate" Mode="In" Type="String" />
+            <Parameter Name="clastdate" Mode="In" Type="String" />
             <Parameter Name="ctotalexperience" Mode="In" Type="String" />
             <Parameter Name="empemail" Mode="In" Type="String" />
             <Parameter Name="empreligion" Mode="In" Type="Int32" />
@@ -2232,6 +2236,26 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="RCode" Mode="In" Type="String" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_department_DML">
+            <Parameter Name="DeptId" Mode="In" Type="Int32" />
+            <Parameter Name="Deptname" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getDepartment" ReturnType="Collection(SchoolMgmtSysModel.sp_getDepartment_Result)" />
+          <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.tblDepartment" />
+          <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
+          <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" />
+          <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.tbl_YearMaster" />
+          <FunctionImport Name="sp_getCourseYear" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseYear_Result)" />
+          <FunctionImport Name="sp_CourseYearMaster_DML">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="dept_id" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="academicyear" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
           <FunctionImport Name="sp_student_admission">
             <Parameter Name="Studid" Mode="In" Type="Int32" />
@@ -2365,26 +2389,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="sc_tcno" Mode="In" Type="String" />
             <Parameter Name="prug_regno" Mode="In" Type="String" />
             <Parameter Name="prpg_regno" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_department_DML">
-            <Parameter Name="DeptId" Mode="In" Type="Int32" />
-            <Parameter Name="Deptname" Mode="In" Type="String" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="act" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getDepartment" ReturnType="Collection(SchoolMgmtSysModel.sp_getDepartment_Result)" />
-          <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.tblDepartment" />
-          <FunctionImport Name="sp_getClass" ReturnType="Collection(SchoolMgmtSysModel.sp_getClass_Result)" />
-          <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" />
-          <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.tbl_YearMaster" />
-          <FunctionImport Name="sp_getCourseYear" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseYear_Result)" />
-          <FunctionImport Name="sp_CourseYearMaster_DML">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="dept_id" Mode="In" Type="Int32" />
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="academicyear" Mode="In" Type="Int32" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="act" Mode="In" Type="String" />
+            <Parameter Name="doc_typename" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -3405,6 +3410,51 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="ECode" Type="Int32" />
           <Property Name="GCode" Type="Int32" />
         </EntityType>
+        <ComplexType Name="sp_getDepartment_Result">
+          <Property Type="Int32" Name="Dept_id" Nullable="false" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="Dept_id" />
+          </Key>
+          <Property Name="Dept_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dept_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getClass_Result">
+          <Property Type="Int32" Name="Classid" Nullable="false" />
+          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="academicyear" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tbl_CourseYearMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dept_id" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="academicyear" Type="Int32" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_YearMaster">
+          <Key>
+            <PropertyRef Name="yearid" />
+          </Key>
+          <Property Name="yearid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getCourseYear_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+        </ComplexType>
         <EntityType Name="tbl_student">
           <Key>
             <PropertyRef Name="Studid" />
@@ -3540,176 +3590,10 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="sc_tcno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="prug_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="prpg_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="sp_student_admission_Result">
-          <Property Type="Int32" Name="Studid" Nullable="false" />
-          <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Studfathernm" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Studmothernm" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="Weight" Nullable="false" />
-          <Property Type="Int32" Name="Height" Nullable="false" />
-          <Property Type="Int32" Name="StudBldGrp" Nullable="false" />
-          <Property Type="String" Name="StudEmail" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Disease" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="Religionid" Nullable="false" />
-          <Property Type="Int32" Name="Casteid" Nullable="false" />
-          <Property Type="Int32" Name="Classid" Nullable="false" />
-          <Property Type="Int32" Name="RollNo" Nullable="false" />
-          <Property Type="Int32" Name="Gender" Nullable="false" />
-          <Property Type="String" Name="MotherTongue" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="PreviousSchool" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="SchoolAddress" Nullable="true" />
-          <Property Type="String" Name="LastClass" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Grade" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="LeaveYear" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="LeaveReason" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="PrincipalNm" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="ReferenceNm" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ReferenceContact" Nullable="true" MaxLength="20" />
-          <Property Type="Boolean" Name="BusFacility" Nullable="false" />
-          <Property Type="String" Name="BusNo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="BusRTONo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="EmergencyPhysicianNm" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="EmergencyPhysicianContact" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="EmergencyAddress" Nullable="true" />
-          <Property Type="Binary" Name="StudPic" Nullable="true" MaxLength="Max" />
-          <Property Type="Int32" Name="FatherOccpationid" Nullable="false" />
-          <Property Type="Int32" Name="FatherQualificationid" Nullable="false" />
-          <Property Type="String" Name="FatherEmail" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FatherOfficeAddress" Nullable="true" />
-          <Property Type="String" Name="FatherContact" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="FatherBldGrpid" Nullable="true" />
-          <Property Type="Binary" Name="FatherPic" Nullable="true" MaxLength="Max" />
-          <Property Type="Int32" Name="MotherOccpationid" Nullable="false" />
-          <Property Type="Int32" Name="MotherQualificationid" Nullable="false" />
-          <Property Type="String" Name="MotherEmail" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="MotherOfficeAddress" Nullable="true" />
-          <Property Type="String" Name="MotherContact" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="MotherBldGrpid" Nullable="true" />
-          <Property Type="Binary" Name="MotherPic" Nullable="true" MaxLength="Max" />
-          <Property Type="Int32" Name="Countryid" Nullable="false" />
-          <Property Type="Int32" Name="Stateid" Nullable="false" />
-          <Property Type="Int32" Name="Cityid" Nullable="false" />
-          <Property Type="String" Name="CurrentAddress" Nullable="false" />
-          <Property Type="String" Name="PermanentAddress" Nullable="true" />
-          <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
-          <Property Type="DateTime" Name="SysDt" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="busid" Nullable="true" />
-          <Property Type="String" Name="cats" Nullable="true" />
-          <Property Type="String" Name="prds" Nullable="true" />
-          <Property Type="String" Name="Docs" Nullable="true" />
-          <Property Type="String" Name="subcats" Nullable="true" />
-          <Property Type="Int32" Name="StudCategoryid" Nullable="true" />
-          <Property Type="Int32" Name="GuardianOccpationid" Nullable="true" />
-          <Property Type="Int32" Name="GuardianQualificationid" Nullable="true" />
-          <Property Type="String" Name="GuardianEmail" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="GuardianOfficeAddress" Nullable="true" />
-          <Property Type="String" Name="GuardianContact" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="GuardianName" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="FCode" Nullable="true" />
-          <Property Type="Int32" Name="MCode" Nullable="true" />
-          <Property Type="Int32" Name="GCode" Nullable="true" />
-          <Property Type="Int32" Name="RCode" Nullable="true" />
-          <Property Type="Int32" Name="ECode" Nullable="true" />
-          <Property Type="Binary" Name="GuardianPic" Nullable="true" MaxLength="Max" />
-          <Property Type="Decimal" Name="SecondaryTotalMarks" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Decimal" Name="SecondaryObtainMarks" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Int32" Name="SecondaryPercetage" Nullable="true" />
-          <Property Type="Binary" Name="SecondaryTCScanCopy" Nullable="true" MaxLength="Max" />
-          <Property Type="Binary" Name="SecondaryMarksheetCopy" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="PrUgCollegeName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="PrUgCollegeAddress" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="PrUgAffilatedUniversity" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="PrUgRefContactNo" Nullable="true" MaxLength="20" />
-          <Property Type="Decimal" Name="PrUgTotalMark" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Decimal" Name="PrUgObtainMark" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Int32" Name="PrUgPercentage" Nullable="true" />
-          <Property Type="String" Name="PrUgGradeLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrUgYearLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrUgReasonofLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrUgPrincipalName" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrUgRefContactName" Nullable="true" MaxLength="20" />
-          <Property Type="Binary" Name="UGMarksheet" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="PrPgCollegeName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="PrPgCollegeAddress" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="PrPgAffilatedUniversity" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="PrPgRefContactNo" Nullable="true" MaxLength="20" />
-          <Property Type="Decimal" Name="PrPgTotalMark" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Decimal" Name="PrPgObtainMark" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="Int32" Name="PrPgPercentage" Nullable="true" />
-          <Property Type="String" Name="PrPgGradeLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrPgYearLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrPgReasonofLeaving" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrPgPrincipalName" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="PrPgRefContactName" Nullable="true" MaxLength="20" />
-          <Property Type="Binary" Name="PGMarksheet" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="Sibling2Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Sibling2Rel" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="Sibling2DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sibling2Ql" Nullable="true" />
-          <Property Type="String" Name="Sibling1Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Sibling1Rel" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="Sibling1DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sibling1Ql" Nullable="true" />
-          <Property Type="String" Name="Sibling3Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Sibling3Rel" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="Sibling3DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sibling3Ql" Nullable="true" />
-          <Property Type="String" Name="Sibling4Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Sibling4Rel" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="Sibling4DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sibling4Ql" Nullable="true" />
-          <Property Type="String" Name="ParishName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="DioceseName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="DocumentType" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="DocumentIDNo" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="sp_getDepartment_Result">
-          <Property Type="Int32" Name="Dept_id" Nullable="false" />
-          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-        </ComplexType>
-        <EntityType Name="tblDepartment">
-          <Key>
-            <PropertyRef Name="Dept_id" />
-          </Key>
-          <Property Name="Dept_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Dept_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Boolean" />
-        </EntityType>
-        <ComplexType Name="sp_getClass_Result">
-          <Property Type="Int32" Name="Classid" Nullable="false" />
-          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-          <Property Type="String" Name="academicyear" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <EntityType Name="tbl_CourseYearMaster">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dept_id" Type="Int32" />
+          <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseid" Type="Int32" />
-          <Property Name="academicyear" Type="Int32" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="courseyearid" Type="Int32" />
         </EntityType>
-        <EntityType Name="tbl_YearMaster">
-          <Key>
-            <PropertyRef Name="yearid" />
-          </Key>
-          <Property Name="yearid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="YearName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Boolean" />
-        </EntityType>
-        <ComplexType Name="sp_getCourseYear_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4960,9 +4844,74 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_online_admission1" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
+          <FunctionImportMapping FunctionImportName="sp_department_DML" FunctionName="SchoolMgmtSysModel.Store.sp_department_DML" />
+          <FunctionImportMapping FunctionImportName="sp_getDepartment" FunctionName="SchoolMgmtSysModel.Store.sp_getDepartment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getDepartment_Result">
+                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblDepartment">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tblDepartment">
+              <MappingFragment StoreEntitySet="tblDepartment">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
+                <ScalarProperty Name="Classid" ColumnName="Classid" />
+                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_CourseYearMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
+              <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_YearMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
+              <MappingFragment StoreEntitySet="tbl_YearMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
           <EntitySetMapping Name="tbl_student">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
               <MappingFragment StoreEntitySet="tbl_student">
+                <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
                 <ScalarProperty Name="prpg_regno" ColumnName="prpg_regno" />
                 <ScalarProperty Name="prug_regno" ColumnName="prug_regno" />
                 <ScalarProperty Name="sc_tcno" ColumnName="sc_tcno" />
@@ -5098,68 +5047,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-          <FunctionImportMapping FunctionImportName="sp_department_DML" FunctionName="SchoolMgmtSysModel.Store.sp_department_DML" />
-          <FunctionImportMapping FunctionImportName="sp_getDepartment" FunctionName="SchoolMgmtSysModel.Store.sp_getDepartment">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getDepartment_Result">
-                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
-                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tblDepartment">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tblDepartment">
-              <MappingFragment StoreEntitySet="tblDepartment">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
-                <ScalarProperty Name="Classid" ColumnName="Classid" />
-                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
-                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tbl_CourseYearMaster">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
-              <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_YearMaster">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
-              <MappingFragment StoreEntitySet="tbl_YearMaster">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="YearName" ColumnName="YearName" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
-                <ScalarProperty Name="YearName" ColumnName="YearName" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5233,10 +5120,10 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <AssociationConnector Association="SchoolMgmtSysModel.FK_tbl_city_tbl_state" />
         <AssociationConnector Association="SchoolMgmtSysModel.FK_tbl_state_tbl_country" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_online_student" Width="1.5" PointX="17.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tblDepartment" Width="1.5" PointX="9.375" PointY="17.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" Width="1.5" PointX="17.375" PointY="16.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_YearMaster" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="3.75" />
       </Diagram>
     </Diagrams>
   </Designer>

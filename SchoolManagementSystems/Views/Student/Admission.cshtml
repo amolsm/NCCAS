@@ -38,20 +38,86 @@
             Validations(e);
         });
 
-        //$("#diocese").hide();
-        //$("#parish").hide();
-        //$("#StudCategoryid").change(function () {
-        //    if ($("#StudCategoryid").val() == '1') {
-        //        $("#diocese").hide();
-        //        $("#parish").hide();
-        //    }
-        //    else {
-        //        $("#diocese").hide();
-        //        $("#parish").hide();
-        //    }
+        $('#cbxShowHide').change(function () {
+            if (this.checked) {
+                $('#autoUpdate').show();
+                $('#autoUpdate').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdate').hide();
+                $('#autoUpdate').fadeOut('slow');
+            }
+        });
+        $('#cbxShowHide1').change(function () {
+            if (this.checked) {
+                $('#autoUpdate1').show();
+                $('#autoUpdate1').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdate1').hide();
+                $('#autoUpdate1').fadeOut('slow');
+            }
+        });
+        $('#cbxShowHide3').change(function () {
+            if (this.checked) {
+                $('#autoUpdate3').show();
+                $('#autoUpdate3').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdate3').hide();
+                $('#autoUpdate3').fadeOut('slow');
+            }
+        });
 
+        $("#PrScTotalMarks").change(function () {
+            var a = $("#PrScObtainMark").val();
+            var b = $("#PrScTotalMarks").val();
+            var sum = (a / b) * 100;
+            $("#PrScPercentage").val(parseFloat(sum.toFixed(2)));
+            if ((sum > 60) && (sum < 100)) {
+                $("#Grade").val('A');
+            }
+            if ((sum > 41) && (sum < 59)) {
+                $("#Grade").val('B');
+            }
+            if ((sum > 01) && (sum < 40)) {
+                $("#Grade").val('C');
+            }
 
-        //});
+        });
+
+        $("#PrUgTotalMark").change(function () {
+            var a = $("#PrUgObtainMark").val();
+            var b = $("#PrUgTotalMark").val();
+            var sum = (a / b) * 100;
+            $("#PrUgPercentage").val(parseFloat(sum.toFixed(2)));
+            if ((sum > 60) && (sum < 100)) {
+                $("#PrUgGradeLeaving").val('A');
+            }
+            if ((sum > 41) && (sum < 59)) {
+                $("#PrUgGradeLeaving").val('B');
+            }
+            if ((sum > 01) && (sum < 40)) {
+                $("#PrUgGradeLeaving").val('C');
+            }
+        });
+
+        $("#PrPgTotalMark").change(function () {
+            var a = $("#PrPgObtainMark").val();
+            var b = $("#PrPgTotalMark").val();
+            var sum = (a / b) * 100;
+            $("#PrPgPercentage").val(parseFloat(sum.toFixed(2)));
+            if ((sum > 60) && (sum < 100)) {
+                $("#PrPgGradeLeaving").val('A');
+            }
+            if ((sum > 41) && (sum < 59)) {
+                $("#PrPgGradeLeaving").val('B');
+            }
+            if ((sum > 01) && (sum < 40)) {
+                $("#PrPgGradeLeaving").val('C');
+            }
+        });
+       
         function clearmsg() {
             $("#msg").hide();
             $("#msgs").hide();
@@ -129,6 +195,50 @@
                 });
             }
         }
+       
+
+        function ReloadState() {
+            $("#Classid").empty();
+            var item = '<option value="">select Course</option>';
+            $("#Classid").append(item);
+        }
+
+        function ReloadCountry() {
+            if ($("#DepartmentId").val() == "") {
+                ReloadState();
+            }
+            else {
+                $("#Classid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#DepartmentId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Course</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#Classid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Course</option>';
+                            $("#Classid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#DepartmentId").change(function () {
+            ReloadCountry();
+        })
 
         function fillprds() {
             if ($("#subcategories").val() != "") {
@@ -243,6 +353,7 @@
                     $("#StudBldGrp").val(data.StudBldGrp);
                     $("#StudEmail").val(data.StudEmail);
                     $("#Disease").val(data.Disease);
+                    $("#Documenttypename").val(data.doc_typename);
                     $("#Religionid").val(data.Religionid);
                     $("#Casteid").empty();
                     $.ajax({
@@ -617,8 +728,10 @@
             yearRange: "-100:+0",
             changeYear: true
         });
-
-        $('#datepicker').datepicker('setDate', new Date());
+        $(function () {
+            $("#datepicker").val('');
+        });
+       // $('#datepicker').datepicker('setDate', new Date());
 
         $('#datepicker1').attr("readonly", true);
 
@@ -1273,118 +1386,118 @@
             //=============================
 
 
-            if ($("#GuardianName").val() == '') {
-                cnt++;
-                $("#GuardianName").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian name Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianName").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianName").val() == '') {
+            //    cnt++;
+            //    $("#GuardianName").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian name Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianName").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#GuardianOccpationid").val() == '') {
-                cnt++;
-                $("#GuardianOccpationid").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian occupation Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianOccpationid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianOccpationid").val() == '') {
+            //    cnt++;
+            //    $("#GuardianOccpationid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian occupation Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianOccpationid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#GuardianQualificationid").val() == '') {
-                cnt++;
-                $("#GuardianQualificationid").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian qualification Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianQualificationid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianQualificationid").val() == '') {
+            //    cnt++;
+            //    $("#GuardianQualificationid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian qualification Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianQualificationid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#GuardianEmail").val() == '') {
-                cnt++;
-                $("#GuardianEmail").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian email Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianEmail").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianEmail").val() == '') {
+            //    cnt++;
+            //    $("#GuardianEmail").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian email Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianEmail").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
 
-            if ($("#GuardianOfficeAddress").val() == '') {
-                cnt++;
-                $("#GuardianOfficeAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian office address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianOfficeAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianOfficeAddress").val() == '') {
+            //    cnt++;
+            //    $("#GuardianOfficeAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian office address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianOfficeAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#GuardianContact").val() == '') {
-                cnt++;
-                $("#GuardianContact").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian conatact Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GuardianContact").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GuardianContact").val() == '') {
+            //    cnt++;
+            //    $("#GuardianContact").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian conatact Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GuardianContact").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#GCode").val() == '') {
-                cnt++;
-                $("#GCode").css({
-                    "border": "1px solid red"
-                });
-                alert("guardian conatact Code Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#GCode").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#GCode").val() == '') {
+            //    cnt++;
+            //    $("#GCode").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("guardian conatact Code Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#GCode").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#FatherBldGrpid").val() == '') {
                 cnt++;
@@ -1700,6 +1813,14 @@
             
         });
 
+        $("#DocumentType").change(function () {
+            if ($("#DocumentType").val() == 7)
+            { $("#doctype").show(); }
+            else { $("#doctype").hide();}
+
+        });
+
+
         $("#Religionid").change(function () {
             if ($("#Religionid").val() == "") {
                 $("#Casteid").empty();
@@ -1878,6 +1999,25 @@
             }
         });
 
+        $("#Pincode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#PrScTotalMarks").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#PrScObtainMark").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
         $("#EmergencyPhysicianContact").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 $("#errmsg").html("Digits Only").show().fadeOut("slow");
@@ -1958,7 +2098,7 @@
                 });
             }
         });
-
+      
         $('#MotherEmail').blur(function () {
             if (!ValidateEmail($("#MotherEmail").val())) {
                 $("#MotherEmail").css({
@@ -2110,7 +2250,7 @@
                                                                         });
                                                                         listItems.Add(new SelectListItem
                                                                         {
-                                                                            Text = "Unknown",
+                                                                            Text = "Transgender",
                                                                             Value = "3",
                                                                             Selected = true
                                                                         }); }
@@ -2121,30 +2261,20 @@
                                                             </div>
                                                         </div>
 
+
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label", @for = "focusedInput" })
                                                             <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> departmentlist = new List<SelectListItem>();
-                                                                    departmentlist.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Computer Science",
-                                                                        Value = "1"
-                                                                    });
-                                                                    departmentlist.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Accounting, Economics & Finance",
-                                                                        Value = "2",
+                                                                @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.DepartmentId)
+                                                            </div>
+                                                        </div>
 
-                                                                    });
-                                                                    departmentlist.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Arts, Humanities, Social Sciences (School of The)",
-                                                                        Value = "3",
-                                                                        Selected = true
-                                                                    }); }
-
-                                                                @Html.DropDownListFor(model => model.DepartmentId, departmentlist, "-- Select Department --")
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Classid, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.Classid, new SelectList(Model.classlist, "Classid", "Classnm", "Select Course"), "Select Course", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.Classid)
                                                             </div>
                                                         </div>
 
@@ -2186,13 +2316,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.StudBldGrp, new { @class = "control-label ", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.StudBldGrp, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
-                                                                @Html.ValidationMessageFor(model => model.StudBldGrp)
-                                                            </div>
-                                                        </div>
+
 
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.StudEmail, new { @class = "control-label" })
@@ -2202,7 +2326,7 @@
                                                             </div>
                                                         </div>
 
-                                                       
+
 
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.Religionid, new { @class = "control-label", @for = "select" })
@@ -2211,20 +2335,20 @@
                                                                 @Html.ValidationMessageFor(model => model.Religionid)
                                                             </div>
                                                         </div>
-                                                       
-                                                           
 
-                                                      
-                                                        
 
-                                                     
-                                                            <div class="control-group span5">
-                                                                @Html.LabelFor(model => model.Casteid, new { @class = "control-label", @for = "select" })
-                                                                <div class="controls">
-                                                                    @Html.DropDownListFor(m => m.Casteid, new SelectList(Model.castelist, "Casteid", "CasteName", "Select Caste"), "Select Caste", new { @for = "select" })
-                                                                    @Html.ValidationMessageFor(model => model.Casteid)
-                                                                </div>
+
+
+
+
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Casteid, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.Casteid, new SelectList(Model.castelist, "Casteid", "CasteName", "Select Sub Category"), "Select Sub Category", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.Casteid)
                                                             </div>
+                                                        </div>
                                                         <div class="control-group span5" id="parish">
                                                             @Html.LabelFor(model => model.ParishName, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
@@ -2249,59 +2373,13 @@
                                                                 @Html.ValidationMessageFor(model => model.StudCategoryid)
                                                             </div>
                                                         </div>
-                                                            <div class="control-group span5">
-                                                                @Html.LabelFor(model => model.MotherTongue, new { @class = "control-label" })
-                                                                <div class="controls">
-                                                                    @Html.TextBoxFor(model => model.MotherTongue, new { placeholder = "Enter Mother Tongue", maxlength = "45", @class = "input" })
-                                                                    @Html.ValidationMessageFor(model => model.MotherTongue)
-                                                                </div>
-                                                            </div>
-
-
-
-
-
-
-
-</fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
-                                                        <legend>Medical Info</legend>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Weight, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.MotherTongue, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Weight, new { placeholder = "Enter Weight in Kg", maxlength = "3", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Weight)
+                                                                @Html.TextBoxFor(model => model.MotherTongue, new { placeholder = "Enter Mother Tongue", maxlength = "45", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.MotherTongue)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Height, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Height, new { placeholder = "Enter Height in Cms", maxlength = "3", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Height)
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Disease, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.Disease, new { placeholder = "Enter Disease", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Disease)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.StudPic, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="files3" id="files3" />
-                                                                <div id="pic3">
-                                                                </div>
-                                                                @Html.ValidationMessageFor(model => model.StudPic)
-                                                            </div>
-                                                        </div>
-
-
 
 
                                                         <div class="control-group span5">
@@ -2356,13 +2434,74 @@
 
                                                             </div>
                                                         </div>
+
+                                                        <div class="control-group span5" id="doctype" hidden>
+                                                            @Html.LabelFor(model => model.Documenttypename, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.Documenttypename, new { placeholder = "Enter Document Type.", maxlength = "100", @class = "input" })
+                                                            </div>
+                                                        </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.DocumentIDNo, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "50", @class = "input" })
                                                             </div>
                                                         </div>
-                                                        </fieldset>
+
+                                                       
+
+
+
+
+                                                    </fieldset>
+                                                    <br />
+                                                    <fieldset class="test" style="width: 100%;">
+                                                        <legend>Medical Info</legend>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Weight, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.Weight, new { placeholder = "Enter Weight in Kg", maxlength = "3", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.Weight)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Height, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.Height, new { placeholder = "Enter Height in Cms", maxlength = "3", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.Height)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.StudBldGrp, new { @class = "control-label ", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.StudBldGrp, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.StudBldGrp)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Disease, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextAreaFor(model => model.Disease, new { placeholder = "Enter Disease", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.Disease)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.StudPic, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                <input type="file" name="files3" id="files3" />
+                                                                <div id="pic3">
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.StudPic)
+                                                            </div>
+                                                        </div>
+
+
+
+
+
+                                                    </fieldset>
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Emergency Details</legend>
@@ -2390,24 +2529,18 @@
                                                             </div>
                                                         </div>
                                                     </fieldset>
-                                                    <br/>
+                                                    <br />
 
-                                                       
-                                                 </div>
+
+                                                </div>
                                                 <div id="tabs-2">
-                                                    <fieldset class="test hide"  style="width: 100%;" >
+                                                    <fieldset class="test hide" style="width: 100%;">
                                                         <legend>Student Details</legend>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Classid, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.Classid, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @for = "select" })
-                                                                @Html.ValidationMessageFor(model => model.Classid)
-                                                            </div>
-                                                        </div>
-                                                      
-                                                      
-                                                    
-                                                      
+                                                       
+
+
+
+
                                                     </fieldset>
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Father's Details</legend>
@@ -2457,13 +2590,13 @@
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.FatherPic, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files1" id="files1"/>
+                                                                <input type="file" name="files1" id="files1" />
                                                                 <div id="pic1">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.FatherPic)
                                                             </div>
                                                         </div>
-                                                       
+
                                                         <div class="control-group span5 hide">
                                                             @Html.LabelFor(model => model.FatherBldGrpid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
@@ -2475,59 +2608,63 @@
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Guardian's Detail</legend>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianName, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.GuardianName, new { placeholder = "Enter Guardian Name", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianOccpationid, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.GuardianOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @for = "select" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianOccpationid)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianQualificationid, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.GuardianQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianQualificationid)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianEmail, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.GuardianEmail, new { placeholder = "Enter Guardian's Email", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianEmail)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianOfficeAddress, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.GuardianOfficeAddress, new { placeholder = "Enter Guardian's Office Address", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianOfficeAddress)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianContact, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.GCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
-                                                                @Html.TextBoxFor(model => model.GuardianContact, new { placeholder = "Guardian's Contact Number", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.GuardianContact)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.GuardianPic, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="files4" id="files4" />
-                                                                <div id="pic4">
+                                                        <input type="checkbox" name="gcheckbox" id="cbxShowHide3" value="gcheckbox"> Click here to fill Gaurdian Details
+                                                        <div id="autoUpdate3" class="autoUpdate3" hidden>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextAreaFor(model => model.GuardianName, new { placeholder = "Enter Guardian Name", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianName)
                                                                 </div>
-                                                                @Html.ValidationMessageFor(model => model.GuardianPic)
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianOccpationid, new { @class = "control-label", @for = "select" })
+                                                                <div class="controls">
+                                                                    @Html.DropDownListFor(m => m.GuardianOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @for = "select" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianOccpationid)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianQualificationid, new { @class = "control-label", @for = "select" })
+                                                                <div class="controls">
+                                                                    @Html.DropDownListFor(m => m.GuardianQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianQualificationid)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianEmail, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.GuardianEmail, new { placeholder = "Enter Guardian's Email", maxlength = "30", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianEmail)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianOfficeAddress, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextAreaFor(model => model.GuardianOfficeAddress, new { placeholder = "Enter Guardian's Office Address", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianOfficeAddress)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianContact, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.GCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
+                                                                    @Html.TextBoxFor(model => model.GuardianContact, new { placeholder = "Guardian's Contact Number", maxlength = "10", @class = "input", @Style = "width:63%" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianContact)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.GuardianPic, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    <input type="file" name="files4" id="files4" />
+                                                                    <div id="pic4">
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.GuardianPic)
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </fieldset>
+</fieldset>
+                                                    
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Mother's Details</legend>
@@ -2566,7 +2703,7 @@
                                                                 @Html.ValidationMessageFor(model => model.MotherOfficeAddress)
                                                             </div>
                                                         </div>
-                                                       
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.MotherContact, new { @class = "control-label" })
                                                             <div class="controls">
@@ -2677,7 +2814,7 @@
                                                             </div>
                                                         </div>
                                                     </fieldset>
-                                                  
+
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Inventory Details</legend>
@@ -2733,35 +2870,38 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                 @Html.ValidationMessageFor(model => model.LastClass)
                                                             </div>
                                                         </div>
+
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Grade, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.PrScObtainMark, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Grade, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Grade)
+                                                                @Html.TextBoxFor(model => model.PrScObtainMark, new { placeholder = "Enter SC  Obtain Marks", maxlength = "10", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.PrScObtainMark)
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrScTotalMarks, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrScTotalMarks, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.PrScTotalMarks, new { placeholder = "Enter SC Total Marks", maxlength = "10", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrScTotalMarks)
                                                             </div>
                                                         </div>
+
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrScObtainMark, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.Grade, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrScObtainMark, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrScObtainMark)
+                                                                @Html.TextBoxFor(model => model.Grade, new { placeholder = "Enter Grade While Leaving", @readonly = "readonly", maxlength = "10", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.Grade)
                                                             </div>
                                                         </div>
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrScPercentage, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrScPercentage, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.PrScPercentage, new { placeholder = "Percentage While Leaving", @readonly = "readonly", maxlength = "10", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrScPercentage)
                                                             </div>
                                                         </div>
-                                                       
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.LeaveYear, new { @class = "control-label" })
                                                             <div class="controls">
@@ -2819,8 +2959,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrScTCNumber, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                
-                                                                @Html.TextBoxFor(model => model.PrScTCNumber, new { placeholder = "Enter TC Number", maxlength = "20", @class = "input"})
+
+                                                                @Html.TextBoxFor(model => model.PrScTCNumber, new { placeholder = "Enter TC Number", maxlength = "20", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrScTCNumber)
                                                             </div>
                                                         </div>
@@ -2849,125 +2989,132 @@ new { style = "display:block;width:200px;height:178px;" })
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>College UG</legend>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgCollegeName, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgCollegeName, new { placeholder = "Enter College Name", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgCollegeName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgCollegeAddress, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.PrUgCollegeAddress, new { placeholder = "Enter College Address", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgCollegeAddress)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgAffilatedUniversity, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @*@Html.DropDownListFor(m => m.LastClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "form-control mar" })*@
-                                                                @Html.TextBoxFor(model => model.PrUgAffilatedUniversity, new { placeholder = "University - Affliated University", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgAffilatedUniversity)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgGradeLeaving, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgGradeLeaving, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgGradeLeaving)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgTotalMark, new { @class = "control-label" })
-                                                            <div class="controls">
-
-                                                                @Html.TextBoxFor(model => model.PrUgTotalMark, new { placeholder = "Enter Total Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgTotalMark)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgObtainMark, new { @class = "control-label" })
-                                                            <div class="controls">
-
-                                                                @Html.TextBoxFor(model => model.PrUgObtainMark, new { placeholder = "Enter Obtain Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgObtainMark)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgPercentage, new { @class = "control-label" })
-                                                            <div class="controls">
-
-                                                                @Html.TextBoxFor(model => model.PrUgPercentage, new { placeholder = "Enter Percentage ", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgPercentage)
-                                                            </div>
-                                                        </div>
+                                                        <input type="checkbox" name="ugcheckbox" id="cbxShowHide" value="ugcheckbox"> Click here to fill college UG Details
 
 
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgYearLeaving, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgYearLeaving, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgYearLeaving)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgRegisterNumber, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgRegisterNumber, new { placeholder = "Enter Register Number", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgRegisterNumber)
-                                                            </div>
-                                                        </div>
-                                                    
-
-                                                     
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgReasonofLeaving, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.PrUgReasonofLeaving, new { placeholder = "Enter Leave Reason", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgReasonofLeaving)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgPrincipalName, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgPrincipalName, new { placeholder = "Enter Principal Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgPrincipalName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgRefContactName, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgRefContactName, new { placeholder = "Enter Reference Contact Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgRefContactName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrUgRefContactNo, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrUgRefContactNo, new { placeholder = "Enter Reference Contact Number", maxlength = "10", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PrUgRefContactNo)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.UGMarksheet, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="files7" id="files7"  />
-                                                                <div id="pic7">
+                                                        <div id="autoUpdate" class="autoUpdate" hidden>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgCollegeName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgCollegeName, new { placeholder = "Enter College Name", maxlength = "30", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgCollegeName)
                                                                 </div>
-                                                                @Html.ValidationMessageFor(model => model.UGMarksheet)
                                                             </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgCollegeAddress, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextAreaFor(model => model.PrUgCollegeAddress, new { placeholder = "Enter College Address", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgCollegeAddress)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgAffilatedUniversity, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @*@Html.DropDownListFor(m => m.LastClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "form-control mar" })*@
+                                                                    @Html.TextBoxFor(model => model.PrUgAffilatedUniversity, new { placeholder = "University - Affliated University", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgAffilatedUniversity)
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgObtainMark, new { @class = "control-label" })
+                                                                <div class="controls">
+
+                                                                    @Html.TextBoxFor(model => model.PrUgObtainMark, new { placeholder = "Enter Obtain Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgObtainMark)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgTotalMark, new { @class = "control-label" })
+                                                                <div class="controls">
+
+                                                                    @Html.TextBoxFor(model => model.PrUgTotalMark, new { placeholder = "Enter Total Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgTotalMark)
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgGradeLeaving, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgGradeLeaving, new { placeholder = "Enter Grade While Leaving", @readonly="readonly",maxlength = "10", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgGradeLeaving)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgPercentage, new { @class = "control-label" })
+                                                                <div class="controls">
+
+                                                                    @Html.TextBoxFor(model => model.PrUgPercentage, new { placeholder = "Enter Percentage ", maxlength = "10", @readonly = "readonly", @class = "input", @Style = "width:63%" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgPercentage)
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgYearLeaving, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgYearLeaving, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgYearLeaving)
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgRegisterNumber, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgRegisterNumber, new { placeholder = "Enter Register Number", maxlength = "20", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgRegisterNumber)
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgReasonofLeaving, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextAreaFor(model => model.PrUgReasonofLeaving, new { placeholder = "Enter Leave Reason", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgReasonofLeaving)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgPrincipalName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgPrincipalName, new { placeholder = "Enter Principal Name", maxlength = "20", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgPrincipalName)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgRefContactName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgRefContactName, new { placeholder = "Enter Reference Contact Name", maxlength = "20", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgRefContactName)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.PrUgRefContactNo, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.PrUgRefContactNo, new { placeholder = "Enter Reference Contact Number", maxlength = "10", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.PrUgRefContactNo)
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.UGMarksheet, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    <input type="file" name="files7" id="files7" />
+                                                                    <div id="pic7">
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.UGMarksheet)
+                                                                </div>
+                                                            </div>
+
                                                         </div>
-
-
                                                     </fieldset>
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>College PG</legend>
+                                                        <input type="checkbox" name="pgcheckbox" id="cbxShowHide1" value="pgcheckbox"> Click here to fill college PG Details
+                                                <div id="autoUpdate1" class="autoUpdate1" hidden>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgCollegeName, new { @class = "control-label" })
                                                             <div class="controls">
@@ -2991,7 +3138,14 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.PrPgObtainMark, new { @class = "control-label" })
+                                                            <div class="controls">
 
+                                                                @Html.TextBoxFor(model => model.PrPgObtainMark, new { placeholder = "Enter Obtain Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
+                                                                @Html.ValidationMessageFor(model => model.PrPgObtainMark)
+                                                            </div>
+                                                        </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgTotalMark, new { @class = "control-label" })
                                                             <div class="controls">
@@ -3001,31 +3155,24 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrPgObtainMark, new { @class = "control-label" })
-                                                            <div class="controls">
-
-                                                                @Html.TextBoxFor(model => model.PrPgObtainMark, new { placeholder = "Enter Obtain Marks", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.PrPgObtainMark)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrPgPercentage, new { @class = "control-label" })
-                                                            <div class="controls">
-
-                                                                @Html.TextBoxFor(model => model.PrPgPercentage, new { placeholder = "Enter Percentage ", maxlength = "10", @class = "input", @Style = "width:63%" })
-                                                                @Html.ValidationMessageFor(model => model.PrPgPercentage)
-                                                            </div>
-                                                        </div>
 
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgGradeLeaving, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrPgGradeLeaving, new { placeholder = "Enter Grade While Leaving", maxlength = "10", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.PrPgGradeLeaving, new { placeholder = "Enter Grade While Leaving", @readonly = "readonly", maxlength = "10", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrPgGradeLeaving)
                                                             </div>
                                                         </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.PrPgPercentage, new { @class = "control-label" })
+                                                            <div class="controls">
+
+                                                                @Html.TextBoxFor(model => model.PrPgPercentage, new { placeholder = "Enter Percentage ",@readonly="readonly" ,maxlength = "10", @class = "input", @Style = "width:63%" })
+                                                                @Html.ValidationMessageFor(model => model.PrPgPercentage)
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgYearLeaving, new { @class = "control-label" })
                                                             <div class="controls">
@@ -3054,7 +3201,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                 @Html.ValidationMessageFor(model => model.PrPgPrincipalName)
                                                             </div>
                                                         </div>
-                                                     
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgRefContactName, new { @class = "control-label" })
                                                             <div class="controls">
@@ -3072,14 +3219,14 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PGMarksheet, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files8" id="files8"/>
+                                                                <input type="file" name="files8" id="files8" />
                                                                 <div id="pic8">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.PGMarksheet)
                                                             </div>
                                                         </div>
-
-                                                    </fieldset>
+</div>
+</fieldset>
                                                     <br />
 
                                                     <fieldset class="test" style="width: 100%;">

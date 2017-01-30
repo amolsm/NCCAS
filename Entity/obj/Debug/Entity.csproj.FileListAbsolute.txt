@@ -28,3 +28,4 @@ D:\NCCAS\Entity\bin\Debug\EntityFramework.dll
 D:\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.dll
 D:\NCCAS\Entity\bin\Debug\EntityFramework.xml
 D:\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache

@@ -41,6 +41,7 @@ namespace SchoolManagementSystems.Controllers
             svm.classlist = db.tbl_class.Where(m => m.status == true).ToList();
             svm.Translist = db.tbl_transport.Where(m => m.status == true).ToList();
             svm.catlist = db.tbl_category.Where(m => m.status == true).ToList();
+            svm.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
             svm.academicyear = GetYear();
             List<SelectListItem> test = new List<SelectListItem>();
             foreach (var r in svm.catlist)
@@ -604,7 +605,7 @@ namespace SchoolManagementSystems.Controllers
                             svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                             svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                             svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo,svm.DepartmentId,svm.ApplicationID,svm.UniversityRegId,svm.Pincode,svm.PrScRegisterNumber,svm.sc_refletter,svm.PrScTCNumber,svm.PrUgRegisterNumber,svm.PrPgRegisterNumber).ToString();
+                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo,svm.DepartmentId,svm.ApplicationID,svm.UniversityRegId,svm.Pincode,svm.PrScRegisterNumber,svm.sc_refletter,svm.PrScTCNumber,svm.PrUgRegisterNumber,svm.PrPgRegisterNumber,svm.Documenttypename).ToString();
                     }
                     else if (group1 == "0" && group1!=null)
                     {
@@ -616,7 +617,7 @@ namespace SchoolManagementSystems.Controllers
                             svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                             svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                             svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber).ToString();
+                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename).ToString();
                         if (svm.Studid != 0)
                         {
                             int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
@@ -637,7 +638,7 @@ namespace SchoolManagementSystems.Controllers
                            svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                            svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                            svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                           svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber).ToString();
+                           svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename).ToString();
             }
             if (Session["online_Admmission"] != "Yes")
             {
@@ -875,6 +876,17 @@ namespace SchoolManagementSystems.Controllers
                                                         x.StudEmail.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.FatherContact.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Studid).ToList();
             return View(svm);
+        }
+
+        public JsonResult GetCourse(string id)
+        {
+            int depid = 0;
+            if (id != null && id != "")
+            {
+                depid = Convert.ToInt32(id);
+            }
+            var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+            return Json(new SelectList(course, "Classid", "Classnm"));
         }
     }
 }

@@ -1245,9 +1245,74 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_online_admission1" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
+    <FunctionImportMapping FunctionImportName="sp_department_DML" FunctionName="SchoolMgmtSysModel.Store.sp_department_DML" />
+    <FunctionImportMapping FunctionImportName="sp_getDepartment" FunctionName="SchoolMgmtSysModel.Store.sp_getDepartment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getDepartment_Result">
+          <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblDepartment">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tblDepartment">
+        <MappingFragment StoreEntitySet="tblDepartment">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_CourseYearMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
+        <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_YearMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
+        <MappingFragment StoreEntitySet="tbl_YearMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
     <EntitySetMapping Name="tbl_student">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
+          <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
           <ScalarProperty Name="prpg_regno" ColumnName="prpg_regno" />
           <ScalarProperty Name="prug_regno" ColumnName="prug_regno" />
           <ScalarProperty Name="sc_tcno" ColumnName="sc_tcno" />
@@ -1383,67 +1448,5 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-    <FunctionImportMapping FunctionImportName="sp_department_DML" FunctionName="SchoolMgmtSysModel.Store.sp_department_DML" />
-    <FunctionImportMapping FunctionImportName="sp_getDepartment" FunctionName="SchoolMgmtSysModel.Store.sp_getDepartment">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getDepartment_Result">
-          <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
-          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tblDepartment">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tblDepartment">
-        <MappingFragment StoreEntitySet="tblDepartment">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-          <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_getClass" FunctionName="SchoolMgmtSysModel.Store.sp_getClass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getClass_Result">
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
-          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_CourseYearMaster">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseYearMaster">
-        <MappingFragment StoreEntitySet="tbl_CourseYearMaster">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-          <ScalarProperty Name="courseid" ColumnName="courseid" />
-          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_YearMaster">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_YearMaster">
-        <MappingFragment StoreEntitySet="tbl_YearMaster">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="YearName" ColumnName="YearName" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_getCourseYear" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseYear">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseYear_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-          <ScalarProperty Name="Classnm" ColumnName="Classnm" />
-          <ScalarProperty Name="YearName" ColumnName="YearName" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
   </EntityContainerMapping>
 </Mapping>

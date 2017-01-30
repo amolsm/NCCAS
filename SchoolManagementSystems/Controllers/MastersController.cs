@@ -1080,7 +1080,7 @@ namespace SchoolManagementSystems.Controllers
         {
             CourseYearviewmodel _cym = new CourseYearviewmodel();
             //_cym.academicyear = GetYear();
-           //FillPermission(53);
+           FillPermission(53);
             if (String.IsNullOrEmpty(Search_Data))
                 _cym._courseyear = db.sp_getCourseYear().ToList();
             else
@@ -1089,7 +1089,7 @@ namespace SchoolManagementSystems.Controllers
             _cym.deptlist = db.tblDepartment.ToList();
             _cym.yearlist = db.tbl_YearMaster.ToList();
             _cym.courselist = db.tbl_class.ToList();
-
+            _cym._courseyear = db.sp_getCourseYear().ToList();
             return View(_cym);
         }
         public JsonResult FillCourseYearDetails(int courseyearid)
@@ -1126,7 +1126,7 @@ namespace SchoolManagementSystems.Controllers
                 depid = Convert.ToInt32(id);
             }
             var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
-            return Json(new SelectList(course, "Classid", "Classname"));
+            return Json(new SelectList(course, "Classid", "Classnm"));
         }
         #endregion
     }

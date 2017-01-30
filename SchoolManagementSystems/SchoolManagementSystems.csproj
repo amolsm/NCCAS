@@ -192,16 +192,6 @@
     <Content Include="images\loading-x.gif" />
     <Content Include="images\sessionout.png" />
     <Content Include="img\01.png" />
-    <Content Include="img\01_back.png" />
-    <Content Include="img\02_back.png" />
-    <Content Include="img\03_back.png" />
-    <Content Include="img\04_back.png" />
-    <Content Include="img\05_back.png" />
-    <Content Include="img\06_back.png" />
-    <Content Include="img\07_back.png" />
-    <Content Include="img\08_back.png" />
-    <Content Include="img\09_back.png" />
-    <Content Include="img\10_back.png" />
     <Content Include="img\125742-200.png" />
     <Content Include="img\Dashboard.png" />
     <Content Include="img\DSC_0304.JPG" />
@@ -220,9 +210,6 @@
     <Content Include="img\65055-work-timetable-200x200.png" />
     <Content Include="img\83825-200.png" />
     <Content Include="img\birthday-icon-png-0.png" />
-    <Content Include="img\bnr_1.jpg" />
-    <Content Include="img\bnr_2.jpg" />
-    <Content Include="img\bnr_3.jpg" />
     <Content Include="img\captain-256.png" />
     <Content Include="img\captain-512.png" />
     <Content Include="img\fb.png" />
@@ -272,29 +259,9 @@
     <Content Include="img\icons\Studentmanagement2.png" />
     <Content Include="img\icons\TimeReport1.png" />
     <Content Include="img\icons\Transportmanagement.png" />
-    <Content Include="img\NACCAS - Emblem.jpg" />
     <Content Include="img\NACCASImage.jpg" />
     <Content Include="img\report.png" />
     <Content Include="img\sms.png" />
-    <Content Include="img\newimages\1425243_10151718346481640_1143575479_o.jpg" />
-    <Content Include="img\newimages\4529933084_569f1e1153_b.jpg" />
-    <Content Include="img\newimages\8F5A5691_ag_sm-2.jpg" />
-    <Content Include="img\newimages\9619122_orig.jpg" />
-    <Content Include="img\newimages\bg1.jpg" />
-    <Content Include="img\newimages\CH-sports-21.JPG" />
-    <Content Include="img\newimages\Child-in-tube-1200x661.jpg" />
-    <Content Include="img\newimages\img1.jpg" />
-    <Content Include="img\newimages\img10.jpg" />
-    <Content Include="img\newimages\img2.jpg" />
-    <Content Include="img\newimages\img3.jpg" />
-    <Content Include="img\newimages\img4.jpg" />
-    <Content Include="img\newimages\img5.jpg" />
-    <Content Include="img\newimages\img6.jpg" />
-    <Content Include="img\newimages\img7.jpg" />
-    <Content Include="img\newimages\img8.jpg" />
-    <Content Include="img\newimages\img9.jpg" />
-    <Content Include="img\newimages\IMG_4939.jpg" />
-    <Content Include="img\newimages\mixed-group.jpg" />
     <Content Include="img\student.png" />
     <Content Include="img\SUJ_8477.JPG" />
     <Content Include="img\trans.png" />
@@ -467,6 +434,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\newimages\" />
     <Folder Include="Models\" />
     <Folder Include="upload\" />
   </ItemGroup>

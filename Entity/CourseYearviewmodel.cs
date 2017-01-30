@@ -14,6 +14,8 @@ namespace Entity
         [DisplayName("Department")]
         public int DeptId { get; set; }
 
+  
+
         [DisplayName("Course")]
         public int CourseId { get; set; }
         [DisplayName("Year")]

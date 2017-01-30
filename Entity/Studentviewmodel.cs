@@ -45,10 +45,10 @@ namespace Entity
         [DisplayName("Student Religion : ")]
         public int Religionid { get; set; }
 
-        [DisplayName("Student Caste : ")]
+        [DisplayName("Sub Category : ")]
         public int Casteid { get; set; }
 
-        [DisplayName("Select Class : ")]
+        [DisplayName("Select Course : ")]
         public int Classid { get; set; }
 
         [DisplayName("Enter RollNo : ")]
@@ -410,8 +410,12 @@ namespace Entity
         [DisplayName("Diocese name : ")]
         public string DioceseName { get; set; }
 
-    
+        [DisplayName("ID Type name : ")]
+        public string Documenttypename { get; set; }
 
+
+
+        public List<tblDepartment> departmentlistdetails { get; set; }
         public List<tbl_student> StudentDataCollection { get; set; }
         public List<tbl_online_student> online_StudentDataCollection { get; set; }
         public List<tbl_class> classlist { get; set; }

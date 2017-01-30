@@ -58,6 +58,7 @@
                     data: { id: $("#DeptId").val() },
                     success: function (course) {
                         if (course != "") {
+                            
                             var item = '<option value="">select Course</option>';
                             $.each(course, function (i, course) {
                                 item += '<option value="' + course.Value + '">' + course.Text + '</option>';
@@ -95,27 +96,7 @@
             $("#msgs").hide();
         }
 
-        $('#academicyear').blur(function () {
-            var Deptid = $('#DeptId').val();
-            var courseid = $("#CourseId").val();
-            var yearid = $("#academicyear").val();
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("check_duplicate_Division")',
-                dataType: 'JSON',
-                data: { dept_id: Deptid, courseid: courseid, academicyear: yearid },
-                success: function (data) {
-                    if (data.dept_id != null) {
-                        $("#msg").show();
-                        $("#lblmsg").text("This Record  Already Exists!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "15px" });
-                        clear();
-                        return false;
-                    }
-                }
-            });
-        });
+     
 
         $("#insert").click(function () {
             setTimeout(function () {
