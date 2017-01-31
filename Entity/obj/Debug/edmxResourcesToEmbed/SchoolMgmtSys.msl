@@ -1102,7 +1102,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
     <FunctionImportMapping FunctionImportName="sp_news_DML" FunctionName="SchoolMgmtSysModel.Store.sp_news_DML" />
     <FunctionImportMapping FunctionImportName="sp_getNewslist" FunctionName="SchoolMgmtSysModel.Store.sp_getNewslist">
       <ResultMapping>
@@ -1311,7 +1310,6 @@
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
           <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
-          <ScalarProperty Name="courseid" ColumnName="courseid" />
           <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
           <ScalarProperty Name="prpg_regno" ColumnName="prpg_regno" />
           <ScalarProperty Name="prug_regno" ColumnName="prug_regno" />
@@ -1448,5 +1446,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
   </EntityContainerMapping>
 </Mapping>

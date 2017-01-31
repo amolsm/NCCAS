@@ -59,6 +59,7 @@
                     else {
                         $('#datepicker1').datepicker('setDate', new Date());
                     }
+                   
 
                     $("#Emailid").val(data.Emailid);
                     $("#Gender").val(data.Gender);
@@ -184,7 +185,78 @@
             changeYear: true
         });
 
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+        
         $('#datepicker').datepicker('setDate', new Date());
+        $('#datepicker2').attr("readonly", true);
+
+        $('#datepicker2').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+      
+        $('#datepicker2').datepicker('setDate', new Date());
+      
+        $('#datepicker3').attr("readonly", true);
+
+        $('#datepicker3').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+    
+        $('#datepicker3').datepicker('setDate', new Date());
+        $('#datepicker4').attr("readonly", true);
+
+        $('#datepicker4').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+       
+        $('#datepicker4').datepicker('setDate',new Date());
+        $('#datepicker5').attr("readonly", true);
+
+        $('#datepicker5').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+      
+        $('#datepicker5').datepicker('setDate',new Date());
+      
         $('#datepicker1').datepicker('setDate', new Date());
         $('#datepicker').focus();
 
@@ -1567,10 +1639,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.joiningdate, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.joiningdate, new {  @class = "control-label" })
 
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.joiningdate, new { @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining" })
                                                                 @Html.ValidationMessageFor(model => model.joiningdate)
                                                             </div>
                                                         </div>
@@ -1578,7 +1650,7 @@
                                                             @Html.LabelFor(model => model.lastdate, new { @class = "control-label" })
 
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.lastdate, new { @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker3",@readonly = "readonly", placeholder = "Select Last Date" })
                                                                 @Html.ValidationMessageFor(model => model.lastdate)
                                                             </div>
                                                         </div>
@@ -1623,7 +1695,7 @@
                                                             @Html.LabelFor(model => model.cjoiningdate, new { @class = "control-label" })
 
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.cjoiningdate, new { @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.TextBoxFor(model => model.cjoiningdate, new { id = "datepicker4",@readonly = "readonly", placeholder = "Select Date of Joining" })
                                                                 @Html.ValidationMessageFor(model => model.cjoiningdate)
                                                             </div>
                                                         </div>
@@ -1631,7 +1703,7 @@
                                                             @Html.LabelFor(model => model.clastdate, new { @class = "control-label" })
 
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.clastdate, new { @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.TextBoxFor(model => model.clastdate, new { id = "datepicker5", @readonly = "readonly", placeholder = "Select Last Date" })
                                                                 @Html.ValidationMessageFor(model => model.clastdate)
                                                             </div>
                                                         </div>

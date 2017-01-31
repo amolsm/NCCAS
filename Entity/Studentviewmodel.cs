@@ -413,7 +413,10 @@ namespace Entity
         [DisplayName("ID Type name : ")]
         public string Documenttypename { get; set; }
 
+        [DisplayName("Course Year : ")]
+        public int courseyear { get; set; }
 
+        public List<tbl_YearMaster> yearlist { get; set; }
 
         public List<tblDepartment> departmentlistdetails { get; set; }
         public List<tbl_student> StudentDataCollection { get; set; }

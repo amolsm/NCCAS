@@ -78,16 +78,16 @@ namespace Entity
         public string university { get; set; }
 
         [DisplayName("Joining Date ")]
-        public string joiningdate { get; set; }
+        public DateTime joiningdate { get; set; }
 
         [DisplayName("last Date ")]
-        public string lastdate { get; set; }
+        public DateTime lastdate { get; set; }
 
         [DisplayName("Joining Date ")]
-        public string cjoiningdate { get; set; }
+        public DateTime cjoiningdate { get; set; }
 
         [DisplayName("last Date ")]
-        public string clastdate { get; set; }
+        public DateTime clastdate { get; set; }
 
         [DisplayName("Last designation ")]
         public string ldesignation { get; set; }

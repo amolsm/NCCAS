@@ -679,7 +679,6 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="prug_regno" Type="nvarchar" MaxLength="50" />
     <Property Name="prpg_regno" Type="nvarchar" MaxLength="50" />
     <Property Name="doc_typename" Type="varchar" MaxLength="100" />
-    <Property Name="courseid" Type="int" />
     <Property Name="courseyearid" Type="int" />
   </EntityType>
   <EntityType Name="tbl_StudentAttendance">
@@ -938,10 +937,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
     <Parameter Name="MobileNo" Type="varchar" Mode="In" />
     <Parameter Name="Address" Type="varchar(max)" Mode="In" />
-    <Parameter Name="DOB" Type="date" Mode="In" />
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
     <Parameter Name="Gender" Type="int" Mode="In" />
     <Parameter Name="Quallification" Type="int" Mode="In" />
-    <Parameter Name="DateOfJoin" Type="date" Mode="In" />
+    <Parameter Name="DateOfJoin" Type="datetime" Mode="In" />
     <Parameter Name="Typeid" Type="int" Mode="In" />
     <Parameter Name="Code" Type="int" Mode="In" />
     <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
@@ -1002,14 +1001,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="accountname" Type="varchar" Mode="In" />
     <Parameter Name="collagename" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate" Type="varchar" Mode="In" />
-    <Parameter Name="lastdate" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate" Type="datetime" Mode="In" />
+    <Parameter Name="lastdate" Type="datetime" Mode="In" />
     <Parameter Name="totalexperience" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
     <Parameter Name="companyname" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate" Type="varchar" Mode="In" />
-    <Parameter Name="clastdate" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate" Type="datetime" Mode="In" />
+    <Parameter Name="clastdate" Type="datetime" Mode="In" />
     <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
     <Parameter Name="empemail" Type="varchar" Mode="In" />
     <Parameter Name="empreligion" Type="int" Mode="In" />
@@ -1366,6 +1365,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="prug_regno" Type="nvarchar" Mode="In" />
     <Parameter Name="prpg_regno" Type="nvarchar" Mode="In" />
     <Parameter Name="doc_typename" Type="varchar" Mode="In" />
+    <Parameter Name="courseyearid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Studid" Type="int" Mode="In" />

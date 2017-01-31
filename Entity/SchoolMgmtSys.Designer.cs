@@ -4085,993 +4085,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="empid">No Metadata Documentation available.</param>
-        /// <param name="firstName">No Metadata Documentation available.</param>
-        /// <param name="middleName">No Metadata Documentation available.</param>
-        /// <param name="lastName">No Metadata Documentation available.</param>
-        /// <param name="cityid">No Metadata Documentation available.</param>
-        /// <param name="stateid">No Metadata Documentation available.</param>
-        /// <param name="zipcode">No Metadata Documentation available.</param>
-        /// <param name="emailid">No Metadata Documentation available.</param>
-        /// <param name="phoneNo">No Metadata Documentation available.</param>
-        /// <param name="mobileNo">No Metadata Documentation available.</param>
-        /// <param name="address">No Metadata Documentation available.</param>
-        /// <param name="dOB">No Metadata Documentation available.</param>
-        /// <param name="gender">No Metadata Documentation available.</param>
-        /// <param name="quallification">No Metadata Documentation available.</param>
-        /// <param name="dateOfJoin">No Metadata Documentation available.</param>
-        /// <param name="typeid">No Metadata Documentation available.</param>
-        /// <param name="code">No Metadata Documentation available.</param>
-        /// <param name="oQualification">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        /// <param name="department">No Metadata Documentation available.</param>
-        /// <param name="bloodgroup">No Metadata Documentation available.</param>
-        /// <param name="qualication1">No Metadata Documentation available.</param>
-        /// <param name="university1">No Metadata Documentation available.</param>
-        /// <param name="precentage1">No Metadata Documentation available.</param>
-        /// <param name="yearpasing1">No Metadata Documentation available.</param>
-        /// <param name="qualication2">No Metadata Documentation available.</param>
-        /// <param name="university2">No Metadata Documentation available.</param>
-        /// <param name="precentage2">No Metadata Documentation available.</param>
-        /// <param name="yearpasing2">No Metadata Documentation available.</param>
-        /// <param name="qualication3">No Metadata Documentation available.</param>
-        /// <param name="university3">No Metadata Documentation available.</param>
-        /// <param name="precentage3">No Metadata Documentation available.</param>
-        /// <param name="yearpasing3">No Metadata Documentation available.</param>
-        /// <param name="qualication4">No Metadata Documentation available.</param>
-        /// <param name="university4">No Metadata Documentation available.</param>
-        /// <param name="precentage4">No Metadata Documentation available.</param>
-        /// <param name="yearpasing4">No Metadata Documentation available.</param>
-        /// <param name="weightinkg">No Metadata Documentation available.</param>
-        /// <param name="heightc">No Metadata Documentation available.</param>
-        /// <param name="emppic">No Metadata Documentation available.</param>
-        /// <param name="eidtype">No Metadata Documentation available.</param>
-        /// <param name="doctorname">No Metadata Documentation available.</param>
-        /// <param name="doctorcode">No Metadata Documentation available.</param>
-        /// <param name="doctorcontact">No Metadata Documentation available.</param>
-        /// <param name="doctoraddress">No Metadata Documentation available.</param>
-        /// <param name="relation">No Metadata Documentation available.</param>
-        /// <param name="parentsname">No Metadata Documentation available.</param>
-        /// <param name="parentoccupation">No Metadata Documentation available.</param>
-        /// <param name="parentqualification">No Metadata Documentation available.</param>
-        /// <param name="parentsemail">No Metadata Documentation available.</param>
-        /// <param name="parentsaddress">No Metadata Documentation available.</param>
-        /// <param name="parentscode">No Metadata Documentation available.</param>
-        /// <param name="parentscontact">No Metadata Documentation available.</param>
-        /// <param name="parentspic">No Metadata Documentation available.</param>
-        /// <param name="pstreet">No Metadata Documentation available.</param>
-        /// <param name="pcity">No Metadata Documentation available.</param>
-        /// <param name="pstate">No Metadata Documentation available.</param>
-        /// <param name="pcountry">No Metadata Documentation available.</param>
-        /// <param name="ppin">No Metadata Documentation available.</param>
-        /// <param name="cstreet">No Metadata Documentation available.</param>
-        /// <param name="ccity">No Metadata Documentation available.</param>
-        /// <param name="cstate">No Metadata Documentation available.</param>
-        /// <param name="ccountry">No Metadata Documentation available.</param>
-        /// <param name="cpin">No Metadata Documentation available.</param>
-        /// <param name="homecode">No Metadata Documentation available.</param>
-        /// <param name="homecontact">No Metadata Documentation available.</param>
-        /// <param name="cmobilecode">No Metadata Documentation available.</param>
-        /// <param name="cmobile">No Metadata Documentation available.</param>
-        /// <param name="bankname">No Metadata Documentation available.</param>
-        /// <param name="branch">No Metadata Documentation available.</param>
-        /// <param name="ifsccode">No Metadata Documentation available.</param>
-        /// <param name="accountno">No Metadata Documentation available.</param>
-        /// <param name="accountname">No Metadata Documentation available.</param>
-        /// <param name="collagename">No Metadata Documentation available.</param>
-        /// <param name="affliateduniversity">No Metadata Documentation available.</param>
-        /// <param name="joiningdate">No Metadata Documentation available.</param>
-        /// <param name="lastdate">No Metadata Documentation available.</param>
-        /// <param name="totalexperience">No Metadata Documentation available.</param>
-        /// <param name="lastdesignation">No Metadata Documentation available.</param>
-        /// <param name="companyname">No Metadata Documentation available.</param>
-        /// <param name="clastdesignation">No Metadata Documentation available.</param>
-        /// <param name="cjoiningdate">No Metadata Documentation available.</param>
-        /// <param name="clastdate">No Metadata Documentation available.</param>
-        /// <param name="ctotalexperience">No Metadata Documentation available.</param>
-        /// <param name="empemail">No Metadata Documentation available.</param>
-        /// <param name="empreligion">No Metadata Documentation available.</param>
-        /// <param name="empcategory">No Metadata Documentation available.</param>
-        /// <param name="empcast">No Metadata Documentation available.</param>
-        /// <param name="empmothertongue">No Metadata Documentation available.</param>
-        public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, global::System.String joiningdate, global::System.String lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, global::System.String cjoiningdate, global::System.String clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, Nullable<global::System.Int32> empmothertongue)
-        {
-            ObjectParameter empidParameter;
-            if (empid.HasValue)
-            {
-                empidParameter = new ObjectParameter("Empid", empid);
-            }
-            else
-            {
-                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter firstNameParameter;
-            if (firstName != null)
-            {
-                firstNameParameter = new ObjectParameter("FirstName", firstName);
-            }
-            else
-            {
-                firstNameParameter = new ObjectParameter("FirstName", typeof(global::System.String));
-            }
-    
-            ObjectParameter middleNameParameter;
-            if (middleName != null)
-            {
-                middleNameParameter = new ObjectParameter("MiddleName", middleName);
-            }
-            else
-            {
-                middleNameParameter = new ObjectParameter("MiddleName", typeof(global::System.String));
-            }
-    
-            ObjectParameter lastNameParameter;
-            if (lastName != null)
-            {
-                lastNameParameter = new ObjectParameter("LastName", lastName);
-            }
-            else
-            {
-                lastNameParameter = new ObjectParameter("LastName", typeof(global::System.String));
-            }
-    
-            ObjectParameter cityidParameter;
-            if (cityid.HasValue)
-            {
-                cityidParameter = new ObjectParameter("Cityid", cityid);
-            }
-            else
-            {
-                cityidParameter = new ObjectParameter("Cityid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter stateidParameter;
-            if (stateid.HasValue)
-            {
-                stateidParameter = new ObjectParameter("Stateid", stateid);
-            }
-            else
-            {
-                stateidParameter = new ObjectParameter("Stateid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter zipcodeParameter;
-            if (zipcode != null)
-            {
-                zipcodeParameter = new ObjectParameter("Zipcode", zipcode);
-            }
-            else
-            {
-                zipcodeParameter = new ObjectParameter("Zipcode", typeof(global::System.String));
-            }
-    
-            ObjectParameter emailidParameter;
-            if (emailid != null)
-            {
-                emailidParameter = new ObjectParameter("Emailid", emailid);
-            }
-            else
-            {
-                emailidParameter = new ObjectParameter("Emailid", typeof(global::System.String));
-            }
-    
-            ObjectParameter phoneNoParameter;
-            if (phoneNo != null)
-            {
-                phoneNoParameter = new ObjectParameter("PhoneNo", phoneNo);
-            }
-            else
-            {
-                phoneNoParameter = new ObjectParameter("PhoneNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter mobileNoParameter;
-            if (mobileNo != null)
-            {
-                mobileNoParameter = new ObjectParameter("MobileNo", mobileNo);
-            }
-            else
-            {
-                mobileNoParameter = new ObjectParameter("MobileNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter addressParameter;
-            if (address != null)
-            {
-                addressParameter = new ObjectParameter("Address", address);
-            }
-            else
-            {
-                addressParameter = new ObjectParameter("Address", typeof(global::System.String));
-            }
-    
-            ObjectParameter dOBParameter;
-            if (dOB.HasValue)
-            {
-                dOBParameter = new ObjectParameter("DOB", dOB);
-            }
-            else
-            {
-                dOBParameter = new ObjectParameter("DOB", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter genderParameter;
-            if (gender.HasValue)
-            {
-                genderParameter = new ObjectParameter("Gender", gender);
-            }
-            else
-            {
-                genderParameter = new ObjectParameter("Gender", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter quallificationParameter;
-            if (quallification.HasValue)
-            {
-                quallificationParameter = new ObjectParameter("Quallification", quallification);
-            }
-            else
-            {
-                quallificationParameter = new ObjectParameter("Quallification", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter dateOfJoinParameter;
-            if (dateOfJoin.HasValue)
-            {
-                dateOfJoinParameter = new ObjectParameter("DateOfJoin", dateOfJoin);
-            }
-            else
-            {
-                dateOfJoinParameter = new ObjectParameter("DateOfJoin", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter typeidParameter;
-            if (typeid.HasValue)
-            {
-                typeidParameter = new ObjectParameter("Typeid", typeid);
-            }
-            else
-            {
-                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter codeParameter;
-            if (code.HasValue)
-            {
-                codeParameter = new ObjectParameter("Code", code);
-            }
-            else
-            {
-                codeParameter = new ObjectParameter("Code", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter oQualificationParameter;
-            if (oQualification != null)
-            {
-                oQualificationParameter = new ObjectParameter("OQualification", oQualification);
-            }
-            else
-            {
-                oQualificationParameter = new ObjectParameter("OQualification", typeof(global::System.String));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            ObjectParameter departmentParameter;
-            if (department.HasValue)
-            {
-                departmentParameter = new ObjectParameter("department", department);
-            }
-            else
-            {
-                departmentParameter = new ObjectParameter("department", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter bloodgroupParameter;
-            if (bloodgroup.HasValue)
-            {
-                bloodgroupParameter = new ObjectParameter("bloodgroup", bloodgroup);
-            }
-            else
-            {
-                bloodgroupParameter = new ObjectParameter("bloodgroup", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter qualication1Parameter;
-            if (qualication1.HasValue)
-            {
-                qualication1Parameter = new ObjectParameter("qualication1", qualication1);
-            }
-            else
-            {
-                qualication1Parameter = new ObjectParameter("qualication1", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university1Parameter;
-            if (university1 != null)
-            {
-                university1Parameter = new ObjectParameter("university1", university1);
-            }
-            else
-            {
-                university1Parameter = new ObjectParameter("university1", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage1Parameter;
-            if (precentage1 != null)
-            {
-                precentage1Parameter = new ObjectParameter("precentage1", precentage1);
-            }
-            else
-            {
-                precentage1Parameter = new ObjectParameter("precentage1", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing1Parameter;
-            if (yearpasing1 != null)
-            {
-                yearpasing1Parameter = new ObjectParameter("yearpasing1", yearpasing1);
-            }
-            else
-            {
-                yearpasing1Parameter = new ObjectParameter("yearpasing1", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication2Parameter;
-            if (qualication2.HasValue)
-            {
-                qualication2Parameter = new ObjectParameter("qualication2", qualication2);
-            }
-            else
-            {
-                qualication2Parameter = new ObjectParameter("qualication2", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university2Parameter;
-            if (university2 != null)
-            {
-                university2Parameter = new ObjectParameter("university2", university2);
-            }
-            else
-            {
-                university2Parameter = new ObjectParameter("university2", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage2Parameter;
-            if (precentage2 != null)
-            {
-                precentage2Parameter = new ObjectParameter("precentage2", precentage2);
-            }
-            else
-            {
-                precentage2Parameter = new ObjectParameter("precentage2", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing2Parameter;
-            if (yearpasing2 != null)
-            {
-                yearpasing2Parameter = new ObjectParameter("yearpasing2", yearpasing2);
-            }
-            else
-            {
-                yearpasing2Parameter = new ObjectParameter("yearpasing2", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication3Parameter;
-            if (qualication3.HasValue)
-            {
-                qualication3Parameter = new ObjectParameter("qualication3", qualication3);
-            }
-            else
-            {
-                qualication3Parameter = new ObjectParameter("qualication3", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university3Parameter;
-            if (university3 != null)
-            {
-                university3Parameter = new ObjectParameter("university3", university3);
-            }
-            else
-            {
-                university3Parameter = new ObjectParameter("university3", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage3Parameter;
-            if (precentage3 != null)
-            {
-                precentage3Parameter = new ObjectParameter("precentage3", precentage3);
-            }
-            else
-            {
-                precentage3Parameter = new ObjectParameter("precentage3", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing3Parameter;
-            if (yearpasing3 != null)
-            {
-                yearpasing3Parameter = new ObjectParameter("yearpasing3", yearpasing3);
-            }
-            else
-            {
-                yearpasing3Parameter = new ObjectParameter("yearpasing3", typeof(global::System.String));
-            }
-    
-            ObjectParameter qualication4Parameter;
-            if (qualication4.HasValue)
-            {
-                qualication4Parameter = new ObjectParameter("qualication4", qualication4);
-            }
-            else
-            {
-                qualication4Parameter = new ObjectParameter("qualication4", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter university4Parameter;
-            if (university4 != null)
-            {
-                university4Parameter = new ObjectParameter("university4", university4);
-            }
-            else
-            {
-                university4Parameter = new ObjectParameter("university4", typeof(global::System.String));
-            }
-    
-            ObjectParameter precentage4Parameter;
-            if (precentage4 != null)
-            {
-                precentage4Parameter = new ObjectParameter("precentage4", precentage4);
-            }
-            else
-            {
-                precentage4Parameter = new ObjectParameter("precentage4", typeof(global::System.String));
-            }
-    
-            ObjectParameter yearpasing4Parameter;
-            if (yearpasing4 != null)
-            {
-                yearpasing4Parameter = new ObjectParameter("yearpasing4", yearpasing4);
-            }
-            else
-            {
-                yearpasing4Parameter = new ObjectParameter("yearpasing4", typeof(global::System.String));
-            }
-    
-            ObjectParameter weightinkgParameter;
-            if (weightinkg != null)
-            {
-                weightinkgParameter = new ObjectParameter("weightinkg", weightinkg);
-            }
-            else
-            {
-                weightinkgParameter = new ObjectParameter("weightinkg", typeof(global::System.String));
-            }
-    
-            ObjectParameter heightcParameter;
-            if (heightc != null)
-            {
-                heightcParameter = new ObjectParameter("heightc", heightc);
-            }
-            else
-            {
-                heightcParameter = new ObjectParameter("heightc", typeof(global::System.String));
-            }
-    
-            ObjectParameter emppicParameter;
-            if (emppic != null)
-            {
-                emppicParameter = new ObjectParameter("emppic", emppic);
-            }
-            else
-            {
-                emppicParameter = new ObjectParameter("emppic", typeof(global::System.Byte[]));
-            }
-    
-            ObjectParameter eidtypeParameter;
-            if (eidtype.HasValue)
-            {
-                eidtypeParameter = new ObjectParameter("eidtype", eidtype);
-            }
-            else
-            {
-                eidtypeParameter = new ObjectParameter("eidtype", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter doctornameParameter;
-            if (doctorname != null)
-            {
-                doctornameParameter = new ObjectParameter("doctorname", doctorname);
-            }
-            else
-            {
-                doctornameParameter = new ObjectParameter("doctorname", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctorcodeParameter;
-            if (doctorcode != null)
-            {
-                doctorcodeParameter = new ObjectParameter("doctorcode", doctorcode);
-            }
-            else
-            {
-                doctorcodeParameter = new ObjectParameter("doctorcode", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctorcontactParameter;
-            if (doctorcontact != null)
-            {
-                doctorcontactParameter = new ObjectParameter("doctorcontact", doctorcontact);
-            }
-            else
-            {
-                doctorcontactParameter = new ObjectParameter("doctorcontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter doctoraddressParameter;
-            if (doctoraddress != null)
-            {
-                doctoraddressParameter = new ObjectParameter("doctoraddress", doctoraddress);
-            }
-            else
-            {
-                doctoraddressParameter = new ObjectParameter("doctoraddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter relationParameter;
-            if (relation.HasValue)
-            {
-                relationParameter = new ObjectParameter("relation", relation);
-            }
-            else
-            {
-                relationParameter = new ObjectParameter("relation", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter parentsnameParameter;
-            if (parentsname != null)
-            {
-                parentsnameParameter = new ObjectParameter("parentsname", parentsname);
-            }
-            else
-            {
-                parentsnameParameter = new ObjectParameter("parentsname", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentoccupationParameter;
-            if (parentoccupation != null)
-            {
-                parentoccupationParameter = new ObjectParameter("parentoccupation", parentoccupation);
-            }
-            else
-            {
-                parentoccupationParameter = new ObjectParameter("parentoccupation", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentqualificationParameter;
-            if (parentqualification != null)
-            {
-                parentqualificationParameter = new ObjectParameter("parentqualification", parentqualification);
-            }
-            else
-            {
-                parentqualificationParameter = new ObjectParameter("parentqualification", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentsemailParameter;
-            if (parentsemail != null)
-            {
-                parentsemailParameter = new ObjectParameter("parentsemail", parentsemail);
-            }
-            else
-            {
-                parentsemailParameter = new ObjectParameter("parentsemail", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentsaddressParameter;
-            if (parentsaddress != null)
-            {
-                parentsaddressParameter = new ObjectParameter("parentsaddress", parentsaddress);
-            }
-            else
-            {
-                parentsaddressParameter = new ObjectParameter("parentsaddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentscodeParameter;
-            if (parentscode.HasValue)
-            {
-                parentscodeParameter = new ObjectParameter("parentscode", parentscode);
-            }
-            else
-            {
-                parentscodeParameter = new ObjectParameter("parentscode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter parentscontactParameter;
-            if (parentscontact != null)
-            {
-                parentscontactParameter = new ObjectParameter("parentscontact", parentscontact);
-            }
-            else
-            {
-                parentscontactParameter = new ObjectParameter("parentscontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter parentspicParameter;
-            if (parentspic != null)
-            {
-                parentspicParameter = new ObjectParameter("parentspic", parentspic);
-            }
-            else
-            {
-                parentspicParameter = new ObjectParameter("parentspic", typeof(global::System.Byte[]));
-            }
-    
-            ObjectParameter pstreetParameter;
-            if (pstreet != null)
-            {
-                pstreetParameter = new ObjectParameter("pstreet", pstreet);
-            }
-            else
-            {
-                pstreetParameter = new ObjectParameter("pstreet", typeof(global::System.String));
-            }
-    
-            ObjectParameter pcityParameter;
-            if (pcity.HasValue)
-            {
-                pcityParameter = new ObjectParameter("pcity", pcity);
-            }
-            else
-            {
-                pcityParameter = new ObjectParameter("pcity", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pstateParameter;
-            if (pstate.HasValue)
-            {
-                pstateParameter = new ObjectParameter("pstate", pstate);
-            }
-            else
-            {
-                pstateParameter = new ObjectParameter("pstate", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pcountryParameter;
-            if (pcountry.HasValue)
-            {
-                pcountryParameter = new ObjectParameter("pcountry", pcountry);
-            }
-            else
-            {
-                pcountryParameter = new ObjectParameter("pcountry", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter ppinParameter;
-            if (ppin != null)
-            {
-                ppinParameter = new ObjectParameter("ppin", ppin);
-            }
-            else
-            {
-                ppinParameter = new ObjectParameter("ppin", typeof(global::System.String));
-            }
-    
-            ObjectParameter cstreetParameter;
-            if (cstreet != null)
-            {
-                cstreetParameter = new ObjectParameter("cstreet", cstreet);
-            }
-            else
-            {
-                cstreetParameter = new ObjectParameter("cstreet", typeof(global::System.String));
-            }
-    
-            ObjectParameter ccityParameter;
-            if (ccity.HasValue)
-            {
-                ccityParameter = new ObjectParameter("ccity", ccity);
-            }
-            else
-            {
-                ccityParameter = new ObjectParameter("ccity", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cstateParameter;
-            if (cstate.HasValue)
-            {
-                cstateParameter = new ObjectParameter("cstate", cstate);
-            }
-            else
-            {
-                cstateParameter = new ObjectParameter("cstate", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter ccountryParameter;
-            if (ccountry.HasValue)
-            {
-                ccountryParameter = new ObjectParameter("ccountry", ccountry);
-            }
-            else
-            {
-                ccountryParameter = new ObjectParameter("ccountry", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cpinParameter;
-            if (cpin != null)
-            {
-                cpinParameter = new ObjectParameter("cpin", cpin);
-            }
-            else
-            {
-                cpinParameter = new ObjectParameter("cpin", typeof(global::System.String));
-            }
-    
-            ObjectParameter homecodeParameter;
-            if (homecode.HasValue)
-            {
-                homecodeParameter = new ObjectParameter("homecode", homecode);
-            }
-            else
-            {
-                homecodeParameter = new ObjectParameter("homecode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter homecontactParameter;
-            if (homecontact != null)
-            {
-                homecontactParameter = new ObjectParameter("homecontact", homecontact);
-            }
-            else
-            {
-                homecontactParameter = new ObjectParameter("homecontact", typeof(global::System.String));
-            }
-    
-            ObjectParameter cmobilecodeParameter;
-            if (cmobilecode.HasValue)
-            {
-                cmobilecodeParameter = new ObjectParameter("cmobilecode", cmobilecode);
-            }
-            else
-            {
-                cmobilecodeParameter = new ObjectParameter("cmobilecode", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter cmobileParameter;
-            if (cmobile != null)
-            {
-                cmobileParameter = new ObjectParameter("cmobile", cmobile);
-            }
-            else
-            {
-                cmobileParameter = new ObjectParameter("cmobile", typeof(global::System.String));
-            }
-    
-            ObjectParameter banknameParameter;
-            if (bankname != null)
-            {
-                banknameParameter = new ObjectParameter("bankname", bankname);
-            }
-            else
-            {
-                banknameParameter = new ObjectParameter("bankname", typeof(global::System.String));
-            }
-    
-            ObjectParameter branchParameter;
-            if (branch != null)
-            {
-                branchParameter = new ObjectParameter("branch", branch);
-            }
-            else
-            {
-                branchParameter = new ObjectParameter("branch", typeof(global::System.String));
-            }
-    
-            ObjectParameter ifsccodeParameter;
-            if (ifsccode != null)
-            {
-                ifsccodeParameter = new ObjectParameter("ifsccode", ifsccode);
-            }
-            else
-            {
-                ifsccodeParameter = new ObjectParameter("ifsccode", typeof(global::System.String));
-            }
-    
-            ObjectParameter accountnoParameter;
-            if (accountno != null)
-            {
-                accountnoParameter = new ObjectParameter("accountno", accountno);
-            }
-            else
-            {
-                accountnoParameter = new ObjectParameter("accountno", typeof(global::System.String));
-            }
-    
-            ObjectParameter accountnameParameter;
-            if (accountname != null)
-            {
-                accountnameParameter = new ObjectParameter("accountname", accountname);
-            }
-            else
-            {
-                accountnameParameter = new ObjectParameter("accountname", typeof(global::System.String));
-            }
-    
-            ObjectParameter collagenameParameter;
-            if (collagename != null)
-            {
-                collagenameParameter = new ObjectParameter("collagename", collagename);
-            }
-            else
-            {
-                collagenameParameter = new ObjectParameter("collagename", typeof(global::System.String));
-            }
-    
-            ObjectParameter affliateduniversityParameter;
-            if (affliateduniversity != null)
-            {
-                affliateduniversityParameter = new ObjectParameter("affliateduniversity", affliateduniversity);
-            }
-            else
-            {
-                affliateduniversityParameter = new ObjectParameter("affliateduniversity", typeof(global::System.String));
-            }
-    
-            ObjectParameter joiningdateParameter;
-            if (joiningdate != null)
-            {
-                joiningdateParameter = new ObjectParameter("joiningdate", joiningdate);
-            }
-            else
-            {
-                joiningdateParameter = new ObjectParameter("joiningdate", typeof(global::System.String));
-            }
-    
-            ObjectParameter lastdateParameter;
-            if (lastdate != null)
-            {
-                lastdateParameter = new ObjectParameter("lastdate", lastdate);
-            }
-            else
-            {
-                lastdateParameter = new ObjectParameter("lastdate", typeof(global::System.String));
-            }
-    
-            ObjectParameter totalexperienceParameter;
-            if (totalexperience != null)
-            {
-                totalexperienceParameter = new ObjectParameter("totalexperience", totalexperience);
-            }
-            else
-            {
-                totalexperienceParameter = new ObjectParameter("totalexperience", typeof(global::System.String));
-            }
-    
-            ObjectParameter lastdesignationParameter;
-            if (lastdesignation != null)
-            {
-                lastdesignationParameter = new ObjectParameter("lastdesignation", lastdesignation);
-            }
-            else
-            {
-                lastdesignationParameter = new ObjectParameter("lastdesignation", typeof(global::System.String));
-            }
-    
-            ObjectParameter companynameParameter;
-            if (companyname != null)
-            {
-                companynameParameter = new ObjectParameter("companyname", companyname);
-            }
-            else
-            {
-                companynameParameter = new ObjectParameter("companyname", typeof(global::System.String));
-            }
-    
-            ObjectParameter clastdesignationParameter;
-            if (clastdesignation != null)
-            {
-                clastdesignationParameter = new ObjectParameter("clastdesignation", clastdesignation);
-            }
-            else
-            {
-                clastdesignationParameter = new ObjectParameter("clastdesignation", typeof(global::System.String));
-            }
-    
-            ObjectParameter cjoiningdateParameter;
-            if (cjoiningdate != null)
-            {
-                cjoiningdateParameter = new ObjectParameter("cjoiningdate", cjoiningdate);
-            }
-            else
-            {
-                cjoiningdateParameter = new ObjectParameter("cjoiningdate", typeof(global::System.String));
-            }
-    
-            ObjectParameter clastdateParameter;
-            if (clastdate != null)
-            {
-                clastdateParameter = new ObjectParameter("clastdate", clastdate);
-            }
-            else
-            {
-                clastdateParameter = new ObjectParameter("clastdate", typeof(global::System.String));
-            }
-    
-            ObjectParameter ctotalexperienceParameter;
-            if (ctotalexperience != null)
-            {
-                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", ctotalexperience);
-            }
-            else
-            {
-                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", typeof(global::System.String));
-            }
-    
-            ObjectParameter empemailParameter;
-            if (empemail != null)
-            {
-                empemailParameter = new ObjectParameter("empemail", empemail);
-            }
-            else
-            {
-                empemailParameter = new ObjectParameter("empemail", typeof(global::System.String));
-            }
-    
-            ObjectParameter empreligionParameter;
-            if (empreligion.HasValue)
-            {
-                empreligionParameter = new ObjectParameter("empreligion", empreligion);
-            }
-            else
-            {
-                empreligionParameter = new ObjectParameter("empreligion", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empcategoryParameter;
-            if (empcategory.HasValue)
-            {
-                empcategoryParameter = new ObjectParameter("empcategory", empcategory);
-            }
-            else
-            {
-                empcategoryParameter = new ObjectParameter("empcategory", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empcastParameter;
-            if (empcast.HasValue)
-            {
-                empcastParameter = new ObjectParameter("empcast", empcast);
-            }
-            else
-            {
-                empcastParameter = new ObjectParameter("empcast", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empmothertongueParameter;
-            if (empmothertongue.HasValue)
-            {
-                empmothertongueParameter = new ObjectParameter("empmothertongue", empmothertongue);
-            }
-            else
-            {
-                empmothertongueParameter = new ObjectParameter("empmothertongue", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="studid">No Metadata Documentation available.</param>
         /// <param name="studnm">No Metadata Documentation available.</param>
         /// <param name="studfathernm">No Metadata Documentation available.</param>
@@ -7123,7 +6136,8 @@ namespace Entity
         /// <param name="prug_regno">No Metadata Documentation available.</param>
         /// <param name="prpg_regno">No Metadata Documentation available.</param>
         /// <param name="doc_typename">No Metadata Documentation available.</param>
-        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Decimal> secondaryTotalMarks, Nullable<global::System.Decimal> secondaryObtainMarks, Nullable<global::System.Int32> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Decimal> prUgTotalMark, Nullable<global::System.Decimal> prUgObtainMark, Nullable<global::System.Int32> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Decimal> prPgTotalMark, Nullable<global::System.Decimal> prPgObtainMark, Nullable<global::System.Int32> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename)
+        /// <param name="courseyearid">No Metadata Documentation available.</param>
+        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Decimal> secondaryTotalMarks, Nullable<global::System.Decimal> secondaryObtainMarks, Nullable<global::System.Int32> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Decimal> prUgTotalMark, Nullable<global::System.Decimal> prUgObtainMark, Nullable<global::System.Int32> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Decimal> prPgTotalMark, Nullable<global::System.Decimal> prPgObtainMark, Nullable<global::System.Int32> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename, Nullable<global::System.Int32> courseyearid)
         {
             ObjectParameter studidParameter;
             if (studid.HasValue)
@@ -8445,7 +7459,1004 @@ namespace Entity
                 doc_typenameParameter = new ObjectParameter("doc_typename", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter);
+            ObjectParameter courseyearidParameter;
+            if (courseyearid.HasValue)
+            {
+                courseyearidParameter = new ObjectParameter("courseyearid", courseyearid);
+            }
+            else
+            {
+                courseyearidParameter = new ObjectParameter("courseyearid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter, courseyearidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="firstName">No Metadata Documentation available.</param>
+        /// <param name="middleName">No Metadata Documentation available.</param>
+        /// <param name="lastName">No Metadata Documentation available.</param>
+        /// <param name="cityid">No Metadata Documentation available.</param>
+        /// <param name="stateid">No Metadata Documentation available.</param>
+        /// <param name="zipcode">No Metadata Documentation available.</param>
+        /// <param name="emailid">No Metadata Documentation available.</param>
+        /// <param name="phoneNo">No Metadata Documentation available.</param>
+        /// <param name="mobileNo">No Metadata Documentation available.</param>
+        /// <param name="address">No Metadata Documentation available.</param>
+        /// <param name="dOB">No Metadata Documentation available.</param>
+        /// <param name="gender">No Metadata Documentation available.</param>
+        /// <param name="quallification">No Metadata Documentation available.</param>
+        /// <param name="dateOfJoin">No Metadata Documentation available.</param>
+        /// <param name="typeid">No Metadata Documentation available.</param>
+        /// <param name="code">No Metadata Documentation available.</param>
+        /// <param name="oQualification">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        /// <param name="department">No Metadata Documentation available.</param>
+        /// <param name="bloodgroup">No Metadata Documentation available.</param>
+        /// <param name="qualication1">No Metadata Documentation available.</param>
+        /// <param name="university1">No Metadata Documentation available.</param>
+        /// <param name="precentage1">No Metadata Documentation available.</param>
+        /// <param name="yearpasing1">No Metadata Documentation available.</param>
+        /// <param name="qualication2">No Metadata Documentation available.</param>
+        /// <param name="university2">No Metadata Documentation available.</param>
+        /// <param name="precentage2">No Metadata Documentation available.</param>
+        /// <param name="yearpasing2">No Metadata Documentation available.</param>
+        /// <param name="qualication3">No Metadata Documentation available.</param>
+        /// <param name="university3">No Metadata Documentation available.</param>
+        /// <param name="precentage3">No Metadata Documentation available.</param>
+        /// <param name="yearpasing3">No Metadata Documentation available.</param>
+        /// <param name="qualication4">No Metadata Documentation available.</param>
+        /// <param name="university4">No Metadata Documentation available.</param>
+        /// <param name="precentage4">No Metadata Documentation available.</param>
+        /// <param name="yearpasing4">No Metadata Documentation available.</param>
+        /// <param name="weightinkg">No Metadata Documentation available.</param>
+        /// <param name="heightc">No Metadata Documentation available.</param>
+        /// <param name="emppic">No Metadata Documentation available.</param>
+        /// <param name="eidtype">No Metadata Documentation available.</param>
+        /// <param name="doctorname">No Metadata Documentation available.</param>
+        /// <param name="doctorcode">No Metadata Documentation available.</param>
+        /// <param name="doctorcontact">No Metadata Documentation available.</param>
+        /// <param name="doctoraddress">No Metadata Documentation available.</param>
+        /// <param name="relation">No Metadata Documentation available.</param>
+        /// <param name="parentsname">No Metadata Documentation available.</param>
+        /// <param name="parentoccupation">No Metadata Documentation available.</param>
+        /// <param name="parentqualification">No Metadata Documentation available.</param>
+        /// <param name="parentsemail">No Metadata Documentation available.</param>
+        /// <param name="parentsaddress">No Metadata Documentation available.</param>
+        /// <param name="parentscode">No Metadata Documentation available.</param>
+        /// <param name="parentscontact">No Metadata Documentation available.</param>
+        /// <param name="parentspic">No Metadata Documentation available.</param>
+        /// <param name="pstreet">No Metadata Documentation available.</param>
+        /// <param name="pcity">No Metadata Documentation available.</param>
+        /// <param name="pstate">No Metadata Documentation available.</param>
+        /// <param name="pcountry">No Metadata Documentation available.</param>
+        /// <param name="ppin">No Metadata Documentation available.</param>
+        /// <param name="cstreet">No Metadata Documentation available.</param>
+        /// <param name="ccity">No Metadata Documentation available.</param>
+        /// <param name="cstate">No Metadata Documentation available.</param>
+        /// <param name="ccountry">No Metadata Documentation available.</param>
+        /// <param name="cpin">No Metadata Documentation available.</param>
+        /// <param name="homecode">No Metadata Documentation available.</param>
+        /// <param name="homecontact">No Metadata Documentation available.</param>
+        /// <param name="cmobilecode">No Metadata Documentation available.</param>
+        /// <param name="cmobile">No Metadata Documentation available.</param>
+        /// <param name="bankname">No Metadata Documentation available.</param>
+        /// <param name="branch">No Metadata Documentation available.</param>
+        /// <param name="ifsccode">No Metadata Documentation available.</param>
+        /// <param name="accountno">No Metadata Documentation available.</param>
+        /// <param name="accountname">No Metadata Documentation available.</param>
+        /// <param name="collagename">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity">No Metadata Documentation available.</param>
+        /// <param name="joiningdate">No Metadata Documentation available.</param>
+        /// <param name="lastdate">No Metadata Documentation available.</param>
+        /// <param name="totalexperience">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation">No Metadata Documentation available.</param>
+        /// <param name="companyname">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate">No Metadata Documentation available.</param>
+        /// <param name="clastdate">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience">No Metadata Documentation available.</param>
+        /// <param name="empemail">No Metadata Documentation available.</param>
+        /// <param name="empreligion">No Metadata Documentation available.</param>
+        /// <param name="empcategory">No Metadata Documentation available.</param>
+        /// <param name="empcast">No Metadata Documentation available.</param>
+        /// <param name="empmothertongue">No Metadata Documentation available.</param>
+        public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, Nullable<global::System.DateTime> joiningdate, Nullable<global::System.DateTime> lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, Nullable<global::System.DateTime> cjoiningdate, Nullable<global::System.DateTime> clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, Nullable<global::System.Int32> empmothertongue)
+        {
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
+            {
+                empidParameter = new ObjectParameter("Empid", empid);
+            }
+            else
+            {
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter firstNameParameter;
+            if (firstName != null)
+            {
+                firstNameParameter = new ObjectParameter("FirstName", firstName);
+            }
+            else
+            {
+                firstNameParameter = new ObjectParameter("FirstName", typeof(global::System.String));
+            }
+    
+            ObjectParameter middleNameParameter;
+            if (middleName != null)
+            {
+                middleNameParameter = new ObjectParameter("MiddleName", middleName);
+            }
+            else
+            {
+                middleNameParameter = new ObjectParameter("MiddleName", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastNameParameter;
+            if (lastName != null)
+            {
+                lastNameParameter = new ObjectParameter("LastName", lastName);
+            }
+            else
+            {
+                lastNameParameter = new ObjectParameter("LastName", typeof(global::System.String));
+            }
+    
+            ObjectParameter cityidParameter;
+            if (cityid.HasValue)
+            {
+                cityidParameter = new ObjectParameter("Cityid", cityid);
+            }
+            else
+            {
+                cityidParameter = new ObjectParameter("Cityid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter stateidParameter;
+            if (stateid.HasValue)
+            {
+                stateidParameter = new ObjectParameter("Stateid", stateid);
+            }
+            else
+            {
+                stateidParameter = new ObjectParameter("Stateid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter zipcodeParameter;
+            if (zipcode != null)
+            {
+                zipcodeParameter = new ObjectParameter("Zipcode", zipcode);
+            }
+            else
+            {
+                zipcodeParameter = new ObjectParameter("Zipcode", typeof(global::System.String));
+            }
+    
+            ObjectParameter emailidParameter;
+            if (emailid != null)
+            {
+                emailidParameter = new ObjectParameter("Emailid", emailid);
+            }
+            else
+            {
+                emailidParameter = new ObjectParameter("Emailid", typeof(global::System.String));
+            }
+    
+            ObjectParameter phoneNoParameter;
+            if (phoneNo != null)
+            {
+                phoneNoParameter = new ObjectParameter("PhoneNo", phoneNo);
+            }
+            else
+            {
+                phoneNoParameter = new ObjectParameter("PhoneNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter mobileNoParameter;
+            if (mobileNo != null)
+            {
+                mobileNoParameter = new ObjectParameter("MobileNo", mobileNo);
+            }
+            else
+            {
+                mobileNoParameter = new ObjectParameter("MobileNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter addressParameter;
+            if (address != null)
+            {
+                addressParameter = new ObjectParameter("Address", address);
+            }
+            else
+            {
+                addressParameter = new ObjectParameter("Address", typeof(global::System.String));
+            }
+    
+            ObjectParameter dOBParameter;
+            if (dOB.HasValue)
+            {
+                dOBParameter = new ObjectParameter("DOB", dOB);
+            }
+            else
+            {
+                dOBParameter = new ObjectParameter("DOB", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter genderParameter;
+            if (gender.HasValue)
+            {
+                genderParameter = new ObjectParameter("Gender", gender);
+            }
+            else
+            {
+                genderParameter = new ObjectParameter("Gender", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter quallificationParameter;
+            if (quallification.HasValue)
+            {
+                quallificationParameter = new ObjectParameter("Quallification", quallification);
+            }
+            else
+            {
+                quallificationParameter = new ObjectParameter("Quallification", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dateOfJoinParameter;
+            if (dateOfJoin.HasValue)
+            {
+                dateOfJoinParameter = new ObjectParameter("DateOfJoin", dateOfJoin);
+            }
+            else
+            {
+                dateOfJoinParameter = new ObjectParameter("DateOfJoin", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter typeidParameter;
+            if (typeid.HasValue)
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeid);
+            }
+            else
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter codeParameter;
+            if (code.HasValue)
+            {
+                codeParameter = new ObjectParameter("Code", code);
+            }
+            else
+            {
+                codeParameter = new ObjectParameter("Code", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter oQualificationParameter;
+            if (oQualification != null)
+            {
+                oQualificationParameter = new ObjectParameter("OQualification", oQualification);
+            }
+            else
+            {
+                oQualificationParameter = new ObjectParameter("OQualification", typeof(global::System.String));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            ObjectParameter departmentParameter;
+            if (department.HasValue)
+            {
+                departmentParameter = new ObjectParameter("department", department);
+            }
+            else
+            {
+                departmentParameter = new ObjectParameter("department", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter bloodgroupParameter;
+            if (bloodgroup.HasValue)
+            {
+                bloodgroupParameter = new ObjectParameter("bloodgroup", bloodgroup);
+            }
+            else
+            {
+                bloodgroupParameter = new ObjectParameter("bloodgroup", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter qualication1Parameter;
+            if (qualication1.HasValue)
+            {
+                qualication1Parameter = new ObjectParameter("qualication1", qualication1);
+            }
+            else
+            {
+                qualication1Parameter = new ObjectParameter("qualication1", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter university1Parameter;
+            if (university1 != null)
+            {
+                university1Parameter = new ObjectParameter("university1", university1);
+            }
+            else
+            {
+                university1Parameter = new ObjectParameter("university1", typeof(global::System.String));
+            }
+    
+            ObjectParameter precentage1Parameter;
+            if (precentage1 != null)
+            {
+                precentage1Parameter = new ObjectParameter("precentage1", precentage1);
+            }
+            else
+            {
+                precentage1Parameter = new ObjectParameter("precentage1", typeof(global::System.String));
+            }
+    
+            ObjectParameter yearpasing1Parameter;
+            if (yearpasing1 != null)
+            {
+                yearpasing1Parameter = new ObjectParameter("yearpasing1", yearpasing1);
+            }
+            else
+            {
+                yearpasing1Parameter = new ObjectParameter("yearpasing1", typeof(global::System.String));
+            }
+    
+            ObjectParameter qualication2Parameter;
+            if (qualication2.HasValue)
+            {
+                qualication2Parameter = new ObjectParameter("qualication2", qualication2);
+            }
+            else
+            {
+                qualication2Parameter = new ObjectParameter("qualication2", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter university2Parameter;
+            if (university2 != null)
+            {
+                university2Parameter = new ObjectParameter("university2", university2);
+            }
+            else
+            {
+                university2Parameter = new ObjectParameter("university2", typeof(global::System.String));
+            }
+    
+            ObjectParameter precentage2Parameter;
+            if (precentage2 != null)
+            {
+                precentage2Parameter = new ObjectParameter("precentage2", precentage2);
+            }
+            else
+            {
+                precentage2Parameter = new ObjectParameter("precentage2", typeof(global::System.String));
+            }
+    
+            ObjectParameter yearpasing2Parameter;
+            if (yearpasing2 != null)
+            {
+                yearpasing2Parameter = new ObjectParameter("yearpasing2", yearpasing2);
+            }
+            else
+            {
+                yearpasing2Parameter = new ObjectParameter("yearpasing2", typeof(global::System.String));
+            }
+    
+            ObjectParameter qualication3Parameter;
+            if (qualication3.HasValue)
+            {
+                qualication3Parameter = new ObjectParameter("qualication3", qualication3);
+            }
+            else
+            {
+                qualication3Parameter = new ObjectParameter("qualication3", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter university3Parameter;
+            if (university3 != null)
+            {
+                university3Parameter = new ObjectParameter("university3", university3);
+            }
+            else
+            {
+                university3Parameter = new ObjectParameter("university3", typeof(global::System.String));
+            }
+    
+            ObjectParameter precentage3Parameter;
+            if (precentage3 != null)
+            {
+                precentage3Parameter = new ObjectParameter("precentage3", precentage3);
+            }
+            else
+            {
+                precentage3Parameter = new ObjectParameter("precentage3", typeof(global::System.String));
+            }
+    
+            ObjectParameter yearpasing3Parameter;
+            if (yearpasing3 != null)
+            {
+                yearpasing3Parameter = new ObjectParameter("yearpasing3", yearpasing3);
+            }
+            else
+            {
+                yearpasing3Parameter = new ObjectParameter("yearpasing3", typeof(global::System.String));
+            }
+    
+            ObjectParameter qualication4Parameter;
+            if (qualication4.HasValue)
+            {
+                qualication4Parameter = new ObjectParameter("qualication4", qualication4);
+            }
+            else
+            {
+                qualication4Parameter = new ObjectParameter("qualication4", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter university4Parameter;
+            if (university4 != null)
+            {
+                university4Parameter = new ObjectParameter("university4", university4);
+            }
+            else
+            {
+                university4Parameter = new ObjectParameter("university4", typeof(global::System.String));
+            }
+    
+            ObjectParameter precentage4Parameter;
+            if (precentage4 != null)
+            {
+                precentage4Parameter = new ObjectParameter("precentage4", precentage4);
+            }
+            else
+            {
+                precentage4Parameter = new ObjectParameter("precentage4", typeof(global::System.String));
+            }
+    
+            ObjectParameter yearpasing4Parameter;
+            if (yearpasing4 != null)
+            {
+                yearpasing4Parameter = new ObjectParameter("yearpasing4", yearpasing4);
+            }
+            else
+            {
+                yearpasing4Parameter = new ObjectParameter("yearpasing4", typeof(global::System.String));
+            }
+    
+            ObjectParameter weightinkgParameter;
+            if (weightinkg != null)
+            {
+                weightinkgParameter = new ObjectParameter("weightinkg", weightinkg);
+            }
+            else
+            {
+                weightinkgParameter = new ObjectParameter("weightinkg", typeof(global::System.String));
+            }
+    
+            ObjectParameter heightcParameter;
+            if (heightc != null)
+            {
+                heightcParameter = new ObjectParameter("heightc", heightc);
+            }
+            else
+            {
+                heightcParameter = new ObjectParameter("heightc", typeof(global::System.String));
+            }
+    
+            ObjectParameter emppicParameter;
+            if (emppic != null)
+            {
+                emppicParameter = new ObjectParameter("emppic", emppic);
+            }
+            else
+            {
+                emppicParameter = new ObjectParameter("emppic", typeof(global::System.Byte[]));
+            }
+    
+            ObjectParameter eidtypeParameter;
+            if (eidtype.HasValue)
+            {
+                eidtypeParameter = new ObjectParameter("eidtype", eidtype);
+            }
+            else
+            {
+                eidtypeParameter = new ObjectParameter("eidtype", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter doctornameParameter;
+            if (doctorname != null)
+            {
+                doctornameParameter = new ObjectParameter("doctorname", doctorname);
+            }
+            else
+            {
+                doctornameParameter = new ObjectParameter("doctorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter doctorcodeParameter;
+            if (doctorcode != null)
+            {
+                doctorcodeParameter = new ObjectParameter("doctorcode", doctorcode);
+            }
+            else
+            {
+                doctorcodeParameter = new ObjectParameter("doctorcode", typeof(global::System.String));
+            }
+    
+            ObjectParameter doctorcontactParameter;
+            if (doctorcontact != null)
+            {
+                doctorcontactParameter = new ObjectParameter("doctorcontact", doctorcontact);
+            }
+            else
+            {
+                doctorcontactParameter = new ObjectParameter("doctorcontact", typeof(global::System.String));
+            }
+    
+            ObjectParameter doctoraddressParameter;
+            if (doctoraddress != null)
+            {
+                doctoraddressParameter = new ObjectParameter("doctoraddress", doctoraddress);
+            }
+            else
+            {
+                doctoraddressParameter = new ObjectParameter("doctoraddress", typeof(global::System.String));
+            }
+    
+            ObjectParameter relationParameter;
+            if (relation.HasValue)
+            {
+                relationParameter = new ObjectParameter("relation", relation);
+            }
+            else
+            {
+                relationParameter = new ObjectParameter("relation", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter parentsnameParameter;
+            if (parentsname != null)
+            {
+                parentsnameParameter = new ObjectParameter("parentsname", parentsname);
+            }
+            else
+            {
+                parentsnameParameter = new ObjectParameter("parentsname", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentoccupationParameter;
+            if (parentoccupation != null)
+            {
+                parentoccupationParameter = new ObjectParameter("parentoccupation", parentoccupation);
+            }
+            else
+            {
+                parentoccupationParameter = new ObjectParameter("parentoccupation", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentqualificationParameter;
+            if (parentqualification != null)
+            {
+                parentqualificationParameter = new ObjectParameter("parentqualification", parentqualification);
+            }
+            else
+            {
+                parentqualificationParameter = new ObjectParameter("parentqualification", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentsemailParameter;
+            if (parentsemail != null)
+            {
+                parentsemailParameter = new ObjectParameter("parentsemail", parentsemail);
+            }
+            else
+            {
+                parentsemailParameter = new ObjectParameter("parentsemail", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentsaddressParameter;
+            if (parentsaddress != null)
+            {
+                parentsaddressParameter = new ObjectParameter("parentsaddress", parentsaddress);
+            }
+            else
+            {
+                parentsaddressParameter = new ObjectParameter("parentsaddress", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentscodeParameter;
+            if (parentscode.HasValue)
+            {
+                parentscodeParameter = new ObjectParameter("parentscode", parentscode);
+            }
+            else
+            {
+                parentscodeParameter = new ObjectParameter("parentscode", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter parentscontactParameter;
+            if (parentscontact != null)
+            {
+                parentscontactParameter = new ObjectParameter("parentscontact", parentscontact);
+            }
+            else
+            {
+                parentscontactParameter = new ObjectParameter("parentscontact", typeof(global::System.String));
+            }
+    
+            ObjectParameter parentspicParameter;
+            if (parentspic != null)
+            {
+                parentspicParameter = new ObjectParameter("parentspic", parentspic);
+            }
+            else
+            {
+                parentspicParameter = new ObjectParameter("parentspic", typeof(global::System.Byte[]));
+            }
+    
+            ObjectParameter pstreetParameter;
+            if (pstreet != null)
+            {
+                pstreetParameter = new ObjectParameter("pstreet", pstreet);
+            }
+            else
+            {
+                pstreetParameter = new ObjectParameter("pstreet", typeof(global::System.String));
+            }
+    
+            ObjectParameter pcityParameter;
+            if (pcity.HasValue)
+            {
+                pcityParameter = new ObjectParameter("pcity", pcity);
+            }
+            else
+            {
+                pcityParameter = new ObjectParameter("pcity", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pstateParameter;
+            if (pstate.HasValue)
+            {
+                pstateParameter = new ObjectParameter("pstate", pstate);
+            }
+            else
+            {
+                pstateParameter = new ObjectParameter("pstate", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pcountryParameter;
+            if (pcountry.HasValue)
+            {
+                pcountryParameter = new ObjectParameter("pcountry", pcountry);
+            }
+            else
+            {
+                pcountryParameter = new ObjectParameter("pcountry", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter ppinParameter;
+            if (ppin != null)
+            {
+                ppinParameter = new ObjectParameter("ppin", ppin);
+            }
+            else
+            {
+                ppinParameter = new ObjectParameter("ppin", typeof(global::System.String));
+            }
+    
+            ObjectParameter cstreetParameter;
+            if (cstreet != null)
+            {
+                cstreetParameter = new ObjectParameter("cstreet", cstreet);
+            }
+            else
+            {
+                cstreetParameter = new ObjectParameter("cstreet", typeof(global::System.String));
+            }
+    
+            ObjectParameter ccityParameter;
+            if (ccity.HasValue)
+            {
+                ccityParameter = new ObjectParameter("ccity", ccity);
+            }
+            else
+            {
+                ccityParameter = new ObjectParameter("ccity", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter cstateParameter;
+            if (cstate.HasValue)
+            {
+                cstateParameter = new ObjectParameter("cstate", cstate);
+            }
+            else
+            {
+                cstateParameter = new ObjectParameter("cstate", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter ccountryParameter;
+            if (ccountry.HasValue)
+            {
+                ccountryParameter = new ObjectParameter("ccountry", ccountry);
+            }
+            else
+            {
+                ccountryParameter = new ObjectParameter("ccountry", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter cpinParameter;
+            if (cpin != null)
+            {
+                cpinParameter = new ObjectParameter("cpin", cpin);
+            }
+            else
+            {
+                cpinParameter = new ObjectParameter("cpin", typeof(global::System.String));
+            }
+    
+            ObjectParameter homecodeParameter;
+            if (homecode.HasValue)
+            {
+                homecodeParameter = new ObjectParameter("homecode", homecode);
+            }
+            else
+            {
+                homecodeParameter = new ObjectParameter("homecode", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter homecontactParameter;
+            if (homecontact != null)
+            {
+                homecontactParameter = new ObjectParameter("homecontact", homecontact);
+            }
+            else
+            {
+                homecontactParameter = new ObjectParameter("homecontact", typeof(global::System.String));
+            }
+    
+            ObjectParameter cmobilecodeParameter;
+            if (cmobilecode.HasValue)
+            {
+                cmobilecodeParameter = new ObjectParameter("cmobilecode", cmobilecode);
+            }
+            else
+            {
+                cmobilecodeParameter = new ObjectParameter("cmobilecode", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter cmobileParameter;
+            if (cmobile != null)
+            {
+                cmobileParameter = new ObjectParameter("cmobile", cmobile);
+            }
+            else
+            {
+                cmobileParameter = new ObjectParameter("cmobile", typeof(global::System.String));
+            }
+    
+            ObjectParameter banknameParameter;
+            if (bankname != null)
+            {
+                banknameParameter = new ObjectParameter("bankname", bankname);
+            }
+            else
+            {
+                banknameParameter = new ObjectParameter("bankname", typeof(global::System.String));
+            }
+    
+            ObjectParameter branchParameter;
+            if (branch != null)
+            {
+                branchParameter = new ObjectParameter("branch", branch);
+            }
+            else
+            {
+                branchParameter = new ObjectParameter("branch", typeof(global::System.String));
+            }
+    
+            ObjectParameter ifsccodeParameter;
+            if (ifsccode != null)
+            {
+                ifsccodeParameter = new ObjectParameter("ifsccode", ifsccode);
+            }
+            else
+            {
+                ifsccodeParameter = new ObjectParameter("ifsccode", typeof(global::System.String));
+            }
+    
+            ObjectParameter accountnoParameter;
+            if (accountno != null)
+            {
+                accountnoParameter = new ObjectParameter("accountno", accountno);
+            }
+            else
+            {
+                accountnoParameter = new ObjectParameter("accountno", typeof(global::System.String));
+            }
+    
+            ObjectParameter accountnameParameter;
+            if (accountname != null)
+            {
+                accountnameParameter = new ObjectParameter("accountname", accountname);
+            }
+            else
+            {
+                accountnameParameter = new ObjectParameter("accountname", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagenameParameter;
+            if (collagename != null)
+            {
+                collagenameParameter = new ObjectParameter("collagename", collagename);
+            }
+            else
+            {
+                collagenameParameter = new ObjectParameter("collagename", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversityParameter;
+            if (affliateduniversity != null)
+            {
+                affliateduniversityParameter = new ObjectParameter("affliateduniversity", affliateduniversity);
+            }
+            else
+            {
+                affliateduniversityParameter = new ObjectParameter("affliateduniversity", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdateParameter;
+            if (joiningdate.HasValue)
+            {
+                joiningdateParameter = new ObjectParameter("joiningdate", joiningdate);
+            }
+            else
+            {
+                joiningdateParameter = new ObjectParameter("joiningdate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdateParameter;
+            if (lastdate.HasValue)
+            {
+                lastdateParameter = new ObjectParameter("lastdate", lastdate);
+            }
+            else
+            {
+                lastdateParameter = new ObjectParameter("lastdate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperienceParameter;
+            if (totalexperience != null)
+            {
+                totalexperienceParameter = new ObjectParameter("totalexperience", totalexperience);
+            }
+            else
+            {
+                totalexperienceParameter = new ObjectParameter("totalexperience", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignationParameter;
+            if (lastdesignation != null)
+            {
+                lastdesignationParameter = new ObjectParameter("lastdesignation", lastdesignation);
+            }
+            else
+            {
+                lastdesignationParameter = new ObjectParameter("lastdesignation", typeof(global::System.String));
+            }
+    
+            ObjectParameter companynameParameter;
+            if (companyname != null)
+            {
+                companynameParameter = new ObjectParameter("companyname", companyname);
+            }
+            else
+            {
+                companynameParameter = new ObjectParameter("companyname", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignationParameter;
+            if (clastdesignation != null)
+            {
+                clastdesignationParameter = new ObjectParameter("clastdesignation", clastdesignation);
+            }
+            else
+            {
+                clastdesignationParameter = new ObjectParameter("clastdesignation", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdateParameter;
+            if (cjoiningdate.HasValue)
+            {
+                cjoiningdateParameter = new ObjectParameter("cjoiningdate", cjoiningdate);
+            }
+            else
+            {
+                cjoiningdateParameter = new ObjectParameter("cjoiningdate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdateParameter;
+            if (clastdate.HasValue)
+            {
+                clastdateParameter = new ObjectParameter("clastdate", clastdate);
+            }
+            else
+            {
+                clastdateParameter = new ObjectParameter("clastdate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperienceParameter;
+            if (ctotalexperience != null)
+            {
+                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", ctotalexperience);
+            }
+            else
+            {
+                ctotalexperienceParameter = new ObjectParameter("ctotalexperience", typeof(global::System.String));
+            }
+    
+            ObjectParameter empemailParameter;
+            if (empemail != null)
+            {
+                empemailParameter = new ObjectParameter("empemail", empemail);
+            }
+            else
+            {
+                empemailParameter = new ObjectParameter("empemail", typeof(global::System.String));
+            }
+    
+            ObjectParameter empreligionParameter;
+            if (empreligion.HasValue)
+            {
+                empreligionParameter = new ObjectParameter("empreligion", empreligion);
+            }
+            else
+            {
+                empreligionParameter = new ObjectParameter("empreligion", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empcategoryParameter;
+            if (empcategory.HasValue)
+            {
+                empcategoryParameter = new ObjectParameter("empcategory", empcategory);
+            }
+            else
+            {
+                empcategoryParameter = new ObjectParameter("empcategory", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empcastParameter;
+            if (empcast.HasValue)
+            {
+                empcastParameter = new ObjectParameter("empcast", empcast);
+            }
+            else
+            {
+                empcastParameter = new ObjectParameter("empcast", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empmothertongueParameter;
+            if (empmothertongue.HasValue)
+            {
+                empmothertongueParameter = new ObjectParameter("empmothertongue", empmothertongue);
+            }
+            else
+            {
+                empmothertongueParameter = new ObjectParameter("empmothertongue", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter);
         }
 
         #endregion
@@ -21371,30 +21382,6 @@ namespace Entity
         private global::System.String _doc_typename;
         partial void Ondoc_typenameChanging(global::System.String value);
         partial void Ondoc_typenameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> courseid
-        {
-            get
-            {
-                return _courseid;
-            }
-            set
-            {
-                OncourseidChanging(value);
-                ReportPropertyChanging("courseid");
-                _courseid = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("courseid");
-                OncourseidChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _courseid;
-        partial void OncourseidChanging(Nullable<global::System.Int32> value);
-        partial void OncourseidChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
