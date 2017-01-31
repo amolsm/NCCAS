@@ -17,14 +17,6 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-#region EDM Relationship Metadata
-
-[assembly: EdmRelationshipAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_country", "tbl_country", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entity.tbl_country), "tbl_city", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entity.tbl_city), true)]
-[assembly: EdmRelationshipAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_state", "tbl_state", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entity.tbl_state), "tbl_city", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entity.tbl_city), true)]
-[assembly: EdmRelationshipAttribute("SchoolMgmtSysModel", "FK_tbl_state_tbl_country", "tbl_country", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entity.tbl_country), "tbl_state", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entity.tbl_state), true)]
-
-#endregion
-
 namespace Entity
 {
     #region Contexts
@@ -492,54 +484,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_city> tbl_city
-        {
-            get
-            {
-                if ((_tbl_city == null))
-                {
-                    _tbl_city = base.CreateObjectSet<tbl_city>("tbl_city");
-                }
-                return _tbl_city;
-            }
-        }
-        private ObjectSet<tbl_city> _tbl_city;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_country> tbl_country
-        {
-            get
-            {
-                if ((_tbl_country == null))
-                {
-                    _tbl_country = base.CreateObjectSet<tbl_country>("tbl_country");
-                }
-                return _tbl_country;
-            }
-        }
-        private ObjectSet<tbl_country> _tbl_country;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_state> tbl_state
-        {
-            get
-            {
-                if ((_tbl_state == null))
-                {
-                    _tbl_state = base.CreateObjectSet<tbl_state>("tbl_state");
-                }
-                return _tbl_state;
-            }
-        }
-        private ObjectSet<tbl_state> _tbl_state;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_EmployeeLeave> tbl_EmployeeLeave
         {
             get
@@ -904,6 +848,54 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_student> _tbl_student;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_country> tbl_country
+        {
+            get
+            {
+                if ((_tbl_country == null))
+                {
+                    _tbl_country = base.CreateObjectSet<tbl_country>("tbl_country");
+                }
+                return _tbl_country;
+            }
+        }
+        private ObjectSet<tbl_country> _tbl_country;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_state> tbl_state
+        {
+            get
+            {
+                if ((_tbl_state == null))
+                {
+                    _tbl_state = base.CreateObjectSet<tbl_state>("tbl_state");
+                }
+                return _tbl_state;
+            }
+        }
+        private ObjectSet<tbl_state> _tbl_state;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_city> tbl_city
+        {
+            get
+            {
+                if ((_tbl_city == null))
+                {
+                    _tbl_city = base.CreateObjectSet<tbl_city>("tbl_city");
+                }
+                return _tbl_city;
+            }
+        }
+        private ObjectSet<tbl_city> _tbl_city;
 
         #endregion
 
@@ -1118,30 +1110,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_city EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_city(tbl_city tbl_city)
-        {
-            base.AddObject("tbl_city", tbl_city);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_country EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_country(tbl_country tbl_country)
-        {
-            base.AddObject("tbl_country", tbl_country);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_state EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_state(tbl_state tbl_state)
-        {
-            base.AddObject("tbl_state", tbl_state);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_EmployeeLeave EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_EmployeeLeave(tbl_EmployeeLeave tbl_EmployeeLeave)
@@ -1323,6 +1291,30 @@ namespace Entity
         public void AddTotbl_student(tbl_student tbl_student)
         {
             base.AddObject("tbl_student", tbl_student);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_country EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_country(tbl_country tbl_country)
+        {
+            base.AddObject("tbl_country", tbl_country);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_state EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_state(tbl_state tbl_state)
+        {
+            base.AddObject("tbl_state", tbl_state);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_city EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_city(tbl_city tbl_city)
+        {
+            base.AddObject("tbl_city", tbl_city);
         }
 
         #endregion
@@ -8458,6 +8450,41 @@ namespace Entity
     
             return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_GetCoursefordevision_Result> sp_GetCoursefordevision()
+        {
+            return base.ExecuteFunction<sp_GetCoursefordevision_Result>("sp_GetCoursefordevision");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_GetCourseforsubject_Result> sp_GetCourseforsubject()
+        {
+            return base.ExecuteFunction<sp_GetCourseforsubject_Result>("sp_GetCourseforsubject");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetCourseforsubjectbydeptid_Result> sp_GetCourseforsubjectbydeptid(Nullable<global::System.Int32> deptid)
+        {
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_GetCourseforsubjectbydeptid_Result>("sp_GetCourseforsubjectbydeptid", deptidParameter);
+        }
 
         #endregion
 
@@ -9677,86 +9704,6 @@ namespace Entity
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_country", "tbl_country")]
-        public tbl_country tbl_country
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_country").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_country").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<tbl_country> tbl_countryReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_country");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_country", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_state", "tbl_state")]
-        public tbl_state tbl_state
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_state>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_state").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_state>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_state").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<tbl_state> tbl_stateReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_state>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_state");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbl_state>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_state", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -10017,54 +9964,6 @@ namespace Entity
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_country", "tbl_city")]
-        public EntityCollection<tbl_city> tbl_city
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_city>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_city");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_city>("SchoolMgmtSysModel.FK_tbl_city_tbl_country", "tbl_city", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_state_tbl_country", "tbl_state")]
-        public EntityCollection<tbl_state> tbl_state
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_state>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_state");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_state>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_state", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -18083,70 +17982,6 @@ namespace Entity
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_city_tbl_state", "tbl_city")]
-        public EntityCollection<tbl_city> tbl_city
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_city>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_city");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_city>("SchoolMgmtSysModel.FK_tbl_city_tbl_state", "tbl_city", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SchoolMgmtSysModel", "FK_tbl_state_tbl_country", "tbl_country")]
-        public tbl_country tbl_country
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_country").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_country").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<tbl_country> tbl_countryReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_country");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbl_country>("SchoolMgmtSysModel.FK_tbl_state_tbl_country", "tbl_country", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -25205,6 +25040,237 @@ namespace Entity
         private global::System.String _status;
         partial void OnstatusChanging(global::System.String value);
         partial void OnstatusChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetCoursefordevision_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetCoursefordevision_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetCoursefordevision_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static sp_GetCoursefordevision_Result Createsp_GetCoursefordevision_Result(global::System.Int32 id)
+        {
+            sp_GetCoursefordevision_Result sp_GetCoursefordevision_Result = new sp_GetCoursefordevision_Result();
+            sp_GetCoursefordevision_Result.id = id;
+            return sp_GetCoursefordevision_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Course
+        {
+            get
+            {
+                return _Course;
+            }
+            set
+            {
+                OnCourseChanging(value);
+                ReportPropertyChanging("Course");
+                _Course = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Course");
+                OnCourseChanged();
+            }
+        }
+        private global::System.String _Course;
+        partial void OnCourseChanging(global::System.String value);
+        partial void OnCourseChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetCourseforsubject_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetCourseforsubject_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetCourseforsubject_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static sp_GetCourseforsubject_Result Createsp_GetCourseforsubject_Result(global::System.Int32 id)
+        {
+            sp_GetCourseforsubject_Result sp_GetCourseforsubject_Result = new sp_GetCourseforsubject_Result();
+            sp_GetCourseforsubject_Result.id = id;
+            return sp_GetCourseforsubject_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Course
+        {
+            get
+            {
+                return _Course;
+            }
+            set
+            {
+                OnCourseChanging(value);
+                ReportPropertyChanging("Course");
+                _Course = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Course");
+                OnCourseChanged();
+            }
+        }
+        private global::System.String _Course;
+        partial void OnCourseChanging(global::System.String value);
+        partial void OnCourseChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetCourseforsubjectbydeptid_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetCourseforsubjectbydeptid_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetCourseforsubjectbydeptid_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static sp_GetCourseforsubjectbydeptid_Result Createsp_GetCourseforsubjectbydeptid_Result(global::System.Int32 id)
+        {
+            sp_GetCourseforsubjectbydeptid_Result sp_GetCourseforsubjectbydeptid_Result = new sp_GetCourseforsubjectbydeptid_Result();
+            sp_GetCourseforsubjectbydeptid_Result.id = id;
+            return sp_GetCourseforsubjectbydeptid_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Course
+        {
+            get
+            {
+                return _Course;
+            }
+            set
+            {
+                OnCourseChanging(value);
+                ReportPropertyChanging("Course");
+                _Course = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Course");
+                OnCourseChanged();
+            }
+        }
+        private global::System.String _Course;
+        partial void OnCourseChanging(global::System.String value);
+        partial void OnCourseChanged();
 
         #endregion
 

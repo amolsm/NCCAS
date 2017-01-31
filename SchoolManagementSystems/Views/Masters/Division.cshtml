@@ -216,7 +216,7 @@
                                     <div class="control-group span5">
                                         @Html.LabelFor(model => model.Classid, new {  @class="control-label" ,@for="select"  })
                                           <div class="controls">
-                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model.classlistdetails, "Classid", "Classnm", "Select Class"), "Select Class", new { @for="select" })
+                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for="select" })
                                         @Html.ValidationMessageFor(model => model.Classid)
                                               </div>
                                     </div>

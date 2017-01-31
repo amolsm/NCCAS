@@ -75,6 +75,50 @@
             });
         });
 
+
+        function ReloadState() {
+            $("#Classid").empty();
+            var item = '<option value="">select Course</option>';
+            $("#Classid").append(item);
+        }
+
+        function ReloadCountry() {
+            if ($("#Dept_Id").val() == "") {
+                ReloadState();
+            }
+            else {
+                $("#Classid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#Dept_Id").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Course</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#Classid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Course</option>';
+                            $("#Classid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#Dept_Id").change(function () {
+            ReloadCountry();
+        })
+
         $("#insert").click(function () {
             setTimeout(function () {
                 validations();
@@ -255,9 +299,16 @@
                                               </div>
                                     </div>
                                     <div class="control-group">
+                                        @Html.LabelFor(model => model.Dept_Id, new { @class = "control-label", @for = "focusedInput" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(model => model.Dept_Id, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.Dept_Id)
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
                                         @Html.LabelFor(model => model.Classid, new {  @class="control-label", @for="focusedInput"})
                                           <div class="controls">
-                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class")
+                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model._courselist, "id", "Course", "Select Course"), "Select Course")
                                         @Html.ValidationMessageFor(model => model.Classid)
                                               </div>
                                     </div>

@@ -11,7 +11,10 @@ namespace Entity
         [DisplayName("subject ID ")]
         public int Subjectid { get; set; }
 
-        [DisplayName("Class Name")]
+        [DisplayName("Department Name ")]
+        public int Dept_Id { get; set; }
+
+        [DisplayName("Course Name")]
         public int Classid { get; set; }
 
         [DisplayName("Subject Name ")]
@@ -28,8 +31,10 @@ namespace Entity
 
         [DisplayName("Academic Year ")]
         public List<string> academicyear { get; set; }
-
+        public List<tblDepartment> departmentlistdetails { get; set; }
         public List<tbl_class> Classlist { get; set; }
         public List<sp_getSubject_Result> _Subjectlist { get; set; }
+        public List<sp_GetCourseforsubject_Result> _courselist { get; set; }
+        public List<sp_GetCourseforsubjectbydeptid_Result> _courselistbydeptid { get; set; }
     }
 }

@@ -7,10 +7,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
         FillPermission();
+
         $("#status").prop('checked', true);
         $("#M_cty td").css({ "background-color": "orange" });
         $("#lblmsg").text('');
-        //        ReloadState();
+         ReloadState();
         $('#cityid input').attr("readonly", true);
         if ($("#cityid input").val() == "0") {
             $("#cityid").hide();
@@ -290,17 +291,17 @@
                                         @Html.ValidationMessageFor(model => model.Cityid)
                                             </div>
                                     </div>
-                                    <div  class="control-group">
-                                        @Html.LabelFor(model => model.Countryid, new {  @class="control-label"  })
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.Countryid, new { @class = "control-label", @for = "focusedInput" })
                                         <div class="controls">
-                                        @Html.DropDownListFor(model => model.Countryid, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @class = "col-md-5 form-control form_in" })
-                                        @Html.ValidationMessageFor(model => model.Countryid)
-                                            </div>
+                                            @Html.DropDownListFor(model => model.Countryid, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country")
+                                            @Html.ValidationMessageFor(model => model.Countryid)
+                                        </div>
                                     </div>
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.Stateid, new {  @class="control-label"  })
                                         <div class="controls">
-                                        @Html.DropDownListFor(model => model.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state", new { @class = "col-md-5 form-control form_in" })
+                                        @Html.DropDownListFor(model => model.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
                                         @Html.ValidationMessageFor(model => model.Stateid)
                                             </div>
                                     </div>
@@ -314,7 +315,7 @@
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.status, new {@class="control-label" })
                                         <div class="controls">
-                                        @Html.CheckBoxFor(model => model.status, new { @type="checkbox", @id="inlineCheckbox1"  })
+                                        @Html.CheckBoxFor(model => model.status, new { @type = "checkbox" })
                                         @Html.ValidationMessageFor(model => model.status)
                                             </div>
                                     </div>
