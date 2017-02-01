@@ -660,35 +660,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
-          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Quallification" ColumnName="Quallification" />
-          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
-          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Subjects" ColumnName="Subjects" />
-          <ScalarProperty Name="TeachStandard" ColumnName="TeachStandard" />
-          <ScalarProperty Name="Payroll" ColumnName="Payroll" />
-          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
-          <ScalarProperty Name="SysDt" ColumnName="SysDt" />
-          <ScalarProperty Name="Payrollid" ColumnName="Payrollid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="tbl_timetable">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
         <MappingFragment StoreEntitySet="tbl_timetable">
@@ -1276,6 +1247,61 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
+    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+    <FunctionImportMapping FunctionImportName="sp_GetCoursefordevision" FunctionName="SchoolMgmtSysModel.Store.sp_GetCoursefordevision">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCoursefordevision_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_country">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
+        <MappingFragment StoreEntitySet="tbl_country">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_state">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
+        <MappingFragment StoreEntitySet="tbl_state">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_city">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
+        <MappingFragment StoreEntitySet="tbl_city">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetCourseforsubject" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubject">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubject_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetCourseforsubjectbydeptid" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubjectbydeptid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="tbl_student">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
@@ -1416,58 +1442,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-    <FunctionImportMapping FunctionImportName="sp_GetCoursefordevision" FunctionName="SchoolMgmtSysModel.Store.sp_GetCoursefordevision">
+    <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCoursefordevision_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_country">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
-        <MappingFragment StoreEntitySet="tbl_country">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_state">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
-        <MappingFragment StoreEntitySet="tbl_state">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-          <ScalarProperty Name="StateName" ColumnName="StateName" />
-          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_city">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
-        <MappingFragment StoreEntitySet="tbl_city">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-          <ScalarProperty Name="CityName" ColumnName="CityName" />
-          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_GetCourseforsubject" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubject">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubject_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_GetCourseforsubjectbydeptid" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubjectbydeptid">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

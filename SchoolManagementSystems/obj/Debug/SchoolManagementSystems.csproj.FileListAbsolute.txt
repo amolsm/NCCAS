@@ -72,4 +72,3 @@ D:\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.csprojResolve
 D:\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.dll
 D:\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.pdb
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\WebGrease.dll
-D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Antlr3.Runtime.dll

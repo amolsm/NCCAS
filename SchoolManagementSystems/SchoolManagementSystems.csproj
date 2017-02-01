@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ExaminationController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\FeesController.cs" />
@@ -668,6 +669,8 @@
     <Content Include="Views\Masters\CourseYear.cshtml" />
     <Content Include="Views\Masters\_CourseYearList.cshtml" />
     <Content Include="Views\shared\_EmployeeSubMenuList.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\EmpAdmission.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

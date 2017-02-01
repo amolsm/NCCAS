@@ -40,14 +40,7 @@
                       <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                         @Html.ActionLink("Student Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Manage Student</li>
-                     @*   <div style="float: right;">*@
-                          @*  @using (Html.BeginForm())
-                            {
-
-                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
-                                <input type="submit" value="Find" />
-                            }*@
-                      @*  </div>*@
+                  
                     </ul>
                   <div class="row-fluid sortable">
               <div class="box span12">
@@ -66,7 +59,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                @Html.DisplayName("ID")
+                                               RollNo.
                                             </th>
                                             <th>
                                                 @Html.DisplayName("Student Name")
@@ -87,8 +80,8 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @System.DateTime.Now.Year@Html.Label("0000")@Html.DisplayFor(modelItem => item.Studid)
-                                                </td>
+                                                    @Html.DisplayFor(modelItem => item.RollNo)
+</td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Studnm)
                                                 </td>
@@ -100,7 +93,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="button" id="@item.Studid" class="btn btn-default btn_edit" value="Edit" />
-                                                    @*<input type="button" id="@item.Studid" class="btn btn-default btn_delete" value="Delete" />*@
+                                                  
                                                 </td>
                                             </tr>
                                         }
