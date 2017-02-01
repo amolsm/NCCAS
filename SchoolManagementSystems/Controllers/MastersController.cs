@@ -627,6 +627,22 @@ namespace SchoolManagementSystems.Controllers
         #endregion
 
         #region Employee master
+        //public ActionResult EmployeeList()
+        //{
+        //    var emps = db.tbl_employee.ToList();
+
+        //    var emplist = new List<EmployeeListViewModel>();
+
+        //    foreach (var m in emps)
+        //    {
+        //        if(m.Gender ==1)
+        //        emplist.Add(new EmployeeListViewModel { EmployeeId = m.Empid, EmployeeName = m.FirstName +" "+ m.LastName, Gender = "Male", EmailId = m.Emailid, MobileNo = m.MobileNo });
+        //        if (m.Gender == 2)
+        //            emplist.Add(new EmployeeListViewModel { EmployeeId = m.Empid, EmployeeName = m.FirstName + " " + m.LastName, Gender = "Female", EmailId = m.Emailid, MobileNo = m.MobileNo });
+        //    }
+
+        //    return View(");
+        //}
         public JsonResult GetCities(string id)
         {
             int stateid = 0;
@@ -641,30 +657,27 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult Employee(string Search_Data)
         {
             employeeviewmodel _bgv = new employeeviewmodel();
+
             FillPermission(47);
+
+
+            var data = db.sp_getemp().ToList();
+            ViewBag.userdetails = data;
+            //return View(); 
             if (String.IsNullOrEmpty(Search_Data))
             {
+
                 _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
                 _bgv.citylist = new List<tbl_city>();
-                _bgv._emplist = db.sp_getemp().ToList();
+                
                 _bgv.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
+                _bgv.departmentlistdetails = db.tblDepartment.ToList();
+                _bgv.bloodgrouplist = db.tbl_bloodgroup.ToList();
             }
             else
             {
                 _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
                 _bgv.citylist = new List<tbl_city>();
-                _bgv._emplist = db.sp_getemp().Where(x => x.FirstName.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.LastName.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.MiddleName.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Status.ToString().ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Stateid.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Cityid.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Emailid.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.MobileNo.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Gender.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Quallification.ToUpper().Contains(Search_Data.ToUpper())
-                                                    || x.Typeid.ToUpper().Contains(Search_Data.ToUpper())).ToList();
-                _bgv.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
             }
            
               _bgv.countrylist = db.tbl_country.ToList();
@@ -679,12 +692,7 @@ namespace SchoolManagementSystems.Controllers
         {
             var data = db.tbl_employee.Where(m => m.Emailid == Emailid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
-        }
-      
-
-     
-
-       
+        }          
         public ActionResult DMLEmp(employeeviewmodel _bgv, string evt, int id, HttpPostedFileBase empfile, HttpPostedFileBase empfile1)
         {
             if (empfile != null)
@@ -749,7 +757,9 @@ namespace SchoolManagementSystems.Controllers
                db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "Del", _bgv.edepartment, _bgv.eblood, _bgv.equalification1, _bgv.euniversity1, _bgv.eprecentage1, _bgv.eYearofpassing1, _bgv.equalification2, _bgv.euniversity2, _bgv.eprecentage2, _bgv.eYearofpassing2, _bgv.equalification3, _bgv.euniversity3, _bgv.eprecentage3, _bgv.eYearofpassing3, _bgv.equalification4, _bgv.euniversity4, _bgv.eprecentage4, _bgv.eYearofpassing4, _bgv.eweight, _bgv.eheight, _bgv.emppic, _bgv.eidtype, _bgv.dname, _bgv.DCode, _bgv.dcontact, _bgv.daddress, _bgv.relationship, _bgv.pname, _bgv.poccupation, _bgv.pqualification, _bgv.pemail, _bgv.pofficeaddress, _bgv.PCODE, _bgv.pcontact, _bgv.ppic, _bgv.pastreet, _bgv.pacity, _bgv.pastate, _bgv.pacountry, _bgv.papin, _bgv.cstreet, _bgv.ccity, _bgv.cstate, _bgv.ccountry, _bgv.cpin, _bgv.PHCODE, _bgv.phome, _bgv.MCODE, _bgv.hmobile, _bgv.bankname, _bgv.branch, _bgv.ifsccode, _bgv.accountno, _bgv.acname, _bgv.collagename, _bgv.university, _bgv.joiningdate, _bgv.lastdate, _bgv.total, _bgv.ldesignation, _bgv.companyname, _bgv.clastdesignation, _bgv.cjoiningdate, _bgv.clastdate, _bgv.ctotal, _bgv.employeeemail, _bgv.empreligion, _bgv.empcategory, _bgv.empcast, _bgv.mtongue).ToString();
 
             }
-            _bgv._emplist = db.sp_getemp().ToList();
+            var data = db.sp_getemp().ToList();
+            ViewBag.userdetails = data;
+            //_bgv._emplist = db.sp_getemp().ToList();
             return PartialView("_EmpList", _bgv);
         }
         private void CreateUsers(string UserName, int Type, int Genid, string academicyear)
@@ -873,6 +883,95 @@ namespace SchoolManagementSystems.Controllers
             }
             _pvm._feeslabellist = db.sp_getfeeslabels().ToList();
             return PartialView("_FeesLabelsList", _pvm);
+        }
+        #endregion
+
+        #region Chapter master
+        public ActionResult Chapter(string Search_Data)
+        {
+            chapterviewmodel _chapter = new chapterviewmodel();
+            _chapter._subjectlist = new List<tbl_subject>();
+            FillPermission(49);
+            if (String.IsNullOrEmpty(Search_Data))
+            {
+                _chapter._subjectlist = db.tbl_subject.ToList();
+                _chapter._chapterlists = db.sp_getchapter().ToList();
+            }
+            else
+            {
+                _chapter._chapterlists = db.sp_getchapter().Where(x => x.ChapterName.ToUpper().Contains(Search_Data.ToUpper())
+                                                            || x.Status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            }
+            return View(_chapter);
+        }
+        public ActionResult DMLchapter(chapterviewmodel _chapter, string evt, int id)
+        {
+            if (evt == "submit")
+            { 
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid,_chapter.subject).ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid, "del").ToString();
+            }
+            _chapter._chapterlists = db.sp_getchapter().ToList();
+            return PartialView("_ChapterList", _chapter);
+        }
+        public JsonResult FillChapterDetails(int Chapterid)
+        {
+            var data = db.tbl_Chapter.Where(m => m.Chapter_id == Chapterid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_chapter(string ChapterName)
+        {
+            var data = db.tbl_Chapter.Where(m => m.ChapterName == ChapterName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Content master
+        public ActionResult Contents(string Search_Data)
+        {
+            contentviewmodel _content = new contentviewmodel();
+            
+            FillPermission(49);
+            if (String.IsNullOrEmpty(Search_Data))
+            {
+                _content._chaptername = db.tbl_Chapter.ToList();
+                
+            }
+            else
+            {
+                _content._chaptername = db.tbl_Chapter.ToList();
+            }
+            
+            var data = db.sp_getcontent().ToList();
+            ViewBag.contentdetails = data; 
+            return View(_content);
+        }
+        public ActionResult DMLContent(contentviewmodel _content, string evt, int id)
+        {
+            if (evt == "submit")
+            {
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status,"").ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, "del").ToString();
+            }
+            var data = db.sp_getcontent().ToList();
+            ViewBag.contentdetails = data; 
+            return PartialView("_ContentList", _content);
+        }
+        public JsonResult FillContentDetails(int contentid)
+        {  
+                var data = db.tbl_Content.Where(m => m.Content_id == contentid).FirstOrDefault();
+                return Json(data, JsonRequestBehavior.AllowGet);          
+        }
+        public JsonResult check_duplicate_content(string ContentName)
+        {
+            var data = db.tbl_Content.Where(m => m.Content_Name == ContentName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
         #endregion
 

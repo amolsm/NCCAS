@@ -668,6 +668,10 @@
     <Content Include="Views\Masters\CourseYear.cshtml" />
     <Content Include="Views\Masters\_CourseYearList.cshtml" />
     <Content Include="Views\shared\_EmployeeSubMenuList.cshtml" />
+    <Content Include="Views\Masters\_ChapterList.cshtml" />
+    <Content Include="Views\Masters\Chapter.cshtml" />
+    <Content Include="Views\Masters\_ContentList.cshtml" />
+    <Content Include="Views\Masters\Contents.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

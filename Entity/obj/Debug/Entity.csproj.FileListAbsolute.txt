@@ -18,7 +18,6 @@ D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.Razor.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 D:\NCCAS\Entity\obj\Debug\Entity.dll
 D:\NCCAS\Entity\obj\Debug\Entity.pdb
 D:\NCCAS\Entity\bin\Debug\Entity.dll.config

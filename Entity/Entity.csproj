@@ -57,14 +57,17 @@
   <ItemGroup>
     <Compile Include="assigndivisionviewmodel.cs" />
     <Compile Include="Attendanceviewmodel.cs" />
+    <Compile Include="chapterviewmodel.cs" />
     <Compile Include="classviewmodel.cs" />
     <Compile Include="cityviewmodel.cs" />
     <Compile Include="casteviewmodel.cs" />
     <Compile Include="bloodgroupviewmodel.cs" />
     <Compile Include="Categoryviewmodel.cs" />
+    <Compile Include="contentviewmodel.cs" />
     <Compile Include="CourseYearviewmodel.cs" />
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
+    <Compile Include="EmployeeListViewModel.cs" />
     <Compile Include="smsviewmodel.cs" />
     <Compile Include="UserPermissionviewmodel.cs" />
     <Compile Include="routeviewmodel.cs" />
