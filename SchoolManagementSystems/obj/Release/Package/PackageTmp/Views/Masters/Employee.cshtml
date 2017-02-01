@@ -102,10 +102,34 @@
                     $("#total").val(data.totalexperience);
                     $("#ctotal").val(data.ctotalexperience);
                     $("#university").val(data.affliateduniversity);
-                    $("#joiningdate").val(data.joiningdate);
-                    $("#lastdate").val(data.lastdate);
-                    $("#cjoiningdate").val(data.cjoiningdate);
-                    $("#clastdate").val(data.clastdate);
+                    if (data.joiningdate != null) {
+                        var value1 = new Date(parseInt(data.joiningdate.substr(6)));
+                        $('#joiningdate').datepicker('setDate', value1);
+                    }
+                    else {
+                        $('#joiningdate').datepicker('setDate', new Date());
+                    }
+                    if (data.lastdate != null) {
+                        var value1 = new Date(parseInt(data.lastdate.substr(6)));
+                        $('#lastdate').datepicker('setDate', value1);
+                    }
+                    else {
+                        $('#lastdate').datepicker('setDate', new Date());
+                    }
+                    if (data.cjoiningdate != null) {
+                        var value1 = new Date(parseInt(data.cjoiningdate.substr(6)));
+                        $('#cjoiningdate').datepicker('setDate', value1);
+                    }
+                    else {
+                        $('#cjoiningdate').datepicker('setDate', new Date());
+                    }
+                    if (data.clastdate != null) {
+                        var value1 = new Date(parseInt(data.clastdate.substr(6)));
+                        $('#clastdate').datepicker('setDate', value1);
+                    }
+                    else {
+                        $('#clastdate').datepicker('setDate', new Date());
+                    }            
                     $("#ldesignation").val(data.lastdesignation);
                     $("#companyname").val(data.companyname);
                     $("#clastdesignatio").val(data.clastdesignatio);
@@ -213,7 +237,20 @@
         });
       
         $('#datepicker2').datepicker('setDate', new Date());
-      
+        $('#datepicker6').attr("readonly", true);
+
+        $('#datepicker6').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker6').datepicker('setDate', new Date());
         $('#datepicker3').attr("readonly", true);
 
         $('#datepicker3').datepicker({
@@ -261,7 +298,6 @@
         $('#datepicker').focus();
 
         $("#insert").click(function () {
-
 
             Validations();
             $.ajax({
@@ -408,6 +444,7 @@
 
         function Validations(e) {
             var cnt = 0;
+            debugger;
             if ($("#FirstName").val() == '') {
                 cnt++;
                 $("#FirstName").css({
@@ -591,7 +628,7 @@
             //    });
             //}
 
-
+            debugger;
             if (cnt != 0) {
                 e.preventDefault();
             }
@@ -717,36 +754,44 @@
                     "background": ""
                 });
             }
-        });
-        $(function () { $("#datepicker").val('') });
-        $(function () { $("#datepicker").datepicker(); });
-        $(function () { $("#lastdate").datepicker(); });
-        $(function () { $("#joiningdate").datepicker(); });
-        $("#lastdate").change(function () {
-            var a = $("#joiningdate").val();
-            var b = $("#lastdate").val();
-            var c = new Date(a);
-            var d = new Date(b);
-            var day = Math.round(Math.abs((c.getDate() - d.getDate())));
-            var year = Math.round(Math.abs((c.getYear() - c.getYear())));
-            var month = Math.round(Math.abs((c.getMonth() - c.getMonth())));
+        }); 
+        $("#datepicker5").change(function () {
+            
+            var a = $("#datepicker4").datepicker("getDate").getDate();
+            var b = $("#datepicker4").datepicker("getDate").getYear();
+            var c = $("#datepicker4").datepicker("getDate").getMonth();
+            var d = $("#datepicker5").datepicker("getDate").getDate();
+            var e = $("#datepicker5").datepicker("getDate").getYear();
+            var f = $("#datepicker5").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
             $("#ctotal").val(year + " Years " + month + " Months " + day + " Days");
 
 
         });
-
-        $(function () { $("#clastdate").datepicker(); });
-        $(function () { $("#cjoiningdate").datepicker(); });
-
-        $("#clastdate").change(function () {
-            debugger;
-            var a = $("#cjoiningdate").val();
-            var b = $("#clastdate").val();
-            var c = new Date(a);
-            var d = new Date(b);
-            var day = Math.round(Math.abs((c.getDate() - d.getDate())));
-            var year = Math.round(Math.abs((c.getYear() - c.getYear())));
-            var month = Math.round(Math.abs((c.getMonth() - c.getMonth())));
+        $("#datepicker3").change(function () {
+            var a = $("#datepicker2").datepicker("getDate").getDate();
+            var b = $("#datepicker2").datepicker("getDate").getYear();
+            var c = $("#datepicker2").datepicker("getDate").getMonth();
+            var d = $("#datepicker3").datepicker("getDate").getDate();
+            var e = $("#datepicker3").datepicker("getDate").getYear();
+            var f = $("#datepicker3").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d )));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
             $("#total").val(year + " Years " + month + " Months " + day + " Days");
 
 
@@ -840,11 +885,16 @@
 
                             </div>
                         </div>
-                        <div class="box-content">
-
-
-                            <div id="frm" class="form-horizontal">
-                                <fieldset>
+                       <div class="box-content">
+                  <form id="frm" class="form-horizontal">
+                              <fieldset>
+                                   @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                                   {
+                                         @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true)
+                                       var fromdt = Convert.ToString(System.DateTime.Now.Year);
+                                       var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
+                                       var session = Convert.ToString(fromdt + "-" + todt);
                                     <div id="tabs">
                                         <ul id="tabss" class="nav navbar-nav">
                                             <li id="tab1" class="active back"><a href="#tabs-1" style="color: blue;">Employee Details</a></li>
@@ -852,191 +902,185 @@
                                             <li id="tab3" class="back">
                                                 <a href="#tabs-3" style="color: blue;">Previous Experience Details</a>
                                             </li>
-                                        </ul>
-                                        <div id="AddForm" style="display: none;">
-                                            @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
-                                            {
-
-                                                @Html.ValidationSummary(true)
-                                                var fromdt = Convert.ToString(System.DateTime.Now.Year);
-                                                var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
-                                                var session = Convert.ToString(fromdt + "-" + todt);
-
-
-                                                <div id="tabs-1">
+                                        </ul>  
+                                   
+                                        
+                                      <div id="tabs-1">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Employee Details</legend>
+                                  
+                                            <div id="empid" class="control-group span5 ">
+                                                    @Html.LabelFor(model => model.Empid, new { @class = "control-label", @for = "focusedInput" })
+                                              
+                                                <div class="controls">
+                                                    @Html.TextBoxFor(model => model.Empid, new { placeholder = "Enter Employee ID", @class = "input" })
+                                                    @Html.ValidationMessageFor(model => model.Empid)
+                                                </div>
+                                                      </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.FirstName, new { @class = "control-label", @for = "focusedInput" })
+                                           
+                                             <div class="controls">
+                                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = "Enter First Name", maxlength = "20", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.FirstName)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.MiddleName, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.MiddleName, new { placeholder = "Enter Middle Name", maxlength = "20", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.MiddleName)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.LastName, new { placeholder = "Enter Last Name", maxlength = "20", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.LastName)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.DOB, new { @class = "control-label" })
+                                          
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker6", placeholder = "Select Date of birth" })
+                                                @Html.ValidationMessageFor(model => model.DOB)
+                                            </div>
+                                                      </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                  @{
+                                       List<SelectListItem> listItems = new List<SelectListItem>();
+                                       listItems.Add(new SelectListItem
+                                       {
+                                           Text = "Male",
+                                           Value = "1"
+                                       });
+                                       listItems.Add(new SelectListItem
+                                       {
+                                           Text = "Female",
+                                           Value = "2",
 
-                                                        <div id="empid" class="control-group span5 ">
-                                                            @Html.LabelFor(model => model.Empid, new { @class = "control-label", @for = "focusedInput" })
-
+                                       });
+                                       listItems.Add(new SelectListItem
+                                       {
+                                           Text = "Unknown",
+                                           Value = "3",
+                                           Selected = true
+                                       }); }                                               
+                                     @Html.DropDownListFor(model => model.Gender, listItems, "-- Select Gender --")
+                                                
+                                               
+                                                @*    @Html.RadioButtonFor(model => model.SelectGender,Model.Gender,Model.Gender.  new { id = "male" })
+                                                    Male*@
+                                             
+                                                 @*   @Html.RadioButtonFor(model => model.SelectGender, Model.Gender, new { id = "female" }) FeMale*@
+                                                
+                                                @Html.ValidationMessageFor(model => model.Gender)
+                                                      </div>
+                                            </div>  
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.DateOfJoin, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextBoxFor(model => model.DateOfJoin, new { id = "datepicker1", placeholder = "Select Joining Date" })
+                                                @Html.ValidationMessageFor(model => model.DateOfJoin)
+                                            </div>
+                                                </div> 
+                                                         <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.edepartment, new { @class = "control-label", @for = "focusedInput" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Empid, new { placeholder = "Enter Employee ID", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Empid)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.FirstName, new { @class = "control-label", @for = "focusedInput" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.FirstName, new { placeholder = "Enter First Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.FirstName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.MiddleName, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.MiddleName, new { placeholder = "Enter Middle Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.MiddleName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.LastName, new { placeholder = "Enter Last Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.LastName)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.DOB, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", @readonly = "readonly", placeholder = "Select Date of birth" })
-                                                                @Html.ValidationMessageFor(model => model.DOB)
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Emailid, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Emailid, new { placeholder = "Enter Email", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.Emailid)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PhoneNo, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PhoneNo, new { placeholder = "Enter Phone Number", maxlength = "12", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.PhoneNo)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.MobileNo, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Code, new { placeholder = "Code", maxlength = "4", @class = "input-small" })
-                                                                @Html.TextBoxFor(model => model.MobileNo, new { placeholder = "Mobile Number", maxlength = "10", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.MobileNo)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> listItems = new List<SelectListItem>();
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Male",
-                                                                        Value = "1"
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Female",
-                                                                        Value = "2",
-
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Unknown",
-                                                                        Value = "3",
-                                                                        Selected = true
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.Gender, listItems, "-- Select Gender --")
-
-                                                                @Html.ValidationMessageFor(model => model.Gender)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.DateOfJoin, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.DateOfJoin, new { id = "datepicker1", placeholder = "Select Joining Date" })
-                                                                @Html.ValidationMessageFor(model => model.DateOfJoin)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.edepartment, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> dlistItems = new List<SelectListItem>();
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Male",
-                                                                        Value = "1"
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Female",
-                                                                        Value = "2",
-
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Unknown",
-                                                                        Value = "3",
-                                                                        Selected = true
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.edepartment, dlistItems, "-- Select Department --")
-
+                                                                @Html.DropDownListFor(model => model.edepartment, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.edepartment)
                                                             </div>
-                                                        </div>
+                                                        </div>   
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.eblood, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.eblood, new { @class = "control-label", @for = "focusedInput" })
                                                             <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> eblistItems = new List<SelectListItem>();
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Male",
-                                                                        Value = "1"
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Female",
-                                                                        Value = "2",
-
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Unknown",
-                                                                        Value = "3",
-                                                                        Selected = true
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.eblood, eblistItems, "-- Select Blood Group --")
-
+                                                                @Html.DropDownListFor(model => model.eblood, new SelectList(Model.bloodgrouplist,"bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.eblood)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Typeid, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <select id="Typeid" name="Typeid" class="input"></select>
-                                                                @Html.ValidationMessageFor(model => model.Typeid)
-                                                            </div>
-                                                        </div>
-                                                        @* <div class="control-group span5">
-                                                                @Html.LabelFor(model => model.OQualification, new { @class = "control-label" })
-                                                             <div  class="controls">
-                                                                @Html.TextAreaFor(model => model.OQualification, new { @class = "input", placeholder = "Qualification" })
-                                                                @Html.ValidationMessageFor(model => model.OQualification)
-                                                            </div>
-                                                                </div> *@
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
+                                                        </div>   
+                                            
+                                           @* <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Quallification, new { @class = "control-label" })
+                                             <div  class="controls">
+                                                @Html.DropDownListFor(m => m.Quallification, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification")
+                                                @Html.ValidationMessageFor(model => model.Quallification)
+                                            </div>
+                                                  </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Stateid, new { @class = "control-label" })
+                                        
+                                            <div  class="controls"> 
+                                                @Html.DropDownListFor(m => m.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                @Html.ValidationMessageFor(model => model.Stateid)
+                                            </div>
+                                                    </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Cityid, new { @class = "control-label" })
+                                             <div  class="controls">
+                                                @Html.DropDownListFor(m => m.Cityid, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                @Html.ValidationMessageFor(model => model.Cityid)
+                                            </div>
+                                               </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Zipcode, new { @class = "control-label" })
+                                           
+                                              <div  class="controls">
+                                                @Html.TextBoxFor(model => model.Zipcode, new { placeholder = "Enter Zipcode", maxlength = "6", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.Zipcode)
+                                            </div>
+                                                    </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Emailid, new { @class = "control-label" })
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.Emailid, new { placeholder = "Enter Email", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.Emailid)
+                                            </div>
+                                                </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.PhoneNo, new { @class = "control-label" })
+                                             <div  class="controls">
+                                                @Html.TextBoxFor(model => model.PhoneNo, new { placeholder = "Enter Phone Number", maxlength = "12", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.PhoneNo)
+                                            </div>
+                                                </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.MobileNo, new { @class = "control-label" })
+                                           <div  class="controls" style="border:1px solid; width:25.5%">
+                                                @Html.TextBoxFor(model => model.Code, new { placeholder = "Code", maxlength = "4", @class = "input-small" })
+                                               </div><div  class="controls">
+                                                @Html.TextBoxFor(model => model.MobileNo, new { placeholder = "Mobile Number", maxlength = "10", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.MobileNo)
+                                            </div>
+                                                </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Address, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextAreaFor(model => model.Address, new { placeholder = "Enter Address", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.Address)
+                                            </div>
+                                                </div>                            
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.Typeid, new { @class = "control-label" })
+                                               <div  class="controls">
+                                                <select id="Typeid" name="Typeid" class="input"></select>
+                                                @Html.ValidationMessageFor(model => model.Typeid)
+                                            </div>
+                                                   </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.OQualification, new { @class = "control-label" })
+                                             <div  class="controls">
+                                                @Html.TextAreaFor(model => model.OQualification, new { @class = "input", placeholder = "Qualification" })
+                                                @Html.ValidationMessageFor(model => model.OQualification)
+                                            </div>
+                                                </div> *@ 
+                                            </fieldset>
+                                            <br />
+                                            <fieldset class="test" style="width: 100%;">
                                                         <legend>Qualication</legend>
                                                         <table style="width: 100%;" class="table table-striped table-bordered">
                                                             <thead>
@@ -1052,36 +1096,36 @@
                                                                     <td>
 
                                                                         @{
-                                                                            List<SelectListItem> equalication1 = new List<SelectListItem>();
-                                                                            equalication1.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "BA",
-                                                                                Value = "1"
-                                                                            });
-                                                                            equalication1.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MA",
-                                                                                Value = "2",
+                                       List<SelectListItem> equalication1 = new List<SelectListItem>();
+                                       equalication1.Add(new SelectListItem
+                                       {
+                                           Text = "BA",
+                                           Value = "1"
+                                       });
+                                       equalication1.Add(new SelectListItem
+                                       {
+                                           Text = "MA",
+                                           Value = "2",
 
-                                                                            });
-                                                                            equalication1.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MPhil",
-                                                                                Value = "3",
+                                       });
+                                       equalication1.Add(new SelectListItem
+                                       {
+                                           Text = "MPhil",
+                                           Value = "3",
 
-                                                                            });
-                                                                            equalication1.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "PHD",
-                                                                                Value = "4",
+                                       });
+                                       equalication1.Add(new SelectListItem
+                                       {
+                                           Text = "PHD",
+                                           Value = "4",
 
-                                                                            });
-                                                                            equalication1.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "Others",
-                                                                                Value = "5",
+                                       });
+                                       equalication1.Add(new SelectListItem
+                                       {
+                                           Text = "Others",
+                                           Value = "5",
 
-                                                                            });
+                                       });
                                                                         }
 
                                                                         @Html.DropDownListFor(model => model.equalification1, equalication1, "-- Select Qualication --")
@@ -1091,7 +1135,7 @@
                                                                         @Html.TextBoxFor(model => model.euniversity1, new { placeholder = "Enter University Name", @class = "input" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity1)
 
-                                                                    </td>
+                                                                    </td>                                                                    
                                                                     <td>
 
                                                                         @Html.TextBoxFor(model => model.eprecentage1, new { placeholder = "Enter Precentage", @class = "input" })
@@ -1106,36 +1150,36 @@
                                                                     <td>
 
                                                                         @{
-                                                                            List<SelectListItem> equalication2 = new List<SelectListItem>();
-                                                                            equalication2.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "BA",
-                                                                                Value = "1"
-                                                                            });
-                                                                            equalication2.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MA",
-                                                                                Value = "2",
+                                       List<SelectListItem> equalication2 = new List<SelectListItem>();
+                                       equalication2.Add(new SelectListItem
+                                       {
+                                           Text = "BA",
+                                           Value = "1"
+                                       });
+                                       equalication2.Add(new SelectListItem
+                                       {
+                                           Text = "MA",
+                                           Value = "2",
 
-                                                                            });
-                                                                            equalication2.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MPhil",
-                                                                                Value = "3",
+                                       });
+                                       equalication2.Add(new SelectListItem
+                                       {
+                                           Text = "MPhil",
+                                           Value = "3",
 
-                                                                            });
-                                                                            equalication2.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "PHD",
-                                                                                Value = "4",
+                                       });
+                                       equalication2.Add(new SelectListItem
+                                       {
+                                           Text = "PHD",
+                                           Value = "4",
 
-                                                                            });
-                                                                            equalication2.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "Others",
-                                                                                Value = "5",
+                                       });
+                                       equalication2.Add(new SelectListItem
+                                       {
+                                           Text = "Others",
+                                           Value = "5",
 
-                                                                            });
+                                       });
                                                                         }
 
                                                                         @Html.DropDownListFor(model => model.equalification2, equalication2, "-- Select Qualication --")
@@ -1145,7 +1189,7 @@
                                                                         @Html.TextBoxFor(model => model.euniversity2, new { placeholder = "Enter University Name", @class = "input" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity2)
 
-                                                                    </td>
+                                                                    </td>                                                                    
                                                                     <td>
 
                                                                         @Html.TextBoxFor(model => model.eprecentage2, new { placeholder = "Enter Precentage", @class = "input" })
@@ -1160,36 +1204,36 @@
                                                                     <td>
 
                                                                         @{
-                                                                            List<SelectListItem> equalication3 = new List<SelectListItem>();
-                                                                            equalication3.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "BA",
-                                                                                Value = "1"
-                                                                            });
-                                                                            equalication3.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MA",
-                                                                                Value = "2",
+                                       List<SelectListItem> equalication3 = new List<SelectListItem>();
+                                       equalication3.Add(new SelectListItem
+                                       {
+                                           Text = "BA",
+                                           Value = "1"
+                                       });
+                                       equalication3.Add(new SelectListItem
+                                       {
+                                           Text = "MA",
+                                           Value = "2",
 
-                                                                            });
-                                                                            equalication3.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MPhil",
-                                                                                Value = "3",
+                                       });
+                                       equalication3.Add(new SelectListItem
+                                       {
+                                           Text = "MPhil",
+                                           Value = "3",
 
-                                                                            });
-                                                                            equalication3.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "PHD",
-                                                                                Value = "4",
+                                       });
+                                       equalication3.Add(new SelectListItem
+                                       {
+                                           Text = "PHD",
+                                           Value = "4",
 
-                                                                            });
-                                                                            equalication3.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "Others",
-                                                                                Value = "5",
+                                       });
+                                       equalication3.Add(new SelectListItem
+                                       {
+                                           Text = "Others",
+                                           Value = "5",
 
-                                                                            });
+                                       });
                                                                         }
 
                                                                         @Html.DropDownListFor(model => model.equalification3, equalication3, "-- Select Qualication --")
@@ -1199,7 +1243,7 @@
                                                                         @Html.TextBoxFor(model => model.euniversity3, new { placeholder = "Enter University Name", @class = "input" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity3)
 
-                                                                    </td>
+                                                                    </td>                                                                    
                                                                     <td>
 
                                                                         @Html.TextBoxFor(model => model.eprecentage3, new { placeholder = "Enter Precentage", @class = "input" })
@@ -1214,36 +1258,36 @@
                                                                     <td>
 
                                                                         @{
-                                                                            List<SelectListItem> equalication4 = new List<SelectListItem>();
-                                                                            equalication4.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "BA",
-                                                                                Value = "1"
-                                                                            });
-                                                                            equalication4.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MA",
-                                                                                Value = "2",
+                                       List<SelectListItem> equalication4 = new List<SelectListItem>();
+                                       equalication4.Add(new SelectListItem
+                                       {
+                                           Text = "BA",
+                                           Value = "1"
+                                       });
+                                       equalication4.Add(new SelectListItem
+                                       {
+                                           Text = "MA",
+                                           Value = "2",
 
-                                                                            });
-                                                                            equalication4.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "MPhil",
-                                                                                Value = "3",
+                                       });
+                                       equalication4.Add(new SelectListItem
+                                       {
+                                           Text = "MPhil",
+                                           Value = "3",
 
-                                                                            });
-                                                                            equalication4.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "PHD",
-                                                                                Value = "4",
+                                       });
+                                       equalication4.Add(new SelectListItem
+                                       {
+                                           Text = "PHD",
+                                           Value = "4",
 
-                                                                            });
-                                                                            equalication4.Add(new SelectListItem
-                                                                            {
-                                                                                Text = "Others",
-                                                                                Value = "5",
+                                       });
+                                       equalication4.Add(new SelectListItem
+                                       {
+                                           Text = "Others",
+                                           Value = "5",
 
-                                                                            });
+                                       });
                                                                         }
 
                                                                         @Html.DropDownListFor(model => model.equalification4, equalication4, "-- Select Qualication --")
@@ -1253,7 +1297,7 @@
                                                                         @Html.TextBoxFor(model => model.euniversity4, new { placeholder = "Enter University Name", @class = "input" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity4)
 
-                                                                    </td>
+                                                                    </td>                                                                    
                                                                     <td>
 
                                                                         @Html.TextBoxFor(model => model.eprecentage4, new { placeholder = "Enter Precentage", @class = "input" })
@@ -1269,101 +1313,101 @@
                                                         </table>
 
                                                     </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
-                                                        <legend>Medical Info</legend>
-                                                        <div class="control-group span5">
+                                            <br />
+                                            <fieldset class="test" style="width: 100%;">
+                                             <legend>Medical Info</legend>
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.eweight, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.eweight, new { placeholder = "Enter Weight in Kg", maxlength = "3", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.eweight)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.eheight, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.eheight, new { placeholder = "Enter Height in Cms", maxlength = "3", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.eheight)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                         @*<div class="control-group span5">
                                                             @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
                                                             <div class="controls" style="width:47%">
-                                                                <input type="file" name="empfile1" id="empfile1" />
+                                                                <input type="file" name="empfile" id="file" />
                                                                 <div id="pic3">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.emppic)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                                        </div>*@
+                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.eidtype, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> DocumentType = new List<SelectListItem>();
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Aadhar",
-                                                                        Value = "1"
-                                                                    });
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Passport",
-                                                                        Value = "2",
+                                                            @{
+                                       List<SelectListItem> DocumentType = new List<SelectListItem>();
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "Aadhar",
+                                           Value = "1"
+                                       });
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "Passport",
+                                           Value = "2",
 
-                                                                    });
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "DL",
-                                                                        Value = "3",
-                                                                        Selected = true
-                                                                    });
+                                       });
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "DL",
+                                           Value = "3",
+                                           Selected = true
+                                       });
 
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "VoterID",
-                                                                        Value = "4",
-                                                                        Selected = true
-                                                                    });
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "PAN",
-                                                                        Value = "5",
-                                                                        Selected = true
-                                                                    });
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Refugees",
-                                                                        Value = "6",
-                                                                        Selected = true
-                                                                    });
-                                                                    DocumentType.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Others",
-                                                                        Value = "7",
-                                                                        Selected = true
-                                                                    });}
-                                                                @Html.DropDownListFor(model => model.eidtype, DocumentType, "-- Select Document Type --")
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "VoterID",
+                                           Value = "4",
+                                           Selected = true
+                                       });
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "PAN",
+                                           Value = "5",
+                                           Selected = true
+                                       });
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "Refugees",
+                                           Value = "6",
+                                           Selected = true
+                                       });
+                                       DocumentType.Add(new SelectListItem
+                                       {
+                                           Text = "Others",
+                                           Value = "7",
+                                           Selected = true
+                                       });}
+                                                            @Html.DropDownListFor(model => model.eidtype, DocumentType, "-- Select Document Type --")
 
 
                                                             </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
+                                                        </div> 
+                                          </fieldset>
+                                            <br />
+                                            <fieldset class="test" style="width: 100%;">
                                                         <legend>Emergency Details</legend>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.dname, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.dname, new { placeholder = "Enter Docter Name", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.dname)
-                                                            </div>
-                                                        </div>
+                                                         <div class="control-group span5">
+                                                @Html.LabelFor(model => model.dname, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.dname, new { placeholder = "Enter Docter Name", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.dname)
+                                            </div>
+                                                 </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.dcontact, new { @class = "control-label" })
                                                             <div class="controls" style="width:25%">
                                                                 @Html.TextBoxFor(model => model.DCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
-                                                            </div><div class="controls">
+                                                                </div><div class="controls">
                                                                 @Html.TextBoxFor(model => model.dcontact, new { placeholder = "Enter Docter Contact", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.dcontact)
                                                             </div>
@@ -1375,94 +1419,94 @@
                                                                 @Html.ValidationMessageFor(model => model.daddress)
                                                             </div>
                                                         </div>
-                                                    </fieldset>
-
-                                                </div>
-                                                <div id="tabs-2">
+                                                    </fieldset> 
+                                         
+                                      </div>
+                                      <div id="tabs-2">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Parent's Details or Spouse</legend>
-                                                        <div class="control-group span5">
+                                            <div class="control-group span5">
                                                             @Html.LabelFor(model => model.relationship, new { @class = "control-label" })
                                                             <div style="margin-left: 45.5%">
-                                                                <div class="pull-left">
+                                                                <div class="pull-left" style="border:1px solid">
                                                                     @{
-                                                                        List<SelectListItem> rlistItems = new List<SelectListItem>();
-                                                                        rlistItems.Add(new SelectListItem
-                                                                        {
-                                                                            Text = "Mother",
-                                                                            Value = "1"
-                                                                        });
-                                                                        rlistItems.Add(new SelectListItem
-                                                                        {
-                                                                            Text = "Father",
-                                                                            Value = "2",
+                                       List<SelectListItem> rlistItems = new List<SelectListItem>();
+                                       rlistItems.Add(new SelectListItem
+                                       {
+                                           Text = "Mother",
+                                           Value = "1"
+                                       });
+                                       rlistItems.Add(new SelectListItem
+                                       {
+                                           Text = "Father",
+                                           Value = "2",
 
-                                                                        });
-                                                                        rlistItems.Add(new SelectListItem
-                                                                        {
-                                                                            Text = "Spouse",
-                                                                            Value = "3",
-                                                                            Selected = true
-                                                                        });
-                                                                        rlistItems.Add(new SelectListItem
-                                                                        {
-                                                                            Text = "Guardian ",
-                                                                            Value = "1"
-                                                                        }); }
+                                       });
+                                       rlistItems.Add(new SelectListItem
+                                       {
+                                           Text = "Spouse",
+                                           Value = "3",
+                                           Selected = true
+                                       });
+                                       rlistItems.Add(new SelectListItem
+                                       {
+                                           Text = "Guardian ",
+                                           Value = "1"
+                                       }); }
                                                                     @Html.DropDownListFor(model => model.relationship, rlistItems, "-- Select Relationship --")
 
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.relationship)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pname, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.pname, new { placeholder = "Enter Parent's Name", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.pname)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.poccupation, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.poccupation, new { placeholder = "Enter Parent's Occupation", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.poccupation)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pqualification, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.pqualification, new { placeholder = "Enter Parent's Qualification" })
-                                                                @Html.ValidationMessageFor(model => model.pqualification)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pemail, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.pemail, new { placeholder = "Enter Parent's Email Address" })
-                                                                @Html.ValidationMessageFor(model => model.pemail)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.pofficeaddress, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.pofficeaddress, new { placeholder = "Enter Parent's Office Address" })
-                                                                @Html.ValidationMessageFor(model => model.pofficeaddress)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.pname, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.pname, new { placeholder = "Enter Parent's Name", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.pname)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.poccupation, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.poccupation, new { placeholder = "Enter Parent's Occupation", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.poccupation)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.pqualification, new { @class = "control-label" })
+                                          
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.pqualification, new { placeholder = "Enter Parent's Qualification" })
+                                                @Html.ValidationMessageFor(model => model.pqualification)
+                                            </div>
+                                                      </div>  
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.pemail, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextBoxFor(model => model.pemail, new { placeholder = "Enter Parent's Email Address" })
+                                                @Html.ValidationMessageFor(model => model.pemail)
+                                            </div>
+                                                </div> 
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.pofficeaddress, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextAreaFor(model => model.pofficeaddress, new { placeholder = "Enter Parent's Office Address" })
+                                                @Html.ValidationMessageFor(model => model.pofficeaddress)
+                                            </div>
+                                                </div> 
+                                            <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pcontact, new { @class = "control-label" })
                                                             <div class="controls" style="width:25%">
                                                                 @Html.TextBoxFor(model => model.PCODE, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
-                                                            </div><div class="controls">
+                                                                </div><div class="controls">
                                                                 @Html.TextBoxFor(model => model.pcontact, new { placeholder = "Enter Parent's Contact", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.pcontact)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                                        </div> 
+                                            @*<div class="control-group span5">
                                                             @Html.LabelFor(model => model.ppic, new { @class = "control-label" })
                                                             <div class="controls" style="width:47%">
                                                                 <input type="file" name="files3" id="pfile" />
@@ -1470,389 +1514,378 @@
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.ppic)
                                                             </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
-                                                        <legend>Permanant Address</legend>
-
-                                                        <div class="control-group span5">
+                                                        </div>  *@       
+                                                        </fieldset>
+                                          <br />
+                                          <fieldset class="test" style="width: 100%;">
+                                             <legend>Permanant Address</legend>    
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pacountry, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-
                                                                 @Html.DropDownListFor(m => m.pacountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.pacountry)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pastate, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.pastate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                                @Html.DropDownListFor(m => m.pastate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.pastate)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                                        </div>      
+                                             <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pacity, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.pacity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                                @Html.DropDownListFor(m => m.pacity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select City", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.pacity)
                                                             </div>
                                                         </div>
-
-                                                        <div class="control-group span5">
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.pastreet, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.pastreet, new { placeholder = "Enter Street", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.pastreet)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                                        </div> 
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.papin, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.papin, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.papin)
                                                             </div>
                                                         </div>
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
-                                                        <legend>Current Address</legend>
-
-                                                        <div class="control-group span5">
+                                              </fieldset>
+                                          <br />
+                                          <fieldset class="test" style="width: 100%;">
+                                             <legend>Current Address</legend>
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.ccountry, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.ccountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.ccountry)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.cstate, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.cstate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                                @Html.DropDownListFor(m => m.cstate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.cstate)
                                                             </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
+                                                        </div>      
+                                             <div class="control-group span5">
                                                             @Html.LabelFor(model => model.ccity, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
-                                                                @Html.DropDownListFor(m => m.ccity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                                @Html.DropDownListFor(m => m.ccity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select City", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.ccity)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                              <div class="control-group span5">
                                                             @Html.LabelFor(model => model.cstreet, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.cstreet, new { placeholder = "Enter Street", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.cstreet)
                                                             </div>
-                                                        </div>
-                                                        <div class="control-group span5">
+                                                        </div> 
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.cpin, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.cpin, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.cpin)
                                                             </div>
                                                         </div>
-
-                                                        <div class="control-group span5">
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.phome, new { @class = "control-label" })
                                                             <div class="controls" style="width:25%">
                                                                 @Html.TextBoxFor(model => model.PHCODE, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
-                                                            </div><div class="controls">
+                                                                </div><div class="controls">
                                                                 @Html.TextBoxFor(model => model.phome, new { placeholder = "Enter Home Phone Number", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.phome)
                                                             </div>
-                                                        </div>
+                                                        </div> 
 
-                                                        <div class="control-group span5">
+                                               <div class="control-group span5">
                                                             @Html.LabelFor(model => model.hmobile, new { @class = "control-label" })
                                                             <div class="controls" style="width:25%">
                                                                 @Html.TextBoxFor(model => model.MCODE, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
-                                                            </div><div class="controls">
+                                                                </div><div class="controls">
                                                                 @Html.TextBoxFor(model => model.hmobile, new { placeholder = "Enter Mobile Number", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.hmobile)
                                                             </div>
-                                                        </div>
+                                                        </div> 
 
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset class="test" style="width: 100%;">
-                                                        <legend>Bank Details</legend>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.bankname, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.bankname, new { placeholder = "Enter Bank Name", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.bankname)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.branch, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.branch, new { placeholder = "Enter Branch Name", maxlength = "20", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.branch)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.ifsccode, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.ifsccode, new { placeholder = "Enter IFSC Code" })
-                                                                @Html.ValidationMessageFor(model => model.ifsccode)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.accountno, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.accountno, new { placeholder = "Enter Account Number" })
-                                                                @Html.ValidationMessageFor(model => model.accountno)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.acname, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @Html.TextAreaFor(model => model.acname, new { placeholder = "Enter Name on the Account" })
-                                                                @Html.ValidationMessageFor(model => model.acname)
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </div>
-                                                <div id="tabs-3">
+                                              </fieldset>
+                                          <br />
+                                          <fieldset class="test" style="width: 100%;">
+                                             <legend>Bank Details</legend>
+                                              <div class="control-group span5">
+                                                @Html.LabelFor(model => model.bankname, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.bankname, new { placeholder = "Enter Bank Name", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.bankname)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.branch, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.branch, new { placeholder = "Enter Branch Name", maxlength = "20", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.branch)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.ifsccode, new { @class = "control-label" })
+                                          
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.ifsccode, new { placeholder = "Enter IFSC Code" })
+                                                @Html.ValidationMessageFor(model => model.ifsccode)
+                                            </div>
+                                                      </div>  
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.accountno, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextBoxFor(model => model.accountno, new { placeholder = "Enter Account Number" })
+                                                @Html.ValidationMessageFor(model => model.accountno)
+                                            </div>
+                                                </div> 
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.acname, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                @Html.TextAreaFor(model => model.acname, new { placeholder = "Enter Name on the Account" })
+                                                @Html.ValidationMessageFor(model => model.acname)
+                                            </div>
+                                                </div> 
+                                              </fieldset>
+                                          </div>
+                                      <div id="tabs-3">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>College</legend>
+                                                         <div class="control-group span5">
+                                                @Html.LabelFor(model => model.collagename, new { @class = "control-label", @for = "focusedInput" })
+                                           
+                                             <div class="controls">
+                                                @Html.TextBoxFor(model => model.collagename, new { placeholder = "Enter College Name", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.collagename)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.university, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.university, new { placeholder = "Affliated to which University", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.university)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.joiningdate, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker4", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                @Html.ValidationMessageFor(model => model.joiningdate)
+                                            </div>
+                                                 </div>
+                                                         <div class="control-group span5">
+                                                @Html.LabelFor(model => model.lastdate, new { @class = "control-label" })
+                                           
+                                             <div class="controls">
+                                                @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker5", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.ValidationMessageFor(model => model.lastdate)
+                                            </div>
+                                                 </div>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.collagename, new { @class = "control-label", @for = "focusedInput" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.collagename, new { placeholder = "Enter College Name", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.collagename)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.university, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.university, new { placeholder = "Affliated to which University", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.university)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.joiningdate, new {  @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining" })
-                                                                @Html.ValidationMessageFor(model => model.joiningdate)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.lastdate, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker3",@readonly = "readonly", placeholder = "Select Last Date" })
-                                                                @Html.ValidationMessageFor(model => model.lastdate)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.ctotal, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.ctotal, new { @readonly = "readonly", placeholder = "Total Experience" })
-                                                                @Html.ValidationMessageFor(model => model.ctotal)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.ldesignation, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.ldesignation, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.ldesignation)
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <br />
-                                                    <fieldset>
-                                                        <legend>Corporate</legend>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.companyname, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.companyname, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.companyname)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.clastdesignation, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.clastdesignation, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.clastdesignation)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.cjoiningdate, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.cjoiningdate, new { id = "datepicker4",@readonly = "readonly", placeholder = "Select Date of Joining" })
-                                                                @Html.ValidationMessageFor(model => model.cjoiningdate)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.clastdate, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.clastdate, new { id = "datepicker5", @readonly = "readonly", placeholder = "Select Last Date" })
-                                                                @Html.ValidationMessageFor(model => model.clastdate)
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.total, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.total, new { @readonly = "readonly", placeholder = "Total Experience" })
-                                                                @Html.ValidationMessageFor(model => model.total)
-                                                            </div>
-                                                        </div>
+                                                @Html.LabelFor(model => model.ctotal, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.ctotal, new { @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.ValidationMessageFor(model => model.ctotal)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.ldesignation, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.ldesignation, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.ldesignation)
+                                            </div>
+                                                 </div>
+                                                        </fieldset>
+                                          <br />
+                                                         <fieldset class="test" style="width: 100%;">
+                                             <legend>Corporate</legend>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.companyname, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.companyname, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.companyname)
+                                            </div>
+                                                 </div>
+                                                         <div class="control-group span5">
+                                                @Html.LabelFor(model => model.clastdesignation, new { @class = "control-label" })
+                                           
+                                             <div class="controls">
+                                                @Html.TextBoxFor(model => model.clastdesignation, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.clastdesignation)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.cjoiningdate, new { @class = "control-label" })
+                                           
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.cjoiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                @Html.ValidationMessageFor(model => model.cjoiningdate)
+                                            </div>
+                                                 </div>
+                                            <div class="control-group span5">
+                                                @Html.LabelFor(model => model.clastdate, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.clastdate, new { id = "datepicker3", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.ValidationMessageFor(model => model.clastdate)
+                                            </div>
+                                                 </div>
+                                               <div class="control-group span5">
+                                                @Html.LabelFor(model => model.total, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.total, new { @readonly = "readonly", placeholder = "Select Last Date" })
+                                                @Html.ValidationMessageFor(model => model.total)
+                                            </div>
+                                                 </div>
 
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.employeeemail, new { @class = "control-label" })
-
-                                                            <div class="controls">
-                                                                @Html.TextBoxFor(model => model.employeeemail, new { placeholder = "Enter Email Address", maxlength = "30", @class = "input" })
-                                                                @Html.ValidationMessageFor(model => model.employeeemail)
-                                                            </div>
-                                                        </div>
+                                                @Html.LabelFor(model => model.employeeemail, new { @class = "control-label" })
+                                           
+                                            <div  class="controls">
+                                                @Html.TextBoxFor(model => model.employeeemail, new { placeholder = "Enter Email Address", maxlength = "30", @class = "input" })
+                                                @Html.ValidationMessageFor(model => model.employeeemail)
+                                            </div>
+                                                 </div>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.empreligion, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> religion = new List<SelectListItem>();
-                                                                    religion.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Roman Carholic",
-                                                                        Value = "1"
-                                                                    });
-                                                                    religion.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Christian",
-                                                                        Value = "2",
+                                                @Html.LabelFor(model => model.empreligion, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                  @{
+                                       List<SelectListItem> religion = new List<SelectListItem>();
+                                       religion.Add(new SelectListItem
+                                       {
+                                           Text = "Roman Carholic",
+                                           Value = "1"
+                                       });
+                                       religion.Add(new SelectListItem
+                                       {
+                                           Text = "Christian",
+                                           Value = "2",
 
-                                                                    });
-                                                                    religion.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Muslim",
-                                                                        Value = "3",
-                                                                    });
-                                                                    religion.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Hindu",
-                                                                        Value = "4",
+                                       });
+                                       religion.Add(new SelectListItem
+                                       {
+                                           Text = "Muslim",
+                                           Value = "3",
+                                       });
+                                       religion.Add(new SelectListItem
+                                       {
+                                           Text = "Hindu",
+                                           Value = "4",
 
-                                                                    });
-                                                                    religion.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Jain",
-                                                                        Value = "5",
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.empreligion, religion, "-- Select Religion --")
-                                                                @Html.ValidationMessageFor(model => model.empreligion)
-                                                            </div>
-                                                        </div>
+                                       });
+                                       religion.Add(new SelectListItem
+                                       {
+                                           Text = "Jain",
+                                           Value = "5",
+                                       }); }                                               
+                                     @Html.DropDownListFor(model => model.empreligion, religion, "-- Select Religion --")                                               
+                                                @Html.ValidationMessageFor(model => model.empreligion)
+                                                      </div>
+                                            </div> 
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.empcategory, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> category = new List<SelectListItem>();
-                                                                    category.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "SC",
-                                                                        Value = "1"
-                                                                    });
-                                                                    category.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "ST",
-                                                                        Value = "2",
+                                                @Html.LabelFor(model => model.empcategory, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                  @{
+                                       List<SelectListItem> category = new List<SelectListItem>();
+                                       category.Add(new SelectListItem
+                                       {
+                                           Text = "SC",
+                                           Value = "1"
+                                       });
+                                       category.Add(new SelectListItem
+                                       {
+                                           Text = "ST",
+                                           Value = "2",
 
-                                                                    });
-                                                                    category.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Other",
-                                                                        Value = "3",
-                                                                    });}
-                                                                @Html.DropDownListFor(model => model.empcategory, category, "-- Select Category --")
-                                                                @Html.ValidationMessageFor(model => model.empcategory)
-                                                            </div>
-                                                        </div>
+                                       });
+                                       category.Add(new SelectListItem
+                                       {
+                                           Text = "Other",
+                                           Value = "3",
+                                       });}                                               
+                                     @Html.DropDownListFor(model => model.empcategory, category, "-- Select Category --")                                               
+                                                @Html.ValidationMessageFor(model => model.empcategory)
+                                                      </div>
+                                            </div> 
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> cast = new List<SelectListItem>();
-                                                                    cast.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Nadar",
-                                                                        Value = "1"
-                                                                    });
-                                                                    cast.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Bramin",
-                                                                        Value = "2",
+                                                @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                  @{
+                                       List<SelectListItem> cast = new List<SelectListItem>();
+                                       cast.Add(new SelectListItem
+                                       {
+                                           Text = "Nadar",
+                                           Value = "1"
+                                       });
+                                       cast.Add(new SelectListItem
+                                       {
+                                           Text = "Bramin",
+                                           Value = "2",
 
-                                                                    });
-                                                                    cast.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Other",
-                                                                        Value = "3",
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.empcast, cast, "-- Select Caste --")
-                                                                @Html.ValidationMessageFor(model => model.empcast)
-                                                            </div>
-                                                        </div>
+                                       });
+                                       cast.Add(new SelectListItem
+                                       {
+                                           Text = "Other",
+                                           Value = "3",
+                                       }); }                                               
+                                     @Html.DropDownListFor(model => model.empcast, cast, "-- Select Caste --")                                               
+                                                @Html.ValidationMessageFor(model => model.empcast)
+                                                      </div>
+                                            </div> 
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.mtongue, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                @{
-                                                                    List<SelectListItem> tongue = new List<SelectListItem>();
-                                                                    tongue.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Tamil",
-                                                                        Value = "1"
-                                                                    });
-                                                                    tongue.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "English",
-                                                                        Value = "2",
+                                                @Html.LabelFor(model => model.mtongue, new { @class = "control-label" })
+                                              <div  class="controls">
+                                                  @{
+                                       List<SelectListItem> tongue = new List<SelectListItem>();
+                                       tongue.Add(new SelectListItem
+                                       {
+                                           Text = "Tamil",
+                                           Value = "1"
+                                       });
+                                       tongue.Add(new SelectListItem
+                                       {
+                                           Text = "English",
+                                           Value = "2",
 
-                                                                    });
-                                                                    tongue.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Malayalam",
-                                                                        Value = "3",
-                                                                    }); }
-                                                                @Html.DropDownListFor(model => model.mtongue, tongue, "-- Select Tongue --")
-                                                                @Html.ValidationMessageFor(model => model.mtongue)
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <br />
-
-
-
-                                                    <div class="form-actions">
-                                                        <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
-                                                        <input type="button" class="btn btn-primary" id="reset" value="Reset" />
-                                                    </div>
-                                                </div>
-
-                                                                    }
+                                       });
+                                       tongue.Add(new SelectListItem
+                                       {
+                                           Text = "Malayalam",
+                                           Value = "3",
+                                       }); }                                               
+                                     @Html.DropDownListFor(model => model.mtongue, tongue, "-- Select Tongue --")                                               
+                                                @Html.ValidationMessageFor(model => model.mtongue)
+                                                      </div>
+                                            </div> 
+                                                         </fieldset> 
+                                          <br />           
+                                          </div>
+                                    
                                         </div>
+                                        <div class="form-actions">
+                                        <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                        <input type="button" class="btn btn-primary" id="reset" value="Reset" />
                                     </div>
-                                </fieldset>
-
-                            </div>
-                        </div>
+                                   }
+                                  </fieldset>
+                            
+                            </form>
+                      </div>
 
 
                     </div>

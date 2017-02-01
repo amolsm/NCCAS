@@ -731,7 +731,7 @@
         //$(function () {
         //    $("#datepicker").val('');
         //});
-       // $('#datepicker').datepicker('setDate', new Date());
+        $('#datepicker').datepicker('setDate', new Date());
 
         $('#datepicker1').attr("readonly", true);
 
@@ -2168,10 +2168,9 @@
                 </ul>
 
                 <div class="panel-body">
-                    <span class="alert">
-                        @(TempData["StudentError"] ?? string.Empty) </span>
+                 
                             <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
-                                <strong><label id="lblmsg"></label></strong>
+                                @*@(TempData["StudentError"] ?? string.Empty)*@<strong><label id="lblmsg"></label></strong>
                             </div>
                             <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
                                 <strong><label id="lblmsgs"></label></strong>
