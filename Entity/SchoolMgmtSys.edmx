@@ -803,42 +803,6 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="Dept_name" Type="varchar" MaxLength="100" />
           <Property Name="Status" Type="bit" />
         </EntityType>
-        <Association Name="FK_tbl_city_tbl_country">
-          <End Role="tbl_country" Type="Self.tbl_country" Multiplicity="1" />
-          <End Role="tbl_city" Type="Self.tbl_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_country">
-              <PropertyRef Name="Countryid" />
-            </Principal>
-            <Dependent Role="tbl_city">
-              <PropertyRef Name="Countryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_city_tbl_state">
-          <End Role="tbl_state" Type="Self.tbl_state" Multiplicity="1" />
-          <End Role="tbl_city" Type="Self.tbl_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_state">
-              <PropertyRef Name="Stateid" />
-            </Principal>
-            <Dependent Role="tbl_city">
-              <PropertyRef Name="Stateid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_state_tbl_country">
-          <End Role="tbl_country" Type="Self.tbl_country" Multiplicity="1" />
-          <End Role="tbl_state" Type="Self.tbl_state" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_country">
-              <PropertyRef Name="Countryid" />
-            </Principal>
-            <Dependent Role="tbl_state">
-              <PropertyRef Name="Countryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1091,6 +1055,11 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
         <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetCoursefordevision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetCourseforsubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetCourseforsubjectbydeptid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="deptid" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_getCourseYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getDivision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1582,18 +1551,6 @@ FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
 [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_tbl_city_tbl_country" Association="Self.FK_tbl_city_tbl_country">
-            <End Role="tbl_country" EntitySet="tbl_country" />
-            <End Role="tbl_city" EntitySet="tbl_city" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_city_tbl_state" Association="Self.FK_tbl_city_tbl_state">
-            <End Role="tbl_state" EntitySet="tbl_state" />
-            <End Role="tbl_city" EntitySet="tbl_city" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_state_tbl_country" Association="Self.FK_tbl_state_tbl_country">
-            <End Role="tbl_country" EntitySet="tbl_country" />
-            <End Role="tbl_state" EntitySet="tbl_state" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -1825,9 +1782,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="Empid" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.tbl_city" />
-          <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.tbl_country" />
-          <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.tbl_state" />
           <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" />
           <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
           <FunctionImport Name="sp_EmployeeAttendance">
@@ -2060,18 +2014,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="tbl_AssignDivision" EntityType="SchoolMgmtSysModel.tbl_AssignDivision" />
-          <AssociationSet Name="FK_tbl_city_tbl_country" Association="SchoolMgmtSysModel.FK_tbl_city_tbl_country">
-            <End Role="tbl_country" EntitySet="tbl_country" />
-            <End Role="tbl_city" EntitySet="tbl_city" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_city_tbl_state" Association="SchoolMgmtSysModel.FK_tbl_city_tbl_state">
-            <End Role="tbl_state" EntitySet="tbl_state" />
-            <End Role="tbl_city" EntitySet="tbl_city" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_state_tbl_country" Association="SchoolMgmtSysModel.FK_tbl_state_tbl_country">
-            <End Role="tbl_country" EntitySet="tbl_country" />
-            <End Role="tbl_state" EntitySet="tbl_state" />
-          </AssociationSet>
           <EntitySet Name="tbl_online_student" EntityType="SchoolMgmtSysModel.tbl_online_student" />
           <FunctionImport Name="sp_student_online_admission1">
             <Parameter Name="Studid" Mode="In" Type="Int32" />
@@ -2391,6 +2333,14 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="empcategory" Mode="In" Type="Int32" />
             <Parameter Name="empcast" Mode="In" Type="Int32" />
             <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetCoursefordevision" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCoursefordevision_Result)" />
+          <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.tbl_country" />
+          <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.tbl_state" />
+          <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.tbl_city" />
+          <FunctionImport Name="sp_GetCourseforsubject" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubject_Result)" />
+          <FunctionImport Name="sp_GetCourseforsubjectbydeptid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result)">
+            <Parameter Name="deptid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -2950,39 +2900,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Empid" Nullable="false" />
         </EntityType>
-        <EntityType Name="tbl_city">
-          <Key>
-            <PropertyRef Name="Cityid" />
-          </Key>
-          <Property Type="Int32" Name="Cityid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CityName" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Countryid" Nullable="false" />
-          <Property Type="Int32" Name="Stateid" Nullable="false" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <NavigationProperty Name="tbl_country" Relationship="SchoolMgmtSysModel.FK_tbl_city_tbl_country" FromRole="tbl_city" ToRole="tbl_country" />
-          <NavigationProperty Name="tbl_state" Relationship="SchoolMgmtSysModel.FK_tbl_city_tbl_state" FromRole="tbl_city" ToRole="tbl_state" />
-        </EntityType>
-        <EntityType Name="tbl_country">
-          <Key>
-            <PropertyRef Name="Countryid" />
-          </Key>
-          <Property Type="Int32" Name="Countryid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CountryName" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="status" Nullable="false" />
-          <NavigationProperty Name="tbl_city" Relationship="SchoolMgmtSysModel.FK_tbl_city_tbl_country" FromRole="tbl_country" ToRole="tbl_city" />
-          <NavigationProperty Name="tbl_state" Relationship="SchoolMgmtSysModel.FK_tbl_state_tbl_country" FromRole="tbl_country" ToRole="tbl_state" />
-        </EntityType>
-        <EntityType Name="tbl_state">
-          <Key>
-            <PropertyRef Name="Stateid" />
-          </Key>
-          <Property Type="Int32" Name="Stateid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="StateName" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Countryid" Nullable="false" />
-          <Property Type="Boolean" Name="status" Nullable="false" />
-          <NavigationProperty Name="tbl_city" Relationship="SchoolMgmtSysModel.FK_tbl_city_tbl_state" FromRole="tbl_state" ToRole="tbl_city" />
-          <NavigationProperty Name="tbl_country" Relationship="SchoolMgmtSysModel.FK_tbl_state_tbl_country" FromRole="tbl_state" ToRole="tbl_country" />
-        </EntityType>
         <EntityType Name="tbl_EmployeeLeave">
           <Key>
             <PropertyRef Name="Leaveid" />
@@ -3300,42 +3217,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="Int32" Name="DivisionId" />
           <Property Type="Boolean" Name="status" />
         </EntityType>
-        <Association Name="FK_tbl_city_tbl_country">
-          <End Type="SchoolMgmtSysModel.tbl_country" Role="tbl_country" Multiplicity="1" />
-          <End Type="SchoolMgmtSysModel.tbl_city" Role="tbl_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_country">
-              <PropertyRef Name="Countryid" />
-            </Principal>
-            <Dependent Role="tbl_city">
-              <PropertyRef Name="Countryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_city_tbl_state">
-          <End Type="SchoolMgmtSysModel.tbl_state" Role="tbl_state" Multiplicity="1" />
-          <End Type="SchoolMgmtSysModel.tbl_city" Role="tbl_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_state">
-              <PropertyRef Name="Stateid" />
-            </Principal>
-            <Dependent Role="tbl_city">
-              <PropertyRef Name="Stateid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_state_tbl_country">
-          <End Type="SchoolMgmtSysModel.tbl_country" Role="tbl_country" Multiplicity="1" />
-          <End Type="SchoolMgmtSysModel.tbl_state" Role="tbl_state" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_country">
-              <PropertyRef Name="Countryid" />
-            </Principal>
-            <Dependent Role="tbl_state">
-              <PropertyRef Name="Countryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tbl_online_student">
           <Key>
             <PropertyRef Name="Studid" />
@@ -3594,6 +3475,45 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseyearid" Type="Int32" />
         </EntityType>
+        <ComplexType Name="sp_GetCoursefordevision_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="306" />
+        </ComplexType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="Countryid" />
+          </Key>
+          <Property Name="Countryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="Stateid" />
+          </Key>
+          <Property Name="Stateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Countryid" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_city">
+          <Key>
+            <PropertyRef Name="Cityid" />
+          </Key>
+          <Property Name="Cityid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Countryid" Type="Int32" Nullable="false" />
+          <Property Name="Stateid" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="sp_GetCourseforsubject_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        </ComplexType>
+        <ComplexType Name="sp_GetCourseforsubjectbydeptid_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4303,36 +4223,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
-          <EntitySetMapping Name="tbl_city">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
-              <MappingFragment StoreEntitySet="tbl_city">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_country">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
-              <MappingFragment StoreEntitySet="tbl_country">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_state">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
-              <MappingFragment StoreEntitySet="tbl_state">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_EmployeeLeave">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_EmployeeLeave">
               <MappingFragment StoreEntitySet="tbl_EmployeeLeave">
@@ -5046,6 +4936,60 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
           <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+          <FunctionImportMapping FunctionImportName="sp_GetCoursefordevision" FunctionName="SchoolMgmtSysModel.Store.sp_GetCoursefordevision">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCoursefordevision_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_country">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
+              <MappingFragment StoreEntitySet="tbl_country">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_state">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
+              <MappingFragment StoreEntitySet="tbl_state">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_city">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
+              <MappingFragment StoreEntitySet="tbl_city">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubject" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubject">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubject_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubjectbydeptid" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubjectbydeptid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5094,9 +5038,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_category" Width="1.5" PointX="10.625" PointY="9.375" Height="1.5956835937500102" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Inventory" Width="1.5" PointX="5.125" PointY="13.375" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_timetable" Width="1.5" PointX="5.5" PointY="15.5" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_city" Width="1.5" PointX="15.125" PointY="2.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_country" Width="1.5" PointX="9" PointY="3.125" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_state" Width="1.5" PointX="12.625" PointY="5.625" Height="2.1725878906250102" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" Width="1.5" PointX="5.375" PointY="10.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_feeslabel" Width="1.5" PointX="7.125" PointY="12.75" Height="1.5956835937500102" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_feeslabelchild" Width="1.5" PointX="0.75" PointY="17.75" Height="1.4033821614583246" />
@@ -5115,14 +5056,14 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_division" Width="1.5" PointX="7.5" PointY="21.875" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" Width="1.5" PointX="5.375" PointY="20.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_AssignDivision" Width="1.5" PointX="9.875" PointY="14.125" />
-        <AssociationConnector Association="SchoolMgmtSysModel.FK_tbl_city_tbl_country" />
-        <AssociationConnector Association="SchoolMgmtSysModel.FK_tbl_city_tbl_state" />
-        <AssociationConnector Association="SchoolMgmtSysModel.FK_tbl_state_tbl_country" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_online_student" Width="1.5" PointX="17.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tblDepartment" Width="1.5" PointX="9.375" PointY="17.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" Width="1.5" PointX="17.375" PointY="16.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_YearMaster" Width="1.5" PointX="19.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_country" Width="1.5" PointX="14.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_state" Width="1.5" PointX="21.375" PointY="1" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_city" Width="1.5" PointX="16.375" PointY="19.75" />
       </Diagram>
     </Diagrams>
   </Designer>

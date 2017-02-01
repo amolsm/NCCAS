@@ -22,8 +22,9 @@ namespace Entity
 
           public List<tbl_class> classlistdetails { get; set; }
           public List<sp_getDivision_Result> _DivisionList { get; set; }
-      
+        public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
 
-        
+
+
     }
 }

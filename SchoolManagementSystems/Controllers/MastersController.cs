@@ -459,7 +459,8 @@ namespace SchoolManagementSystems.Controllers
                                                              || c.SubjectNm.ToUpper().Contains(Search_Data.ToUpper())
                                                              || c.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             }
-
+            _svm._courselist = db.sp_GetCourseforsubject().ToList();
+            _svm.departmentlistdetails=db.tblDepartment.Where(c => c.Status == true).ToList();
             return View(_svm);
         }
         public JsonResult FillSubjectDetails(int Subjectid)
@@ -486,6 +487,18 @@ namespace SchoolManagementSystems.Controllers
             _svm._Subjectlist = db.sp_getSubject().ToList();
             return PartialView("_SubjectList", _svm);
         }
+
+        //public JsonResult GetCourse(string id)
+        //{
+        //    int depid = 0;
+        //    if (id != null && id != "")
+        //    {
+        //        depid = Convert.ToInt32(id);
+        //    }
+
+        //    var course = db.tbl_CourseYearMaster.Where(m => m.id == depid).ToList();
+        //    return Json(new SelectList(course, "id", "Course"));
+        //}
         #endregion
 
         #region User master
@@ -1106,6 +1119,7 @@ namespace SchoolManagementSystems.Controllers
                                                         || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             }
 
+            _svm._CourseList = db.sp_GetCoursefordevision().ToList();
             return View(_svm);
         }
         public JsonResult FillDivisionDetails(int DivisionId)

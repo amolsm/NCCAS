@@ -798,42 +798,6 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
-  <Association Name="FK_tbl_city_tbl_country">
-    <End Role="tbl_country" Type="Self.tbl_country" Multiplicity="1" />
-    <End Role="tbl_city" Type="Self.tbl_city" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_country">
-        <PropertyRef Name="Countryid" />
-      </Principal>
-      <Dependent Role="tbl_city">
-        <PropertyRef Name="Countryid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_city_tbl_state">
-    <End Role="tbl_state" Type="Self.tbl_state" Multiplicity="1" />
-    <End Role="tbl_city" Type="Self.tbl_city" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_state">
-        <PropertyRef Name="Stateid" />
-      </Principal>
-      <Dependent Role="tbl_city">
-        <PropertyRef Name="Stateid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_state_tbl_country">
-    <End Role="tbl_country" Type="Self.tbl_country" Multiplicity="1" />
-    <End Role="tbl_state" Type="Self.tbl_state" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_country">
-        <PropertyRef Name="Countryid" />
-      </Principal>
-      <Dependent Role="tbl_state">
-        <PropertyRef Name="Countryid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1086,6 +1050,11 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCoursefordevision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCourseforsubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCourseforsubjectbydeptid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getCourseYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getDivision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1577,17 +1546,5 @@ FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
 [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_tbl_city_tbl_country" Association="Self.FK_tbl_city_tbl_country">
-      <End Role="tbl_country" EntitySet="tbl_country" />
-      <End Role="tbl_city" EntitySet="tbl_city" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_city_tbl_state" Association="Self.FK_tbl_city_tbl_state">
-      <End Role="tbl_state" EntitySet="tbl_state" />
-      <End Role="tbl_city" EntitySet="tbl_city" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_state_tbl_country" Association="Self.FK_tbl_state_tbl_country">
-      <End Role="tbl_country" EntitySet="tbl_country" />
-      <End Role="tbl_state" EntitySet="tbl_state" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

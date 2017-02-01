@@ -31,7 +31,11 @@ namespace SchoolManagementSystems.Controllers
             }
             else
             {
-                uvm.Userdatacollection = db.tbl_user.Where(m => m.UserName == Username && m.Password == Password && m.Status == 1).ToList();
+                try
+                {
+                    uvm.Userdatacollection = db.tbl_user.Where(m => m.UserName == Username && m.Password == Password && m.Status == 1).ToList();
+                }
+                catch { }
                 if (uvm.Userdatacollection.Count() > 0 && uvm.Userdatacollection[0].Status == 1)
                 {
                     Session["Userid"] = uvm.Userdatacollection[0].Userid.ToString();

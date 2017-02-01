@@ -393,7 +393,7 @@
                     $("#Pincode").val(data.pincode);
                     $("#ParishName").val(data.ParishName);
                     $("#DioceseName").val(data.DioceseName);
-
+                    $("#courseyear").val(data.courseyearid);
 
                     $("#MotherTongue").val(data.MotherTongue);
                     $("#PreviousSchool").val(data.PreviousSchool);
@@ -1222,69 +1222,69 @@
             //                });
             //            }
 
-            if ($("#EmergencyPhysicianNm").val() == '') {
-                cnt++;
-                $("#EmergencyPhysicianNm").css({
-                    "border": "1px solid red"
-                });
-                alert("physician name Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyPhysicianNm").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#EmergencyPhysicianNm").val() == '') {
+            //    cnt++;
+            //    $("#EmergencyPhysicianNm").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("physician name Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#EmergencyPhysicianNm").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#EmergencyPhysicianContact").val() == '') {
-                cnt++;
-                $("#EmergencyPhysicianContact").css({
-                    "border": "1px solid red"
-                });
-                alert("physician contact Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyPhysicianContact").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#EmergencyPhysicianContact").val() == '') {
+            //    cnt++;
+            //    $("#EmergencyPhysicianContact").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("physician contact Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#EmergencyPhysicianContact").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#ECode").val() == '') {
-                cnt++;
-                $("#ECode").css({
-                    "border": "1px solid red"
-                });
-                alert("physician contact Code Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#ECode").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#ECode").val() == '') {
+            //    cnt++;
+            //    $("#ECode").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("physician contact Code Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#ECode").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#EmergencyAddress").val() == '') {
-                cnt++;
-                $("#EmergencyAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("emergency address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#EmergencyAddress").val() == '') {
+            //    cnt++;
+            //    $("#EmergencyAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("emergency address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#EmergencyAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#FatherOccpationid").val() == '') {
                 cnt++;
@@ -1499,133 +1499,133 @@
             //    });
             //}
 
-            if ($("#FatherBldGrpid").val() == '') {
-                cnt++;
-                $("#FatherBldGrpid").css({
-                    "border": "1px solid red"
-                });
-                alert("father blood group Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FatherBldGrpid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#FatherBldGrpid").val() == '') {
+            //    cnt++;
+            //    $("#FatherBldGrpid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("father blood group Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#FatherBldGrpid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherOccpationid").val() == '') {
-                cnt++;
-                $("#MotherOccpationid").css({
-                    "border": "1px solid red"
-                });
-                alert("mother occuaption Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherOccpationid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherOccpationid").val() == '') {
+            //    cnt++;
+            //    $("#MotherOccpationid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother occuaption Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherOccpationid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherQualificationid").val() == '') {
-                cnt++;
-                $("#MotherQualificationid").css({
-                    "border": "1px solid red"
-                });
-                alert("mother qualification Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherQualificationid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherQualificationid").val() == '') {
+            //    cnt++;
+            //    $("#MotherQualificationid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother qualification Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherQualificationid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherEmail").val() == '') {
-                cnt++;
-                $("#MotherEmail").css({
-                    "border": "1px solid red"
-                });
-                alert("mother email Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherEmail").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherEmail").val() == '') {
+            //    cnt++;
+            //    $("#MotherEmail").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother email Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherEmail").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherOfficeAddress").val() == '') {
-                cnt++;
-                $("#MotherOfficeAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("mother office address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherOfficeAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherOfficeAddress").val() == '') {
+            //    cnt++;
+            //    $("#MotherOfficeAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother office address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherOfficeAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherContact").val() == '') {
-                cnt++;
-                $("#MotherContact").css({
-                    "border": "1px solid red"
-                });
-                alert("mother contact Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherContact").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherContact").val() == '') {
+            //    cnt++;
+            //    $("#MotherContact").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother contact Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherContact").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MCode").val() == '') {
-                cnt++;
-                $("#MCode").css({
-                    "border": "1px solid red"
-                });
-                alert("mother contact Code Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MCode").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MCode").val() == '') {
+            //    cnt++;
+            //    $("#MCode").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother contact Code Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MCode").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#MotherBldGrpid").val() == '') {
-                cnt++;
-                $("#MotherBldGrpid").css({
-                    "border": "1px solid red"
-                });
-                alert("mother blood group Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#MotherBldGrpid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MotherBldGrpid").val() == '') {
+            //    cnt++;
+            //    $("#MotherBldGrpid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("mother blood group Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#MotherBldGrpid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#Countryid").val() == '') {
                 cnt++;
@@ -2277,15 +2277,22 @@
                                                                 @Html.ValidationMessageFor(model => model.Classid)
                                                             </div>
                                                         </div>
-
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.courseyear, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(model => model.courseyear, new SelectList(Model.yearlist, "yearid", "YearName", "Select Course Year"), "Select Course Year", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.courseyear)
+                                                            </div>
+                                                        </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.academicyear, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @*@Html.TextBoxFor(model => model.academicyear, new { placeholder = "Enter Academic Year", maxlength = "9", @class = "form-control mar" })*@
-                                                                @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.academicyear), "Select Year", new { @class = "input" })
+                                                                @Html.DropDownListFor(model => model.academicyear, new SelectList(Model.academicyear), "Select Year", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.academicyear)
                                                             </div>
                                                         </div>
+
+                                                        
 
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.ApplicationID, new { @class = "control-label" })
