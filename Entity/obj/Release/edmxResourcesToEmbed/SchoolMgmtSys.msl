@@ -1088,6 +1088,7 @@
     <EntitySetMapping Name="tbl_StudentAttendance">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentAttendance">
         <MappingFragment StoreEntitySet="tbl_StudentAttendance">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
           <ScalarProperty Name="Reason" ColumnName="Reason" />
           <ScalarProperty Name="Present" ColumnName="Present" />
@@ -1348,6 +1349,21 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="tbl_student">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
@@ -1488,20 +1504,26 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-    <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
+    <EntitySetMapping Name="tbl_teachersubject">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
+        <MappingFragment StoreEntitySet="tbl_teachersubject">
+          <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
-          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
-          <ScalarProperty Name="Typeid" ColumnName="Typeid" />
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
   </EntityContainerMapping>
 </Mapping>

@@ -48,3 +48,13 @@ D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Optimization.xml
 D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.dll
 D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.pdb
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Mvc.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Mvc.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Razor.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Deployment.xml

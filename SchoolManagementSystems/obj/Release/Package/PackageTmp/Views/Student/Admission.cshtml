@@ -400,7 +400,7 @@
                     $("#SchoolAddress").val(data.SchoolAddress);
                     $("#PrScTotalMarks").val(data.SecondaryTotalMarks);
                     $("#PrScObtainMark").val(data.SecondaryObtainMarks);
-                    $("#PrScPercentage").val(data.SecondaryPercetage);
+                    $("#PrScPercentage").val(parseFloat(Math.round(data.SecondaryPercetage * 100) / 100).toFixed(2));
                     $("#PrScTCNumber").val(data.sc_tcno);
                     $("#PrScRegisterNumber").val(data.sc_regno);
                     $("#PrUgCollegeName").val(data.PrUgCollegeName);
@@ -409,7 +409,7 @@
                     $("#PrUgGradeLeaving").val(data.PrUgGradeLeaving);
                     $("#PrUgTotalMark").val(data.PrUgTotalMark);
                     $("#PrUgObtainMark").val(data.PrUgObtainMark);
-                    $("#PrUgPercentage").val(data.PrUgPercentage);
+                    $("#PrUgPercentage").val(parseFloat(Math.round(data.PrUgPercentage * 100) / 100).toFixed(2));
                     $("#PrUgYearLeaving").val(data.PrUgYearLeaving);
                     $("#PrUgRegisterNumber").val(data.prug_regno);
                     $("#PrUgReasonofLeaving").val(data.PrUgReasonofLeaving);
@@ -423,7 +423,7 @@
                     $("#PrPgGradeLeaving").val(data.PrPgGradeLeaving);
                     $("#PrPgTotalMark").val(data.PrPgTotalMark);
                     $("#PrPgObtainMark").val(data.PrPgObtainMark);
-                    $("#PrPgPercentage").val(data.PrPgPercentage);
+                    $("#PrPgPercentage").val(parseFloat(Math.round(data.PrPgPercentage * 100) / 100).toFixed(2));
                     $("#PrPgYearLeaving").val(data.PrPgYearLeaving);
                     $("#PrPgRegisterNumber").val(data.prpg_regno);
                     $("#PrPgReasonofLeaving").val(data.PrPgReasonofLeaving);
@@ -967,21 +967,21 @@
                 });
             }
 
-            if ($("#Disease").val() == '') {
-                cnt++;
-                $("#Disease").css({
-                    "border": "1px solid red"
-                });
-                alert("disease Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Disease").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Disease").val() == '') {
+            //    cnt++;
+            //    $("#Disease").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("disease Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Disease").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#Religionid").val() == '') {
                 cnt++;
@@ -2214,8 +2214,8 @@
                                                 <div id="tabs-1">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Student Details</legend>
-                                                        <div id="studid">
-                                                            <div class="control-group span5">
+                                                      
+                                                            <div class="control-group span5"  id="studid">
                                                                 @Html.LabelFor(model => model.Studid, new { @class = "control-label" })
 
                                                                 <div class="controls">
@@ -2223,7 +2223,7 @@
                                                                     @Html.ValidationMessageFor(model => model.Studid)
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                       
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.Studnm, new { @class = "control-label" })
                                                             <div class="controls">

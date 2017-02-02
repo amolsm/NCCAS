@@ -769,6 +769,17 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="Menuid" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_teachersubject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="int" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="departmentid" Type="int" />
+          <Property Name="yearid" Type="int" />
+          <Property Name="subjectid" Type="int" />
+        </EntityType>
         <EntityType Name="tbl_timetable">
           <Key>
             <PropertyRef Name="Tid" />
@@ -1152,6 +1163,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
         <Function Name="sp_gettimetable_pivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_gettransport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dept_id" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_Inventory_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Productid" Type="int" Mode="In" />
           <Parameter Name="Quantity" Type="int" Mode="In" />
@@ -1483,6 +1498,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="academicyear" Type="varchar" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="teacherid" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+          <Parameter Name="departmenid" Type="int" Mode="In" />
+          <Parameter Name="yearid" Type="int" Mode="In" />
+          <Parameter Name="subjectid" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_timetable_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Tid" Type="int" Mode="In" />
           <Parameter Name="Classid" Type="int" Mode="In" />
@@ -1562,6 +1585,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <EntitySet Name="tbl_SubCategory" EntityType="Self.tbl_SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_submenu" EntityType="Self.tbl_submenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_teachersubject" EntityType="Self.tbl_teachersubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_timetable" EntityType="Self.tbl_timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_transport" EntityType="Self.tbl_transport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
@@ -2404,6 +2428,19 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="prpg_regno" Mode="In" Type="String" />
             <Parameter Name="doc_typename" Mode="In" Type="String" />
             <Parameter Name="courseyearid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
+          <FunctionImport Name="sp_getyear" ReturnType="Collection(SchoolMgmtSysModel.sp_getyear_Result)">
+            <Parameter Name="dept_id" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_teachersubject_DML">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="teacherid" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="departmenid" Mode="In" Type="Int32" />
+            <Parameter Name="yearid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -3598,6 +3635,21 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseyearid" Type="Int32" />
         </EntityType>
+        <EntityType Name="tbl_teachersubject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="departmentid" Type="Int32" />
+          <Property Name="yearid" Type="Int32" />
+          <Property Name="subjectid" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="sp_getyear_Result">
+          <Property Type="Int32" Name="yearid" Nullable="false" />
+          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5107,6 +5159,27 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+          <EntitySetMapping Name="tbl_teachersubject">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
+              <MappingFragment StoreEntitySet="tbl_teachersubject">
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5183,6 +5256,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chapter" Width="1.5" PointX="21.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="6.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_teachersubject" Width="1.5" PointX="21.375" PointY="9.75" />
       </Diagram>
     </Diagrams>
   </Designer>

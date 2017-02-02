@@ -928,6 +928,22 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_student> _tbl_student;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_teachersubject> tbl_teachersubject
+        {
+            get
+            {
+                if ((_tbl_teachersubject == null))
+                {
+                    _tbl_teachersubject = base.CreateObjectSet<tbl_teachersubject>("tbl_teachersubject");
+                }
+                return _tbl_teachersubject;
+            }
+        }
+        private ObjectSet<tbl_teachersubject> _tbl_teachersubject;
 
         #endregion
 
@@ -1363,6 +1379,14 @@ namespace Entity
         public void AddTotbl_student(tbl_student tbl_student)
         {
             base.AddObject("tbl_student", tbl_student);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_teachersubject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_teachersubject(tbl_teachersubject tbl_teachersubject)
+        {
+            base.AddObject("tbl_teachersubject", tbl_teachersubject);
         }
 
         #endregion
@@ -8707,6 +8731,110 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter, courseyearidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="dept_id">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getyear_Result> sp_getyear(Nullable<global::System.Int32> dept_id, Nullable<global::System.Int32> courseid)
+        {
+            ObjectParameter dept_idParameter;
+            if (dept_id.HasValue)
+            {
+                dept_idParameter = new ObjectParameter("dept_id", dept_id);
+            }
+            else
+            {
+                dept_idParameter = new ObjectParameter("dept_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getyear_Result>("sp_getyear", dept_idParameter, courseidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="id">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="departmenid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        public int sp_teachersubject_DML(Nullable<global::System.Int32> id, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> departmenid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> subjectid)
+        {
+            ObjectParameter idParameter;
+            if (id.HasValue)
+            {
+                idParameter = new ObjectParameter("id", id);
+            }
+            else
+            {
+                idParameter = new ObjectParameter("id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter departmenidParameter;
+            if (departmenid.HasValue)
+            {
+                departmenidParameter = new ObjectParameter("departmenid", departmenid);
+            }
+            else
+            {
+                departmenidParameter = new ObjectParameter("departmenid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_teachersubject_DML", idParameter, teacheridParameter, courseidParameter, departmenidParameter, yearidParameter, subjectidParameter);
         }
 
         #endregion
@@ -22789,6 +22917,183 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_teachersubject")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_teachersubject : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_teachersubject object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static tbl_teachersubject Createtbl_teachersubject(global::System.Int32 id)
+        {
+            tbl_teachersubject tbl_teachersubject = new tbl_teachersubject();
+            tbl_teachersubject.id = id;
+            return tbl_teachersubject;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> teacherid
+        {
+            get
+            {
+                return _teacherid;
+            }
+            set
+            {
+                OnteacheridChanging(value);
+                ReportPropertyChanging("teacherid");
+                _teacherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("teacherid");
+                OnteacheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _teacherid;
+        partial void OnteacheridChanging(Nullable<global::System.Int32> value);
+        partial void OnteacheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> courseid
+        {
+            get
+            {
+                return _courseid;
+            }
+            set
+            {
+                OncourseidChanging(value);
+                ReportPropertyChanging("courseid");
+                _courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("courseid");
+                OncourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _courseid;
+        partial void OncourseidChanging(Nullable<global::System.Int32> value);
+        partial void OncourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> departmentid
+        {
+            get
+            {
+                return _departmentid;
+            }
+            set
+            {
+                OndepartmentidChanging(value);
+                ReportPropertyChanging("departmentid");
+                _departmentid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("departmentid");
+                OndepartmentidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _departmentid;
+        partial void OndepartmentidChanging(Nullable<global::System.Int32> value);
+        partial void OndepartmentidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _yearid;
+        partial void OnyearidChanging(Nullable<global::System.Int32> value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> subjectid
+        {
+            get
+            {
+                return _subjectid;
+            }
+            set
+            {
+                OnsubjectidChanging(value);
+                ReportPropertyChanging("subjectid");
+                _subjectid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("subjectid");
+                OnsubjectidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _subjectid;
+        partial void OnsubjectidChanging(Nullable<global::System.Int32> value);
+        partial void OnsubjectidChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_timetable")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -31725,6 +32030,83 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getyear_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getyear_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getyear_Result object.
+        /// </summary>
+        /// <param name="yearid">Initial value of the yearid property.</param>
+        public static sp_getyear_Result Createsp_getyear_Result(global::System.Int32 yearid)
+        {
+            sp_getyear_Result sp_getyear_Result = new sp_getyear_Result();
+            sp_getyear_Result.yearid = yearid;
+            return sp_getyear_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private global::System.Int32 _yearid;
+        partial void OnyearidChanging(global::System.Int32 value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String YearName
+        {
+            get
+            {
+                return _YearName;
+            }
+            set
+            {
+                OnYearNameChanging(value);
+                ReportPropertyChanging("YearName");
+                _YearName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("YearName");
+                OnYearNameChanged();
+            }
+        }
+        private global::System.String _YearName;
+        partial void OnYearNameChanging(global::System.String value);
+        partial void OnYearNameChanged();
 
         #endregion
 
