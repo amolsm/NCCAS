@@ -69,6 +69,8 @@
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
     <Compile Include="smsviewmodel.cs" />
+    <Compile Include="studentdivisionmodel.cs" />
+    <Compile Include="teachersubjectmodel.cs" />
     <Compile Include="UserPermissionviewmodel.cs" />
     <Compile Include="routeviewmodel.cs" />
     <Compile Include="feeslabelviewmodel.cs" />

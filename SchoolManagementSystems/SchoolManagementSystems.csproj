@@ -677,7 +677,16 @@
     <Content Include="Views\Masters\Chapter.cshtml" />
     <Content Include="Views\Masters\_ContentList.cshtml" />
     <Content Include="Views\Masters\Contents.cshtml" />
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+    <Content Include="Views\Attendance\_Studentdiv.cshtml" />
+    <Content Include="Views\Attendance\Division.cshtml" />
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
