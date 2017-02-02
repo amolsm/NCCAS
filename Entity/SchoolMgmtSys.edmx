@@ -83,6 +83,16 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
           <Property Name="catname" Type="varchar" MaxLength="50" />
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_Chapter">
+          <Key>
+            <PropertyRef Name="Chapter_id" />
+          </Key>
+          <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChapterName" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="text" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Subjectid" Type="int" />
+        </EntityType>
         <EntityType Name="tbl_city">
           <Key>
             <PropertyRef Name="Cityid" />
@@ -102,6 +112,16 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
           <Property Name="Dept_id" Type="int" />
           <Property Name="status" Type="bit" />
           <Property Name="academicyear" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_Content">
+          <Key>
+            <PropertyRef Name="Content_id" />
+          </Key>
+          <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
+          <Property Name="Content_Description" Type="text" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Content_Name" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbl_country">
           <Key>
@@ -556,7 +576,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="Studnm" Type="varchar" MaxLength="50" />
           <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
           <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
-          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="DOB" Type="datetime2" Precision="7" />
           <Property Name="Weight" Type="int" Nullable="false" />
           <Property Name="Height" Type="int" Nullable="false" />
           <Property Name="StudBldGrp" Type="int" Nullable="false" />
@@ -604,7 +624,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
           <Property Name="PermanentAddress" Type="varchar(max)" />
           <Property Name="academicyear" Type="varchar" MaxLength="10" />
-          <Property Name="SysDt" Type="datetime" Nullable="false" />
+          <Property Name="SysDt" Type="datetime2" Precision="7" />
           <Property Name="busid" Type="int" />
           <Property Name="cats" Type="varchar(max)" />
           <Property Name="prds" Type="varchar(max)" />
@@ -656,19 +676,19 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Property Name="PGMarksheet" Type="image" />
           <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
           <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
-          <Property Name="Sibling2DOB" Type="datetime" />
+          <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
           <Property Name="Sibling2Ql" Type="varchar(max)" />
           <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
           <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
-          <Property Name="Sibling1DOB" Type="datetime" />
+          <Property Name="Sibling1DOB" Type="datetime2" Precision="7" />
           <Property Name="Sibling1Ql" Type="varchar(max)" />
           <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
           <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
-          <Property Name="Sibling3DOB" Type="datetime" />
+          <Property Name="Sibling3DOB" Type="datetime2" Precision="7" />
           <Property Name="Sibling3Ql" Type="varchar(max)" />
           <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
           <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
-          <Property Name="Sibling4DOB" Type="datetime" />
+          <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
           <Property Name="Sibling4Ql" Type="varchar(max)" />
           <Property Name="ParishName" Type="varchar" MaxLength="100" />
           <Property Name="DioceseName" Type="varchar" MaxLength="100" />
@@ -847,6 +867,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="oldPassword" Type="varchar" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_chapter_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chapterid" Type="int" Mode="In" />
+          <Parameter Name="chaptername" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="text" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="subjectid" Type="int" Mode="In" />
+          <Parameter Name="act" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -865,6 +893,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="deptid" Type="int" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="academicyear" Type="varchar" Mode="In" />
+          <Parameter Name="act" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Content_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="contentid" Type="int" Mode="In" />
+          <Parameter Name="contentname" Type="varchar" Mode="In" />
+          <Parameter Name="chapterid" Type="int" Mode="In" />
+          <Parameter Name="contentdescription" Type="text" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_Country_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -906,10 +942,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
           <Parameter Name="MobileNo" Type="varchar" Mode="In" />
           <Parameter Name="Address" Type="varchar(max)" Mode="In" />
-          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Gender" Type="int" Mode="In" />
           <Parameter Name="Quallification" Type="int" Mode="In" />
-          <Parameter Name="DateOfJoin" Type="datetime" Mode="In" />
+          <Parameter Name="DateOfJoin" Type="datetime2" Mode="In" />
           <Parameter Name="Typeid" Type="int" Mode="In" />
           <Parameter Name="Code" Type="int" Mode="In" />
           <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
@@ -970,14 +1006,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="accountname" Type="varchar" Mode="In" />
           <Parameter Name="collagename" Type="varchar" Mode="In" />
           <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
-          <Parameter Name="joiningdate" Type="datetime" Mode="In" />
-          <Parameter Name="lastdate" Type="datetime" Mode="In" />
+          <Parameter Name="joiningdate" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate" Type="datetime2" Mode="In" />
           <Parameter Name="totalexperience" Type="varchar" Mode="In" />
           <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
           <Parameter Name="companyname" Type="varchar" Mode="In" />
           <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
-          <Parameter Name="cjoiningdate" Type="datetime" Mode="In" />
-          <Parameter Name="clastdate" Type="datetime" Mode="In" />
+          <Parameter Name="cjoiningdate" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate" Type="datetime2" Mode="In" />
           <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
           <Parameter Name="empemail" Type="varchar" Mode="In" />
           <Parameter Name="empreligion" Type="int" Mode="In" />
@@ -1052,8 +1088,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
         <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getcontent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetCoursefordevision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetCourseforsubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1211,7 +1249,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="Studnm" Type="varchar" Mode="In" />
           <Parameter Name="Studfathernm" Type="varchar" Mode="In" />
           <Parameter Name="Studmothernm" Type="varchar" Mode="In" />
-          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Weight" Type="int" Mode="In" />
           <Parameter Name="Height" Type="int" Mode="In" />
           <Parameter Name="StudBldGrp" Type="int" Mode="In" />
@@ -1311,19 +1349,19 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <Parameter Name="PGMarksheet" Type="image" Mode="In" />
           <Parameter Name="Sibling1Name" Type="varchar" Mode="In" />
           <Parameter Name="Sibling1Rel" Type="varchar" Mode="In" />
-          <Parameter Name="Sibling1DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Sibling1DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Sibling1Ql" Type="varchar" Mode="In" />
           <Parameter Name="Sibling2Name" Type="varchar" Mode="In" />
           <Parameter Name="Sibling2Rel" Type="varchar" Mode="In" />
-          <Parameter Name="Sibling2DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Sibling2DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Sibling2Ql" Type="varchar" Mode="In" />
           <Parameter Name="Sibling3Name" Type="varchar" Mode="In" />
           <Parameter Name="Sibling3Rel" Type="varchar" Mode="In" />
-          <Parameter Name="Sibling3DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Sibling3DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Sibling3Ql" Type="varchar" Mode="In" />
           <Parameter Name="Sibling4Name" Type="varchar" Mode="In" />
           <Parameter Name="Sibling4Rel" Type="varchar" Mode="In" />
-          <Parameter Name="Sibling4DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Sibling4DOB" Type="datetime2" Mode="In" />
           <Parameter Name="Sibling4Ql" Type="varchar" Mode="In" />
           <Parameter Name="ParishName" Type="varchar" Mode="In" />
           <Parameter Name="DioceseName" Type="varchar" Mode="In" />
@@ -1485,8 +1523,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
           <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />
@@ -1769,7 +1809,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImport Name="sp_getproductsbycat" ReturnType="Collection(SchoolMgmtSysModel.sp_getproductsbycat_Result)">
           <Parameter Name="cats" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_getemp" ReturnType="Collection(SchoolMgmtSysModel.sp_getemp_Result)" />
           <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
           <FunctionImport Name="sp_timetable_DML">
             <Parameter Name="Tid" Mode="In" Type="Int32" />
@@ -2107,6 +2146,105 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="status" Mode="In" Type="Boolean" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_employee_DML">
+            <Parameter Name="Empid" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Cityid" Mode="In" Type="Int32" />
+            <Parameter Name="Stateid" Mode="In" Type="Int32" />
+            <Parameter Name="Zipcode" Mode="In" Type="String" />
+            <Parameter Name="Emailid" Mode="In" Type="String" />
+            <Parameter Name="PhoneNo" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="Int32" />
+            <Parameter Name="Quallification" Mode="In" Type="Int32" />
+            <Parameter Name="DateOfJoin" Mode="In" Type="DateTime" />
+            <Parameter Name="Typeid" Mode="In" Type="Int32" />
+            <Parameter Name="Code" Mode="In" Type="Int32" />
+            <Parameter Name="OQualification" Mode="In" Type="String" />
+            <Parameter Name="act" Mode="In" Type="String" />
+            <Parameter Name="department" Mode="In" Type="Int32" />
+            <Parameter Name="bloodgroup" Mode="In" Type="Int32" />
+            <Parameter Name="qualication1" Mode="In" Type="Int32" />
+            <Parameter Name="university1" Mode="In" Type="String" />
+            <Parameter Name="precentage1" Mode="In" Type="String" />
+            <Parameter Name="yearpasing1" Mode="In" Type="String" />
+            <Parameter Name="qualication2" Mode="In" Type="Int32" />
+            <Parameter Name="university2" Mode="In" Type="String" />
+            <Parameter Name="precentage2" Mode="In" Type="String" />
+            <Parameter Name="yearpasing2" Mode="In" Type="String" />
+            <Parameter Name="qualication3" Mode="In" Type="Int32" />
+            <Parameter Name="university3" Mode="In" Type="String" />
+            <Parameter Name="precentage3" Mode="In" Type="String" />
+            <Parameter Name="yearpasing3" Mode="In" Type="String" />
+            <Parameter Name="qualication4" Mode="In" Type="Int32" />
+            <Parameter Name="university4" Mode="In" Type="String" />
+            <Parameter Name="precentage4" Mode="In" Type="String" />
+            <Parameter Name="yearpasing4" Mode="In" Type="String" />
+            <Parameter Name="weightinkg" Mode="In" Type="String" />
+            <Parameter Name="heightc" Mode="In" Type="String" />
+            <Parameter Name="emppic" Mode="In" Type="Binary" />
+            <Parameter Name="eidtype" Mode="In" Type="Int32" />
+            <Parameter Name="doctorname" Mode="In" Type="String" />
+            <Parameter Name="doctorcode" Mode="In" Type="String" />
+            <Parameter Name="doctorcontact" Mode="In" Type="String" />
+            <Parameter Name="doctoraddress" Mode="In" Type="String" />
+            <Parameter Name="relation" Mode="In" Type="Int32" />
+            <Parameter Name="parentsname" Mode="In" Type="String" />
+            <Parameter Name="parentoccupation" Mode="In" Type="String" />
+            <Parameter Name="parentqualification" Mode="In" Type="String" />
+            <Parameter Name="parentsemail" Mode="In" Type="String" />
+            <Parameter Name="parentsaddress" Mode="In" Type="String" />
+            <Parameter Name="parentscode" Mode="In" Type="Int32" />
+            <Parameter Name="parentscontact" Mode="In" Type="String" />
+            <Parameter Name="parentspic" Mode="In" Type="Binary" />
+            <Parameter Name="pstreet" Mode="In" Type="String" />
+            <Parameter Name="pcity" Mode="In" Type="Int32" />
+            <Parameter Name="pstate" Mode="In" Type="Int32" />
+            <Parameter Name="pcountry" Mode="In" Type="Int32" />
+            <Parameter Name="ppin" Mode="In" Type="String" />
+            <Parameter Name="cstreet" Mode="In" Type="String" />
+            <Parameter Name="ccity" Mode="In" Type="Int32" />
+            <Parameter Name="cstate" Mode="In" Type="Int32" />
+            <Parameter Name="ccountry" Mode="In" Type="Int32" />
+            <Parameter Name="cpin" Mode="In" Type="String" />
+            <Parameter Name="homecode" Mode="In" Type="Int32" />
+            <Parameter Name="homecontact" Mode="In" Type="String" />
+            <Parameter Name="cmobilecode" Mode="In" Type="Int32" />
+            <Parameter Name="cmobile" Mode="In" Type="String" />
+            <Parameter Name="bankname" Mode="In" Type="String" />
+            <Parameter Name="branch" Mode="In" Type="String" />
+            <Parameter Name="ifsccode" Mode="In" Type="String" />
+            <Parameter Name="accountno" Mode="In" Type="String" />
+            <Parameter Name="accountname" Mode="In" Type="String" />
+            <Parameter Name="collagename" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity" Mode="In" Type="String" />
+            <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation" Mode="In" Type="String" />
+            <Parameter Name="companyname" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience" Mode="In" Type="String" />
+            <Parameter Name="empemail" Mode="In" Type="String" />
+            <Parameter Name="empreligion" Mode="In" Type="Int32" />
+            <Parameter Name="empcategory" Mode="In" Type="Int32" />
+            <Parameter Name="empcast" Mode="In" Type="Int32" />
+            <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetCoursefordevision" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCoursefordevision_Result)" />
+          <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.tbl_country" />
+          <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.tbl_state" />
+          <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.tbl_city" />
+          <FunctionImport Name="sp_GetCourseforsubject" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubject_Result)" />
+          <FunctionImport Name="sp_GetCourseforsubjectbydeptid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result)">
+          <Parameter Name="deptid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
           <FunctionImport Name="sp_student_admission">
             <Parameter Name="Studid" Mode="In" Type="Int32" />
@@ -2243,105 +2381,27 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="doc_typename" Mode="In" Type="String" />
             <Parameter Name="courseyearid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_employee_DML">
-            <Parameter Name="Empid" Mode="In" Type="Int32" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="MiddleName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="Cityid" Mode="In" Type="Int32" />
-            <Parameter Name="Stateid" Mode="In" Type="Int32" />
-            <Parameter Name="Zipcode" Mode="In" Type="String" />
-            <Parameter Name="Emailid" Mode="In" Type="String" />
-            <Parameter Name="PhoneNo" Mode="In" Type="String" />
-            <Parameter Name="MobileNo" Mode="In" Type="String" />
-            <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="DOB" Mode="In" Type="DateTime" />
-            <Parameter Name="Gender" Mode="In" Type="Int32" />
-            <Parameter Name="Quallification" Mode="In" Type="Int32" />
-            <Parameter Name="DateOfJoin" Mode="In" Type="DateTime" />
-            <Parameter Name="Typeid" Mode="In" Type="Int32" />
-            <Parameter Name="Code" Mode="In" Type="Int32" />
-            <Parameter Name="OQualification" Mode="In" Type="String" />
+          <FunctionImport Name="sp_getemp" ReturnType="Collection(SchoolMgmtSysModel.sp_getemp_Result)" />
+          <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.tbl_Chapter" />
+          <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.tbl_Content" />
+          <FunctionImport Name="sp_chapter_DML">
+            <Parameter Name="chapterid" Mode="In" Type="Int32" />
+            <Parameter Name="chaptername" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
-            <Parameter Name="department" Mode="In" Type="Int32" />
-            <Parameter Name="bloodgroup" Mode="In" Type="Int32" />
-            <Parameter Name="qualication1" Mode="In" Type="Int32" />
-            <Parameter Name="university1" Mode="In" Type="String" />
-            <Parameter Name="precentage1" Mode="In" Type="String" />
-            <Parameter Name="yearpasing1" Mode="In" Type="String" />
-            <Parameter Name="qualication2" Mode="In" Type="Int32" />
-            <Parameter Name="university2" Mode="In" Type="String" />
-            <Parameter Name="precentage2" Mode="In" Type="String" />
-            <Parameter Name="yearpasing2" Mode="In" Type="String" />
-            <Parameter Name="qualication3" Mode="In" Type="Int32" />
-            <Parameter Name="university3" Mode="In" Type="String" />
-            <Parameter Name="precentage3" Mode="In" Type="String" />
-            <Parameter Name="yearpasing3" Mode="In" Type="String" />
-            <Parameter Name="qualication4" Mode="In" Type="Int32" />
-            <Parameter Name="university4" Mode="In" Type="String" />
-            <Parameter Name="precentage4" Mode="In" Type="String" />
-            <Parameter Name="yearpasing4" Mode="In" Type="String" />
-            <Parameter Name="weightinkg" Mode="In" Type="String" />
-            <Parameter Name="heightc" Mode="In" Type="String" />
-            <Parameter Name="emppic" Mode="In" Type="Binary" />
-            <Parameter Name="eidtype" Mode="In" Type="Int32" />
-            <Parameter Name="doctorname" Mode="In" Type="String" />
-            <Parameter Name="doctorcode" Mode="In" Type="String" />
-            <Parameter Name="doctorcontact" Mode="In" Type="String" />
-            <Parameter Name="doctoraddress" Mode="In" Type="String" />
-            <Parameter Name="relation" Mode="In" Type="Int32" />
-            <Parameter Name="parentsname" Mode="In" Type="String" />
-            <Parameter Name="parentoccupation" Mode="In" Type="String" />
-            <Parameter Name="parentqualification" Mode="In" Type="String" />
-            <Parameter Name="parentsemail" Mode="In" Type="String" />
-            <Parameter Name="parentsaddress" Mode="In" Type="String" />
-            <Parameter Name="parentscode" Mode="In" Type="Int32" />
-            <Parameter Name="parentscontact" Mode="In" Type="String" />
-            <Parameter Name="parentspic" Mode="In" Type="Binary" />
-            <Parameter Name="pstreet" Mode="In" Type="String" />
-            <Parameter Name="pcity" Mode="In" Type="Int32" />
-            <Parameter Name="pstate" Mode="In" Type="Int32" />
-            <Parameter Name="pcountry" Mode="In" Type="Int32" />
-            <Parameter Name="ppin" Mode="In" Type="String" />
-            <Parameter Name="cstreet" Mode="In" Type="String" />
-            <Parameter Name="ccity" Mode="In" Type="Int32" />
-            <Parameter Name="cstate" Mode="In" Type="Int32" />
-            <Parameter Name="ccountry" Mode="In" Type="Int32" />
-            <Parameter Name="cpin" Mode="In" Type="String" />
-            <Parameter Name="homecode" Mode="In" Type="Int32" />
-            <Parameter Name="homecontact" Mode="In" Type="String" />
-            <Parameter Name="cmobilecode" Mode="In" Type="Int32" />
-            <Parameter Name="cmobile" Mode="In" Type="String" />
-            <Parameter Name="bankname" Mode="In" Type="String" />
-            <Parameter Name="branch" Mode="In" Type="String" />
-            <Parameter Name="ifsccode" Mode="In" Type="String" />
-            <Parameter Name="accountno" Mode="In" Type="String" />
-            <Parameter Name="accountname" Mode="In" Type="String" />
-            <Parameter Name="collagename" Mode="In" Type="String" />
-            <Parameter Name="affliateduniversity" Mode="In" Type="String" />
-            <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
-            <Parameter Name="lastdate" Mode="In" Type="DateTime" />
-            <Parameter Name="totalexperience" Mode="In" Type="String" />
-            <Parameter Name="lastdesignation" Mode="In" Type="String" />
-            <Parameter Name="companyname" Mode="In" Type="String" />
-            <Parameter Name="clastdesignation" Mode="In" Type="String" />
-            <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
-            <Parameter Name="clastdate" Mode="In" Type="DateTime" />
-            <Parameter Name="ctotalexperience" Mode="In" Type="String" />
-            <Parameter Name="empemail" Mode="In" Type="String" />
-            <Parameter Name="empreligion" Mode="In" Type="Int32" />
-            <Parameter Name="empcategory" Mode="In" Type="Int32" />
-            <Parameter Name="empcast" Mode="In" Type="Int32" />
-            <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_GetCoursefordevision" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCoursefordevision_Result)" />
-          <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.tbl_country" />
-          <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.tbl_state" />
-          <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.tbl_city" />
-          <FunctionImport Name="sp_GetCourseforsubject" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubject_Result)" />
-          <FunctionImport Name="sp_GetCourseforsubjectbydeptid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result)">
-            <Parameter Name="deptid" Mode="In" Type="Int32" />
+          <FunctionImport Name="sp_Content_DML">
+            <Parameter Name="contentid" Mode="In" Type="Int32" />
+            <Parameter Name="contentname" Mode="In" Type="String" />
+            <Parameter Name="chapterid" Mode="In" Type="Int32" />
+            <Parameter Name="contentdescription" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_getchapter" ReturnType="Collection(SchoolMgmtSysModel.sp_getchapter_Result)" />
+          <FunctionImport Name="sp_getcontent" ReturnType="Collection(SchoolMgmtSysModel.sp_getcontent_Result)" />
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -2862,31 +2922,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="Product" Nullable="true" MaxLength="255" />
           <Property Type="Boolean" Name="Status" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="sp_getemp_Result">
-          <Property Type="Int32" Name="Empid" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="152" />
-          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Cityid" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Stateid" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Emailid" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="Address" Nullable="true" />
-          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="Quallification" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="DateOfJoin" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Typeid" Nullable="false" MaxLength="8" />
-          <Property Type="String" Name="Fax" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Status" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="true" />
-          <Property Type="String" Name="Subjects" Nullable="true" />
-          <Property Type="String" Name="TeachStandard" Nullable="true" MaxLength="500" />
-          <Property Type="Decimal" Name="Payroll" Nullable="true" Precision="19" />
-          <Property Type="String" Name="Schedule" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="SysDt" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Payrollid" Nullable="false" />
-        </ComplexType>
         <EntityType Name="tbl_timetable">
           <Key>
             <PropertyRef Name="Tid" />
@@ -3337,6 +3372,45 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
         </ComplexType>
+        <ComplexType Name="sp_GetCoursefordevision_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="306" />
+        </ComplexType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="Countryid" />
+          </Key>
+          <Property Name="Countryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="Stateid" />
+          </Key>
+          <Property Name="Stateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Countryid" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_city">
+          <Key>
+            <PropertyRef Name="Cityid" />
+          </Key>
+          <Property Name="Cityid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Countryid" Type="Int32" Nullable="false" />
+          <Property Name="Stateid" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="sp_GetCourseforsubject_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        </ComplexType>
+        <ComplexType Name="sp_GetCourseforsubjectbydeptid_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        </ComplexType>
         <EntityType Name="tbl_student">
           <Key>
             <PropertyRef Name="Studid" />
@@ -3345,7 +3419,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DOB" Type="DateTime" Precision="7" />
           <Property Name="Weight" Type="Int32" Nullable="false" />
           <Property Name="Height" Type="Int32" Nullable="false" />
           <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
@@ -3393,7 +3467,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="CurrentAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="SysDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysDt" Type="DateTime" Precision="7" />
           <Property Name="busid" Type="Int32" />
           <Property Name="cats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="prds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -3445,19 +3519,19 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="PGMarksheet" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling2DOB" Type="DateTime" Precision="3" />
+          <Property Name="Sibling2DOB" Type="DateTime" Precision="7" />
           <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling1DOB" Type="DateTime" Precision="3" />
+          <Property Name="Sibling1DOB" Type="DateTime" Precision="7" />
           <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling3DOB" Type="DateTime" Precision="3" />
+          <Property Name="Sibling3DOB" Type="DateTime" Precision="7" />
           <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling4DOB" Type="DateTime" Precision="3" />
+          <Property Name="Sibling4DOB" Type="DateTime" Precision="7" />
           <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -3475,44 +3549,52 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseyearid" Type="Int32" />
         </EntityType>
-        <ComplexType Name="sp_GetCoursefordevision_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="Course" Nullable="true" MaxLength="306" />
+        <ComplexType Name="sp_getemp_Result">
+          <Property Type="Int32" Name="Empid" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="152" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Emailid" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="DateTime" Name="DateOfJoin" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Typeid" Nullable="true" MaxLength="8" />
         </ComplexType>
-        <EntityType Name="tbl_country">
+        <EntityType Name="tbl_Chapter">
           <Key>
-            <PropertyRef Name="Countryid" />
+            <PropertyRef Name="Chapter_id" />
           </Key>
-          <Property Name="Countryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="Chapter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChapterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Subjectid" Type="Int32" />
         </EntityType>
-        <EntityType Name="tbl_state">
+        <EntityType Name="tbl_Content">
           <Key>
-            <PropertyRef Name="Stateid" />
+            <PropertyRef Name="Content_id" />
           </Key>
-          <Property Name="Stateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Countryid" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="Content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chapter_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Content_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Content_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbl_city">
-          <Key>
-            <PropertyRef Name="Cityid" />
-          </Key>
-          <Property Name="Cityid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Countryid" Type="Int32" Nullable="false" />
-          <Property Name="Stateid" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <ComplexType Name="sp_GetCourseforsubject_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        <ComplexType Name="sp_getchapter_Result">
+          <Property Type="Int32" Name="Chapter_id" Nullable="false" />
+          <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="sp_GetCourseforsubjectbydeptid_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
+        <ComplexType Name="sp_getcontent_Result">
+          <Property Type="Int32" Name="Content_id" Nullable="false" />
+          <Property Type="String" Name="Content_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Content_Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4179,35 +4261,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
-                <ScalarProperty Name="Empid" ColumnName="Empid" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Quallification" ColumnName="Quallification" />
-                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
-                <ScalarProperty Name="Typeid" ColumnName="Typeid" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Subjects" ColumnName="Subjects" />
-                <ScalarProperty Name="TeachStandard" ColumnName="TeachStandard" />
-                <ScalarProperty Name="Payroll" ColumnName="Payroll" />
-                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
-                <ScalarProperty Name="SysDt" ColumnName="SysDt" />
-                <ScalarProperty Name="Payrollid" ColumnName="Payrollid" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="tbl_timetable">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
               <MappingFragment StoreEntitySet="tbl_timetable">
@@ -4795,6 +4848,61 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_CourseYearMaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_CourseYearMaster_DML" />
+          <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+          <FunctionImportMapping FunctionImportName="sp_GetCoursefordevision" FunctionName="SchoolMgmtSysModel.Store.sp_GetCoursefordevision">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCoursefordevision_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_country">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
+              <MappingFragment StoreEntitySet="tbl_country">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_state">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
+              <MappingFragment StoreEntitySet="tbl_state">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_city">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
+              <MappingFragment StoreEntitySet="tbl_city">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubject" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubject">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubject_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubjectbydeptid" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubjectbydeptid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="tbl_student">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
               <MappingFragment StoreEntitySet="tbl_student">
@@ -4935,58 +5043,66 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-          <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-          <FunctionImportMapping FunctionImportName="sp_GetCoursefordevision" FunctionName="SchoolMgmtSysModel.Store.sp_GetCoursefordevision">
+          <FunctionImportMapping FunctionImportName="sp_getemp" FunctionName="SchoolMgmtSysModel.Store.sp_getemp">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCoursefordevision_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getemp_Result">
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+                <ScalarProperty Name="Typeid" ColumnName="Typeid" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="tbl_country">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_country">
-              <MappingFragment StoreEntitySet="tbl_country">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+          <EntitySetMapping Name="tbl_Chapter">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chapter">
+              <MappingFragment StoreEntitySet="tbl_Chapter">
+                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+                <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_state">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_state">
-              <MappingFragment StoreEntitySet="tbl_state">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+          <EntitySetMapping Name="tbl_Content">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Content">
+              <MappingFragment StoreEntitySet="tbl_Content">
+                <ScalarProperty Name="Content_Name" ColumnName="Content_Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Content_Description" ColumnName="Content_Description" />
+                <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+                <ScalarProperty Name="Content_id" ColumnName="Content_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_city">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_city">
-              <MappingFragment StoreEntitySet="tbl_city">
+          <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
+          <FunctionImportMapping FunctionImportName="sp_Content_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Content_DML" />
+          <FunctionImportMapping FunctionImportName="sp_getchapter" FunctionName="SchoolMgmtSysModel.Store.sp_getchapter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getchapter_Result">
+                <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+                <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubject" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubject">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubject_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetCourseforsubjectbydeptid" FunctionName="SchoolMgmtSysModel.Store.sp_GetCourseforsubjectbydeptid">
+          <FunctionImportMapping FunctionImportName="sp_getcontent" FunctionName="SchoolMgmtSysModel.Store.sp_getcontent">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getcontent_Result">
+                <ScalarProperty Name="Content_id" ColumnName="Content_id" />
+                <ScalarProperty Name="Content_Name" ColumnName="Content_Name" />
+                <ScalarProperty Name="Content_Description" ColumnName="Content_Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5060,10 +5176,12 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tblDepartment" Width="1.5" PointX="9.375" PointY="17.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_CourseYearMaster" Width="1.5" PointX="17.375" PointY="16.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_YearMaster" Width="1.5" PointX="19.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_country" Width="1.5" PointX="14.375" PointY="19.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_state" Width="1.5" PointX="21.375" PointY="1" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_city" Width="1.5" PointX="16.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chapter" Width="1.5" PointX="21.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="6.75" />
       </Diagram>
     </Diagrams>
   </Designer>

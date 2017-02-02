@@ -162,7 +162,11 @@
     <Key>
       <PropertyRef Name="Chapter_id" />
     </Key>
+<<<<<<< HEAD
     <Property Name="Chapter_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+=======
+    <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+>>>>>>> origin/master
     <Property Name="ChapterName" Type="varchar" MaxLength="100" />
     <Property Name="Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -192,7 +196,11 @@
     <Key>
       <PropertyRef Name="Content_id" />
     </Key>
+<<<<<<< HEAD
     <Property Name="Content_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+=======
+    <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+>>>>>>> origin/master
     <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
     <Property Name="Content_Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -654,7 +662,11 @@
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
+<<<<<<< HEAD
     <Property Name="DOB" Type="datetime2" />
+=======
+    <Property Name="DOB" Type="datetime2" Precision="7" />
+>>>>>>> origin/master
     <Property Name="Weight" Type="int" Nullable="false" />
     <Property Name="Height" Type="int" Nullable="false" />
     <Property Name="StudBldGrp" Type="int" Nullable="false" />
@@ -702,7 +714,11 @@
     <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
     <Property Name="PermanentAddress" Type="varchar(max)" />
     <Property Name="academicyear" Type="varchar" MaxLength="10" />
+<<<<<<< HEAD
     <Property Name="SysDt" Type="datetime2" />
+=======
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
+>>>>>>> origin/master
     <Property Name="busid" Type="int" />
     <Property Name="cats" Type="varchar(max)" />
     <Property Name="prds" Type="varchar(max)" />
@@ -754,6 +770,7 @@
     <Property Name="PGMarksheet" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
+<<<<<<< HEAD
     <Property Name="Sibling2DOB" Type="datetime2" />
     <Property Name="Sibling2Ql" Type="varchar(max)" />
     <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
@@ -767,6 +784,21 @@
     <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4DOB" Type="datetime2" />
+=======
+    <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling2Ql" Type="varchar(max)" />
+    <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling1DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling1Ql" Type="varchar(max)" />
+    <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling3DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling3Ql" Type="varchar(max)" />
+    <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
+>>>>>>> origin/master
     <Property Name="Sibling4Ql" Type="varchar(max)" />
     <Property Name="ParishName" Type="varchar" MaxLength="100" />
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
@@ -1617,4 +1649,85 @@
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
+<<<<<<< HEAD
+=======
+  <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
+    <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_UserRole" EntityType="Self.sys_UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="System" EntityType="Self.System" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AssignDivision" EntityType="Self.tbl_AssignDivision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_EmployeeLeave" EntityType="Self.tbl_EmployeeLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExaminationType" EntityType="Self.tbl_ExaminationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_occupation" EntityType="Self.tbl_occupation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_online_student" EntityType="Self.tbl_online_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_payterm" EntityType="Self.tbl_payterm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_position" EntityType="Self.tbl_position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_qualification" EntityType="Self.tbl_qualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_religion" EntityType="Self.tbl_religion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_route" EntityType="Self.tbl_route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentAttendance" EntityType="Self.tbl_StudentAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentCategory" EntityType="Self.tbl_StudentCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentMark" EntityType="Self.tbl_StudentMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SubCategory" EntityType="Self.tbl_SubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_submenu" EntityType="Self.tbl_submenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_timetable" EntityType="Self.tbl_timetable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_transport" EntityType="Self.tbl_transport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sys_UserPermission].[moduleid] AS [moduleid], 
+[sys_UserPermission].[UserRoleid] AS [UserRoleid], 
+[sys_UserPermission].[Permissionid] AS [Permissionid]
+FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_days" EntityType="Self.tbl_days" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_days].[dayid] AS [dayid], 
+[tbl_days].[daynm] AS [daynm]
+FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_feeschild" EntityType="Self.tbl_feeschild" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_feeschild].[Feesid] AS [Feesid], 
+[tbl_feeschild].[FeesNm] AS [FeesNm], 
+[tbl_feeschild].[Fees] AS [Fees]
+FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_feeslabelchild" EntityType="Self.tbl_feeslabelchild" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
+[tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
+FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+>>>>>>> origin/master
 </Schema>

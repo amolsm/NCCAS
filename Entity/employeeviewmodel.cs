@@ -288,13 +288,23 @@ namespace Entity
 
 
         public string SelectGender { get; set; }
-        public List<sp_getemp_Result> _emplist { get; set; }
+       public List<sp_getemp_Result> _emplist { get; set; }
         public List<tbl_state> statelist { get; set; }
         public List<tbl_city> citylist { get; set; }
         public List<tbl_qualification> qualificationlist { get; set; }
-        public List<tblDepartment> departmentlistdetails { get; set; }
+
+        public List<tbl_employee> EmployeeDataCollection { get; set; }
         public List<tbl_country> countrylist { get; set; }
         public List<tbl_bloodgroup> bloodgrouplist { get; set; }
+        public IEnumerable<tbl_category> catlist { get; set; }
+        public List<tbl_caste> castelist { get; set; }
+        public List<tbl_occupation> occupationlist { get; set; }
+    
+        public List<tbl_religion> religionlist { get; set; }
+        public List<tbl_StudentCategory> categorylist { get; set; }
+
+        public List<tblDepartment> departmentlistdetails { get; set; }
+     
         //public IEnumerable<tbl_category> catlist { get; set; }
         //public List<tbl_caste> castelist { get; set; }
         //public List<tbl_occupation> occupationlist { get; set; }
@@ -304,5 +314,6 @@ namespace Entity
         //public List<tbl_country> countrylist { get; set; }
         //public List<tbl_state> statelist { get; set; }
         //public List<tbl_city> citylist { get; set; }
+
     }
 }

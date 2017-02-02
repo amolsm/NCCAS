@@ -13,6 +13,7 @@ using System.Data;
 using System.Text;
 using Ionic.Zip;
 using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -594,7 +595,7 @@ namespace SchoolManagementSystems.Controllers
                 }
                 if (svm.FormType == "O_type")
                 {
-                    db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "").ToString();
+                   // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "").ToString();
                 }
                 else
                 {
@@ -609,13 +610,16 @@ namespace SchoolManagementSystems.Controllers
                          svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                          svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear).ToString();
+                            
                         }
-                        catch(Exception ex) { string msg = ex.ToString(); } }
+                        catch(Exception ex) { string msg = ex.ToString();
+                          //  TempData["StudentError"] = msg;
+                        } }
                     else if (group1 == "0" && group1!=null)
                     {
                         try
                         {
-                            db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
+                           // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
                         }
                         catch (Exception ex) { string msg = ex.ToString(); }
                     }
@@ -628,8 +632,11 @@ namespace SchoolManagementSystems.Controllers
                             svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                             svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                             svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename,svm.courseyear).ToString();
+                            
                         }
-                        catch (Exception ex) { string msg = ex.ToString(); }
+                        catch (Exception ex) { string msg = ex.ToString();
+                            //TempData["StudentError"] = msg;
+                        }
                         if (svm.Studid != 0)
                         {
                             try
@@ -646,7 +653,9 @@ namespace SchoolManagementSystems.Controllers
                             {
                                 SendEmails(svm.StudEmail);
                             }
-                            catch (Exception ex) { string msg = ex.ToString(); }
+                            catch (Exception ex) { string msg = ex.ToString();
+                              //  TempData["StudentError"] = msg;
+                            }
                         }
                     }
                 }
@@ -662,7 +671,10 @@ namespace SchoolManagementSystems.Controllers
                            svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename,svm.courseyear).ToString();
                 }
-                catch (Exception ex) { string msg = ex.ToString(); }
+                catch (Exception ex) { string msg = ex.ToString();
+                    //TempData["StudentError"] = msg;
+
+                }
             }
             if (Convert.ToString(Session["online_Admmission"])!= "Yes")
             {
@@ -671,7 +683,7 @@ namespace SchoolManagementSystems.Controllers
             else
             {
                 Session["online_Admmission"] = "No";
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index");
             }
         }
         private void CreateUsers(string UserName, int Type, int Genid, string academicyear)
@@ -716,8 +728,7 @@ namespace SchoolManagementSystems.Controllers
             MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
             message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
-            //message.From = fromAddress;
-            //message.To.Add(Email);
+           
             message.Subject = "A-One School Management";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
