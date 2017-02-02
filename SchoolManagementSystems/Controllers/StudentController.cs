@@ -34,7 +34,7 @@ namespace SchoolManagementSystems.Controllers
             return View(svm);
         }
 
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+       
         public ActionResult Admission(int? Studid)
         {
             Studentviewmodel svm = new Studentviewmodel();            
@@ -66,7 +66,7 @@ namespace SchoolManagementSystems.Controllers
             svm.citylist = new List<tbl_city>();
             return View("Admission", svm);
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+     //   [SchoolManagementSystems.MvcApplication.SessionExpire]
         public JsonResult FillStudentDetails(int studid)
         {
             var data = db.tbl_student.Where(m => m.Studid == studid).FirstOrDefault();
@@ -74,7 +74,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+    
         public JsonResult FillOnlineStudentDetails(int studid)
         {
             var data = db.tbl_online_student.Where(m => m.Studid == studid).FirstOrDefault();
@@ -89,7 +89,7 @@ namespace SchoolManagementSystems.Controllers
         }
 
 
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+     
         public JsonResult GetProductsexclude(string subcats)
         {
             string[] s = subcats.Split(',');
@@ -106,7 +106,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(prds, JsonRequestBehavior.AllowGet);
         }
 
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+    
         public JsonResult GetProducts(string subcats)
         {
             string[] s = subcats.Split(',');
@@ -126,7 +126,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(prds, JsonRequestBehavior.AllowGet);
         }
 
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+   
         public JsonResult GetSubcats(string cats)
         {
             string[] s = cats.Split(',');
@@ -151,7 +151,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+      //  [SchoolManagementSystems.MvcApplication.SessionExpire]
         public JsonResult GetTransportDetails(int busid)
         {
             var data = db.tbl_transport.Where(m => m.busid == busid).FirstOrDefault();
@@ -179,7 +179,7 @@ namespace SchoolManagementSystems.Controllers
             var castes = db.tbl_caste.Where(m => m.Religionid == Religionid).ToList();
             return Json(new SelectList(castes, "Casteid", "CasteName"));
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+    //    [SchoolManagementSystems.MvcApplication.SessionExpire]
         public JsonResult GetBusInfo(string busid)
         {
             var data = db.tbl_transport.Where(m => m.busid == Convert.ToInt32(busid)).FirstOrDefault();
@@ -199,13 +199,13 @@ namespace SchoolManagementSystems.Controllers
 
         public FileContentResult getImg1(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.FatherPic).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.StudPic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
         public FileContentResult getImg2(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.MotherPic).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.FatherPic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
@@ -213,39 +213,39 @@ namespace SchoolManagementSystems.Controllers
 
         public FileContentResult getImg3(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.StudPic).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.GuardianPic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
         public FileContentResult getImg4(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.GuardianPic).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.MotherPic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
         public FileContentResult getImg5(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.SecondaryTCScanCopy).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.sc_refletter).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
         public FileContentResult getImg6(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.SecondaryMarksheetCopy).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.SecondaryTCScanCopy).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
         public FileContentResult getImg7(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.UGMarksheet).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.SecondaryMarksheetCopy).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
         public FileContentResult getImg8(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.PGMarksheet).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.UGMarksheet).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
         public FileContentResult getImg9(int id)
         {
-            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.sc_refletter).FirstOrDefault();
+            byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.PGMarksheet).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
@@ -257,72 +257,19 @@ namespace SchoolManagementSystems.Controllers
            
             if (files1 != null)
             {
+                if (System.IO.File.Exists(files1.ToString()))
+                {
+
+                    System.IO.File.Delete(files1.ToString());
+                    files1 = null;
+
+                }
                 if (files1.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
                         files1.InputStream.CopyTo(ms);
                         WebImage img = new WebImage(files1.InputStream);
-                        if (img.Width > 700)
-                        {
-                            img.Resize(450, 450);
-                        }
-                        byte[] array = img.GetBytes();
-                        svm.FatherPic = array;
-                    }
-                }
-                else
-                {
-                    if (svm.Studid != 0)
-                    {
-                        svm.FatherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.FatherPic).FirstOrDefault();
-                    }
-                }
-            }
-            else
-            {
-                if (svm.Studid != 0)
-                {
-                    svm.FatherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.FatherPic).FirstOrDefault();
-                }
-            }
-            if (files2 != null)
-            {
-                if (files2.InputStream.Length < 31000000)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        WebImage img = new WebImage(files2.InputStream);
-                        if (img.Width > 700)
-                        {
-                            img.Resize(450, 450);
-                        }
-                        byte[] array = img.GetBytes();
-                        svm.MotherPic = array;
-                    }
-                }
-                else
-                {
-                    if (svm.Studid != 0)
-                    {
-                        svm.MotherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
-                    }
-                }
-            }
-            else
-            {
-                if (svm.Studid != 0)
-                {
-                    svm.MotherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
-                }
-            }
-            if (files3 != null)
-            {
-                if (files3.InputStream.Length < 31000000)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        WebImage img = new WebImage(files3.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(450, 450);
@@ -346,15 +293,61 @@ namespace SchoolManagementSystems.Controllers
                     svm.StudPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.StudPic).FirstOrDefault();
                 }
             }
-            //--updated code 12Jan17
-
-            if (files4 != null)
+            //father pic
+            if (files2 != null)
             {
-                if (files4.InputStream.Length < 31000000)
+                if (System.IO.File.Exists(files2.ToString()))
+                {
+
+                    System.IO.File.Delete(files2.ToString());
+                    files2 = null;
+
+                }
+                if (files2.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        WebImage img = new WebImage(files4.InputStream);
+                        files2.InputStream.CopyTo(ms);
+                        WebImage img = new WebImage(files2.InputStream);
+                        if (img.Width > 700)
+                        {
+                            img.Resize(450, 450);
+                        }
+                        byte[] array = img.GetBytes();
+                        svm.FatherPic = array;
+                    }
+                }
+                else
+                {
+                    if (svm.Studid != 0)
+                    {
+                        svm.FatherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.FatherPic).FirstOrDefault();
+                    }
+                }
+            }
+            else
+            {
+                if (svm.Studid != 0)
+                {
+                    svm.FatherPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.FatherPic).FirstOrDefault();
+                }
+            }
+            //gaurdian pic
+            if (files3 != null)
+            {
+                if (System.IO.File.Exists(files3.ToString()))
+                {
+
+                    System.IO.File.Delete(files3.ToString());
+                    files3 = null;
+
+                }
+                if (files3.InputStream.Length < 31000000)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        files3.InputStream.CopyTo(ms);
+                        WebImage img = new WebImage(files3.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(450, 450);
@@ -367,7 +360,7 @@ namespace SchoolManagementSystems.Controllers
                 {
                     if (svm.Studid != 0)
                     {
-                        svm.StudPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.GuardianPic).FirstOrDefault();
+                        svm.GuardianPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.GuardianPic).FirstOrDefault();
                     }
                 }
             }
@@ -375,17 +368,104 @@ namespace SchoolManagementSystems.Controllers
             {
                 if (svm.Studid != 0)
                 {
-                    svm.StudPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.GuardianPic).FirstOrDefault();
+                    svm.GuardianPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.GuardianPic).FirstOrDefault();
                 }
             }
+           // mother pic
+
+            if (files4 != null)
+            {
+                if (System.IO.File.Exists(files4.ToString()))
+                {
+
+                    System.IO.File.Delete(files4.ToString());
+                    files4 = null;
+
+                }
+                if (files4.InputStream.Length < 31000000)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        files4.InputStream.CopyTo(ms);
+                        WebImage img = new WebImage(files4.InputStream);
+
+                        if (img.Width > 700)
+                        {
+                            img.Resize(450, 450);
+                        }
+                        byte[] array = img.GetBytes();
+                        svm.MotherPics = array;
+                    }
+                }
+                else
+                {
+                    if (svm.Studid != 0)
+                    {
+                        svm.MotherPics = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
+                    }
+                }
+            }
+            else
+            {
+                if (svm.Studid != 0)
+                {
+                    svm.MotherPics = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
+                }
+            }
+            //sc reference letter pic
 
             if (files5 != null)
             {
+                if (System.IO.File.Exists(files5.ToString()))
+                {
+
+                    System.IO.File.Delete(files5.ToString());
+                    files5 = null;
+
+                }
                 if (files5.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
                         WebImage img = new WebImage(files5.InputStream);
+                        if (img.Width > 700)
+                        {
+                            img.Resize(600, 600);
+                        }
+                        byte[] array = img.GetBytes();
+                        svm.sc_refletter = array;
+                    }
+                }
+                else
+                {
+                    if (svm.Studid != 0)
+                    {
+                        svm.sc_refletter = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.sc_refletter).FirstOrDefault();
+                    }
+                }
+            }
+            else
+            {
+                if (svm.Studid != 0)
+                {
+                    svm.sc_refletter = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.sc_refletter).FirstOrDefault();
+                }
+            }
+            //tc scan copy
+            if (files6 != null)
+            {
+                if (System.IO.File.Exists(files6.ToString()))
+                {
+
+                    System.IO.File.Delete(files6.ToString());
+                    files6 = null;
+
+                }
+                if (files6.InputStream.Length < 31000000)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        WebImage img = new WebImage(files6.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(600, 600);
@@ -409,14 +489,21 @@ namespace SchoolManagementSystems.Controllers
                     svm.SCTCPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.SecondaryTCScanCopy).FirstOrDefault();
                 }
             }
-
-            if (files6 != null)
+            //sc marksheet
+            if (files7 != null)
             {
-                if (files6.InputStream.Length < 31000000)
+                if (System.IO.File.Exists(files7.ToString()))
+                {
+
+                    System.IO.File.Delete(files7.ToString());
+                    files7 = null;
+
+                }
+                if (files7.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        WebImage img = new WebImage(files6.InputStream);
+                        WebImage img = new WebImage(files7.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(600, 600);
@@ -440,40 +527,16 @@ namespace SchoolManagementSystems.Controllers
                     svm.SCMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.SecondaryMarksheetCopy).FirstOrDefault();
                 }
             }
-
-            if (files7 != null)
-            {
-                if (files7.InputStream.Length < 31000000)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        WebImage img = new WebImage(files7.InputStream);
-                        if (img.Width > 700)
-                        {
-                            img.Resize(600, 600);
-                        }
-                        byte[] array = img.GetBytes();
-                        svm.PGMarksheet = array;
-                    }
-                }
-                else
-                {
-                    if (svm.Studid != 0)
-                    {
-                        svm.PGMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.PGMarksheet).FirstOrDefault();
-                    }
-                }
-            }
-            else
-            {
-                if (svm.Studid != 0)
-                {
-                    svm.PGMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.PGMarksheet).FirstOrDefault();
-                }
-            }
-
+            //ug marksheet
             if (files8 != null)
             {
+                if (System.IO.File.Exists(files8.ToString()))
+                {
+
+                    System.IO.File.Delete(files8.ToString());
+                    files8 = null;
+
+                }
                 if (files8.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
@@ -502,9 +565,16 @@ namespace SchoolManagementSystems.Controllers
                     svm.UGMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.UGMarksheet).FirstOrDefault();
                 }
             }
-
+            //pg marksheet
             if (files9 != null)
             {
+                if (System.IO.File.Exists(files9.ToString()))
+                {
+
+                    System.IO.File.Delete(files9.ToString());
+                    files9 = null;
+
+                }
                 if (files9.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
@@ -515,14 +585,14 @@ namespace SchoolManagementSystems.Controllers
                             img.Resize(600, 600);
                         }
                         byte[] array = img.GetBytes();
-                        svm.sc_refletter = array;
+                        svm.PGMarksheet = array;
                     }
                 }
                 else
                 {
                     if (svm.Studid != 0)
                     {
-                        svm.sc_refletter = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.sc_refletter).FirstOrDefault();
+                        svm.PGMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.PGMarksheet).FirstOrDefault();
                     }
                 }
             }
@@ -530,7 +600,7 @@ namespace SchoolManagementSystems.Controllers
             {
                 if (svm.Studid != 0)
                 {
-                    svm.sc_refletter = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.sc_refletter).FirstOrDefault();
+                    svm.PGMarksheet = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.PGMarksheet).FirstOrDefault();
                 }
             }
             //======upload multiple attachments start============
@@ -605,7 +675,7 @@ namespace SchoolManagementSystems.Controllers
                         //db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
                         try
                         {
-                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
+                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPics, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
                          svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                          svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
@@ -627,7 +697,7 @@ namespace SchoolManagementSystems.Controllers
                     {
                         try
                         {
-                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
+                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPics, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
                             svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                             svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                             svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
@@ -740,7 +810,7 @@ namespace SchoolManagementSystems.Controllers
             message.Body = msg;
             smtpClient.Send(message);
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+     //   [SchoolManagementSystems.MvcApplication.SessionExpire]
         public ActionResult GuardianList(string Search_Data)
         {
             Studentviewmodel svm = new Studentviewmodel();

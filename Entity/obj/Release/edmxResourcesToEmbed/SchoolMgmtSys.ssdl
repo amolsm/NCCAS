@@ -78,6 +78,16 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
     <Property Name="catname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_Chapter">
+    <Key>
+      <PropertyRef Name="Chapter_id" />
+    </Key>
+    <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChapterName" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="text" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Subjectid" Type="int" />
+  </EntityType>
   <EntityType Name="tbl_city">
     <Key>
       <PropertyRef Name="Cityid" />
@@ -97,6 +107,16 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
     <Property Name="Dept_id" Type="int" />
     <Property Name="status" Type="bit" />
     <Property Name="academicyear" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_Content">
+    <Key>
+      <PropertyRef Name="Content_id" />
+    </Key>
+    <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
+    <Property Name="Content_Description" Type="text" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Content_Name" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbl_country">
     <Key>
@@ -151,7 +171,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="Address" Type="varchar(max)" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="DOB" Type="datetime" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="Quallification" Type="varchar" MaxLength="250" />
@@ -159,9 +179,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="TeachStandard" Type="varchar" MaxLength="500" />
     <Property Name="Payroll" Type="money" />
     <Property Name="Schedule" Type="varchar" MaxLength="50" />
-    <Property Name="SysDt" Type="datetime" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="Payrollid" Type="int" Nullable="false" />
-    <Property Name="DateOfJoin" Type="datetime" />
+    <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="int" />
     <Property Name="OtherQualification" Type="varchar(max)" />
@@ -221,14 +241,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="accountname" Type="varchar" MaxLength="50" />
     <Property Name="collagename" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate" Type="datetime" />
-    <Property Name="lastdate" Type="datetime" />
+    <Property Name="joiningdate" Type="datetime2" Precision="7" />
+    <Property Name="lastdate" Type="datetime2" Precision="7" />
     <Property Name="totalexperience" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
     <Property Name="companyname" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate" Type="datetime" />
-    <Property Name="clastdate" Type="datetime" />
+    <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
+    <Property Name="clastdate" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
     <Property Name="empemail" Type="varchar" MaxLength="50" />
     <Property Name="empreligion" Type="int" />
@@ -620,7 +640,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="GuardianPic" Type="image" />
     <Property Name="SecondaryTotalMarks" Type="decimal" Precision="5" Scale="2" />
     <Property Name="SecondaryObtainMarks" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="SecondaryPercetage" Type="int" />
+    <Property Name="SecondaryPercetage" Type="decimal" Precision="5" Scale="2" />
     <Property Name="SecondaryTCScanCopy" Type="image" />
     <Property Name="SecondaryMarksheetCopy" Type="image" />
     <Property Name="PrUgCollegeName" Type="varchar" MaxLength="100" />
@@ -629,7 +649,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="PrUgRefContactNo" Type="varchar" MaxLength="20" />
     <Property Name="PrUgTotalMark" Type="decimal" Precision="5" Scale="2" />
     <Property Name="PrUgObtainMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrUgPercentage" Type="int" />
+    <Property Name="PrUgPercentage" Type="decimal" Precision="5" Scale="2" />
     <Property Name="PrUgGradeLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrUgYearLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrUgReasonofLeaving" Type="varchar" MaxLength="20" />
@@ -642,7 +662,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="PrPgRefContactNo" Type="varchar" MaxLength="20" />
     <Property Name="PrPgTotalMark" Type="decimal" Precision="5" Scale="2" />
     <Property Name="PrPgObtainMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrPgPercentage" Type="int" />
+    <Property Name="PrPgPercentage" Type="decimal" Precision="5" Scale="2" />
     <Property Name="PrPgGradeLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrPgYearLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrPgReasonofLeaving" Type="varchar" MaxLength="20" />
@@ -842,6 +862,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="oldPassword" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_chapter_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chapterid" Type="int" Mode="In" />
+    <Parameter Name="chaptername" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="text" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -860,6 +888,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="deptid" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Content_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="contentid" Type="int" Mode="In" />
+    <Parameter Name="contentname" Type="varchar" Mode="In" />
+    <Parameter Name="chapterid" Type="int" Mode="In" />
+    <Parameter Name="contentdescription" Type="text" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_Country_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1047,8 +1083,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getcontent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetCoursefordevision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetCourseforsubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1275,7 +1313,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="GuardianPic" Type="image" Mode="In" />
     <Parameter Name="SecondaryTotalMarks" Type="decimal" Mode="In" />
     <Parameter Name="SecondaryObtainMarks" Type="decimal" Mode="In" />
-    <Parameter Name="SecondaryPercetage" Type="int" Mode="In" />
+    <Parameter Name="SecondaryPercetage" Type="decimal" Mode="In" />
     <Parameter Name="SecondaryTCScanCopy" Type="image" Mode="In" />
     <Parameter Name="SecondaryMarksheetCopy" Type="image" Mode="In" />
     <Parameter Name="PrUgCollegeName" Type="varchar" Mode="In" />
@@ -1284,7 +1322,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="PrUgRefContactNo" Type="varchar" Mode="In" />
     <Parameter Name="PrUgTotalMark" Type="decimal" Mode="In" />
     <Parameter Name="PrUgObtainMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrUgPercentage" Type="int" Mode="In" />
+    <Parameter Name="PrUgPercentage" Type="decimal" Mode="In" />
     <Parameter Name="PrUgGradeLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrUgYearLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrUgReasonofLeaving" Type="varchar" Mode="In" />
@@ -1297,7 +1335,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="PrPgRefContactNo" Type="varchar" Mode="In" />
     <Parameter Name="PrPgTotalMark" Type="decimal" Mode="In" />
     <Parameter Name="PrPgObtainMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrPgPercentage" Type="int" Mode="In" />
+    <Parameter Name="PrPgPercentage" Type="decimal" Mode="In" />
     <Parameter Name="PrPgGradeLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrPgYearLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrPgReasonofLeaving" Type="varchar" Mode="In" />
@@ -1480,8 +1518,10 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />

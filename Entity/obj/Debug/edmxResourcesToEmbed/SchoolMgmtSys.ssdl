@@ -171,7 +171,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="Address" Type="varchar(max)" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="DOB" Type="datetime" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="Quallification" Type="varchar" MaxLength="250" />
@@ -179,9 +179,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="TeachStandard" Type="varchar" MaxLength="500" />
     <Property Name="Payroll" Type="money" />
     <Property Name="Schedule" Type="varchar" MaxLength="50" />
-    <Property Name="SysDt" Type="datetime" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="Payrollid" Type="int" Nullable="false" />
-    <Property Name="DateOfJoin" Type="datetime" />
+    <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="int" />
     <Property Name="OtherQualification" Type="varchar(max)" />
@@ -241,14 +241,14 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="accountname" Type="varchar" MaxLength="50" />
     <Property Name="collagename" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate" Type="datetime" />
-    <Property Name="lastdate" Type="datetime" />
+    <Property Name="joiningdate" Type="datetime2" Precision="7" />
+    <Property Name="lastdate" Type="datetime2" Precision="7" />
     <Property Name="totalexperience" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
     <Property Name="companyname" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate" Type="datetime" />
-    <Property Name="clastdate" Type="datetime" />
+    <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
+    <Property Name="clastdate" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
     <Property Name="empemail" Type="varchar" MaxLength="50" />
     <Property Name="empreligion" Type="int" />
@@ -638,18 +638,18 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="RCode" Type="int" />
     <Property Name="ECode" Type="int" />
     <Property Name="GuardianPic" Type="image" />
-    <Property Name="SecondaryTotalMarks" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="SecondaryObtainMarks" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="SecondaryPercetage" Type="int" />
+    <Property Name="SecondaryTotalMarks" Type="int" />
+    <Property Name="SecondaryObtainMarks" Type="int" />
+    <Property Name="SecondaryPercetage" Type="float" />
     <Property Name="SecondaryTCScanCopy" Type="image" />
     <Property Name="SecondaryMarksheetCopy" Type="image" />
     <Property Name="PrUgCollegeName" Type="varchar" MaxLength="100" />
     <Property Name="PrUgCollegeAddress" Type="varchar" MaxLength="100" />
     <Property Name="PrUgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
     <Property Name="PrUgRefContactNo" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgTotalMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrUgObtainMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrUgPercentage" Type="int" />
+    <Property Name="PrUgTotalMark" Type="int" />
+    <Property Name="PrUgObtainMark" Type="int" />
+    <Property Name="PrUgPercentage" Type="float" />
     <Property Name="PrUgGradeLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrUgYearLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrUgReasonofLeaving" Type="varchar" MaxLength="20" />
@@ -660,9 +660,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="PrPgCollegeAddress" Type="varchar" MaxLength="100" />
     <Property Name="PrPgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
     <Property Name="PrPgRefContactNo" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgTotalMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrPgObtainMark" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="PrPgPercentage" Type="int" />
+    <Property Name="PrPgTotalMark" Type="int" />
+    <Property Name="PrPgObtainMark" Type="int" />
+    <Property Name="PrPgPercentage" Type="float" />
     <Property Name="PrPgGradeLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrPgYearLeaving" Type="varchar" MaxLength="20" />
     <Property Name="PrPgReasonofLeaving" Type="varchar" MaxLength="20" />
@@ -710,6 +710,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="Present" Type="bit" />
     <Property Name="Reason" Type="varchar" MaxLength="500" />
     <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
   </EntityType>
   <EntityType Name="tbl_StudentCategory">
     <Key>
@@ -832,6 +833,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="StudentID" Type="int" Mode="In" />
     <Parameter Name="Present" Type="bit" Mode="In" />
     <Parameter Name="Reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_Automation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1311,18 +1313,18 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="RCode" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
     <Parameter Name="GuardianPic" Type="image" Mode="In" />
-    <Parameter Name="SecondaryTotalMarks" Type="decimal" Mode="In" />
-    <Parameter Name="SecondaryObtainMarks" Type="decimal" Mode="In" />
-    <Parameter Name="SecondaryPercetage" Type="int" Mode="In" />
+    <Parameter Name="SecondaryTotalMarks" Type="int" Mode="In" />
+    <Parameter Name="SecondaryObtainMarks" Type="int" Mode="In" />
+    <Parameter Name="SecondaryPercetage" Type="float" Mode="In" />
     <Parameter Name="SecondaryTCScanCopy" Type="image" Mode="In" />
     <Parameter Name="SecondaryMarksheetCopy" Type="image" Mode="In" />
     <Parameter Name="PrUgCollegeName" Type="varchar" Mode="In" />
     <Parameter Name="PrUgCollegeAddress" Type="varchar" Mode="In" />
     <Parameter Name="PrUgAffilatedUniversity" Type="nvarchar" Mode="In" />
     <Parameter Name="PrUgRefContactNo" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgTotalMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrUgObtainMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrUgPercentage" Type="int" Mode="In" />
+    <Parameter Name="PrUgTotalMark" Type="int" Mode="In" />
+    <Parameter Name="PrUgObtainMark" Type="int" Mode="In" />
+    <Parameter Name="PrUgPercentage" Type="float" Mode="In" />
     <Parameter Name="PrUgGradeLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrUgYearLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrUgReasonofLeaving" Type="varchar" Mode="In" />
@@ -1333,9 +1335,9 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="PrPgCollegeAddress" Type="varchar" Mode="In" />
     <Parameter Name="PrPgAffilatedUniversity" Type="nvarchar" Mode="In" />
     <Parameter Name="PrPgRefContactNo" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgTotalMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrPgObtainMark" Type="decimal" Mode="In" />
-    <Parameter Name="PrPgPercentage" Type="int" Mode="In" />
+    <Parameter Name="PrPgTotalMark" Type="int" Mode="In" />
+    <Parameter Name="PrPgObtainMark" Type="int" Mode="In" />
+    <Parameter Name="PrPgPercentage" Type="float" Mode="In" />
     <Parameter Name="PrPgGradeLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrPgYearLeaving" Type="varchar" Mode="In" />
     <Parameter Name="PrPgReasonofLeaving" Type="varchar" Mode="In" />

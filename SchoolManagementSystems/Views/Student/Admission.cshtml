@@ -400,7 +400,7 @@
                     $("#SchoolAddress").val(data.SchoolAddress);
                     $("#PrScTotalMarks").val(data.SecondaryTotalMarks);
                     $("#PrScObtainMark").val(data.SecondaryObtainMarks);
-                    $("#PrScPercentage").val(data.SecondaryPercetage);
+                    $("#PrScPercentage").val(parseFloat(Math.round(data.SecondaryPercetage * 100) / 100).toFixed(2));
                     $("#PrScTCNumber").val(data.sc_tcno);
                     $("#PrScRegisterNumber").val(data.sc_regno);
                     $("#PrUgCollegeName").val(data.PrUgCollegeName);
@@ -409,7 +409,7 @@
                     $("#PrUgGradeLeaving").val(data.PrUgGradeLeaving);
                     $("#PrUgTotalMark").val(data.PrUgTotalMark);
                     $("#PrUgObtainMark").val(data.PrUgObtainMark);
-                    $("#PrUgPercentage").val(data.PrUgPercentage);
+                    $("#PrUgPercentage").val(parseFloat(Math.round(data.PrUgPercentage * 100) / 100).toFixed(2));
                     $("#PrUgYearLeaving").val(data.PrUgYearLeaving);
                     $("#PrUgRegisterNumber").val(data.prug_regno);
                     $("#PrUgReasonofLeaving").val(data.PrUgReasonofLeaving);
@@ -423,7 +423,7 @@
                     $("#PrPgGradeLeaving").val(data.PrPgGradeLeaving);
                     $("#PrPgTotalMark").val(data.PrPgTotalMark);
                     $("#PrPgObtainMark").val(data.PrPgObtainMark);
-                    $("#PrPgPercentage").val(data.PrPgPercentage);
+                    $("#PrPgPercentage").val(parseFloat(Math.round(data.PrPgPercentage * 100) / 100).toFixed(2));
                     $("#PrPgYearLeaving").val(data.PrPgYearLeaving);
                     $("#PrPgRegisterNumber").val(data.prpg_regno);
                     $("#PrPgReasonofLeaving").val(data.PrPgReasonofLeaving);
@@ -541,15 +541,15 @@
                     else {
                         $("#attach").hide();
                     }
-                    $("#pic1").append('<img src="/Student/getImg1/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Father Pic">');
-                    $("#pic2").append('<img src="/Student/getImg2/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Mothers Pic">');
-                    $("#pic3").append('<img src="/Student/getImg3/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Student Pic">');
-                    $("#pic4").append('<img src="/Student/getImg4/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Guardian Pic">');
-                    $("#pic5").append('<img src="/Student/getImg5/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="SC TC Pic">');
-                    $("#pic6").append('<img src="/Student/getImg6/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="SC Marksheet">');
-                    $("#pic7").append('<img src="/Student/getImg7/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="UG Marksheet">');
-                    $("#pic8").append('<img src="/Student/getImg8/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="PG Marksheet">');
-                    $("#pic9").append('<img src="/Student/getImg9/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Reference Letter">');
+                    $("#pic1").append('<img src="/Student/getImg1/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Student Pic">');
+                    $("#pic2").append('<img src="/Student/getImg2/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Father Pic">');
+                    $("#pic3").append('<img src="/Student/getImg3/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Guardian Pic">');
+                    $("#pic4").append('<img src="/Student/getImg4/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Mother Pic">');
+                    $("#pic5").append('<img src="/Student/getImg5/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="SC Reference letter Pic">');
+                    $("#pic6").append('<img src="/Student/getImg6/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="TC Scan Copy">');
+                    $("#pic7").append('<img src="/Student/getImg7/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="SC Marksheet">');
+                    $("#pic8").append('<img src="/Student/getImg8/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="UG Marksheet">');
+                    $("#pic9").append('<img src="/Student/getImg9/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="PG Marksheet">');
 
                     var selectedValues = new Array();
                     var array = data.cats.split(",");
@@ -967,21 +967,21 @@
                 });
             }
 
-            if ($("#Disease").val() == '') {
-                cnt++;
-                $("#Disease").css({
-                    "border": "1px solid red"
-                });
-                alert("disease Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Disease").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Disease").val() == '') {
+            //    cnt++;
+            //    $("#Disease").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("disease Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Disease").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#Religionid").val() == '') {
                 cnt++;
@@ -2214,8 +2214,8 @@
                                                 <div id="tabs-1">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Student Details</legend>
-                                                        <div id="studid">
-                                                            <div class="control-group span5">
+                                                      
+                                                            <div class="control-group span5"  id="studid">
                                                                 @Html.LabelFor(model => model.Studid, new { @class = "control-label" })
 
                                                                 <div class="controls">
@@ -2223,7 +2223,7 @@
                                                                     @Html.ValidationMessageFor(model => model.Studid)
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                       
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.Studnm, new { @class = "control-label" })
                                                             <div class="controls">
@@ -2498,8 +2498,8 @@
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.StudPic, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files3" id="files3" />
-                                                                <div id="pic3">
+                                                                <input type="file" name="files1" id="files1" />
+                                                                <div id="pic1">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.StudPic)
                                                             </div>
@@ -2598,8 +2598,8 @@
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.FatherPic, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files1" id="files1" />
-                                                                <div id="pic1">
+                                                                <input type="file" name="files2" id="files2" />
+                                                                <div id="pic2">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.FatherPic)
                                                             </div>
@@ -2664,8 +2664,8 @@
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.GuardianPic, new { @class = "control-label" })
                                                                 <div class="controls">
-                                                                    <input type="file" name="files4" id="files4" />
-                                                                    <div id="pic4">
+                                                                    <input type="file" name="files3" id="files3" />
+                                                                    <div id="pic3">
                                                                     </div>
                                                                     @Html.ValidationMessageFor(model => model.GuardianPic)
                                                                 </div>
@@ -2721,12 +2721,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.MotherPic, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.MotherPics, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files2" id="files2" />
-                                                                <div id="pic2">
+                                                                <input type="file" name="files4" id="files4" />
+                                                                <div id="pic4">
                                                                 </div>
-                                                                @Html.ValidationMessageFor(model => model.MotherPic)
+                                                                @Html.ValidationMessageFor(model => model.MotherPics)
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5 hide">
@@ -2957,8 +2957,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrScReferenceLetter, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files9" id="files9" />
-                                                                <div id="pic9">
+                                                                <input type="file" name="files5" id="files5" />
+                                                                <div id="pic5">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.PrScReferenceLetter)
                                                             </div>
@@ -2976,8 +2976,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.SCTCPic, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files5" id="files5" />
-                                                                <div id="pic5">
+                                                                <input type="file" name="files6" id="files6" />
+                                                                <div id="pic6">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.SCTCPic)
                                                             </div>
@@ -2986,8 +2986,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.SCMarksheet, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files6" id="files6" />
-                                                                <div id="pic6">
+                                                                <input type="file" name="files7" id="files7" />
+                                                                <div id="pic7">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.SCMarksheet)
                                                             </div>
@@ -3109,8 +3109,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.UGMarksheet, new { @class = "control-label" })
                                                                 <div class="controls">
-                                                                    <input type="file" name="files7" id="files7" />
-                                                                    <div id="pic7">
+                                                                    <input type="file" name="files8" id="files8" />
+                                                                    <div id="pic8">
                                                                     </div>
                                                                     @Html.ValidationMessageFor(model => model.UGMarksheet)
                                                                 </div>
@@ -3227,8 +3227,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PGMarksheet, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                <input type="file" name="files8" id="files8" />
-                                                                <div id="pic8">
+                                                                <input type="file" name="files9" id="files9" />
+                                                                <div id="pic9">
                                                                 </div>
                                                                 @Html.ValidationMessageFor(model => model.PGMarksheet)
                                                             </div>

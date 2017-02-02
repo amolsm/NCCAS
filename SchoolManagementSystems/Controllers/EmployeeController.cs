@@ -38,7 +38,20 @@ namespace SchoolManagementSystems.Controllers
 
 
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+
+        public FileContentResult getImg1(int id)
+        {
+            byte[] byteArray = db.tbl_employee.Where(m => m.Empid == id).Select(m => m.emppic).FirstOrDefault();
+            return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
+        }
+
+        public FileContentResult getImg2(int id)
+        {
+            byte[] byteArray = db.tbl_employee.Where(m => m.Empid == id).Select(m => m.parentspic).FirstOrDefault();
+            return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
+        }
+
+     
         public void FillPermission(int modid)
         {
             var per = db.sp_get_permission(Convert.ToInt32(Session["Role"]), modid).ToList();
@@ -50,15 +63,15 @@ namespace SchoolManagementSystems.Controllers
                 else if (per[i].Permissionid == 4) { ViewData["Delete"] = "Allow"; }
             }
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+     
         public ActionResult EmpAdmission(int? Empid)
         {
             employeeviewmodel _bgv = new employeeviewmodel();
-            //FillPermission(54);
+            FillPermission(54);
          
                 _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
-                
-               _bgv._emplist = db.sp_getemp().ToList();
+            _bgv.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
+            _bgv._emplist = db.sp_getemp().ToList();
             _bgv.citylist = new List<tbl_city>();
             _bgv.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
             _bgv.countrylist = db.tbl_country.Where(m => m.status == true).ToList();
@@ -71,23 +84,23 @@ namespace SchoolManagementSystems.Controllers
     
             return View("EmpAdmission", _bgv);
         }
-        [SchoolManagementSystems.MvcApplication.SessionExpire]
+      
         [HttpGet]
-        public JsonResult FillEmpDetails(int Empid)
+        public JsonResult FillEmpDetails(int empid)
         {
-            var data = db.tbl_employee.Where(m => m.Empid == Empid).FirstOrDefault();
+            var data = db.tbl_employee.Where(m => m.Empid == empid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult EmpAdmission_DML(employeeviewmodel _bgv, string evt, int id, HttpPostedFileBase empfile, HttpPostedFileBase empfile1)
+        public ActionResult EmpAdmission_DML(employeeviewmodel _bgv, string action, HttpPostedFileBase files1, HttpPostedFileBase files2)
         {
-            if (empfile != null)
+            if (files1 != null)
             {
-                if (empfile.InputStream.Length < 31000000)
+                if (files1.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        WebImage img = new WebImage(empfile.InputStream);
+                        WebImage img = new WebImage(files1.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(600, 600);
@@ -98,13 +111,13 @@ namespace SchoolManagementSystems.Controllers
                 }
             }
 
-            if (empfile1 != null)
+            if (files2 != null)
             {
-                if (empfile1.InputStream.Length < 31000000)
+                if (files2.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        WebImage img = new WebImage(empfile1.InputStream);
+                        WebImage img = new WebImage(files2.InputStream);
                         if (img.Width > 700)
                         {
                             img.Resize(600, 600);
@@ -114,7 +127,7 @@ namespace SchoolManagementSystems.Controllers
                     }
                 }
             }
-            if (evt == "submit")
+            if (action != "delete")
             {
                 //db.sp_bloodgroup_DML(_bgv.bloodgroupid, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "").ToString();
                 try
@@ -134,7 +147,7 @@ namespace SchoolManagementSystems.Controllers
                 //    SendEmails(_bgv.Emailid);
                 //}
             }
-            else if (evt == "Delete")
+            else if (action == "Delete")
             {
                 //db.sp_bloodgroup_DML(id, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "del").ToString();
 
@@ -145,6 +158,23 @@ namespace SchoolManagementSystems.Controllers
             }
             //_bgv._emplist = db.sp_getemp().ToList();
             return RedirectToAction("Index");
+        }
+
+        public JsonResult GetCities(string id)
+        {
+            int stateid = 0;
+            if (id != null && id != "")
+            {
+                stateid = Convert.ToInt32(id);
+            }
+            var cities = db.tbl_city.Where(m => m.Stateid == stateid).ToList();
+            return Json(new SelectList(cities, "Cityid", "CityName"));
+        }
+
+        public JsonResult check_duplicate_Emp(string Emailid)
+        {
+            var data = db.tbl_employee.Where(m => m.Emailid == Emailid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -33,17 +33,16 @@
             $("#empid").hide();
         }
         else {
-            act = '@Url.Action("FillEmpDetails")';
             var empid = $("#empid input").val();
+            act = '@Url.Action("FillEmpDetails","Employee")';
+           
             $.ajax({
                 type: 'GET',
                 url: act,
                 dataType: 'JSON',
-                data: { Empid: empid },
+                data: { empid: empid },
                 success: function (data) {
-                    clearmsg();
-                    debugger;
-                    $("#empid").show();
+                    //$("#empid").show();
                     $("#empid input").val(data.Empid);
                     $("#FirstName").val(data.FirstName);
                     $("#MiddleName").val(data.MiddleName);
@@ -166,6 +165,11 @@
                     $("#ifsccode ").val(data.ifsccode);
                     $("#accountno").val(data.accountno);
                     $("#acname").val(data.accountname);
+
+                    $("#pic1").append('<img src="/Employee/getImg1/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Pic">');
+                    $("#pic2").append('<img src="/Employee/getImg2/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Parent Pic">');
+                
+
 
                 }
             });
@@ -701,36 +705,48 @@
                 });
             }
         });
-        $(function () { $("#datepicker").val('') });
+      
         $(function () { $("#datepicker").datepicker(); });
         $(function () { $("#lastdate").datepicker(); });
         $(function () { $("#joiningdate").datepicker(); });
-        $("#lastdate").change(function () {
-            var a = $("#joiningdate").val();
-            var b = $("#lastdate").val();
-            var c = new Date(a);
-            var d = new Date(b);
-            var day = Math.round(Math.abs((c.getDate() - d.getDate())));
-            var year = Math.round(Math.abs((c.getYear() - c.getYear())));
-            var month = Math.round(Math.abs((c.getMonth() - c.getMonth())));
-            $("#ctotal").val(year + " Years " + month + " Months " + day + " Days");
+        $("#datepicker5").change(function () {
+
+            var a = $("#datepicker4").datepicker("getDate").getDate();
+            var b = $("#datepicker4").datepicker("getDate").getYear();
+            var c = $("#datepicker4").datepicker("getDate").getMonth();
+            var d = $("#datepicker5").datepicker("getDate").getDate();
+            var e = $("#datepicker5").datepicker("getDate").getYear();
+            var f = $("#datepicker5").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total").val(year + " Years " + month + " Months " + day + " Days");
 
 
         });
-
-        $(function () { $("#clastdate").datepicker(); });
-        $(function () { $("#cjoiningdate").datepicker(); });
-
-        $("#clastdate").change(function () {
-            debugger;
-            var a = $("#cjoiningdate").val();
-            var b = $("#clastdate").val();
-            var c = new Date(a);
-            var d = new Date(b);
-            var day = Math.round(Math.abs((c.getDate() - d.getDate())));
-            var year = Math.round(Math.abs((c.getYear() - c.getYear())));
-            var month = Math.round(Math.abs((c.getMonth() - c.getMonth())));
-            $("#total").val(year + " Years " + month + " Months " + day + " Days");
+        $("#datepicker3").change(function () {
+            var a = $("#datepicker2").datepicker("getDate").getDate();
+            var b = $("#datepicker2").datepicker("getDate").getYear();
+            var c = $("#datepicker2").datepicker("getDate").getMonth();
+            var d = $("#datepicker3").datepicker("getDate").getDate();
+            var e = $("#datepicker3").datepicker("getDate").getYear();
+            var f = $("#datepicker3").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal").val(year + " Years " + month + " Months " + day + " Days");
 
 
         });
@@ -788,7 +804,7 @@
     }
 </style>
 @Html.Partial("_PermissionHiddenFlds")
-
+@Html.Hidden("FormType", TempData["FormType"])
 <div class="container-fluid-full">
 
     <div class="row-fluid">
@@ -832,7 +848,7 @@
                                 <fieldset>
                                     <div id="tabs">
                                         <ul id="tabss" class="nav navbar-nav">
-                                            <li id="tab1" class="active back"><a href="#tabs-1" style="color: blue;">Student Details</a></li>
+                                            <li id="tab1" class="active back"><a href="#tabs-1" style="color: blue;">Employee Details</a></li>
                                             <li id="tab2" class="back"><a href="#tabs-2" style="color: blue;">Personal Details</a></li>
                                             <li id="tab3" class="back">
                                                 <a href="#tabs-3" style="color: blue;">
@@ -855,7 +871,8 @@
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>Employee Details</legend>
 
-                                                    <div id="empid" class="control-group span5 ">
+                                                  
+                                                      <div class="control-group span5" id="empid">
                                                         @Html.LabelFor(model => model.Empid, new { @class = "control-label", @for = "focusedInput" })
 
                                                         <div class="controls">
@@ -863,12 +880,13 @@
                                                             @Html.ValidationMessageFor(model => model.Empid)
                                                         </div>
                                                     </div>
+                                                 
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.FirstName, new { @class = "control-label", @for = "focusedInput" })
 
                                                         <div class="controls">
                                                             @Html.TextBoxFor(model => model.FirstName, new { placeholder = "Enter First Name", maxlength = "20", @class = "input" })
-                                                            @Html.ValidationMessageFor(model => model.FirstName)
+                                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                     <div class="control-group span5">
@@ -957,26 +975,8 @@
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.edepartment, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> dlistItems = new List<SelectListItem>();
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Male",
-                                                            Value = "1"
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Female",
-                                                            Value = "2",
-
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Unknown",
-                                                            Value = "3",
-                                                            Selected = true
-                                                            }); }
-                                                            @Html.DropDownListFor(model => model.edepartment, dlistItems, "-- Select Department --")
+                                                           
+                                                            @Html.DropDownListFor(model => model.edepartment, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
 
                                                             @Html.ValidationMessageFor(model => model.edepartment)
                                                         </div>
@@ -984,26 +984,7 @@
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.eblood, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> eblistItems = new List<SelectListItem>();
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Male",
-                                                            Value = "1"
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Female",
-                                                            Value = "2",
-
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Unknown",
-                                                            Value = "3",
-                                                            Selected = true
-                                                            }); }
-                                                            @Html.DropDownListFor(model => model.eblood, eblistItems, "-- Select Blood Group --")
+                                                             @Html.DropDownListFor(model => model.eblood, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
 
                                                             @Html.ValidationMessageFor(model => model.eblood)
                                                         </div>
@@ -1271,12 +1252,13 @@
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
                                                         <div class="controls" style="width:47%">
-                                                            <input type="file" name="empfile1" id="empfile1" />
-                                                            <div id="pic3">
+                                                            <input type="file" name="files1" id="files1" />
+                                                            <div id="pic1">
+                                                                </div>
                                                             </div>
                                                             @Html.ValidationMessageFor(model => model.emppic)
                                                         </div>
-                                                    </div>
+                                                   
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.eidtype, new { @class = "control-label" })
                                                         <div class="controls">
@@ -1447,8 +1429,8 @@
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.ppic, new { @class = "control-label" })
                                                         <div class="controls" style="width:47%">
-                                                            <input type="file" name="files3" id="pfile" />
-                                                            <div id="ppic3">
+                                                            <input type="file" name="files2" id="files2" />
+                                                            <div id="pic2">
                                                             </div>
                                                             @Html.ValidationMessageFor(model => model.ppic)
                                                         </div>

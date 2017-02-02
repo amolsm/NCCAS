@@ -884,22 +884,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_student> tbl_student
-        {
-            get
-            {
-                if ((_tbl_student == null))
-                {
-                    _tbl_student = base.CreateObjectSet<tbl_student>("tbl_student");
-                }
-                return _tbl_student;
-            }
-        }
-        private ObjectSet<tbl_student> _tbl_student;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_Chapter> tbl_Chapter
         {
             get
@@ -928,6 +912,22 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_Content> _tbl_Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_student> tbl_student
+        {
+            get
+            {
+                if ((_tbl_student == null))
+                {
+                    _tbl_student = base.CreateObjectSet<tbl_student>("tbl_student");
+                }
+                return _tbl_student;
+            }
+        }
+        private ObjectSet<tbl_student> _tbl_student;
 
         #endregion
 
@@ -1342,14 +1342,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_student EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_student(tbl_student tbl_student)
-        {
-            base.AddObject("tbl_student", tbl_student);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_Chapter EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_Chapter(tbl_Chapter tbl_Chapter)
@@ -1363,6 +1355,14 @@ namespace Entity
         public void AddTotbl_Content(tbl_Content tbl_Content)
         {
             base.AddObject("tbl_Content", tbl_Content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_student EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_student(tbl_student tbl_student)
+        {
+            base.AddObject("tbl_student", tbl_student);
         }
 
         #endregion
@@ -5059,8 +5059,9 @@ namespace Entity
         /// <param name="studentID">No Metadata Documentation available.</param>
         /// <param name="present">No Metadata Documentation available.</param>
         /// <param name="reason">No Metadata Documentation available.</param>
+        /// <param name="createdby">No Metadata Documentation available.</param>
         /// <param name="attendanceDate">No Metadata Documentation available.</param>
-        public int sp_Attandance_DML(Nullable<global::System.Int32> studentID, Nullable<global::System.Boolean> present, global::System.String reason, Nullable<global::System.DateTime> attendanceDate)
+        public int sp_Attandance_DML(Nullable<global::System.Int32> studentID, Nullable<global::System.Boolean> present, global::System.String reason, Nullable<global::System.Int32> createdby, Nullable<global::System.DateTime> attendanceDate)
         {
             ObjectParameter studentIDParameter;
             if (studentID.HasValue)
@@ -5092,6 +5093,16 @@ namespace Entity
                 reasonParameter = new ObjectParameter("Reason", typeof(global::System.String));
             }
     
+            ObjectParameter createdbyParameter;
+            if (createdby.HasValue)
+            {
+                createdbyParameter = new ObjectParameter("createdby", createdby);
+            }
+            else
+            {
+                createdbyParameter = new ObjectParameter("createdby", typeof(global::System.Int32));
+            }
+    
             ObjectParameter attendanceDateParameter;
             if (attendanceDate.HasValue)
             {
@@ -5102,7 +5113,7 @@ namespace Entity
                 attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.DateTime));
             }
     
-            return base.ExecuteFunction("sp_Attandance_DML", studentIDParameter, presentParameter, reasonParameter, attendanceDateParameter);
+            return base.ExecuteFunction("sp_Attandance_DML", studentIDParameter, presentParameter, reasonParameter, createdbyParameter, attendanceDateParameter);
         }
     
         /// <summary>
@@ -7058,6 +7069,178 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        /// <param name="chapterid">No Metadata Documentation available.</param>
+        /// <param name="chaptername">No Metadata Documentation available.</param>
+        /// <param name="description">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_chapter_DML(Nullable<global::System.Int32> chapterid, global::System.String chaptername, global::System.String description, Nullable<global::System.Boolean> status, Nullable<global::System.Int32> subjectid, global::System.String act)
+        {
+            ObjectParameter chapteridParameter;
+            if (chapterid.HasValue)
+            {
+                chapteridParameter = new ObjectParameter("chapterid", chapterid);
+            }
+            else
+            {
+                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter chapternameParameter;
+            if (chaptername != null)
+            {
+                chapternameParameter = new ObjectParameter("chaptername", chaptername);
+            }
+            else
+            {
+                chapternameParameter = new ObjectParameter("chaptername", typeof(global::System.String));
+            }
+    
+            ObjectParameter descriptionParameter;
+            if (description != null)
+            {
+                descriptionParameter = new ObjectParameter("description", description);
+            }
+            else
+            {
+                descriptionParameter = new ObjectParameter("description", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_chapter_DML", chapteridParameter, chapternameParameter, descriptionParameter, statusParameter, subjectidParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="contentid">No Metadata Documentation available.</param>
+        /// <param name="contentname">No Metadata Documentation available.</param>
+        /// <param name="chapterid">No Metadata Documentation available.</param>
+        /// <param name="contentdescription">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_Content_DML(Nullable<global::System.Int32> contentid, global::System.String contentname, Nullable<global::System.Int32> chapterid, global::System.String contentdescription, Nullable<global::System.Boolean> status, global::System.String act)
+        {
+            ObjectParameter contentidParameter;
+            if (contentid.HasValue)
+            {
+                contentidParameter = new ObjectParameter("contentid", contentid);
+            }
+            else
+            {
+                contentidParameter = new ObjectParameter("contentid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter contentnameParameter;
+            if (contentname != null)
+            {
+                contentnameParameter = new ObjectParameter("contentname", contentname);
+            }
+            else
+            {
+                contentnameParameter = new ObjectParameter("contentname", typeof(global::System.String));
+            }
+    
+            ObjectParameter chapteridParameter;
+            if (chapterid.HasValue)
+            {
+                chapteridParameter = new ObjectParameter("chapterid", chapterid);
+            }
+            else
+            {
+                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter contentdescriptionParameter;
+            if (contentdescription != null)
+            {
+                contentdescriptionParameter = new ObjectParameter("contentdescription", contentdescription);
+            }
+            else
+            {
+                contentdescriptionParameter = new ObjectParameter("contentdescription", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_Content_DML", contentidParameter, contentnameParameter, chapteridParameter, contentdescriptionParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getchapter_Result> sp_getchapter()
+        {
+            return base.ExecuteFunction<sp_getchapter_Result>("sp_getchapter");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getcontent_Result> sp_getcontent()
+        {
+            return base.ExecuteFunction<sp_getcontent_Result>("sp_getcontent");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getemp_Result> sp_getemp()
+        {
+            return base.ExecuteFunction<sp_getemp_Result>("sp_getemp");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         /// <param name="studid">No Metadata Documentation available.</param>
         /// <param name="studnm">No Metadata Documentation available.</param>
         /// <param name="studfathernm">No Metadata Documentation available.</param>
@@ -7191,7 +7374,7 @@ namespace Entity
         /// <param name="prpg_regno">No Metadata Documentation available.</param>
         /// <param name="doc_typename">No Metadata Documentation available.</param>
         /// <param name="courseyearid">No Metadata Documentation available.</param>
-        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Decimal> secondaryTotalMarks, Nullable<global::System.Decimal> secondaryObtainMarks, Nullable<global::System.Int32> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Decimal> prUgTotalMark, Nullable<global::System.Decimal> prUgObtainMark, Nullable<global::System.Int32> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Decimal> prPgTotalMark, Nullable<global::System.Decimal> prPgObtainMark, Nullable<global::System.Int32> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename, Nullable<global::System.Int32> courseyearid)
+        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Int32> secondaryTotalMarks, Nullable<global::System.Int32> secondaryObtainMarks, Nullable<global::System.Double> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Int32> prUgTotalMark, Nullable<global::System.Int32> prUgObtainMark, Nullable<global::System.Double> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Int32> prPgTotalMark, Nullable<global::System.Int32> prPgObtainMark, Nullable<global::System.Double> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename, Nullable<global::System.Int32> courseyearid)
         {
             ObjectParameter studidParameter;
             if (studid.HasValue)
@@ -7910,7 +8093,7 @@ namespace Entity
             }
             else
             {
-                secondaryTotalMarksParameter = new ObjectParameter("SecondaryTotalMarks", typeof(global::System.Decimal));
+                secondaryTotalMarksParameter = new ObjectParameter("SecondaryTotalMarks", typeof(global::System.Int32));
             }
     
             ObjectParameter secondaryObtainMarksParameter;
@@ -7920,7 +8103,7 @@ namespace Entity
             }
             else
             {
-                secondaryObtainMarksParameter = new ObjectParameter("SecondaryObtainMarks", typeof(global::System.Decimal));
+                secondaryObtainMarksParameter = new ObjectParameter("SecondaryObtainMarks", typeof(global::System.Int32));
             }
     
             ObjectParameter secondaryPercetageParameter;
@@ -7930,7 +8113,7 @@ namespace Entity
             }
             else
             {
-                secondaryPercetageParameter = new ObjectParameter("SecondaryPercetage", typeof(global::System.Int32));
+                secondaryPercetageParameter = new ObjectParameter("SecondaryPercetage", typeof(global::System.Double));
             }
     
             ObjectParameter secondaryTCScanCopyParameter;
@@ -8000,7 +8183,7 @@ namespace Entity
             }
             else
             {
-                prUgTotalMarkParameter = new ObjectParameter("PrUgTotalMark", typeof(global::System.Decimal));
+                prUgTotalMarkParameter = new ObjectParameter("PrUgTotalMark", typeof(global::System.Int32));
             }
     
             ObjectParameter prUgObtainMarkParameter;
@@ -8010,7 +8193,7 @@ namespace Entity
             }
             else
             {
-                prUgObtainMarkParameter = new ObjectParameter("PrUgObtainMark", typeof(global::System.Decimal));
+                prUgObtainMarkParameter = new ObjectParameter("PrUgObtainMark", typeof(global::System.Int32));
             }
     
             ObjectParameter prUgPercentageParameter;
@@ -8020,7 +8203,7 @@ namespace Entity
             }
             else
             {
-                prUgPercentageParameter = new ObjectParameter("PrUgPercentage", typeof(global::System.Int32));
+                prUgPercentageParameter = new ObjectParameter("PrUgPercentage", typeof(global::System.Double));
             }
     
             ObjectParameter prUgGradeLeavingParameter;
@@ -8130,7 +8313,7 @@ namespace Entity
             }
             else
             {
-                prPgTotalMarkParameter = new ObjectParameter("PrPgTotalMark", typeof(global::System.Decimal));
+                prPgTotalMarkParameter = new ObjectParameter("PrPgTotalMark", typeof(global::System.Int32));
             }
     
             ObjectParameter prPgObtainMarkParameter;
@@ -8140,7 +8323,7 @@ namespace Entity
             }
             else
             {
-                prPgObtainMarkParameter = new ObjectParameter("PrPgObtainMark", typeof(global::System.Decimal));
+                prPgObtainMarkParameter = new ObjectParameter("PrPgObtainMark", typeof(global::System.Int32));
             }
     
             ObjectParameter prPgPercentageParameter;
@@ -8150,7 +8333,7 @@ namespace Entity
             }
             else
             {
-                prPgPercentageParameter = new ObjectParameter("PrPgPercentage", typeof(global::System.Int32));
+                prPgPercentageParameter = new ObjectParameter("PrPgPercentage", typeof(global::System.Double));
             }
     
             ObjectParameter prPgGradeLeavingParameter;
@@ -8524,178 +8707,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter, courseyearidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getemp_Result> sp_getemp()
-        {
-            return base.ExecuteFunction<sp_getemp_Result>("sp_getemp");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="chapterid">No Metadata Documentation available.</param>
-        /// <param name="chaptername">No Metadata Documentation available.</param>
-        /// <param name="description">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_chapter_DML(Nullable<global::System.Int32> chapterid, global::System.String chaptername, global::System.String description, Nullable<global::System.Boolean> status, Nullable<global::System.Int32> subjectid, global::System.String act)
-        {
-            ObjectParameter chapteridParameter;
-            if (chapterid.HasValue)
-            {
-                chapteridParameter = new ObjectParameter("chapterid", chapterid);
-            }
-            else
-            {
-                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter chapternameParameter;
-            if (chaptername != null)
-            {
-                chapternameParameter = new ObjectParameter("chaptername", chaptername);
-            }
-            else
-            {
-                chapternameParameter = new ObjectParameter("chaptername", typeof(global::System.String));
-            }
-    
-            ObjectParameter descriptionParameter;
-            if (description != null)
-            {
-                descriptionParameter = new ObjectParameter("description", description);
-            }
-            else
-            {
-                descriptionParameter = new ObjectParameter("description", typeof(global::System.String));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_chapter_DML", chapteridParameter, chapternameParameter, descriptionParameter, statusParameter, subjectidParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="contentid">No Metadata Documentation available.</param>
-        /// <param name="contentname">No Metadata Documentation available.</param>
-        /// <param name="chapterid">No Metadata Documentation available.</param>
-        /// <param name="contentdescription">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_Content_DML(Nullable<global::System.Int32> contentid, global::System.String contentname, Nullable<global::System.Int32> chapterid, global::System.String contentdescription, Nullable<global::System.Boolean> status, global::System.String act)
-        {
-            ObjectParameter contentidParameter;
-            if (contentid.HasValue)
-            {
-                contentidParameter = new ObjectParameter("contentid", contentid);
-            }
-            else
-            {
-                contentidParameter = new ObjectParameter("contentid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter contentnameParameter;
-            if (contentname != null)
-            {
-                contentnameParameter = new ObjectParameter("contentname", contentname);
-            }
-            else
-            {
-                contentnameParameter = new ObjectParameter("contentname", typeof(global::System.String));
-            }
-    
-            ObjectParameter chapteridParameter;
-            if (chapterid.HasValue)
-            {
-                chapteridParameter = new ObjectParameter("chapterid", chapterid);
-            }
-            else
-            {
-                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter contentdescriptionParameter;
-            if (contentdescription != null)
-            {
-                contentdescriptionParameter = new ObjectParameter("contentdescription", contentdescription);
-            }
-            else
-            {
-                contentdescriptionParameter = new ObjectParameter("contentdescription", typeof(global::System.String));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_Content_DML", contentidParameter, contentnameParameter, chapteridParameter, contentdescriptionParameter, statusParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getchapter_Result> sp_getchapter()
-        {
-            return base.ExecuteFunction<sp_getchapter_Result>("sp_getchapter");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getcontent_Result> sp_getcontent()
-        {
-            return base.ExecuteFunction<sp_getcontent_Result>("sp_getcontent");
         }
 
         #endregion
@@ -20273,7 +20284,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> SecondaryTotalMarks
+        public Nullable<global::System.Int32> SecondaryTotalMarks
         {
             get
             {
@@ -20288,8 +20299,8 @@ namespace Entity
                 OnSecondaryTotalMarksChanged();
             }
         }
-        private Nullable<global::System.Decimal> _SecondaryTotalMarks;
-        partial void OnSecondaryTotalMarksChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _SecondaryTotalMarks;
+        partial void OnSecondaryTotalMarksChanging(Nullable<global::System.Int32> value);
         partial void OnSecondaryTotalMarksChanged();
     
         /// <summary>
@@ -20297,7 +20308,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> SecondaryObtainMarks
+        public Nullable<global::System.Int32> SecondaryObtainMarks
         {
             get
             {
@@ -20312,8 +20323,8 @@ namespace Entity
                 OnSecondaryObtainMarksChanged();
             }
         }
-        private Nullable<global::System.Decimal> _SecondaryObtainMarks;
-        partial void OnSecondaryObtainMarksChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _SecondaryObtainMarks;
+        partial void OnSecondaryObtainMarksChanging(Nullable<global::System.Int32> value);
         partial void OnSecondaryObtainMarksChanged();
     
         /// <summary>
@@ -20321,7 +20332,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> SecondaryPercetage
+        public Nullable<global::System.Double> SecondaryPercetage
         {
             get
             {
@@ -20336,8 +20347,8 @@ namespace Entity
                 OnSecondaryPercetageChanged();
             }
         }
-        private Nullable<global::System.Int32> _SecondaryPercetage;
-        partial void OnSecondaryPercetageChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _SecondaryPercetage;
+        partial void OnSecondaryPercetageChanging(Nullable<global::System.Double> value);
         partial void OnSecondaryPercetageChanged();
     
         /// <summary>
@@ -20489,7 +20500,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> PrUgTotalMark
+        public Nullable<global::System.Int32> PrUgTotalMark
         {
             get
             {
@@ -20504,8 +20515,8 @@ namespace Entity
                 OnPrUgTotalMarkChanged();
             }
         }
-        private Nullable<global::System.Decimal> _PrUgTotalMark;
-        partial void OnPrUgTotalMarkChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _PrUgTotalMark;
+        partial void OnPrUgTotalMarkChanging(Nullable<global::System.Int32> value);
         partial void OnPrUgTotalMarkChanged();
     
         /// <summary>
@@ -20513,7 +20524,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> PrUgObtainMark
+        public Nullable<global::System.Int32> PrUgObtainMark
         {
             get
             {
@@ -20528,8 +20539,8 @@ namespace Entity
                 OnPrUgObtainMarkChanged();
             }
         }
-        private Nullable<global::System.Decimal> _PrUgObtainMark;
-        partial void OnPrUgObtainMarkChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _PrUgObtainMark;
+        partial void OnPrUgObtainMarkChanging(Nullable<global::System.Int32> value);
         partial void OnPrUgObtainMarkChanged();
     
         /// <summary>
@@ -20537,7 +20548,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> PrUgPercentage
+        public Nullable<global::System.Double> PrUgPercentage
         {
             get
             {
@@ -20552,8 +20563,8 @@ namespace Entity
                 OnPrUgPercentageChanged();
             }
         }
-        private Nullable<global::System.Int32> _PrUgPercentage;
-        partial void OnPrUgPercentageChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _PrUgPercentage;
+        partial void OnPrUgPercentageChanging(Nullable<global::System.Double> value);
         partial void OnPrUgPercentageChanged();
     
         /// <summary>
@@ -20801,7 +20812,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> PrPgTotalMark
+        public Nullable<global::System.Int32> PrPgTotalMark
         {
             get
             {
@@ -20816,8 +20827,8 @@ namespace Entity
                 OnPrPgTotalMarkChanged();
             }
         }
-        private Nullable<global::System.Decimal> _PrPgTotalMark;
-        partial void OnPrPgTotalMarkChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _PrPgTotalMark;
+        partial void OnPrPgTotalMarkChanging(Nullable<global::System.Int32> value);
         partial void OnPrPgTotalMarkChanged();
     
         /// <summary>
@@ -20825,7 +20836,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> PrPgObtainMark
+        public Nullable<global::System.Int32> PrPgObtainMark
         {
             get
             {
@@ -20840,8 +20851,8 @@ namespace Entity
                 OnPrPgObtainMarkChanged();
             }
         }
-        private Nullable<global::System.Decimal> _PrPgObtainMark;
-        partial void OnPrPgObtainMarkChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _PrPgObtainMark;
+        partial void OnPrPgObtainMarkChanging(Nullable<global::System.Int32> value);
         partial void OnPrPgObtainMarkChanged();
     
         /// <summary>
@@ -20849,7 +20860,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> PrPgPercentage
+        public Nullable<global::System.Double> PrPgPercentage
         {
             get
             {
@@ -20864,8 +20875,8 @@ namespace Entity
                 OnPrPgPercentageChanged();
             }
         }
-        private Nullable<global::System.Int32> _PrPgPercentage;
-        partial void OnPrPgPercentageChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _PrPgPercentage;
+        partial void OnPrPgPercentageChanging(Nullable<global::System.Double> value);
         partial void OnPrPgPercentageChanged();
     
         /// <summary>
@@ -21910,6 +21921,30 @@ namespace Entity
         private Nullable<global::System.DateTime> _AttendanceDate;
         partial void OnAttendanceDateChanging(Nullable<global::System.DateTime> value);
         partial void OnAttendanceDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CreatedBy;
+        partial void OnCreatedByChanging(Nullable<global::System.Int32> value);
+        partial void OnCreatedByChanged();
 
         #endregion
 
@@ -26531,72 +26566,24 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String FirstName
+        public global::System.String EmployeeName
         {
             get
             {
-                return _FirstName;
+                return _EmployeeName;
             }
             set
             {
-                OnFirstNameChanging(value);
-                ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("FirstName");
-                OnFirstNameChanged();
+                OnEmployeeNameChanging(value);
+                ReportPropertyChanging("EmployeeName");
+                _EmployeeName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EmployeeName");
+                OnEmployeeNameChanged();
             }
         }
-        private global::System.String _FirstName;
-        partial void OnFirstNameChanging(global::System.String value);
-        partial void OnFirstNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String MiddleName
-        {
-            get
-            {
-                return _MiddleName;
-            }
-            set
-            {
-                OnMiddleNameChanging(value);
-                ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("MiddleName");
-                OnMiddleNameChanged();
-            }
-        }
-        private global::System.String _MiddleName;
-        partial void OnMiddleNameChanging(global::System.String value);
-        partial void OnMiddleNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String LastName
-        {
-            get
-            {
-                return _LastName;
-            }
-            set
-            {
-                OnLastNameChanging(value);
-                ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("LastName");
-                OnLastNameChanged();
-            }
-        }
-        private global::System.String _LastName;
-        partial void OnLastNameChanging(global::System.String value);
-        partial void OnLastNameChanged();
+        private global::System.String _EmployeeName;
+        partial void OnEmployeeNameChanging(global::System.String value);
+        partial void OnEmployeeNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -26723,7 +26710,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> DateOfJoin
+        public global::System.String DateOfJoin
         {
             get
             {
@@ -26733,13 +26720,13 @@ namespace Entity
             {
                 OnDateOfJoinChanging(value);
                 ReportPropertyChanging("DateOfJoin");
-                _DateOfJoin = StructuralObject.SetValidValue(value);
+                _DateOfJoin = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("DateOfJoin");
                 OnDateOfJoinChanged();
             }
         }
-        private Nullable<global::System.DateTime> _DateOfJoin;
-        partial void OnDateOfJoinChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _DateOfJoin;
+        partial void OnDateOfJoinChanging(global::System.String value);
         partial void OnDateOfJoinChanged();
     
         /// <summary>

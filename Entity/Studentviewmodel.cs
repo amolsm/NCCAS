@@ -79,7 +79,7 @@ namespace Entity
         public int PrScObtainMark { get; set; }
 
         [DisplayName("Percentage : ")]
-        public int PrScPercentage { get; set; }
+        public float PrScPercentage { get; set; }
 
         [DisplayName("Grade while leaving : ")]
         public string Grade { get; set; }
@@ -178,7 +178,7 @@ namespace Entity
         public int MotherBldGrpid { get; set; }
 
         [DisplayName("Mother's Pic : ")]
-        public byte[] MotherPic { get; set; }
+        public byte[] MotherPics { get; set; }
 
         [DisplayName("Select Country : ")]
         public int Countryid { get; set; }
@@ -306,7 +306,7 @@ namespace Entity
         public string PrUgRefContactNo { get; set; }
 
         [DisplayName("Percentage")]
-        public int PrUgPercentage { get; set; }
+        public float PrUgPercentage { get; set; }
 
         [DisplayName("College Name")]
         public string PrPgCollegeName { get; set; }
@@ -345,7 +345,7 @@ namespace Entity
         public string PrPgRefContactNo { get; set; }
 
         [DisplayName("Percentage")]
-        public int PrPgPercentage { get; set; }
+        public float PrPgPercentage { get; set; }
 
         
 

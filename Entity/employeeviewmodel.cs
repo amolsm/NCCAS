@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entity
 {
@@ -12,12 +13,14 @@ namespace Entity
         public int Empid { get; set; }
 
         [DisplayName("First Name ")]
+      
         public string FirstName { get; set; }
 
         [DisplayName("Middle Name ")]
         public string MiddleName { get; set; }
 
         [DisplayName("Last Name ")]
+     
         public string LastName { get; set; }
 
         [DisplayName("Select State ")]
@@ -304,7 +307,7 @@ namespace Entity
         public List<tbl_StudentCategory> categorylist { get; set; }
 
         public List<tblDepartment> departmentlistdetails { get; set; }
-     
+      
         //public IEnumerable<tbl_category> catlist { get; set; }
         //public List<tbl_caste> castelist { get; set; }
         //public List<tbl_occupation> occupationlist { get; set; }
