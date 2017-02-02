@@ -39,7 +39,6 @@ namespace SchoolManagementSystems.Controllers
             
             return View(_avm);
         }
-
         public JsonResult GetStudentsSearchData(string id, string Search_Data)
         {
             int Classid = 0;
@@ -58,17 +57,20 @@ namespace SchoolManagementSystems.Controllers
             var students = svm.StudentDataCollection.Where(x => x.Classid == Classid).ToList();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetStudents(string id)
+        public JsonResult GetStudents(string id,string id2,string id3)
         {
             int Classid = 0;
-            if (id != null && id != "")
+            int DepartmentId = 0;
+            int yearid = 0;
+            if (id != null && id != "" && id2 != null && id2 != "" && id3 != null && id3 != "")
             {
+                DepartmentId = Convert.ToInt32(id3);
+                yearid = Convert.ToInt32(id2);
                 Classid = Convert.ToInt32(id);
             }
-            var students = db.tbl_student.Where(m => m.Classid == Classid).Select(m => new { m.Studid, m.Studnm, m.Studfathernm, m.Studmothernm, m.StudEmail, m.Classid, m.FatherEmail, m.MotherEmail, m.Countryid, m.Stateid, m.Cityid,m.RollNo }).ToList();
+            var students = db.tbl_student.Where(m => (m.Classid == Classid && m.Dept_Id == DepartmentId && m.courseyearid == yearid)).Select(m => new { m.Studid, m.Studnm, m.Studfathernm, m.Studmothernm, m.StudEmail, m.Classid, m.FatherEmail, m.MotherEmail, m.Countryid, m.Stateid, m.Cityid, m.RollNo }).ToList();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult StaffAttendance(Attendanceviewmodel avm)
         {
@@ -90,12 +92,57 @@ namespace SchoolManagementSystems.Controllers
         {
             ViewBag.errormessage = "";
             Attendanceviewmodel _avm = new Attendanceviewmodel();
-            FillPermission(9);
-            //_avm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
-            _avm.Classlist = db.tbl_class.ToList();
+            FillPermission(9);       
+            _avm.YearList = db.tbl_YearMaster.ToList();
+            _avm.DepartmentList = db.tblDepartment.ToList();
+            _avm.DivisionList = new List<tbl_division>();
+            _avm.Classlist = new List<tbl_class>();
             return View(_avm);
         }
+        public JsonResult GetClass(string id)
+        {
+            int deptid = 0;
+            if (id != null && id != "")
+            {
+                deptid = Convert.ToInt32(id);
+            }
+            var DClass = db.tbl_class.Where(m => m.Dept_id == deptid).ToList();
+            return Json(new SelectList(DClass, "Classid", "Classnm"));
+        }
+        public JsonResult GetDivision(string id)
+        {
+            int classid = 0;
+            if (id != null && id != "")
+            {
+                classid = Convert.ToInt32(id);
+            }
+            var division = db.tbl_division.Where(m => m.Classid == classid).ToList();
+            return Json(new SelectList(division, "Divisionid", "DivisionName"));
+        }
+        //public ActionResult GetYear(int dept_id, int courseid,int academicyear)
+        //{ 
+        //    //Attendanceviewmodel _avm = new Attendanceviewmodel();
+        //    //_avm.tblcourse = new List<tbl_CourseYearMaster>();
+        //    // _avm.YearList = new List<tbl_YearMaster>();
+        //    // tbl_CourseYearMaster yClass = db.tbl_CourseYearMaster.Where(m => m.dept_id == deptid && m.courseid == courseid).FirstOrDefault();
+        //    //var data1 = db.tbl_YearMaster.Where(m => m.yearid == academicyear).ToList();
+        //    //return Json(new SelectList(data1, "yearid", "YearName"));
+        //    //var query = from c in db.tbl_CourseYearMaster
+        //    //            join o in db.tbl_YearMaster on c.academicyear equals o.yearid
+        //    //            where c.dept_id == dept_id && c.courseid == courseid
+        //    //            select new { o.yearid, o.YearName };
+        //    //_avm.ylist = new SelectList(query, "yearid", "YearName");
 
+        //    //_avm.year = "NY";
+        //    //return View(_avm);
+        //    //return Json(new SelectList(query, "yearid", "YearName"));
+        //    //var data = db.sp_getyear(dept_id,courseid).FirstOrDefault();
+        //    //var data1 = db.tbl_YearMaster.Where(m => m.yearid == academicyear).FirstOrDefault();
+        //    //return Json(data1, JsonRequestBehavior.AllowGet);
+        //    //_avm.yearlist1 = db.sp_getyear(_avm.department, _avm.Classid).ToList();
+        //    //return View(_avm);
+
+        //}
         public ActionResult StudentAttendance(int Studid)
         {
             Attendanceviewmodel _avm = new Attendanceviewmodel();
@@ -167,13 +214,14 @@ namespace SchoolManagementSystems.Controllers
             
             for (int i = 0; i < presentdetails.Count(); i++)
             {
+                //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
                 s = presentdetails[i].ToString();
                 string[] s1 = s.ToString().Split(',');
                 sa.StudentID = Convert.ToInt32(s1[0].ToString());
                 sa.AttendanceDate = Convert.ToDateTime(s1[1].ToString());
                 sa.Present = Convert.ToBoolean(s1[2].ToString());
                 sa.Reason = s1[3].ToString();
-                db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.AttendanceDate);
+                db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason,sa.CreatedBy,sa.AttendanceDate);
                 db.SaveChanges();
                
             }

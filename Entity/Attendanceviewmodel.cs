@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Web.Mvc;
 
 namespace Entity
 {
     public class Attendanceviewmodel
     {
-        [DisplayName("Class Name ")]
+        [DisplayName("Course Name ")]
         public int Classid { get; set; }
 
         [DisplayName("Select Date ")]
@@ -41,16 +42,29 @@ namespace Entity
         [DisplayName("Leave Type")]
         public int LeaveTypeid { get; set; }
 
+        [DisplayName("Year")]
+        public int year { get; set; }
+
+        [DisplayName("Department")]
+        public int department { get; set; }
+
+        [DisplayName("Division")]
+        public int division { get; set; }
+
         [DisplayName("Leave Start Date")]
         public DateTime LeaveStartDate { get; set; }
 
         [DisplayName("Leave End Date")]
         public DateTime LeaveEndDate { get; set; }
 
+        public SelectList ylist { get; set; }
+        public List<tbl_CourseYearMaster> tblcourse { get; set; }
         public List<tbl_employee> Employeelist { get; set; }
-
+        public List<tbl_division> DivisionList { get; set; }
+        public List<tblDepartment> DepartmentList { get; set; }
+        public List<tbl_YearMaster> YearList { get; set; }
         public List<tbl_class> Classlist { get; set; }
-
+        public List<sp_getyear_Result> yearlist1 { get; set; }
         public List<tbl_leave> Leavelist { get; set; }
         public class presentdetails
         {

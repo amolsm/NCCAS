@@ -19,9 +19,9 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult Login(string Username, string Password)
         {
             ViewData["Error"] = "";
-            Userviewmodel uvm = new Userviewmodel();  
+            Userviewmodel uvm = new Userviewmodel();
             Dashboardviewmodel dvm = new Dashboardviewmodel();
-        
+
             if (Session["Userid"] != null && Session["Userid"] != "")
             {
                 dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
@@ -111,10 +111,10 @@ namespace SchoolManagementSystems.Controllers
 
         public ActionResult GetNews(Dashboardviewmodel dash)
         {
-           
+
             return View("Dashboard");
         }
 
-      
+
     }
 }

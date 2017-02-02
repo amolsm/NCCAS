@@ -1208,6 +1208,7 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult FillCourseYearDetails(int courseyearid)
         {
+            
             var data = db.tbl_CourseYearMaster.Where(m => m.id == courseyearid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }

@@ -41,21 +41,93 @@
        
 
       
-
-      
-        $("#insert").click(function () {
+        $("#department").change(function () {
+            $("#Classid").empty();
+          
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetClass")',
+                dataType: 'json',
+                data: { id: $("#department").val() },
+                success: function (DClass) {
+                    if (DClass != "") {
+                        var item = '<option value="0">Select Class</option>';
+                        $.each(DClass, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#Classid").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Class</option>';
+                        $("#Classid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Class.' + ex);
+                }
+            });
+             return false;
+        })
+       @* $("#Classid").change(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDivision")',
+                dataType: 'json',
+                data: { id: $("#Classid").val() },
+                success: function (division) {
+                    if (division != "") {
+                        var item = '<option value="0">Select Division</option>';
+                        $.each(division, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#division").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Division</option>';
+                        $("#division").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Division.' + ex);
+                }
+            });
+            return false;
+        })*@
+       @* $("#Classid").change(function () {
+            $("#year").empty();
+            var query =  $("#department").val()
         
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYear")',
+                dataType: 'json',
+                data: { id: $("#Classid").val(),id:$("#department").val(), },
+                success: function (query) {
+                    if (query != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(query, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+           return false;
+        })*@
+        $("#insert").click(function () {       
                 var presentdetails = [];
                 $('input:checkbox.addcls').each(function (evt) {
-
                     var PresentDate = ($("#datepicker").val());
                     var studentid = ($(this).val());
-
-
-
                     var remark = '';
                     var reason = '';
-
                     if ($(this).prop('checked')) {
                         remark = 'true';
                         presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason);
@@ -75,22 +147,12 @@
                             presentdetails = [];
                             return false;
                         }
-
-
-
-
-
                     }
-
                 });
                 if (presentdetails != "") {
-
                     var options = {};
-
-
                     options.type = "POST",
                     options.url = '@Url.Action("DMLAttendance")',
-
                     options.data = JSON.stringify(presentdetails);
                     options.contentType = "application/json";
                     options.success = function (presentdetails) {
@@ -185,34 +247,18 @@
             }
         }
      
-     function myFunction() {
-         var StudentIds = $("#students").val(data.length)
-;       
-      }   
-
-
-   
-      
-      
- 
-
-              
-       
+     function myFunction() { var StudentIds = $("#students").val(data.length);}   
     
         $("#header").click(function () {
             if ($("#Add_header").is(":checked")) {
-                $(".addcls").prop('checked', true);
-              
-               
+                $(".addcls").prop('checked', true);  
             }
             else {
                 $(".addcls").prop('checked', false);
-             
-              
             }
 
         });
-        $('#Classid').change(function () {
+        $('#year').change(function () {
             $("#insert").show();
             var Classid = $('#Classid').val();
             if (Classid == '') {
@@ -223,7 +269,7 @@
                 type: 'POST',
                 url: '@Url.Action("GetStudents")',
                 dataType: 'json',
-                data: { id: $("#Classid").val() },
+                data: { id: $("#Classid").val(), id2: $("#year").val(), id3: $("#department").val() },
                 success: function (data) {
                     
                         var result = $('#result');
@@ -306,6 +352,13 @@
                                                         @TempData["ErrorMessage"]
                                                     </h2>
                                                 </div>
+                                               <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.department, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.department, new SelectList(Model.DepartmentList, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                    @Html.ValidationMessageFor(model => model.department)
+                                                           </div>
+                                                </div>
                                                 <div class="control-group span5">
                                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
                                                        <div class="controls">
@@ -313,6 +366,20 @@
                                                     @Html.ValidationMessageFor(model => model.Classid)
                                                            </div>
                                                 </div>
+                                                 <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.year, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.year, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
+                                                    @Html.ValidationMessageFor(model => model.year)
+                                                           </div>
+                                                </div>
+                                                 @*<div class="control-group span5">
+                                                    @Html.LabelFor(model => model.division, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.division, new SelectList(Model.DivisionList, "Divisionid", "DivisionName", "Select Division"), "Select Division")
+                                                    @Html.ValidationMessageFor(model => model.division)
+                                                           </div>
+                                                </div>*@
                                                 <div class="control-group span5">
                                                     @Html.LabelFor(model => model.AttendanceDate, new { @class = "control-label" })
                                                        <div class="controls">
