@@ -17,8 +17,33 @@
             Validations(e);
         });
         FillType();
+        $("#eidtype").change(function () {
+            if ($("#eidtype").val() == 7)
+            { $("#doctype").show(); }
+            else { $("#doctype").hide(); }
 
+        });
 
+        $('#cbxShowHide').change(function () {
+            if (this.checked) {
+                $('#autoUpdate').show();
+                $('#autoUpdate').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdate').hide();
+                $('#autoUpdate').fadeOut('slow');
+            }
+        });
+        $('#cbxShowHide1').change(function () {
+            if (this.checked) {
+                $('#autoUpdate1').show();
+                $('#autoUpdate1').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdate1').hide();
+                $('#autoUpdate1').fadeOut('slow');
+            }
+        });
 
         function FillType() {
             var item = '<option value="">select Type</option>';
@@ -49,7 +74,7 @@
                     $("#LastName").val(data.LastName);
                     var value = new Date(parseInt(data.DOB.substr(6)));
                     $('#datepicker').datepicker('setDate', value);
-                    $('#datepicker').focus();
+                    //$('#datepicker').focus();
                     if (data.DateOfJoin != null) {
                         var value1 = new Date(parseInt(data.DateOfJoin.substr(6)));
                         $('#datepicker1').datepicker('setDate', value1);
@@ -100,10 +125,25 @@
                     $("#total").val(data.totalexperience);
                     $("#ctotal").val(data.ctotalexperience);
                     $("#university").val(data.affliateduniversity);
-                    $("#joiningdate").val(data.joiningdate);
-                    $("#lastdate").val(data.lastdate);
-                    $("#cjoiningdate").val(data.cjoiningdate);
-                    $("#clastdate").val(data.clastdate);
+                    var value1 = new Date(parseInt(data.joiningdate.substr(6)));
+                    $('#datepicker2').datepicker('setDate', value1);
+                    var value2 = new Date(parseInt(data.lastdate.substr(6)));
+                    $('#datepicker3').datepicker('setDate', value2);
+                    var value3 = new Date(parseInt(data.cjoiningdate.substr(6)));
+                    $('#datepicker4').datepicker('setDate', value3);
+                    var value4 = new Date(parseInt(data.clastdate.substr(6)));
+                    $('#datepicker5').datepicker('setDate', value4);
+                  
+                    var value5 = new Date(parseInt(data.joiningdate1.substr(6)));
+                    $('#datepicker6').datepicker('setDate', value5);
+                    var value6 = new Date(parseInt(data.lastdate1.substr(6)));
+                    $('#datepicker7').datepicker('setDate', value6);
+                    var value7 = new Date(parseInt(data.cjoiningdate1.substr(6)));
+                    $('#datepicker8').datepicker('setDate', value7);
+
+                    var value8 = new Date(parseInt(data.clastdate1.substr(6)));
+                    $('#datepicker9').datepicker('setDate', value8);
+
                     $("#ldesignation").val(data.lastdesignation);
                     $("#companyname").val(data.companyname);
                     $("#clastdesignatio").val(data.clastdesignatio);
@@ -146,15 +186,67 @@
                     $("#PCODE").val(data.parentscode);
                     //$("#ppic").val('');
                     $("#pastreet").val(data.pstreet);
-                    $("#pacity").val(data.pcity);
-                    $("#pastate").val(data.pstate);
                     $("#pacountry").val(data.pcountry);
+                 
+                    $("#pastate").val(data.pstate);
+                    $("#pacity").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetCities")',
+                        dataType: 'json',
+                        data: { id: data.pstate },
+                        success: function (cities) {
+                            if (cities != "") {
+                                var item = '<option value="0">Select city</option>';
+                                $.each(cities, function (i, city) {
+                                    item += '<option value="' + city.Value + '">' + city.Text + '</option>';
+                                });
+                                $("#pacity").append(item);
+                                $("#pacity").val(data.pcity);
+                            }
+                            else {
+                                var item = '<option value="">Select city</option>';
+                                $("#pacity").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve cities.' + ex);
+                        }
+                    });
+
+                  
+                   
                     $("#papin").val(data.ppin);
                     $("#cstreet").val(data.cstreet);
-                    $("#ccity").val(data.ccity);
+                    $("#ccountry ").val(data.ccountry);
                     $("#cstate").val(data.cstate);
 
-                    $("#ccountry ").val(data.ccountry);
+                
+
+                    $("#ccity").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetCities")',
+                        dataType: 'json',
+                        data: { id: data.cstate },
+                        success: function (cities) {
+                            if (cities != "") {
+                                var item = '<option value="0">Select city</option>';
+                                $.each(cities, function (i, city) {
+                                    item += '<option value="' + city.Value + '">' + city.Text + '</option>';
+                                });
+                                $("#ccity").append(item);
+                                $("#ccity").val(data.ccity);
+                            }
+                            else {
+                                var item = '<option value="">Select city</option>';
+                                $("#ccity").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve cities.' + ex);
+                        }
+                    });
                     $("#cpin ").val(data.cpin);
                     $("#phome ").val(data.homecontact);
                     $("#PHCODE ").val(data.homecode);
@@ -165,7 +257,20 @@
                     $("#ifsccode ").val(data.ifsccode);
                     $("#accountno").val(data.accountno);
                     $("#acname").val(data.accountname);
-
+                    $("#DocumentIDNo").val(data.docnumber);
+                    $("#Documenttypename").val(data.doctypename);
+                    $("#conttactrelation").val(data.contrelation);
+                    $("#collagename1").val(data.collagename1);
+                    $("#university1").val(data.affliateduniversity1);
+                    $("#ctotal1").val(data.totalexperience1);
+                    $("#ldesignation1").val(data.lastdesignation1);
+                    $("#clastdesignation").val(data.clastdesignation);
+                    $("#companyname1").val(data.companyname1);
+                    $("#clastdesignation1").val(data.clastdesignation1);
+                    $("#ctotal").val(data.ctotalexperience);
+                    $("#total").val(data.totalexperience);
+                    $("#total1").val(data.totalexperience1);
+               
                     $("#pic1").append('<img src="/Employee/getImg1/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Pic">');
                     $("#pic2").append('<img src="/Employee/getImg2/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Parent Pic">');
                 
@@ -261,8 +366,68 @@
 
         $('#datepicker5').datepicker('setDate', new Date());
 
+        $('#datepicker6').attr("readonly", true);
+
+        $('#datepicker6').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker6').datepicker('setDate', new Date());
+
+        $('#datepicker7').attr("readonly", true);
+
+        $('#datepicker7').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker7').datepicker('setDate', new Date());
+
+        $('#datepicker8').attr("readonly", true);
+
+        $('#datepicker8').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker8').datepicker('setDate', new Date());
+
+        $('#datepicker9').attr("readonly", true);
+
+        $('#datepicker9').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker9').datepicker('setDate', new Date());
+
         $('#datepicker1').datepicker('setDate', new Date());
-        $('#datepicker').focus();
+      
 
 
 
@@ -442,18 +607,18 @@
                 });
             }
 
-            //if ($("#Emailid").val() == '') {
-            //    cnt++;
-            //    $("#Emailid").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#Emailid").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#Emailid").val() == '') {
+                cnt++;
+                $("#Emailid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Emailid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             //if ($("#PhoneNo").val() == '') {
             //    cnt++;
             //    $("#PhoneNo").css({
@@ -467,44 +632,44 @@
             //    });
             //}
 
-            //if ($("#MobileNo").val() == '') {
-            //    cnt++;
-            //    $("#MobileNo").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#MobileNo").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#MobileNo").val() == '') {
+                cnt++;
+                $("#MobileNo").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#MobileNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-            //if ($("#Code").val() == '') {
-            //    cnt++;
-            //    $("#Code").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#Code").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#Code").val() == '') {
+                cnt++;
+                $("#Code").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Code").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-            //if ($("#Typeid").val() == '' || $("#Typeid").val() == '0') {
-            //    cnt++;
-            //    $("#Typeid").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#Typeid").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#Typeid").val() == '' || $("#Typeid").val() == '0') {
+                cnt++;
+                $("#Typeid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Typeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             //if ($("#eidtype").val() == '' || $("#eidtype").val() == '0') {
             //    cnt++;
             //    $("#eidtype").css({
@@ -517,54 +682,54 @@
             //        "background": ""
             //    });
             //}
-            //if ($("#equalification1").val() == '' || $("#equalification1").val() == '0') {
-            //    cnt++;
-            //    $("#equalification1").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#equalification1").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-            //if ($("#euniversity1").val() == '' || $("#euniversity1").val() == '0') {
-            //    cnt++;
-            //    $("#euniversity1").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#euniversity1").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-            //if ($("#eprecentage1").val() == '' || $("#eprecentage1").val() == '0') {
-            //    cnt++;
-            //    $("#eprecentage1").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#eprecentage1").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-            //if ($("#eYearofpassing1").val() == '' || $("#eYearofpassing1").val() == '0') {
-            //    cnt++;
-            //    $("#eYearofpassing1").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#eYearofpassing1").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#equalification1").val() == '' || $("#equalification1").val() == '0') {
+                cnt++;
+                $("#equalification1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#equalification1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#euniversity1").val() == '' || $("#euniversity1").val() == '0') {
+                cnt++;
+                $("#euniversity1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#euniversity1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#eprecentage1").val() == '' || $("#eprecentage1").val() == '0') {
+                cnt++;
+                $("#eprecentage1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#eprecentage1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#eYearofpassing1").val() == '' || $("#eYearofpassing1").val() == '0') {
+                cnt++;
+                $("#eYearofpassing1").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#eYearofpassing1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             //if ($("#relationship").val() == '' || $("#relationship").val() == '0') {
             //    cnt++;
             //    $("#relationship").css({
@@ -706,7 +871,7 @@
             }
         });
       
-        $(function () { $("#datepicker").datepicker(); });
+        $(function () { $("#datepicker").datepicker().val(''); });
         $(function () { $("#lastdate").datepicker(); });
         $(function () { $("#joiningdate").datepicker(); });
         $("#datepicker5").change(function () {
@@ -750,10 +915,89 @@
 
 
         });
+
+        $("#datepicker7").change(function () {
+            var a = $("#datepicker6").datepicker("getDate").getDate();
+            var b = $("#datepicker6").datepicker("getDate").getYear();
+            var c = $("#datepicker6").datepicker("getDate").getMonth();
+            var d = $("#datepicker7").datepicker("getDate").getDate();
+            var e = $("#datepicker7").datepicker("getDate").getYear();
+            var f = $("#datepicker7").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal1").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+
+        $("#datepicker9").change(function () {
+            var a = $("#datepicker8").datepicker("getDate").getDate();
+            var b = $("#datepicker8").datepicker("getDate").getYear();
+            var c = $("#datepicker8").datepicker("getDate").getMonth();
+            var d = $("#datepicker9").datepicker("getDate").getDate();
+            var e = $("#datepicker9").datepicker("getDate").getYear();
+            var f = $("#datepicker9").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total1").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
         ReloadPaging();
 
 
     });
+</script>
+<script type="text/javascript">
+  // When the document is ready
+
+    $(document).ready(function () {
+
+            $('#datepicker').datepicker();
+            $('#datepicker').val("");
+
+            $('#datepicker1').datepicker();
+            $('#datepicker1').val("");
+
+            $('#datepicker2').datepicker();
+            $('#datepicker2').val("");
+
+            $('#datepicker3').datepicker();
+            $('#datepicker3').val("");
+
+            $('#datepicker4').datepicker();
+            $('#datepicker4').val("");
+            $('#datepicker5').datepicker();
+            $('#datepicker5').val("");
+            $('#datepicker6').datepicker();
+            $('#datepicker6').val("");
+            $('#datepicker7').datepicker();
+            $('#datepicker7').val("");
+            $('#datepicker8').datepicker();
+            $('#datepicker8').val("");
+            $('#datepicker9').datepicker();
+            $('#datepicker9').val("");
+
+            if ($("#eidtype").val() == 7)
+            { $("#doctype").show(); }
+            else { $("#doctype").hide(); }
+
+   });
+
 </script>
 <style type="text/css">
     .ui-datepicker-calendar {
@@ -808,7 +1052,7 @@
 <div class="container-fluid-full">
 
     <div class="row-fluid">
-        @Html.Partial("_EmployeeSubMenuList")
+        @Html.Partial("_employeemenulist")
         <div id="content" class="span10">
             <div class="row-fluid">
 
@@ -820,7 +1064,7 @@
                         <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                         @Html.ActionLink("Employee Management", "Index", "Employee", "")<i class="icon-angle-right"></i>
                     </li>
-                    <li class="active">Employee Master</li>
+                    <li class="active">Add New Employee</li>
                 </ul>
                 <div class="panel-body">
                     <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
@@ -833,8 +1077,9 @@
                 <div class="row-fluid sortable">
                     <div class="box span12">
                         <div class="box-header" data-original-title>
-                            <h2><i class="fa fa-edit"></i><span class="break"></span>Manage Student</h2>
-                            <div class="box-icon">
+
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Add Employee</h2>
+  <div class="box-icon">
 
                                 <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 
@@ -852,9 +1097,9 @@
                                             <li id="tab2" class="back"><a href="#tabs-2" style="color: blue;">Personal Details</a></li>
                                             <li id="tab3" class="back">
                                                 <a href="#tabs-3" style="color: blue;">
-                                                    Previous Education
-                                                    Details
-                                                </a>
+
+                                                    Previous Employee Experience
+                                              </a>
                                             </li>
                                         </ul>
                                         <div id="AddForm" style="display: none;">
@@ -942,24 +1187,24 @@
                                                         @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
                                                         <div class="controls">
                                                             @{
-                                                            List<SelectListItem> listItems = new List<SelectListItem>();
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Male",
-                                                            Value = "1"
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Female",
-                                                            Value = "2",
+                                                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                                                listItems.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Male",
+                                                                    Value = "1"
+                                                                });
+                                                                listItems.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Female",
+                                                                    Value = "2",
 
-                                                            });
-                                                            listItems.Add(new SelectListItem
-                                                            {
-                                                            Text = "Unknown",
-                                                            Value = "3",
-                                                            Selected = true
-                                                            }); }
+                                                                });
+                                                                listItems.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Transgender",
+                                                                    Value = "3",
+                                                                    Selected = true
+                                                                }); }
                                                             @Html.DropDownListFor(model => model.Gender, listItems, "-- Select Gender --")
 
                                                             @Html.ValidationMessageFor(model => model.Gender)
@@ -981,20 +1226,200 @@
                                                             @Html.ValidationMessageFor(model => model.edepartment)
                                                         </div>
                                                     </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.eblood, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                             @Html.DropDownListFor(model => model.eblood, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
-
-                                                            @Html.ValidationMessageFor(model => model.eblood)
-                                                        </div>
-                                                    </div>
+                                                
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.Typeid, new { @class = "control-label" })
                                                         <div class="controls">
                                                             <select id="Typeid" name="Typeid" class="input"></select>
                                                             @Html.ValidationMessageFor(model => model.Typeid)
                                                         </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.eidtype, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @{
+                                                                List<SelectListItem> DocumentType = new List<SelectListItem>();
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Aadhar",
+                                                                    Value = "1"
+                                                                });
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Passport",
+                                                                    Value = "2",
+
+                                                                });
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "DL",
+                                                                    Value = "3",
+                                                                    Selected = true
+                                                                });
+
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "VoterID",
+                                                                    Value = "4",
+                                                                    Selected = true
+                                                                });
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "PAN",
+                                                                    Value = "5",
+                                                                    Selected = true
+                                                                });
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Refugees",
+                                                                    Value = "6",
+                                                                    Selected = true
+                                                                });
+                                                                DocumentType.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Others",
+                                                                    Value = "7",
+                                                                    Selected = true
+                                                                });}
+                                                            @Html.DropDownListFor(model => model.eidtype, DocumentType, "-- Select Document Type --")
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group span5" id="doctype" hidden>
+                                                        @Html.LabelFor(model => model.Documenttypename, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.Documenttypename, new { placeholder = "Enter Document Type.", maxlength = "100", @class = "input" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.DocumentIDNo, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "50", @class = "input" })
+                                                        </div>
+                                                    </div>
+                                                  
+                                                 
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.empreligion, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @{
+                                                                List<SelectListItem> religion = new List<SelectListItem>();
+                                                                religion.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Roman Carholic",
+                                                                    Value = "1"
+                                                                });
+                                                                religion.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Christian",
+                                                                    Value = "2",
+
+                                                                });
+                                                                religion.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Muslim",
+                                                                    Value = "3",
+                                                                });
+                                                                religion.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Hindu",
+                                                                    Value = "4",
+
+                                                                });
+                                                                religion.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Jain",
+                                                                    Value = "5",
+                                                                }); }
+                                                            @Html.DropDownListFor(model => model.empreligion, religion, "-- Select Religion --")
+                                                            @Html.ValidationMessageFor(model => model.empreligion)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.empcategory, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @{
+                                                                List<SelectListItem> category = new List<SelectListItem>();
+                                                                category.Add(new SelectListItem
+                                                                {
+                                                                    Text = "SC",
+                                                                    Value = "1"
+                                                                });
+                                                                category.Add(new SelectListItem
+                                                                {
+                                                                    Text = "ST",
+                                                                    Value = "2",
+
+                                                                });
+                                                                category.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Other",
+                                                                    Value = "3",
+                                                                });}
+                                                            @Html.DropDownListFor(model => model.empcategory, category, "-- Select Category --")
+                                                            @Html.ValidationMessageFor(model => model.empcategory)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @{
+                                                                List<SelectListItem> cast = new List<SelectListItem>();
+                                                                cast.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Nadar",
+                                                                    Value = "1"
+                                                                });
+                                                                cast.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Bramin",
+                                                                    Value = "2",
+
+                                                                });
+                                                                cast.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Other",
+                                                                    Value = "3",
+                                                                }); }
+                                                            @Html.DropDownListFor(model => model.empcast, cast, "-- Select Caste --")
+                                                            @Html.ValidationMessageFor(model => model.empcast)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.mtongue, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @{
+                                                                List<SelectListItem> tongue = new List<SelectListItem>();
+                                                                tongue.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Tamil",
+                                                                    Value = "1"
+                                                                });
+                                                                tongue.Add(new SelectListItem
+                                                                {
+                                                                    Text = "English",
+                                                                    Value = "2",
+
+                                                                });
+                                                                tongue.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Malayalam",
+                                                                    Value = "3",
+                                                                }); }
+                                                            @Html.DropDownListFor(model => model.mtongue, tongue, "-- Select Tongue --")
+                                                            @Html.ValidationMessageFor(model => model.mtongue)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
+                                                        <div class="controls" style="width:47%">
+                                                            <input type="file" name="files1" id="files1" />
+                                                            <div id="pic1">
+                                                            </div>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.emppic)
                                                     </div>
 
                                                 </fieldset>
@@ -1250,76 +1675,24 @@
                                                         </div>
                                                     </div>
                                                     <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
-                                                        <div class="controls" style="width:47%">
-                                                            <input type="file" name="files1" id="files1" />
-                                                            <div id="pic1">
-                                                                </div>
-                                                            </div>
-                                                            @Html.ValidationMessageFor(model => model.emppic)
-                                                        </div>
-                                                   
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.eidtype, new { @class = "control-label" })
+                                                        @Html.LabelFor(model => model.eblood, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> DocumentType = new List<SelectListItem>();
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "Aadhar",
-                                                            Value = "1"
-                                                            });
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "Passport",
-                                                            Value = "2",
+                                                            @Html.DropDownListFor(model => model.eblood, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
 
-                                                            });
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "DL",
-                                                            Value = "3",
-                                                            Selected = true
-                                                            });
-
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "VoterID",
-                                                            Value = "4",
-                                                            Selected = true
-                                                            });
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "PAN",
-                                                            Value = "5",
-                                                            Selected = true
-                                                            });
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "Refugees",
-                                                            Value = "6",
-                                                            Selected = true
-                                                            });
-                                                            DocumentType.Add(new SelectListItem
-                                                            {
-                                                            Text = "Others",
-                                                            Value = "7",
-                                                            Selected = true
-                                                            });}
-                                                            @Html.DropDownListFor(model => model.eidtype, DocumentType, "-- Select Document Type --")
-
-
+                                                            @Html.ValidationMessageFor(model => model.eblood)
                                                         </div>
                                                     </div>
+                                                   
+                                                 
                                                 </fieldset>
                                                 <br />
                                                 <fieldset class="test" style="width: 100%;">
-                                                    <legend>Emergency Details</legend>
+                                                    <legend>Emergency Contact Details</legend>
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.dname, new { @class = "control-label" })
 
                                                         <div class="controls">
-                                                            @Html.TextBoxFor(model => model.dname, new { placeholder = "Enter Docter Name", maxlength = "30", @class = "input" })
+                                                            @Html.TextBoxFor(model => model.dname, new { placeholder = "Enter Contact Name", maxlength = "30", @class = "input" })
                                                             @Html.ValidationMessageFor(model => model.dname)
                                                         </div>
                                                     </div>
@@ -1328,14 +1701,22 @@
                                                         <div class="controls" style="width:25%">
                                                             @Html.TextBoxFor(model => model.DCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
                                                         </div><div class="controls">
-                                                            @Html.TextBoxFor(model => model.dcontact, new { placeholder = "Enter Docter Contact", maxlength = "10" })
+                                                            @Html.TextBoxFor(model => model.dcontact, new { placeholder = "Enter Contact Number", maxlength = "10" })
                                                             @Html.ValidationMessageFor(model => model.dcontact)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5">
+                                                        @Html.LabelFor(model => model.conttactrelation, new { @class = "control-label" })
+
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.conttactrelation, new { placeholder = "Enter Contact RelationShip", maxlength = "30", @class = "input" })
+                                                            @Html.ValidationMessageFor(model => model.conttactrelation)
                                                         </div>
                                                     </div>
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.daddress, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @Html.TextAreaFor(model => model.daddress, new { placeholder = "Enter Docter Address", @class = "input" })
+                                                            @Html.TextAreaFor(model => model.daddress, new { placeholder = "Enter Contact Address", @class = "input" })
                                                             @Html.ValidationMessageFor(model => model.daddress)
                                                         </div>
                                                     </div>
@@ -1586,6 +1967,7 @@
                                             <div id="tabs-3">
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>College</legend>
+
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.collagename, new { @class = "control-label", @for = "focusedInput" })
 
@@ -1634,9 +2016,64 @@
                                                             @Html.ValidationMessageFor(model => model.ldesignation)
                                                         </div>
                                                     </div>
-                                                </fieldset>
+                                                
+                                                    <div class="control-group span10">
+                                                        <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                        <div id="autoUpdate" class="autoUpdate" hidden>
+                                                            <br />
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.collagename1, new { @class = "control-label", @for = "focusedInput" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.collagename1, new { placeholder = "Enter College Name", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.collagename1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.university1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.university1, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.university1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.joiningdate1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.joiningdate1, new { id = "datepicker6", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                    @Html.ValidationMessageFor(model => model.joiningdate1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.lastdate1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.lastdate1, new { id = "datepicker7", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                    @Html.ValidationMessageFor(model => model.lastdate1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.ctotal1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.ctotal1, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                    @Html.ValidationMessageFor(model => model.ctotal1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.ldesignation1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.ldesignation1, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.ldesignation1)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+</fieldset>
                                                 <br />
-                                                <fieldset>
+                                                <fieldset class="test" style="width: 100%;">
                                                     <legend>Corporate</legend>
 
                                                     <div class="control-group span5">
@@ -1679,7 +2116,6 @@
                                                             @Html.ValidationMessageFor(model => model.total)
                                                         </div>
                                                     </div>
-
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.employeeemail, new { @class = "control-label" })
 
@@ -1688,129 +2124,65 @@
                                                             @Html.ValidationMessageFor(model => model.employeeemail)
                                                         </div>
                                                     </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.empreligion, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> religion = new List<SelectListItem>();
-                                                            religion.Add(new SelectListItem
-                                                            {
-                                                            Text = "Roman Carholic",
-                                                            Value = "1"
-                                                            });
-                                                            religion.Add(new SelectListItem
-                                                            {
-                                                            Text = "Christian",
-                                                            Value = "2",
-
-                                                            });
-                                                            religion.Add(new SelectListItem
-                                                            {
-                                                            Text = "Muslim",
-                                                            Value = "3",
-                                                            });
-                                                            religion.Add(new SelectListItem
-                                                            {
-                                                            Text = "Hindu",
-                                                            Value = "4",
-
-                                                            });
-                                                            religion.Add(new SelectListItem
-                                                            {
-                                                            Text = "Jain",
-                                                            Value = "5",
-                                                            }); }
-                                                            @Html.DropDownListFor(model => model.empreligion, religion, "-- Select Religion --")
-                                                            @Html.ValidationMessageFor(model => model.empreligion)
+                                                    <div class="control-group span10">
+                                                  <input type="checkbox" name="pgcheckbox" id="cbxShowHide1" value="pgcheckbox"> Click here to fill More experience
                                                         </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.empcategory, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> category = new List<SelectListItem>();
-                                                            category.Add(new SelectListItem
-                                                            {
-                                                            Text = "SC",
-                                                            Value = "1"
-                                                            });
-                                                            category.Add(new SelectListItem
-                                                            {
-                                                            Text = "ST",
-                                                            Value = "2",
+                                                    <div id="autoUpdate1" class="autoUpdate1" hidden>
+                                                        <br />
+                                                       
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.companyname1, new { @class = "control-label" })
 
-                                                            });
-                                                            category.Add(new SelectListItem
-                                                            {
-                                                            Text = "Other",
-                                                            Value = "3",
-                                                            });}
-                                                            @Html.DropDownListFor(model => model.empcategory, category, "-- Select Category --")
-                                                            @Html.ValidationMessageFor(model => model.empcategory)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> cast = new List<SelectListItem>();
-                                                            cast.Add(new SelectListItem
-                                                            {
-                                                            Text = "Nadar",
-                                                            Value = "1"
-                                                            });
-                                                            cast.Add(new SelectListItem
-                                                            {
-                                                            Text = "Bramin",
-                                                            Value = "2",
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.companyname1, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.companyname1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.clastdesignation1, new { @class = "control-label" })
 
-                                                            });
-                                                            cast.Add(new SelectListItem
-                                                            {
-                                                            Text = "Other",
-                                                            Value = "3",
-                                                            }); }
-                                                            @Html.DropDownListFor(model => model.empcast, cast, "-- Select Caste --")
-                                                            @Html.ValidationMessageFor(model => model.empcast)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.mtongue, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @{
-                                                            List<SelectListItem> tongue = new List<SelectListItem>();
-                                                            tongue.Add(new SelectListItem
-                                                            {
-                                                            Text = "Tamil",
-                                                            Value = "1"
-                                                            });
-                                                            tongue.Add(new SelectListItem
-                                                            {
-                                                            Text = "English",
-                                                            Value = "2",
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.clastdesignation1, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.clastdesignation1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.cjoiningdate1, new { @class = "control-label" })
 
-                                                            });
-                                                            tongue.Add(new SelectListItem
-                                                            {
-                                                            Text = "Malayalam",
-                                                            Value = "3",
-                                                            }); }
-                                                            @Html.DropDownListFor(model => model.mtongue, tongue, "-- Select Tongue --")
-                                                            @Html.ValidationMessageFor(model => model.mtongue)
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.cjoiningdate1, new { id = "datepicker8", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                    @Html.ValidationMessageFor(model => model.cjoiningdate1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.clastdate1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.clastdate1, new { id = "datepicker9", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                    @Html.ValidationMessageFor(model => model.clastdate1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group span5">
+                                                                @Html.LabelFor(model => model.total1, new { @class = "control-label" })
+
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.total1, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                    @Html.ValidationMessageFor(model => model.total1)
+                                                                </div>
+                                                            </div>
+
                                                         </div>
-                                                    </div>
+
                                                 </fieldset>
+
                                                 <br />
-
-
-
                                                 <div class="form-actions">
                                                     <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
 
 
                                                 </div>
                                             </div>
-                                            }
+                                                                    }
                                         </div>
                                     </div>
                                 </fieldset>

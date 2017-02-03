@@ -317,7 +317,8 @@ src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="halflings-icon white user"></i> 
                                 @{string usename;
-                                  usename = HttpContext.Current.Session["User"].ToString();}
+                                    usename = HttpContext.Current.Session["User"].ToString(); }
+                                     
                                 @usename
 								<span class="caret"></span>
 							</a>

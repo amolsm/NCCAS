@@ -16,6 +16,9 @@
     });
     $(document).ready(function () {
         FillPermission();
+        if ($("#DocumentType").val() == 7)
+        { $("#doctype").show(); }
+        else { $("#doctype").hide(); }
         @*$("#insert").click(function (e) {
             Validations(e);
             $.ajax({
@@ -804,6 +807,7 @@
                 });
                 alert("Student Name Mandatory!");
                 e.preventDefault();
+                $("#Studnm").focus();
                 return false;
             }
             else {
@@ -967,21 +971,7 @@
                 });
             }
 
-            //if ($("#Disease").val() == '') {
-            //    cnt++;
-            //    $("#Disease").css({
-            //        "border": "1px solid red"
-            //    });
-            //    alert("disease Mandatory!");
-            //    e.preventDefault();
-            //    return false;
-            //}
-            //else {
-            //    $("#Disease").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+         
 
             if ($("#Religionid").val() == '') {
                 cnt++;
@@ -1707,6 +1697,23 @@
                 });
             }
 
+            if ($("#Pincode").val() == '') {
+                cnt++;
+                $("#Pincode").css({
+                    "border": "1px solid red"
+                });
+                alert("Pincode is Mandatory!");
+                e.preventDefault();
+                return false;
+                $("#Pincode").focus();
+            }
+            else {
+                $("#Pincode").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
             if ($("#BusFacility").prop('checked') == true) {
                 if ($("#busid").val() == '') {
                     cnt++;
@@ -2117,6 +2124,29 @@
 
     });
 </script>
+<script type="text/javascript">
+  // When the document is ready
+
+    $(document).ready(function () {
+      
+            $('#datepicker').datepicker();
+            $('#datepicker').val("");
+       
+            $('#datepicker1').datepicker();
+            $('#datepicker1').val("");
+       
+            $('#datepicker2').datepicker();
+            $('#datepicker2').val("");
+      
+            $('#datepicker3').datepicker();
+            $('#datepicker3').val("");
+       
+            $('#datepicker4').datepicker();
+            $('#datepicker4').val("");
+       
+   });
+
+</script>
 <style type="text/css">
     fieldset {
         border: 1px solid #777;
@@ -2456,7 +2486,15 @@
                                                             </div>
                                                         </div>
 
-                                                       
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.StudPic, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                <input type="file" name="files1" id="files1" />
+                                                                <div id="pic1">
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.StudPic)
+                                                            </div>
+                                                        </div>
 
 
 
@@ -2495,15 +2533,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.StudPic, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="files1" id="files1" />
-                                                                <div id="pic1">
-                                                                </div>
-                                                                @Html.ValidationMessageFor(model => model.StudPic)
-                                                            </div>
-                                                        </div>
+                                                      
 
 
 
@@ -2512,7 +2542,7 @@
                                                     </fieldset>
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
-                                                        <legend>Emergency Details</legend>
+                                                        <legend>Emergency Contact Details</legend>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.EmergencyPhysicianNm, new { @class = "control-label" })
 
@@ -2721,14 +2751,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.MotherPics, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="filemotherpic" id="filemotherpic" />
-                                                                <div id="pic4">
+                                                            @Html.LabelFor(model => model.MPic, new { @class = "control-label" })
+                                                           
+                                                                <div class="controls">
+                                                                    <input type="file" name="filemotherpic" id="filemotherpic" />
+                                                                    <div id="pic4">
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.MPic)
                                                                 </div>
-                                                                @Html.ValidationMessageFor(model => model.MotherPics)
                                                             </div>
-                                                        </div>
                                                         <div class="control-group span5 hide">
                                                             @Html.LabelFor(model => model.MotherBldGrpid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
@@ -3389,7 +3420,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                     </fieldset>
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
-                                                        <div id="stat" class="control-group span5">
+                                                        <div id="stat" class="control-group">
                                                             <label class="control-label">Status</label>
                                                             <div class="controls">
                                                                 <label class="radio inline">

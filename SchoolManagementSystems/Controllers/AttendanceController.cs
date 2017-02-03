@@ -230,15 +230,19 @@ namespace SchoolManagementSystems.Controllers
                 sa.AttendanceDate = Convert.ToDateTime(s1[1].ToString());
                 sa.Present = Convert.ToBoolean(s1[2].ToString());
                 sa.Reason = s1[3].ToString();
-<<<<<<< HEAD
+
 
                // db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason,sa.CreatedBy,sa.AttendanceDate);
-=======
+
                 sa.Subjectid = Convert.ToInt32(s1[4].ToString());
                 //sa.CreatedBy = Convert.ToInt32(s1[5].ToString());
-               //string session =  System.Web.HttpContext.Current.Session["sessionString"]; 
-                db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid);
->>>>>>> origin/master
+                //string session =  System.Web.HttpContext.Current.Session["sessionString"]; 
+                try
+                {
+                    db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid);
+                }
+                catch(Exception ex)
+                { string msg = ex.ToString(); }
 
                 db.SaveChanges();
                

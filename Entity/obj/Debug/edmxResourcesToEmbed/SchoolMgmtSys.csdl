@@ -835,6 +835,8 @@
       <Parameter Name="docnumber" Mode="In" Type="String" />
       <Parameter Name="contrelation" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2057,5 +2059,31 @@
     <Property Name="Pass_Marks" Type="Double" Nullable="false" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <Property Name="yearid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_studentdivision">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentid" Type="Int32" />
+    <Property Name="divisionid" Type="Int32" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="departmentid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacherid" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Departmentid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="Yearid" Type="Int32" />
+    <Property Name="Chapterid" Type="Int32" />
+    <Property Name="complete" Type="Boolean" />
   </EntityType>
 </Schema>

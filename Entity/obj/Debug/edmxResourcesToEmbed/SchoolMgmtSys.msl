@@ -1540,5 +1540,33 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+    <EntitySetMapping Name="tbl_studentdivision">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
+        <MappingFragment StoreEntitySet="tbl_studentdivision">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="divisionid" ColumnName="divisionid" />
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Chaptercomplete">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
+        <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
+          <ScalarProperty Name="complete" ColumnName="complete" />
+          <ScalarProperty Name="Chapterid" ColumnName="Chapterid" />
+          <ScalarProperty Name="Yearid" ColumnName="Yearid" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

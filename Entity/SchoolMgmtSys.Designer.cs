@@ -944,6 +944,38 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_subject> _tbl_subject;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_studentdivision> tbl_studentdivision
+        {
+            get
+            {
+                if ((_tbl_studentdivision == null))
+                {
+                    _tbl_studentdivision = base.CreateObjectSet<tbl_studentdivision>("tbl_studentdivision");
+                }
+                return _tbl_studentdivision;
+            }
+        }
+        private ObjectSet<tbl_studentdivision> _tbl_studentdivision;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Chaptercomplete> tbl_Chaptercomplete
+        {
+            get
+            {
+                if ((_tbl_Chaptercomplete == null))
+                {
+                    _tbl_Chaptercomplete = base.CreateObjectSet<tbl_Chaptercomplete>("tbl_Chaptercomplete");
+                }
+                return _tbl_Chaptercomplete;
+            }
+        }
+        private ObjectSet<tbl_Chaptercomplete> _tbl_Chaptercomplete;
 
         #endregion
 
@@ -1387,6 +1419,22 @@ namespace Entity
         public void AddTotbl_subject(tbl_subject tbl_subject)
         {
             base.AddObject("tbl_subject", tbl_subject);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_studentdivision EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_studentdivision(tbl_studentdivision tbl_studentdivision)
+        {
+            base.AddObject("tbl_studentdivision", tbl_studentdivision);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Chaptercomplete EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Chaptercomplete(tbl_Chaptercomplete tbl_Chaptercomplete)
+        {
+            base.AddObject("tbl_Chaptercomplete", tbl_Chaptercomplete);
         }
 
         #endregion
@@ -10210,6 +10258,231 @@ namespace Entity
         private Nullable<global::System.Int32> _Subjectid;
         partial void OnSubjectidChanging(Nullable<global::System.Int32> value);
         partial void OnSubjectidChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_Chaptercomplete")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_Chaptercomplete : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_Chaptercomplete object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static tbl_Chaptercomplete Createtbl_Chaptercomplete(global::System.Int32 id)
+        {
+            tbl_Chaptercomplete tbl_Chaptercomplete = new tbl_Chaptercomplete();
+            tbl_Chaptercomplete.ID = id;
+            return tbl_Chaptercomplete;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Teacherid
+        {
+            get
+            {
+                return _Teacherid;
+            }
+            set
+            {
+                OnTeacheridChanging(value);
+                ReportPropertyChanging("Teacherid");
+                _Teacherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Teacherid");
+                OnTeacheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Teacherid;
+        partial void OnTeacheridChanging(Nullable<global::System.Int32> value);
+        partial void OnTeacheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Subjectid
+        {
+            get
+            {
+                return _Subjectid;
+            }
+            set
+            {
+                OnSubjectidChanging(value);
+                ReportPropertyChanging("Subjectid");
+                _Subjectid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Subjectid");
+                OnSubjectidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Subjectid;
+        partial void OnSubjectidChanging(Nullable<global::System.Int32> value);
+        partial void OnSubjectidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Departmentid
+        {
+            get
+            {
+                return _Departmentid;
+            }
+            set
+            {
+                OnDepartmentidChanging(value);
+                ReportPropertyChanging("Departmentid");
+                _Departmentid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Departmentid");
+                OnDepartmentidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Departmentid;
+        partial void OnDepartmentidChanging(Nullable<global::System.Int32> value);
+        partial void OnDepartmentidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Courseid;
+        partial void OnCourseidChanging(Nullable<global::System.Int32> value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Yearid
+        {
+            get
+            {
+                return _Yearid;
+            }
+            set
+            {
+                OnYearidChanging(value);
+                ReportPropertyChanging("Yearid");
+                _Yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Yearid");
+                OnYearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Yearid;
+        partial void OnYearidChanging(Nullable<global::System.Int32> value);
+        partial void OnYearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Chapterid
+        {
+            get
+            {
+                return _Chapterid;
+            }
+            set
+            {
+                OnChapteridChanging(value);
+                ReportPropertyChanging("Chapterid");
+                _Chapterid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Chapterid");
+                OnChapteridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Chapterid;
+        partial void OnChapteridChanging(Nullable<global::System.Int32> value);
+        partial void OnChapteridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> complete
+        {
+            get
+            {
+                return _complete;
+            }
+            set
+            {
+                OncompleteChanging(value);
+                ReportPropertyChanging("complete");
+                _complete = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("complete");
+                OncompleteChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _complete;
+        partial void OncompleteChanging(Nullable<global::System.Boolean> value);
+        partial void OncompleteChanged();
 
         #endregion
 
@@ -22705,6 +22978,231 @@ namespace Entity
         private global::System.Boolean _status;
         partial void OnstatusChanging(global::System.Boolean value);
         partial void OnstatusChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_studentdivision")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_studentdivision : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_studentdivision object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static tbl_studentdivision Createtbl_studentdivision(global::System.Int32 id)
+        {
+            tbl_studentdivision tbl_studentdivision = new tbl_studentdivision();
+            tbl_studentdivision.id = id;
+            return tbl_studentdivision;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> studentid
+        {
+            get
+            {
+                return _studentid;
+            }
+            set
+            {
+                OnstudentidChanging(value);
+                ReportPropertyChanging("studentid");
+                _studentid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("studentid");
+                OnstudentidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _studentid;
+        partial void OnstudentidChanging(Nullable<global::System.Int32> value);
+        partial void OnstudentidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> divisionid
+        {
+            get
+            {
+                return _divisionid;
+            }
+            set
+            {
+                OndivisionidChanging(value);
+                ReportPropertyChanging("divisionid");
+                _divisionid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("divisionid");
+                OndivisionidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _divisionid;
+        partial void OndivisionidChanging(Nullable<global::System.Int32> value);
+        partial void OndivisionidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> courseid
+        {
+            get
+            {
+                return _courseid;
+            }
+            set
+            {
+                OncourseidChanging(value);
+                ReportPropertyChanging("courseid");
+                _courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("courseid");
+                OncourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _courseid;
+        partial void OncourseidChanging(Nullable<global::System.Int32> value);
+        partial void OncourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> departmentid
+        {
+            get
+            {
+                return _departmentid;
+            }
+            set
+            {
+                OndepartmentidChanging(value);
+                ReportPropertyChanging("departmentid");
+                _departmentid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("departmentid");
+                OndepartmentidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _departmentid;
+        partial void OndepartmentidChanging(Nullable<global::System.Int32> value);
+        partial void OndepartmentidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _yearid;
+        partial void OnyearidChanging(Nullable<global::System.Int32> value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> createdby
+        {
+            get
+            {
+                return _createdby;
+            }
+            set
+            {
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
 
         #endregion
 

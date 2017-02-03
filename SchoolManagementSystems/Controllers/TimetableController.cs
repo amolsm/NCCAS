@@ -77,11 +77,11 @@ namespace SchoolManagementSystems.Controllers
             {
                 Courseid = Convert.ToInt32(id);
             }
-<<<<<<< HEAD
-           var subjects = db.tbl_subject.Where(m => m.Courseid == Classid && m.Status == true).ToList();
-=======
+
+          
+
             var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.Status == true).ToList();
->>>>>>> origin/master
+
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
         public JsonResult FillTimetableInfo(int Tid)

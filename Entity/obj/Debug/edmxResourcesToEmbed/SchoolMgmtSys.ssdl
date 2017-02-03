@@ -88,6 +88,21 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
     <Property Name="IsActive" Type="bit" />
     <Property Name="Subjectid" Type="int" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_school.dbo.tbl_Chaptercomplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teacherid" Type="int" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="Departmentid" Type="int" />
+    <Property Name="Courseid" Type="int" />
+    <Property Name="Yearid" Type="int" />
+    <Property Name="Chapterid" Type="int" />
+    <Property Name="complete" Type="bit" />
+  </EntityType>
   <EntityType Name="tbl_city">
     <Key>
       <PropertyRef Name="Cityid" />
@@ -734,6 +749,19 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="StudCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudCategoryname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_studentdivision">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentid" Type="int" />
+    <Property Name="divisionid" Type="int" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="departmentid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_StudentMark">
     <Key>
@@ -1606,6 +1634,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="Self.tbl_StudentAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentCategory" EntityType="Self.tbl_StudentCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_studentdivision" EntityType="Self.tbl_studentdivision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentMark" EntityType="Self.tbl_StudentMark" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_SubCategory" EntityType="Self.tbl_SubCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" Schema="dbo" store:Type="Tables" />
@@ -1622,6 +1651,18 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
 [sys_UserPermission].[UserRoleid] AS [UserRoleid], 
 [sys_UserPermission].[Permissionid] AS [Permissionid]
 FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="Self.tbl_Chaptercomplete" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_Chaptercomplete].[ID] AS [ID], 
+[tbl_Chaptercomplete].[Teacherid] AS [Teacherid], 
+[tbl_Chaptercomplete].[Subjectid] AS [Subjectid], 
+[tbl_Chaptercomplete].[Departmentid] AS [Departmentid], 
+[tbl_Chaptercomplete].[Courseid] AS [Courseid], 
+[tbl_Chaptercomplete].[Yearid] AS [Yearid], 
+[tbl_Chaptercomplete].[Chapterid] AS [Chapterid], 
+[tbl_Chaptercomplete].[complete] AS [complete]
+FROM [dbo].[tbl_Chaptercomplete] AS [tbl_Chaptercomplete]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tbl_days" EntityType="Self.tbl_days" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -131,11 +131,11 @@
                     var studentid = ($(this).val());
                     var remark = '';
                     var reason = '';
-                    var usename = HttpContext.Current.Session["User"].ToString();
+                    //var usename = HttpContext.Current.Session["User"].ToString();
                                 
                     if ($(this).prop('checked')) {
                         remark = 'true';
-                        presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject+","+username);
+                        presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject);
 
                     }
                     else {
@@ -144,7 +144,7 @@
 
                         var reason = ($("#Reason_" + studentid).val());
                         if (reason != "") {
-                            presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + username + "," + reason + "," + subject+","+username);
+                            presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject);
 
                         }
                         else {
