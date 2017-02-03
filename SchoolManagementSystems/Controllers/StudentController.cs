@@ -66,7 +66,7 @@ namespace SchoolManagementSystems.Controllers
             svm.citylist = new List<tbl_city>();
             return View("Admission", svm);
         }
-     //   [SchoolManagementSystems.MvcApplication.SessionExpire]
+   
         public JsonResult FillStudentDetails(int studid)
         {
             var data = db.tbl_student.Where(m => m.Studid == studid).FirstOrDefault();
@@ -151,7 +151,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-      //  [SchoolManagementSystems.MvcApplication.SessionExpire]
+      
         public JsonResult GetTransportDetails(int busid)
         {
             var data = db.tbl_transport.Where(m => m.busid == busid).FirstOrDefault();
@@ -251,7 +251,7 @@ namespace SchoolManagementSystems.Controllers
 
 
         [HttpPost]
-        public ActionResult Admission_DML(Studentviewmodel svm, string action, HttpPostedFileBase files1, HttpPostedFileBase files2, HttpPostedFileBase files3, HttpPostedFileBase files4, HttpPostedFileBase files5, HttpPostedFileBase files6, HttpPostedFileBase files7, HttpPostedFileBase files8, HttpPostedFileBase files9, int? id, HttpPostedFileBase FileUpload1, string group1)
+        public ActionResult Admission_DML(Studentviewmodel svm, string action, HttpPostedFileBase files1, HttpPostedFileBase files2, HttpPostedFileBase files3, HttpPostedFileBase filemotherpic, HttpPostedFileBase files5, HttpPostedFileBase files6, HttpPostedFileBase files7, HttpPostedFileBase files8, HttpPostedFileBase files9, int? id, HttpPostedFileBase FileUpload1, string group1)
         {
             string yr = svm.academicyear[0].ToString();
            
@@ -373,35 +373,35 @@ namespace SchoolManagementSystems.Controllers
             }
            // mother pic
 
-            if (files4 != null)
+            if (filemotherpic != null)
             {
-                if (System.IO.File.Exists(files4.ToString()))
+                if (System.IO.File.Exists(filemotherpic.ToString()))
                 {
 
-                    System.IO.File.Delete(files4.ToString());
-                    files4 = null;
+                    System.IO.File.Delete(filemotherpic.ToString());
+                    filemotherpic = null;
 
                 }
-                if (files4.InputStream.Length < 31000000)
+                if (filemotherpic.InputStream.Length < 31000000)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        files4.InputStream.CopyTo(ms);
-                        WebImage img = new WebImage(files4.InputStream);
+                        filemotherpic.InputStream.CopyTo(ms);
+                        WebImage img = new WebImage(filemotherpic.InputStream);
 
                         if (img.Width > 700)
                         {
                             img.Resize(450, 450);
                         }
                         byte[] array = img.GetBytes();
-                        svm.MotherPics = array;
+                        svm.MPic = array;
                     }
                 }
                 else
                 {
                     if (svm.Studid != 0)
                     {
-                        svm.MotherPics = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
+                        svm.MPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
                     }
                 }
             }
@@ -409,7 +409,7 @@ namespace SchoolManagementSystems.Controllers
             {
                 if (svm.Studid != 0)
                 {
-                    svm.MotherPics = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
+                    svm.MPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.MotherPic).FirstOrDefault();
                 }
             }
             //sc reference letter pic
@@ -675,7 +675,7 @@ namespace SchoolManagementSystems.Controllers
                         //db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
                         try
                         {
-                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPics, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
+                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
                          svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                          svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
@@ -697,7 +697,7 @@ namespace SchoolManagementSystems.Controllers
                     {
                         try
                         {
-                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPics, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
+                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
                             svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
                             svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                             svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
@@ -810,7 +810,7 @@ namespace SchoolManagementSystems.Controllers
             message.Body = msg;
             smtpClient.Send(message);
         }
-     //   [SchoolManagementSystems.MvcApplication.SessionExpire]
+    
         public ActionResult GuardianList(string Search_Data)
         {
             Studentviewmodel svm = new Studentviewmodel();

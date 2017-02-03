@@ -178,7 +178,7 @@ namespace Entity
         public int MotherBldGrpid { get; set; }
 
         [DisplayName("Mother's Pic : ")]
-        public byte[] MotherPics { get; set; }
+        public byte[] MPic { get; set; }
 
         [DisplayName("Select Country : ")]
         public int Countryid { get; set; }

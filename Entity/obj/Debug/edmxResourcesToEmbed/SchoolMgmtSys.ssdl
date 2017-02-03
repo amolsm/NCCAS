@@ -255,6 +255,20 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="empcategory" Type="int" />
     <Property Name="empcast" Type="int" />
     <Property Name="empmothertongue" Type="int" />
+    <Property Name="collagename1" Type="varchar" MaxLength="50" />
+    <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
+    <Property Name="joiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience1" Type="varchar" MaxLength="30" />
+    <Property Name="lastdesignation1" Type="varchar" MaxLength="50" />
+    <Property Name="companyname1" Type="varchar" MaxLength="50" />
+    <Property Name="clastdesignation1" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate1" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience1" Type="varchar" MaxLength="30" />
+    <Property Name="doctypename" Type="varchar" MaxLength="50" />
+    <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="contrelation" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_EmployeeLeave">
     <Key>
@@ -711,6 +725,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="Reason" Type="varchar" MaxLength="500" />
     <Property Name="AttendanceDate" Type="datetime" />
     <Property Name="CreatedBy" Type="int" />
+    <Property Name="Subjectid" Type="int" />
   </EntityType>
   <EntityType Name="tbl_StudentCategory">
     <Key>
@@ -747,12 +762,12 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
       <PropertyRef Name="Subjectid" />
     </Key>
     <Property Name="Subjectid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="Courseid" Type="int" Nullable="false" />
     <Property Name="SubjectNm" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Marks" Type="float" Nullable="false" />
     <Property Name="Pass_Marks" Type="float" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="yearid" Type="int" />
   </EntityType>
   <EntityType Name="tbl_submenu">
     <Key>
@@ -846,6 +861,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="Reason" Type="nvarchar" Mode="In" />
     <Parameter Name="createdby" Type="int" Mode="In" />
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Automation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_bloodgroup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1028,6 +1044,20 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="empcategory" Type="int" Mode="In" />
     <Parameter Name="empcast" Type="int" Mode="In" />
     <Parameter Name="empmothertongue" Type="int" Mode="In" />
+    <Parameter Name="collagename1" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity1" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience1" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation1" Type="varchar" Mode="In" />
+    <Parameter Name="companyname1" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation1" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience1" Type="varchar" Mode="In" />
+    <Parameter Name="doctypename" Type="varchar" Mode="In" />
+    <Parameter Name="docnumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="contrelation" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_EmployeeAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
@@ -1485,12 +1515,12 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
   </Function>
   <Function Name="sp_Subject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Subjectid" Type="int" Mode="In" />
-    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="Courseid" Type="int" Mode="In" />
     <Parameter Name="SubjectNm" Type="varchar" Mode="In" />
     <Parameter Name="Marks" Type="float" Mode="In" />
     <Parameter Name="Pass_Marks" Type="float" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
-    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="yearid" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

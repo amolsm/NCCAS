@@ -71,7 +71,7 @@ namespace SchoolManagementSystems.Controllers
             {
                 subjectid = Convert.ToInt32(id);
             }
-            var subjects = db.tbl_subject.Where(m => m.Classid == subjectid).ToList();
+            var subjects = db.tbl_subject.Where(m => m.Courseid == subjectid).ToList();
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
 

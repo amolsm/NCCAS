@@ -71,20 +71,38 @@ namespace Entity
         [DisplayName("Name of the College ")]
         public string collagename { get; set; }
 
+        [DisplayName("Name of the College ")]
+        public string collagename1 { get; set; }
+
         [DisplayName("Total Experience")]
         public string total { get; set; }
 
         [DisplayName("Total Experience")]
         public string ctotal { get; set; }
 
+        [DisplayName("Total Experience")]
+        public string total1 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal1 { get; set; }
         [DisplayName("Affliated University ")]
         public string university { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university1 { get; set; }
 
         [DisplayName("Joining Date ")]
         public DateTime joiningdate { get; set; }
 
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate1 { get; set; }
+
+
         [DisplayName("last Date ")]
         public DateTime lastdate { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate1 { get; set; }
 
         [DisplayName("Joining Date ")]
         public DateTime cjoiningdate { get; set; }
@@ -100,6 +118,20 @@ namespace Entity
 
         [DisplayName("Last designation  ")]
         public string clastdesignation { get; set; }
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate1 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate1 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation1 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname1 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation1 { get; set; }
 
         [DisplayName("Employee Email  ")]
         public string employeeemail { get; set; }
@@ -131,13 +163,13 @@ namespace Entity
         [DisplayName(" Relationship ")]
         public int relationship { get; set; }
 
-        [DisplayName("Doctor Name ")]
+        [DisplayName("Contact Name ")]
         public string dname { get; set; }
 
-        [DisplayName("Doctor Contact Number ")]
+        [DisplayName("Contact Number ")]
         public string dcontact { get; set; }
 
-        [DisplayName("Doctor Address  ")]
+        [DisplayName("Contact Address  ")]
         public string daddress { get; set; }
 
         [DisplayName("Reference Code")]
@@ -206,6 +238,14 @@ namespace Entity
         [DisplayName("Year of Passing ")]
         public string eYearofpassing5 { get; set; }
 
+        [DisplayName("ID Type : ")]
+        public string DocumentType { get; set; }
+
+        [DisplayName("ID Type name : ")]
+        public string Documenttypename { get; set; }
+
+        [DisplayName("ID Number : ")]
+        public string DocumentIDNo { get; set; }
 
 
         [DisplayName("Parent's Name ")]
@@ -288,6 +328,9 @@ namespace Entity
 
         [DisplayName("Name on the Account ")]
         public string acname { get; set; }
+
+        [DisplayName("Enter Emergency Contact relation ")]
+        public string conttactrelation { get; set; }
 
 
         public string SelectGender { get; set; }
