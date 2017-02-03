@@ -21,7 +21,6 @@ namespace SchoolManagementSystems.Controllers
         {
             return View();
         }
-
         public ActionResult Staff(string Search_Data)
         {
             ViewBag.errormessage = "";
@@ -95,6 +94,7 @@ namespace SchoolManagementSystems.Controllers
             FillPermission(9);       
             _avm.YearList = db.tbl_YearMaster.ToList();
             _avm.DepartmentList = db.tblDepartment.ToList();
+            _avm.SubjectList = new List<tbl_subject>();
             _avm.DivisionList = new List<tbl_division>();
             _avm.Classlist = new List<tbl_class>();
             return View(_avm);
@@ -118,6 +118,18 @@ namespace SchoolManagementSystems.Controllers
             }
             var division = db.tbl_division.Where(m => m.Classid == classid).ToList();
             return Json(new SelectList(division, "Divisionid", "DivisionName"));
+        }
+        public JsonResult GetSubject(string id,string year)
+        {
+            int yearid = 0;
+            int Courseid = 0;
+            if (id != null && id != "" && year != null && year != "")
+            {
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+            var subject = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).ToList();
+            return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
         }
         //public ActionResult GetYear(int dept_id, int courseid,int academicyear)
         //{ 
@@ -177,7 +189,6 @@ namespace SchoolManagementSystems.Controllers
                 return RedirectToAction("Student");
             }
         }
-
         public JsonResult StudentAtt(int id, string r, DateTime date, string Present)
         {
             var CHECK = from a in db.tbl_StudentAttendance.Where(x => x.AttendanceDate == (date) && x.StudentID == id) select a;
@@ -203,13 +214,11 @@ namespace SchoolManagementSystems.Controllers
                 return Json(students, JsonRequestBehavior.AllowGet);
             }
         }
-
         public JsonResult DMLAttendance(string[] presentdetails)
         {
            
 
             tbl_StudentAttendance sa = new tbl_StudentAttendance();
-
             string s;
             
             for (int i = 0; i < presentdetails.Count(); i++)
@@ -221,8 +230,15 @@ namespace SchoolManagementSystems.Controllers
                 sa.AttendanceDate = Convert.ToDateTime(s1[1].ToString());
                 sa.Present = Convert.ToBoolean(s1[2].ToString());
                 sa.Reason = s1[3].ToString();
+<<<<<<< HEAD
 
                // db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason,sa.CreatedBy,sa.AttendanceDate);
+=======
+                sa.Subjectid = Convert.ToInt32(s1[4].ToString());
+                //sa.CreatedBy = Convert.ToInt32(s1[5].ToString());
+               //string session =  System.Web.HttpContext.Current.Session["sessionString"]; 
+                db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid);
+>>>>>>> origin/master
 
                 db.SaveChanges();
                
@@ -230,8 +246,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(presentdetails);
            
 
-            }
-      
+            }      
         public JsonResult StudentPresent(int id, DateTime date, string Present)
         {
             var CHECK = from a in db.tbl_StudentAttendance.Where(x => x.AttendanceDate == (date) && x.StudentID == id) select a;
@@ -257,7 +272,6 @@ namespace SchoolManagementSystems.Controllers
                 return Json(students, JsonRequestBehavior.AllowGet);
             }
         }
-
         private void SendEmails(string Email, string reason)
         {
             SmtpClient smtpClient = new SmtpClient();
@@ -279,7 +293,6 @@ namespace SchoolManagementSystems.Controllers
             message.Body = msg;
             smtpClient.Send(message);
         }
-
         [HttpPost]
         public ActionResult ClassStudentAttendance(Attendanceviewmodel avm)
         {
@@ -297,7 +310,6 @@ namespace SchoolManagementSystems.Controllers
             
             return RedirectToAction("Student");
         }
-
         public ActionResult Leave()
         {
             Attendanceviewmodel _avm = new Attendanceviewmodel();
@@ -309,21 +321,18 @@ namespace SchoolManagementSystems.Controllers
             _avm.EmpLeaveDetail = new List<sp_GetEmpLeaveDetails_Result>();
             return View(_avm);
         }
-
         public ActionResult GetAvailableLeaves(Attendanceviewmodel _avm)
         {
             _avm.AvailableLeaveList = db.sp_GetAvailableLeave(_avm.Empid).ToList();
             _avm.EmpLeaveDetail = db.sp_GetEmpLeaveDetails(_avm.Empid).ToList();
             return PartialView("_leaveList", _avm);
         }
-
         public JsonResult check_Leave(string Empid, string LeaveTypeid, string Days)
         {
             var data = from d in db.sp_GetAvailableEmpLeave(Convert.ToInt32(Empid)).Where(x => x.leaveid == Convert.ToInt32(LeaveTypeid))
                        select new { Leaves = d.AvailableLeave - Convert.ToInt32(Days) };
             return Json(data.FirstOrDefault(), JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult ApproveLeave()
         {
             Attendanceviewmodel _avm = new Attendanceviewmodel();
@@ -331,7 +340,6 @@ namespace SchoolManagementSystems.Controllers
             _avm.EmployeeLeavelist = db.sp_GetEmployeeLeave().Where(x => x.IsApprove == false).ToList();
             return View(_avm);
         }
-
         public ActionResult DeleteLeave(int id)
         {
             db.tbl_EmployeeLeave.DeleteObject(db.tbl_EmployeeLeave.Where(x => x.Leaveid == id).SingleOrDefault());
@@ -340,7 +348,6 @@ namespace SchoolManagementSystems.Controllers
             _avm.EmployeeLeavelist = db.sp_GetEmployeeLeave().Where(x => x.IsApprove == false).ToList();
             return View("ApproveLeave", _avm);
         }
-
         public ActionResult Approve(int id, int check)
         {
             tbl_EmployeeLeave tb = db.tbl_EmployeeLeave.Where(x => x.Leaveid == id).FirstOrDefault();
@@ -352,7 +359,6 @@ namespace SchoolManagementSystems.Controllers
             db.SaveChanges();
             return View();
         }
-
         public JsonResult AbsentEmployee(int id, string r, DateTime date, string Present, string LeaveType)
         {
             var a = db.tbl_StaffAttendance.Where(x => x.StaffId == id && x.AttendanceDate == date);
@@ -404,7 +410,6 @@ namespace SchoolManagementSystems.Controllers
             var students = db.tbl_StaffAttendance.Where(x => x.StaffId == id && x.AttendanceDate == date).FirstOrDefault();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult EmployeeLeave(Attendanceviewmodel avm)
         {
@@ -439,7 +444,6 @@ namespace SchoolManagementSystems.Controllers
             }
 
         }
-
         public void FillPermission(int modid)
         {
             var per = db.sp_get_permission(Convert.ToInt32(Session["Role"]), modid).ToList();
@@ -450,6 +454,75 @@ namespace SchoolManagementSystems.Controllers
                 else if (per[i].Permissionid == 3) { ViewData["View"] = "Allow"; }
                 else if (per[i].Permissionid == 4) { ViewData["Delete"] = "Allow"; }
             }
+        }
+
+        public ActionResult TeacherSubject()
+        {
+            ViewBag.errormessage = "";
+            teachersubjectmodel _tsvm = new teachersubjectmodel();
+            FillPermission(9);
+            _tsvm.YearList = db.tbl_YearMaster.ToList();
+            _tsvm.DepartmentList = db.tblDepartment.ToList();
+            _tsvm.SubjectList = new List<tbl_subject>();
+            _tsvm.Classlist = new List<tbl_class>();
+            return View(_tsvm);
+        }
+        public JsonResult GettClass(string id)
+        {
+            int deptid = 0;
+            if (id != null && id != "")
+            {
+                deptid = Convert.ToInt32(id);
+            }
+            var DClass = db.tbl_class.Where(m => m.Dept_id == deptid).ToList();
+            return Json(new SelectList(DClass, "Classid", "Classnm"));
+        }
+        public JsonResult GettSubject(string id, string year, teachersubjectmodel avm)
+        {
+            //teachersubjectmodel avm = new teachersubjectmodel();
+            int yearid = 0;
+            int Courseid = 0;
+            if (id != null && id != "" && year != null && year != "")
+            {
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+             var students= db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).ToList();
+            //avm.SubjectList = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).Select(m => new {m.Subjectid,m.SubjectNm}).ToList();
+             return Json(students, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DMLTeachersubject(string[] presentdetails)
+        {
+
+
+            tbl_StudentAttendance sa = new tbl_StudentAttendance();
+            string s;
+
+            for (int i = 0; i < presentdetails.Count(); i++)
+            {
+                //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
+                s = presentdetails[i].ToString();
+                string[] s1 = s.ToString().Split(',');
+                sa.StudentID = Convert.ToInt32(s1[0].ToString());
+                sa.AttendanceDate = Convert.ToDateTime(s1[1].ToString());
+                sa.Present = Convert.ToBoolean(s1[2].ToString());
+                sa.Reason = s1[3].ToString();
+                sa.Subjectid = Convert.ToInt32(s1[4].ToString());
+                //sa.CreatedBy = Convert.ToInt32(s1[5].ToString());
+                //string session =  System.Web.HttpContext.Current.Session["sessionString"]; 
+                db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid);
+
+                db.SaveChanges();
+
+            }
+            return Json(presentdetails);
+
+
+        }
+        public JsonResult GetTeachers()
+        {
+            var teacher = db.tbl_employee.Where(m => m.Typeid == 4 ).ToList();
+            return Json(new SelectList(teacher, "Empid", "FirstName"));
         }
     }
 }
