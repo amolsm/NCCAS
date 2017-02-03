@@ -72,12 +72,12 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult GetSubjects(string id)
         {
-            int Classid = 0;
+            int Courseid = 0;
             if (id != null && id != "")
             {
-                Classid = Convert.ToInt32(id);
+                Courseid = Convert.ToInt32(id);
             }
-            var subjects = db.tbl_subject.Where(m => m.Classid == Classid && m.Status == true).ToList();
+            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.Status == true).ToList();
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
         public JsonResult FillTimetableInfo(int Tid)

@@ -470,7 +470,7 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult check_duplicate_Subject(string SubjectNm, int Classid)
         {
-            var data = db.tbl_subject.Where(m => m.SubjectNm == SubjectNm && m.Classid == Classid).FirstOrDefault();
+            var data = db.tbl_subject.Where(m => m.SubjectNm == SubjectNm && m.Courseid == Classid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLSubject(Subjectviewmodel _svm, string evt, int id)

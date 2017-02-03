@@ -51,12 +51,16 @@ namespace Entity
         [DisplayName("Division")]
         public int division { get; set; }
 
+        [DisplayName("Subject Name")]
+        public int subjectid { get; set; }
+
         [DisplayName("Leave Start Date")]
         public DateTime LeaveStartDate { get; set; }
 
         [DisplayName("Leave End Date")]
         public DateTime LeaveEndDate { get; set; }
 
+        public List<tbl_subject> SubjectList { get; set; }
         public SelectList ylist { get; set; }
         public List<tbl_CourseYearMaster> tblcourse { get; set; }
         public List<tbl_employee> Employeelist { get; set; }

@@ -15,17 +15,21 @@ namespace Entity
         public int teacherid { get; set; }
        
         [DisplayName("Course Name")]
-        public int courseid { get; set; }
+        public int Classid { get; set; }
 
         [DisplayName("Department Name")]
-        public int departmentid { get; set; }
+        public int department { get; set; }
 
         [DisplayName("Year Name")]
-        public int yearid { get; set; }
+        public int year { get; set; }
+
+        [DisplayName("Subject Name")]
+        public int subjectid { get; set; }
 
         [DisplayName("Active")]
         public bool status { get; set; }
 
+        public List<tbl_employee> TeacherList { get; set; }
         public List<tbl_CourseYearMaster> Courselist { get; set; }
         public List<tbl_subject> SubjectList { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
