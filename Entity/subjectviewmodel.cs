@@ -31,6 +31,8 @@ namespace Entity
 
         [DisplayName("Academic Year ")]
         public List<string> academicyear { get; set; }
+
+        public List<tbl_YearMaster> yearlist { get; set; }
         public List<tblDepartment> departmentlistdetails { get; set; }
         public List<tbl_class> Classlist { get; set; }
         public List<sp_getSubject_Result> _Subjectlist { get; set; }

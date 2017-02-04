@@ -16,7 +16,7 @@
     <Property Name="PermissionName" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="sys_UserPermission">
     <Key>
       <PropertyRef Name="moduleid" />
@@ -89,7 +89,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.sys_UserPermission' does not h
     <Property Name="Subjectid" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_school.dbo.tbl_Chaptercomplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_Chaptercomplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_Chaptercomplete">
     <Key>
       <PropertyRef Name="ID" />
@@ -152,7 +152,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_Chaptercomplete' does not 
     <Property Name="status" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_days">
     <Key>
       <PropertyRef Name="dayid" />
@@ -342,7 +342,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_days' does not have a prim
     <Property Name="PTypeid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_feeschild">
     <Key>
       <PropertyRef Name="Feesid" />
@@ -362,7 +362,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeschild' does not have a
     <Property Name="classid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_feeslabelchild">
     <Key>
       <PropertyRef Name="feeslblid" />
@@ -796,6 +796,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Property Name="Pass_Marks" Type="float" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="yearid" Type="int" />
+    <Property Name="DeptId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_submenu">
     <Key>
@@ -1550,6 +1551,7 @@ warning 6002: The table/view 'hourdesi_school.dbo.tbl_feeslabelchild' does not h
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="yearid" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />

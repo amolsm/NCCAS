@@ -88,7 +88,7 @@
             $("#CourseId").val('');
             $("#DeptId").val('');
             $("#academicyear").val('');
-            $("#status").prop('checked', false);
+            //$("#status").prop('checked', false);
         }
 
         function clearmsg() {
@@ -234,6 +234,7 @@
                                                 @Html.ValidationMessageFor(model => model.Id)
                                             </div>
                                         </div>
+
                                         <div class="control-group">
                                             @Html.LabelFor(model => model.DeptId, new { @class = "control-label", @for = "select" })
                                             <div class="controls">
@@ -248,6 +249,9 @@
                                                 @Html.ValidationMessageFor(model => model.CourseId)
                                             </div>
                                         </div>
+
+                                        
+                                     
 
                                         <div class="control-group">
                                             @Html.LabelFor(model => model.academicyear, new { @class = "control-label", @for = "focusedInput" })

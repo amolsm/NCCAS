@@ -15,13 +15,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:26</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>02/03/2017 21:03:09</publishTime>
+      <publishTime>02/04/2017 18:54:31</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
       <publishTime>06/01/2016 21:50:00</publishTime>
     </File>
     <File Include="bin/Entity.dll">
-      <publishTime>02/03/2017 21:03:09</publishTime>
+      <publishTime>02/04/2017 18:54:29</publishTime>
     </File>
     <File Include="bin/Entity.pdb">
       <publishTime>06/01/2016 21:49:59</publishTime>
@@ -51,7 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2016 00:23:49</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.dll">
-      <publishTime>02/03/2017 21:56:43</publishTime>
+      <publishTime>02/04/2017 20:50:41</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.pdb">
       <publishTime>06/02/2016 22:34:32</publishTime>
@@ -1095,7 +1095,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Employee/EmpAdmission.cshtml">
-      <publishTime>02/03/2017 21:32:38</publishTime>
+      <publishTime>02/04/2017 17:47:42</publishTime>
     </File>
     <File Include="Views/Employee/Index.cshtml">
       <publishTime>02/03/2017 20:38:29</publishTime>
@@ -1191,7 +1191,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/31/2017 18:24:51</publishTime>
     </File>
     <File Include="Views/Masters/Class.cshtml">
-      <publishTime>01/28/2017 20:19:35</publishTime>
+      <publishTime>02/04/2017 19:35:08</publishTime>
     </File>
     <File Include="Views/Masters/Contents.cshtml">
       <publishTime>02/02/2017 21:45:36</publishTime>
@@ -1200,13 +1200,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Masters/CourseYear.cshtml">
-      <publishTime>01/30/2017 16:15:08</publishTime>
+      <publishTime>02/04/2017 19:51:05</publishTime>
     </File>
     <File Include="Views/Masters/Department.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Masters/Division.cshtml">
-      <publishTime>01/31/2017 16:44:20</publishTime>
+      <publishTime>02/04/2017 17:55:46</publishTime>
     </File>
     <File Include="Views/Masters/Employee.cshtml">
       <publishTime>02/03/2017 20:38:33</publishTime>
@@ -1233,7 +1233,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Masters/Religion.cshtml">
-      <publishTime>01/27/2017 20:04:23</publishTime>
+      <publishTime>02/04/2017 17:58:01</publishTime>
     </File>
     <File Include="Views/Masters/Route.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1242,7 +1242,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2017 21:18:19</publishTime>
     </File>
     <File Include="Views/Masters/Subject.cshtml">
-      <publishTime>01/31/2017 19:09:32</publishTime>
+      <publishTime>02/04/2017 20:50:00</publishTime>
     </File>
     <File Include="Views/Masters/User.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1347,7 +1347,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Views/shared/_MasterSubMenu.cshtml">
-      <publishTime>02/01/2017 21:18:19</publishTime>
+      <publishTime>02/04/2017 18:43:00</publishTime>
     </File>
     <File Include="Views/shared/_MenuItems.cshtml">
       <publishTime>02/03/2017 21:25:02</publishTime>
@@ -1434,7 +1434,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/03/2017 21:03:11</publishTime>
+      <publishTime>02/04/2017 18:54:33</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>01/27/2017 20:04:24</publishTime>

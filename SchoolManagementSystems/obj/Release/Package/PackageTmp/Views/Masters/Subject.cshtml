@@ -29,10 +29,12 @@
                     $("#subjectid").show();
                     $("#subjectid input").val(data.Subjectid);
                     $("#SubjectNm").val(data.SubjectNm);
+                    $("#Dept_Id").val(data.DeptId);
+                    $("#Classid").val(data.Courseid);
                     $("#Marks").val(data.Marks);
                     $("#Pass_Marks").val(data.Pass_Marks);
                     $("#status").prop('checked', data.Status);
-                    $("#academicyear").val(data.academicyear);
+                    $("#academicyear").val(data.yearid);
                 }
             });
         });
@@ -118,6 +120,56 @@
         $("#Dept_Id").change(function () {
             ReloadCountry();
         })
+
+        $("#Classid").change(function () {
+           
+            ReloadClass();
+        })
+
+        function ReloadYear() {
+            $("#academicyear").empty();
+            var item = '<option value="">select Year</option>';
+            $("#academicyear").append(item);
+        }
+        function ReloadClass() {
+            if ($("#Classid").val() == "") {
+                ReloadYear();
+                debugger;
+            }
+            else {
+                $("#academicyear").empty();
+                debugger;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetYearClass")',
+                    dataType: 'json',
+                    data: {
+                        depid: $("#Dept_Id").val(),
+                        cid: $("#Classid").val()
+
+                    },
+                    success: function (year) {
+                        if (year != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(year, function (i, year) {
+                                item += '<option value="' + year.Value + '">' + year.Text + '</option>';
+                            });
+                            $("#academicyear").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#academicyear").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
 
         $("#insert").click(function () {
             setTimeout(function () {
@@ -308,9 +360,18 @@
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.Classid, new {  @class="control-label", @for="focusedInput"})
                                           <div class="controls">
-                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model._courselist, "id", "Course", "Select Course"), "Select Course")
+                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Course"), "Select Course", new { @for = "select" })
                                         @Html.ValidationMessageFor(model => model.Classid)
                                               </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.academicyear, new { @class = "control-label", @for = "select" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.yearlist, "yearid", "YearName", "Select Year"), "Select Year", new { @for = "select" })
+                                            @*@Html.EditorFor(model => model.academicyear, new { @class = "col-md-5 form-control form_in" })*@
+                                            @Html.ValidationMessageFor(model => model.academicyear)
+                                        </div>
                                     </div>
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.SubjectNm, new {  @class="control-label", @for="focusedInput" })
@@ -333,14 +394,7 @@
                                         @Html.ValidationMessageFor(model => model.Pass_Marks)
                                               </div>
                                     </div>
-                                    <div class="control-group">
-                                        @Html.LabelFor(model => model.academicyear, new {  @class="control-label", @for="select" })
-                                          <div class="controls">
-                                        @Html.DropDownListFor(m => m.academicyear, new SelectList(Model.academicyear), "Select Year")
-                                        @*@Html.EditorFor(model => model.academicyear, new { @class = "col-md-5 form-control form_in" })*@
-                                        @Html.ValidationMessageFor(model => model.academicyear)
-                                              </div>
-                                    </div>
+                                
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.status, new {  @class="control-label" })
                                           <div class="controls">

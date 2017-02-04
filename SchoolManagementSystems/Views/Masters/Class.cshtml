@@ -209,12 +209,13 @@
                                         @Html.ValidationMessageFor(model => model.Classid)
                                                  </div>
                                     </div>
-                                    <div  class="control-group">
-                                        @Html.LabelFor(model => model.Classnm, new { @class="control-label", @for="focusedInput" })
-                                             <div class="controls">
-                                        @Html.EditorFor(model => model.Classnm, new { @class="input-xlarge focused" ,@id="focusedInput", @type="text" })
-                                        @Html.ValidationMessageFor(model => model.Classnm)
-                                                 </div>
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.Classnm, new { @class = "control-label", @for = "focusedInput" })
+                                        <div class="controls">
+                                            @Html.EditorFor(model => model.Classnm, new { @class = "input-xlarge focused", @id = "focusedInput", @type = "text" })
+                                            @Html.ValidationMessageFor(model => model.Classnm)
+                                        </div>
                                     </div>
 
                                     <div class="control-group">
@@ -224,6 +225,9 @@
                                             @Html.ValidationMessageFor(model => model.Dept_Id)
                                         </div>
                                     </div>
+                                 
+
+                                
                                     <div  class="control-group">
                                         @Html.LabelFor(model => model.academicyear, new { @class="control-label"})
                                              <div class="controls">

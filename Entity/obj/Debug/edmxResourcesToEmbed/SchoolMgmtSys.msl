@@ -170,7 +170,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_User_DML" FunctionName="SchoolMgmtSysModel.Store.sp_User_DML" />
-    <FunctionImportMapping FunctionImportName="sp_Subject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Subject_DML" />
     <FunctionImportMapping FunctionImportName="sp_State_DML" FunctionName="SchoolMgmtSysModel.Store.sp_State_DML" />
     <FunctionImportMapping FunctionImportName="sp_religion_DML" FunctionName="SchoolMgmtSysModel.Store.sp_religion_DML" />
     <FunctionImportMapping FunctionImportName="sp_qualification_DML" FunctionName="SchoolMgmtSysModel.Store.sp_qualification_DML" />
@@ -1526,19 +1525,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_subject">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_subject">
-        <MappingFragment StoreEntitySet="tbl_subject">
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Pass_Marks" ColumnName="Pass_Marks" />
-          <ScalarProperty Name="Marks" ColumnName="Marks" />
-          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
-          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
     <EntitySetMapping Name="tbl_studentdivision">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
@@ -1568,5 +1554,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_subject">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_subject">
+        <MappingFragment StoreEntitySet="tbl_subject">
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pass_Marks" ColumnName="Pass_Marks" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Subject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Subject_DML" />
   </EntityContainerMapping>
 </Mapping>

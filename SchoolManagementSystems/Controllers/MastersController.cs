@@ -460,6 +460,7 @@ namespace SchoolManagementSystems.Controllers
                                                              || c.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             }
             _svm._courselist = db.sp_GetCourseforsubject().ToList();
+            _svm.yearlist = db.tbl_YearMaster.ToList();
             _svm.departmentlistdetails=db.tblDepartment.Where(c => c.Status == true).ToList();
             return View(_svm);
         }
@@ -478,11 +479,11 @@ namespace SchoolManagementSystems.Controllers
             string yr = _svm.academicyear[0].ToString();
             if (evt == "submit")
             {
-                db.sp_Subject_DML(_svm.Subjectid, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "").ToString();
+                db.sp_Subject_DML(_svm.Subjectid, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "",_svm.Dept_Id).ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_Subject_DML(id, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "del").ToString();
+                db.sp_Subject_DML(id, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "del", _svm.Dept_Id).ToString();
             }
             _svm._Subjectlist = db.sp_getSubject().ToList();
             return PartialView("_SubjectList", _svm);
@@ -1258,6 +1259,22 @@ namespace SchoolManagementSystems.Controllers
             }
             var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
             return Json(new SelectList(course, "Classid", "Classnm"));
+        }
+
+        public JsonResult GetYearClass(string depid, string cid)
+        {
+            int department = 0;
+            int courceid = 0;
+            int yearids = 0;
+            if (depid != null && depid != "" && cid!=null && cid!="")
+            {
+                department = Convert.ToInt32(depid);
+                courceid = Convert.ToInt32(cid);
+            }
+            var yearid = db.tbl_CourseYearMaster.Where(m => m.dept_id == department &&  m.courseid== courceid && m.status == true).ToList();
+            try { yearids = Convert.ToInt32(yearid[0].academicyear); } catch { yearids = 0; }
+            var year= db.tbl_YearMaster.Where(m => m.yearid == yearids &&  m.Status == true).ToList();
+            return Json(new SelectList(year, "yearid", "YearName"));
         }
         #endregion
     }

@@ -5,13 +5,18 @@
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }
 
+
+
 <script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         $("#tabs").tabs();
     });
+   
+
     $(document).ready(function () {
+     
         FillPermission();
         $("#insert").click(function (e) {
             Validations(e);
@@ -821,12 +826,12 @@
             });
         });
 
-        //$("#PhoneNo").keypress(function (e) {
-        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-        //        return false;
-        //    }
-        //});
+        $("#PhoneNo").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
 
         //$("#Zipcode").keypress(function (e) {
         //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -964,7 +969,7 @@
 </script>
 <script type="text/javascript">
   // When the document is ready
-
+   
     $(document).ready(function () {
 
             $('#datepicker').datepicker();
@@ -996,6 +1001,38 @@
             { $("#doctype").show(); }
             else { $("#doctype").hide(); }
 
+            $('.date-own').datepicker({
+           
+                changeMonth: false,
+                changeYear: true,
+                showButtonPanel: true,
+                yearRange: '1950:2014',
+                dateFormat: 'yy',
+                onClose: function (dateText, inst) {
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, 0, 1));
+                },
+                beforeShow: function () {
+                   if ((selDate = $(this).val()).length > 0)
+                   {
+                       iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    
+                        iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                      
+                        $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                        
+                        $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                        
+                    }
+                   
+                }
+
+              
+           
+            
+            });
+          
+           
    });
 
 </script>
@@ -1486,7 +1523,7 @@
                                                                     @Html.ValidationMessageFor(model => model.eprecentage1)
                                                                 </td>
                                                                 <td>
-                                                                    @Html.TextBoxFor(model => model.eYearofpassing1, new { placeholder = "Enter Year of Passing", maxlength = "20", @class = "input" })
+                                                                    @Html.TextBoxFor(model => model.eYearofpassing1, new { @class="date-own form-control", placeholder = "Enter Year of Passing"})
                                                                     @Html.ValidationMessageFor(model => model.eYearofpassing1)
                                                                 </td>
                                                             </tr>
@@ -1540,7 +1577,7 @@
                                                                     @Html.ValidationMessageFor(model => model.eprecentage2)
                                                                 </td>
                                                                 <td>
-                                                                    @Html.TextBoxFor(model => model.eYearofpassing2, new { placeholder = "Enter Year of Passing", maxlength = "20", @class = "input" })
+                                                                    @Html.TextBoxFor(model => model.eYearofpassing2, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
                                                                     @Html.ValidationMessageFor(model => model.eYearofpassing2)
                                                                 </td>
                                                             </tr>
@@ -1594,7 +1631,7 @@
                                                                     @Html.ValidationMessageFor(model => model.eprecentage3)
                                                                 </td>
                                                                 <td>
-                                                                    @Html.TextBoxFor(model => model.eYearofpassing3, new { placeholder = "Enter Year of Passing", maxlength = "20", @class = "input" })
+                                                                    @Html.TextBoxFor(model => model.eYearofpassing3, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
                                                                     @Html.ValidationMessageFor(model => model.eYearofpassing3)
                                                                 </td>
                                                             </tr>
@@ -1648,7 +1685,7 @@
                                                                     @Html.ValidationMessageFor(model => model.eprecentage4)
                                                                 </td>
                                                                 <td>
-                                                                    @Html.TextBoxFor(model => model.eYearofpassing4, new { placeholder = "Enter Year of Passing", maxlength = "20", @class = "input" })
+                                                                    @Html.TextBoxFor(model => model.eYearofpassing4, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
                                                                     @Html.ValidationMessageFor(model => model.eYearofpassing4)
                                                                 </td>
                                                             </tr>

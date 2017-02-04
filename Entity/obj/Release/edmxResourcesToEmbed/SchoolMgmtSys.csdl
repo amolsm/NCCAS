@@ -26,16 +26,6 @@
       <Parameter Name="academicyear" Mode="In" Type="String" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_Subject_DML">
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-      <Parameter Name="SubjectNm" Mode="In" Type="String" />
-      <Parameter Name="Marks" Mode="In" Type="Double" />
-      <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="yearid" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_State_DML">
       <Parameter Name="Stateid" Mode="In" Type="Int32" />
       <Parameter Name="StateName" Mode="In" Type="String" />
@@ -729,7 +719,6 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.tbl_employee" />
-    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
     <FunctionImport Name="sp_employee_DML">
       <Parameter Name="Empid" Mode="In" Type="Int32" />
       <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -837,6 +826,18 @@
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
     <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
+    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
+    <FunctionImport Name="sp_Subject_DML">
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="SubjectNm" Mode="In" Type="String" />
+      <Parameter Name="Marks" Mode="In" Type="Double" />
+      <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="yearid" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2048,18 +2049,6 @@
     <Property Name="docnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="contrelation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tbl_subject">
-    <Key>
-      <PropertyRef Name="Subjectid" />
-    </Key>
-    <Property Name="Subjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Courseid" Type="Int32" Nullable="false" />
-    <Property Name="SubjectNm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Marks" Type="Double" Nullable="false" />
-    <Property Name="Pass_Marks" Type="Double" Nullable="false" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-    <Property Name="yearid" Type="Int32" />
-  </EntityType>
   <EntityType Name="tbl_studentdivision">
     <Key>
       <PropertyRef Name="id" />
@@ -2085,5 +2074,18 @@
     <Property Name="Yearid" Type="Int32" />
     <Property Name="Chapterid" Type="Int32" />
     <Property Name="complete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_subject">
+    <Key>
+      <PropertyRef Name="Subjectid" />
+    </Key>
+    <Property Name="Subjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Courseid" Type="Int32" Nullable="false" />
+    <Property Name="SubjectNm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Marks" Type="Double" Nullable="false" />
+    <Property Name="Pass_Marks" Type="Double" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="DeptId" Type="Int32" />
   </EntityType>
 </Schema>

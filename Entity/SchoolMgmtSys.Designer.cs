@@ -932,22 +932,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_subject> tbl_subject
-        {
-            get
-            {
-                if ((_tbl_subject == null))
-                {
-                    _tbl_subject = base.CreateObjectSet<tbl_subject>("tbl_subject");
-                }
-                return _tbl_subject;
-            }
-        }
-        private ObjectSet<tbl_subject> _tbl_subject;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_studentdivision> tbl_studentdivision
         {
             get
@@ -976,6 +960,22 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_Chaptercomplete> _tbl_Chaptercomplete;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_subject> tbl_subject
+        {
+            get
+            {
+                if ((_tbl_subject == null))
+                {
+                    _tbl_subject = base.CreateObjectSet<tbl_subject>("tbl_subject");
+                }
+                return _tbl_subject;
+            }
+        }
+        private ObjectSet<tbl_subject> _tbl_subject;
 
         #endregion
 
@@ -1414,14 +1414,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_subject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_subject(tbl_subject tbl_subject)
-        {
-            base.AddObject("tbl_subject", tbl_subject);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_studentdivision EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_studentdivision(tbl_studentdivision tbl_studentdivision)
@@ -1435,6 +1427,14 @@ namespace Entity
         public void AddTotbl_Chaptercomplete(tbl_Chaptercomplete tbl_Chaptercomplete)
         {
             base.AddObject("tbl_Chaptercomplete", tbl_Chaptercomplete);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_subject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_subject(tbl_subject tbl_subject)
+        {
+            base.AddObject("tbl_subject", tbl_subject);
         }
 
         #endregion
@@ -1535,102 +1535,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_User_DML", useridParameter, userNameParameter, passwordParameter, typeParameter, genidParameter, statusParameter, academicyearParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="subjectNm">No Metadata Documentation available.</param>
-        /// <param name="marks">No Metadata Documentation available.</param>
-        /// <param name="pass_Marks">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="yearid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_Subject_DML(Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> courseid, global::System.String subjectNm, Nullable<global::System.Double> marks, Nullable<global::System.Double> pass_Marks, Nullable<global::System.Boolean> status, global::System.String yearid, global::System.String act)
-        {
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("Subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("Subjectid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
-            {
-                courseidParameter = new ObjectParameter("Courseid", courseid);
-            }
-            else
-            {
-                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter subjectNmParameter;
-            if (subjectNm != null)
-            {
-                subjectNmParameter = new ObjectParameter("SubjectNm", subjectNm);
-            }
-            else
-            {
-                subjectNmParameter = new ObjectParameter("SubjectNm", typeof(global::System.String));
-            }
-    
-            ObjectParameter marksParameter;
-            if (marks.HasValue)
-            {
-                marksParameter = new ObjectParameter("Marks", marks);
-            }
-            else
-            {
-                marksParameter = new ObjectParameter("Marks", typeof(global::System.Double));
-            }
-    
-            ObjectParameter pass_MarksParameter;
-            if (pass_Marks.HasValue)
-            {
-                pass_MarksParameter = new ObjectParameter("Pass_Marks", pass_Marks);
-            }
-            else
-            {
-                pass_MarksParameter = new ObjectParameter("Pass_Marks", typeof(global::System.Double));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter yearidParameter;
-            if (yearid != null)
-            {
-                yearidParameter = new ObjectParameter("yearid", yearid);
-            }
-            else
-            {
-                yearidParameter = new ObjectParameter("yearid", typeof(global::System.String));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_Subject_DML", subjectidParameter, courseidParameter, subjectNmParameter, marksParameter, pass_MarksParameter, statusParameter, yearidParameter, actParameter);
         }
     
         /// <summary>
@@ -9048,6 +8952,113 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter, collagename1Parameter, affliateduniversity1Parameter, joiningdate1Parameter, lastdate1Parameter, totalexperience1Parameter, lastdesignation1Parameter, companyname1Parameter, clastdesignation1Parameter, cjoiningdate1Parameter, clastdate1Parameter, ctotalexperience1Parameter, doctypenameParameter, docnumberParameter, contrelationParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="subjectNm">No Metadata Documentation available.</param>
+        /// <param name="marks">No Metadata Documentation available.</param>
+        /// <param name="pass_Marks">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        public int sp_Subject_DML(Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> courseid, global::System.String subjectNm, Nullable<global::System.Double> marks, Nullable<global::System.Double> pass_Marks, Nullable<global::System.Boolean> status, global::System.String yearid, global::System.String act, Nullable<global::System.Int32> deptid)
+        {
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("Courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectNmParameter;
+            if (subjectNm != null)
+            {
+                subjectNmParameter = new ObjectParameter("SubjectNm", subjectNm);
+            }
+            else
+            {
+                subjectNmParameter = new ObjectParameter("SubjectNm", typeof(global::System.String));
+            }
+    
+            ObjectParameter marksParameter;
+            if (marks.HasValue)
+            {
+                marksParameter = new ObjectParameter("Marks", marks);
+            }
+            else
+            {
+                marksParameter = new ObjectParameter("Marks", typeof(global::System.Double));
+            }
+    
+            ObjectParameter pass_MarksParameter;
+            if (pass_Marks.HasValue)
+            {
+                pass_MarksParameter = new ObjectParameter("Pass_Marks", pass_Marks);
+            }
+            else
+            {
+                pass_MarksParameter = new ObjectParameter("Pass_Marks", typeof(global::System.Double));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid != null)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.String));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_Subject_DML", subjectidParameter, courseidParameter, subjectNmParameter, marksParameter, pass_MarksParameter, statusParameter, yearidParameter, actParameter, deptidParameter);
         }
 
         #endregion
@@ -23772,6 +23783,30 @@ namespace Entity
         private Nullable<global::System.Int32> _yearid;
         partial void OnyearidChanging(Nullable<global::System.Int32> value);
         partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DeptId
+        {
+            get
+            {
+                return _DeptId;
+            }
+            set
+            {
+                OnDeptIdChanging(value);
+                ReportPropertyChanging("DeptId");
+                _DeptId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DeptId");
+                OnDeptIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DeptId;
+        partial void OnDeptIdChanging(Nullable<global::System.Int32> value);
+        partial void OnDeptIdChanged();
 
         #endregion
 
