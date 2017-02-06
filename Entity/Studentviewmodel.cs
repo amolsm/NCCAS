@@ -434,6 +434,7 @@ namespace Entity
         public List<tbl_state> statelist { get; set; }
         public List<tbl_city> citylist { get; set; }
 
+        public List<tbl_CourseMaster> courselist { get; set; }
         public string[] categories { get; set; }
         public string[] subcategories { get; set; }
         public string[] products { get; set; }

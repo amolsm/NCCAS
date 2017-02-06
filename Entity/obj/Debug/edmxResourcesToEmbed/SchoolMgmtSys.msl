@@ -1569,5 +1569,45 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_Subject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Subject_DML" />
+    <EntitySetMapping Name="tbl_CourseMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseMaster">
+        <MappingFragment StoreEntitySet="tbl_CourseMaster">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_coursemaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_coursemaster_DML" />
+    <FunctionImportMapping FunctionImportName="sp_getCourseMaster" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseMaster">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseMaster_Result">
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_Course">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Course">
+        <MappingFragment StoreEntitySet="tbl_Course">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_course_DML" FunctionName="SchoolMgmtSysModel.Store.sp_course_DML" />
+    <FunctionImportMapping FunctionImportName="sp_getCourseDetails" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseDetails_Result">
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

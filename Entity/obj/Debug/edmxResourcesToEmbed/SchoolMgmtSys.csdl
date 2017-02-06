@@ -838,6 +838,23 @@
       <Parameter Name="act" Mode="In" Type="String" />
       <Parameter Name="deptid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
+    <FunctionImport Name="sp_coursemaster_DML">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="CourseName" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getCourseMaster" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseMaster_Result)" />
+    <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.tbl_Course" />
+    <FunctionImport Name="sp_course_DML">
+      <Parameter Name="Cid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getCourseDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseDetails_Result)" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2088,4 +2105,32 @@
     <Property Name="yearid" Type="Int32" />
     <Property Name="DeptId" Type="Int32" />
   </EntityType>
+  <EntityType Name="tbl_CourseMaster">
+    <Key>
+      <PropertyRef Name="Courseid" />
+    </Key>
+    <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getCourseMaster_Result">
+    <Property Type="Int32" Name="Courseid" Nullable="false" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <EntityType Name="tbl_Course">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_id" Type="Int32" />
+    <Property Name="Dept_id" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getCourseDetails_Result">
+    <Property Type="Int32" Name="Cid" Nullable="false" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+  </ComplexType>
 </Schema>

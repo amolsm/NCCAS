@@ -128,6 +128,7 @@
         $("#Busid").hide();
         $("#BusNo").hide();
         $("#attach").hide();
+   
 
         //        $("#tabss").find("#tab3").addClass("ui-tabs-active ui-state-active");
         //        $("#tabs - 3").attr("display", "block");
@@ -201,34 +202,35 @@
        
 
         function ReloadState() {
-            $("#Classid").empty();
-            var item = '<option value="">select Course</option>';
-            $("#Classid").append(item);
+            $("#DepartmentId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DepartmentId").append(item);
         }
 
         function ReloadCountry() {
-            if ($("#DepartmentId").val() == "") {
+            if ($("#Classid").val() == "") {
                 ReloadState();
             }
             else {
-                $("#Classid").empty();
+               
+                $("#DepartmentId").empty();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetCourse")',
                     dataType: 'json',
-                    data: { id: $("#DepartmentId").val() },
+                    data: { id: $("#Classid").val() },
                     success: function (course) {
                         if (course != "") {
 
-                            var item = '<option value="">select Course</option>';
+                            var item = '<option value="">select Department</option>';
                             $.each(course, function (i, course) {
                                 item += '<option value="' + course.Value + '">' + course.Text + '</option>';
                             });
-                            $("#Classid").append(item);
+                            $("#DepartmentId").append(item);
                         }
                         else {
-                            var item = '<option value="">select Course</option>';
-                            $("#Classid").append(item);
+                            var item = '<option value="">select Department</option>';
+                            $("#DepartmentId").append(item);
                         }
                     },
                     error: function (ex) {
@@ -239,9 +241,58 @@
             return false;
         }
 
-        $("#DepartmentId").change(function () {
+        $("#Classid").change(function () {
+          
             ReloadCountry();
         })
+
+        $("#DepartmentId").change(function () {
+
+            ReloadCourseYear();
+        })
+
+        function ReloadYear() {
+            $("#courseyear").empty();
+            var item = '<option value="">select Year</option>';
+            $("#courseyear").append(item);
+        }
+
+        function ReloadCourseYear() {
+            if ($("#DepartmentId").val() == "") {
+                ReloadYear();
+            }
+            else {
+
+                $("#courseyear").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourseYear")',
+                    dataType: 'json',
+                    data: {
+                        courseid: $("#Classid").val(),
+                        deptid: $("#DepartmentId").val()
+                    },
+                    success: function (yeardata) {
+                        if (yeardata != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(yeardata, function (i, yeardata) {
+                                item += '<option value="' + yeardata.Value + '">' + yeardata.Text + '</option>';
+                            });
+                            $("#courseyear").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#courseyear").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
 
         function fillprds() {
             if ($("#subcategories").val() != "") {
@@ -366,7 +417,7 @@
                         data: { id: $("#Religionid").val() },
                         success: function (castes) {
                             if (castes != "") {
-                                var item = '<option value="0">select caste</option>';
+                                var item = '<option value="0">Select Sub Category</option>';
                                 $.each(castes, function (i, caste) {
                                     item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
                                 });
@@ -374,7 +425,7 @@
                                 $("#Casteid").val(data.Casteid);
                             }
                             else {
-                                var item = '<option value="0">select caste</option>';
+                                var item = '<option value="0">Select Sub Category</option>';
                                 $("#Casteid").append(item);
                             }
                         },
@@ -1827,11 +1878,16 @@
 
         });
 
+       
+
 
         $("#Religionid").change(function () {
+            if ($("#Religionid").val() != 2)
+            { $("#parish").hide(); $("#diocese").hide(); $("#cast").hide(); }
+            else { $("#parish").show(); $("#diocese").show(); $("#cast").show(); }
             if ($("#Religionid").val() == "") {
                 $("#Casteid").empty();
-                var item = '<option value="0">select Caste</option>';
+                var item = '<option value="0">Select Sub Category</option>';
                 $("#Casteid").append(item);
             }
             else {
@@ -1843,14 +1899,14 @@
                     data: { id: $("#Religionid").val() },
                     success: function (castes) {
                         if (castes != "") {
-                            var item = '<option value="0">select caste</option>';
+                            var item = '<option value="0">Select Sub Category</option>';
                             $.each(castes, function (i, caste) {
                                 item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
                             });
                             $("#Casteid").append(item);
                         }
                         else {
-                            var item = '<option value="0">select caste</option>';
+                            var item = '<option value="0">Select Sub Category</option>';
                             $("#Casteid").append(item);
                         }
                     },
@@ -2143,7 +2199,7 @@
        
             $('#datepicker4').datepicker();
             $('#datepicker4').val("");
-       
+           
    });
 
 </script>
@@ -2293,19 +2349,21 @@
                                                         </div>
 
 
+                                               
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.Classid, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.Classid, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.Classid)
+                                                            </div>
+                                                        </div>
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label", @for = "focusedInput" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.DepartmentId)
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.Classid, new { @class = "control-label", @for = "select" })
-                                                            <div class="controls">
-                                                                @Html.DropDownListFor(m => m.Classid, new SelectList(Model.classlist, "Classid", "Classnm", "Select Course"), "Select Course", new { @for = "select" })
-                                                                @Html.ValidationMessageFor(model => model.Classid)
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
@@ -2380,7 +2438,7 @@
 
 
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group span5" id="cast">
                                                             @Html.LabelFor(model => model.Casteid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Casteid, new SelectList(Model.castelist, "Casteid", "CasteName", "Select Sub Category"), "Select Sub Category", new { @for = "select" })

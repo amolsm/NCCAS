@@ -1219,7 +1219,7 @@ namespace SchoolManagementSystems.Controllers
                         || x.Classnm.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             _cym.deptlist = db.tblDepartment.ToList();
             _cym.yearlist = db.tbl_YearMaster.ToList();
-            _cym.courselist = db.tbl_class.ToList();
+            _cym.courselist = db.tbl_CourseMaster.ToList();
             _cym._courseyear = db.sp_getCourseYear().ToList();
             return View(_cym);
         }
@@ -1252,13 +1252,18 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult GetCourse(string id)
         {
-            int depid = 0;
+            int coureid = 0;
             if (id != null && id != "")
             {
-                depid = Convert.ToInt32(id);
+                coureid = Convert.ToInt32(id);
             }
-            var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
-            return Json(new SelectList(course, "Classid", "Classnm"));
+            var course = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == coureid && post.status==true 
+                         select new { meta.Dept_id,meta.Dept_name};
+
+            //var course =  db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+            return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
 
         public JsonResult GetYearClass(string depid, string cid)
@@ -1277,5 +1282,94 @@ namespace SchoolManagementSystems.Controllers
             return Json(new SelectList(year, "yearid", "YearName"));
         }
         #endregion
+
+        #region CourseMaster master
+        public ActionResult CourseMaster(string Search_Data)
+        {
+            coursemasterviewmodel _cmv = new coursemasterviewmodel();
+
+            FillPermission(55);
+            if (String.IsNullOrEmpty(Search_Data))
+                _cmv._coursemasterlist = db.sp_getCourseMaster().ToList();
+            else
+             _cmv._coursemasterlist = db.sp_getCourseMaster().Where(x => x.CourseName.ToUpper().Contains(Search_Data.ToUpper())
+                         || x.Status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            
+            return View(_cmv);
+        }
+        public JsonResult FillCourseDetails(int courseid)
+        {
+
+            var data = db.tbl_CourseMaster.Where(m => m.Courseid == courseid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_Course(string coursename)
+        {
+            var data = db.tbl_CourseMaster.Where(m => (m.CourseName == coursename)).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult DML_CourseMaster(coursemasterviewmodel _cmv, string evt, int id)
+        {
+
+            if (evt == "submit")
+            {
+              db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.Status, "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.Status, "del").ToString();
+            }
+            _cmv._coursemasterlist = db.sp_getCourseMaster().ToList();
+            return PartialView("_CoursemasterList", _cmv);
+        }
+
+
+        #endregion
+
+        #region Class master
+        public ActionResult Course(string Search_Data)
+        {
+            courseassigndeptmodel _cam = new courseassigndeptmodel();
+          
+           FillPermission(38);
+            if (String.IsNullOrEmpty(Search_Data))
+                _cam._CoursedetailsList = db.sp_getCourseDetails().ToList();
+            else
+                _cam._CoursedetailsList = db.sp_getCourseDetails().Where(x => x.CourseName.ToUpper().Contains(Search_Data.ToUpper())
+                        || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            _cam.departmentlistdetails = db.tblDepartment.ToList();
+            _cam.courselist = db.tbl_CourseMaster.ToList();
+
+
+            return View(_cam);
+        }
+        public JsonResult FillAssignCourseDetails(int Cid)
+        {
+            var data = db.tbl_Course.Where(m => m.Cid == Cid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_assigncourse(int courseid, int dept_id)
+        {
+            var data = db.tbl_Course.Where(m => (m.Course_id == courseid) && (m.Dept_id == dept_id) ).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult DMLAssignCourseDept(courseassigndeptmodel _cam, string evt, int id)
+        {
+
+            if (evt == "submit")
+            {
+                db.sp_course_DML(_cam.Cid,_cam.CourseId, _cam.Dept_Id,_cam.status, "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_course_DML(_cam.Cid, _cam.CourseId, _cam.Dept_Id, _cam.status, "del").ToString();
+            }
+            _cam._CoursedetailsList = db.sp_getCourseDetails().ToList();
+            return PartialView("_courselistdetails", _cam);
+        }
+        #endregion
+
     }
 }

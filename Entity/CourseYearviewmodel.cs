@@ -26,7 +26,7 @@ namespace Entity
 
         public List<tblDepartment> deptlist { get; set; }
 
-        public List<tbl_class> courselist { get; set; }
+        public List<tbl_CourseMaster> courselist { get; set; }
 
         public List<tbl_YearMaster> yearlist { get; set; }
 

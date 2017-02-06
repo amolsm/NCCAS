@@ -39,7 +39,7 @@ namespace SchoolManagementSystems.Controllers
         {
             Studentviewmodel svm = new Studentviewmodel();            
             FillPermission(3);            
-            svm.classlist = db.tbl_class.Where(m => m.status == true).ToList();
+            svm.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
             svm.Translist = db.tbl_transport.Where(m => m.status == true).ToList();
             svm.catlist = db.tbl_category.Where(m => m.status == true).ToList();
             svm.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
@@ -985,13 +985,33 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult GetCourse(string id)
         {
-            int depid = 0;
+            int coureid = 0;
             if (id != null && id != "")
             {
-                depid = Convert.ToInt32(id);
+                coureid = Convert.ToInt32(id);
             }
-            var course = db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
-            return Json(new SelectList(course, "Classid", "Classnm"));
+            var course = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == coureid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
+            return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
+
+        public JsonResult GetCourseYear(string courseid,string deptid)
+        {
+            int coureid = 0;
+            int detid = 0;
+            if (courseid != null && courseid != "" && deptid!=null && deptid!="")
+            {
+                coureid = Convert.ToInt32(courseid);
+                detid = Convert.ToInt32(deptid);
+            }
+            var yeardata = from post in db.tbl_CourseYearMaster
+                         join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
+                         where post.courseid == coureid && post.dept_id==detid && post.status == true
+                         select new { meta.yearid, meta.YearName };
+
+            return Json(new SelectList(yeardata, "yearid", "YearName"));
+        } 
     }
 }

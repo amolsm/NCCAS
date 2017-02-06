@@ -40,34 +40,35 @@
 
 
         function ReloadState() {
-            $("#CourseId").empty();
-            var item = '<option value="">select Course</option>';
-            $("#CourseId").append(item);
+            $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
         }
 
         function ReloadCountry() {
-            if ($("#DeptId").val() == "") {
+            
+            if ($("#CourseId").val() == "") {
                 ReloadState();
             }
             else {
-                $("#CourseId").empty();
+                $("#DeptId").empty();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetCourse")',
                     dataType: 'json',
-                    data: { id: $("#DeptId").val() },
+                    data: { id: $("#CourseId").val() },
                     success: function (course) {
                         if (course != "") {
                             
-                            var item = '<option value="">select Course</option>';
+                            var item = '<option value="">select Department</option>';
                             $.each(course, function (i, course) {
                                 item += '<option value="' + course.Value + '">' + course.Text + '</option>';
                             });
-                            $("#CourseId").append(item);
+                            $("#DeptId").append(item);
                         }
                         else {
-                            var item = '<option value="">select Course</option>';
-                            $("#CourseId").append(item);
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
                         }
                     },
                     error: function (ex) {
@@ -78,7 +79,7 @@
             return false;
         }
 
-        $("#DeptId").change(function () {
+        $("#CourseId").change(function () {
             ReloadCountry();
         })
         function clear() {
@@ -236,19 +237,22 @@
                                         </div>
 
                                         <div class="control-group">
+                                            @Html.LabelFor(model => model.CourseId, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                             
+                                                @Html.ValidationMessageFor(model => model.CourseId)
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group">
                                             @Html.LabelFor(model => model.DeptId, new { @class = "control-label", @for = "select" })
                                             <div class="controls">
                                                 @Html.DropDownListFor(model => model.DeptId, new SelectList(Model.deptlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
                                                 @Html.ValidationMessageFor(model => model.DeptId)
                                             </div>
                                         </div>
-                                        <div class="control-group">
-                                            @Html.LabelFor(model => model.CourseId, new { @class = "control-label", @for = "focusedInput" })
-                                            <div class="controls">
-                                                @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.courselist, "Classid", "Classnm", "Select Course"), "Select Course", new { @for = "select" })
-                                                @Html.ValidationMessageFor(model => model.CourseId)
-                                            </div>
-                                        </div>
+                                    
 
                                         
                                      

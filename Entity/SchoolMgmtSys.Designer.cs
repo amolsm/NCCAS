@@ -976,6 +976,38 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_subject> _tbl_subject;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_CourseMaster> tbl_CourseMaster
+        {
+            get
+            {
+                if ((_tbl_CourseMaster == null))
+                {
+                    _tbl_CourseMaster = base.CreateObjectSet<tbl_CourseMaster>("tbl_CourseMaster");
+                }
+                return _tbl_CourseMaster;
+            }
+        }
+        private ObjectSet<tbl_CourseMaster> _tbl_CourseMaster;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Course> tbl_Course
+        {
+            get
+            {
+                if ((_tbl_Course == null))
+                {
+                    _tbl_Course = base.CreateObjectSet<tbl_Course>("tbl_Course");
+                }
+                return _tbl_Course;
+            }
+        }
+        private ObjectSet<tbl_Course> _tbl_Course;
 
         #endregion
 
@@ -1435,6 +1467,22 @@ namespace Entity
         public void AddTotbl_subject(tbl_subject tbl_subject)
         {
             base.AddObject("tbl_subject", tbl_subject);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_CourseMaster EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_CourseMaster(tbl_CourseMaster tbl_CourseMaster)
+        {
+            base.AddObject("tbl_CourseMaster", tbl_CourseMaster);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Course EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Course(tbl_Course tbl_Course)
+        {
+            base.AddObject("tbl_Course", tbl_Course);
         }
 
         #endregion
@@ -9060,6 +9108,137 @@ namespace Entity
     
             return base.ExecuteFunction("sp_Subject_DML", subjectidParameter, courseidParameter, subjectNmParameter, marksParameter, pass_MarksParameter, statusParameter, yearidParameter, actParameter, deptidParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="courseName">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_coursemaster_DML(Nullable<global::System.Int32> courseid, global::System.String courseName, Nullable<global::System.Boolean> status, global::System.String act)
+        {
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseNameParameter;
+            if (courseName != null)
+            {
+                courseNameParameter = new ObjectParameter("CourseName", courseName);
+            }
+            else
+            {
+                courseNameParameter = new ObjectParameter("CourseName", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_coursemaster_DML", courseidParameter, courseNameParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getCourseMaster_Result> sp_getCourseMaster()
+        {
+            return base.ExecuteFunction<sp_getCourseMaster_Result>("sp_getCourseMaster");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="cid">No Metadata Documentation available.</param>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_course_DML(Nullable<global::System.Int32> cid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> deptid, Nullable<global::System.Boolean> status, global::System.String act)
+        {
+            ObjectParameter cidParameter;
+            if (cid.HasValue)
+            {
+                cidParameter = new ObjectParameter("Cid", cid);
+            }
+            else
+            {
+                cidParameter = new ObjectParameter("Cid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("Classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_course_DML", cidParameter, classidParameter, deptidParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getCourseDetails_Result> sp_getCourseDetails()
+        {
+            return base.ExecuteFunction<sp_getCourseDetails_Result>("sp_getCourseDetails");
+        }
 
         #endregion
 
@@ -11066,6 +11245,240 @@ namespace Entity
         private global::System.Boolean _status;
         partial void OnstatusChanging(global::System.Boolean value);
         partial void OnstatusChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_Course")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_Course : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_Course object.
+        /// </summary>
+        /// <param name="cid">Initial value of the Cid property.</param>
+        public static tbl_Course Createtbl_Course(global::System.Int32 cid)
+        {
+            tbl_Course tbl_Course = new tbl_Course();
+            tbl_Course.Cid = cid;
+            return tbl_Course;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cid
+        {
+            get
+            {
+                return _Cid;
+            }
+            set
+            {
+                if (_Cid != value)
+                {
+                    OnCidChanging(value);
+                    ReportPropertyChanging("Cid");
+                    _Cid = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cid");
+                    OnCidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cid;
+        partial void OnCidChanging(global::System.Int32 value);
+        partial void OnCidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Course_id
+        {
+            get
+            {
+                return _Course_id;
+            }
+            set
+            {
+                OnCourse_idChanging(value);
+                ReportPropertyChanging("Course_id");
+                _Course_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Course_id");
+                OnCourse_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Course_id;
+        partial void OnCourse_idChanging(Nullable<global::System.Int32> value);
+        partial void OnCourse_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Dept_id
+        {
+            get
+            {
+                return _Dept_id;
+            }
+            set
+            {
+                OnDept_idChanging(value);
+                ReportPropertyChanging("Dept_id");
+                _Dept_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dept_id");
+                OnDept_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Dept_id;
+        partial void OnDept_idChanging(Nullable<global::System.Int32> value);
+        partial void OnDept_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _status;
+        partial void OnstatusChanging(Nullable<global::System.Boolean> value);
+        partial void OnstatusChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_CourseMaster")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_CourseMaster : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_CourseMaster object.
+        /// </summary>
+        /// <param name="courseid">Initial value of the Courseid property.</param>
+        public static tbl_CourseMaster Createtbl_CourseMaster(global::System.Int32 courseid)
+        {
+            tbl_CourseMaster tbl_CourseMaster = new tbl_CourseMaster();
+            tbl_CourseMaster.Courseid = courseid;
+            return tbl_CourseMaster;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                if (_Courseid != value)
+                {
+                    OnCourseidChanging(value);
+                    ReportPropertyChanging("Courseid");
+                    _Courseid = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Courseid");
+                    OnCourseidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Courseid;
+        partial void OnCourseidChanging(global::System.Int32 value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CourseName
+        {
+            get
+            {
+                return _CourseName;
+            }
+            set
+            {
+                OnCourseNameChanging(value);
+                ReportPropertyChanging("CourseName");
+                _CourseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CourseName");
+                OnCourseNameChanged();
+            }
+        }
+        private global::System.String _CourseName;
+        partial void OnCourseNameChanging(global::System.String value);
+        partial void OnCourseNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Status;
+        partial void OnStatusChanging(Nullable<global::System.Boolean> value);
+        partial void OnStatusChanged();
 
         #endregion
 
@@ -27262,6 +27675,133 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getCourseDetails_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getCourseDetails_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getCourseDetails_Result object.
+        /// </summary>
+        /// <param name="cid">Initial value of the Cid property.</param>
+        /// <param name="status">Initial value of the status property.</param>
+        public static sp_getCourseDetails_Result Createsp_getCourseDetails_Result(global::System.Int32 cid, global::System.String status)
+        {
+            sp_getCourseDetails_Result sp_getCourseDetails_Result = new sp_getCourseDetails_Result();
+            sp_getCourseDetails_Result.Cid = cid;
+            sp_getCourseDetails_Result.status = status;
+            return sp_getCourseDetails_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cid
+        {
+            get
+            {
+                return _Cid;
+            }
+            set
+            {
+                OnCidChanging(value);
+                ReportPropertyChanging("Cid");
+                _Cid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cid");
+                OnCidChanged();
+            }
+        }
+        private global::System.Int32 _Cid;
+        partial void OnCidChanging(global::System.Int32 value);
+        partial void OnCidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CourseName
+        {
+            get
+            {
+                return _CourseName;
+            }
+            set
+            {
+                OnCourseNameChanging(value);
+                ReportPropertyChanging("CourseName");
+                _CourseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CourseName");
+                OnCourseNameChanged();
+            }
+        }
+        private global::System.String _CourseName;
+        partial void OnCourseNameChanging(global::System.String value);
+        partial void OnCourseNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private global::System.String _status;
+        partial void OnstatusChanging(global::System.String value);
+        partial void OnstatusChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetCoursefordevision_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -27485,6 +28025,109 @@ namespace Entity
         private global::System.String _Course;
         partial void OnCourseChanging(global::System.String value);
         partial void OnCourseChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getCourseMaster_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getCourseMaster_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getCourseMaster_Result object.
+        /// </summary>
+        /// <param name="courseid">Initial value of the Courseid property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        public static sp_getCourseMaster_Result Createsp_getCourseMaster_Result(global::System.Int32 courseid, global::System.String status)
+        {
+            sp_getCourseMaster_Result sp_getCourseMaster_Result = new sp_getCourseMaster_Result();
+            sp_getCourseMaster_Result.Courseid = courseid;
+            sp_getCourseMaster_Result.Status = status;
+            return sp_getCourseMaster_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private global::System.Int32 _Courseid;
+        partial void OnCourseidChanging(global::System.Int32 value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CourseName
+        {
+            get
+            {
+                return _CourseName;
+            }
+            set
+            {
+                OnCourseNameChanging(value);
+                ReportPropertyChanging("CourseName");
+                _CourseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CourseName");
+                OnCourseNameChanged();
+            }
+        }
+        private global::System.String _CourseName;
+        partial void OnCourseNameChanging(global::System.String value);
+        partial void OnCourseNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
 
         #endregion
 

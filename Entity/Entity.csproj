@@ -64,6 +64,8 @@
     <Compile Include="bloodgroupviewmodel.cs" />
     <Compile Include="Categoryviewmodel.cs" />
     <Compile Include="contentviewmodel.cs" />
+    <Compile Include="courseassigndeptmodel.cs" />
+    <Compile Include="coursemasterviewmodel.cs" />
     <Compile Include="CourseYearviewmodel.cs" />
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />

@@ -7,13 +7,13 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Id)
                 </th>
-            
-                <th>
-                    @Html.DisplayNameFor(model => model.DeptId)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CourseId)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeptId)
+                </th>
+             
                 <th>
                     @Html.DisplayNameFor(model => model.academicyear)
                 </th>
@@ -32,11 +32,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.id)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dept_name)
-            </td>
+         
             <td>
                 @Html.DisplayFor(modelItem => item.Classnm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dept_name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.YearName)
