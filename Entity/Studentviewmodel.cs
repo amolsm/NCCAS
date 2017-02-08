@@ -123,8 +123,14 @@ namespace Entity
         [DisplayName("Father's Occupation: ")]
         public int FatherOccpationid { get; set; }
 
+        [DisplayName("Enter Father's Occupation: ")]
+        public string FatherOccumationName { get; set; }
+
         [DisplayName("Father's Qualification : ")]
         public int FatherQualificationid { get; set; }
+
+        [DisplayName("Enter Father's Qualification : ")]
+        public string FatherQualificationName { get; set; }
 
         [DisplayName("Father's Email Address : ")]
         public string FatherEmail { get; set; }
@@ -144,8 +150,14 @@ namespace Entity
         [DisplayName("Guardian's Occupation: ")]
         public int GuardianOccpationid { get; set; }
 
+        [DisplayName("Enter Guardian's Occupation: ")]
+        public string GuardianOccpationName { get; set; }
+
         [DisplayName("Guardian's Qualification : ")]
         public int GuardianQualificationid { get; set; }
+
+        [DisplayName("Enter Guardian's Qualification: ")]
+        public string GuardianQualificationName { get; set; }
 
         [DisplayName("Guardian's Email Address : ")]
         public string GuardianEmail { get; set; }
@@ -162,8 +174,15 @@ namespace Entity
         [DisplayName("Mother's Occupation: ")]
         public int MotherOccpationid { get; set; }
 
+        [DisplayName("Enter Mother's Occupation: ")]
+        public string MotherOccpationName{ get; set; }
+
+
         [DisplayName("Mother's Qualification : ")]
         public int MotherQualificationid { get; set; }
+
+        [DisplayName("Enter Mother's Qualification : ")]
+        public string MotherQualificationName { get; set; }
 
         [DisplayName("Mother's Email Address : ")]
         public string MotherEmail { get; set; }

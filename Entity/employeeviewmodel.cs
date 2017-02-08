@@ -74,6 +74,31 @@ namespace Entity
         [DisplayName("Name of the College ")]
         public string collagename1 { get; set; }
 
+        [DisplayName("Name of the College ")]
+        public string collagename2 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename3 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename4 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename5 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename6 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename7 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename8 { get; set; }
+
+        [DisplayName("Name of the College ")]
+        public string collagename9 { get; set; }
+
+
         [DisplayName("Total Experience")]
         public string total { get; set; }
 
@@ -84,12 +109,88 @@ namespace Entity
         public string total1 { get; set; }
 
         [DisplayName("Total Experience")]
+        public string total2 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total3 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total4 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total5 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total6 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total7 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total8 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string total9 { get; set; }
+
+
+        [DisplayName("Total Experience")]
         public string ctotal1 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal2 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal3 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal4 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal5 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal6 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal7 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal8 { get; set; }
+
+        [DisplayName("Total Experience")]
+        public string ctotal9 { get; set; }
+
+
         [DisplayName("Affliated University ")]
         public string university { get; set; }
 
         [DisplayName("Affliated University ")]
         public string university1 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university2 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university3 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university4 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university5 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university6 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university7 { get; set; }
+
+        [DisplayName("Affliated University ")]
+        public string university8 { get; set; }
+
+
+        [DisplayName("Affliated University ")]
+        public string university9 { get; set; }
 
         [DisplayName("Joining Date ")]
         public DateTime joiningdate { get; set; }
@@ -97,12 +198,63 @@ namespace Entity
         [DisplayName("Joining Date ")]
         public DateTime joiningdate1 { get; set; }
 
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate2 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate3 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate4 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate5 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate6 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate7 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate8 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime joiningdate9{ get; set; }
+
 
         [DisplayName("last Date ")]
         public DateTime lastdate { get; set; }
 
         [DisplayName("last Date ")]
         public DateTime lastdate1 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate2 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate3 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate4 { get; set; }
+        [DisplayName("last Date ")]
+        public DateTime lastdate5 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate6 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate7 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate8 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime lastdate9 { get; set; }
 
         [DisplayName("Joining Date ")]
         public DateTime cjoiningdate { get; set; }
@@ -118,35 +270,164 @@ namespace Entity
 
         [DisplayName("Last designation  ")]
         public string clastdesignation { get; set; }
+
         [DisplayName("Joining Date ")]
         public DateTime cjoiningdate1 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate2 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate3 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate4 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate5 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate6 { get; set; }
+
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate7 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate8 { get; set; }
+
+        [DisplayName("Joining Date ")]
+        public DateTime cjoiningdate9 { get; set; }
 
         [DisplayName("last Date ")]
         public DateTime clastdate1 { get; set; }
 
+        [DisplayName("last Date ")]
+        public DateTime clastdate2 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate3 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate4 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate5 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate6 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate7 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate8 { get; set; }
+
+        [DisplayName("last Date ")]
+        public DateTime clastdate9 { get; set; }
+
+
         [DisplayName("Last designation ")]
         public string ldesignation1 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation2 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation3 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation4 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation5 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation6 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation7 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation8 { get; set; }
+
+        [DisplayName("Last designation ")]
+        public string ldesignation9 { get; set; }
+
 
         [DisplayName("Name of the Company ")]
         public string companyname1 { get; set; }
 
+        [DisplayName("Name of the Company ")]
+        public string companyname2 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname3 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname4 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname5 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname6 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname7 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname8 { get; set; }
+
+        [DisplayName("Name of the Company ")]
+        public string companyname9 { get; set; }
+
+
         [DisplayName("Last designation  ")]
         public string clastdesignation1 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation2 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation3 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation4 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation5 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation6 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation7 { get; set; }
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation8 { get; set; }
+
+
+        [DisplayName("Last designation  ")]
+        public string clastdesignation9 { get; set; }
+
 
         [DisplayName("Employee Email  ")]
         public string employeeemail { get; set; }
 
-        [DisplayName("Employee Religion ")]
+        [DisplayName("Religion ")]
         public int empreligion { get; set; }
 
-        [DisplayName("Employee Category ")]
+        [DisplayName("Category ")]
         public int empcategory { get; set; }
 
-        [DisplayName("Employee Caste ")]
+        [DisplayName("Sub Category ")]
         public int empcast { get; set; }
 
         [DisplayName("Mother Tongue ")]
-        public int mtongue { get; set; }
+        public string mtongue { get; set; }
 
         [DisplayName(" Weight in KG ")]
         public string eweight { get; set; }
@@ -248,28 +529,28 @@ namespace Entity
         public string DocumentIDNo { get; set; }
 
 
-        [DisplayName("Parent's Name ")]
+        [DisplayName("Name")]
         public string pname { get; set; }
 
-        [DisplayName("Parent's Occupation ")]
+        [DisplayName("Occupation")]
         public string poccupation { get; set; }
 
-        [DisplayName("Parent's Qualification ")]
+        [DisplayName("Qualification")]
         public string pqualification { get; set; }
 
-        [DisplayName("Parent's Email Address ")]
+        [DisplayName("Email Address")]
         public string pemail { get; set; }
 
-        [DisplayName("Parent's Office Address ")]
+        [DisplayName("Office Address")]
         public string pofficeaddress { get; set; }
 
-        [DisplayName("Parent's Contact ")]
+        [DisplayName("Contact")]
         public string pcontact { get; set; }
 
         [DisplayName("Code ")]
         public int PCODE { get; set; }
 
-        [DisplayName("Parent's Pic ")]
+        [DisplayName("Pic ")]
         public byte[] ppic { get; set; }
 
         [DisplayName("Street ")]
@@ -331,6 +612,14 @@ namespace Entity
 
         [DisplayName("Enter Emergency Contact relation ")]
         public string conttactrelation { get; set; }
+
+        [DisplayName("Parish name : ")]
+        public string ParishName { get; set; }
+
+
+        [DisplayName("Diocese name : ")]
+        public string DioceseName { get; set; }
+
 
 
         public string SelectGender { get; set; }

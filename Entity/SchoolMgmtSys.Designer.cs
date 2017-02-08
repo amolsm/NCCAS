@@ -884,22 +884,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_student> tbl_student
-        {
-            get
-            {
-                if ((_tbl_student == null))
-                {
-                    _tbl_student = base.CreateObjectSet<tbl_student>("tbl_student");
-                }
-                return _tbl_student;
-            }
-        }
-        private ObjectSet<tbl_student> _tbl_student;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_teachersubject> tbl_teachersubject
         {
             get
@@ -912,22 +896,6 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_teachersubject> _tbl_teachersubject;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_employee> tbl_employee
-        {
-            get
-            {
-                if ((_tbl_employee == null))
-                {
-                    _tbl_employee = base.CreateObjectSet<tbl_employee>("tbl_employee");
-                }
-                return _tbl_employee;
-            }
-        }
-        private ObjectSet<tbl_employee> _tbl_employee;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1008,6 +976,54 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_Course> _tbl_Course;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_student> tbl_student
+        {
+            get
+            {
+                if ((_tbl_student == null))
+                {
+                    _tbl_student = base.CreateObjectSet<tbl_student>("tbl_student");
+                }
+                return _tbl_student;
+            }
+        }
+        private ObjectSet<tbl_student> _tbl_student;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_employee> tbl_employee
+        {
+            get
+            {
+                if ((_tbl_employee == null))
+                {
+                    _tbl_employee = base.CreateObjectSet<tbl_employee>("tbl_employee");
+                }
+                return _tbl_employee;
+            }
+        }
+        private ObjectSet<tbl_employee> _tbl_employee;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Empexperience> tbl_Empexperience
+        {
+            get
+            {
+                if ((_tbl_Empexperience == null))
+                {
+                    _tbl_Empexperience = base.CreateObjectSet<tbl_Empexperience>("tbl_Empexperience");
+                }
+                return _tbl_Empexperience;
+            }
+        }
+        private ObjectSet<tbl_Empexperience> _tbl_Empexperience;
 
         #endregion
 
@@ -1422,27 +1438,11 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_student EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_student(tbl_student tbl_student)
-        {
-            base.AddObject("tbl_student", tbl_student);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_teachersubject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_teachersubject(tbl_teachersubject tbl_teachersubject)
         {
             base.AddObject("tbl_teachersubject", tbl_teachersubject);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_employee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_employee(tbl_employee tbl_employee)
-        {
-            base.AddObject("tbl_employee", tbl_employee);
         }
     
         /// <summary>
@@ -1483,6 +1483,30 @@ namespace Entity
         public void AddTotbl_Course(tbl_Course tbl_Course)
         {
             base.AddObject("tbl_Course", tbl_Course);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_student EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_student(tbl_student tbl_student)
+        {
+            base.AddObject("tbl_student", tbl_student);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_employee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_employee(tbl_employee tbl_employee)
+        {
+            base.AddObject("tbl_employee", tbl_employee);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Empexperience EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Empexperience(tbl_Empexperience tbl_Empexperience)
+        {
+            base.AddObject("tbl_Empexperience", tbl_Empexperience);
         }
 
         #endregion
@@ -6289,6 +6313,348 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        /// <param name="dept_id">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getyear_Result> sp_getyear(Nullable<global::System.Int32> dept_id, Nullable<global::System.Int32> courseid)
+        {
+            ObjectParameter dept_idParameter;
+            if (dept_id.HasValue)
+            {
+                dept_idParameter = new ObjectParameter("dept_id", dept_id);
+            }
+            else
+            {
+                dept_idParameter = new ObjectParameter("dept_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getyear_Result>("sp_getyear", dept_idParameter, courseidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="id">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="departmenid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        public int sp_teachersubject_DML(Nullable<global::System.Int32> id, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> departmenid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> subjectid)
+        {
+            ObjectParameter idParameter;
+            if (id.HasValue)
+            {
+                idParameter = new ObjectParameter("id", id);
+            }
+            else
+            {
+                idParameter = new ObjectParameter("id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter departmenidParameter;
+            if (departmenid.HasValue)
+            {
+                departmenidParameter = new ObjectParameter("departmenid", departmenid);
+            }
+            else
+            {
+                departmenidParameter = new ObjectParameter("departmenid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_teachersubject_DML", idParameter, teacheridParameter, courseidParameter, departmenidParameter, yearidParameter, subjectidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="subjectNm">No Metadata Documentation available.</param>
+        /// <param name="marks">No Metadata Documentation available.</param>
+        /// <param name="pass_Marks">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        public int sp_Subject_DML(Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> courseid, global::System.String subjectNm, Nullable<global::System.Double> marks, Nullable<global::System.Double> pass_Marks, Nullable<global::System.Boolean> status, global::System.String yearid, global::System.String act, Nullable<global::System.Int32> deptid)
+        {
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("Courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectNmParameter;
+            if (subjectNm != null)
+            {
+                subjectNmParameter = new ObjectParameter("SubjectNm", subjectNm);
+            }
+            else
+            {
+                subjectNmParameter = new ObjectParameter("SubjectNm", typeof(global::System.String));
+            }
+    
+            ObjectParameter marksParameter;
+            if (marks.HasValue)
+            {
+                marksParameter = new ObjectParameter("Marks", marks);
+            }
+            else
+            {
+                marksParameter = new ObjectParameter("Marks", typeof(global::System.Double));
+            }
+    
+            ObjectParameter pass_MarksParameter;
+            if (pass_Marks.HasValue)
+            {
+                pass_MarksParameter = new ObjectParameter("Pass_Marks", pass_Marks);
+            }
+            else
+            {
+                pass_MarksParameter = new ObjectParameter("Pass_Marks", typeof(global::System.Double));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid != null)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.String));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_Subject_DML", subjectidParameter, courseidParameter, subjectNmParameter, marksParameter, pass_MarksParameter, statusParameter, yearidParameter, actParameter, deptidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="courseName">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_coursemaster_DML(Nullable<global::System.Int32> courseid, global::System.String courseName, Nullable<global::System.Boolean> status, global::System.String act)
+        {
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseNameParameter;
+            if (courseName != null)
+            {
+                courseNameParameter = new ObjectParameter("CourseName", courseName);
+            }
+            else
+            {
+                courseNameParameter = new ObjectParameter("CourseName", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_coursemaster_DML", courseidParameter, courseNameParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getCourseMaster_Result> sp_getCourseMaster()
+        {
+            return base.ExecuteFunction<sp_getCourseMaster_Result>("sp_getCourseMaster");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="cid">No Metadata Documentation available.</param>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_course_DML(Nullable<global::System.Int32> cid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> deptid, Nullable<global::System.Boolean> status, global::System.String act)
+        {
+            ObjectParameter cidParameter;
+            if (cid.HasValue)
+            {
+                cidParameter = new ObjectParameter("Cid", cid);
+            }
+            else
+            {
+                cidParameter = new ObjectParameter("Cid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("Classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_course_DML", cidParameter, classidParameter, deptidParameter, statusParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getCourseDetails_Result> sp_getCourseDetails()
+        {
+            return base.ExecuteFunction<sp_getCourseDetails_Result>("sp_getCourseDetails");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         /// <param name="studid">No Metadata Documentation available.</param>
         /// <param name="studnm">No Metadata Documentation available.</param>
         /// <param name="studfathernm">No Metadata Documentation available.</param>
@@ -6422,7 +6788,13 @@ namespace Entity
         /// <param name="prpg_regno">No Metadata Documentation available.</param>
         /// <param name="doc_typename">No Metadata Documentation available.</param>
         /// <param name="courseyearid">No Metadata Documentation available.</param>
-        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Int32> secondaryTotalMarks, Nullable<global::System.Int32> secondaryObtainMarks, Nullable<global::System.Double> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Int32> prUgTotalMark, Nullable<global::System.Int32> prUgObtainMark, Nullable<global::System.Double> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Int32> prPgTotalMark, Nullable<global::System.Int32> prPgObtainMark, Nullable<global::System.Double> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename, Nullable<global::System.Int32> courseyearid)
+        /// <param name="fatherOtherOccName">No Metadata Documentation available.</param>
+        /// <param name="fatherOtherQualName">No Metadata Documentation available.</param>
+        /// <param name="guardianOtherOccName">No Metadata Documentation available.</param>
+        /// <param name="guardianOtherQalName">No Metadata Documentation available.</param>
+        /// <param name="motherOtherOccName">No Metadata Documentation available.</param>
+        /// <param name="motherOtherQualName">No Metadata Documentation available.</param>
+        public int sp_student_admission(Nullable<global::System.Int32> studid, global::System.String studnm, global::System.String studfathernm, global::System.String studmothernm, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> weight, Nullable<global::System.Int32> height, Nullable<global::System.Int32> studBldGrp, global::System.String studEmail, global::System.String disease, Nullable<global::System.Int32> religionid, Nullable<global::System.Int32> casteid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> rollNo, Nullable<global::System.Int32> gender, global::System.String motherTongue, global::System.String previousSchool, global::System.String schoolAddress, global::System.String lastClass, global::System.String grade, global::System.String leaveYear, global::System.String leaveReason, global::System.String principalNm, global::System.String referenceNm, global::System.String referenceContact, Nullable<global::System.Boolean> busFacility, global::System.String busNo, global::System.String busRTONo, global::System.String emergencyPhysicianNm, global::System.String emergencyPhysicianContact, global::System.String emergencyAddress, global::System.Byte[] studPic, Nullable<global::System.Int32> fatherOccpationid, Nullable<global::System.Int32> fatherQualificationid, global::System.String fatherEmail, global::System.String fatherOfficeAddress, global::System.String fatherContact, Nullable<global::System.Int32> fatherBldGrpid, global::System.Byte[] fatherPic, Nullable<global::System.Int32> motherOccpationid, Nullable<global::System.Int32> motherQualificationid, global::System.String motherEmail, global::System.String motherOfficeAddress, global::System.String motherContact, Nullable<global::System.Int32> motherBldGrpid, global::System.Byte[] motherPic, Nullable<global::System.Int32> countryid, Nullable<global::System.Int32> stateid, Nullable<global::System.Int32> cityid, global::System.String currentAddress, global::System.String permanentAddress, global::System.String academicyear, Nullable<global::System.Int32> busid, global::System.String cats, global::System.String prds, global::System.String docs, global::System.String subcats, Nullable<global::System.Int32> studCategoryid, Nullable<global::System.Int32> guardianOccpationid, Nullable<global::System.Int32> guardianQualificationid, global::System.String guardianEmail, global::System.String guardianOfficeAddress, global::System.String guardianContact, global::System.String guardianName, global::System.String fCode, global::System.String mCode, global::System.String gCode, global::System.String eCode, global::System.String rCode, global::System.String act, global::System.Byte[] guardianPic, Nullable<global::System.Int32> secondaryTotalMarks, Nullable<global::System.Int32> secondaryObtainMarks, Nullable<global::System.Double> secondaryPercetage, global::System.Byte[] secondaryTCScanCopy, global::System.Byte[] secondaryMarksheetCopy, global::System.String prUgCollegeName, global::System.String prUgCollegeAddress, global::System.String prUgAffilatedUniversity, global::System.String prUgRefContactNo, Nullable<global::System.Int32> prUgTotalMark, Nullable<global::System.Int32> prUgObtainMark, Nullable<global::System.Double> prUgPercentage, global::System.String prUgGradeLeaving, global::System.String prUgYearLeaving, global::System.String prUgReasonofLeaving, global::System.String prUgPrincipalName, global::System.String prUgRefContactName, global::System.Byte[] uGMarksheet, global::System.String prPgCollegeName, global::System.String prPgCollegeAddress, global::System.String prPgAffilatedUniversity, global::System.String prPgRefContactNo, Nullable<global::System.Int32> prPgTotalMark, Nullable<global::System.Int32> prPgObtainMark, Nullable<global::System.Double> prPgPercentage, global::System.String prPgGradeLeaving, global::System.String prPgYearLeaving, global::System.String prPgReasonofLeaving, global::System.String prPgPrincipalName, global::System.String prPgRefContactName, global::System.Byte[] pGMarksheet, global::System.String sibling1Name, global::System.String sibling1Rel, Nullable<global::System.DateTime> sibling1DOB, global::System.String sibling1Ql, global::System.String sibling2Name, global::System.String sibling2Rel, Nullable<global::System.DateTime> sibling2DOB, global::System.String sibling2Ql, global::System.String sibling3Name, global::System.String sibling3Rel, Nullable<global::System.DateTime> sibling3DOB, global::System.String sibling3Ql, global::System.String sibling4Name, global::System.String sibling4Rel, Nullable<global::System.DateTime> sibling4DOB, global::System.String sibling4Ql, global::System.String parishName, global::System.String dioceseName, global::System.String documentType, global::System.String documentIDNo, Nullable<global::System.Int32> dept_Id, global::System.String app_id, global::System.String ug_id, global::System.String pincode, global::System.String sc_regno, global::System.Byte[] sc_refletter, global::System.String sc_tcno, global::System.String prug_regno, global::System.String prpg_regno, global::System.String doc_typename, Nullable<global::System.Int32> courseyearid, global::System.String fatherOtherOccName, global::System.String fatherOtherQualName, global::System.String guardianOtherOccName, global::System.String guardianOtherQalName, global::System.String motherOtherOccName, global::System.String motherOtherQualName)
         {
             ObjectParameter studidParameter;
             if (studid.HasValue)
@@ -7754,111 +8126,67 @@ namespace Entity
                 courseyearidParameter = new ObjectParameter("courseyearid", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter, courseyearidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="dept_id">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        public ObjectResult<sp_getyear_Result> sp_getyear(Nullable<global::System.Int32> dept_id, Nullable<global::System.Int32> courseid)
-        {
-            ObjectParameter dept_idParameter;
-            if (dept_id.HasValue)
+            ObjectParameter fatherOtherOccNameParameter;
+            if (fatherOtherOccName != null)
             {
-                dept_idParameter = new ObjectParameter("dept_id", dept_id);
+                fatherOtherOccNameParameter = new ObjectParameter("FatherOtherOccName", fatherOtherOccName);
             }
             else
             {
-                dept_idParameter = new ObjectParameter("dept_id", typeof(global::System.Int32));
+                fatherOtherOccNameParameter = new ObjectParameter("FatherOtherOccName", typeof(global::System.String));
             }
     
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
+            ObjectParameter fatherOtherQualNameParameter;
+            if (fatherOtherQualName != null)
             {
-                courseidParameter = new ObjectParameter("courseid", courseid);
+                fatherOtherQualNameParameter = new ObjectParameter("FatherOtherQualName", fatherOtherQualName);
             }
             else
             {
-                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+                fatherOtherQualNameParameter = new ObjectParameter("FatherOtherQualName", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<sp_getyear_Result>("sp_getyear", dept_idParameter, courseidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="id">No Metadata Documentation available.</param>
-        /// <param name="teacherid">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="departmenid">No Metadata Documentation available.</param>
-        /// <param name="yearid">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        public int sp_teachersubject_DML(Nullable<global::System.Int32> id, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> departmenid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> subjectid)
-        {
-            ObjectParameter idParameter;
-            if (id.HasValue)
+            ObjectParameter guardianOtherOccNameParameter;
+            if (guardianOtherOccName != null)
             {
-                idParameter = new ObjectParameter("id", id);
+                guardianOtherOccNameParameter = new ObjectParameter("GuardianOtherOccName", guardianOtherOccName);
             }
             else
             {
-                idParameter = new ObjectParameter("id", typeof(global::System.Int32));
+                guardianOtherOccNameParameter = new ObjectParameter("GuardianOtherOccName", typeof(global::System.String));
             }
     
-            ObjectParameter teacheridParameter;
-            if (teacherid.HasValue)
+            ObjectParameter guardianOtherQalNameParameter;
+            if (guardianOtherQalName != null)
             {
-                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+                guardianOtherQalNameParameter = new ObjectParameter("GuardianOtherQalName", guardianOtherQalName);
             }
             else
             {
-                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+                guardianOtherQalNameParameter = new ObjectParameter("GuardianOtherQalName", typeof(global::System.String));
             }
     
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
+            ObjectParameter motherOtherOccNameParameter;
+            if (motherOtherOccName != null)
             {
-                courseidParameter = new ObjectParameter("courseid", courseid);
+                motherOtherOccNameParameter = new ObjectParameter("MotherOtherOccName", motherOtherOccName);
             }
             else
             {
-                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+                motherOtherOccNameParameter = new ObjectParameter("MotherOtherOccName", typeof(global::System.String));
             }
     
-            ObjectParameter departmenidParameter;
-            if (departmenid.HasValue)
+            ObjectParameter motherOtherQualNameParameter;
+            if (motherOtherQualName != null)
             {
-                departmenidParameter = new ObjectParameter("departmenid", departmenid);
+                motherOtherQualNameParameter = new ObjectParameter("MotherOtherQualName", motherOtherQualName);
             }
             else
             {
-                departmenidParameter = new ObjectParameter("departmenid", typeof(global::System.Int32));
+                motherOtherQualNameParameter = new ObjectParameter("MotherOtherQualName", typeof(global::System.String));
             }
     
-            ObjectParameter yearidParameter;
-            if (yearid.HasValue)
-            {
-                yearidParameter = new ObjectParameter("yearid", yearid);
-            }
-            else
-            {
-                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_teachersubject_DML", idParameter, teacheridParameter, courseidParameter, departmenidParameter, yearidParameter, subjectidParameter);
+            return base.ExecuteFunction("sp_student_admission", studidParameter, studnmParameter, studfathernmParameter, studmothernmParameter, dOBParameter, weightParameter, heightParameter, studBldGrpParameter, studEmailParameter, diseaseParameter, religionidParameter, casteidParameter, classidParameter, rollNoParameter, genderParameter, motherTongueParameter, previousSchoolParameter, schoolAddressParameter, lastClassParameter, gradeParameter, leaveYearParameter, leaveReasonParameter, principalNmParameter, referenceNmParameter, referenceContactParameter, busFacilityParameter, busNoParameter, busRTONoParameter, emergencyPhysicianNmParameter, emergencyPhysicianContactParameter, emergencyAddressParameter, studPicParameter, fatherOccpationidParameter, fatherQualificationidParameter, fatherEmailParameter, fatherOfficeAddressParameter, fatherContactParameter, fatherBldGrpidParameter, fatherPicParameter, motherOccpationidParameter, motherQualificationidParameter, motherEmailParameter, motherOfficeAddressParameter, motherContactParameter, motherBldGrpidParameter, motherPicParameter, countryidParameter, stateidParameter, cityidParameter, currentAddressParameter, permanentAddressParameter, academicyearParameter, busidParameter, catsParameter, prdsParameter, docsParameter, subcatsParameter, studCategoryidParameter, guardianOccpationidParameter, guardianQualificationidParameter, guardianEmailParameter, guardianOfficeAddressParameter, guardianContactParameter, guardianNameParameter, fCodeParameter, mCodeParameter, gCodeParameter, eCodeParameter, rCodeParameter, actParameter, guardianPicParameter, secondaryTotalMarksParameter, secondaryObtainMarksParameter, secondaryPercetageParameter, secondaryTCScanCopyParameter, secondaryMarksheetCopyParameter, prUgCollegeNameParameter, prUgCollegeAddressParameter, prUgAffilatedUniversityParameter, prUgRefContactNoParameter, prUgTotalMarkParameter, prUgObtainMarkParameter, prUgPercentageParameter, prUgGradeLeavingParameter, prUgYearLeavingParameter, prUgReasonofLeavingParameter, prUgPrincipalNameParameter, prUgRefContactNameParameter, uGMarksheetParameter, prPgCollegeNameParameter, prPgCollegeAddressParameter, prPgAffilatedUniversityParameter, prPgRefContactNoParameter, prPgTotalMarkParameter, prPgObtainMarkParameter, prPgPercentageParameter, prPgGradeLeavingParameter, prPgYearLeavingParameter, prPgReasonofLeavingParameter, prPgPrincipalNameParameter, prPgRefContactNameParameter, pGMarksheetParameter, sibling1NameParameter, sibling1RelParameter, sibling1DOBParameter, sibling1QlParameter, sibling2NameParameter, sibling2RelParameter, sibling2DOBParameter, sibling2QlParameter, sibling3NameParameter, sibling3RelParameter, sibling3DOBParameter, sibling3QlParameter, sibling4NameParameter, sibling4RelParameter, sibling4DOBParameter, sibling4QlParameter, parishNameParameter, dioceseNameParameter, documentTypeParameter, documentIDNoParameter, dept_IdParameter, app_idParameter, ug_idParameter, pincodeParameter, sc_regnoParameter, sc_refletterParameter, sc_tcnoParameter, prug_regnoParameter, prpg_regnoParameter, doc_typenameParameter, courseyearidParameter, fatherOtherOccNameParameter, fatherOtherQualNameParameter, guardianOtherOccNameParameter, guardianOtherQalNameParameter, motherOtherOccNameParameter, motherOtherQualNameParameter);
         }
     
         /// <summary>
@@ -7967,7 +8295,97 @@ namespace Entity
         /// <param name="doctypename">No Metadata Documentation available.</param>
         /// <param name="docnumber">No Metadata Documentation available.</param>
         /// <param name="contrelation">No Metadata Documentation available.</param>
-        public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, Nullable<global::System.DateTime> joiningdate, Nullable<global::System.DateTime> lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, Nullable<global::System.DateTime> cjoiningdate, Nullable<global::System.DateTime> clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, Nullable<global::System.Int32> empmothertongue, global::System.String collagename1, global::System.String affliateduniversity1, Nullable<global::System.DateTime> joiningdate1, Nullable<global::System.DateTime> lastdate1, global::System.String totalexperience1, global::System.String lastdesignation1, global::System.String companyname1, global::System.String clastdesignation1, Nullable<global::System.DateTime> cjoiningdate1, Nullable<global::System.DateTime> clastdate1, global::System.String ctotalexperience1, global::System.String doctypename, global::System.String docnumber, global::System.String contrelation)
+        /// <param name="parishName">No Metadata Documentation available.</param>
+        /// <param name="dioceseName">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp3">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp3">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp3">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp3">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp3">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp3">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp3">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp3">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp3">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp3">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp3">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp4">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp4">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp4">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp4">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp4">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp4">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp4">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp4">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp4">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp4">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp4">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp5">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp5">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp5">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp5">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp5">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp5">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp5">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp5">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp5">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp5">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp5">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp6">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp6">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp6">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp6">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp6">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp6">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp6">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp6">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp6">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp6">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp6">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp7">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp7">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp7">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp7">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp7">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp7">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp7">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp7">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp7">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp7">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp7">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp8">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp8">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp8">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp8">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp8">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp8">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp8">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp8">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp8">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp8">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp8">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp9">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp9">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp9">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp9">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp9">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp9">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp9">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp9">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp9">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp9">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp9">No Metadata Documentation available.</param>
+        /// <param name="collagename_exp10">No Metadata Documentation available.</param>
+        /// <param name="affliateduniversity_exp10">No Metadata Documentation available.</param>
+        /// <param name="joiningdate_exp10">No Metadata Documentation available.</param>
+        /// <param name="lastdate1_exp10">No Metadata Documentation available.</param>
+        /// <param name="totalexperience_exp10">No Metadata Documentation available.</param>
+        /// <param name="lastdesignation_exp10">No Metadata Documentation available.</param>
+        /// <param name="companyname_exp10">No Metadata Documentation available.</param>
+        /// <param name="clastdesignation_exp10">No Metadata Documentation available.</param>
+        /// <param name="cjoiningdate_exp10">No Metadata Documentation available.</param>
+        /// <param name="clastdate_exp10">No Metadata Documentation available.</param>
+        /// <param name="ctotalexperience_exp10">No Metadata Documentation available.</param>
+        public int sp_employee_DML(Nullable<global::System.Int32> empid, global::System.String firstName, global::System.String middleName, global::System.String lastName, Nullable<global::System.Int32> cityid, Nullable<global::System.Int32> stateid, global::System.String zipcode, global::System.String emailid, global::System.String phoneNo, global::System.String mobileNo, global::System.String address, Nullable<global::System.DateTime> dOB, Nullable<global::System.Int32> gender, Nullable<global::System.Int32> quallification, Nullable<global::System.DateTime> dateOfJoin, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> code, global::System.String oQualification, global::System.String act, Nullable<global::System.Int32> department, Nullable<global::System.Int32> bloodgroup, Nullable<global::System.Int32> qualication1, global::System.String university1, global::System.String precentage1, global::System.String yearpasing1, Nullable<global::System.Int32> qualication2, global::System.String university2, global::System.String precentage2, global::System.String yearpasing2, Nullable<global::System.Int32> qualication3, global::System.String university3, global::System.String precentage3, global::System.String yearpasing3, Nullable<global::System.Int32> qualication4, global::System.String university4, global::System.String precentage4, global::System.String yearpasing4, global::System.String weightinkg, global::System.String heightc, global::System.Byte[] emppic, Nullable<global::System.Int32> eidtype, global::System.String doctorname, global::System.String doctorcode, global::System.String doctorcontact, global::System.String doctoraddress, Nullable<global::System.Int32> relation, global::System.String parentsname, global::System.String parentoccupation, global::System.String parentqualification, global::System.String parentsemail, global::System.String parentsaddress, Nullable<global::System.Int32> parentscode, global::System.String parentscontact, global::System.Byte[] parentspic, global::System.String pstreet, Nullable<global::System.Int32> pcity, Nullable<global::System.Int32> pstate, Nullable<global::System.Int32> pcountry, global::System.String ppin, global::System.String cstreet, Nullable<global::System.Int32> ccity, Nullable<global::System.Int32> cstate, Nullable<global::System.Int32> ccountry, global::System.String cpin, Nullable<global::System.Int32> homecode, global::System.String homecontact, Nullable<global::System.Int32> cmobilecode, global::System.String cmobile, global::System.String bankname, global::System.String branch, global::System.String ifsccode, global::System.String accountno, global::System.String accountname, global::System.String collagename, global::System.String affliateduniversity, Nullable<global::System.DateTime> joiningdate, Nullable<global::System.DateTime> lastdate, global::System.String totalexperience, global::System.String lastdesignation, global::System.String companyname, global::System.String clastdesignation, Nullable<global::System.DateTime> cjoiningdate, Nullable<global::System.DateTime> clastdate, global::System.String ctotalexperience, global::System.String empemail, Nullable<global::System.Int32> empreligion, Nullable<global::System.Int32> empcategory, Nullable<global::System.Int32> empcast, global::System.String empmothertongue, global::System.String collagename1, global::System.String affliateduniversity1, Nullable<global::System.DateTime> joiningdate1, Nullable<global::System.DateTime> lastdate1, global::System.String totalexperience1, global::System.String lastdesignation1, global::System.String companyname1, global::System.String clastdesignation1, Nullable<global::System.DateTime> cjoiningdate1, Nullable<global::System.DateTime> clastdate1, global::System.String ctotalexperience1, global::System.String doctypename, global::System.String docnumber, global::System.String contrelation, global::System.String parishName, global::System.String dioceseName, global::System.String collagename_exp3, global::System.String affliateduniversity_exp3, Nullable<global::System.DateTime> joiningdate_exp3, Nullable<global::System.DateTime> lastdate1_exp3, global::System.String totalexperience_exp3, global::System.String lastdesignation_exp3, global::System.String companyname_exp3, global::System.String clastdesignation_exp3, Nullable<global::System.DateTime> cjoiningdate_exp3, Nullable<global::System.DateTime> clastdate_exp3, global::System.String ctotalexperience_exp3, global::System.String collagename_exp4, global::System.String affliateduniversity_exp4, Nullable<global::System.DateTime> joiningdate_exp4, Nullable<global::System.DateTime> lastdate1_exp4, global::System.String totalexperience_exp4, global::System.String lastdesignation_exp4, global::System.String companyname_exp4, global::System.String clastdesignation_exp4, Nullable<global::System.DateTime> cjoiningdate_exp4, Nullable<global::System.DateTime> clastdate_exp4, global::System.String ctotalexperience_exp4, global::System.String collagename_exp5, global::System.String affliateduniversity_exp5, Nullable<global::System.DateTime> joiningdate_exp5, Nullable<global::System.DateTime> lastdate1_exp5, global::System.String totalexperience_exp5, global::System.String lastdesignation_exp5, global::System.String companyname_exp5, global::System.String clastdesignation_exp5, Nullable<global::System.DateTime> cjoiningdate_exp5, Nullable<global::System.DateTime> clastdate_exp5, global::System.String ctotalexperience_exp5, global::System.String collagename_exp6, global::System.String affliateduniversity_exp6, Nullable<global::System.DateTime> joiningdate_exp6, Nullable<global::System.DateTime> lastdate1_exp6, global::System.String totalexperience_exp6, global::System.String lastdesignation_exp6, global::System.String companyname_exp6, global::System.String clastdesignation_exp6, Nullable<global::System.DateTime> cjoiningdate_exp6, Nullable<global::System.DateTime> clastdate_exp6, global::System.String ctotalexperience_exp6, global::System.String collagename_exp7, global::System.String affliateduniversity_exp7, Nullable<global::System.DateTime> joiningdate_exp7, Nullable<global::System.DateTime> lastdate1_exp7, global::System.String totalexperience_exp7, global::System.String lastdesignation_exp7, global::System.String companyname_exp7, global::System.String clastdesignation_exp7, Nullable<global::System.DateTime> cjoiningdate_exp7, Nullable<global::System.DateTime> clastdate_exp7, global::System.String ctotalexperience_exp7, global::System.String collagename_exp8, global::System.String affliateduniversity_exp8, Nullable<global::System.DateTime> joiningdate_exp8, Nullable<global::System.DateTime> lastdate1_exp8, global::System.String totalexperience_exp8, global::System.String lastdesignation_exp8, global::System.String companyname_exp8, global::System.String clastdesignation_exp8, Nullable<global::System.DateTime> cjoiningdate_exp8, Nullable<global::System.DateTime> clastdate_exp8, global::System.String ctotalexperience_exp8, global::System.String collagename_exp9, global::System.String affliateduniversity_exp9, Nullable<global::System.DateTime> joiningdate_exp9, Nullable<global::System.DateTime> lastdate1_exp9, global::System.String totalexperience_exp9, global::System.String lastdesignation_exp9, global::System.String companyname_exp9, global::System.String clastdesignation_exp9, Nullable<global::System.DateTime> cjoiningdate_exp9, Nullable<global::System.DateTime> clastdate_exp9, global::System.String ctotalexperience_exp9, global::System.String collagename_exp10, global::System.String affliateduniversity_exp10, Nullable<global::System.DateTime> joiningdate_exp10, Nullable<global::System.DateTime> lastdate1_exp10, global::System.String totalexperience_exp10, global::System.String lastdesignation_exp10, global::System.String companyname_exp10, global::System.String clastdesignation_exp10, Nullable<global::System.DateTime> cjoiningdate_exp10, Nullable<global::System.DateTime> clastdate_exp10, global::System.String ctotalexperience_exp10)
         {
             ObjectParameter empidParameter;
             if (empid.HasValue)
@@ -8850,13 +9268,13 @@ namespace Entity
             }
     
             ObjectParameter empmothertongueParameter;
-            if (empmothertongue.HasValue)
+            if (empmothertongue != null)
             {
                 empmothertongueParameter = new ObjectParameter("empmothertongue", empmothertongue);
             }
             else
             {
-                empmothertongueParameter = new ObjectParameter("empmothertongue", typeof(global::System.Int32));
+                empmothertongueParameter = new ObjectParameter("empmothertongue", typeof(global::System.String));
             }
     
             ObjectParameter collagename1Parameter;
@@ -8999,245 +9417,907 @@ namespace Entity
                 contrelationParameter = new ObjectParameter("contrelation", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter, collagename1Parameter, affliateduniversity1Parameter, joiningdate1Parameter, lastdate1Parameter, totalexperience1Parameter, lastdesignation1Parameter, companyname1Parameter, clastdesignation1Parameter, cjoiningdate1Parameter, clastdate1Parameter, ctotalexperience1Parameter, doctypenameParameter, docnumberParameter, contrelationParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="subjectNm">No Metadata Documentation available.</param>
-        /// <param name="marks">No Metadata Documentation available.</param>
-        /// <param name="pass_Marks">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="yearid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        /// <param name="deptid">No Metadata Documentation available.</param>
-        public int sp_Subject_DML(Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> courseid, global::System.String subjectNm, Nullable<global::System.Double> marks, Nullable<global::System.Double> pass_Marks, Nullable<global::System.Boolean> status, global::System.String yearid, global::System.String act, Nullable<global::System.Int32> deptid)
-        {
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
+            ObjectParameter parishNameParameter;
+            if (parishName != null)
             {
-                subjectidParameter = new ObjectParameter("Subjectid", subjectid);
+                parishNameParameter = new ObjectParameter("ParishName", parishName);
             }
             else
             {
-                subjectidParameter = new ObjectParameter("Subjectid", typeof(global::System.Int32));
+                parishNameParameter = new ObjectParameter("ParishName", typeof(global::System.String));
             }
     
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
+            ObjectParameter dioceseNameParameter;
+            if (dioceseName != null)
             {
-                courseidParameter = new ObjectParameter("Courseid", courseid);
+                dioceseNameParameter = new ObjectParameter("DioceseName", dioceseName);
             }
             else
             {
-                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
+                dioceseNameParameter = new ObjectParameter("DioceseName", typeof(global::System.String));
             }
     
-            ObjectParameter subjectNmParameter;
-            if (subjectNm != null)
+            ObjectParameter collagename_exp3Parameter;
+            if (collagename_exp3 != null)
             {
-                subjectNmParameter = new ObjectParameter("SubjectNm", subjectNm);
+                collagename_exp3Parameter = new ObjectParameter("collagename_exp3", collagename_exp3);
             }
             else
             {
-                subjectNmParameter = new ObjectParameter("SubjectNm", typeof(global::System.String));
+                collagename_exp3Parameter = new ObjectParameter("collagename_exp3", typeof(global::System.String));
             }
     
-            ObjectParameter marksParameter;
-            if (marks.HasValue)
+            ObjectParameter affliateduniversity_exp3Parameter;
+            if (affliateduniversity_exp3 != null)
             {
-                marksParameter = new ObjectParameter("Marks", marks);
+                affliateduniversity_exp3Parameter = new ObjectParameter("affliateduniversity_exp3", affliateduniversity_exp3);
             }
             else
             {
-                marksParameter = new ObjectParameter("Marks", typeof(global::System.Double));
+                affliateduniversity_exp3Parameter = new ObjectParameter("affliateduniversity_exp3", typeof(global::System.String));
             }
     
-            ObjectParameter pass_MarksParameter;
-            if (pass_Marks.HasValue)
+            ObjectParameter joiningdate_exp3Parameter;
+            if (joiningdate_exp3.HasValue)
             {
-                pass_MarksParameter = new ObjectParameter("Pass_Marks", pass_Marks);
+                joiningdate_exp3Parameter = new ObjectParameter("joiningdate_exp3", joiningdate_exp3);
             }
             else
             {
-                pass_MarksParameter = new ObjectParameter("Pass_Marks", typeof(global::System.Double));
+                joiningdate_exp3Parameter = new ObjectParameter("joiningdate_exp3", typeof(global::System.DateTime));
             }
     
-            ObjectParameter statusParameter;
-            if (status.HasValue)
+            ObjectParameter lastdate1_exp3Parameter;
+            if (lastdate1_exp3.HasValue)
             {
-                statusParameter = new ObjectParameter("status", status);
+                lastdate1_exp3Parameter = new ObjectParameter("lastdate1_exp3", lastdate1_exp3);
             }
             else
             {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+                lastdate1_exp3Parameter = new ObjectParameter("lastdate1_exp3", typeof(global::System.DateTime));
             }
     
-            ObjectParameter yearidParameter;
-            if (yearid != null)
+            ObjectParameter totalexperience_exp3Parameter;
+            if (totalexperience_exp3 != null)
             {
-                yearidParameter = new ObjectParameter("yearid", yearid);
+                totalexperience_exp3Parameter = new ObjectParameter("totalexperience_exp3", totalexperience_exp3);
             }
             else
             {
-                yearidParameter = new ObjectParameter("yearid", typeof(global::System.String));
+                totalexperience_exp3Parameter = new ObjectParameter("totalexperience_exp3", typeof(global::System.String));
             }
     
-            ObjectParameter actParameter;
-            if (act != null)
+            ObjectParameter lastdesignation_exp3Parameter;
+            if (lastdesignation_exp3 != null)
             {
-                actParameter = new ObjectParameter("act", act);
+                lastdesignation_exp3Parameter = new ObjectParameter("lastdesignation_exp3", lastdesignation_exp3);
             }
             else
             {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
+                lastdesignation_exp3Parameter = new ObjectParameter("lastdesignation_exp3", typeof(global::System.String));
             }
     
-            ObjectParameter deptidParameter;
-            if (deptid.HasValue)
+            ObjectParameter companyname_exp3Parameter;
+            if (companyname_exp3 != null)
             {
-                deptidParameter = new ObjectParameter("deptid", deptid);
+                companyname_exp3Parameter = new ObjectParameter("companyname_exp3", companyname_exp3);
             }
             else
             {
-                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+                companyname_exp3Parameter = new ObjectParameter("companyname_exp3", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_Subject_DML", subjectidParameter, courseidParameter, subjectNmParameter, marksParameter, pass_MarksParameter, statusParameter, yearidParameter, actParameter, deptidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="courseName">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_coursemaster_DML(Nullable<global::System.Int32> courseid, global::System.String courseName, Nullable<global::System.Boolean> status, global::System.String act)
-        {
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
+            ObjectParameter clastdesignation_exp3Parameter;
+            if (clastdesignation_exp3 != null)
             {
-                courseidParameter = new ObjectParameter("courseid", courseid);
+                clastdesignation_exp3Parameter = new ObjectParameter("clastdesignation_exp3", clastdesignation_exp3);
             }
             else
             {
-                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+                clastdesignation_exp3Parameter = new ObjectParameter("clastdesignation_exp3", typeof(global::System.String));
             }
     
-            ObjectParameter courseNameParameter;
-            if (courseName != null)
+            ObjectParameter cjoiningdate_exp3Parameter;
+            if (cjoiningdate_exp3.HasValue)
             {
-                courseNameParameter = new ObjectParameter("CourseName", courseName);
+                cjoiningdate_exp3Parameter = new ObjectParameter("cjoiningdate_exp3", cjoiningdate_exp3);
             }
             else
             {
-                courseNameParameter = new ObjectParameter("CourseName", typeof(global::System.String));
+                cjoiningdate_exp3Parameter = new ObjectParameter("cjoiningdate_exp3", typeof(global::System.DateTime));
             }
     
-            ObjectParameter statusParameter;
-            if (status.HasValue)
+            ObjectParameter clastdate_exp3Parameter;
+            if (clastdate_exp3.HasValue)
             {
-                statusParameter = new ObjectParameter("status", status);
+                clastdate_exp3Parameter = new ObjectParameter("clastdate_exp3", clastdate_exp3);
             }
             else
             {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+                clastdate_exp3Parameter = new ObjectParameter("clastdate_exp3", typeof(global::System.DateTime));
             }
     
-            ObjectParameter actParameter;
-            if (act != null)
+            ObjectParameter ctotalexperience_exp3Parameter;
+            if (ctotalexperience_exp3 != null)
             {
-                actParameter = new ObjectParameter("act", act);
+                ctotalexperience_exp3Parameter = new ObjectParameter("ctotalexperience_exp3", ctotalexperience_exp3);
             }
             else
             {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
+                ctotalexperience_exp3Parameter = new ObjectParameter("ctotalexperience_exp3", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_coursemaster_DML", courseidParameter, courseNameParameter, statusParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getCourseMaster_Result> sp_getCourseMaster()
-        {
-            return base.ExecuteFunction<sp_getCourseMaster_Result>("sp_getCourseMaster");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="cid">No Metadata Documentation available.</param>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="deptid">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_course_DML(Nullable<global::System.Int32> cid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> deptid, Nullable<global::System.Boolean> status, global::System.String act)
-        {
-            ObjectParameter cidParameter;
-            if (cid.HasValue)
+            ObjectParameter collagename_exp4Parameter;
+            if (collagename_exp4 != null)
             {
-                cidParameter = new ObjectParameter("Cid", cid);
+                collagename_exp4Parameter = new ObjectParameter("collagename_exp4", collagename_exp4);
             }
             else
             {
-                cidParameter = new ObjectParameter("Cid", typeof(global::System.Int32));
+                collagename_exp4Parameter = new ObjectParameter("collagename_exp4", typeof(global::System.String));
             }
     
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
+            ObjectParameter affliateduniversity_exp4Parameter;
+            if (affliateduniversity_exp4 != null)
             {
-                classidParameter = new ObjectParameter("Classid", classid);
+                affliateduniversity_exp4Parameter = new ObjectParameter("affliateduniversity_exp4", affliateduniversity_exp4);
             }
             else
             {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+                affliateduniversity_exp4Parameter = new ObjectParameter("affliateduniversity_exp4", typeof(global::System.String));
             }
     
-            ObjectParameter deptidParameter;
-            if (deptid.HasValue)
+            ObjectParameter joiningdate_exp4Parameter;
+            if (joiningdate_exp4.HasValue)
             {
-                deptidParameter = new ObjectParameter("deptid", deptid);
+                joiningdate_exp4Parameter = new ObjectParameter("joiningdate_exp4", joiningdate_exp4);
             }
             else
             {
-                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+                joiningdate_exp4Parameter = new ObjectParameter("joiningdate_exp4", typeof(global::System.DateTime));
             }
     
-            ObjectParameter statusParameter;
-            if (status.HasValue)
+            ObjectParameter lastdate1_exp4Parameter;
+            if (lastdate1_exp4.HasValue)
             {
-                statusParameter = new ObjectParameter("status", status);
+                lastdate1_exp4Parameter = new ObjectParameter("lastdate1_exp4", lastdate1_exp4);
             }
             else
             {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+                lastdate1_exp4Parameter = new ObjectParameter("lastdate1_exp4", typeof(global::System.DateTime));
             }
     
-            ObjectParameter actParameter;
-            if (act != null)
+            ObjectParameter totalexperience_exp4Parameter;
+            if (totalexperience_exp4 != null)
             {
-                actParameter = new ObjectParameter("act", act);
+                totalexperience_exp4Parameter = new ObjectParameter("totalexperience_exp4", totalexperience_exp4);
             }
             else
             {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
+                totalexperience_exp4Parameter = new ObjectParameter("totalexperience_exp4", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_course_DML", cidParameter, classidParameter, deptidParameter, statusParameter, actParameter);
-        }
+            ObjectParameter lastdesignation_exp4Parameter;
+            if (lastdesignation_exp4 != null)
+            {
+                lastdesignation_exp4Parameter = new ObjectParameter("lastdesignation_exp4", lastdesignation_exp4);
+            }
+            else
+            {
+                lastdesignation_exp4Parameter = new ObjectParameter("lastdesignation_exp4", typeof(global::System.String));
+            }
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getCourseDetails_Result> sp_getCourseDetails()
-        {
-            return base.ExecuteFunction<sp_getCourseDetails_Result>("sp_getCourseDetails");
+            ObjectParameter companyname_exp4Parameter;
+            if (companyname_exp4 != null)
+            {
+                companyname_exp4Parameter = new ObjectParameter("companyname_exp4", companyname_exp4);
+            }
+            else
+            {
+                companyname_exp4Parameter = new ObjectParameter("companyname_exp4", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp4Parameter;
+            if (clastdesignation_exp4 != null)
+            {
+                clastdesignation_exp4Parameter = new ObjectParameter("clastdesignation_exp4", clastdesignation_exp4);
+            }
+            else
+            {
+                clastdesignation_exp4Parameter = new ObjectParameter("clastdesignation_exp4", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp4Parameter;
+            if (cjoiningdate_exp4.HasValue)
+            {
+                cjoiningdate_exp4Parameter = new ObjectParameter("cjoiningdate_exp4", cjoiningdate_exp4);
+            }
+            else
+            {
+                cjoiningdate_exp4Parameter = new ObjectParameter("cjoiningdate_exp4", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp4Parameter;
+            if (clastdate_exp4.HasValue)
+            {
+                clastdate_exp4Parameter = new ObjectParameter("clastdate_exp4", clastdate_exp4);
+            }
+            else
+            {
+                clastdate_exp4Parameter = new ObjectParameter("clastdate_exp4", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp4Parameter;
+            if (ctotalexperience_exp4 != null)
+            {
+                ctotalexperience_exp4Parameter = new ObjectParameter("ctotalexperience_exp4", ctotalexperience_exp4);
+            }
+            else
+            {
+                ctotalexperience_exp4Parameter = new ObjectParameter("ctotalexperience_exp4", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp5Parameter;
+            if (collagename_exp5 != null)
+            {
+                collagename_exp5Parameter = new ObjectParameter("collagename_exp5", collagename_exp5);
+            }
+            else
+            {
+                collagename_exp5Parameter = new ObjectParameter("collagename_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp5Parameter;
+            if (affliateduniversity_exp5 != null)
+            {
+                affliateduniversity_exp5Parameter = new ObjectParameter("affliateduniversity_exp5", affliateduniversity_exp5);
+            }
+            else
+            {
+                affliateduniversity_exp5Parameter = new ObjectParameter("affliateduniversity_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp5Parameter;
+            if (joiningdate_exp5.HasValue)
+            {
+                joiningdate_exp5Parameter = new ObjectParameter("joiningdate_exp5", joiningdate_exp5);
+            }
+            else
+            {
+                joiningdate_exp5Parameter = new ObjectParameter("joiningdate_exp5", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp5Parameter;
+            if (lastdate1_exp5.HasValue)
+            {
+                lastdate1_exp5Parameter = new ObjectParameter("lastdate1_exp5", lastdate1_exp5);
+            }
+            else
+            {
+                lastdate1_exp5Parameter = new ObjectParameter("lastdate1_exp5", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp5Parameter;
+            if (totalexperience_exp5 != null)
+            {
+                totalexperience_exp5Parameter = new ObjectParameter("totalexperience_exp5", totalexperience_exp5);
+            }
+            else
+            {
+                totalexperience_exp5Parameter = new ObjectParameter("totalexperience_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp5Parameter;
+            if (lastdesignation_exp5 != null)
+            {
+                lastdesignation_exp5Parameter = new ObjectParameter("lastdesignation_exp5", lastdesignation_exp5);
+            }
+            else
+            {
+                lastdesignation_exp5Parameter = new ObjectParameter("lastdesignation_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp5Parameter;
+            if (companyname_exp5 != null)
+            {
+                companyname_exp5Parameter = new ObjectParameter("companyname_exp5", companyname_exp5);
+            }
+            else
+            {
+                companyname_exp5Parameter = new ObjectParameter("companyname_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp5Parameter;
+            if (clastdesignation_exp5 != null)
+            {
+                clastdesignation_exp5Parameter = new ObjectParameter("clastdesignation_exp5", clastdesignation_exp5);
+            }
+            else
+            {
+                clastdesignation_exp5Parameter = new ObjectParameter("clastdesignation_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp5Parameter;
+            if (cjoiningdate_exp5.HasValue)
+            {
+                cjoiningdate_exp5Parameter = new ObjectParameter("cjoiningdate_exp5", cjoiningdate_exp5);
+            }
+            else
+            {
+                cjoiningdate_exp5Parameter = new ObjectParameter("cjoiningdate_exp5", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp5Parameter;
+            if (clastdate_exp5.HasValue)
+            {
+                clastdate_exp5Parameter = new ObjectParameter("clastdate_exp5", clastdate_exp5);
+            }
+            else
+            {
+                clastdate_exp5Parameter = new ObjectParameter("clastdate_exp5", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp5Parameter;
+            if (ctotalexperience_exp5 != null)
+            {
+                ctotalexperience_exp5Parameter = new ObjectParameter("ctotalexperience_exp5", ctotalexperience_exp5);
+            }
+            else
+            {
+                ctotalexperience_exp5Parameter = new ObjectParameter("ctotalexperience_exp5", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp6Parameter;
+            if (collagename_exp6 != null)
+            {
+                collagename_exp6Parameter = new ObjectParameter("collagename_exp6", collagename_exp6);
+            }
+            else
+            {
+                collagename_exp6Parameter = new ObjectParameter("collagename_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp6Parameter;
+            if (affliateduniversity_exp6 != null)
+            {
+                affliateduniversity_exp6Parameter = new ObjectParameter("affliateduniversity_exp6", affliateduniversity_exp6);
+            }
+            else
+            {
+                affliateduniversity_exp6Parameter = new ObjectParameter("affliateduniversity_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp6Parameter;
+            if (joiningdate_exp6.HasValue)
+            {
+                joiningdate_exp6Parameter = new ObjectParameter("joiningdate_exp6", joiningdate_exp6);
+            }
+            else
+            {
+                joiningdate_exp6Parameter = new ObjectParameter("joiningdate_exp6", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp6Parameter;
+            if (lastdate1_exp6.HasValue)
+            {
+                lastdate1_exp6Parameter = new ObjectParameter("lastdate1_exp6", lastdate1_exp6);
+            }
+            else
+            {
+                lastdate1_exp6Parameter = new ObjectParameter("lastdate1_exp6", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp6Parameter;
+            if (totalexperience_exp6 != null)
+            {
+                totalexperience_exp6Parameter = new ObjectParameter("totalexperience_exp6", totalexperience_exp6);
+            }
+            else
+            {
+                totalexperience_exp6Parameter = new ObjectParameter("totalexperience_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp6Parameter;
+            if (lastdesignation_exp6 != null)
+            {
+                lastdesignation_exp6Parameter = new ObjectParameter("lastdesignation_exp6", lastdesignation_exp6);
+            }
+            else
+            {
+                lastdesignation_exp6Parameter = new ObjectParameter("lastdesignation_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp6Parameter;
+            if (companyname_exp6 != null)
+            {
+                companyname_exp6Parameter = new ObjectParameter("companyname_exp6", companyname_exp6);
+            }
+            else
+            {
+                companyname_exp6Parameter = new ObjectParameter("companyname_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp6Parameter;
+            if (clastdesignation_exp6 != null)
+            {
+                clastdesignation_exp6Parameter = new ObjectParameter("clastdesignation_exp6", clastdesignation_exp6);
+            }
+            else
+            {
+                clastdesignation_exp6Parameter = new ObjectParameter("clastdesignation_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp6Parameter;
+            if (cjoiningdate_exp6.HasValue)
+            {
+                cjoiningdate_exp6Parameter = new ObjectParameter("cjoiningdate_exp6", cjoiningdate_exp6);
+            }
+            else
+            {
+                cjoiningdate_exp6Parameter = new ObjectParameter("cjoiningdate_exp6", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp6Parameter;
+            if (clastdate_exp6.HasValue)
+            {
+                clastdate_exp6Parameter = new ObjectParameter("clastdate_exp6", clastdate_exp6);
+            }
+            else
+            {
+                clastdate_exp6Parameter = new ObjectParameter("clastdate_exp6", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp6Parameter;
+            if (ctotalexperience_exp6 != null)
+            {
+                ctotalexperience_exp6Parameter = new ObjectParameter("ctotalexperience_exp6", ctotalexperience_exp6);
+            }
+            else
+            {
+                ctotalexperience_exp6Parameter = new ObjectParameter("ctotalexperience_exp6", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp7Parameter;
+            if (collagename_exp7 != null)
+            {
+                collagename_exp7Parameter = new ObjectParameter("collagename_exp7", collagename_exp7);
+            }
+            else
+            {
+                collagename_exp7Parameter = new ObjectParameter("collagename_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp7Parameter;
+            if (affliateduniversity_exp7 != null)
+            {
+                affliateduniversity_exp7Parameter = new ObjectParameter("affliateduniversity_exp7", affliateduniversity_exp7);
+            }
+            else
+            {
+                affliateduniversity_exp7Parameter = new ObjectParameter("affliateduniversity_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp7Parameter;
+            if (joiningdate_exp7.HasValue)
+            {
+                joiningdate_exp7Parameter = new ObjectParameter("joiningdate_exp7", joiningdate_exp7);
+            }
+            else
+            {
+                joiningdate_exp7Parameter = new ObjectParameter("joiningdate_exp7", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp7Parameter;
+            if (lastdate1_exp7.HasValue)
+            {
+                lastdate1_exp7Parameter = new ObjectParameter("lastdate1_exp7", lastdate1_exp7);
+            }
+            else
+            {
+                lastdate1_exp7Parameter = new ObjectParameter("lastdate1_exp7", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp7Parameter;
+            if (totalexperience_exp7 != null)
+            {
+                totalexperience_exp7Parameter = new ObjectParameter("totalexperience_exp7", totalexperience_exp7);
+            }
+            else
+            {
+                totalexperience_exp7Parameter = new ObjectParameter("totalexperience_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp7Parameter;
+            if (lastdesignation_exp7 != null)
+            {
+                lastdesignation_exp7Parameter = new ObjectParameter("lastdesignation_exp7", lastdesignation_exp7);
+            }
+            else
+            {
+                lastdesignation_exp7Parameter = new ObjectParameter("lastdesignation_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp7Parameter;
+            if (companyname_exp7 != null)
+            {
+                companyname_exp7Parameter = new ObjectParameter("companyname_exp7", companyname_exp7);
+            }
+            else
+            {
+                companyname_exp7Parameter = new ObjectParameter("companyname_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp7Parameter;
+            if (clastdesignation_exp7 != null)
+            {
+                clastdesignation_exp7Parameter = new ObjectParameter("clastdesignation_exp7", clastdesignation_exp7);
+            }
+            else
+            {
+                clastdesignation_exp7Parameter = new ObjectParameter("clastdesignation_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp7Parameter;
+            if (cjoiningdate_exp7.HasValue)
+            {
+                cjoiningdate_exp7Parameter = new ObjectParameter("cjoiningdate_exp7", cjoiningdate_exp7);
+            }
+            else
+            {
+                cjoiningdate_exp7Parameter = new ObjectParameter("cjoiningdate_exp7", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp7Parameter;
+            if (clastdate_exp7.HasValue)
+            {
+                clastdate_exp7Parameter = new ObjectParameter("clastdate_exp7", clastdate_exp7);
+            }
+            else
+            {
+                clastdate_exp7Parameter = new ObjectParameter("clastdate_exp7", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp7Parameter;
+            if (ctotalexperience_exp7 != null)
+            {
+                ctotalexperience_exp7Parameter = new ObjectParameter("ctotalexperience_exp7", ctotalexperience_exp7);
+            }
+            else
+            {
+                ctotalexperience_exp7Parameter = new ObjectParameter("ctotalexperience_exp7", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp8Parameter;
+            if (collagename_exp8 != null)
+            {
+                collagename_exp8Parameter = new ObjectParameter("collagename_exp8", collagename_exp8);
+            }
+            else
+            {
+                collagename_exp8Parameter = new ObjectParameter("collagename_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp8Parameter;
+            if (affliateduniversity_exp8 != null)
+            {
+                affliateduniversity_exp8Parameter = new ObjectParameter("affliateduniversity_exp8", affliateduniversity_exp8);
+            }
+            else
+            {
+                affliateduniversity_exp8Parameter = new ObjectParameter("affliateduniversity_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp8Parameter;
+            if (joiningdate_exp8.HasValue)
+            {
+                joiningdate_exp8Parameter = new ObjectParameter("joiningdate_exp8", joiningdate_exp8);
+            }
+            else
+            {
+                joiningdate_exp8Parameter = new ObjectParameter("joiningdate_exp8", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp8Parameter;
+            if (lastdate1_exp8.HasValue)
+            {
+                lastdate1_exp8Parameter = new ObjectParameter("lastdate1_exp8", lastdate1_exp8);
+            }
+            else
+            {
+                lastdate1_exp8Parameter = new ObjectParameter("lastdate1_exp8", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp8Parameter;
+            if (totalexperience_exp8 != null)
+            {
+                totalexperience_exp8Parameter = new ObjectParameter("totalexperience_exp8", totalexperience_exp8);
+            }
+            else
+            {
+                totalexperience_exp8Parameter = new ObjectParameter("totalexperience_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp8Parameter;
+            if (lastdesignation_exp8 != null)
+            {
+                lastdesignation_exp8Parameter = new ObjectParameter("lastdesignation_exp8", lastdesignation_exp8);
+            }
+            else
+            {
+                lastdesignation_exp8Parameter = new ObjectParameter("lastdesignation_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp8Parameter;
+            if (companyname_exp8 != null)
+            {
+                companyname_exp8Parameter = new ObjectParameter("companyname_exp8", companyname_exp8);
+            }
+            else
+            {
+                companyname_exp8Parameter = new ObjectParameter("companyname_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp8Parameter;
+            if (clastdesignation_exp8 != null)
+            {
+                clastdesignation_exp8Parameter = new ObjectParameter("clastdesignation_exp8", clastdesignation_exp8);
+            }
+            else
+            {
+                clastdesignation_exp8Parameter = new ObjectParameter("clastdesignation_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp8Parameter;
+            if (cjoiningdate_exp8.HasValue)
+            {
+                cjoiningdate_exp8Parameter = new ObjectParameter("cjoiningdate_exp8", cjoiningdate_exp8);
+            }
+            else
+            {
+                cjoiningdate_exp8Parameter = new ObjectParameter("cjoiningdate_exp8", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp8Parameter;
+            if (clastdate_exp8.HasValue)
+            {
+                clastdate_exp8Parameter = new ObjectParameter("clastdate_exp8", clastdate_exp8);
+            }
+            else
+            {
+                clastdate_exp8Parameter = new ObjectParameter("clastdate_exp8", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp8Parameter;
+            if (ctotalexperience_exp8 != null)
+            {
+                ctotalexperience_exp8Parameter = new ObjectParameter("ctotalexperience_exp8", ctotalexperience_exp8);
+            }
+            else
+            {
+                ctotalexperience_exp8Parameter = new ObjectParameter("ctotalexperience_exp8", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp9Parameter;
+            if (collagename_exp9 != null)
+            {
+                collagename_exp9Parameter = new ObjectParameter("collagename_exp9", collagename_exp9);
+            }
+            else
+            {
+                collagename_exp9Parameter = new ObjectParameter("collagename_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp9Parameter;
+            if (affliateduniversity_exp9 != null)
+            {
+                affliateduniversity_exp9Parameter = new ObjectParameter("affliateduniversity_exp9", affliateduniversity_exp9);
+            }
+            else
+            {
+                affliateduniversity_exp9Parameter = new ObjectParameter("affliateduniversity_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp9Parameter;
+            if (joiningdate_exp9.HasValue)
+            {
+                joiningdate_exp9Parameter = new ObjectParameter("joiningdate_exp9", joiningdate_exp9);
+            }
+            else
+            {
+                joiningdate_exp9Parameter = new ObjectParameter("joiningdate_exp9", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp9Parameter;
+            if (lastdate1_exp9.HasValue)
+            {
+                lastdate1_exp9Parameter = new ObjectParameter("lastdate1_exp9", lastdate1_exp9);
+            }
+            else
+            {
+                lastdate1_exp9Parameter = new ObjectParameter("lastdate1_exp9", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp9Parameter;
+            if (totalexperience_exp9 != null)
+            {
+                totalexperience_exp9Parameter = new ObjectParameter("totalexperience_exp9", totalexperience_exp9);
+            }
+            else
+            {
+                totalexperience_exp9Parameter = new ObjectParameter("totalexperience_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp9Parameter;
+            if (lastdesignation_exp9 != null)
+            {
+                lastdesignation_exp9Parameter = new ObjectParameter("lastdesignation_exp9", lastdesignation_exp9);
+            }
+            else
+            {
+                lastdesignation_exp9Parameter = new ObjectParameter("lastdesignation_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp9Parameter;
+            if (companyname_exp9 != null)
+            {
+                companyname_exp9Parameter = new ObjectParameter("companyname_exp9", companyname_exp9);
+            }
+            else
+            {
+                companyname_exp9Parameter = new ObjectParameter("companyname_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp9Parameter;
+            if (clastdesignation_exp9 != null)
+            {
+                clastdesignation_exp9Parameter = new ObjectParameter("clastdesignation_exp9", clastdesignation_exp9);
+            }
+            else
+            {
+                clastdesignation_exp9Parameter = new ObjectParameter("clastdesignation_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp9Parameter;
+            if (cjoiningdate_exp9.HasValue)
+            {
+                cjoiningdate_exp9Parameter = new ObjectParameter("cjoiningdate_exp9", cjoiningdate_exp9);
+            }
+            else
+            {
+                cjoiningdate_exp9Parameter = new ObjectParameter("cjoiningdate_exp9", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp9Parameter;
+            if (clastdate_exp9.HasValue)
+            {
+                clastdate_exp9Parameter = new ObjectParameter("clastdate_exp9", clastdate_exp9);
+            }
+            else
+            {
+                clastdate_exp9Parameter = new ObjectParameter("clastdate_exp9", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp9Parameter;
+            if (ctotalexperience_exp9 != null)
+            {
+                ctotalexperience_exp9Parameter = new ObjectParameter("ctotalexperience_exp9", ctotalexperience_exp9);
+            }
+            else
+            {
+                ctotalexperience_exp9Parameter = new ObjectParameter("ctotalexperience_exp9", typeof(global::System.String));
+            }
+    
+            ObjectParameter collagename_exp10Parameter;
+            if (collagename_exp10 != null)
+            {
+                collagename_exp10Parameter = new ObjectParameter("collagename_exp10", collagename_exp10);
+            }
+            else
+            {
+                collagename_exp10Parameter = new ObjectParameter("collagename_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter affliateduniversity_exp10Parameter;
+            if (affliateduniversity_exp10 != null)
+            {
+                affliateduniversity_exp10Parameter = new ObjectParameter("affliateduniversity_exp10", affliateduniversity_exp10);
+            }
+            else
+            {
+                affliateduniversity_exp10Parameter = new ObjectParameter("affliateduniversity_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter joiningdate_exp10Parameter;
+            if (joiningdate_exp10.HasValue)
+            {
+                joiningdate_exp10Parameter = new ObjectParameter("joiningdate_exp10", joiningdate_exp10);
+            }
+            else
+            {
+                joiningdate_exp10Parameter = new ObjectParameter("joiningdate_exp10", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter lastdate1_exp10Parameter;
+            if (lastdate1_exp10.HasValue)
+            {
+                lastdate1_exp10Parameter = new ObjectParameter("lastdate1_exp10", lastdate1_exp10);
+            }
+            else
+            {
+                lastdate1_exp10Parameter = new ObjectParameter("lastdate1_exp10", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter totalexperience_exp10Parameter;
+            if (totalexperience_exp10 != null)
+            {
+                totalexperience_exp10Parameter = new ObjectParameter("totalexperience_exp10", totalexperience_exp10);
+            }
+            else
+            {
+                totalexperience_exp10Parameter = new ObjectParameter("totalexperience_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastdesignation_exp10Parameter;
+            if (lastdesignation_exp10 != null)
+            {
+                lastdesignation_exp10Parameter = new ObjectParameter("lastdesignation_exp10", lastdesignation_exp10);
+            }
+            else
+            {
+                lastdesignation_exp10Parameter = new ObjectParameter("lastdesignation_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter companyname_exp10Parameter;
+            if (companyname_exp10 != null)
+            {
+                companyname_exp10Parameter = new ObjectParameter("companyname_exp10", companyname_exp10);
+            }
+            else
+            {
+                companyname_exp10Parameter = new ObjectParameter("companyname_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter clastdesignation_exp10Parameter;
+            if (clastdesignation_exp10 != null)
+            {
+                clastdesignation_exp10Parameter = new ObjectParameter("clastdesignation_exp10", clastdesignation_exp10);
+            }
+            else
+            {
+                clastdesignation_exp10Parameter = new ObjectParameter("clastdesignation_exp10", typeof(global::System.String));
+            }
+    
+            ObjectParameter cjoiningdate_exp10Parameter;
+            if (cjoiningdate_exp10.HasValue)
+            {
+                cjoiningdate_exp10Parameter = new ObjectParameter("cjoiningdate_exp10", cjoiningdate_exp10);
+            }
+            else
+            {
+                cjoiningdate_exp10Parameter = new ObjectParameter("cjoiningdate_exp10", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter clastdate_exp10Parameter;
+            if (clastdate_exp10.HasValue)
+            {
+                clastdate_exp10Parameter = new ObjectParameter("clastdate_exp10", clastdate_exp10);
+            }
+            else
+            {
+                clastdate_exp10Parameter = new ObjectParameter("clastdate_exp10", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter ctotalexperience_exp10Parameter;
+            if (ctotalexperience_exp10 != null)
+            {
+                ctotalexperience_exp10Parameter = new ObjectParameter("ctotalexperience_exp10", ctotalexperience_exp10);
+            }
+            else
+            {
+                ctotalexperience_exp10Parameter = new ObjectParameter("ctotalexperience_exp10", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter, collagename1Parameter, affliateduniversity1Parameter, joiningdate1Parameter, lastdate1Parameter, totalexperience1Parameter, lastdesignation1Parameter, companyname1Parameter, clastdesignation1Parameter, cjoiningdate1Parameter, clastdate1Parameter, ctotalexperience1Parameter, doctypenameParameter, docnumberParameter, contrelationParameter, parishNameParameter, dioceseNameParameter, collagename_exp3Parameter, affliateduniversity_exp3Parameter, joiningdate_exp3Parameter, lastdate1_exp3Parameter, totalexperience_exp3Parameter, lastdesignation_exp3Parameter, companyname_exp3Parameter, clastdesignation_exp3Parameter, cjoiningdate_exp3Parameter, clastdate_exp3Parameter, ctotalexperience_exp3Parameter, collagename_exp4Parameter, affliateduniversity_exp4Parameter, joiningdate_exp4Parameter, lastdate1_exp4Parameter, totalexperience_exp4Parameter, lastdesignation_exp4Parameter, companyname_exp4Parameter, clastdesignation_exp4Parameter, cjoiningdate_exp4Parameter, clastdate_exp4Parameter, ctotalexperience_exp4Parameter, collagename_exp5Parameter, affliateduniversity_exp5Parameter, joiningdate_exp5Parameter, lastdate1_exp5Parameter, totalexperience_exp5Parameter, lastdesignation_exp5Parameter, companyname_exp5Parameter, clastdesignation_exp5Parameter, cjoiningdate_exp5Parameter, clastdate_exp5Parameter, ctotalexperience_exp5Parameter, collagename_exp6Parameter, affliateduniversity_exp6Parameter, joiningdate_exp6Parameter, lastdate1_exp6Parameter, totalexperience_exp6Parameter, lastdesignation_exp6Parameter, companyname_exp6Parameter, clastdesignation_exp6Parameter, cjoiningdate_exp6Parameter, clastdate_exp6Parameter, ctotalexperience_exp6Parameter, collagename_exp7Parameter, affliateduniversity_exp7Parameter, joiningdate_exp7Parameter, lastdate1_exp7Parameter, totalexperience_exp7Parameter, lastdesignation_exp7Parameter, companyname_exp7Parameter, clastdesignation_exp7Parameter, cjoiningdate_exp7Parameter, clastdate_exp7Parameter, ctotalexperience_exp7Parameter, collagename_exp8Parameter, affliateduniversity_exp8Parameter, joiningdate_exp8Parameter, lastdate1_exp8Parameter, totalexperience_exp8Parameter, lastdesignation_exp8Parameter, companyname_exp8Parameter, clastdesignation_exp8Parameter, cjoiningdate_exp8Parameter, clastdate_exp8Parameter, ctotalexperience_exp8Parameter, collagename_exp9Parameter, affliateduniversity_exp9Parameter, joiningdate_exp9Parameter, lastdate1_exp9Parameter, totalexperience_exp9Parameter, lastdesignation_exp9Parameter, companyname_exp9Parameter, clastdesignation_exp9Parameter, cjoiningdate_exp9Parameter, clastdate_exp9Parameter, ctotalexperience_exp9Parameter, collagename_exp10Parameter, affliateduniversity_exp10Parameter, joiningdate_exp10Parameter, lastdate1_exp10Parameter, totalexperience_exp10Parameter, lastdesignation_exp10Parameter, companyname_exp10Parameter, clastdesignation_exp10Parameter, cjoiningdate_exp10Parameter, clastdate_exp10Parameter, ctotalexperience_exp10Parameter);
         }
 
         #endregion
@@ -11851,6 +12931,2967 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_Empexperience")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_Empexperience : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_Empexperience object.
+        /// </summary>
+        /// <param name="empexpid">Initial value of the empexpid property.</param>
+        public static tbl_Empexperience Createtbl_Empexperience(global::System.Int32 empexpid)
+        {
+            tbl_Empexperience tbl_Empexperience = new tbl_Empexperience();
+            tbl_Empexperience.empexpid = empexpid;
+            return tbl_Empexperience;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 empexpid
+        {
+            get
+            {
+                return _empexpid;
+            }
+            set
+            {
+                if (_empexpid != value)
+                {
+                    OnempexpidChanging(value);
+                    ReportPropertyChanging("empexpid");
+                    _empexpid = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("empexpid");
+                    OnempexpidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _empexpid;
+        partial void OnempexpidChanging(global::System.Int32 value);
+        partial void OnempexpidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> empId
+        {
+            get
+            {
+                return _empId;
+            }
+            set
+            {
+                OnempIdChanging(value);
+                ReportPropertyChanging("empId");
+                _empId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("empId");
+                OnempIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _empId;
+        partial void OnempIdChanging(Nullable<global::System.Int32> value);
+        partial void OnempIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp1
+        {
+            get
+            {
+                return _collagename_exp1;
+            }
+            set
+            {
+                Oncollagename_exp1Changing(value);
+                ReportPropertyChanging("collagename_exp1");
+                _collagename_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp1");
+                Oncollagename_exp1Changed();
+            }
+        }
+        private global::System.String _collagename_exp1;
+        partial void Oncollagename_exp1Changing(global::System.String value);
+        partial void Oncollagename_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp1
+        {
+            get
+            {
+                return _affliateduniversity_exp1;
+            }
+            set
+            {
+                Onaffliateduniversity_exp1Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp1");
+                _affliateduniversity_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp1");
+                Onaffliateduniversity_exp1Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp1;
+        partial void Onaffliateduniversity_exp1Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp1
+        {
+            get
+            {
+                return _joiningdate_exp1;
+            }
+            set
+            {
+                Onjoiningdate_exp1Changing(value);
+                ReportPropertyChanging("joiningdate_exp1");
+                _joiningdate_exp1 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp1");
+                Onjoiningdate_exp1Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp1;
+        partial void Onjoiningdate_exp1Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp1
+        {
+            get
+            {
+                return _lastdate1_exp1;
+            }
+            set
+            {
+                Onlastdate1_exp1Changing(value);
+                ReportPropertyChanging("lastdate1_exp1");
+                _lastdate1_exp1 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp1");
+                Onlastdate1_exp1Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp1;
+        partial void Onlastdate1_exp1Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp1
+        {
+            get
+            {
+                return _totalexperience_exp1;
+            }
+            set
+            {
+                Ontotalexperience_exp1Changing(value);
+                ReportPropertyChanging("totalexperience_exp1");
+                _totalexperience_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp1");
+                Ontotalexperience_exp1Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp1;
+        partial void Ontotalexperience_exp1Changing(global::System.String value);
+        partial void Ontotalexperience_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp1
+        {
+            get
+            {
+                return _lastdesignation_exp1;
+            }
+            set
+            {
+                Onlastdesignation_exp1Changing(value);
+                ReportPropertyChanging("lastdesignation_exp1");
+                _lastdesignation_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp1");
+                Onlastdesignation_exp1Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp1;
+        partial void Onlastdesignation_exp1Changing(global::System.String value);
+        partial void Onlastdesignation_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp1
+        {
+            get
+            {
+                return _companyname_exp1;
+            }
+            set
+            {
+                Oncompanyname_exp1Changing(value);
+                ReportPropertyChanging("companyname_exp1");
+                _companyname_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp1");
+                Oncompanyname_exp1Changed();
+            }
+        }
+        private global::System.String _companyname_exp1;
+        partial void Oncompanyname_exp1Changing(global::System.String value);
+        partial void Oncompanyname_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp1
+        {
+            get
+            {
+                return _clastdesignation_exp1;
+            }
+            set
+            {
+                Onclastdesignation_exp1Changing(value);
+                ReportPropertyChanging("clastdesignation_exp1");
+                _clastdesignation_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp1");
+                Onclastdesignation_exp1Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp1;
+        partial void Onclastdesignation_exp1Changing(global::System.String value);
+        partial void Onclastdesignation_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp1
+        {
+            get
+            {
+                return _cjoiningdate_exp1;
+            }
+            set
+            {
+                Oncjoiningdate_exp1Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp1");
+                _cjoiningdate_exp1 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp1");
+                Oncjoiningdate_exp1Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp1;
+        partial void Oncjoiningdate_exp1Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp1
+        {
+            get
+            {
+                return _clastdate_exp1;
+            }
+            set
+            {
+                Onclastdate_exp1Changing(value);
+                ReportPropertyChanging("clastdate_exp1");
+                _clastdate_exp1 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp1");
+                Onclastdate_exp1Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp1;
+        partial void Onclastdate_exp1Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp1
+        {
+            get
+            {
+                return _ctotalexperience_exp1;
+            }
+            set
+            {
+                Onctotalexperience_exp1Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp1");
+                _ctotalexperience_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp1");
+                Onctotalexperience_exp1Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp1;
+        partial void Onctotalexperience_exp1Changing(global::System.String value);
+        partial void Onctotalexperience_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp1
+        {
+            get
+            {
+                return _companyemail_exp1;
+            }
+            set
+            {
+                Oncompanyemail_exp1Changing(value);
+                ReportPropertyChanging("companyemail_exp1");
+                _companyemail_exp1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp1");
+                Oncompanyemail_exp1Changed();
+            }
+        }
+        private global::System.String _companyemail_exp1;
+        partial void Oncompanyemail_exp1Changing(global::System.String value);
+        partial void Oncompanyemail_exp1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp2
+        {
+            get
+            {
+                return _collagename_exp2;
+            }
+            set
+            {
+                Oncollagename_exp2Changing(value);
+                ReportPropertyChanging("collagename_exp2");
+                _collagename_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp2");
+                Oncollagename_exp2Changed();
+            }
+        }
+        private global::System.String _collagename_exp2;
+        partial void Oncollagename_exp2Changing(global::System.String value);
+        partial void Oncollagename_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp2
+        {
+            get
+            {
+                return _affliateduniversity_exp2;
+            }
+            set
+            {
+                Onaffliateduniversity_exp2Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp2");
+                _affliateduniversity_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp2");
+                Onaffliateduniversity_exp2Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp2;
+        partial void Onaffliateduniversity_exp2Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp2
+        {
+            get
+            {
+                return _joiningdate_exp2;
+            }
+            set
+            {
+                Onjoiningdate_exp2Changing(value);
+                ReportPropertyChanging("joiningdate_exp2");
+                _joiningdate_exp2 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp2");
+                Onjoiningdate_exp2Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp2;
+        partial void Onjoiningdate_exp2Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp2
+        {
+            get
+            {
+                return _lastdate1_exp2;
+            }
+            set
+            {
+                Onlastdate1_exp2Changing(value);
+                ReportPropertyChanging("lastdate1_exp2");
+                _lastdate1_exp2 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp2");
+                Onlastdate1_exp2Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp2;
+        partial void Onlastdate1_exp2Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp2
+        {
+            get
+            {
+                return _totalexperience_exp2;
+            }
+            set
+            {
+                Ontotalexperience_exp2Changing(value);
+                ReportPropertyChanging("totalexperience_exp2");
+                _totalexperience_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp2");
+                Ontotalexperience_exp2Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp2;
+        partial void Ontotalexperience_exp2Changing(global::System.String value);
+        partial void Ontotalexperience_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp2
+        {
+            get
+            {
+                return _lastdesignation_exp2;
+            }
+            set
+            {
+                Onlastdesignation_exp2Changing(value);
+                ReportPropertyChanging("lastdesignation_exp2");
+                _lastdesignation_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp2");
+                Onlastdesignation_exp2Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp2;
+        partial void Onlastdesignation_exp2Changing(global::System.String value);
+        partial void Onlastdesignation_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp2
+        {
+            get
+            {
+                return _companyname_exp2;
+            }
+            set
+            {
+                Oncompanyname_exp2Changing(value);
+                ReportPropertyChanging("companyname_exp2");
+                _companyname_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp2");
+                Oncompanyname_exp2Changed();
+            }
+        }
+        private global::System.String _companyname_exp2;
+        partial void Oncompanyname_exp2Changing(global::System.String value);
+        partial void Oncompanyname_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp2
+        {
+            get
+            {
+                return _clastdesignation_exp2;
+            }
+            set
+            {
+                Onclastdesignation_exp2Changing(value);
+                ReportPropertyChanging("clastdesignation_exp2");
+                _clastdesignation_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp2");
+                Onclastdesignation_exp2Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp2;
+        partial void Onclastdesignation_exp2Changing(global::System.String value);
+        partial void Onclastdesignation_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp2
+        {
+            get
+            {
+                return _cjoiningdate_exp2;
+            }
+            set
+            {
+                Oncjoiningdate_exp2Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp2");
+                _cjoiningdate_exp2 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp2");
+                Oncjoiningdate_exp2Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp2;
+        partial void Oncjoiningdate_exp2Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp2
+        {
+            get
+            {
+                return _clastdate_exp2;
+            }
+            set
+            {
+                Onclastdate_exp2Changing(value);
+                ReportPropertyChanging("clastdate_exp2");
+                _clastdate_exp2 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp2");
+                Onclastdate_exp2Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp2;
+        partial void Onclastdate_exp2Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp2
+        {
+            get
+            {
+                return _ctotalexperience_exp2;
+            }
+            set
+            {
+                Onctotalexperience_exp2Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp2");
+                _ctotalexperience_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp2");
+                Onctotalexperience_exp2Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp2;
+        partial void Onctotalexperience_exp2Changing(global::System.String value);
+        partial void Onctotalexperience_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp2
+        {
+            get
+            {
+                return _companyemail_exp2;
+            }
+            set
+            {
+                Oncompanyemail_exp2Changing(value);
+                ReportPropertyChanging("companyemail_exp2");
+                _companyemail_exp2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp2");
+                Oncompanyemail_exp2Changed();
+            }
+        }
+        private global::System.String _companyemail_exp2;
+        partial void Oncompanyemail_exp2Changing(global::System.String value);
+        partial void Oncompanyemail_exp2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp3
+        {
+            get
+            {
+                return _collagename_exp3;
+            }
+            set
+            {
+                Oncollagename_exp3Changing(value);
+                ReportPropertyChanging("collagename_exp3");
+                _collagename_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp3");
+                Oncollagename_exp3Changed();
+            }
+        }
+        private global::System.String _collagename_exp3;
+        partial void Oncollagename_exp3Changing(global::System.String value);
+        partial void Oncollagename_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp3
+        {
+            get
+            {
+                return _affliateduniversity_exp3;
+            }
+            set
+            {
+                Onaffliateduniversity_exp3Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp3");
+                _affliateduniversity_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp3");
+                Onaffliateduniversity_exp3Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp3;
+        partial void Onaffliateduniversity_exp3Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp3
+        {
+            get
+            {
+                return _joiningdate_exp3;
+            }
+            set
+            {
+                Onjoiningdate_exp3Changing(value);
+                ReportPropertyChanging("joiningdate_exp3");
+                _joiningdate_exp3 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp3");
+                Onjoiningdate_exp3Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp3;
+        partial void Onjoiningdate_exp3Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp3
+        {
+            get
+            {
+                return _lastdate1_exp3;
+            }
+            set
+            {
+                Onlastdate1_exp3Changing(value);
+                ReportPropertyChanging("lastdate1_exp3");
+                _lastdate1_exp3 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp3");
+                Onlastdate1_exp3Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp3;
+        partial void Onlastdate1_exp3Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp3
+        {
+            get
+            {
+                return _totalexperience_exp3;
+            }
+            set
+            {
+                Ontotalexperience_exp3Changing(value);
+                ReportPropertyChanging("totalexperience_exp3");
+                _totalexperience_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp3");
+                Ontotalexperience_exp3Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp3;
+        partial void Ontotalexperience_exp3Changing(global::System.String value);
+        partial void Ontotalexperience_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp3
+        {
+            get
+            {
+                return _lastdesignation_exp3;
+            }
+            set
+            {
+                Onlastdesignation_exp3Changing(value);
+                ReportPropertyChanging("lastdesignation_exp3");
+                _lastdesignation_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp3");
+                Onlastdesignation_exp3Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp3;
+        partial void Onlastdesignation_exp3Changing(global::System.String value);
+        partial void Onlastdesignation_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp3
+        {
+            get
+            {
+                return _companyname_exp3;
+            }
+            set
+            {
+                Oncompanyname_exp3Changing(value);
+                ReportPropertyChanging("companyname_exp3");
+                _companyname_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp3");
+                Oncompanyname_exp3Changed();
+            }
+        }
+        private global::System.String _companyname_exp3;
+        partial void Oncompanyname_exp3Changing(global::System.String value);
+        partial void Oncompanyname_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp3
+        {
+            get
+            {
+                return _clastdesignation_exp3;
+            }
+            set
+            {
+                Onclastdesignation_exp3Changing(value);
+                ReportPropertyChanging("clastdesignation_exp3");
+                _clastdesignation_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp3");
+                Onclastdesignation_exp3Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp3;
+        partial void Onclastdesignation_exp3Changing(global::System.String value);
+        partial void Onclastdesignation_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp3
+        {
+            get
+            {
+                return _cjoiningdate_exp3;
+            }
+            set
+            {
+                Oncjoiningdate_exp3Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp3");
+                _cjoiningdate_exp3 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp3");
+                Oncjoiningdate_exp3Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp3;
+        partial void Oncjoiningdate_exp3Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp3
+        {
+            get
+            {
+                return _clastdate_exp3;
+            }
+            set
+            {
+                Onclastdate_exp3Changing(value);
+                ReportPropertyChanging("clastdate_exp3");
+                _clastdate_exp3 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp3");
+                Onclastdate_exp3Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp3;
+        partial void Onclastdate_exp3Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp3
+        {
+            get
+            {
+                return _ctotalexperience_exp3;
+            }
+            set
+            {
+                Onctotalexperience_exp3Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp3");
+                _ctotalexperience_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp3");
+                Onctotalexperience_exp3Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp3;
+        partial void Onctotalexperience_exp3Changing(global::System.String value);
+        partial void Onctotalexperience_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp3
+        {
+            get
+            {
+                return _companyemail_exp3;
+            }
+            set
+            {
+                Oncompanyemail_exp3Changing(value);
+                ReportPropertyChanging("companyemail_exp3");
+                _companyemail_exp3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp3");
+                Oncompanyemail_exp3Changed();
+            }
+        }
+        private global::System.String _companyemail_exp3;
+        partial void Oncompanyemail_exp3Changing(global::System.String value);
+        partial void Oncompanyemail_exp3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp4
+        {
+            get
+            {
+                return _collagename_exp4;
+            }
+            set
+            {
+                Oncollagename_exp4Changing(value);
+                ReportPropertyChanging("collagename_exp4");
+                _collagename_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp4");
+                Oncollagename_exp4Changed();
+            }
+        }
+        private global::System.String _collagename_exp4;
+        partial void Oncollagename_exp4Changing(global::System.String value);
+        partial void Oncollagename_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp4
+        {
+            get
+            {
+                return _affliateduniversity_exp4;
+            }
+            set
+            {
+                Onaffliateduniversity_exp4Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp4");
+                _affliateduniversity_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp4");
+                Onaffliateduniversity_exp4Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp4;
+        partial void Onaffliateduniversity_exp4Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp4
+        {
+            get
+            {
+                return _joiningdate_exp4;
+            }
+            set
+            {
+                Onjoiningdate_exp4Changing(value);
+                ReportPropertyChanging("joiningdate_exp4");
+                _joiningdate_exp4 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp4");
+                Onjoiningdate_exp4Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp4;
+        partial void Onjoiningdate_exp4Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp4
+        {
+            get
+            {
+                return _lastdate1_exp4;
+            }
+            set
+            {
+                Onlastdate1_exp4Changing(value);
+                ReportPropertyChanging("lastdate1_exp4");
+                _lastdate1_exp4 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp4");
+                Onlastdate1_exp4Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp4;
+        partial void Onlastdate1_exp4Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp4
+        {
+            get
+            {
+                return _totalexperience_exp4;
+            }
+            set
+            {
+                Ontotalexperience_exp4Changing(value);
+                ReportPropertyChanging("totalexperience_exp4");
+                _totalexperience_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp4");
+                Ontotalexperience_exp4Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp4;
+        partial void Ontotalexperience_exp4Changing(global::System.String value);
+        partial void Ontotalexperience_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp4
+        {
+            get
+            {
+                return _lastdesignation_exp4;
+            }
+            set
+            {
+                Onlastdesignation_exp4Changing(value);
+                ReportPropertyChanging("lastdesignation_exp4");
+                _lastdesignation_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp4");
+                Onlastdesignation_exp4Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp4;
+        partial void Onlastdesignation_exp4Changing(global::System.String value);
+        partial void Onlastdesignation_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp4
+        {
+            get
+            {
+                return _companyname_exp4;
+            }
+            set
+            {
+                Oncompanyname_exp4Changing(value);
+                ReportPropertyChanging("companyname_exp4");
+                _companyname_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp4");
+                Oncompanyname_exp4Changed();
+            }
+        }
+        private global::System.String _companyname_exp4;
+        partial void Oncompanyname_exp4Changing(global::System.String value);
+        partial void Oncompanyname_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp4
+        {
+            get
+            {
+                return _clastdesignation_exp4;
+            }
+            set
+            {
+                Onclastdesignation_exp4Changing(value);
+                ReportPropertyChanging("clastdesignation_exp4");
+                _clastdesignation_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp4");
+                Onclastdesignation_exp4Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp4;
+        partial void Onclastdesignation_exp4Changing(global::System.String value);
+        partial void Onclastdesignation_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp4
+        {
+            get
+            {
+                return _cjoiningdate_exp4;
+            }
+            set
+            {
+                Oncjoiningdate_exp4Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp4");
+                _cjoiningdate_exp4 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp4");
+                Oncjoiningdate_exp4Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp4;
+        partial void Oncjoiningdate_exp4Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp4
+        {
+            get
+            {
+                return _clastdate_exp4;
+            }
+            set
+            {
+                Onclastdate_exp4Changing(value);
+                ReportPropertyChanging("clastdate_exp4");
+                _clastdate_exp4 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp4");
+                Onclastdate_exp4Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp4;
+        partial void Onclastdate_exp4Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp4
+        {
+            get
+            {
+                return _ctotalexperience_exp4;
+            }
+            set
+            {
+                Onctotalexperience_exp4Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp4");
+                _ctotalexperience_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp4");
+                Onctotalexperience_exp4Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp4;
+        partial void Onctotalexperience_exp4Changing(global::System.String value);
+        partial void Onctotalexperience_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp4
+        {
+            get
+            {
+                return _companyemail_exp4;
+            }
+            set
+            {
+                Oncompanyemail_exp4Changing(value);
+                ReportPropertyChanging("companyemail_exp4");
+                _companyemail_exp4 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp4");
+                Oncompanyemail_exp4Changed();
+            }
+        }
+        private global::System.String _companyemail_exp4;
+        partial void Oncompanyemail_exp4Changing(global::System.String value);
+        partial void Oncompanyemail_exp4Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp5
+        {
+            get
+            {
+                return _collagename_exp5;
+            }
+            set
+            {
+                Oncollagename_exp5Changing(value);
+                ReportPropertyChanging("collagename_exp5");
+                _collagename_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp5");
+                Oncollagename_exp5Changed();
+            }
+        }
+        private global::System.String _collagename_exp5;
+        partial void Oncollagename_exp5Changing(global::System.String value);
+        partial void Oncollagename_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp5
+        {
+            get
+            {
+                return _affliateduniversity_exp5;
+            }
+            set
+            {
+                Onaffliateduniversity_exp5Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp5");
+                _affliateduniversity_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp5");
+                Onaffliateduniversity_exp5Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp5;
+        partial void Onaffliateduniversity_exp5Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp5
+        {
+            get
+            {
+                return _joiningdate_exp5;
+            }
+            set
+            {
+                Onjoiningdate_exp5Changing(value);
+                ReportPropertyChanging("joiningdate_exp5");
+                _joiningdate_exp5 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp5");
+                Onjoiningdate_exp5Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp5;
+        partial void Onjoiningdate_exp5Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp5
+        {
+            get
+            {
+                return _lastdate1_exp5;
+            }
+            set
+            {
+                Onlastdate1_exp5Changing(value);
+                ReportPropertyChanging("lastdate1_exp5");
+                _lastdate1_exp5 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp5");
+                Onlastdate1_exp5Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp5;
+        partial void Onlastdate1_exp5Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp5
+        {
+            get
+            {
+                return _totalexperience_exp5;
+            }
+            set
+            {
+                Ontotalexperience_exp5Changing(value);
+                ReportPropertyChanging("totalexperience_exp5");
+                _totalexperience_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp5");
+                Ontotalexperience_exp5Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp5;
+        partial void Ontotalexperience_exp5Changing(global::System.String value);
+        partial void Ontotalexperience_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp5
+        {
+            get
+            {
+                return _lastdesignation_exp5;
+            }
+            set
+            {
+                Onlastdesignation_exp5Changing(value);
+                ReportPropertyChanging("lastdesignation_exp5");
+                _lastdesignation_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp5");
+                Onlastdesignation_exp5Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp5;
+        partial void Onlastdesignation_exp5Changing(global::System.String value);
+        partial void Onlastdesignation_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp5
+        {
+            get
+            {
+                return _companyname_exp5;
+            }
+            set
+            {
+                Oncompanyname_exp5Changing(value);
+                ReportPropertyChanging("companyname_exp5");
+                _companyname_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp5");
+                Oncompanyname_exp5Changed();
+            }
+        }
+        private global::System.String _companyname_exp5;
+        partial void Oncompanyname_exp5Changing(global::System.String value);
+        partial void Oncompanyname_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp5
+        {
+            get
+            {
+                return _clastdesignation_exp5;
+            }
+            set
+            {
+                Onclastdesignation_exp5Changing(value);
+                ReportPropertyChanging("clastdesignation_exp5");
+                _clastdesignation_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp5");
+                Onclastdesignation_exp5Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp5;
+        partial void Onclastdesignation_exp5Changing(global::System.String value);
+        partial void Onclastdesignation_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp5
+        {
+            get
+            {
+                return _cjoiningdate_exp5;
+            }
+            set
+            {
+                Oncjoiningdate_exp5Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp5");
+                _cjoiningdate_exp5 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp5");
+                Oncjoiningdate_exp5Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp5;
+        partial void Oncjoiningdate_exp5Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp5
+        {
+            get
+            {
+                return _clastdate_exp5;
+            }
+            set
+            {
+                Onclastdate_exp5Changing(value);
+                ReportPropertyChanging("clastdate_exp5");
+                _clastdate_exp5 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp5");
+                Onclastdate_exp5Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp5;
+        partial void Onclastdate_exp5Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp5
+        {
+            get
+            {
+                return _ctotalexperience_exp5;
+            }
+            set
+            {
+                Onctotalexperience_exp5Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp5");
+                _ctotalexperience_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp5");
+                Onctotalexperience_exp5Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp5;
+        partial void Onctotalexperience_exp5Changing(global::System.String value);
+        partial void Onctotalexperience_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp5
+        {
+            get
+            {
+                return _companyemail_exp5;
+            }
+            set
+            {
+                Oncompanyemail_exp5Changing(value);
+                ReportPropertyChanging("companyemail_exp5");
+                _companyemail_exp5 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp5");
+                Oncompanyemail_exp5Changed();
+            }
+        }
+        private global::System.String _companyemail_exp5;
+        partial void Oncompanyemail_exp5Changing(global::System.String value);
+        partial void Oncompanyemail_exp5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp6
+        {
+            get
+            {
+                return _collagename_exp6;
+            }
+            set
+            {
+                Oncollagename_exp6Changing(value);
+                ReportPropertyChanging("collagename_exp6");
+                _collagename_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp6");
+                Oncollagename_exp6Changed();
+            }
+        }
+        private global::System.String _collagename_exp6;
+        partial void Oncollagename_exp6Changing(global::System.String value);
+        partial void Oncollagename_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp6
+        {
+            get
+            {
+                return _affliateduniversity_exp6;
+            }
+            set
+            {
+                Onaffliateduniversity_exp6Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp6");
+                _affliateduniversity_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp6");
+                Onaffliateduniversity_exp6Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp6;
+        partial void Onaffliateduniversity_exp6Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp6
+        {
+            get
+            {
+                return _joiningdate_exp6;
+            }
+            set
+            {
+                Onjoiningdate_exp6Changing(value);
+                ReportPropertyChanging("joiningdate_exp6");
+                _joiningdate_exp6 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp6");
+                Onjoiningdate_exp6Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp6;
+        partial void Onjoiningdate_exp6Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp6
+        {
+            get
+            {
+                return _lastdate1_exp6;
+            }
+            set
+            {
+                Onlastdate1_exp6Changing(value);
+                ReportPropertyChanging("lastdate1_exp6");
+                _lastdate1_exp6 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp6");
+                Onlastdate1_exp6Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp6;
+        partial void Onlastdate1_exp6Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp6
+        {
+            get
+            {
+                return _totalexperience_exp6;
+            }
+            set
+            {
+                Ontotalexperience_exp6Changing(value);
+                ReportPropertyChanging("totalexperience_exp6");
+                _totalexperience_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp6");
+                Ontotalexperience_exp6Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp6;
+        partial void Ontotalexperience_exp6Changing(global::System.String value);
+        partial void Ontotalexperience_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp6
+        {
+            get
+            {
+                return _lastdesignation_exp6;
+            }
+            set
+            {
+                Onlastdesignation_exp6Changing(value);
+                ReportPropertyChanging("lastdesignation_exp6");
+                _lastdesignation_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp6");
+                Onlastdesignation_exp6Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp6;
+        partial void Onlastdesignation_exp6Changing(global::System.String value);
+        partial void Onlastdesignation_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp6
+        {
+            get
+            {
+                return _companyname_exp6;
+            }
+            set
+            {
+                Oncompanyname_exp6Changing(value);
+                ReportPropertyChanging("companyname_exp6");
+                _companyname_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp6");
+                Oncompanyname_exp6Changed();
+            }
+        }
+        private global::System.String _companyname_exp6;
+        partial void Oncompanyname_exp6Changing(global::System.String value);
+        partial void Oncompanyname_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp6
+        {
+            get
+            {
+                return _clastdesignation_exp6;
+            }
+            set
+            {
+                Onclastdesignation_exp6Changing(value);
+                ReportPropertyChanging("clastdesignation_exp6");
+                _clastdesignation_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp6");
+                Onclastdesignation_exp6Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp6;
+        partial void Onclastdesignation_exp6Changing(global::System.String value);
+        partial void Onclastdesignation_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp6
+        {
+            get
+            {
+                return _cjoiningdate_exp6;
+            }
+            set
+            {
+                Oncjoiningdate_exp6Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp6");
+                _cjoiningdate_exp6 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp6");
+                Oncjoiningdate_exp6Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp6;
+        partial void Oncjoiningdate_exp6Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp6
+        {
+            get
+            {
+                return _clastdate_exp6;
+            }
+            set
+            {
+                Onclastdate_exp6Changing(value);
+                ReportPropertyChanging("clastdate_exp6");
+                _clastdate_exp6 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp6");
+                Onclastdate_exp6Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp6;
+        partial void Onclastdate_exp6Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp6
+        {
+            get
+            {
+                return _ctotalexperience_exp6;
+            }
+            set
+            {
+                Onctotalexperience_exp6Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp6");
+                _ctotalexperience_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp6");
+                Onctotalexperience_exp6Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp6;
+        partial void Onctotalexperience_exp6Changing(global::System.String value);
+        partial void Onctotalexperience_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp6
+        {
+            get
+            {
+                return _companyemail_exp6;
+            }
+            set
+            {
+                Oncompanyemail_exp6Changing(value);
+                ReportPropertyChanging("companyemail_exp6");
+                _companyemail_exp6 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp6");
+                Oncompanyemail_exp6Changed();
+            }
+        }
+        private global::System.String _companyemail_exp6;
+        partial void Oncompanyemail_exp6Changing(global::System.String value);
+        partial void Oncompanyemail_exp6Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp7
+        {
+            get
+            {
+                return _collagename_exp7;
+            }
+            set
+            {
+                Oncollagename_exp7Changing(value);
+                ReportPropertyChanging("collagename_exp7");
+                _collagename_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp7");
+                Oncollagename_exp7Changed();
+            }
+        }
+        private global::System.String _collagename_exp7;
+        partial void Oncollagename_exp7Changing(global::System.String value);
+        partial void Oncollagename_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp7
+        {
+            get
+            {
+                return _affliateduniversity_exp7;
+            }
+            set
+            {
+                Onaffliateduniversity_exp7Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp7");
+                _affliateduniversity_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp7");
+                Onaffliateduniversity_exp7Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp7;
+        partial void Onaffliateduniversity_exp7Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp7
+        {
+            get
+            {
+                return _joiningdate_exp7;
+            }
+            set
+            {
+                Onjoiningdate_exp7Changing(value);
+                ReportPropertyChanging("joiningdate_exp7");
+                _joiningdate_exp7 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp7");
+                Onjoiningdate_exp7Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp7;
+        partial void Onjoiningdate_exp7Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp7
+        {
+            get
+            {
+                return _lastdate1_exp7;
+            }
+            set
+            {
+                Onlastdate1_exp7Changing(value);
+                ReportPropertyChanging("lastdate1_exp7");
+                _lastdate1_exp7 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp7");
+                Onlastdate1_exp7Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp7;
+        partial void Onlastdate1_exp7Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp7
+        {
+            get
+            {
+                return _totalexperience_exp7;
+            }
+            set
+            {
+                Ontotalexperience_exp7Changing(value);
+                ReportPropertyChanging("totalexperience_exp7");
+                _totalexperience_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp7");
+                Ontotalexperience_exp7Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp7;
+        partial void Ontotalexperience_exp7Changing(global::System.String value);
+        partial void Ontotalexperience_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp7
+        {
+            get
+            {
+                return _lastdesignation_exp7;
+            }
+            set
+            {
+                Onlastdesignation_exp7Changing(value);
+                ReportPropertyChanging("lastdesignation_exp7");
+                _lastdesignation_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp7");
+                Onlastdesignation_exp7Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp7;
+        partial void Onlastdesignation_exp7Changing(global::System.String value);
+        partial void Onlastdesignation_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp7
+        {
+            get
+            {
+                return _companyname_exp7;
+            }
+            set
+            {
+                Oncompanyname_exp7Changing(value);
+                ReportPropertyChanging("companyname_exp7");
+                _companyname_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp7");
+                Oncompanyname_exp7Changed();
+            }
+        }
+        private global::System.String _companyname_exp7;
+        partial void Oncompanyname_exp7Changing(global::System.String value);
+        partial void Oncompanyname_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp7
+        {
+            get
+            {
+                return _clastdesignation_exp7;
+            }
+            set
+            {
+                Onclastdesignation_exp7Changing(value);
+                ReportPropertyChanging("clastdesignation_exp7");
+                _clastdesignation_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp7");
+                Onclastdesignation_exp7Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp7;
+        partial void Onclastdesignation_exp7Changing(global::System.String value);
+        partial void Onclastdesignation_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp7
+        {
+            get
+            {
+                return _cjoiningdate_exp7;
+            }
+            set
+            {
+                Oncjoiningdate_exp7Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp7");
+                _cjoiningdate_exp7 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp7");
+                Oncjoiningdate_exp7Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp7;
+        partial void Oncjoiningdate_exp7Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp7
+        {
+            get
+            {
+                return _clastdate_exp7;
+            }
+            set
+            {
+                Onclastdate_exp7Changing(value);
+                ReportPropertyChanging("clastdate_exp7");
+                _clastdate_exp7 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp7");
+                Onclastdate_exp7Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp7;
+        partial void Onclastdate_exp7Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp7
+        {
+            get
+            {
+                return _ctotalexperience_exp7;
+            }
+            set
+            {
+                Onctotalexperience_exp7Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp7");
+                _ctotalexperience_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp7");
+                Onctotalexperience_exp7Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp7;
+        partial void Onctotalexperience_exp7Changing(global::System.String value);
+        partial void Onctotalexperience_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp7
+        {
+            get
+            {
+                return _companyemail_exp7;
+            }
+            set
+            {
+                Oncompanyemail_exp7Changing(value);
+                ReportPropertyChanging("companyemail_exp7");
+                _companyemail_exp7 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp7");
+                Oncompanyemail_exp7Changed();
+            }
+        }
+        private global::System.String _companyemail_exp7;
+        partial void Oncompanyemail_exp7Changing(global::System.String value);
+        partial void Oncompanyemail_exp7Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp8
+        {
+            get
+            {
+                return _collagename_exp8;
+            }
+            set
+            {
+                Oncollagename_exp8Changing(value);
+                ReportPropertyChanging("collagename_exp8");
+                _collagename_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp8");
+                Oncollagename_exp8Changed();
+            }
+        }
+        private global::System.String _collagename_exp8;
+        partial void Oncollagename_exp8Changing(global::System.String value);
+        partial void Oncollagename_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp8
+        {
+            get
+            {
+                return _affliateduniversity_exp8;
+            }
+            set
+            {
+                Onaffliateduniversity_exp8Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp8");
+                _affliateduniversity_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp8");
+                Onaffliateduniversity_exp8Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp8;
+        partial void Onaffliateduniversity_exp8Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp8
+        {
+            get
+            {
+                return _joiningdate_exp8;
+            }
+            set
+            {
+                Onjoiningdate_exp8Changing(value);
+                ReportPropertyChanging("joiningdate_exp8");
+                _joiningdate_exp8 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp8");
+                Onjoiningdate_exp8Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp8;
+        partial void Onjoiningdate_exp8Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp8
+        {
+            get
+            {
+                return _lastdate1_exp8;
+            }
+            set
+            {
+                Onlastdate1_exp8Changing(value);
+                ReportPropertyChanging("lastdate1_exp8");
+                _lastdate1_exp8 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp8");
+                Onlastdate1_exp8Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp8;
+        partial void Onlastdate1_exp8Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp8
+        {
+            get
+            {
+                return _totalexperience_exp8;
+            }
+            set
+            {
+                Ontotalexperience_exp8Changing(value);
+                ReportPropertyChanging("totalexperience_exp8");
+                _totalexperience_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp8");
+                Ontotalexperience_exp8Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp8;
+        partial void Ontotalexperience_exp8Changing(global::System.String value);
+        partial void Ontotalexperience_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp8
+        {
+            get
+            {
+                return _lastdesignation_exp8;
+            }
+            set
+            {
+                Onlastdesignation_exp8Changing(value);
+                ReportPropertyChanging("lastdesignation_exp8");
+                _lastdesignation_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp8");
+                Onlastdesignation_exp8Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp8;
+        partial void Onlastdesignation_exp8Changing(global::System.String value);
+        partial void Onlastdesignation_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp8
+        {
+            get
+            {
+                return _companyname_exp8;
+            }
+            set
+            {
+                Oncompanyname_exp8Changing(value);
+                ReportPropertyChanging("companyname_exp8");
+                _companyname_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp8");
+                Oncompanyname_exp8Changed();
+            }
+        }
+        private global::System.String _companyname_exp8;
+        partial void Oncompanyname_exp8Changing(global::System.String value);
+        partial void Oncompanyname_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp8
+        {
+            get
+            {
+                return _clastdesignation_exp8;
+            }
+            set
+            {
+                Onclastdesignation_exp8Changing(value);
+                ReportPropertyChanging("clastdesignation_exp8");
+                _clastdesignation_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp8");
+                Onclastdesignation_exp8Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp8;
+        partial void Onclastdesignation_exp8Changing(global::System.String value);
+        partial void Onclastdesignation_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp8
+        {
+            get
+            {
+                return _cjoiningdate_exp8;
+            }
+            set
+            {
+                Oncjoiningdate_exp8Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp8");
+                _cjoiningdate_exp8 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp8");
+                Oncjoiningdate_exp8Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp8;
+        partial void Oncjoiningdate_exp8Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp8
+        {
+            get
+            {
+                return _clastdate_exp8;
+            }
+            set
+            {
+                Onclastdate_exp8Changing(value);
+                ReportPropertyChanging("clastdate_exp8");
+                _clastdate_exp8 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp8");
+                Onclastdate_exp8Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp8;
+        partial void Onclastdate_exp8Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp8
+        {
+            get
+            {
+                return _ctotalexperience_exp8;
+            }
+            set
+            {
+                Onctotalexperience_exp8Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp8");
+                _ctotalexperience_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp8");
+                Onctotalexperience_exp8Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp8;
+        partial void Onctotalexperience_exp8Changing(global::System.String value);
+        partial void Onctotalexperience_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp8
+        {
+            get
+            {
+                return _companyemail_exp8;
+            }
+            set
+            {
+                Oncompanyemail_exp8Changing(value);
+                ReportPropertyChanging("companyemail_exp8");
+                _companyemail_exp8 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp8");
+                Oncompanyemail_exp8Changed();
+            }
+        }
+        private global::System.String _companyemail_exp8;
+        partial void Oncompanyemail_exp8Changing(global::System.String value);
+        partial void Oncompanyemail_exp8Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp9
+        {
+            get
+            {
+                return _collagename_exp9;
+            }
+            set
+            {
+                Oncollagename_exp9Changing(value);
+                ReportPropertyChanging("collagename_exp9");
+                _collagename_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp9");
+                Oncollagename_exp9Changed();
+            }
+        }
+        private global::System.String _collagename_exp9;
+        partial void Oncollagename_exp9Changing(global::System.String value);
+        partial void Oncollagename_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp9
+        {
+            get
+            {
+                return _affliateduniversity_exp9;
+            }
+            set
+            {
+                Onaffliateduniversity_exp9Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp9");
+                _affliateduniversity_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp9");
+                Onaffliateduniversity_exp9Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp9;
+        partial void Onaffliateduniversity_exp9Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp9
+        {
+            get
+            {
+                return _joiningdate_exp9;
+            }
+            set
+            {
+                Onjoiningdate_exp9Changing(value);
+                ReportPropertyChanging("joiningdate_exp9");
+                _joiningdate_exp9 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp9");
+                Onjoiningdate_exp9Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp9;
+        partial void Onjoiningdate_exp9Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp9
+        {
+            get
+            {
+                return _lastdate1_exp9;
+            }
+            set
+            {
+                Onlastdate1_exp9Changing(value);
+                ReportPropertyChanging("lastdate1_exp9");
+                _lastdate1_exp9 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp9");
+                Onlastdate1_exp9Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp9;
+        partial void Onlastdate1_exp9Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp9
+        {
+            get
+            {
+                return _totalexperience_exp9;
+            }
+            set
+            {
+                Ontotalexperience_exp9Changing(value);
+                ReportPropertyChanging("totalexperience_exp9");
+                _totalexperience_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp9");
+                Ontotalexperience_exp9Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp9;
+        partial void Ontotalexperience_exp9Changing(global::System.String value);
+        partial void Ontotalexperience_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp9
+        {
+            get
+            {
+                return _lastdesignation_exp9;
+            }
+            set
+            {
+                Onlastdesignation_exp9Changing(value);
+                ReportPropertyChanging("lastdesignation_exp9");
+                _lastdesignation_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp9");
+                Onlastdesignation_exp9Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp9;
+        partial void Onlastdesignation_exp9Changing(global::System.String value);
+        partial void Onlastdesignation_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp9
+        {
+            get
+            {
+                return _companyname_exp9;
+            }
+            set
+            {
+                Oncompanyname_exp9Changing(value);
+                ReportPropertyChanging("companyname_exp9");
+                _companyname_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp9");
+                Oncompanyname_exp9Changed();
+            }
+        }
+        private global::System.String _companyname_exp9;
+        partial void Oncompanyname_exp9Changing(global::System.String value);
+        partial void Oncompanyname_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp9
+        {
+            get
+            {
+                return _clastdesignation_exp9;
+            }
+            set
+            {
+                Onclastdesignation_exp9Changing(value);
+                ReportPropertyChanging("clastdesignation_exp9");
+                _clastdesignation_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp9");
+                Onclastdesignation_exp9Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp9;
+        partial void Onclastdesignation_exp9Changing(global::System.String value);
+        partial void Onclastdesignation_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp9
+        {
+            get
+            {
+                return _cjoiningdate_exp9;
+            }
+            set
+            {
+                Oncjoiningdate_exp9Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp9");
+                _cjoiningdate_exp9 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp9");
+                Oncjoiningdate_exp9Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp9;
+        partial void Oncjoiningdate_exp9Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp9
+        {
+            get
+            {
+                return _clastdate_exp9;
+            }
+            set
+            {
+                Onclastdate_exp9Changing(value);
+                ReportPropertyChanging("clastdate_exp9");
+                _clastdate_exp9 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp9");
+                Onclastdate_exp9Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp9;
+        partial void Onclastdate_exp9Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp9
+        {
+            get
+            {
+                return _ctotalexperience_exp9;
+            }
+            set
+            {
+                Onctotalexperience_exp9Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp9");
+                _ctotalexperience_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp9");
+                Onctotalexperience_exp9Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp9;
+        partial void Onctotalexperience_exp9Changing(global::System.String value);
+        partial void Onctotalexperience_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp9
+        {
+            get
+            {
+                return _companyemail_exp9;
+            }
+            set
+            {
+                Oncompanyemail_exp9Changing(value);
+                ReportPropertyChanging("companyemail_exp9");
+                _companyemail_exp9 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp9");
+                Oncompanyemail_exp9Changed();
+            }
+        }
+        private global::System.String _companyemail_exp9;
+        partial void Oncompanyemail_exp9Changing(global::System.String value);
+        partial void Oncompanyemail_exp9Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String collagename_exp10
+        {
+            get
+            {
+                return _collagename_exp10;
+            }
+            set
+            {
+                Oncollagename_exp10Changing(value);
+                ReportPropertyChanging("collagename_exp10");
+                _collagename_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("collagename_exp10");
+                Oncollagename_exp10Changed();
+            }
+        }
+        private global::System.String _collagename_exp10;
+        partial void Oncollagename_exp10Changing(global::System.String value);
+        partial void Oncollagename_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String affliateduniversity_exp10
+        {
+            get
+            {
+                return _affliateduniversity_exp10;
+            }
+            set
+            {
+                Onaffliateduniversity_exp10Changing(value);
+                ReportPropertyChanging("affliateduniversity_exp10");
+                _affliateduniversity_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("affliateduniversity_exp10");
+                Onaffliateduniversity_exp10Changed();
+            }
+        }
+        private global::System.String _affliateduniversity_exp10;
+        partial void Onaffliateduniversity_exp10Changing(global::System.String value);
+        partial void Onaffliateduniversity_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> joiningdate_exp10
+        {
+            get
+            {
+                return _joiningdate_exp10;
+            }
+            set
+            {
+                Onjoiningdate_exp10Changing(value);
+                ReportPropertyChanging("joiningdate_exp10");
+                _joiningdate_exp10 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("joiningdate_exp10");
+                Onjoiningdate_exp10Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _joiningdate_exp10;
+        partial void Onjoiningdate_exp10Changing(Nullable<global::System.DateTime> value);
+        partial void Onjoiningdate_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> lastdate1_exp10
+        {
+            get
+            {
+                return _lastdate1_exp10;
+            }
+            set
+            {
+                Onlastdate1_exp10Changing(value);
+                ReportPropertyChanging("lastdate1_exp10");
+                _lastdate1_exp10 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("lastdate1_exp10");
+                Onlastdate1_exp10Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _lastdate1_exp10;
+        partial void Onlastdate1_exp10Changing(Nullable<global::System.DateTime> value);
+        partial void Onlastdate1_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String totalexperience_exp10
+        {
+            get
+            {
+                return _totalexperience_exp10;
+            }
+            set
+            {
+                Ontotalexperience_exp10Changing(value);
+                ReportPropertyChanging("totalexperience_exp10");
+                _totalexperience_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("totalexperience_exp10");
+                Ontotalexperience_exp10Changed();
+            }
+        }
+        private global::System.String _totalexperience_exp10;
+        partial void Ontotalexperience_exp10Changing(global::System.String value);
+        partial void Ontotalexperience_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lastdesignation_exp10
+        {
+            get
+            {
+                return _lastdesignation_exp10;
+            }
+            set
+            {
+                Onlastdesignation_exp10Changing(value);
+                ReportPropertyChanging("lastdesignation_exp10");
+                _lastdesignation_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lastdesignation_exp10");
+                Onlastdesignation_exp10Changed();
+            }
+        }
+        private global::System.String _lastdesignation_exp10;
+        partial void Onlastdesignation_exp10Changing(global::System.String value);
+        partial void Onlastdesignation_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyname_exp10
+        {
+            get
+            {
+                return _companyname_exp10;
+            }
+            set
+            {
+                Oncompanyname_exp10Changing(value);
+                ReportPropertyChanging("companyname_exp10");
+                _companyname_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyname_exp10");
+                Oncompanyname_exp10Changed();
+            }
+        }
+        private global::System.String _companyname_exp10;
+        partial void Oncompanyname_exp10Changing(global::System.String value);
+        partial void Oncompanyname_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String clastdesignation_exp10
+        {
+            get
+            {
+                return _clastdesignation_exp10;
+            }
+            set
+            {
+                Onclastdesignation_exp10Changing(value);
+                ReportPropertyChanging("clastdesignation_exp10");
+                _clastdesignation_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clastdesignation_exp10");
+                Onclastdesignation_exp10Changed();
+            }
+        }
+        private global::System.String _clastdesignation_exp10;
+        partial void Onclastdesignation_exp10Changing(global::System.String value);
+        partial void Onclastdesignation_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> cjoiningdate_exp10
+        {
+            get
+            {
+                return _cjoiningdate_exp10;
+            }
+            set
+            {
+                Oncjoiningdate_exp10Changing(value);
+                ReportPropertyChanging("cjoiningdate_exp10");
+                _cjoiningdate_exp10 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cjoiningdate_exp10");
+                Oncjoiningdate_exp10Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _cjoiningdate_exp10;
+        partial void Oncjoiningdate_exp10Changing(Nullable<global::System.DateTime> value);
+        partial void Oncjoiningdate_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> clastdate_exp10
+        {
+            get
+            {
+                return _clastdate_exp10;
+            }
+            set
+            {
+                Onclastdate_exp10Changing(value);
+                ReportPropertyChanging("clastdate_exp10");
+                _clastdate_exp10 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("clastdate_exp10");
+                Onclastdate_exp10Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _clastdate_exp10;
+        partial void Onclastdate_exp10Changing(Nullable<global::System.DateTime> value);
+        partial void Onclastdate_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ctotalexperience_exp10
+        {
+            get
+            {
+                return _ctotalexperience_exp10;
+            }
+            set
+            {
+                Onctotalexperience_exp10Changing(value);
+                ReportPropertyChanging("ctotalexperience_exp10");
+                _ctotalexperience_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ctotalexperience_exp10");
+                Onctotalexperience_exp10Changed();
+            }
+        }
+        private global::System.String _ctotalexperience_exp10;
+        partial void Onctotalexperience_exp10Changing(global::System.String value);
+        partial void Onctotalexperience_exp10Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String companyemail_exp10
+        {
+            get
+            {
+                return _companyemail_exp10;
+            }
+            set
+            {
+                Oncompanyemail_exp10Changing(value);
+                ReportPropertyChanging("companyemail_exp10");
+                _companyemail_exp10 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("companyemail_exp10");
+                Oncompanyemail_exp10Changed();
+            }
+        }
+        private global::System.String _companyemail_exp10;
+        partial void Oncompanyemail_exp10Changing(global::System.String value);
+        partial void Oncompanyemail_exp10Changed();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_employee")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -14197,7 +18238,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> empmothertongue
+        public global::System.String empmothertongue
         {
             get
             {
@@ -14207,13 +18248,13 @@ namespace Entity
             {
                 OnempmothertongueChanging(value);
                 ReportPropertyChanging("empmothertongue");
-                _empmothertongue = StructuralObject.SetValidValue(value);
+                _empmothertongue = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("empmothertongue");
                 OnempmothertongueChanged();
             }
         }
-        private Nullable<global::System.Int32> _empmothertongue;
-        partial void OnempmothertongueChanging(Nullable<global::System.Int32> value);
+        private global::System.String _empmothertongue;
+        partial void OnempmothertongueChanging(global::System.String value);
         partial void OnempmothertongueChanged();
     
         /// <summary>
@@ -14551,6 +18592,54 @@ namespace Entity
         private global::System.String _contrelation;
         partial void OncontrelationChanging(global::System.String value);
         partial void OncontrelationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ParishName
+        {
+            get
+            {
+                return _ParishName;
+            }
+            set
+            {
+                OnParishNameChanging(value);
+                ReportPropertyChanging("ParishName");
+                _ParishName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ParishName");
+                OnParishNameChanged();
+            }
+        }
+        private global::System.String _ParishName;
+        partial void OnParishNameChanging(global::System.String value);
+        partial void OnParishNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DioceseName
+        {
+            get
+            {
+                return _DioceseName;
+            }
+            set
+            {
+                OnDioceseNameChanging(value);
+                ReportPropertyChanging("DioceseName");
+                _DioceseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DioceseName");
+                OnDioceseNameChanged();
+            }
+        }
+        private global::System.String _DioceseName;
+        partial void OnDioceseNameChanging(global::System.String value);
+        partial void OnDioceseNameChanged();
 
         #endregion
 
@@ -23092,6 +27181,150 @@ namespace Entity
         private Nullable<global::System.Int32> _courseyearid;
         partial void OncourseyearidChanging(Nullable<global::System.Int32> value);
         partial void OncourseyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FatherOtherOccName
+        {
+            get
+            {
+                return _FatherOtherOccName;
+            }
+            set
+            {
+                OnFatherOtherOccNameChanging(value);
+                ReportPropertyChanging("FatherOtherOccName");
+                _FatherOtherOccName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FatherOtherOccName");
+                OnFatherOtherOccNameChanged();
+            }
+        }
+        private global::System.String _FatherOtherOccName;
+        partial void OnFatherOtherOccNameChanging(global::System.String value);
+        partial void OnFatherOtherOccNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FatherOtherQualName
+        {
+            get
+            {
+                return _FatherOtherQualName;
+            }
+            set
+            {
+                OnFatherOtherQualNameChanging(value);
+                ReportPropertyChanging("FatherOtherQualName");
+                _FatherOtherQualName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FatherOtherQualName");
+                OnFatherOtherQualNameChanged();
+            }
+        }
+        private global::System.String _FatherOtherQualName;
+        partial void OnFatherOtherQualNameChanging(global::System.String value);
+        partial void OnFatherOtherQualNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GuardianOtherOccName
+        {
+            get
+            {
+                return _GuardianOtherOccName;
+            }
+            set
+            {
+                OnGuardianOtherOccNameChanging(value);
+                ReportPropertyChanging("GuardianOtherOccName");
+                _GuardianOtherOccName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GuardianOtherOccName");
+                OnGuardianOtherOccNameChanged();
+            }
+        }
+        private global::System.String _GuardianOtherOccName;
+        partial void OnGuardianOtherOccNameChanging(global::System.String value);
+        partial void OnGuardianOtherOccNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GuardianOtherQalName
+        {
+            get
+            {
+                return _GuardianOtherQalName;
+            }
+            set
+            {
+                OnGuardianOtherQalNameChanging(value);
+                ReportPropertyChanging("GuardianOtherQalName");
+                _GuardianOtherQalName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GuardianOtherQalName");
+                OnGuardianOtherQalNameChanged();
+            }
+        }
+        private global::System.String _GuardianOtherQalName;
+        partial void OnGuardianOtherQalNameChanging(global::System.String value);
+        partial void OnGuardianOtherQalNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MotherOtherOccName
+        {
+            get
+            {
+                return _MotherOtherOccName;
+            }
+            set
+            {
+                OnMotherOtherOccNameChanging(value);
+                ReportPropertyChanging("MotherOtherOccName");
+                _MotherOtherOccName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MotherOtherOccName");
+                OnMotherOtherOccNameChanged();
+            }
+        }
+        private global::System.String _MotherOtherOccName;
+        partial void OnMotherOtherOccNameChanging(global::System.String value);
+        partial void OnMotherOtherOccNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MotherOtherQualName
+        {
+            get
+            {
+                return _MotherOtherQualName;
+            }
+            set
+            {
+                OnMotherOtherQualNameChanging(value);
+                ReportPropertyChanging("MotherOtherQualName");
+                _MotherOtherQualName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MotherOtherQualName");
+                OnMotherOtherQualNameChanged();
+            }
+        }
+        private global::System.String _MotherOtherQualName;
+        partial void OnMotherOtherQualNameChanging(global::System.String value);
+        partial void OnMotherOtherQualNameChanged();
 
         #endregion
 

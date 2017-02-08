@@ -71,7 +71,19 @@
                 $('#autoUpdate3').fadeOut('slow');
             }
         });
+        $('#Previous1').click(function () {
+            $('.navbar-nav > .active').next('li').find('a').trigger('click');
+        });
+        $('#Previous').click(function () {
+            $('.navbar-nav > .active').last('li').find('a').trigger('click');
 
+        });
+        $('#btnnext').click(function () {
+            $('.navbar-nav > .active').next('li').find('a').trigger('click');
+        });
+        $('#btnnext1').click(function () {
+            $('.navbar-nav > .back').next('li').find('a').trigger('click');
+        });
         $("#PrScTotalMarks").change(function () {
             var a = $("#PrScObtainMark").val();
             var b = $("#PrScTotalMarks").val();
@@ -250,6 +262,96 @@
 
             ReloadCourseYear();
         })
+
+
+        $("#FatherOccpationid").change(function () {
+          
+            if ($("#FatherOccpationid option:selected").text() == "Others")
+            {
+                $('#fatheroccupation').show();
+                $('#fatheroccupation').fadeIn('slow');
+            }
+            else {
+                $('#fatheroccupation').hide();
+                $('#fatheroccupation').fadeOut('slow');
+            }
+               
+           
+        })
+
+        $("#FatherQualificationid").change(function () {
+
+            if ($("#FatherQualificationid option:selected").text() == "Others") {
+                $('#fatherqualification').show();
+                $('#fatherqualification').fadeIn('slow');
+            }
+            else {
+                $('#fatherqualification').hide();
+                $('#fatherqualification').fadeOut('slow');
+            }
+
+
+        })
+
+        $("#GuardianOccpationid").change(function () {
+
+            if ($("#GuardianOccpationid option:selected").text() == "Others") {
+                $('#guardianoccupation').show();
+                $('#guardianoccupation').fadeIn('slow');
+            }
+            else {
+                $('#guardianoccupation').hide();
+                $('#guardianoccupation').fadeOut('slow');
+            }
+
+
+        })
+
+        $("#GuardianQualificationid").change(function () {
+
+            if ($("#GuardianQualificationid option:selected").text() == "Others") {
+                $('#guardianqualification').show();
+                $('#guardianqualification').fadeIn('slow');
+            }
+            else {
+                $('#guardianqualification').hide();
+                $('#guardianqualification').fadeOut('slow');
+            }
+
+
+        })
+
+        $("#MotherOccpationid").change(function () {
+
+            if ($("#MotherOccpationid option:selected").text() == "Others") {
+                $('#motherOccupation').show();
+                $('#motherOccupation').fadeIn('slow');
+            }
+            else {
+                $('#motherOccupation').hide();
+                $('#motherOccupation').fadeOut('slow');
+            }
+
+
+        })
+
+        $("#MotherQualificationid").change(function () {
+
+            if ($("#MotherQualificationid option:selected").text() == "Others") {
+                $('#motherQualification').show();
+                $('#motherQualification').fadeIn('slow');
+            }
+            else {
+                $('#motherQualification').hide();
+                $('#motherQualification').fadeOut('slow');
+            }
+
+
+        })
+
+
+        
+
 
         function ReloadYear() {
             $("#courseyear").empty();
@@ -559,7 +661,12 @@
                     if (data.GuardianQualificationid == 0) {
                         data.GuardianQualificationid = "";
                     }
-
+                    $("#FatherOccumationName").val(data.FatherOtherOccName);
+                    $("#FatherQualificationName").val(data.FatherOtherQualName);
+                    $("#GuardianOccpationName").val(data.GuardianOtherOccName);
+                    $("#GuardianQualificationName").val(data.GuardianOtherQalName);
+                    $("#MotherOccpationName").val(data.MotherOtherOccName);
+                    $("#MotherQualificationName").val(data.MotherOtherQualName);
                     $("#GuardianName").val(data.GuardianName);
                     $("#GuardianQualificationid").val(data.GuardianQualificationid);
                     $("#GuardianEmail").val(data.GuardianEmail);
@@ -1999,6 +2106,13 @@
             }
         });
 
+        $("#Documenttypename").keypress(function (e) {
+            if (!(e.which >= 65 && e.which <= 120)&& (e.which !=32 && e.which != 0)) {
+                $("#errmsg").html("Alphabetes Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
         $("#FatherContact").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 $("#errmsg").html("Digits Only").show().fadeOut("slow");
@@ -2199,6 +2313,27 @@
        
             $('#datepicker4').datepicker();
             $('#datepicker4').val("");
+            $('#fatheroccupation').hide();
+            $('#fatherqualification').hide();
+            $('#guardianoccupation').hide();
+            $('#guardianqualification').hide();
+            $('#motherOccupation').hide();
+            $('#motherQualification').hide();
+            $('.date-own').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'MM yy',
+                onClose: function(dateText, inst) { 
+                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+             
+
+                }
+
+
+
+
+            });
            
    });
 
@@ -2229,6 +2364,11 @@
         background-color: antiquewhite;
     }
 </style>
+<script>
+    function scrollWin() {
+        window.scrollTo(0, -500);
+    }
+</script>
 @Html.Hidden("cats")
 @Html.Hidden("exclude")
 @Html.Hidden("subcats")
@@ -2534,7 +2674,7 @@
                                                         <div class="control-group span5" id="doctype" hidden>
                                                             @Html.LabelFor(model => model.Documenttypename, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.Documenttypename, new { placeholder = "Enter Document Type.", maxlength = "100", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.Documenttypename, new { placeholder = "Enter Document Type.", type="text",maxlength = "100", @class = "input" })
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
@@ -2626,7 +2766,7 @@
                                                         </div>
                                                     </fieldset>
                                                     <br />
-
+                                                    <button type="button" class="btn btn-primary pull-right" id="btnnext" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Next</button>
 
                                                 </div>
                                                 <div id="tabs-2">
@@ -2647,6 +2787,8 @@
                                                                 @Html.ValidationMessageFor(model => model.Studfathernm)
                                                             </div>
                                                         </div>
+                                                    
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.FatherOccpationid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
@@ -2654,11 +2796,27 @@
                                                                 @Html.ValidationMessageFor(model => model.FatherOccpationid)
                                                             </div>
                                                         </div>
+                                                    
+                                                        <div class="control-group span5" id="fatheroccupation" hidden>
+                                                            @Html.LabelFor(model => model.FatherOccumationName, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.FatherOccumationName, new { placeholder = "Enter Father's Occupation", maxlength = "50", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.FatherOccumationName)
+                                                            </div>
+                                                        </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.FatherQualificationid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.FatherQualificationid, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.FatherQualificationid)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group span5" id="fatherqualification" hidden>
+                                                            @Html.LabelFor(model => model.FatherQualificationName, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.FatherQualificationName, new { placeholder = "Enter Father's Qualification", maxlength = "50", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.FatherQualificationName)
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
@@ -2720,6 +2878,15 @@
                                                                     @Html.ValidationMessageFor(model => model.GuardianOccpationid)
                                                                 </div>
                                                             </div>
+                                                            <div class="control-group span5" id="guardianoccupation" hidden>
+                                                                @Html.LabelFor(model => model.GuardianOccpationName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.GuardianOccpationName, new { placeholder = "Enter Guardian's Occupation", maxlength = "50", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianOccpationName)
+                                                                </div>
+                                                            </div>
+
+
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.GuardianQualificationid, new { @class = "control-label", @for = "select" })
                                                                 <div class="controls">
@@ -2727,6 +2894,15 @@
                                                                     @Html.ValidationMessageFor(model => model.GuardianQualificationid)
                                                                 </div>
                                                             </div>
+
+                                                            <div class="control-group span5" id="guardianqualification" hidden>
+                                                                @Html.LabelFor(model => model.GuardianQualificationName, new { @class = "control-label" })
+                                                                <div class="controls">
+                                                                    @Html.TextBoxFor(model => model.GuardianQualificationName, new { placeholder = "Enter Guardian's Qualifiaction", maxlength = "50", @class = "input" })
+                                                                    @Html.ValidationMessageFor(model => model.GuardianQualificationName)
+                                                                </div>
+                                                            </div>
+
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.GuardianEmail, new { @class = "control-label" })
                                                                 <div class="controls">
@@ -2778,6 +2954,15 @@
                                                                 @Html.ValidationMessageFor(model => model.MotherOccpationid)
                                                             </div>
                                                         </div>
+
+                                                        <div class="control-group span5" id="motherOccupation" hidden>
+                                                            @Html.LabelFor(model => model.MotherOccpationName, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.MotherOccpationName, new { placeholder = "Enter Mother's Occupation", maxlength = "50", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.MotherOccpationName)
+                                                            </div>
+                                                        </div>
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.MotherQualificationid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
@@ -2785,6 +2970,14 @@
                                                                 @Html.ValidationMessageFor(model => model.MotherQualificationid)
                                                             </div>
                                                         </div>
+                                                        <div class="control-group span5" id="motherQualification" hidden>
+                                                            @Html.LabelFor(model => model.MotherQualificationName, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.MotherQualificationName, new { placeholder = "Enter Mother's Qualification", maxlength = "50", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.MotherQualificationName)
+                                                            </div>
+                                                        </div>
+
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.MotherEmail, new { @class = "control-label" })
                                                             <div class="controls">
@@ -2941,6 +3134,9 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         </div>
                                                         @Html.Partial("_MultipleAttachments")
                                                     </fieldset>
+
+                                                    <button type="button" class="btn btn-primary pull-right" id="btnnext1" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Next</button>
+                                                    <button type="button" class="btn btn-primary pull-left" id="Previous" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Previous</button>
                                                 </div>
                                                 <div id="tabs-3">
                                                     <fieldset class="test" style="width: 100%;">
@@ -3002,7 +3198,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.LeaveYear, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.LeaveYear, new { placeholder = "Enter Year of Passing", maxlength = "9", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.LeaveYear, new { @class = "date-own form-control",placeholder = "Enter Year of Leaving", maxlength = "9"})
                                                                 @Html.ValidationMessageFor(model => model.LeaveYear)
                                                             </div>
                                                         </div>
@@ -3043,15 +3239,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
-                                                            @Html.LabelFor(model => model.PrScReferenceLetter, new { @class = "control-label" })
-                                                            <div class="controls">
-                                                                <input type="file" name="files5" id="files5" />
-                                                                <div id="pic5">
-                                                                </div>
-                                                                @Html.ValidationMessageFor(model => model.PrScReferenceLetter)
-                                                            </div>
-                                                        </div>
+                                                     
 
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrScTCNumber, new { @class = "control-label" })
@@ -3061,7 +3249,15 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                 @Html.ValidationMessageFor(model => model.PrScTCNumber)
                                                             </div>
                                                         </div>
-
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.PrScReferenceLetter, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                <input type="file" name="files5" id="files5" />
+                                                                <div id="pic5">
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.PrScReferenceLetter)
+                                                            </div>
+                                                        </div>
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.SCTCPic, new { @class = "control-label" })
                                                             <div class="controls">
@@ -3081,6 +3277,8 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                 @Html.ValidationMessageFor(model => model.SCMarksheet)
                                                             </div>
                                                         </div>
+
+
 
                                                     </fieldset>
                                                     <br />
@@ -3151,7 +3349,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.PrUgYearLeaving, new { @class = "control-label" })
                                                                 <div class="controls">
-                                                                    @Html.TextBoxFor(model => model.PrUgYearLeaving, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "input" })
+                                                                    @Html.TextBoxFor(model => model.PrUgYearLeaving, new { @class = "date-own form-control",placeholder = "Enter Year of Leaving", maxlength = "9"  })
                                                                     @Html.ValidationMessageFor(model => model.PrUgYearLeaving)
                                                                 </div>
                                                             </div>
@@ -3273,7 +3471,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                         <div class="control-group span5">
                                                             @Html.LabelFor(model => model.PrPgYearLeaving, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.PrPgYearLeaving, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.PrPgYearLeaving, new { placeholder = "Enter Year of Leaving", maxlength = "9", @class = "date-own form-control" })
                                                                 @Html.ValidationMessageFor(model => model.PrPgYearLeaving)
                                                             </div>
                                                         </div>
@@ -3489,6 +3687,9 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
                                                     </fieldset>
+
+                                                    <button type="button" class="btn btn-primary pull-left" id="Previous1" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Previous</button>
+                                                    <br />
                                                     <div class="form-actions">
 
 

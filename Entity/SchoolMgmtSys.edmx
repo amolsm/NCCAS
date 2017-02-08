@@ -191,6 +191,133 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
           <Property Name="Classid" Type="int" />
           <Property Name="status" Type="bit" />
         </EntityType>
+        <EntityType Name="tbl_Empexperience">
+          <Key>
+            <PropertyRef Name="empexpid" />
+          </Key>
+          <Property Name="empexpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empId" Type="int" />
+          <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp1" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp1" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp1" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp1" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp1" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp2" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp2" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp2" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp2" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp2" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp2" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp3" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp3" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp3" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp3" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp3" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp3" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp4" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp4" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp4" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp4" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp4" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp4" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp5" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp5" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp5" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp5" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp5" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp5" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp6" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp6" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp6" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp6" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp6" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp6" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp7" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp7" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp7" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp7" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp7" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp7" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp8" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp8" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp8" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp8" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp8" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp8" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp9" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp9" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp9" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp9" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp9" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp9" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
+          <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
+          <Property Name="affliateduniversity_exp10" Type="varchar" MaxLength="100" />
+          <Property Name="joiningdate_exp10" Type="datetime2" Precision="7" />
+          <Property Name="lastdate1_exp10" Type="datetime2" Precision="7" />
+          <Property Name="totalexperience_exp10" Type="varchar" MaxLength="50" />
+          <Property Name="lastdesignation_exp10" Type="varchar" MaxLength="100" />
+          <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
+          <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
+          <Property Name="cjoiningdate_exp10" Type="datetime2" Precision="7" />
+          <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
+          <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
+          <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_employee">
           <Key>
             <PropertyRef Name="Empid" />
@@ -291,7 +418,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
           <Property Name="empreligion" Type="int" />
           <Property Name="empcategory" Type="int" />
           <Property Name="empcast" Type="int" />
-          <Property Name="empmothertongue" Type="int" />
+          <Property Name="empmothertongue" Type="varchar" MaxLength="100" />
           <Property Name="collagename1" Type="varchar" MaxLength="50" />
           <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
           <Property Name="joiningdate1" Type="datetime2" Precision="7" />
@@ -306,6 +433,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
           <Property Name="doctypename" Type="varchar" MaxLength="50" />
           <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
           <Property Name="contrelation" Type="varchar" MaxLength="50" />
+          <Property Name="ParishName" Type="varchar" MaxLength="100" />
+          <Property Name="DioceseName" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbl_EmployeeLeave">
           <Key>
@@ -751,6 +880,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="prpg_regno" Type="nvarchar" MaxLength="50" />
           <Property Name="doc_typename" Type="varchar" MaxLength="100" />
           <Property Name="courseyearid" Type="int" />
+          <Property Name="FatherOtherOccName" Type="varchar" MaxLength="100" />
+          <Property Name="FatherOtherQualName" Type="varchar" MaxLength="100" />
+          <Property Name="GuardianOtherOccName" Type="varchar" MaxLength="100" />
+          <Property Name="GuardianOtherQalName" Type="varchar" MaxLength="100" />
+          <Property Name="MotherOtherOccName" Type="varchar" MaxLength="100" />
+          <Property Name="MotherOtherQualName" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbl_StudentAttendance">
           <Key>
@@ -1107,7 +1242,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="empreligion" Type="int" Mode="In" />
           <Parameter Name="empcategory" Type="int" Mode="In" />
           <Parameter Name="empcast" Type="int" Mode="In" />
-          <Parameter Name="empmothertongue" Type="int" Mode="In" />
+          <Parameter Name="empmothertongue" Type="varchar" Mode="In" />
           <Parameter Name="collagename1" Type="varchar" Mode="In" />
           <Parameter Name="affliateduniversity1" Type="varchar" Mode="In" />
           <Parameter Name="joiningdate1" Type="datetime2" Mode="In" />
@@ -1122,6 +1257,96 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="doctypename" Type="varchar" Mode="In" />
           <Parameter Name="docnumber" Type="nvarchar" Mode="In" />
           <Parameter Name="contrelation" Type="varchar" Mode="In" />
+          <Parameter Name="ParishName" Type="varchar" Mode="In" />
+          <Parameter Name="DioceseName" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp3" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp3" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp3" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp3" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp3" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp4" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp4" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp4" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp4" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp4" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp5" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp5" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp5" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp5" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp5" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp6" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp6" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp6" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp6" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp6" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp7" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp7" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp7" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp7" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp7" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp8" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp8" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp8" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp8" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp8" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp9" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp9" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp9" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp9" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp9" Type="varchar" Mode="In" />
+          <Parameter Name="collagename_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="affliateduniversity_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="joiningdate_exp10" Type="datetime2" Mode="In" />
+          <Parameter Name="lastdate1_exp10" Type="datetime2" Mode="In" />
+          <Parameter Name="totalexperience_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="lastdesignation_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="companyname_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="clastdesignation_exp10" Type="varchar" Mode="In" />
+          <Parameter Name="cjoiningdate_exp10" Type="datetime2" Mode="In" />
+          <Parameter Name="clastdate_exp10" Type="datetime2" Mode="In" />
+          <Parameter Name="ctotalexperience_exp10" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_EmployeeAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
@@ -1486,6 +1711,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="prpg_regno" Type="nvarchar" Mode="In" />
           <Parameter Name="doc_typename" Type="varchar" Mode="In" />
           <Parameter Name="courseyearid" Type="int" Mode="In" />
+          <Parameter Name="FatherOtherOccName" Type="varchar" Mode="In" />
+          <Parameter Name="FatherOtherQualName" Type="varchar" Mode="In" />
+          <Parameter Name="GuardianOtherOccName" Type="varchar" Mode="In" />
+          <Parameter Name="GuardianOtherQalName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherOtherOccName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherOtherQualName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Studid" Type="int" Mode="In" />
@@ -1649,6 +1880,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_CourseMaster" EntityType="Self.tbl_CourseMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Empexperience" EntityType="Self.tbl_Empexperience" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_EmployeeLeave" EntityType="Self.tbl_EmployeeLeave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
@@ -2298,6 +2530,50 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImport Name="sp_getchapter" ReturnType="Collection(SchoolMgmtSysModel.sp_getchapter_Result)" />
           <FunctionImport Name="sp_getcontent" ReturnType="Collection(SchoolMgmtSysModel.sp_getcontent_Result)" />
           <FunctionImport Name="sp_getemp" ReturnType="Collection(SchoolMgmtSysModel.sp_getemp_Result)" />
+          <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
+          <FunctionImport Name="sp_getyear" ReturnType="Collection(SchoolMgmtSysModel.sp_getyear_Result)">
+            <Parameter Name="dept_id" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_teachersubject_DML">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="teacherid" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="departmenid" Mode="In" Type="Int32" />
+            <Parameter Name="yearid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
+          <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
+          <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
+          <FunctionImport Name="sp_Subject_DML">
+            <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="Courseid" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectNm" Mode="In" Type="String" />
+            <Parameter Name="Marks" Mode="In" Type="Double" />
+            <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="yearid" Mode="In" Type="String" />
+            <Parameter Name="act" Mode="In" Type="String" />
+            <Parameter Name="deptid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
+          <FunctionImport Name="sp_coursemaster_DML">
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getCourseMaster" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseMaster_Result)" />
+          <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.tbl_Course" />
+          <FunctionImport Name="sp_course_DML">
+            <Parameter Name="Cid" Mode="In" Type="Int32" />
+            <Parameter Name="Classid" Mode="In" Type="Int32" />
+            <Parameter Name="deptid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getCourseDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseDetails_Result)" />
           <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
           <FunctionImport Name="sp_student_admission">
             <Parameter Name="Studid" Mode="In" Type="Int32" />
@@ -2433,21 +2709,15 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="prpg_regno" Mode="In" Type="String" />
             <Parameter Name="doc_typename" Mode="In" Type="String" />
             <Parameter Name="courseyearid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
-          <FunctionImport Name="sp_getyear" ReturnType="Collection(SchoolMgmtSysModel.sp_getyear_Result)">
-            <Parameter Name="dept_id" Mode="In" Type="Int32" />
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_teachersubject_DML">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="teacherid" Mode="In" Type="Int32" />
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="departmenid" Mode="In" Type="Int32" />
-            <Parameter Name="yearid" Mode="In" Type="Int32" />
-            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="FatherOtherOccName" Mode="In" Type="String" />
+            <Parameter Name="FatherOtherQualName" Mode="In" Type="String" />
+            <Parameter Name="GuardianOtherOccName" Mode="In" Type="String" />
+            <Parameter Name="GuardianOtherQalName" Mode="In" Type="String" />
+            <Parameter Name="MotherOtherOccName" Mode="In" Type="String" />
+            <Parameter Name="MotherOtherQualName" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.tbl_employee" />
+          <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.tbl_Empexperience" />
           <FunctionImport Name="sp_employee_DML">
             <Parameter Name="Empid" Mode="In" Type="Int32" />
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -2537,7 +2807,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="empreligion" Mode="In" Type="Int32" />
             <Parameter Name="empcategory" Mode="In" Type="Int32" />
             <Parameter Name="empcast" Mode="In" Type="Int32" />
-            <Parameter Name="empmothertongue" Mode="In" Type="Int32" />
+            <Parameter Name="empmothertongue" Mode="In" Type="String" />
             <Parameter Name="collagename1" Mode="In" Type="String" />
             <Parameter Name="affliateduniversity1" Mode="In" Type="String" />
             <Parameter Name="joiningdate1" Mode="In" Type="DateTime" />
@@ -2552,38 +2822,97 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="doctypename" Mode="In" Type="String" />
             <Parameter Name="docnumber" Mode="In" Type="String" />
             <Parameter Name="contrelation" Mode="In" Type="String" />
+            <Parameter Name="ParishName" Mode="In" Type="String" />
+            <Parameter Name="DioceseName" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp3" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp3" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp3" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp3" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp3" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp3" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp3" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp3" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp3" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp3" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp3" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp4" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp4" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp4" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp4" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp4" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp4" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp4" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp4" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp4" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp4" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp4" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp5" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp5" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp5" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp5" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp5" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp5" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp5" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp5" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp5" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp5" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp5" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp6" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp6" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp6" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp6" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp6" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp6" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp6" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp6" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp6" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp6" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp6" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp7" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp7" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp7" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp7" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp7" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp7" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp7" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp7" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp7" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp7" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp7" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp8" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp8" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp8" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp8" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp8" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp8" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp8" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp8" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp8" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp8" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp8" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp9" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp9" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp9" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp9" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp9" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp9" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp9" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp9" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp9" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp9" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp9" Mode="In" Type="String" />
+            <Parameter Name="collagename_exp10" Mode="In" Type="String" />
+            <Parameter Name="affliateduniversity_exp10" Mode="In" Type="String" />
+            <Parameter Name="joiningdate_exp10" Mode="In" Type="DateTime" />
+            <Parameter Name="lastdate1_exp10" Mode="In" Type="DateTime" />
+            <Parameter Name="totalexperience_exp10" Mode="In" Type="String" />
+            <Parameter Name="lastdesignation_exp10" Mode="In" Type="String" />
+            <Parameter Name="companyname_exp10" Mode="In" Type="String" />
+            <Parameter Name="clastdesignation_exp10" Mode="In" Type="String" />
+            <Parameter Name="cjoiningdate_exp10" Mode="In" Type="DateTime" />
+            <Parameter Name="clastdate_exp10" Mode="In" Type="DateTime" />
+            <Parameter Name="ctotalexperience_exp10" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
-          <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
-          <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
-          <FunctionImport Name="sp_Subject_DML">
-            <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-            <Parameter Name="Courseid" Mode="In" Type="Int32" />
-            <Parameter Name="SubjectNm" Mode="In" Type="String" />
-            <Parameter Name="Marks" Mode="In" Type="Double" />
-            <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="yearid" Mode="In" Type="String" />
-            <Parameter Name="act" Mode="In" Type="String" />
-            <Parameter Name="deptid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
-          <FunctionImport Name="sp_coursemaster_DML">
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="CourseName" Mode="In" Type="String" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="act" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getCourseMaster" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseMaster_Result)" />
-          <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.tbl_Course" />
-          <FunctionImport Name="sp_course_DML">
-            <Parameter Name="Cid" Mode="In" Type="Int32" />
-            <Parameter Name="Classid" Mode="In" Type="Int32" />
-            <Parameter Name="deptid" Mode="In" Type="Int32" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="act" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getCourseDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseDetails_Result)" />
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -3526,6 +3855,88 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="DateOfJoin" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Typeid" Nullable="true" MaxLength="8" />
         </ComplexType>
+        <EntityType Name="tbl_teachersubject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="departmentid" Type="Int32" />
+          <Property Name="yearid" Type="Int32" />
+          <Property Name="subjectid" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="sp_getyear_Result">
+          <Property Type="Int32" Name="yearid" Nullable="false" />
+          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tbl_studentdivision">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentid" Type="Int32" />
+          <Property Name="divisionid" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="departmentid" Type="Int32" />
+          <Property Name="yearid" Type="Int32" />
+          <Property Name="createdby" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_Chaptercomplete">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Teacherid" Type="Int32" />
+          <Property Name="Subjectid" Type="Int32" />
+          <Property Name="Departmentid" Type="Int32" />
+          <Property Name="Courseid" Type="Int32" />
+          <Property Name="Yearid" Type="Int32" />
+          <Property Name="Chapterid" Type="Int32" />
+          <Property Name="complete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_subject">
+          <Key>
+            <PropertyRef Name="Subjectid" />
+          </Key>
+          <Property Name="Subjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Courseid" Type="Int32" Nullable="false" />
+          <Property Name="SubjectNm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marks" Type="Double" Nullable="false" />
+          <Property Name="Pass_Marks" Type="Double" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="yearid" Type="Int32" />
+          <Property Name="DeptId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_CourseMaster">
+          <Key>
+            <PropertyRef Name="Courseid" />
+          </Key>
+          <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getCourseMaster_Result">
+          <Property Type="Int32" Name="Courseid" Nullable="false" />
+          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <EntityType Name="tbl_Course">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course_id" Type="Int32" />
+          <Property Name="Dept_id" Type="Int32" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getCourseDetails_Result">
+          <Property Type="Int32" Name="Cid" Nullable="false" />
+          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+        </ComplexType>
         <EntityType Name="tbl_student">
           <Key>
             <PropertyRef Name="Studid" />
@@ -3663,22 +4074,13 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="prpg_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseyearid" Type="Int32" />
+          <Property Name="FatherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FatherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianOtherQalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbl_teachersubject">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="teacherid" Type="Int32" />
-          <Property Name="courseid" Type="Int32" />
-          <Property Name="departmentid" Type="Int32" />
-          <Property Name="yearid" Type="Int32" />
-          <Property Name="subjectid" Type="Int32" />
-        </EntityType>
-        <ComplexType Name="sp_getyear_Result">
-          <Property Type="Int32" Name="yearid" Nullable="false" />
-          <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
-        </ComplexType>
         <EntityType Name="tbl_employee">
           <Key>
             <PropertyRef Name="Empid" />
@@ -3779,7 +4181,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="empreligion" Type="Int32" />
           <Property Name="empcategory" Type="Int32" />
           <Property Name="empcast" Type="Int32" />
-          <Property Name="empmothertongue" Type="Int32" />
+          <Property Name="empmothertongue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="collagename1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="affliateduniversity1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="joiningdate1" Type="DateTime" Precision="7" />
@@ -3794,74 +4196,136 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="doctypename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="docnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="contrelation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbl_studentdivision">
+        <EntityType Name="tbl_Empexperience">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="empexpid" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="studentid" Type="Int32" />
-          <Property Name="divisionid" Type="Int32" />
-          <Property Name="courseid" Type="Int32" />
-          <Property Name="departmentid" Type="Int32" />
-          <Property Name="yearid" Type="Int32" />
-          <Property Name="createdby" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="empexpid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empId" Type="Int32" />
+          <Property Name="collagename_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp1" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp1" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp1" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp1" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp2" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp2" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp2" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp2" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp3" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp3" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp3" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp3" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp4" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp4" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp4" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp4" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp5" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp5" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp5" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp5" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp6" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp6" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp6" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp6" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp7" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp7" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp7" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp7" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp8" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp8" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp8" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp8" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp9" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp9" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp9" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp9" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="collagename_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="affliateduniversity_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="joiningdate_exp10" Type="DateTime" Precision="7" />
+          <Property Name="lastdate1_exp10" Type="DateTime" Precision="7" />
+          <Property Name="totalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastdesignation_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companyname_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clastdesignation_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cjoiningdate_exp10" Type="DateTime" Precision="7" />
+          <Property Name="clastdate_exp10" Type="DateTime" Precision="7" />
+          <Property Name="ctotalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyemail_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbl_Chaptercomplete">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Teacherid" Type="Int32" />
-          <Property Name="Subjectid" Type="Int32" />
-          <Property Name="Departmentid" Type="Int32" />
-          <Property Name="Courseid" Type="Int32" />
-          <Property Name="Yearid" Type="Int32" />
-          <Property Name="Chapterid" Type="Int32" />
-          <Property Name="complete" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tbl_subject">
-          <Key>
-            <PropertyRef Name="Subjectid" />
-          </Key>
-          <Property Name="Subjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Courseid" Type="Int32" Nullable="false" />
-          <Property Name="SubjectNm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Marks" Type="Double" Nullable="false" />
-          <Property Name="Pass_Marks" Type="Double" Nullable="false" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="yearid" Type="Int32" />
-          <Property Name="DeptId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tbl_CourseMaster">
-          <Key>
-            <PropertyRef Name="Courseid" />
-          </Key>
-          <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Boolean" />
-        </EntityType>
-        <ComplexType Name="sp_getCourseMaster_Result">
-          <Property Type="Int32" Name="Courseid" Nullable="false" />
-          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-        </ComplexType>
-        <EntityType Name="tbl_Course">
-          <Key>
-            <PropertyRef Name="Cid" />
-          </Key>
-          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Course_id" Type="Int32" />
-          <Property Name="Dept_id" Type="Int32" />
-          <Property Name="status" Type="Boolean" />
-        </EntityType>
-        <ComplexType Name="sp_getCourseDetails_Result">
-          <Property Type="Int32" Name="Cid" Nullable="false" />
-          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5114,9 +5578,119 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_teachersubject">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
+              <MappingFragment StoreEntitySet="tbl_teachersubject">
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
+          <EntitySetMapping Name="tbl_studentdivision">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
+              <MappingFragment StoreEntitySet="tbl_studentdivision">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="divisionid" ColumnName="divisionid" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Chaptercomplete">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
+              <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
+                <ScalarProperty Name="complete" ColumnName="complete" />
+                <ScalarProperty Name="Chapterid" ColumnName="Chapterid" />
+                <ScalarProperty Name="Yearid" ColumnName="Yearid" />
+                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+                <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
+                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+                <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_subject">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_subject">
+              <MappingFragment StoreEntitySet="tbl_subject">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Pass_Marks" ColumnName="Pass_Marks" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
+                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Subject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Subject_DML" />
+          <EntitySetMapping Name="tbl_CourseMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseMaster">
+              <MappingFragment StoreEntitySet="tbl_CourseMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_coursemaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_coursemaster_DML" />
+          <FunctionImportMapping FunctionImportName="sp_getCourseMaster" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseMaster_Result">
+                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_Course">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Course">
+              <MappingFragment StoreEntitySet="tbl_Course">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
+                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_course_DML" FunctionName="SchoolMgmtSysModel.Store.sp_course_DML" />
+          <FunctionImportMapping FunctionImportName="sp_getCourseDetails" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseDetails_Result">
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="tbl_student">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
               <MappingFragment StoreEntitySet="tbl_student">
+                <ScalarProperty Name="MotherOtherQualName" ColumnName="MotherOtherQualName" />
+                <ScalarProperty Name="MotherOtherOccName" ColumnName="MotherOtherOccName" />
+                <ScalarProperty Name="GuardianOtherQalName" ColumnName="GuardianOtherQalName" />
+                <ScalarProperty Name="GuardianOtherOccName" ColumnName="GuardianOtherOccName" />
+                <ScalarProperty Name="FatherOtherQualName" ColumnName="FatherOtherQualName" />
+                <ScalarProperty Name="FatherOtherOccName" ColumnName="FatherOtherOccName" />
                 <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
                 <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
                 <ScalarProperty Name="prpg_regno" ColumnName="prpg_regno" />
@@ -5254,30 +5828,11 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-          <EntitySetMapping Name="tbl_teachersubject">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
-              <MappingFragment StoreEntitySet="tbl_teachersubject">
-                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="YearName" ColumnName="YearName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
           <EntitySetMapping Name="tbl_employee">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_employee">
               <MappingFragment StoreEntitySet="tbl_employee">
+                <ScalarProperty Name="DioceseName" ColumnName="DioceseName" />
+                <ScalarProperty Name="ParishName" ColumnName="ParishName" />
                 <ScalarProperty Name="contrelation" ColumnName="contrelation" />
                 <ScalarProperty Name="docnumber" ColumnName="docnumber" />
                 <ScalarProperty Name="doctypename" ColumnName="doctypename" />
@@ -5392,90 +5947,135 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Empexperience">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Empexperience">
+              <MappingFragment StoreEntitySet="tbl_Empexperience">
+                <ScalarProperty Name="companyemail_exp10" ColumnName="companyemail_exp10" />
+                <ScalarProperty Name="ctotalexperience_exp10" ColumnName="ctotalexperience_exp10" />
+                <ScalarProperty Name="clastdate_exp10" ColumnName="clastdate_exp10" />
+                <ScalarProperty Name="cjoiningdate_exp10" ColumnName="cjoiningdate_exp10" />
+                <ScalarProperty Name="clastdesignation_exp10" ColumnName="clastdesignation_exp10" />
+                <ScalarProperty Name="companyname_exp10" ColumnName="companyname_exp10" />
+                <ScalarProperty Name="lastdesignation_exp10" ColumnName="lastdesignation_exp10" />
+                <ScalarProperty Name="totalexperience_exp10" ColumnName="totalexperience_exp10" />
+                <ScalarProperty Name="lastdate1_exp10" ColumnName="lastdate1_exp10" />
+                <ScalarProperty Name="joiningdate_exp10" ColumnName="joiningdate_exp10" />
+                <ScalarProperty Name="affliateduniversity_exp10" ColumnName="affliateduniversity_exp10" />
+                <ScalarProperty Name="collagename_exp10" ColumnName="collagename_exp10" />
+                <ScalarProperty Name="companyemail_exp9" ColumnName="companyemail_exp9" />
+                <ScalarProperty Name="ctotalexperience_exp9" ColumnName="ctotalexperience_exp9" />
+                <ScalarProperty Name="clastdate_exp9" ColumnName="clastdate_exp9" />
+                <ScalarProperty Name="cjoiningdate_exp9" ColumnName="cjoiningdate_exp9" />
+                <ScalarProperty Name="clastdesignation_exp9" ColumnName="clastdesignation_exp9" />
+                <ScalarProperty Name="companyname_exp9" ColumnName="companyname_exp9" />
+                <ScalarProperty Name="lastdesignation_exp9" ColumnName="lastdesignation_exp9" />
+                <ScalarProperty Name="totalexperience_exp9" ColumnName="totalexperience_exp9" />
+                <ScalarProperty Name="lastdate1_exp9" ColumnName="lastdate1_exp9" />
+                <ScalarProperty Name="joiningdate_exp9" ColumnName="joiningdate_exp9" />
+                <ScalarProperty Name="affliateduniversity_exp9" ColumnName="affliateduniversity_exp9" />
+                <ScalarProperty Name="collagename_exp9" ColumnName="collagename_exp9" />
+                <ScalarProperty Name="companyemail_exp8" ColumnName="companyemail_exp8" />
+                <ScalarProperty Name="ctotalexperience_exp8" ColumnName="ctotalexperience_exp8" />
+                <ScalarProperty Name="clastdate_exp8" ColumnName="clastdate_exp8" />
+                <ScalarProperty Name="cjoiningdate_exp8" ColumnName="cjoiningdate_exp8" />
+                <ScalarProperty Name="clastdesignation_exp8" ColumnName="clastdesignation_exp8" />
+                <ScalarProperty Name="companyname_exp8" ColumnName="companyname_exp8" />
+                <ScalarProperty Name="lastdesignation_exp8" ColumnName="lastdesignation_exp8" />
+                <ScalarProperty Name="totalexperience_exp8" ColumnName="totalexperience_exp8" />
+                <ScalarProperty Name="lastdate1_exp8" ColumnName="lastdate1_exp8" />
+                <ScalarProperty Name="joiningdate_exp8" ColumnName="joiningdate_exp8" />
+                <ScalarProperty Name="affliateduniversity_exp8" ColumnName="affliateduniversity_exp8" />
+                <ScalarProperty Name="collagename_exp8" ColumnName="collagename_exp8" />
+                <ScalarProperty Name="companyemail_exp7" ColumnName="companyemail_exp7" />
+                <ScalarProperty Name="ctotalexperience_exp7" ColumnName="ctotalexperience_exp7" />
+                <ScalarProperty Name="clastdate_exp7" ColumnName="clastdate_exp7" />
+                <ScalarProperty Name="cjoiningdate_exp7" ColumnName="cjoiningdate_exp7" />
+                <ScalarProperty Name="clastdesignation_exp7" ColumnName="clastdesignation_exp7" />
+                <ScalarProperty Name="companyname_exp7" ColumnName="companyname_exp7" />
+                <ScalarProperty Name="lastdesignation_exp7" ColumnName="lastdesignation_exp7" />
+                <ScalarProperty Name="totalexperience_exp7" ColumnName="totalexperience_exp7" />
+                <ScalarProperty Name="lastdate1_exp7" ColumnName="lastdate1_exp7" />
+                <ScalarProperty Name="joiningdate_exp7" ColumnName="joiningdate_exp7" />
+                <ScalarProperty Name="affliateduniversity_exp7" ColumnName="affliateduniversity_exp7" />
+                <ScalarProperty Name="collagename_exp7" ColumnName="collagename_exp7" />
+                <ScalarProperty Name="companyemail_exp6" ColumnName="companyemail_exp6" />
+                <ScalarProperty Name="ctotalexperience_exp6" ColumnName="ctotalexperience_exp6" />
+                <ScalarProperty Name="clastdate_exp6" ColumnName="clastdate_exp6" />
+                <ScalarProperty Name="cjoiningdate_exp6" ColumnName="cjoiningdate_exp6" />
+                <ScalarProperty Name="clastdesignation_exp6" ColumnName="clastdesignation_exp6" />
+                <ScalarProperty Name="companyname_exp6" ColumnName="companyname_exp6" />
+                <ScalarProperty Name="lastdesignation_exp6" ColumnName="lastdesignation_exp6" />
+                <ScalarProperty Name="totalexperience_exp6" ColumnName="totalexperience_exp6" />
+                <ScalarProperty Name="lastdate1_exp6" ColumnName="lastdate1_exp6" />
+                <ScalarProperty Name="joiningdate_exp6" ColumnName="joiningdate_exp6" />
+                <ScalarProperty Name="affliateduniversity_exp6" ColumnName="affliateduniversity_exp6" />
+                <ScalarProperty Name="collagename_exp6" ColumnName="collagename_exp6" />
+                <ScalarProperty Name="companyemail_exp5" ColumnName="companyemail_exp5" />
+                <ScalarProperty Name="ctotalexperience_exp5" ColumnName="ctotalexperience_exp5" />
+                <ScalarProperty Name="clastdate_exp5" ColumnName="clastdate_exp5" />
+                <ScalarProperty Name="cjoiningdate_exp5" ColumnName="cjoiningdate_exp5" />
+                <ScalarProperty Name="clastdesignation_exp5" ColumnName="clastdesignation_exp5" />
+                <ScalarProperty Name="companyname_exp5" ColumnName="companyname_exp5" />
+                <ScalarProperty Name="lastdesignation_exp5" ColumnName="lastdesignation_exp5" />
+                <ScalarProperty Name="totalexperience_exp5" ColumnName="totalexperience_exp5" />
+                <ScalarProperty Name="lastdate1_exp5" ColumnName="lastdate1_exp5" />
+                <ScalarProperty Name="joiningdate_exp5" ColumnName="joiningdate_exp5" />
+                <ScalarProperty Name="affliateduniversity_exp5" ColumnName="affliateduniversity_exp5" />
+                <ScalarProperty Name="collagename_exp5" ColumnName="collagename_exp5" />
+                <ScalarProperty Name="companyemail_exp4" ColumnName="companyemail_exp4" />
+                <ScalarProperty Name="ctotalexperience_exp4" ColumnName="ctotalexperience_exp4" />
+                <ScalarProperty Name="clastdate_exp4" ColumnName="clastdate_exp4" />
+                <ScalarProperty Name="cjoiningdate_exp4" ColumnName="cjoiningdate_exp4" />
+                <ScalarProperty Name="clastdesignation_exp4" ColumnName="clastdesignation_exp4" />
+                <ScalarProperty Name="companyname_exp4" ColumnName="companyname_exp4" />
+                <ScalarProperty Name="lastdesignation_exp4" ColumnName="lastdesignation_exp4" />
+                <ScalarProperty Name="totalexperience_exp4" ColumnName="totalexperience_exp4" />
+                <ScalarProperty Name="lastdate1_exp4" ColumnName="lastdate1_exp4" />
+                <ScalarProperty Name="joiningdate_exp4" ColumnName="joiningdate_exp4" />
+                <ScalarProperty Name="affliateduniversity_exp4" ColumnName="affliateduniversity_exp4" />
+                <ScalarProperty Name="collagename_exp4" ColumnName="collagename_exp4" />
+                <ScalarProperty Name="companyemail_exp3" ColumnName="companyemail_exp3" />
+                <ScalarProperty Name="ctotalexperience_exp3" ColumnName="ctotalexperience_exp3" />
+                <ScalarProperty Name="clastdate_exp3" ColumnName="clastdate_exp3" />
+                <ScalarProperty Name="cjoiningdate_exp3" ColumnName="cjoiningdate_exp3" />
+                <ScalarProperty Name="clastdesignation_exp3" ColumnName="clastdesignation_exp3" />
+                <ScalarProperty Name="companyname_exp3" ColumnName="companyname_exp3" />
+                <ScalarProperty Name="lastdesignation_exp3" ColumnName="lastdesignation_exp3" />
+                <ScalarProperty Name="totalexperience_exp3" ColumnName="totalexperience_exp3" />
+                <ScalarProperty Name="lastdate1_exp3" ColumnName="lastdate1_exp3" />
+                <ScalarProperty Name="joiningdate_exp3" ColumnName="joiningdate_exp3" />
+                <ScalarProperty Name="affliateduniversity_exp3" ColumnName="affliateduniversity_exp3" />
+                <ScalarProperty Name="collagename_exp3" ColumnName="collagename_exp3" />
+                <ScalarProperty Name="companyemail_exp2" ColumnName="companyemail_exp2" />
+                <ScalarProperty Name="ctotalexperience_exp2" ColumnName="ctotalexperience_exp2" />
+                <ScalarProperty Name="clastdate_exp2" ColumnName="clastdate_exp2" />
+                <ScalarProperty Name="cjoiningdate_exp2" ColumnName="cjoiningdate_exp2" />
+                <ScalarProperty Name="clastdesignation_exp2" ColumnName="clastdesignation_exp2" />
+                <ScalarProperty Name="companyname_exp2" ColumnName="companyname_exp2" />
+                <ScalarProperty Name="lastdesignation_exp2" ColumnName="lastdesignation_exp2" />
+                <ScalarProperty Name="totalexperience_exp2" ColumnName="totalexperience_exp2" />
+                <ScalarProperty Name="lastdate1_exp2" ColumnName="lastdate1_exp2" />
+                <ScalarProperty Name="joiningdate_exp2" ColumnName="joiningdate_exp2" />
+                <ScalarProperty Name="affliateduniversity_exp2" ColumnName="affliateduniversity_exp2" />
+                <ScalarProperty Name="collagename_exp2" ColumnName="collagename_exp2" />
+                <ScalarProperty Name="companyemail_exp1" ColumnName="companyemail_exp1" />
+                <ScalarProperty Name="ctotalexperience_exp1" ColumnName="ctotalexperience_exp1" />
+                <ScalarProperty Name="clastdate_exp1" ColumnName="clastdate_exp1" />
+                <ScalarProperty Name="cjoiningdate_exp1" ColumnName="cjoiningdate_exp1" />
+                <ScalarProperty Name="clastdesignation_exp1" ColumnName="clastdesignation_exp1" />
+                <ScalarProperty Name="companyname_exp1" ColumnName="companyname_exp1" />
+                <ScalarProperty Name="lastdesignation_exp1" ColumnName="lastdesignation_exp1" />
+                <ScalarProperty Name="totalexperience_exp1" ColumnName="totalexperience_exp1" />
+                <ScalarProperty Name="lastdate1_exp1" ColumnName="lastdate1_exp1" />
+                <ScalarProperty Name="joiningdate_exp1" ColumnName="joiningdate_exp1" />
+                <ScalarProperty Name="affliateduniversity_exp1" ColumnName="affliateduniversity_exp1" />
+                <ScalarProperty Name="collagename_exp1" ColumnName="collagename_exp1" />
+                <ScalarProperty Name="empId" ColumnName="empId" />
+                <ScalarProperty Name="empexpid" ColumnName="empexpid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-          <EntitySetMapping Name="tbl_studentdivision">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
-              <MappingFragment StoreEntitySet="tbl_studentdivision">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="createdby" ColumnName="createdby" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="divisionid" ColumnName="divisionid" />
-                <ScalarProperty Name="studentid" ColumnName="studentid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Chaptercomplete">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
-              <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
-                <ScalarProperty Name="complete" ColumnName="complete" />
-                <ScalarProperty Name="Chapterid" ColumnName="Chapterid" />
-                <ScalarProperty Name="Yearid" ColumnName="Yearid" />
-                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-                <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
-                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-                <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_subject">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_subject">
-              <MappingFragment StoreEntitySet="tbl_subject">
-                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Pass_Marks" ColumnName="Pass_Marks" />
-                <ScalarProperty Name="Marks" ColumnName="Marks" />
-                <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
-                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_Subject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Subject_DML" />
-          <EntitySetMapping Name="tbl_CourseMaster">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseMaster">
-              <MappingFragment StoreEntitySet="tbl_CourseMaster">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_coursemaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_coursemaster_DML" />
-          <FunctionImportMapping FunctionImportName="sp_getCourseMaster" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseMaster">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseMaster_Result">
-                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tbl_Course">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Course">
-              <MappingFragment StoreEntitySet="tbl_Course">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Dept_id" ColumnName="Dept_id" />
-                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
-                <ScalarProperty Name="Cid" ColumnName="Cid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_course_DML" FunctionName="SchoolMgmtSysModel.Store.sp_course_DML" />
-          <FunctionImportMapping FunctionImportName="sp_getCourseDetails" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseDetails_Result">
-                <ScalarProperty Name="Cid" ColumnName="Cid" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5549,14 +6149,15 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_city" Width="1.5" PointX="16.375" PointY="19.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chapter" Width="1.5" PointX="21.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="6.75" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="19.375" PointY="9.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_teachersubject" Width="1.5" PointX="21.375" PointY="9.75" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_employee" Width="1.5" PointX="21.375" PointY="12.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_studentdivision" Width="1.5" PointX="10.375" PointY="22.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" Width="1.5" PointX="12.375" PointY="22.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_subject" Width="1.5" PointX="3.375" PointY="5.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_CourseMaster" Width="1.5" PointX="14.375" PointY="22.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Course" Width="1.5" PointX="16.375" PointY="22.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="18.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_employee" Width="1.5" PointX="20.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Empexperience" Width="1.5" PointX="22.375" PointY="12.75" />
       </Diagram>
     </Diagrams>
   </Designer>

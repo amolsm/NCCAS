@@ -33,23 +33,296 @@
             if (this.checked) {
                 $('#autoUpdate').show();
                 $('#autoUpdate').fadeIn('slow');
+                $('#colexp3').show();
             }
             else {
                 $('#autoUpdate').hide();
                 $('#autoUpdate').fadeOut('slow');
+                $('#colexp3').hide();
             }
         });
         $('#cbxShowHide1').change(function () {
             if (this.checked) {
                 $('#autoUpdate1').show();
                 $('#autoUpdate1').fadeIn('slow');
+                $('#colexp4').show();
             }
             else {
                 $('#autoUpdate1').hide();
                 $('#autoUpdate1').fadeOut('slow');
+                $('#colexp4').hide();
+            }
+        });
+        $('#cbxShowHide2').change(function () {
+            if (this.checked) {
+                $('#autoUpdate2').show();
+                $('#autoUpdate2').fadeIn('slow');
+                $('#colexp5').show()
+            }
+            else {
+                $('#autoUpdate2').hide();
+                $('#autoUpdate2').fadeOut('slow');
+                $('#colexp5').hide();
+            }
+        });
+        $('#cbxShowHide3').change(function () {
+            if (this.checked) {
+                $('#autoUpdate3').show();
+                $('#autoUpdate3').fadeIn('slow');
+                $('#colexp6').show()
+            }
+            else {
+                $('#autoUpdate3').hide();
+                $('#autoUpdate3').fadeOut('slow');
+                $('#colexp6').hide();
+            }
+        });
+        $('#cbxShowHide4').change(function () {
+            if (this.checked) {
+                $('#autoUpdate4').show();
+                $('#autoUpdate4').fadeIn('slow');
+                $('#colexp7').show()
+            }
+            else {
+                $('#autoUpdate4').hide();
+                $('#autoUpdate4').fadeOut('slow');
+                $('#colexp7').hide();
+            }
+        });
+        $('#cbxShowHide5').change(function () {
+            if (this.checked) {
+                $('#autoUpdate5').show();
+                $('#autoUpdate5').fadeIn('slow');
+                $('#colexp8').show();
+            }
+            else {
+                $('#autoUpdate5').hide();
+                $('#autoUpdate5').fadeOut('slow');
+                $('#colexp8').hide();
+            }
+        });
+        $('#cbxShowHide6').change(function () {
+            if (this.checked) {
+                $('#autoUpdate6').show();
+                $('#autoUpdate6').fadeIn('slow');
+                $('#colexp9').show();
+            }
+            else {
+                $('#autoUpdate6').hide();
+                $('#autoUpdate6').fadeOut('slow');
+                $('#colexp9').hide();
+            }
+        });
+        $('#cbxShowHide7').change(function () {
+            if (this.checked) {
+                $('#autoUpdate7').show();
+                $('#autoUpdate7').fadeIn('slow');
+                $('#colexp10').show();
+            }
+            else {
+                $('#autoUpdate7').hide();
+                $('#autoUpdate7').fadeOut('slow');
+                $('#colexp10').hide()
+            }
+        });
+        $('#cbxShowHide8').change(function () {
+            if (this.checked) {
+                $('#autoUpdate8').show();
+                $('#autoUpdate8').fadeIn('slow');
+               
+            }
+            else {
+                $('#autoUpdate8').hide();
+                $('#autoUpdate8').fadeOut('slow');
+              
             }
         });
 
+
+        $('#Previous1').click(function () {
+            $('.navbar-nav > .active').next('li').find('a').trigger('click');
+        });
+        $('#Previous').click(function () {
+            $('.navbar-nav > .active').last('li').find('a').trigger('click');
+
+        });
+        $('#btnnext').click(function () {
+            $('.navbar-nav > .active').next('li').find('a').trigger('click');
+        });
+        $('#btnnext1').click(function () {
+            $('.navbar-nav > .back').next('li').find('a').trigger('click');
+        });
+
+        $('#cbxShowHideCompany1').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany1').show();
+                $('#autoUpdateCompany1').fadeIn('slow');
+                $('#comexp3').show();
+            }
+            else {
+                $('#autoUpdateCompany1').hide();
+                $('#autoUpdateCompany1').fadeOut('slow');
+                $('#comexp3').hide();
+            }
+        });
+        $('#cbxShowHideCompany2').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany2').show();
+                $('#autoUpdateCompany2').fadeIn('slow');
+                $('#comexp4').show();
+            }
+            else {
+                $('#autoUpdateCompany2').hide();
+                $('#autoUpdateCompany2').fadeOut('slow');
+                $('#comexp4').hide();
+            }
+        });
+        $('#cbxShowHideCompany3').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany3').show();
+                $('#autoUpdateCompany3').fadeIn('slow');
+                $('#comexp5').show();
+            }
+            else {
+                $('#autoUpdateCompany3').hide();
+                $('#autoUpdateCompany3').fadeOut('slow');
+                $('#comexp5').hide();
+            }
+        });
+        $('#cbxShowHideCompany4').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany4').show();
+                $('#autoUpdateCompany4').fadeIn('slow');
+                $('#comexp6').show();
+            }
+            else {
+                $('#autoUpdateCompany4').hide();
+                $('#autoUpdateCompany4').fadeOut('slow');
+                $('#comexp6').hide();
+            }
+        });
+        $('#cbxShowHideCompany5').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany5').show();
+                $('#autoUpdateCompany5').fadeIn('slow');
+                $('#comexp7').show();
+            }
+            else {
+                $('#autoUpdateCompany5').hide();
+                $('#autoUpdateCompany5').fadeOut('slow');
+                $('#comexp7').hide();
+            }
+        });
+        $('#cbxShowHideCompany6').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany6').show();
+                $('#autoUpdateCompany6').fadeIn('slow');
+                $('#comexp8').show();
+            }
+            else {
+                $('#autoUpdateCompany6').hide();
+                $('#autoUpdateCompany6').fadeOut('slow');
+                $('#comexp8').hide();
+            }
+        });
+        $('#cbxShowHideCompany7').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany7').show();
+                $('#autoUpdateCompany7').fadeIn('slow');
+                $('#comexp9').show();
+            }
+            else {
+                $('#autoUpdateCompany7').hide();
+                $('#autoUpdateCompany7').fadeOut('slow');
+                $('#comexp9').hide();
+            }
+        });
+        $('#cbxShowHideCompany8').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany8').show();
+                $('#autoUpdateCompany8').fadeIn('slow');
+                $('#comexp10').show();
+            }
+            else {
+                $('#autoUpdateCompany8').hide();
+                $('#autoUpdateCompany8').fadeOut('slow');
+                $('#comexp10').hide();
+            }
+        });
+        $('#cbxShowHideCompany9').change(function () {
+            if (this.checked) {
+                $('#autoUpdateCompany9').show();
+                $('#autoUpdateCompany9').fadeIn('slow');
+            }
+            else {
+                $('#autoUpdateCompany9').hide();
+                $('#autoUpdateCompany9').fadeOut('slow');
+            }
+        });
+
+        $("#empreligion").change(function () {
+            if ($("#empreligion").val() != 2)
+            { $("#parish").hide(); $("#diocese").hide(); $("#cast").hide(); }
+            else { $("#parish").show(); $("#diocese").show(); $("#cast").show(); }
+            if ($("#empreligion").val() == "") {
+                $("#empcast").empty();
+                var item = '<option value="0">Select Sub Category</option>';
+                $("#empcast").append(item);
+            }
+            else {
+                $("#empcast").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCastes")',
+                    dataType: 'json',
+                    data: { id: $("#empreligion").val() },
+                    success: function (castes) {
+                        if (castes != "") {
+                            var item = '<option value="0">Select Sub Category</option>';
+                            $.each(castes, function (i, caste) {
+                                item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
+                            });
+                            $("#empcast").append(item);
+                        }
+                        else {
+                            var item = '<option value="0">Select Sub Category</option>';
+                            $("#empcast").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve castes.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+        $("#empcast").change(function () {
+            if ($("#empreligion").val() == 2 && $("#empcast").val() == 2)
+            { $("#parish").show(); $("#diocese").show() }
+            else { $("#parish").hide(); $("#diocese").hide() }
+
+        });
+        $("#equalification1").change(function () {
+
+            if ($("#equalification1 option:selected").text() == "SET" || $("#equalification1 option:selected").text() == "NET")
+            {$('#Eprecentage1 input').attr("readonly", true);}
+            else { $('#Eprecentage1 input').attr("readonly", false); }
+        })
+        $("#equalification2").change(function () {
+            if ($("#equalification2 option:selected").text() == "SET" || $("#equalification2 option:selected").text() == "NET")
+            { $('#Eprecentage2 input').attr("readonly", true); }
+            else { $('#Eprecentage2 input').attr("readonly", false); }
+        })
+        $("#equalification3").change(function () {
+            if ($("#equalification3 option:selected").text() == "SET" || $("#equalification3 option:selected").text() == "NET")
+            { $('#Eprecentage3 input').attr("readonly", true); }
+            else { $('#Eprecentage3 input').attr("readonly", false); }
+        })
+        $("#equalification4").change(function () {
+            if ($("#equalification4 option:selected").text() == "SET" || $("#equalification4 option:selected").text() == "NET")
+            { $('#Eprecentage4 input').attr("readonly", true); }
+            else { $('#Eprecentage4 input').attr("readonly", false); }
+        })
         function FillType() {
             var item = '<option value="">select Type</option>';
             item += '<option value="4">Teacher</option>';
@@ -73,6 +346,7 @@
                 data: { empid: empid },
                 success: function (data) {
                     //$("#empid").show();
+                   
                     $("#empid input").val(data.Empid);
                     $("#FirstName").val(data.FirstName);
                     $("#MiddleName").val(data.MiddleName);
@@ -154,8 +428,35 @@
                     $("#clastdesignatio").val(data.clastdesignatio);
                     $("#employeeemail").val(data.empemail);
                     $("#empreligion").val(data.empreligion);
+
+                    $("#empcast").empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetCastes")',
+                        dataType: 'json',
+                        data: { id: $("#empreligion").val() },
+                        success: function (castes) {
+                            if (castes != "") {
+                                var item = '<option value="0">Select Sub Category</option>';
+                                $.each(castes, function (i, caste) {
+                                    item += '<option value="' + caste.Value + '">' + caste.Text + '</option>';
+                                });
+                                $("#empcast").append(item);
+                                $("#empcast").val(data.empcast);
+                            }
+                            else {
+                                var item = '<option value="0">Select Sub Category</option>';
+                                $("#empcast").append(item);
+                            }
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve castes.' + ex);
+                        }
+                    });
+                    $("#ParishName").val(data.ParishName);
+                    $("#DioceseName").val(data.DioceseName);
                     $("#empcategory").val(data.empcategory);
-                    $("#empcast").val(data.empcast);
+                 
                     $("#mtongue").val(data.empmothertongue);
                     $("#eweight").val(data.weightinkg);
                     $("#eheight").val(data.heightc);
@@ -275,6 +576,7 @@
                     $("#ctotal").val(data.ctotalexperience);
                     $("#total").val(data.totalexperience);
                     $("#total1").val(data.totalexperience1);
+                   
                
                     $("#pic1").append('<img src="/Employee/getImg1/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Pic">');
                     $("#pic2").append('<img src="/Employee/getImg2/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Parent Pic">');
@@ -433,12 +735,469 @@
 
         $('#datepicker1').datepicker('setDate', new Date());
       
+        $('#datepicker10').attr("readonly", true);
 
+        $('#datepicker10').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
 
+        $('#datepicker10').datepicker('setDate', new Date());
+        $('#datepicker11').attr("readonly", true);
 
+        $('#datepicker11').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
 
+        $('#datepicker11').datepicker('setDate', new Date());
 
+        $('#datepicker12').attr("readonly", true);
 
+        $('#datepicker12').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker12').datepicker('setDate', new Date());
+        $('#datepicker13').attr("readonly", true);
+
+        $('#datepicker13').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker13').datepicker('setDate', new Date());
+        $('#datepicker14').attr("readonly", true);
+
+        $('#datepicker14').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker14').datepicker('setDate', new Date());
+        $('#datepicker15').attr("readonly", true);
+
+        $('#datepicker15').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker15').datepicker('setDate', new Date());
+        $('#datepicker16').attr("readonly", true);
+
+        $('#datepicker16').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker16').datepicker('setDate', new Date());
+        $('#datepicker17').attr("readonly", true);
+
+        $('#datepicker17').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker17').datepicker('setDate', new Date());
+        $('#datepicker18').attr("readonly", true);
+
+        $('#datepicker18').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker18').datepicker('setDate', new Date());
+        $('#datepicker19').attr("readonly", true);
+
+        $('#datepicker19').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker19').datepicker('setDate', new Date());
+        $('#datepicker20').attr("readonly", true);
+
+        $('#datepicker20').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker20').datepicker('setDate', new Date());
+        $('#datepicker21').attr("readonly", true);
+
+        $('#datepicker21').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker21').datepicker('setDate', new Date());
+        $('#datepicker22').attr("readonly", true);
+
+        $('#datepicker22').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker22').datepicker('setDate', new Date());
+        $('#datepicker23').attr("readonly", true);
+
+        $('#datepicker23').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker23').datepicker('setDate', new Date());
+        $('#datepicker24').attr("readonly", true);
+
+        $('#datepicker24').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker24').datepicker('setDate', new Date());
+        $('#datepicker25').attr("readonly", true);
+
+        $('#datepicker25').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker25').datepicker('setDate', new Date());
+        $('#datepicker26').attr("readonly", true);
+
+        $('#datepicker26').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker26').datepicker('setDate', new Date());
+        $('#datepicker27').attr("readonly", true);
+
+        $('#datepicker27').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker27').datepicker('setDate', new Date());
+        $('#datepicker28').attr("readonly", true);
+
+        $('#datepicker28').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker28').datepicker('setDate', new Date());
+        $('#datepicker29').attr("readonly", true);
+
+        $('#datepicker29').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker29').datepicker('setDate', new Date());
+        $('#datepicker30').attr("readonly", true);
+
+        $('#datepicker30').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker30').datepicker('setDate', new Date());
+        $('#datepicker31').attr("readonly", true);
+
+        $('#datepicker31').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker31').datepicker('setDate', new Date());
+        $('#datepicker32').attr("readonly", true);
+
+        $('#datepicker32').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker32').datepicker('setDate', new Date());
+        $('#datepicker33').attr("readonly", true);
+
+        $('#datepicker33').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker33').datepicker('setDate', new Date());
+        $('#datepicker34').attr("readonly", true);
+
+        $('#datepicker34').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker34').datepicker('setDate', new Date());
+        $('#datepicker35').attr("readonly", true);
+
+        $('#datepicker35').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker35').datepicker('setDate', new Date());
+        $('#datepicker36').attr("readonly", true);
+
+        $('#datepicker36').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker36').datepicker('setDate', new Date());
+        $('#datepicker37').attr("readonly", true);
+
+        $('#datepicker37').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker37').datepicker('setDate', new Date());
+        $('#datepicker38').attr("readonly", true);
+
+        $('#datepicker38').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker38').datepicker('setDate', new Date());
+        $('#datepicker39').attr("readonly", true);
+
+        $('#datepicker39').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker39').datepicker('setDate', new Date());
+        $('#datepicker40').attr("readonly", true);
+
+        $('#datepicker40').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker40').datepicker('setDate', new Date());
+        $('#datepicker41').attr("readonly", true);
+
+        $('#datepicker41').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker41').datepicker('setDate', new Date());
+        $('#datepicker42').attr("readonly", true);
+
+        $('#datepicker42').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker42').datepicker('setDate', new Date());
         $("#reset").click(function () {
             clear();
             clearmsg();
@@ -637,6 +1396,45 @@
             //    });
             //}
 
+            if ($("#empreligion").val() == 2 && $("#empcast").val() == 2) {
+                if ($("#ParishName").val() == '') {
+                    cnt++;
+                    $("#ParishName").css({
+                        "border": "1px solid red"
+                    });
+
+                    alert("Parish Name Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#parish").css({
+                        "border": "",
+                        "background": ""
+                    });
+
+                }
+
+                if ($("#DioceseName").val() == '') {
+                    cnt++;
+                    $("#DioceseName").css({
+                        "border": "1px solid red"
+                    });
+
+                    alert("DioceseName Name Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#DioceseName").css({
+                        "border": "",
+                        "background": ""
+                    });
+
+                }
+
+            }
+
             if ($("#MobileNo").val() == '') {
                 cnt++;
                 $("#MobileNo").css({
@@ -833,12 +1631,103 @@
             }
         });
 
-        //$("#Zipcode").keypress(function (e) {
-        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-        //        return false;
-        //    }
-        //});
+
+        $("#eweight").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#dcontact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#pcontact").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#phome").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#papin").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#cpin").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#PHCODE").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#MCODE").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        
+        $("#hmobile").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#accountno").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#DCode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
+        $("#PCODE").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#eheight").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+
+        $("#Zipcode").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
 
         $("#MobileNo").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -962,6 +1851,326 @@
 
 
         });
+        $("#datepicker11").change(function () {
+            var a = $("#datepicker10").datepicker("getDate").getDate();
+            var b = $("#datepicker10").datepicker("getDate").getYear();
+            var c = $("#datepicker10").datepicker("getDate").getMonth();
+            var d = $("#datepicker11").datepicker("getDate").getDate();
+            var e = $("#datepicker11").datepicker("getDate").getYear();
+            var f = $("#datepicker11").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal2").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker13").change(function () {
+            var a = $("#datepicker12").datepicker("getDate").getDate();
+            var b = $("#datepicker12").datepicker("getDate").getYear();
+            var c = $("#datepicker12").datepicker("getDate").getMonth();
+            var d = $("#datepicker13").datepicker("getDate").getDate();
+            var e = $("#datepicker13").datepicker("getDate").getYear();
+            var f = $("#datepicker13").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal3").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker15").change(function () {
+            var a = $("#datepicker14").datepicker("getDate").getDate();
+            var b = $("#datepicker14").datepicker("getDate").getYear();
+            var c = $("#datepicker14").datepicker("getDate").getMonth();
+            var d = $("#datepicker15").datepicker("getDate").getDate();
+            var e = $("#datepicker15").datepicker("getDate").getYear();
+            var f = $("#datepicker15").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal4").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker17").change(function () {
+            var a = $("#datepicker16").datepicker("getDate").getDate();
+            var b = $("#datepicker16").datepicker("getDate").getYear();
+            var c = $("#datepicker16").datepicker("getDate").getMonth();
+            var d = $("#datepicker17").datepicker("getDate").getDate();
+            var e = $("#datepicker17").datepicker("getDate").getYear();
+            var f = $("#datepicker17").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal5").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker19").change(function () {
+            var a = $("#datepicker18").datepicker("getDate").getDate();
+            var b = $("#datepicker18").datepicker("getDate").getYear();
+            var c = $("#datepicker18").datepicker("getDate").getMonth();
+            var d = $("#datepicker19").datepicker("getDate").getDate();
+            var e = $("#datepicker19").datepicker("getDate").getYear();
+            var f = $("#datepicker19").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal6").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker21").change(function () {
+            var a = $("#datepicker20").datepicker("getDate").getDate();
+            var b = $("#datepicker20").datepicker("getDate").getYear();
+            var c = $("#datepicker20").datepicker("getDate").getMonth();
+            var d = $("#datepicker21").datepicker("getDate").getDate();
+            var e = $("#datepicker21").datepicker("getDate").getYear();
+            var f = $("#datepicker21").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal7").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker23").change(function () {
+            var a = $("#datepicker22").datepicker("getDate").getDate();
+            var b = $("#datepicker22").datepicker("getDate").getYear();
+            var c = $("#datepicker22").datepicker("getDate").getMonth();
+            var d = $("#datepicker23").datepicker("getDate").getDate();
+            var e = $("#datepicker23").datepicker("getDate").getYear();
+            var f = $("#datepicker23").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal8").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker25").change(function () {
+            var a = $("#datepicker24").datepicker("getDate").getDate();
+            var b = $("#datepicker24").datepicker("getDate").getYear();
+            var c = $("#datepicker24").datepicker("getDate").getMonth();
+            var d = $("#datepicker25").datepicker("getDate").getDate();
+            var e = $("#datepicker25").datepicker("getDate").getYear();
+            var f = $("#datepicker25").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#ctotal9").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker27").change(function () {
+            var a = $("#datepicker26").datepicker("getDate").getDate();
+            var b = $("#datepicker26").datepicker("getDate").getYear();
+            var c = $("#datepicker26").datepicker("getDate").getMonth();
+            var d = $("#datepicker27").datepicker("getDate").getDate();
+            var e = $("#datepicker27").datepicker("getDate").getYear();
+            var f = $("#datepicker27").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total2").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker29").change(function () {
+            var a = $("#datepicker28").datepicker("getDate").getDate();
+            var b = $("#datepicker28").datepicker("getDate").getYear();
+            var c = $("#datepicker28").datepicker("getDate").getMonth();
+            var d = $("#datepicker29").datepicker("getDate").getDate();
+            var e = $("#datepicker29").datepicker("getDate").getYear();
+            var f = $("#datepicker29").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total3").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker31").change(function () {
+            var a = $("#datepicker30").datepicker("getDate").getDate();
+            var b = $("#datepicker30").datepicker("getDate").getYear();
+            var c = $("#datepicker30").datepicker("getDate").getMonth();
+            var d = $("#datepicker31").datepicker("getDate").getDate();
+            var e = $("#datepicker31").datepicker("getDate").getYear();
+            var f = $("#datepicker31").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total4").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker33").change(function () {
+            var a = $("#datepicker32").datepicker("getDate").getDate();
+            var b = $("#datepicker32").datepicker("getDate").getYear();
+            var c = $("#datepicker32").datepicker("getDate").getMonth();
+            var d = $("#datepicker33").datepicker("getDate").getDate();
+            var e = $("#datepicker33").datepicker("getDate").getYear();
+            var f = $("#datepicker33").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total5").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker35").change(function () {
+            var a = $("#datepicker34").datepicker("getDate").getDate();
+            var b = $("#datepicker34").datepicker("getDate").getYear();
+            var c = $("#datepicker34").datepicker("getDate").getMonth();
+            var d = $("#datepicker35").datepicker("getDate").getDate();
+            var e = $("#datepicker35").datepicker("getDate").getYear();
+            var f = $("#datepicker35").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total6").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker37").change(function () {
+            var a = $("#datepicker36").datepicker("getDate").getDate();
+            var b = $("#datepicker36").datepicker("getDate").getYear();
+            var c = $("#datepicker36").datepicker("getDate").getMonth();
+            var d = $("#datepicker37").datepicker("getDate").getDate();
+            var e = $("#datepicker37").datepicker("getDate").getYear();
+            var f = $("#datepicker37").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total7").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker39").change(function () {
+            var a = $("#datepicker38").datepicker("getDate").getDate();
+            var b = $("#datepicker38").datepicker("getDate").getYear();
+            var c = $("#datepicker38").datepicker("getDate").getMonth();
+            var d = $("#datepicker39").datepicker("getDate").getDate();
+            var e = $("#datepicker39").datepicker("getDate").getYear();
+            var f = $("#datepicker39").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total8").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
+        $("#datepicker41").change(function () {
+            var a = $("#datepicker40").datepicker("getDate").getDate();
+            var b = $("#datepicker40").datepicker("getDate").getYear();
+            var c = $("#datepicker40").datepicker("getDate").getMonth();
+            var d = $("#datepicker41").datepicker("getDate").getDate();
+            var e = $("#datepicker41").datepicker("getDate").getYear();
+            var f = $("#datepicker41").datepicker("getDate").getMonth();
+            var j = new Date(a);
+            var h = new Date(b);
+            var i = new Date(c);
+            var j = new Date(d);
+            var k = new Date(e);
+            var l = new Date(f);
+            var day = Math.round(Math.abs((a - d)));
+            var year = Math.round(Math.abs((b - e)));
+            var month = Math.round(Math.abs((c - f)));
+            $("#total9").val(year + " Years " + month + " Months " + day + " Days");
+
+
+        });
         ReloadPaging();
 
 
@@ -996,6 +2205,71 @@
             $('#datepicker8').val("");
             $('#datepicker9').datepicker();
             $('#datepicker9').val("");
+            $('#datepicker10').datepicker();
+            $('#datepicker10').val("");
+            $('#datepicker11').datepicker();
+            $('#datepicker11').val("");
+            $('#datepicker12').datepicker();
+            $('#datepicker12').val("");
+            $('#datepicker13').datepicker();
+            $('#datepicker13').val("");
+            $('#datepicker14').datepicker();
+            $('#datepicker14').val("");
+            $('#datepicker15').datepicker();
+            $('#datepicker15').val("");
+            $('#datepicker16').datepicker();
+            $('#datepicker16').val("");
+            $('#datepicker17').datepicker();
+            $('#datepicker17').val("");
+            $('#datepicker18').datepicker();
+            $('#datepicker18').val("");
+            $('#datepicker19').datepicker();
+            $('#datepicker19').val("");
+            $('#datepicker20').datepicker();
+            $('#datepicker20').val("");
+            $('#datepicker21').datepicker();
+            $('#datepicker21').val("");
+            $('#datepicker22').datepicker();
+            $('#datepicker22').val("");
+            $('#datepicker23').datepicker();
+            $('#datepicker23').val("");
+            $('#datepicker24').datepicker();
+            $('#datepicker24').val("");
+            $('#datepicker25').datepicker();
+            $('#datepicker25').val("");
+            $('#datepicker26').datepicker();
+            $('#datepicker26').val("");
+            $('#datepicker27').datepicker();
+            $('#datepicker27').val("");
+            $('#datepicker29').datepicker();
+            $('#datepicker29').val("");
+            $('#datepicker30').datepicker();
+            $('#datepicker30').val("");
+            $('#datepicker31').datepicker();
+            $('#datepicker31').val("");
+            $('#datepicker32').datepicker();
+            $('#datepicker32').val("");
+            $('#datepicker33').datepicker();
+            $('#datepicker33').val("");
+            $('#datepicker34').datepicker();
+            $('#datepicker34').val("");
+            $('#datepicker35').datepicker();
+            $('#datepicker35').val("");
+            $('#datepicker36').datepicker();
+            $('#datepicker36').val("");
+            $('#datepicker37').datepicker();
+            $('#datepicker37').val("");
+            $('#datepicker38').datepicker();
+            $('#datepicker38').val("");
+            $('#datepicker39').datepicker();
+            $('#datepicker39').val("");
+            $('#datepicker40').datepicker();
+            $('#datepicker40').val("");
+            $('#datepicker41').datepicker();
+            $('#datepicker41').val("");
+            $('#datepicker42').datepicker();
+            $('#datepicker42').val("");
+
 
             if ($("#eidtype").val() == 7)
             { $("#doctype").show(); }
@@ -1006,7 +2280,7 @@
                 changeMonth: false,
                 changeYear: true,
                 showButtonPanel: true,
-                yearRange: '1950:2014',
+                yearRange: '1950:2050',
                 dateFormat: 'yy',
                 onClose: function (dateText, inst) {
                     var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
@@ -1033,8 +2307,17 @@
             });
           
            
-   });
+    });
+   
 
+
+
+</script>
+
+<script>
+    function scrollWin() {
+        window.scrollTo(0, -500);
+    }
 </script>
 <style type="text/css">
     .ui-datepicker-calendar {
@@ -1242,7 +2525,7 @@
                                                                     Value = "3",
                                                                     Selected = true
                                                                 }); }
-                                                            @Html.DropDownListFor(model => model.Gender, listItems, "-- Select Gender --")
+                                                            @Html.DropDownListFor(model => model.Gender, listItems, "Select Gender")
 
                                                             @Html.ValidationMessageFor(model => model.Gender)
                                                         </div>
@@ -1318,7 +2601,7 @@
                                                                     Value = "7",
                                                                     Selected = true
                                                                 });}
-                                                            @Html.DropDownListFor(model => model.eidtype, DocumentType, "-- Select Document Type --")
+                                                            @Html.DropDownListFor(model => model.eidtype, DocumentType, "Select Document Type")
 
 
                                                         </div>
@@ -1341,111 +2624,48 @@
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.empreligion, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                                List<SelectListItem> religion = new List<SelectListItem>();
-                                                                religion.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Roman Carholic",
-                                                                    Value = "1"
-                                                                });
-                                                                religion.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Christian",
-                                                                    Value = "2",
-
-                                                                });
-                                                                religion.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Muslim",
-                                                                    Value = "3",
-                                                                });
-                                                                religion.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Hindu",
-                                                                    Value = "4",
-
-                                                                });
-                                                                religion.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Jain",
-                                                                    Value = "5",
-                                                                }); }
-                                                            @Html.DropDownListFor(model => model.empreligion, religion, "-- Select Religion --")
+                                                           @Html.DropDownListFor(model => model.empreligion, new SelectList(Model.religionlist, "Religionid", "Religionnm", "Select Religion"), "Select Religion", new { @for = "select" })
                                                             @Html.ValidationMessageFor(model => model.empreligion)
                                                         </div>
                                                     </div>
+                                                  
+                                                    <div class="control-group span5" id="cast">
+                                                        @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                          
+                                                            @Html.DropDownListFor(model => model.empcast, new SelectList(Model.castelist, "Casteid", "CasteName", "Select Sub Category"), "Select Sub Category", new { @for = "select" })
+                                                            @Html.ValidationMessageFor(model => model.empcast)
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group span5" id="parish">
+                                                        @Html.LabelFor(model => model.ParishName, new { @class = "control-label", @for = "select" })
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.ParishName, new { placeholder = "Enter ParishName", maxlength = "45", @class = "input" })
+                                                            @Html.ValidationMessageFor(model => model.ParishName)
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="control-group span5" id="diocese">
+                                                        @Html.LabelFor(model => model.DioceseName, new { @class = "control-label", @for = "select" })
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.DioceseName, new { placeholder = "Enter Diocese Name", maxlength = "45", @class = "input" })
+                                                            @Html.ValidationMessageFor(model => model.DioceseName)
+                                                        </div>
+
+                                                    </div>
+
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.empcategory, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                                List<SelectListItem> category = new List<SelectListItem>();
-                                                                category.Add(new SelectListItem
-                                                                {
-                                                                    Text = "SC",
-                                                                    Value = "1"
-                                                                });
-                                                                category.Add(new SelectListItem
-                                                                {
-                                                                    Text = "ST",
-                                                                    Value = "2",
-
-                                                                });
-                                                                category.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Other",
-                                                                    Value = "3",
-                                                                });}
-                                                            @Html.DropDownListFor(model => model.empcategory, category, "-- Select Category --")
+                                                            @Html.DropDownListFor(model => model.empcategory, new SelectList(Model.categorylist, "StudCategoryid", "StudCategoryname", "Select Category"), "Select Category", new { @for = "select" })
                                                             @Html.ValidationMessageFor(model => model.empcategory)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.empcast, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @{
-                                                                List<SelectListItem> cast = new List<SelectListItem>();
-                                                                cast.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Nadar",
-                                                                    Value = "1"
-                                                                });
-                                                                cast.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Bramin",
-                                                                    Value = "2",
-
-                                                                });
-                                                                cast.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Other",
-                                                                    Value = "3",
-                                                                }); }
-                                                            @Html.DropDownListFor(model => model.empcast, cast, "-- Select Caste --")
-                                                            @Html.ValidationMessageFor(model => model.empcast)
                                                         </div>
                                                     </div>
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.mtongue, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @{
-                                                                List<SelectListItem> tongue = new List<SelectListItem>();
-                                                                tongue.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Tamil",
-                                                                    Value = "1"
-                                                                });
-                                                                tongue.Add(new SelectListItem
-                                                                {
-                                                                    Text = "English",
-                                                                    Value = "2",
-
-                                                                });
-                                                                tongue.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Malayalam",
-                                                                    Value = "3",
-                                                                }); }
-                                                            @Html.DropDownListFor(model => model.mtongue, tongue, "-- Select Tongue --")
+                                                            @Html.TextBoxFor(model => model.mtongue, new { placeholder = "Enter Mother Tongue", maxlength = "45", @class = "input" })
                                                             @Html.ValidationMessageFor(model => model.mtongue)
                                                         </div>
                                                     </div>
@@ -1474,42 +2694,9 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>
+                                                                <td id="Equalification1">
 
-                                                                    @{
-                                                                    List<SelectListItem> equalication1 = new List<SelectListItem>();
-                                                                    equalication1.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "BA",
-                                                                    Value = "1"
-                                                                    });
-                                                                    equalication1.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MA",
-                                                                    Value = "2",
-
-                                                                    });
-                                                                    equalication1.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MPhil",
-                                                                    Value = "3",
-
-                                                                    });
-                                                                    equalication1.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "PHD",
-                                                                    Value = "4",
-
-                                                                    });
-                                                                    equalication1.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "Others",
-                                                                    Value = "5",
-
-                                                                    });
-                                                                    }
-
-                                                                    @Html.DropDownListFor(model => model.equalification1, equalication1, "-- Select Qualication --")
+                                                                    @Html.DropDownListFor(model => model.equalification1,new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
                                                                 </td>
                                                                 <td>
 
@@ -1517,7 +2704,7 @@
                                                                     @Html.ValidationMessageFor(model => model.euniversity1)
 
                                                                 </td>
-                                                                <td>
+                                                                <td id="Eprecentage1">
 
                                                                     @Html.TextBoxFor(model => model.eprecentage1, new { placeholder = "Enter Precentage", @class = "input" })
                                                                     @Html.ValidationMessageFor(model => model.eprecentage1)
@@ -1528,42 +2715,8 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>
-
-                                                                    @{
-                                                                    List<SelectListItem> equalication2 = new List<SelectListItem>();
-                                                                    equalication2.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "BA",
-                                                                    Value = "1"
-                                                                    });
-                                                                    equalication2.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MA",
-                                                                    Value = "2",
-
-                                                                    });
-                                                                    equalication2.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MPhil",
-                                                                    Value = "3",
-
-                                                                    });
-                                                                    equalication2.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "PHD",
-                                                                    Value = "4",
-
-                                                                    });
-                                                                    equalication2.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "Others",
-                                                                    Value = "5",
-
-                                                                    });
-                                                                    }
-
-                                                                    @Html.DropDownListFor(model => model.equalification2, equalication2, "-- Select Qualication --")
+                                                                <td id="Equalification2">
+                                                                     @Html.DropDownListFor(model => model.equalification2, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
                                                                 </td>
                                                                 <td>
 
@@ -1571,7 +2724,7 @@
                                                                     @Html.ValidationMessageFor(model => model.euniversity2)
 
                                                                 </td>
-                                                                <td>
+                                                                <td id="Eprecentage2">
 
                                                                     @Html.TextBoxFor(model => model.eprecentage2, new { placeholder = "Enter Precentage", @class = "input" })
                                                                     @Html.ValidationMessageFor(model => model.eprecentage2)
@@ -1582,42 +2735,8 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>
-
-                                                                    @{
-                                                                    List<SelectListItem> equalication3 = new List<SelectListItem>();
-                                                                    equalication3.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "BA",
-                                                                    Value = "1"
-                                                                    });
-                                                                    equalication3.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MA",
-                                                                    Value = "2",
-
-                                                                    });
-                                                                    equalication3.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MPhil",
-                                                                    Value = "3",
-
-                                                                    });
-                                                                    equalication3.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "PHD",
-                                                                    Value = "4",
-
-                                                                    });
-                                                                    equalication3.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "Others",
-                                                                    Value = "5",
-
-                                                                    });
-                                                                    }
-
-                                                                    @Html.DropDownListFor(model => model.equalification3, equalication3, "-- Select Qualication --")
+                                                                <td id="Equalification3">
+                                                                 @Html.DropDownListFor(model => model.equalification3, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
                                                                 </td>
                                                                 <td>
 
@@ -1625,7 +2744,7 @@
                                                                     @Html.ValidationMessageFor(model => model.euniversity3)
 
                                                                 </td>
-                                                                <td>
+                                                                <td id="Eprecentage3">
 
                                                                     @Html.TextBoxFor(model => model.eprecentage3, new { placeholder = "Enter Precentage", @class = "input" })
                                                                     @Html.ValidationMessageFor(model => model.eprecentage3)
@@ -1636,42 +2755,9 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>
+                                                                <td id="Equalification4">
 
-                                                                    @{
-                                                                    List<SelectListItem> equalication4 = new List<SelectListItem>();
-                                                                    equalication4.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "BA",
-                                                                    Value = "1"
-                                                                    });
-                                                                    equalication4.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MA",
-                                                                    Value = "2",
-
-                                                                    });
-                                                                    equalication4.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "MPhil",
-                                                                    Value = "3",
-
-                                                                    });
-                                                                    equalication4.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "PHD",
-                                                                    Value = "4",
-
-                                                                    });
-                                                                    equalication4.Add(new SelectListItem
-                                                                    {
-                                                                    Text = "Others",
-                                                                    Value = "5",
-
-                                                                    });
-                                                                    }
-
-                                                                    @Html.DropDownListFor(model => model.equalification4, equalication4, "-- Select Qualication --")
+                                                                    @Html.DropDownListFor(model => model.equalification4, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
                                                                 </td>
                                                                 <td>
 
@@ -1679,7 +2765,7 @@
                                                                     @Html.ValidationMessageFor(model => model.euniversity4)
 
                                                                 </td>
-                                                                <td>
+                                                                <td id="Eprecentage4">
 
                                                                     @Html.TextBoxFor(model => model.eprecentage4, new { placeholder = "Enter Precentage", @class = "input" })
                                                                     @Html.ValidationMessageFor(model => model.eprecentage4)
@@ -1758,7 +2844,7 @@
                                                         </div>
                                                     </div>
                                                 </fieldset>
-
+                                                <button type="button" class="btn btn-primary pull-right" id="btnnext" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Next</button>
                                             </div>
                                             <div id="tabs-2">
                                                 <fieldset class="test" style="width: 100%;">
@@ -2000,11 +3086,15 @@
                                                         </div>
                                                     </div>
                                                 </fieldset>
+
+                                                <button type="button" class="btn btn-primary pull-right" id="btnnext1" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Next</button>
+                                                <button type="button" class="btn btn-primary pull-left" id="Previous" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Previous</button>
+
                                             </div>
                                             <div id="tabs-3">
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>College</legend>
-
+                                                    <!--College exp_1-->
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.collagename, new { @class = "control-label", @for = "focusedInput" })
 
@@ -2053,8 +3143,8 @@
                                                             @Html.ValidationMessageFor(model => model.ldesignation)
                                                         </div>
                                                     </div>
-                                                
-                                                    <div class="control-group span10">
+                                                    <!--College exp_2-->
+                                                    <div class="control-group span10" id="colexp2">
                                                         <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                         <div id="autoUpdate" class="autoUpdate" hidden>
@@ -2108,11 +3198,482 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    <!--College exp_3-->
+                                                    <div id="colexp3" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide1" value="gcheckbox"> Click here to fill More Experience
+                                                            </div>
+                                                        </div>
+                                                    <div id="autoUpdate1" class="autoUpdate1" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename2, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename2, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university2, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate2, new { id = "datepicker10", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate2, new { id = "datepicker11", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal2, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal1)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation2, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation2)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_4-->
+                                                    <div  id="colexp4" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                         
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide2" value="gcheckbox"> Click here to fill More Experience
+                                                            </div>
+                                                        </div>
+                                                    <div id="autoUpdate2" class="autoUpdate2" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename3, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename3, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university3, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate3, new { id = "datepicker12", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate3, new { id = "datepicker13", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal3, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation3, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation3)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_5-->
+                                                    <div  id="colexp5" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide3" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdate3" class="autoUpdate3" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename4, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename4, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university4, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate4, new { id = "datepicker14", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate4, new { id = "datepicker15", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal4, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation4, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation4)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_6-->
+                                                    <div id="colexp6" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                          
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide4" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdate4" class="autoUpdate4" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename5, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename5, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university5, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate5, new { id = "datepicker16", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate5, new { id = "datepicker17", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal5, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation5, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation5)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_7-->
+                                                    <div id="colexp7" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                           
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide5" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdate5" class="autoUpdate5" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename6, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename6, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university6, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate6, new { id = "datepicker18", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate6, new { id = "datepicker19", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal6, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation6, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation6)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_8-->
+                                                    <div  id="colexp8" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                           
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide6" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                        </div>
+                                                    <div id="autoUpdate6" class="autoUpdate6" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename7, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename7, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university7, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate7, new { id = "datepicker20", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate7, new { id = "datepicker21", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal7, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal1)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation7, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation2)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_9-->
+                                                    <div id="colexp9" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                           
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide7" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdate7" class="autoUpdate7" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename8, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename8, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university8, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate8, new { id = "datepicker22", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate8, new { id = "datepicker23", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal8, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation8, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation8)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--College exp_10-->
+                                                    <div id="colexp10" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                          
+                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide8" value="gcheckbox"> Click here to fill More Experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdate8" class="autoUpdate8" hidden>
+                                                        <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.collagename9, new { @class = "control-label", @for = "focusedInput" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.collagename9, new { placeholder = "Enter College Name", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.collagename9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.university9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.university9, new { placeholder = "Affliated to which University", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.university9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.joiningdate9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.joiningdate9, new { id = "datepicker24", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.joiningdate9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.lastdate9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.lastdate9, new { id = "datepicker25", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.lastdate9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ctotal9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ctotal9, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.ctotal9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.ldesignation9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.ldesignation9, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.ldesignation9)
+                                                            </div>
+                                                        </div>
+                                                    </div>
 </fieldset>
                                                 <br />
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>Corporate</legend>
-
+                                                    <!--Corporate exp_1-->
                                                     <div class="control-group span5">
                                                         @Html.LabelFor(model => model.companyname, new { @class = "control-label" })
 
@@ -2153,20 +3714,21 @@
                                                             @Html.ValidationMessageFor(model => model.total)
                                                         </div>
                                                     </div>
-                                                    <div class="control-group span5">
+                                                    @*<div class="control-group span5">
                                                         @Html.LabelFor(model => model.employeeemail, new { @class = "control-label" })
 
                                                         <div class="controls">
                                                             @Html.TextBoxFor(model => model.employeeemail, new { placeholder = "Enter Email Address", maxlength = "30", @class = "input" })
                                                             @Html.ValidationMessageFor(model => model.employeeemail)
                                                         </div>
-                                                    </div>
-                                                    <div class="control-group span10">
-                                                  <input type="checkbox" name="pgcheckbox" id="cbxShowHide1" value="pgcheckbox"> Click here to fill More experience
+                                                    </div>*@
+                                                    <!--Corporate exp_2-->
+                                                        <div class="control-group span10" id="comexp2">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany1" value="pgcheckbox"> Click here to fill More experience
                                                         </div>
-                                                    <div id="autoUpdate1" class="autoUpdate1" hidden>
-                                                        <br />
-                                                       
+                                                        <div id="autoUpdateCompany1" class="autoUpdateCompany1" hidden>
+                                                            <br />
+
                                                             <div class="control-group span5">
                                                                 @Html.LabelFor(model => model.companyname1, new { @class = "control-label" })
 
@@ -2209,9 +3771,424 @@
                                                             </div>
 
                                                         </div>
+                                                    <!--Corporate exp_3-->
+                                                    <div id="comexp3" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany2" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany2" class="autoUpdateCompany2" hidden>
+                                                        <br />
 
-                                                </fieldset>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname2, new { @class = "control-label" })
 
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname2, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation2, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate2, new { id = "datepicker26", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate2, new { id = "datepicker27", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate2)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total2, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total2, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total2)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_4-->
+                                                    <div id="comexp4" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany3" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany3" class="autoUpdateCompany3" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname3, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation3, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate3, new { id = "datepicker28", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate3, new { id = "datepicker29", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total3, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total3, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total3)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_5-->
+                                                    <div id="comexp5" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany4" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany4" class="autoUpdateCompany4" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname4, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation4, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate4, new { id = "datepicker30", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate4, new { id = "datepicker31", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate4)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total4, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total4, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total4)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_6-->
+                                                    <div id="comexp6" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany5" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany5" class="autoUpdateCompany5" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname5, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation5, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate5, new { id = "datepicker32", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate5, new { id = "datepicker33", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate5)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total5, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total5, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total5)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_7-->
+                                                    <div id="comexp7" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany6" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany6" class="autoUpdateCompany6" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname6, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation6, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate6, new { id = "datepicker34", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate6, new { id = "datepicker35", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate6)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total6, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total6, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total6)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_8-->
+                                                    <div  id="comexp8" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany7" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany7" class="autoUpdateCompany7" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname7, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation7, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate7, new { id = "datepicker36", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate7, new { id = "datepicker37", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate7)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total7, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total7, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total7)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_9-->
+                                                    <div id="comexp9" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany8" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany8" class="autoUpdateCompany8" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname8, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation8, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate8, new { id = "datepicker38", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate8, new { id = "datepicker39", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate8)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total8, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total8, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total8)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--Corporate exp_10-->
+                                                    <div id="comexp10" hidden>
+                                                        <br />
+                                                        <div class="control-group span10">
+                                                            <input type="checkbox" name="pgcheckbox" id="cbxShowHideCompany9" value="pgcheckbox"> Click here to fill More experience
+                                                        </div>
+                                                    </div>
+                                                    <div id="autoUpdateCompany9" class="autoUpdateCompany9" hidden>
+                                                        <br />
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.companyname9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.companyname9, new { placeholder = "Enter Company Name", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.companyname9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdesignation9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdesignation9, new { placeholder = "Enter Last Designation", maxlength = "30", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.clastdesignation9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.cjoiningdate9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.cjoiningdate9, new { id = "datepicker40", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                                @Html.ValidationMessageFor(model => model.cjoiningdate9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.clastdate9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.clastdate9, new { id = "datepicker41", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                                @Html.ValidationMessageFor(model => model.clastdate9)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.total9, new { @class = "control-label" })
+
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.total9, new { @readonly = "readonly", placeholder = "Total Experience" })
+                                                                @Html.ValidationMessageFor(model => model.total9)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+</fieldset>
+                                                <button type="button" class="btn btn-primary pull-left" id="Previous1" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Previous</button>
                                                 <br />
                                                 <div class="form-actions">
                                                     <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
