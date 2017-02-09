@@ -952,6 +952,24 @@
       <Parameter Name="clastdate_exp10" Mode="In" Type="DateTime" />
       <Parameter Name="ctotalexperience_exp10" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_empleave_DML">
+      <Parameter Name="leaveid" Mode="In" Type="Int32" />
+      <Parameter Name="empid" Mode="In" Type="Int32" />
+      <Parameter Name="startdate" Mode="In" Type="DateTime" />
+      <Parameter Name="enddate" Mode="In" Type="DateTime" />
+      <Parameter Name="leavetype" Mode="In" Type="Int32" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="isapprove" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_StaffAttandance_DML">
+      <Parameter Name="staffAttendanceid" Mode="In" Type="Int32" />
+      <Parameter Name="staffid" Mode="In" Type="Int32" />
+      <Parameter Name="attendancedate" Mode="In" Type="DateTime" />
+      <Parameter Name="intime" Mode="In" Type="DateTime" />
+      <Parameter Name="outtime" Mode="In" Type="DateTime" />
+      <Parameter Name="absent" Mode="In" Type="Boolean" />
+      <Parameter Name="reason" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>

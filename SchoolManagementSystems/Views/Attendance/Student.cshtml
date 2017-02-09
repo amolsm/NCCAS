@@ -41,25 +41,25 @@
        
 
       
-        $("#department").change(function () {
-            $("#Classid").empty();
+        $("#Classid").change(function () {
+            $("#department").empty();
           
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetClass")',
+                url: '@Url.Action("GetDepartment")',
                 dataType: 'json',
-                data: { id: $("#department").val() },
+                data: { id: $("#Classid").val() },
                 success: function (DClass) {
                     if (DClass != "") {
                         var item = '<option value="0">Select Class</option>';
                         $.each(DClass, function (i, dclass) {
                             item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
                         });
-                        $("#Classid").append(item);
+                        $("#department").append(item);
                     }
                     else {
                         var item = '<option value="0">Select Class</option>';
-                        $("#Classid").append(item);
+                        $("#department").append(item);
                     }
                 },
                 error: function (ex) {
@@ -68,13 +68,40 @@
             });
              return false;
         })
+        $("#department").change(function () {
+            $("#year").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#department").val(), cid: $("#Classid").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+             return false;
+         });
         $("#year").change(function () {
             $("#subjectid").empty();
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GetSubject")',
                 dataType: 'json',
-                data: { id: $("#year").val(), year: $("#Classid").val() },
+                data: { id: $("#Classid").val(), year: $("#year").val() },
                 success: function (subject) {
                     if (subject != "") {
                         var item = '<option value="0">Select Subject</option>';
@@ -264,6 +291,7 @@
 
         });
         $('#subjectid').change(function () {
+            debugger;
             $("#insert").show();
             var Classid = $('#Classid').val();
             if (Classid == '') {
@@ -357,6 +385,13 @@
                                                         @TempData["ErrorMessage"]
                                                     </h2>
                                                 </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Class"), "Select Class")
+                                                    @Html.ValidationMessageFor(model => model.Classid)
+                                                           </div>
+                                                </div>
                                                <div class="control-group span5">
                                                     @Html.LabelFor(model => model.department, new { @class = "control-label" })
                                                        <div class="controls">
@@ -364,13 +399,7 @@
                                                     @Html.ValidationMessageFor(model => model.department)
                                                            </div>
                                                 </div>
-                                                <div class="control-group span5">
-                                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class")
-                                                    @Html.ValidationMessageFor(model => model.Classid)
-                                                           </div>
-                                                </div>
+                                                
                                                  <div class="control-group span5">
                                                     @Html.LabelFor(model => model.year, new { @class = "control-label" })
                                                        <div class="controls">
