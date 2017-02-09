@@ -1745,5 +1745,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
+    <FunctionImportMapping FunctionImportName="sp_StaffAttandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_StaffAttandance_DML" />
   </EntityContainerMapping>
 </Mapping>

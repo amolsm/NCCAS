@@ -67,7 +67,7 @@ namespace Entity
         public List<tbl_division> DivisionList { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }
-        public List<tbl_class> Classlist { get; set; }
+        public List<tbl_CourseMaster> Classlist { get; set; }
         public List<sp_getyear_Result> yearlist1 { get; set; }
         public List<tbl_leave> Leavelist { get; set; }
         public class presentdetails
