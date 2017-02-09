@@ -36,3 +36,5 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.pdb
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\ASPSnippets.SmsAPI.dll
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Antlr3.Runtime.dll

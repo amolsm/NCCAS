@@ -14,6 +14,8 @@ using System.Text;
 using Ionic.Zip;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using ASPSnippets.SmsAPI;
+using System.Net;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -160,6 +162,7 @@ namespace SchoolManagementSystems.Controllers
                          _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9
                          ).ToString();
                     //if (_bgv.Empid == 0)
+                    //SendSMS();
 
                 }
                 catch (Exception ex)
@@ -212,6 +215,18 @@ namespace SchoolManagementSystems.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult GetExperience(string EmpId)
+        {
+            int employeeid = 0;
+            if (EmpId != null && EmpId != "")
+            {
+                employeeid = Convert.ToInt32(EmpId);
+            }
+            var exp = db.tbl_Empexperience.Where(m => m.empId == employeeid).FirstOrDefault();
+            return Json(exp, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetCastes(string id)
         {
             int Religionid = 0;
@@ -222,5 +237,57 @@ namespace SchoolManagementSystems.Controllers
             var castes = db.tbl_caste.Where(m => m.Religionid == Religionid).ToList();
             return Json(new SelectList(castes, "Casteid", "CasteName"));
         }
+
+        //private void SendSMS()
+        //{
+        //    //string senderMobileNo = "9699026421";
+        //    //string senderPassword = "password";
+        //    //string MshapeKey = "ajW5MqLWtAmshow3gkBQzvSWW8g2p1d5RI3jsnzhpldUSvQanM";
+        //    //bool isSent = true;
+        //    //try
+        //    //{
+
+        //    //    // Calling SMS Class to use Send Method.
+        //    //    // Passing MobileNo, Password, MshapreKey, ReceiverMobileNo and Message as parameter of Send Method.
+        //    //    isSent = Send(senderMobileNo, senderPassword, MshapeKey, "8898284281", "teshvhv");
+
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+
+        //    //}
+        //    try
+        //    {
+        //        SMS.APIType = SMSGateway.Site2SMS;
+        //        SMS.MashapeKey = "ajW5MqLWtAmshow3gkBQzvSWW8g2p1d5RI3jsnzhpldUSvQanM";
+        //        SMS.Username = "9699026421";
+        //        SMS.Password = "password";
+        //        SMS.SendSms("8898284281", "teghfghf");
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string msg = ex.ToString();
+        //    }
+
+        //}
+
+        //public static bool Send(string senderMobileNo, string senderPassword, string MshapeKey, string receiverMobileNo, string Message)
+        //{
+        //    bool isSent = true;
+        //    try
+        //    {
+        //        WebRequest request = WebRequest.Create("https://site2sms.p.mashape.com/index.php?msg="
+        //            + Message + "&phone=" + receiverMobileNo + "&pwd=" + senderPassword + "&uid=" + senderMobileNo);
+        //        request.Headers.Add("X-Mashape-Key", MshapeKey);
+        //        WebResponse response = request.GetResponse();
+        //        return isSent;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string msg = ex.ToString();
+        //        return false;
+        //    }
+        //}
     }
 }

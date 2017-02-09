@@ -18,3 +18,4 @@ D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.dll
 D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.pdb
+D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache

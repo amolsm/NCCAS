@@ -400,35 +400,11 @@
                     });
                     $("#Gender").val(data.Gender);
                     $('#edepartment').val(data.department);
-                    $("#collagename").val(data.collagename);
-                    $("#total").val(data.totalexperience);
-                    $("#ctotal").val(data.ctotalexperience);
-                    $("#university").val(data.affliateduniversity);
-                    var value1 = new Date(parseInt(data.joiningdate.substr(6)));
-                    $('#datepicker2').datepicker('setDate', value1);
-                    var value2 = new Date(parseInt(data.lastdate.substr(6)));
-                    $('#datepicker3').datepicker('setDate', value2);
-                    var value3 = new Date(parseInt(data.cjoiningdate.substr(6)));
-                    $('#datepicker4').datepicker('setDate', value3);
-                    var value4 = new Date(parseInt(data.clastdate.substr(6)));
-                    $('#datepicker5').datepicker('setDate', value4);
-                  
-                    var value5 = new Date(parseInt(data.joiningdate1.substr(6)));
-                    $('#datepicker6').datepicker('setDate', value5);
-                    var value6 = new Date(parseInt(data.lastdate1.substr(6)));
-                    $('#datepicker7').datepicker('setDate', value6);
-                    var value7 = new Date(parseInt(data.cjoiningdate1.substr(6)));
-                    $('#datepicker8').datepicker('setDate', value7);
-
-                    var value8 = new Date(parseInt(data.clastdate1.substr(6)));
-                    $('#datepicker9').datepicker('setDate', value8);
-
-                    $("#ldesignation").val(data.lastdesignation);
-                    $("#companyname").val(data.companyname);
-                    $("#clastdesignatio").val(data.clastdesignatio);
                     $("#employeeemail").val(data.empemail);
                     $("#empreligion").val(data.empreligion);
-
+                    if ($("#empreligion").val() == 2 && $("#empcast").val() == 2)
+                    { $("#parish").show(); $("#diocese").show() }
+                    else { $("#parish").hide(); $("#diocese").hide() }
                     $("#empcast").empty();
                     $.ajax({
                         type: 'POST',
@@ -566,21 +542,177 @@
                     $("#DocumentIDNo").val(data.docnumber);
                     $("#Documenttypename").val(data.doctypename);
                     $("#conttactrelation").val(data.contrelation);
-                    $("#collagename1").val(data.collagename1);
-                    $("#university1").val(data.affliateduniversity1);
-                    $("#ctotal1").val(data.totalexperience1);
-                    $("#ldesignation1").val(data.lastdesignation1);
-                    $("#clastdesignation").val(data.clastdesignation);
-                    $("#companyname1").val(data.companyname1);
-                    $("#clastdesignation1").val(data.clastdesignation1);
-                    $("#ctotal").val(data.ctotalexperience);
-                    $("#total").val(data.totalexperience);
-                    $("#total1").val(data.totalexperience1);
-                   
-               
                     $("#pic1").append('<img src="/Employee/getImg1/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Pic">');
                     $("#pic2").append('<img src="/Employee/getImg2/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Parent Pic">');
-                
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetExperience")',
+                        dataType: 'json',
+                        data: { EmpId: data.Empid },
+                        success: function (exp) {
+                           
+                            $("#collagename").val(exp.collagename_exp1);
+                            $("#university").val(exp.affliateduniversity_exp1);
+                            $("#ldesignation").val(exp.lastdesignation_exp1);
+                            $("#total").val(exp.totalexperience_exp1);
+                            $("#companyname").val(exp.companyname_exp1);
+                            $("#clastdesignation").val(exp.clastdesignation_exp1);
+                            $("#ctotal").val(exp.ctotalexperience_exp1);
+                            var value1 = new Date(parseInt(exp.joiningdate_exp1.substr(6)));
+                            $('#datepicker2').datepicker('setDate', value1);
+                            var value2 = new Date(parseInt(exp.lastdate1_exp1.substr(6)));
+                            $('#datepicker3').datepicker('setDate', value2);
+                            var value3 = new Date(parseInt(exp.cjoiningdate_exp1.substr(6)));
+                            $('#datepicker4').datepicker('setDate', value3);
+                            var value4 = new Date(parseInt(exp.clastdate_exp1.substr(6)));
+                            $('#datepicker5').datepicker('setDate', value4);
+                           var value5 = new Date(parseInt(exp.joiningdate_exp2.substr(6)));
+                            $('#datepicker6').datepicker('setDate', value5);
+                            var value6 = new Date(parseInt(exp.lastdate1_exp2.substr(6)));
+                            $('#datepicker7').datepicker('setDate', value6);
+                            var value7 = new Date(parseInt(exp.cjoiningdate_exp2.substr(6)));
+                            $('#datepicker8').datepicker('setDate', value7);
+                            var value8 = new Date(parseInt(exp.clastdate_exp2.substr(6)));
+                            $('#datepicker9').datepicker('setDate', value8);
+                            //
+                            var value9 = new Date(parseInt(exp.joiningdate_exp3.substr(6)));
+                            $('#datepicker10').datepicker('setDate', value9);
+                            var value10 = new Date(parseInt(exp.lastdate1_exp3.substr(6)));
+                            $('#datepicker11').datepicker('setDate', value10);
+                            var value11 = new Date(parseInt(exp.joiningdate_exp4.substr(6)));
+                            $('#datepicker12').datepicker('setDate', value11);
+                            var value12 = new Date(parseInt(exp.lastdate1_exp4.substr(6)));
+                            $('#datepicker13').datepicker('setDate', value12);
+                            var value13 = new Date(parseInt(exp.joiningdate_exp5.substr(6)));
+                            $('#datepicker14').datepicker('setDate', value13);
+                            var value14 = new Date(parseInt(exp.lastdate1_exp5.substr(6)));
+                            $('#datepicker15').datepicker('setDate', value14);
+                            var value15 = new Date(parseInt(exp.joiningdate_exp6.substr(6)));
+                            $('#datepicker16').datepicker('setDate', value15);
+                            var value16 = new Date(parseInt(exp.lastdate1_exp6.substr(6)));
+                            $('#datepicker17').datepicker('setDate', value16);
+                            var value17 = new Date(parseInt(exp.joiningdate_exp7.substr(6)));
+                            $('#datepicker18').datepicker('setDate', value17);
+                            var value18 = new Date(parseInt(exp.lastdate1_exp7.substr(6)));
+                            $('#datepicker19').datepicker('setDate', value18);
+                            var value19 = new Date(parseInt(exp.joiningdate_exp8.substr(6)));
+                            $('#datepicker20').datepicker('setDate', value19);
+                            var value20 = new Date(parseInt(exp.lastdate1_exp8.substr(6)));
+                            $('#datepicker21').datepicker('setDate', value20);
+                            var value21 = new Date(parseInt(exp.joiningdate_exp9.substr(6)));
+                            $('#datepicker22').datepicker('setDate', value21);
+                            var value22 = new Date(parseInt(exp.lastdate1_exp9.substr(6)));
+                            $('#datepicker23').datepicker('setDate', value22);
+                            var value23 = new Date(parseInt(exp.joiningdate_exp10.substr(6)));
+                            $('#datepicker24').datepicker('setDate', value23);
+                            var value24 = new Date(parseInt(exp.lastdate1_exp10.substr(6)));
+                            $('#datepicker25').datepicker('setDate', value24);
+                            var value25 = new Date(parseInt(exp.cjoiningdate_exp3.substr(6)));
+                            $('#datepicker26').datepicker('setDate', value25);
+                            var value26 = new Date(parseInt(exp.clastdate_exp3.substr(6)));
+                            $('#datepicker27').datepicker('setDate', value26);
+                            var value27 = new Date(parseInt(exp.cjoiningdate_exp4.substr(6)));
+                            $('#datepicker28').datepicker('setDate', value27);
+                            var value28 = new Date(parseInt(exp.clastdate_exp4.substr(6)));
+                            $('#datepicker29').datepicker('setDate', value28);
+                            var value29 = new Date(parseInt(exp.cjoiningdate_exp5.substr(6)));
+                            $('#datepicker30').datepicker('setDate', value29);
+                            var value30 = new Date(parseInt(exp.clastdate_exp5.substr(6)));
+                            $('#datepicker31').datepicker('setDate', value30);
+                            var value29 = new Date(parseInt(exp.cjoiningdate_exp6.substr(6)));
+                            $('#datepicker32').datepicker('setDate', value29);
+                            var value30 = new Date(parseInt(exp.clastdate_exp6.substr(6)));
+                            $('#datepicker33').datepicker('setDate', value30);
+                            var value31 = new Date(parseInt(exp.cjoiningdate_exp7.substr(6)));
+                            $('#datepicker34').datepicker('setDate', value31);
+                            var value32 = new Date(parseInt(exp.clastdate_exp7.substr(6)));
+                            $('#datepicker35').datepicker('setDate', value32);
+                            var value33 = new Date(parseInt(exp.cjoiningdate_exp8.substr(6)));
+                            $('#datepicker36').datepicker('setDate', value33);
+                            var value34 = new Date(parseInt(exp.clastdate_exp8.substr(6)));
+                            $('#datepicker37').datepicker('setDate', value34);
+                            var value35 = new Date(parseInt(exp.cjoiningdate_exp9.substr(6)));
+                            $('#datepicker38').datepicker('setDate', value35);
+                            var value36 = new Date(parseInt(exp.clastdate_exp9.substr(6)));
+                            $('#datepicker39').datepicker('setDate', value36);
+                            var value37 = new Date(parseInt(exp.cjoiningdate_exp10.substr(6)));
+                            $('#datepicker40').datepicker('setDate', value37);
+                            var value38 = new Date(parseInt(exp.clastdate_exp10.substr(6)));
+                            $('#datepicker41').datepicker('setDate', value38);
+                    
+                            $("#collagename1").val(exp.collagename_exp2);
+                            $("#university1").val(exp.affliateduniversity_exp2);
+                            $("#ldesignation1").val(exp.lastdesignation_exp2);
+                            $("#total1").val(exp.totalexperience_exp2);
+                            $("#companyname1").val(exp.companyname_exp2);
+                            $("#clastdesignation1").val(exp.clastdesignation_exp2);
+                            $("#ctotal1").val(exp.ctotalexperience_exp2);
+                            $("#collagename2").val(exp.collagename_exp3);
+                            $("#university2").val(exp.affliateduniversity_exp3);
+                            $("#ldesignation2").val(exp.lastdesignation_exp3);
+                            $("#total2").val(exp.totalexperience_exp3);
+                            $("#companyname2").val(exp.companyname_exp3);
+                            $("#clastdesignation2").val(exp.clastdesignation_exp3);
+                            $("#ctotal2").val(exp.ctotalexperience_exp3);
+                            $("#collagename3").val(exp.collagename_exp4);
+                            $("#university3").val(exp.affliateduniversity_exp4);
+                            $("#ldesignation3").val(exp.lastdesignation_exp4);
+                            $("#total3").val(exp.totalexperience_exp4);
+                            $("#companyname3").val(exp.companyname_exp4);
+                            $("#clastdesignation3").val(exp.clastdesignation_exp4);
+                            $("#ctotal3").val(exp.ctotalexperience_exp4);
+                            $("#collagename4").val(exp.collagename_exp5);
+                            $("#university4").val(exp.affliateduniversity_exp5);
+                            $("#ldesignation4").val(exp.lastdesignation_exp5);
+                            $("#total4").val(exp.totalexperience_exp5);
+                            $("#companyname4").val(exp.companyname_exp5);
+                            $("#clastdesignation4").val(exp.clastdesignation_exp5);
+                            $("#ctotal4").val(exp.ctotalexperience_exp5);
+                            $("#collagename5").val(exp.collagename_exp6);
+                            $("#university5").val(exp.affliateduniversity_exp6);
+                            $("#ldesignation5").val(exp.lastdesignation_exp6);
+                            $("#total5").val(exp.totalexperience_exp6);
+                            $("#companyname5").val(exp.companyname_exp6);
+                            $("#clastdesignation5").val(exp.clastdesignation_exp6);
+                            $("#ctotal5").val(exp.ctotalexperience_exp6);
+                            $("#collagename6").val(exp.collagename_exp7);
+                            $("#university6").val(exp.affliateduniversity_exp7);
+                            $("#ldesignation6").val(exp.lastdesignation_exp7);
+                            $("#total6").val(exp.totalexperience_exp7);
+                            $("#companyname6").val(exp.companyname_exp7);
+                            $("#clastdesignation6").val(exp.clastdesignation_exp7);
+                            $("#ctotal6").val(exp.ctotalexperience_exp7);
+
+                            $("#collagename7").val(exp.collagename_exp8);
+                            $("#university7").val(exp.affliateduniversity_exp8);
+                            $("#ldesignation7").val(exp.lastdesignation_exp8);
+                            $("#total7").val(exp.totalexperience_exp8);
+                            $("#companyname7").val(exp.companyname_exp8);
+                            $("#clastdesignation7").val(exp.clastdesignation_exp8);
+                            $("#ctotal7").val(exp.ctotalexperience_exp8);
+
+                            $("#collagename8").val(exp.collagename_exp9);
+                            $("#university8").val(exp.affliateduniversity_exp9);
+                            $("#ldesignation8").val(exp.lastdesignation_exp9);
+                            $("#total8").val(exp.totalexperience_exp9);
+                            $("#companyname8").val(exp.companyname_exp9);
+                            $("#clastdesignation8").val(exp.clastdesignation_exp9);
+                            $("#ctotal8").val(exp.ctotalexperience_exp9);
+
+
+                            $("#collagename9").val(exp.collagename_exp10);
+                            $("#university9").val(exp.affliateduniversity_exp10);
+                            $("#ldesignation9").val(exp.lastdesignation_exp10);
+                            $("#total9").val(exp.totalexperience_exp10);
+                            $("#companyname9").val(exp.companyname_exp10);
+                            $("#clastdesignation9").val(exp.clastdesignation_exp10);
+                            $("#ctotal9").val(exp.ctotalexperience_exp10);
+                          
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve experience.' + ex);
+                        }
+                    });
 
 
                 }
@@ -1358,24 +1490,27 @@
             }
 
 
-            if ($("#MiddleName").val() == '') {
-                cnt++;
-                $("#MiddleName").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#MiddleName").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#MiddleName").val() == '') {
+            //    cnt++;
+            //    $("#MiddleName").css({
+            //        "border": "1px solid red"
+            //    });
+            //}
+            //else {
+            //    $("#MiddleName").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#Emailid").val() == '') {
                 cnt++;
                 $("#Emailid").css({
                     "border": "1px solid red"
                 });
+                alert("Email Id Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#Emailid").css({
@@ -1440,6 +1575,9 @@
                 $("#MobileNo").css({
                     "border": "1px solid red"
                 });
+                alert("MobileNo is Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#MobileNo").css({
@@ -1448,24 +1586,27 @@
                 });
             }
 
-            if ($("#Code").val() == '') {
-                cnt++;
-                $("#Code").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#Code").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Code").val() == '') {
+            //    cnt++;
+            //    $("#Code").css({
+            //        "border": "1px solid red"
+            //    });
+            //}
+            //else {
+            //    $("#Code").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             if ($("#Typeid").val() == '' || $("#Typeid").val() == '0') {
                 cnt++;
                 $("#Typeid").css({
                     "border": "1px solid red"
                 });
+                alert("Employee Type is Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#Typeid").css({
@@ -1473,23 +1614,30 @@
                     "background": ""
                 });
             }
-            //if ($("#eidtype").val() == '' || $("#eidtype").val() == '0') {
-            //    cnt++;
-            //    $("#eidtype").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#eidtype").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#eidtype").val() == '' || $("#eidtype").val() == '0') {
+                cnt++;
+                $("#eidtype").css({
+                    "border": "1px solid red"
+                });
+                alert("ID Type is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#eidtype").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if ($("#equalification1").val() == '' || $("#equalification1").val() == '0') {
                 cnt++;
                 $("#equalification1").css({
                     "border": "1px solid red"
                 });
+                alert("Employee Qualification is Mandatory!");
+                e.preventDefault();
+                return false;
+              
             }
             else {
                 $("#equalification1").css({
@@ -1502,6 +1650,9 @@
                 $("#euniversity1").css({
                     "border": "1px solid red"
                 });
+                alert("Employee University is Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#euniversity1").css({
@@ -1514,6 +1665,9 @@
                 $("#eprecentage1").css({
                     "border": "1px solid red"
                 });
+                alert("Employee Percentage is Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#eprecentage1").css({
@@ -1526,6 +1680,9 @@
                 $("#eYearofpassing1").css({
                     "border": "1px solid red"
                 });
+                alert("Employee Percentage is Mandatory!");
+                e.preventDefault();
+                return false;
             }
             else {
                 $("#eYearofpassing1").css({
@@ -1533,20 +1690,113 @@
                     "background": ""
                 });
             }
-            //if ($("#relationship").val() == '' || $("#relationship").val() == '0') {
-            //    cnt++;
-            //    $("#relationship").css({
-            //        "border": "1px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#relationship").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+            if ($("#relationship").val() == '' || $("#relationship").val() == '0') {
+                cnt++;
+                $("#relationship").css({
+                    "border": "1px solid red"
+                });
+                alert("Parent Details Relationship is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#relationship").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#pname").val() == '') {
+                cnt++;
+                $("#pname").css({
+                    "border": "1px solid red"
+                });
+                alert("Parent Name is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#pname").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#pname").val() == '') {
+                cnt++;
+                $("#pname").css({
+                    "border": "1px solid red"
+                });
+                alert("Parent Name is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#pname").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
-
+            if ($("#ccountry").val() == '') {
+                cnt++;
+                $("#ccountry").css({
+                    "border": "1px solid red"
+                });
+                alert("Current Country is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#ccountry").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#cstate").val() == '') {
+                cnt++;
+                $("#cstate").css({
+                    "border": "1px solid red"
+                });
+                alert("Current State is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#cstate").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#ccity").val() == '') {
+                cnt++;
+                $("#ccity").css({
+                    "border": "1px solid red"
+                });
+                alert("Current City is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#ccity").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            
+            if ($("#cstreet").val() == '') {
+                cnt++;
+                $("#cstreet").css({
+                    "border": "1px solid red"
+                });
+                alert("Current Street is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#cstreet").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if (cnt != 0) {
                 e.preventDefault();
             }
@@ -1639,6 +1889,19 @@
             }
         });
 
+        $("#dname").keypress(function (e) {
+            if (!(e.which >= 65 && e.which <= 120) && (e.which != 32 && e.which != 0)) {
+                $("#errmsg").html("Alphabetes Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#conttactrelation").keypress(function (e) {
+            if (!(e.which >= 65 && e.which <= 120) && (e.which != 32 && e.which != 0)) {
+                $("#errmsg").html("Alphabetes Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
         $("#dcontact").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 $("#errmsg").html("Digits Only").show().fadeOut("slow");
@@ -1764,7 +2027,23 @@
                 });
             }
         });
-      
+        
+        $('#pemail').blur(function () {
+            if (!ValidateEmail($("#pemail").val())) {
+                $("#pemail").css({
+                    "border": "1px solid red"
+                });
+                $('#pemail').val('');
+                alert("Email address is invalid!..");
+                return false;
+            }
+            else {
+                $("#pemail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
         $(function () { $("#datepicker").datepicker().val(''); });
         $(function () { $("#lastdate").datepicker(); });
         $(function () { $("#joiningdate").datepicker(); });
@@ -2669,8 +2948,10 @@
                                                             @Html.ValidationMessageFor(model => model.mtongue)
                                                         </div>
                                                     </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
+                                                 
+                                                    <div class="control-group span6 pull-right">
+                                                        <br />
+                                                       @Html.LabelFor(model => model.emppic, new { @class = "control-label" })
                                                         <div class="controls" style="width:47%">
                                                             <input type="file" name="files1" id="files1" />
                                                             <div id="pic1">
@@ -4191,8 +4472,9 @@
                                                 <button type="button" class="btn btn-primary pull-left" id="Previous1" onclick="scrollWin()"> <span class="glyphicon glyphicon-search"></span> Previous</button>
                                                 <br />
                                                 <div class="form-actions">
-                                                    <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
-
+                                                    <div class="control-group span8 pull-right">
+                                                        <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
+                                                    </div>
 
                                                 </div>
                                             </div>
