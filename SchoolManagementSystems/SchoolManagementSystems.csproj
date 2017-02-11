@@ -685,10 +685,9 @@
     <Content Include="Views\Masters\_CoursemasterList.cshtml" />
     <Content Include="Views\Masters\Course.cshtml" />
     <Content Include="Views\Masters\_courselistdetails.cshtml" />
-<<<<<<< HEAD
-=======
+
     <Content Include="Views\Attendance\Test.cshtml" />
->>>>>>> origin/master
+
     <Content Include="Views\Attendance\TeacherSubject.cshtml" />
   </ItemGroup>
   <PropertyGroup>
