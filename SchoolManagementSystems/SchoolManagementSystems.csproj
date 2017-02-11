@@ -682,6 +682,8 @@
     <Content Include="Views\Masters\_CoursemasterList.cshtml" />
     <Content Include="Views\Masters\Course.cshtml" />
     <Content Include="Views\Masters\_courselistdetails.cshtml" />
+    <Content Include="Views\Attendance\Test.cshtml" />
+    <Content Include="Views\Attendance\TeacherSubject.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -699,7 +701,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5818</DevelopmentServerPort>
+          <DevelopmentServerPort>6807</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -213,7 +213,6 @@
       <Parameter Name="Empid" Mode="In" Type="Int32" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" />
     <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
     <FunctionImport Name="sp_EmployeeAttendance">
       <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
@@ -569,18 +568,9 @@
     <FunctionImport Name="sp_getchapter" ReturnType="Collection(SchoolMgmtSysModel.sp_getchapter_Result)" />
     <FunctionImport Name="sp_getcontent" ReturnType="Collection(SchoolMgmtSysModel.sp_getcontent_Result)" />
     <FunctionImport Name="sp_getemp" ReturnType="Collection(SchoolMgmtSysModel.sp_getemp_Result)" />
-    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
     <FunctionImport Name="sp_getyear" ReturnType="Collection(SchoolMgmtSysModel.sp_getyear_Result)">
       <Parameter Name="dept_id" Mode="In" Type="Int32" />
       <Parameter Name="courseid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_teachersubject_DML">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="departmenid" Mode="In" Type="Int32" />
-      <Parameter Name="yearid" Mode="In" Type="Int32" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
     <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
@@ -952,23 +942,32 @@
       <Parameter Name="clastdate_exp10" Mode="In" Type="DateTime" />
       <Parameter Name="ctotalexperience_exp10" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_empleave_DML">
-      <Parameter Name="leaveid" Mode="In" Type="Int32" />
-      <Parameter Name="empid" Mode="In" Type="Int32" />
-      <Parameter Name="startdate" Mode="In" Type="DateTime" />
-      <Parameter Name="enddate" Mode="In" Type="DateTime" />
-      <Parameter Name="leavetype" Mode="In" Type="Int32" />
-      <Parameter Name="description" Mode="In" Type="String" />
-      <Parameter Name="isapprove" Mode="In" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="sp_StaffAttandance_DML">
-      <Parameter Name="staffAttendanceid" Mode="In" Type="Int32" />
       <Parameter Name="staffid" Mode="In" Type="Int32" />
       <Parameter Name="attendancedate" Mode="In" Type="DateTime" />
       <Parameter Name="intime" Mode="In" Type="DateTime" />
       <Parameter Name="outtime" Mode="In" Type="DateTime" />
       <Parameter Name="absent" Mode="In" Type="Boolean" />
       <Parameter Name="reason" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" />
+    <FunctionImport Name="sp_empleave_DML">
+      <Parameter Name="leaveid" Mode="In" Type="Int32" />
+      <Parameter Name="empid" Mode="In" Type="Int32" />
+      <Parameter Name="startdate" Mode="In" Type="DateTime" />
+      <Parameter Name="enddate" Mode="In" Type="DateTime" />
+      <Parameter Name="leavetype" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="isapprove" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
+    <FunctionImport Name="sp_teachersubject_DML">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="teachername" Mode="In" Type="String" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="departmenid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -1388,18 +1387,6 @@
     <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="Empid" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tbl_EmployeeLeave">
-    <Key>
-      <PropertyRef Name="Leaveid" />
-    </Key>
-    <Property Type="Int32" Name="Leaveid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Empid" />
-    <Property Type="DateTime" Name="LeaveStartDate" Precision="3" />
-    <Property Type="DateTime" Name="LeaveEndDate" Precision="3" />
-    <Property Type="Int32" Name="LeaveType" />
-    <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsApprove" />
   </EntityType>
   <ComplexType Name="sp_GetEmployeeLeave_Result">
     <Property Type="Int32" Name="Leaveid" Nullable="false" />
@@ -1912,17 +1899,6 @@
     <Property Type="String" Name="DateOfJoin" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="Typeid" Nullable="true" MaxLength="8" />
   </ComplexType>
-  <EntityType Name="tbl_teachersubject">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="teacherid" Type="Int32" />
-    <Property Name="courseid" Type="Int32" />
-    <Property Name="departmentid" Type="Int32" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="subjectid" Type="Int32" />
-  </EntityType>
   <ComplexType Name="sp_getyear_Result">
     <Property Type="Int32" Name="yearid" Nullable="false" />
     <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
@@ -2382,5 +2358,29 @@
     <Property Name="clastdate_exp10" Type="DateTime" Precision="7" />
     <Property Name="ctotalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="companyemail_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_EmployeeLeave">
+    <Key>
+      <PropertyRef Name="Leaveid" />
+    </Key>
+    <Property Type="Int32" Name="Leaveid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Empid" />
+    <Property Type="DateTime" Name="LeaveStartDate" Precision="3" />
+    <Property Type="DateTime" Name="LeaveEndDate" Precision="3" />
+    <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsApprove" />
+    <Property Type="String" Name="LeaveType" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_teachersubject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="teacherid" />
+    <Property Type="Int32" Name="courseid" />
+    <Property Type="Int32" Name="departmentid" />
+    <Property Type="Int32" Name="yearid" />
+    <Property Type="Int32" Name="subjectid" />
+    <Property Type="String" Name="teachername" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

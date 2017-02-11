@@ -558,19 +558,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
-    <EntitySetMapping Name="tbl_EmployeeLeave">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_EmployeeLeave">
-        <MappingFragment StoreEntitySet="tbl_EmployeeLeave">
-          <ScalarProperty Name="IsApprove" ColumnName="IsApprove" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
-          <ScalarProperty Name="LeaveEndDate" ColumnName="LeaveEndDate" />
-          <ScalarProperty Name="LeaveStartDate" ColumnName="LeaveStartDate" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="Leaveid" ColumnName="Leaveid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_GetEmployeeLeave" FunctionName="SchoolMgmtSysModel.Store.sp_GetEmployeeLeave">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetEmployeeLeave_Result">
@@ -1247,18 +1234,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_teachersubject">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
-        <MappingFragment StoreEntitySet="tbl_teachersubject">
-          <ScalarProperty Name="subjectid" ColumnName="subjectid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="departmentid" ColumnName="departmentid" />
-          <ScalarProperty Name="courseid" ColumnName="courseid" />
-          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
@@ -1267,7 +1242,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
     <EntitySetMapping Name="tbl_studentdivision">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
         <MappingFragment StoreEntitySet="tbl_studentdivision">
@@ -1745,7 +1719,34 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
     <FunctionImportMapping FunctionImportName="sp_StaffAttandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_StaffAttandance_DML" />
+    <EntitySetMapping Name="tbl_EmployeeLeave">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_EmployeeLeave">
+        <MappingFragment StoreEntitySet="tbl_EmployeeLeave">
+          <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+          <ScalarProperty Name="IsApprove" ColumnName="IsApprove" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LeaveEndDate" ColumnName="LeaveEndDate" />
+          <ScalarProperty Name="LeaveStartDate" ColumnName="LeaveStartDate" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="Leaveid" ColumnName="Leaveid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
+    <EntitySetMapping Name="tbl_teachersubject">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
+        <MappingFragment StoreEntitySet="tbl_teachersubject">
+          <ScalarProperty Name="teachername" ColumnName="teachername" />
+          <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
   </EntityContainerMapping>
 </Mapping>

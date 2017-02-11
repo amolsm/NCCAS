@@ -537,9 +537,9 @@
     <Property Name="Empid" Type="int" />
     <Property Name="LeaveStartDate" Type="datetime" />
     <Property Name="LeaveEndDate" Type="datetime" />
-    <Property Name="LeaveType" Type="int" />
     <Property Name="Description" Type="varchar" MaxLength="255" />
     <Property Name="IsApprove" Type="bit" />
+    <Property Name="LeaveType" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Event">
     <Key>
@@ -1070,6 +1070,7 @@
     <Property Name="departmentid" Type="int" />
     <Property Name="yearid" Type="int" />
     <Property Name="subjectid" Type="int" />
+    <Property Name="teachername" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_timetable">
     <Key>
@@ -1253,7 +1254,7 @@
     <Parameter Name="empid" Type="int" Mode="In" />
     <Parameter Name="startdate" Type="datetime" Mode="In" />
     <Parameter Name="enddate" Type="datetime" Mode="In" />
-    <Parameter Name="leavetype" Type="int" Mode="In" />
+    <Parameter Name="leavetype" Type="varchar" Mode="In" />
     <Parameter Name="description" Type="varchar" Mode="In" />
     <Parameter Name="isapprove" Type="bit" Mode="In" />
   </Function>
@@ -1675,7 +1676,6 @@
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_StaffAttandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="staffAttendanceid" Type="int" Mode="In" />
     <Parameter Name="staffid" Type="int" Mode="In" />
     <Parameter Name="attendancedate" Type="datetime" Mode="In" />
     <Parameter Name="intime" Type="datetime" Mode="In" />
@@ -1936,7 +1936,7 @@
   </Function>
   <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
-    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="teachername" Type="varchar" Mode="In" />
     <Parameter Name="courseid" Type="int" Mode="In" />
     <Parameter Name="departmenid" Type="int" Mode="In" />
     <Parameter Name="yearid" Type="int" Mode="In" />
