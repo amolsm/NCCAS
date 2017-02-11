@@ -36,20 +36,25 @@ namespace SchoolManagementSystems.Controllers
                     uvm.Userdatacollection = db.tbl_user.Where(m => m.UserName == Username && m.Password == Password && m.Status == 1).ToList();
                 }
                 catch { }
-                if (uvm.Userdatacollection.Count() > 0 && uvm.Userdatacollection[0].Status == 1)
+                if (uvm.Userdatacollection != null)
                 {
-                    Session["Userid"] = uvm.Userdatacollection[0].Userid.ToString();
-                    Session["User"] = uvm.Userdatacollection[0].UserName.ToString();
-                    Session["Role"] = uvm.Userdatacollection[0].Type.ToString();
-                    dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
-                    dvm.BirthdaylistDetails = db.tbl_student.Where(m => m.Studid != 0).ToList();
-                    return View("DashBoard", dvm);
+                    if (uvm.Userdatacollection.Count() > 0 && uvm.Userdatacollection[0].Status == 1)
+                    {
+                        Session["Userid"] = uvm.Userdatacollection[0].Userid.ToString();
+                        Session["User"] = uvm.Userdatacollection[0].UserName.ToString();
+                        Session["Role"] = uvm.Userdatacollection[0].Type.ToString();
+                        dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
+                        dvm.BirthdaylistDetails = db.tbl_student.Where(m => m.Studid != 0).ToList();
+                        return View("DashBoard", dvm);
+                    }
+                    else
+                    {
+                        ViewData["Error"] = "Either UserName or Password is incorrect / You are not active User!..";
+                        return View("Index");
+                    }
                 }
-                else
-                {
-                    ViewData["Error"] = "Either UserName or Password is incorrect / You are not active User!..";
-                    return View("Index");
-                }
+               
+                return View("Index");
             }
         }
 

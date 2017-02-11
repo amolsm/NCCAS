@@ -31,275 +31,207 @@
 <script type="text/javascript">
     //function valueChanged() {
     $(document).ready(function () {
-        $("#insert").hide();
-       
-        $("#department").change(function () {
-            $("#Classid").empty();
-          
+        //$("#insert").hide();
+
+        $("#Classid").change(function () {
+            $("#department").empty();
+
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetClass")',
+                url: '@Url.Action("Getdepartment")',
                 dataType: 'json',
-                data: { id: $("#department").val() },
+                data: { id: $("#Classid").val() },
                 success: function (DClass) {
                     if (DClass != "") {
-                        var item = '<option value="0">Select Class</option>';
+                        var item = '<option value="0">Select Department</option>';
                         $.each(DClass, function (i, dclass) {
                             item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
                         });
-                        $("#Classid").append(item);
+                        $("#department").append(item);
                     }
                     else {
-                        var item = '<option value="0">Select Class</option>';
-                        $("#Classid").append(item);
+                        var item = '<option value="0">Select Department</option>';
+                        $("#department").append(item);
                     }
                 },
                 error: function (ex) {
-                    alert('Failed to retrieve Class.' + ex);
+                    alert('Failed to retrieve Department.' + ex);
                 }
-            });
-             return false;
-        })
-        $("#year").change(function () {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GettSubject")',
-
-                dataType: 'json',
-                data: { id: $("#year").val(), year: $("#Classid").val() },
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(),
-                cache: false,
-                context: table,
-                success: function (data) {
-                    var tableBody = this.find('tbody');
-                    tableBody.empty();
-                    $.each(data, function (index, data) {
-                        $('<tr/>', {
-                            html: $('<td/>', {
-                                html: data.Subjectid
-                            }).after($('<td/>', {
-                                html: data.SubjectNm
-                            }))
-                        }).appendTo(tableBody);
-                    });
-                },
-                error: function () { alert("error"); }
             });
             return false;
         })
-     
-        $("#insert").click(function () {
-            debugger;
-                var presentdetails = [];
-                $('input:checkbox.addcls').each(function (evt) {
-                    var PresentDate = ($("#datepicker").val());
-                    var subject = ($("#subjectid").val());
-                    var studentid = ($(this).val());
-                    var remark = '';
-                    var reason = '';
-                    
-                                
-                    if ($(this).prop('checked')) {
-                        remark = 'true';
-                        presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject);
+        $("#department").change(function () {
+            $("#year").empty();
 
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#department").val(), cid: $("#Classid").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
                     }
                     else {
-                        remark = 'false'
-                        var studentid = ($(this).val());
-
-                        var reason = ($("#Reason_" + studentid).val());
-                        if (reason != "") {
-                            presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + username + "," + reason + "," + subject);
-
-                        }
-                        else {
-                            alert("Please provide reason for Absent Student !!");
-                            presentdetails = [];
-                            return false;
-                        }
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
                     }
-                });
-                if (presentdetails != "") {
-                    var options = {};
-                    options.type = "POST",
-                    options.url = '@Url.Action("DMLAttendance")',
-                    options.data = JSON.stringify(presentdetails);
-                    options.contentType = "application/json";
-                    options.success = function (presentdetails) {
-                        $("#msgs").show();
-                        $("#lblmsgs").text("PresentList  updated successfully!..");
-                        $("#lblmsgs").css({ "color": "green" });
-                        $("#lblmsgs").css({ "font-size": "15px" });
-                        $("#result").html(result);
-                        clear();
-
-                        ReloadPaging();
-                        //alert("PresentList updated successfully!..");
-                    };
-                    options.error = function (presentdetails) {
-                        $("#msg").show();
-                        $("#lblmsg").text("Error while save the records!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "15px" });
-                        $("#result").html(result);
-                        clear();
-
-                        ReloadPaging();
-                        //alert("Error while save the records!");
-                    };
-                    $.ajax(options);
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
                 }
-            //}
-            //else {
-            //    alert("Something wrong");
-            //}
             });
-       
+            return false;
+        });
+
+        $("#insert").click(function () {
+            debugger;
+            var presentdetails = [];
+           $('input:checkbox.addcls').each(function (evt) {
+               //$("#teacher").each(function (evt) {
+               var departmentid;
+               var classid;
+               var subject;
+               var years;
+
+               if ($(this).prop('checked')) {
+                var departmentid = ($("#department").val());
+                var classid = ($("#Classid").val());
+                var subject = ($(this).val());
                 
-      
+                var years = ($("#year").val());
+               
+                    var Subjectids = ($(this).val());
+                    teacher = ($("#leave" + Subjectids).val());
+                    presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
 
-        $('#datepicker').attr("readonly", true);
+                }
+                else {
+                    
+                   alert("Please Check the box !!");
+                   presentdetails = [];
+                   return false;
+          
+                    //presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
+                }
+            });
+            //});
 
-        $('#datepicker').datepicker({
-            inline: true,
-            showOtherMonths: true,
-            showOtherYears: true,
-            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
-            changeMonth: true,
-            yearRange: "-100:+0",
-            changeYear: true
+            if (presentdetails != "") {
+                var options = {};
+                options.type = "POST",
+                options.url = '@Url.Action("DMLTeachersubject")',
+                    options.data = JSON.stringify(presentdetails);
+                options.contentType = "application/json";
+                options.success = function (presentdetails) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Subject List Updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                };
+                options.error = function (presentdetails) {
+                    $("#msg").show();
+                    $("#lblmsg").text("Error while save the records!..");
+                    $("#lblmsg").css({ "color": "orange" });
+                    $("#lblmsg").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                };
+                $.ajax(options);
+            }
         });
 
-        $('#datepicker').datepicker('setDate', new Date());
-
-        $('#StaffPresent').change(function () {
-            if ($(this).is(":checked")) {
-                $('#staffreason').css('display', 'block');
+        $("#header").click(function () {
+            if ($("#Add_header").is(":checked")) {
+                $(".addcls").prop('checked', true);
             }
             else {
-                $('#staffreason').css('display', 'none');
+                $(".addcls").prop('checked', false);
             }
+
         });
 
-
-
-        function Validations(e) {
-            var cnt = 0;
-            if ($("#Empid").val() == '') {
-                cnt++;
-                $("#Empid").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#Empid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#AttendanceDate").val() == '') {
-                cnt++;
-                $("#AttendanceDate").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#AttendanceDate").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if (cnt != 0) {
-                e.preventDefault();
-            }
-        }
-     
-     //function myFunction() { var StudentIds = $("#Teachers").val(data.length);}   
-    
-     //   $("#header").click(function () {
-     //       if ($("#Add_header").is(":checked")) {
-     //           $(".addcls").prop('checked', true);  
-     //       }
-     //       else {
-     //           $(".addcls").prop('checked', false);
-     //       }
-
-        //   });
-
-        //<td  width='100px;'><select ><option value=" + data[i].Empid.toString() + ">" + data[i].FirstName.toString() + "</option></select></td>
-       @* $('#year').change(function () {
-            
+        $('#year').change(function () {
+            debugger;
             $("#insert").show();
             var Classid = $('#Classid').val();
             if (Classid == '') {
-                $("#insert").hide();
+                //$("#insert").hide();
                 $('#result').html('');
             }
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GettSubject")',
                 dataType: 'json',
-                data: { id: $("#year").val(), year: $("#Classid").val() },
+                data: { id: $("#Classid").val(), year: $("#year").val() },
                 success: function (data) {
-                    
-                        var result = $('#result');
-                        var head = $('#header');
-                        var table; var header
-                        var StudentIds;
-                        result.html('');
-                        $("#Teachers").val(data.length);
-                        header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='70px;'>Subject ID</th><th  width='100px;'>Subject Name</th><th width='300px;'>Teacher Name</th></thead></table>";
-                        head.html(header);
-                        table = "<table class='table tb-parshav tablesorter'><tbody>";
-                        for (var i = 0; i < data.length; i++) {
-                            StudentIds = data[i].Subjectid;
-                            table += "<tr id=" + StudentIds + "><td width='70px;'>" + data[i].Subjectid.toString() + "</td><td  width='100px;'>" + data[i].SubjectNm.toString(); "</td><td width='300'><select id='mySelect'><option></option></select></td></tr>";
-                        }
-                        table += "</tbody><table>";
-                        result.html(table);
-                    }
 
-                });
-        });*@
-        $("#year").change(function () {
-            $("#teacherid").empty();
-            debugger;
+                    var result = $('#result');
+                    var head = $('#header');
+                    var table; var header;
+                    var Subjectids;
+
+                    var item = '<option value="0">Select Teacher</option>';
+
+                    result.html('');
+                    //$("#students").val(data.length);
+                    header = "<tr><th width='10%;' style='text-align:center'>Subject ID</th><th  width='30%;' style='text-align:center'>Subject Name</th><th width='10%;' style='text-align:center'><input type='checkbox' id='Add_header' />Select</th><th width='30%;' style='text-align:center'>Teacher Name</th>";
+                    head.html(header);
+                    table = "<table class='table-responsive tbl' id='tbl'><tbody>";
+
+                    for (var i = 0; i < data.sub.length; i++) {
+
+
+                        Subjectids = data.sub[i].Subjectid;
+                        // id = data.teach[j].Empid;
+                        table += "<tr id=" + Subjectids + "><td width='10%;' style='text-align:center' id='subid " + Subjectids + "'>" + data.sub[i].Subjectid.toString()
+                            + "</td><td  width='30%;'style='text-align:center'>"
+                            + data.sub[i].SubjectNm.toString()
+                            + "</td><td width='10%;'><input class='addcls' type='checkbox' onchange='valueChanged()'  id='Present_" + data.sub[i].Subjectid.toString() + "'  value='" + data.sub[i].Subjectid.toString()
+                            + "'></td><td width='30%;' style='text-align:center'><select id='leave" + Subjectids + "'><option values='0'>---Select Teacher---</option>"
+                        for (var n = 0; n < data.teach.length; n++) {
+                            table += "<option id='teacherid" + data.teach[n].Empid.toString() + "' values=" + data.teach[n].Empid.toString() + ">"
+                            + data.teach[n].FirstName.toString() + "</option>";
+                        }
+
+                        table += "</select></td></tr>";
+
+                    }
+                    table += "</tbody><table>";
+                    result.html(table);
+
+
+
+                }
+
+            });
+             });
+        $('#data').click(function () {
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetTeachers")',
+                url: '@Url.Action("Dataset")',
                 dataType: 'json',
-                success: function (teacher) {
-                    if (teacher != "") {
-                        var item = '<option value="0">Select Teacher</option>';
-                        $.each(teacher, function (i, dclass) {
-                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
-                        });
-                        $("#teacherid").append(item);
-                    }
-                    else {
-                        var item = '<option value="0">Select Teacher</option>';
-                        $("#teacherid").append(item);
-                    }
-                },
-                error: function (ex) {
-                    alert('Failed to retrieve Teacher.' + ex);
+                data: { id: $("#Classid").val(), year: $("#year").val() },
+                success: function (data) {
+
                 }
+
             });
-            return false;
-        })
-       
-
-    });
+        });
         ReloadPaging();
-   
+    });
 
-  
+
 </script>
 
 
@@ -341,12 +273,12 @@
 						
 						</div>
 					</div>
-                               		<div class="box-content">
+                               		<div class="box-content span11">
 						<form id="frm" class="form-horizontal">
                               
 						
                                   <fieldset>
-                                            @using (Html.BeginForm("ClassStudentAttendance", "Attendance", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                            @using (Html.BeginForm("DMLTeachersubject", "Attendance", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
                                             {
                                                 @Html.ValidationSummary(true)
                                                 <div>
@@ -355,6 +287,13 @@
                                                     </h2>
                                                 </div>
                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Courselist,"Courseid", "CourseName", "Select Class"), "Select Class")
+                                                    @Html.ValidationMessageFor(model => model.Classid)
+                                                           </div>
+                                                </div>
+                                                <div class="control-group span5">
                                                     @Html.LabelFor(model => model.department, new { @class = "control-label" })
                                                        <div class="controls">
                                                     @Html.DropDownListFor(model => model.department, new SelectList(Model.DepartmentList, "Dept_id", "Dept_name", "Select Department"), "Select Department")
@@ -362,88 +301,23 @@
                                                            </div>
                                                 </div>
                                                 <div class="control-group span5">
-                                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class")
-                                                    @Html.ValidationMessageFor(model => model.Classid)
-                                                           </div>
-                                                </div>
-                                                 <div class="control-group span5">
                                                     @Html.LabelFor(model => model.year, new { @class = "control-label" })
                                                        <div class="controls">
                                                     @Html.DropDownListFor(model => model.year, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
                                                     @Html.ValidationMessageFor(model => model.year)
                                                            </div>
-                                                </div>
-                                                <div class="control-group span5">
-                                                    @Html.LabelFor(model => model.subjectid, new { @class = "control-label" })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.subjectid, new SelectList(Model.SubjectList, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
-                                                    @Html.ValidationMessageFor(model => model.subjectid)
-                                                           </div>
-                                                </div>
-                                                 @*<div class="control-group span5">
-                                                    @Html.LabelFor(model => model.division, new { @class = "control-label" })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.division, new SelectList(Model.DivisionList, "Divisionid", "DivisionName", "Select Division"), "Select Division")
-                                                    @Html.ValidationMessageFor(model => model.division)
-                                                           </div>
-                                                </div>*@
-                                                <div class="table-responsive">
-                                                    <table id="result" class="table table-striped table-bordered bootstrap-datatable datatable">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>
-                                                                    @Html.DisplayName("Subject ID")
-                                                                </th>
-                                                                <th>
-                                                                    @Html.DisplayName("Subject Name")
-                                                                </th>
-                                                                <th>
-                                                                    @Html.DisplayName("Teacher  Name")
-                                                                </th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach (var item in Model.SubjectList)
-                                                            {
-                                                                <tr>
-                                                                    <td width="10%">
-                                                                        @Html.DisplayFor(modelItem => item.Subjectid)
-                                                                    </td>
-                                                                    <td width="20%">
-                                                                        @Html.DisplayFor(modelItem => item.SubjectNm)
-                                                                    </td>
-                                                                    <td width="17%">
-                                                                        @Html.DropDownListFor(model => model.teacherid, new SelectList(Model.TeacherList, "Empid", "FirstName", "Select Teacher"), "Select Teacher", new { @class = "col-md-3 form-control hide", @style = "float:left; margin-left:10px;" })
-                                                                    </td> 
-                                                                </tr>
-                                                            }
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                             
-                                               <div class="form-actions span12">
-                                                    <input type="submit" action="insert" class="btn btn-primary" id="insert" value="Present All" />
-                                                </div>
-                                             
-                                                   
-                                              
-                                                
-                                              
-                                                  
+                                                    </div>
                                                
+                                               
+                                                                               
                                             }
                                                  </fieldset>
                                 </form>
 					
 					</div>
 				</div><!--/span-->
-			
-			</div><!--/row-->
-                                                
-                                                 <div class="row-fluid sortable">
+			 
+					<div class="row-fluid sortable">
               <div class="box span12">
                   	<div class="box-header" data-original-title>
 						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
@@ -458,13 +332,26 @@
                                         </div>
                                         <div id="result" class="table-responsive">
                                         </div>
+
+                       <div class="form-actions span12" style="margin-bottom:20px; margin-left:0px; padding-left:40%">
+                                                    <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
+                                                   @* <input type="submit" class="btn btn-primary" id="data" value="Submit" />*@
+                                                </div> 
                                                 </div>
                                              
                                                 
 
                                          </div>
         </div>
-             
+                               		
+                                          @* <div id="header" class="table-responsive span12"></div>
+                                               <div id="result" class="table-responsive"></div>  *@                                      
+                                               
+                                          
+                
+                   
+			</div><!--/row-->    
+                     
     </div>
 </div>
    

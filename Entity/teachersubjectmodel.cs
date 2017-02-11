@@ -20,7 +20,7 @@ namespace Entity
         [DisplayName("Department Name")]
         public int department { get; set; }
 
-        [DisplayName("Year Name")]
+        [DisplayName("Year")]
         public int year { get; set; }
 
         [DisplayName("Subject Name")]
@@ -30,7 +30,7 @@ namespace Entity
         public bool status { get; set; }
 
         public List<tbl_employee> TeacherList { get; set; }
-        public List<tbl_CourseYearMaster> Courselist { get; set; }
+        public List<tbl_CourseMaster> Courselist { get; set; }
         public List<tbl_subject> SubjectList { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }
