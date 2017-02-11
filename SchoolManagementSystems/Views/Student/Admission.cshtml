@@ -511,6 +511,9 @@
                     $("#Disease").val(data.Disease);
                     $("#Documenttypename").val(data.doc_typename);
                     $("#Religionid").val(data.Religionid);
+                    if ($("#Religionid").val() == 2 && $("#Casteid").val() == 2)
+                    { $("#parish").show(); $("#diocese").show() }
+                    else { $("#parish").hide(); $("#diocese").hide() }
                     $("#Casteid").empty();
                     $.ajax({
                         type: 'POST',
@@ -3692,11 +3695,11 @@ new { style = "display:block;width:200px;height:178px;" })
                                                     <br />
                                                     <div class="form-actions">
 
+                                                        <div class="control-group span8 pull-right">
+                                                            <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
 
-                                                        <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
-
-
-                                                    </div>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                                                             }
                                         </div>
