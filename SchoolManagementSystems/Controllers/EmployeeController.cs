@@ -16,6 +16,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI;
 using ASPSnippets.SmsAPI;
 using System.Net;
+using System.Collections.Specialized;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -99,6 +100,7 @@ namespace SchoolManagementSystems.Controllers
         [HttpPost]
         public ActionResult EmpAdmission_DML(employeeviewmodel _bgv, string action, HttpPostedFileBase files1, HttpPostedFileBase files2)
         {
+            
             if (files1 != null)
             {
                 if (files1.InputStream.Length < 31000000)
@@ -161,6 +163,27 @@ namespace SchoolManagementSystems.Controllers
                          _bgv.total8, _bgv.ldesignation8, _bgv.companyname8, _bgv.clastdesignation8, _bgv.cjoiningdate8, _bgv.clastdate8, _bgv.ctotal8, _bgv.collagename9, _bgv.university9, _bgv.joiningdate9, _bgv.lastdate9,
                          _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9
                          ).ToString();
+
+                    if (_bgv.Empid == 0)
+                    {
+                        try
+                        {
+                            string yr = "2017";
+                            int empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
+                            int typeid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Typeid).FirstOrDefault();
+                            CreateUsers(_bgv.Emailid, typeid, empid, yr);
+                            SendSMS(empid);
+                            SendUserEmails(_bgv.Emailid);
+
+                        }
+                        catch { }
+                    }
+                    else
+                    {
+                        SendEmails(_bgv.Emailid);
+                        int empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
+                        SendUpdateSMS(empid);
+                    }
                     //if (_bgv.Empid == 0)
                     //SendSMS();
 
@@ -169,13 +192,11 @@ namespace SchoolManagementSystems.Controllers
                 {
                     string msg = ex.ToString();
                 }
+              
 
-                //{
-                //    int Empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
-                //    CreateUsers(_bgv.Emailid, _bgv.Typeid, Empid, "NA");
-                //    SendEmails(_bgv.Emailid);
-                //}
-            }
+               
+
+                }
             else if (action == "Delete")
             {
                 //db.sp_bloodgroup_DML(id, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "del").ToString();
@@ -194,6 +215,7 @@ namespace SchoolManagementSystems.Controllers
                          _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9
                          ).ToString();
             }
+              
             //_bgv._emplist = db.sp_getemp().ToList();
             return RedirectToAction("Index");
         }
@@ -238,56 +260,124 @@ namespace SchoolManagementSystems.Controllers
             return Json(new SelectList(castes, "Casteid", "CasteName"));
         }
 
-        //private void SendSMS()
-        //{
-        //    //string senderMobileNo = "9699026421";
-        //    //string senderPassword = "password";
-        //    //string MshapeKey = "ajW5MqLWtAmshow3gkBQzvSWW8g2p1d5RI3jsnzhpldUSvQanM";
-        //    //bool isSent = true;
-        //    //try
-        //    //{
+        private void CreateUsers(string UserName, int Type, int Genid, string academicyear)
+        {
+            string Password = Guid.NewGuid().ToString().Substring(0, 8);
+            var x = (from y in db.tbl_user where y.UserName == UserName select y).FirstOrDefault();
+            if (x == null)
+            {
+                db.sp_User_DML(0, UserName, Password, Type, Genid, 1, academicyear, "");
+                SendUserEmails(UserName);
 
-        //    //    // Calling SMS Class to use Send Method.
-        //    //    // Passing MobileNo, Password, MshapreKey, ReceiverMobileNo and Message as parameter of Send Method.
-        //    //    isSent = Send(senderMobileNo, senderPassword, MshapeKey, "8898284281", "teshvhv");
+            }
+        }
 
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
+        private void SendUserEmails(string Email)
+        {
 
-        //    //}
-        //    try
-        //    {
-        //        SMS.APIType = SMSGateway.Site2SMS;
-        //        SMS.MashapeKey = "ajW5MqLWtAmshow3gkBQzvSWW8g2p1d5RI3jsnzhpldUSvQanM";
-        //        SMS.Username = "9699026421";
-        //        SMS.Password = "password";
-        //        SMS.SendSms("8898284281", "teghfghf");
+            SmtpClient smtpClient = new SmtpClient();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string msg = ex.ToString();
-        //    }
+            MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["SenderEmail"].ToString(), ConfigurationManager.AppSettings["SenderName"].ToString());
+            MailAddress to = new MailAddress(Email);
+            MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
+            message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
+            message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
+            //message.From = fromAddress;
+            //message.To.Add(Email);
+            message.Subject = "Nanjil Catholic College of Arts & Science";
+            message.Priority = MailPriority.High;
+            message.IsBodyHtml = true;
+            string pass = db.tbl_user.Where(m => m.UserName == Email).Select(m => m.Password).FirstOrDefault();
+            string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br/><br/>";
+            msg = msg + "Your UserName : " + Email + ".<br/>";
+            msg = msg + "Your Password : " + pass + ".<br/>";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            message.Body = msg;
+            smtpClient.Send(message);
+        }
 
-        //}
+        private string SendSMS(int EmpId)
+        {
+            string stemailid;
+            string mobileno;
 
-        //public static bool Send(string senderMobileNo, string senderPassword, string MshapeKey, string receiverMobileNo, string Message)
-        //{
-        //    bool isSent = true;
-        //    try
-        //    {
-        //        WebRequest request = WebRequest.Create("https://site2sms.p.mashape.com/index.php?msg="
-        //            + Message + "&phone=" + receiverMobileNo + "&pwd=" + senderPassword + "&uid=" + senderMobileNo);
-        //        request.Headers.Add("X-Mashape-Key", MshapeKey);
-        //        WebResponse response = request.GetResponse();
-        //        return isSent;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string msg = ex.ToString();
-        //        return false;
-        //    }
-        //}
+            tbl_employee st = db.tbl_employee.Where(x => x.Empid == EmpId).FirstOrDefault();
+            stemailid = st.Emailid;
+            mobileno = st.MobileNo;
+
+            string pass = db.tbl_user.Where(m => m.UserName == stemailid).Select(m => m.Password).FirstOrDefault();
+            string msg = "Welcome to Nanjil Catholic College of Arts & Science" + Environment.NewLine;
+            msg = msg + "U/N: " + stemailid + Environment.NewLine;
+            msg = msg + "P/W: " + pass + Environment.NewLine;
+
+            String message = HttpUtility.UrlEncode(msg);
+            using (var wb = new WebClient())
+            {
+                
+                byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"username" , "ranjithkumar01@gmail.com"},
+                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"numbers" , mobileno},
+                {"message" , message},
+                {"sender" , "24HDS"}
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                return result;
+            }
+        }
+
+        private void SendEmails(string Email)
+        {
+            SmtpClient smtpClient = new SmtpClient();
+
+            MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["SenderEmail"].ToString(), ConfigurationManager.AppSettings["SenderName"].ToString());
+            MailAddress to = new MailAddress(Email);
+            MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
+            message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
+            message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
+
+            message.Subject = "Nanjil Catholic College of Arts & Science";
+            message.Priority = MailPriority.High;
+            message.IsBodyHtml = true;
+
+            string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br/><br/>";
+            msg = msg +  db.tbl_employee.OrderByDescending(m => m.Empid).Select(m => m.Emailid).FirstOrDefault() + " .<br/>";
+            msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br/>";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            message.Body = msg;
+            smtpClient.Send(message);
+        }
+
+        private string SendUpdateSMS(int EmpId)
+        {
+            string stemailid;
+            string mobileno;
+
+            tbl_employee st = db.tbl_employee.Where(x => x.Empid == EmpId).FirstOrDefault();
+            stemailid = st.Emailid;
+            mobileno = st.MobileNo;
+
+            
+            string msg = "Nanjil Catholic College of Arts & Science" + Environment.NewLine;
+            msg = msg + "Your Profile Updated Successfully";
+           
+
+            String message = HttpUtility.UrlEncode(msg);
+            using (var wb = new WebClient())
+            {
+                //changes..
+                byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"username" , "ranjithkumar01@gmail.com"},
+                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"numbers" , mobileno},
+                {"message" , message},
+                {"sender" , "24HDS"}
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                return result;
+            }
+        }
     }
 }

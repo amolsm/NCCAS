@@ -474,7 +474,7 @@ namespace SchoolManagementSystems.Controllers
                     el.Empid = id;
                     el.LeaveStartDate = date;
                     el.LeaveEndDate = date;
-                    el.LeaveType = Convert.ToInt32(LeaveType);
+                    el.LeaveType = LeaveType;
                     el.Description = r;
                     el.IsApprove = true;
                     db.tbl_EmployeeLeave.AddObject(el);

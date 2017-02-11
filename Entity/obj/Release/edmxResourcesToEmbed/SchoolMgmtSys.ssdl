@@ -439,9 +439,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="Empid" Type="int" />
     <Property Name="LeaveStartDate" Type="datetime" />
     <Property Name="LeaveEndDate" Type="datetime" />
-    <Property Name="LeaveType" Type="int" />
     <Property Name="Description" Type="varchar" MaxLength="255" />
     <Property Name="IsApprove" Type="bit" />
+    <Property Name="LeaveType" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Event">
     <Key>
@@ -881,6 +881,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="GuardianOtherQalName" Type="varchar" MaxLength="100" />
     <Property Name="MotherOtherOccName" Type="varchar" MaxLength="100" />
     <Property Name="MotherOtherQualName" Type="varchar" MaxLength="100" />
+    <Property Name="StdMobNo" Type="varchar" MaxLength="15" />
+    <Property Name="StdRegNo" Type="varchar(max)" />
+    <Property Name="emContactRel" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="tbl_StudentAttendance">
     <Key>
@@ -970,6 +973,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="departmentid" Type="int" />
     <Property Name="yearid" Type="int" />
     <Property Name="subjectid" Type="int" />
+    <Property Name="teachername" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_timetable">
     <Key>
@@ -1147,6 +1151,15 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="leaveid" Type="int" Mode="In" />
+    <Parameter Name="empid" Type="int" Mode="In" />
+    <Parameter Name="startdate" Type="datetime" Mode="In" />
+    <Parameter Name="enddate" Type="datetime" Mode="In" />
+    <Parameter Name="leavetype" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="isapprove" Type="bit" Mode="In" />
   </Function>
   <Function Name="sp_employee_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Empid" Type="int" Mode="In" />
@@ -1454,6 +1467,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetStudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
@@ -1564,6 +1578,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_StaffAttandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="staffid" Type="int" Mode="In" />
+    <Parameter Name="attendancedate" Type="datetime" Mode="In" />
+    <Parameter Name="intime" Type="datetime" Mode="In" />
+    <Parameter Name="outtime" Type="datetime" Mode="In" />
+    <Parameter Name="absent" Type="bit" Mode="In" />
+    <Parameter Name="reason" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_State_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Stateid" Type="int" Mode="In" />
@@ -1712,6 +1734,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="GuardianOtherQalName" Type="varchar" Mode="In" />
     <Parameter Name="MotherOtherOccName" Type="varchar" Mode="In" />
     <Parameter Name="MotherOtherQualName" Type="varchar" Mode="In" />
+    <Parameter Name="StdMobNo" Type="varchar" Mode="In" />
+    <Parameter Name="StdRegNo" Type="varchar" Mode="In" />
+    <Parameter Name="empContactRel" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Studid" Type="int" Mode="In" />
@@ -1818,7 +1843,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
-    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="teachername" Type="varchar" Mode="In" />
     <Parameter Name="courseid" Type="int" Mode="In" />
     <Parameter Name="departmenid" Type="int" Mode="In" />
     <Parameter Name="yearid" Type="int" Mode="In" />

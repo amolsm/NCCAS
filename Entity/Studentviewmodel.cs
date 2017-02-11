@@ -108,13 +108,13 @@ namespace Entity
         [DisplayName("Bus RTO Number : ")]
         public string BusRTONo { get; set; }
 
-        [DisplayName("Doctor Name : ")]
+        [DisplayName("Name : ")]
         public string EmergencyPhysicianNm { get; set; }
 
-        [DisplayName("Doctor Contact : ")]
+        [DisplayName("Contact : ")]
         public string EmergencyPhysicianContact { get; set; }
 
-        [DisplayName("Doctor Address : ")]
+        [DisplayName("Address : ")]
         public string EmergencyAddress { get; set; }
 
         [DisplayName("Student's Pic : ")]
@@ -434,6 +434,15 @@ namespace Entity
 
         [DisplayName("Course Year : ")]
         public int courseyear { get; set; }
+
+        [DisplayName("Registration.No.: ")]
+        public string StdRegNo { get; set; }
+
+        [DisplayName("Register Mobile No.: ")]
+        public string StdRegMob { get; set; }
+
+        [DisplayName("Enter  RelationShip ")]
+        public string emcontactrel { get; set; }
 
         public List<tbl_YearMaster> yearlist { get; set; }
 

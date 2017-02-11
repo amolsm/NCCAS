@@ -132,7 +132,7 @@
                 $("#PrPgGradeLeaving").val('C');
             }
         });
-       
+
         function clearmsg() {
             $("#msg").hide();
             $("#msgs").hide();
@@ -140,7 +140,7 @@
         $("#Busid").hide();
         $("#BusNo").hide();
         $("#attach").hide();
-   
+
 
         //        $("#tabss").find("#tab3").addClass("ui-tabs-active ui-state-active");
         //        $("#tabs - 3").attr("display", "block");
@@ -211,7 +211,7 @@
                 });
             }
         }
-       
+
 
         function ReloadState() {
             $("#DepartmentId").empty();
@@ -224,7 +224,7 @@
                 ReloadState();
             }
             else {
-               
+
                 $("#DepartmentId").empty();
                 $.ajax({
                     type: 'POST',
@@ -254,7 +254,7 @@
         }
 
         $("#Classid").change(function () {
-          
+
             ReloadCountry();
         })
 
@@ -262,10 +262,50 @@
 
             ReloadCourseYear();
         })
+        $("#academicyear").change(function () {
 
+            ReloadRegisteartionNo();
+        })
+
+        function ReloadRegisteartionNo() {
+            if ($("#academicyear").val() == "" || $("#academicyear").val() == "0") {
+                $("#StdRegNo").val('');
+            }
+            else {
+                  $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetRegisterationNo")',
+                    dataType: 'json',
+                    data: {
+                        acadmicyear:  $("#academicyear option:selected").text(),
+                        deptname: $("#DepartmentId option:selected").text()
+                    },
+                    success: function (data) {
+                        if (data != "") {
+                            
+                            var accadmic = $("#academicyear option:selected").text();
+                            var year = accadmic.substring(0, 4);
+                            var dept = $("#DepartmentId option:selected").text();
+                            var deptname = dept.substring(0, 3);
+                            var count = data;
+                            var stdreg = (year + deptname + "00" + count)
+                            $("#StdRegNo").val(stdreg);
+                        }
+                        else {
+                            
+                            $("#StdRegNo").val('');
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
 
         $("#FatherOccpationid").change(function () {
-          
+
             if ($("#FatherOccpationid option:selected").text() == "Others")
             {
                 $('#fatheroccupation').show();
@@ -275,8 +315,8 @@
                 $('#fatheroccupation').hide();
                 $('#fatheroccupation').fadeOut('slow');
             }
-               
-           
+
+
         })
 
         $("#FatherQualificationid").change(function () {
@@ -350,7 +390,7 @@
         })
 
 
-        
+
 
 
         function ReloadYear() {
@@ -705,6 +745,9 @@
                     else {
                         $("#attach").hide();
                     }
+                    $("#StdRegMob").val(data.StdMobNo);
+                    $("#StdRegNo").val(data.StdRegNo);
+                    $("#emcontactrel").val(data.emContactRel);
                     $("#pic1").append('<img src="/Student/getImg1/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Student Pic">');
                     $("#pic2").append('<img src="/Student/getImg2/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Father Pic">');
                     $("#pic3").append('<img src="/Student/getImg3/' + $("#Studid").val() + '" style="width: 190px;height: 220px;" alt="Guardian Pic">');
@@ -1018,17 +1061,17 @@
                     $("#ParishName").css({
                         "border": "1px solid red"
                     });
-                 
+
                     alert("Parish Name Mandatory!");
                     e.preventDefault();
                     return false;
-                } 
+                }
                 else {
                     $("#parish").css({
                     "border": "",
                     "background": ""
                     });
-                   
+
                 }
 
                 if ($("#DioceseName").val() == '') {
@@ -1048,9 +1091,9 @@
                     });
 
                 }
-                
+
             }
-           
+
 
             if ($("#datepicker").val() == '') {
                 cnt++;
@@ -1132,7 +1175,7 @@
                 });
             }
 
-         
+
 
             if ($("#Religionid").val() == '') {
                 cnt++;
@@ -1978,7 +2021,7 @@
             if ($("#Religionid").val() == 2 && $("#Casteid").val() == 2)
             { $("#parish").show(); $("#diocese").show() }
             else { $("#parish").hide(); $("#diocese").hide() }
-            
+
         });
 
         $("#DocumentType").change(function () {
@@ -1988,7 +2031,7 @@
 
         });
 
-       
+
 
 
         $("#Religionid").change(function () {
@@ -2185,7 +2228,7 @@
                 return false;
             }
         });
-        
+
         $("#PrScTotalMarks").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 $("#errmsg").html("Digits Only").show().fadeOut("slow");
@@ -2278,7 +2321,7 @@
                 });
             }
         });
-      
+
         $('#MotherEmail').blur(function () {
             if (!ValidateEmail($("#MotherEmail").val())) {
                 $("#MotherEmail").css({
@@ -2523,7 +2566,13 @@
                                                                 @Html.ValidationMessageFor(model => model.academicyear)
                                                             </div>
                                                         </div>
-
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.StdRegNo, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.StdRegNo, new { placeholder = "Student Registeration No.", maxlength = "50", @readonly="true", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.StdRegNo)
+                                                            </div>
+                                                        </div>
                                                         
 
                                                         <div class="control-group span5">
@@ -2758,6 +2807,13 @@
                                                                 @Html.TextBoxFor(model => model.ECode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
                                                                 @Html.TextBoxFor(model => model.EmergencyPhysicianContact, new { placeholder = "Enter Emergency Physician Contact", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.EmergencyPhysicianContact)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.emcontactrel, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.emcontactrel, new { placeholder = "Enter RelationShip", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.emcontactrel)
                                                             </div>
                                                         </div>
                                                         <div class="control-group span5">
@@ -3066,6 +3122,14 @@
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Pincode, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.Pincode)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.StdRegMob, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.StdRegMob, new { placeholder = "Enter Mobile No. For SMS", maxlength = "10", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.StdRegMob)
                                                             </div>
                                                         </div>
                                                     </fieldset>

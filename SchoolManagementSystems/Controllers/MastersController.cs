@@ -1140,13 +1140,13 @@ namespace SchoolManagementSystems.Controllers
             FillPermission(51);
             if (String.IsNullOrEmpty(Search_Data))
             {
-                _svm.classlistdetails = db.tbl_class.Where(c => c.status == true).ToList();
+                _svm.classlistdetails = db.tbl_CourseMaster.Where(c => c.Status == true).ToList();
                 _svm._DivisionList = db.sp_getDivision().ToList();
                 
             }
             else
             {
-                _svm.classlistdetails = db.tbl_class.Where(c => c.status == true).ToList();
+                _svm.classlistdetails = db.tbl_CourseMaster.Where(c => c.Status == true).ToList();
                 _svm._DivisionList = db.sp_getDivision().Where(x => x.DivisionName.ToUpper().Contains(Search_Data.ToUpper())
                                                         || x.Classnm.ToUpper().Contains(Search_Data.ToUpper())
                                                         || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();

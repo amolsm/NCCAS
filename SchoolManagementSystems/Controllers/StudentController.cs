@@ -14,6 +14,8 @@ using System.Text;
 using Ionic.Zip;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -680,12 +682,22 @@ namespace SchoolManagementSystems.Controllers
                          svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                          svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                         svm.FatherOccumationName,svm.FatherQualificationName,svm.GuardianOccpationName,svm.GuardianQualificationName,svm.MotherOccpationName,svm.MotherQualificationName).ToString();
+                         svm.FatherOccumationName,svm.FatherQualificationName,svm.GuardianOccpationName,svm.GuardianQualificationName,svm.MotherOccpationName,svm.MotherQualificationName,svm.StdRegMob, svm.StdRegNo, svm.emcontactrel).ToString();
                             
                         }
                         catch(Exception ex) { string msg = ex.ToString();
                           //  TempData["StudentError"] = msg;
-                        } }
+                        }
+
+                        try
+                        {
+                            int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
+                            CreateUsers(svm.StudEmail, 1, studid, yr);
+                            CreateUsers(svm.FatherEmail, 2, studid, yr);
+                            SendSMS(studid);
+                        }
+                        catch (Exception ex) { string msg = ex.ToString(); }
+                    }
                     else if (group1 == "0" && group1!=null)
                     {
                         try
@@ -703,33 +715,24 @@ namespace SchoolManagementSystems.Controllers
                           svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                           svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                           svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                          svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName).ToString();
+                          svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel).ToString();
 
                         }
                         catch (Exception ex) { string msg = ex.ToString();
                             //TempData["StudentError"] = msg;
                         }
-                        if (svm.Studid != 0)
+                        try
                         {
-                            try
-                            {
-                            int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
-                            CreateUsers(svm.StudEmail, 1, studid, yr);
-                            CreateUsers(svm.FatherEmail, 2, studid, yr);
-                            }
-                            catch (Exception ex) { string msg = ex.ToString(); }
+                            SendEmails(svm.StudEmail);
+                            SendUpdateSMS(svm.Studid);
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            try
-                            {
-                                SendEmails(svm.StudEmail);
-                            }
-                            catch (Exception ex) { string msg = ex.ToString();
-                              //  TempData["StudentError"] = msg;
-                            }
+                            string msg = ex.ToString();
                         }
-                    }
+
+
+                        }
                 }
             }
             else
@@ -742,7 +745,7 @@ namespace SchoolManagementSystems.Controllers
                            svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
                            svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename,svm.courseyear,
-                         svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName).ToString();
+                         svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName,svm.StdRegMob,svm.StdRegNo,svm.emcontactrel).ToString();
                 }
                 catch (Exception ex) { string msg = ex.ToString();
                     //TempData["StudentError"] = msg;
@@ -765,8 +768,9 @@ namespace SchoolManagementSystems.Controllers
             var x = (from y in db.tbl_user where y.UserName == UserName select y).FirstOrDefault();
             if (x == null)
             {
-                db.sp_User_DML(0, UserName, Password, Type, Genid, 0, academicyear, "");
+                db.sp_User_DML(0, UserName, Password, Type, Genid, 1, academicyear, "");
                 SendUserEmails(UserName);
+
             }
         }
         private void SendUserEmails(string Email)
@@ -781,14 +785,14 @@ namespace SchoolManagementSystems.Controllers
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
             //message.From = fromAddress;
             //message.To.Add(Email);
-            message.Subject = "A-One School Management";
+            message.Subject = "Nanjil Catholic College of Arts & Science";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
             string pass = db.tbl_user.Where(m => m.UserName == Email).Select(m => m.Password).FirstOrDefault();
-            string msg = "<b>“Welcome to A-One School Management Systems”</b><br/><br/>";
+            string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br/><br/>";
             msg = msg + "Your UserName : " + Email + ".<br/>";
             msg = msg + "Your Password : " + pass + ".<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>A-One School Team";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -802,14 +806,14 @@ namespace SchoolManagementSystems.Controllers
             message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
            
-            message.Subject = "A-One School Management";
+            message.Subject = "Nanjil Catholic College of Arts & Science";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
 
-            string msg = "<b>“Welcome to A-One School Management Systems”</b><br/><br/>";
-            msg = msg + "Your Student Registeration Number is : " + System.DateTime.Now.Year + "0000" + db.tbl_student.OrderByDescending(m => m.Studid).Select(m => m.Studid).FirstOrDefault() + " .<br/>";
-            msg = msg + "Here We would like to inform you that You are Online Register in our A-One School and we will revert back to shortly with more details in depth.<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>A-One School Team";
+            string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br/><br/>";
+            msg = msg + "Dear Student: "  + db.tbl_student.OrderByDescending(m => m.Studid).Select(m => m.Studnm).FirstOrDefault() + " .<br/>";
+            msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br/>";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -1015,6 +1019,77 @@ namespace SchoolManagementSystems.Controllers
                          select new { meta.yearid, meta.YearName };
 
             return Json(new SelectList(yeardata, "yearid", "YearName"));
-        } 
+        }
+
+
+        private string SendSMS(int studentid)
+        {
+            string stemailid;
+            string mobileno;
+          
+            tbl_student st = db.tbl_student.Where(x => x.Studid == studentid).FirstOrDefault();
+            stemailid = st.StudEmail;
+            mobileno = st.StdMobNo;
+         
+            string pass = db.tbl_user.Where(m => m.UserName == stemailid).Select(m => m.Password).FirstOrDefault();
+            string msg = "Welcome to Nanjil Catholic College of Arts & Science"+ Environment.NewLine;
+            msg = msg + "U/N: " + stemailid + Environment.NewLine;
+            msg = msg + "P/W: " + pass + Environment.NewLine;
+           
+            String message = HttpUtility.UrlEncode(msg);
+            using (var wb = new WebClient())
+            {
+                byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"username" , "ranjithkumar01@gmail.com"},
+                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"numbers" , mobileno},
+                {"message" , message},
+                {"sender" , "24HDS"}
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                return result;
+            }
+        }
+
+        public JsonResult GetRegisterationNo(string acadmicyear, string deptname)
+        {
+            string acyear = acadmicyear.Substring(0, 4);
+            var data = db.sp_GetStdCount();
+          
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        private string SendUpdateSMS(int studentId)
+        {
+            string stemailid;
+            string mobileno;
+
+            tbl_student st = db.tbl_student.Where(x => x.Studid == studentId).FirstOrDefault();
+            stemailid = st.StudEmail;
+            mobileno = st.StdMobNo;
+
+
+            string msg = "Nanjil Catholic College of Arts & Science" + Environment.NewLine;
+            msg = msg + "Your Profile Updated Successfully";
+
+
+            String message = HttpUtility.UrlEncode(msg);
+            using (var wb = new WebClient())
+            {
+                
+                byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"username" , "ranjithkumar01@gmail.com"},
+                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"numbers" , mobileno},
+                {"message" , message},
+                {"sender" , "24HDS"}
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                return result;
+            }
+        }
+
     }
 }

@@ -40,7 +40,7 @@ namespace Entity
         public string Description { get; set; }
 
         [DisplayName("Leave Type")]
-        public int LeaveTypeid { get; set; }
+        public string LeaveTypeid { get; set; }
 
         [DisplayName("Year")]
         public int year { get; set; }
