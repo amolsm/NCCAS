@@ -88,8 +88,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="IsActive" Type="bit" />
     <Property Name="Subjectid" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_ims.dbo.tbl_Chaptercomplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_Chaptercomplete">
     <Key>
       <PropertyRef Name="ID" />
@@ -102,6 +100,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_Chaptercomplete' does not hav
     <Property Name="Yearid" Type="int" />
     <Property Name="Chapterid" Type="int" />
     <Property Name="complete" Type="bit" />
+    <Property Name="CompleteDate" Type="datetime" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="tbl_city">
     <Key>
@@ -896,6 +896,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="AttendanceDate" Type="datetime" />
     <Property Name="CreatedBy" Type="int" />
     <Property Name="Subjectid" Type="int" />
+    <Property Name="Session" Type="int" />
   </EntityType>
   <EntityType Name="tbl_StudentCategory">
     <Key>
@@ -1047,6 +1048,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="createdby" Type="int" Mode="In" />
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
     <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="session" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Automation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_bloodgroup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1882,6 +1884,17 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_ChapterComplete_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="hourdesi_ims">
+    <Parameter Name="Teacherid" Type="int" Mode="In" />
+    <Parameter Name="complete" Type="bit" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteDate" Type="datetime" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="Chapterid" Type="int" Mode="In" />
+    <Parameter Name="Departmentid" Type="int" Mode="In" />
+    <Parameter Name="Yearid" Type="int" Mode="In" />
+    <Parameter Name="Courseid" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
@@ -1892,6 +1905,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="Self.tbl_Chaptercomplete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
@@ -1944,18 +1958,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
 [sys_UserPermission].[UserRoleid] AS [UserRoleid], 
 [sys_UserPermission].[Permissionid] AS [Permissionid]
 FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="Self.tbl_Chaptercomplete" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[tbl_Chaptercomplete].[ID] AS [ID], 
-[tbl_Chaptercomplete].[Teacherid] AS [Teacherid], 
-[tbl_Chaptercomplete].[Subjectid] AS [Subjectid], 
-[tbl_Chaptercomplete].[Departmentid] AS [Departmentid], 
-[tbl_Chaptercomplete].[Courseid] AS [Courseid], 
-[tbl_Chaptercomplete].[Yearid] AS [Yearid], 
-[tbl_Chaptercomplete].[Chapterid] AS [Chapterid], 
-[tbl_Chaptercomplete].[complete] AS [complete]
-FROM [dbo].[tbl_Chaptercomplete] AS [tbl_Chaptercomplete]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tbl_days" EntityType="Self.tbl_days" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

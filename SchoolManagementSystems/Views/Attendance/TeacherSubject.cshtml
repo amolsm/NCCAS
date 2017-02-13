@@ -111,10 +111,13 @@
 
                 }
                 else {
-                    
-                   alert("Please Check the box !!");
-                   presentdetails = [];
-                   return false;
+                   //var Subjectids = ($(this).val());
+                   teacher = ($("#leave" + Subjectids).val());
+                   presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
+
+                   //alert("Please Check the box !!");
+                   //presentdetails = [];
+                   //return false;
           
                     //presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
                 }
@@ -155,11 +158,11 @@
 
             if ($("#Add_header").is(":checked")) {
                 $(".addcls").prop('checked', true);
-                $(".show1").attr("disabled", true);
+                $(".show1").attr("disabled", false);
             }
             else {
                 $(".addcls").prop('checked', false);
-                $(".show1").attr("disabled", false);
+                $(".show1").attr("disabled", true);
 
             }
 
@@ -173,11 +176,11 @@
             var remark = "";
 
             if ($("#Present_" + empid).is(":checked")) {
-                $("#leave" + empid).attr("disabled", true);
+                $("#leave" + empid).attr("disabled", false);
 
             }
             else {
-                $("#leave" + empid).attr("disabled", false);
+                $("#leave" + empid).attr("disabled", true);
 
             }
 

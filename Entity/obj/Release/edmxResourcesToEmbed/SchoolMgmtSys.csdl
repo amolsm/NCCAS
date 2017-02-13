@@ -436,15 +436,6 @@
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" />
-    <FunctionImport Name="sp_Attandance_DML">
-      <Parameter Name="StudentID" Mode="In" Type="Int32" />
-      <Parameter Name="Present" Mode="In" Type="Boolean" />
-      <Parameter Name="Reason" Mode="In" Type="String" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <EntitySet Name="tbl_AssignDivision" EntityType="SchoolMgmtSysModel.tbl_AssignDivision" />
     <EntitySet Name="tbl_online_student" EntityType="SchoolMgmtSysModel.tbl_online_student" />
     <FunctionImport Name="sp_student_online_admission1">
@@ -582,7 +573,6 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
     <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
     <FunctionImport Name="sp_Subject_DML">
       <Parameter Name="Subjectid" Mode="In" Type="Int32" />
@@ -973,6 +963,28 @@
       <Parameter Name="empContactRel" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_GetStdCount" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_ChapterComplete_DML">
+      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="complete" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
+    <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" />
+    <FunctionImport Name="sp_Attandance_DML">
+      <Parameter Name="StudentID" Mode="In" Type="Int32" />
+      <Parameter Name="Present" Mode="In" Type="Boolean" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="session" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1677,18 +1689,6 @@
     <Property Type="String" Name="Classnm" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
   </ComplexType>
-  <EntityType Name="tbl_StudentAttendance">
-    <Key>
-      <PropertyRef Name="AttendanceID" />
-    </Key>
-    <Property Type="Int32" Name="AttendanceID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="StudentID" Nullable="false" />
-    <Property Type="Boolean" Name="Present" />
-    <Property Type="String" Name="Reason" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="AttendanceDate" Precision="3" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-  </EntityType>
   <EntityType Name="tbl_AssignDivision">
     <Key>
       <PropertyRef Name="id" />
@@ -1931,19 +1931,6 @@
     <Property Name="yearid" Type="Int32" />
     <Property Name="createdby" Type="Int32" />
     <Property Name="IsActive" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbl_Chaptercomplete">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Teacherid" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="Departmentid" Type="Int32" />
-    <Property Name="Courseid" Type="Int32" />
-    <Property Name="Yearid" Type="Int32" />
-    <Property Name="Chapterid" Type="Int32" />
-    <Property Name="complete" Type="Boolean" />
   </EntityType>
   <EntityType Name="tbl_subject">
     <Key>
@@ -2389,5 +2376,33 @@
     <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacherid" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Departmentid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="Yearid" Type="Int32" />
+    <Property Name="Chapterid" Type="Int32" />
+    <Property Name="complete" Type="Boolean" />
+    <Property Name="CompleteDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_StudentAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+    </Key>
+    <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="Present" Type="Boolean" />
+    <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Session" Type="Int32" />
   </EntityType>
 </Schema>

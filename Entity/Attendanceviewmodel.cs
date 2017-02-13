@@ -54,6 +54,10 @@ namespace Entity
         [DisplayName("Subject Name")]
         public int subjectid { get; set; }
 
+        [DisplayName("Session Name")]
+        public int session { get; set; }
+
+
         [DisplayName("Leave Start Date")]
         public DateTime LeaveStartDate { get; set; }
 

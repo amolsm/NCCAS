@@ -158,11 +158,12 @@
                     var studentid = ($(this).val());
                     var remark = '';
                     var reason = '';
+                    var session = ($("#session").val());
                     //var usename = HttpContext.Current.Session["User"].ToString();
                                 
                     if ($(this).prop('checked')) {
                         remark = 'true';
-                        presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject);
+                        presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject + "," + session);
 
                     }
                     else {
@@ -171,7 +172,7 @@
 
                         var reason = ($("#Reason_" + studentid).val());
                         if (reason != "") {
-                            presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject);
+                            presentdetails.push(studentid + "," + PresentDate + "," + remark + "," + reason + "," + subject+"," + session);
 
                         }
                         else {
@@ -283,12 +284,26 @@
     
         $("#header").click(function () {
             if ($("#Add_header").is(":checked")) {
-                $(".addcls").prop('checked', true);  
+                $(".addcls").prop('checked', true);
+                $(".Reason").attr("disabled", true);
             }
             else {
                 $(".addcls").prop('checked', false);
+                $(".Reason").attr("disabled", false);
             }
 
+        });
+
+        $(document).on('change', '[type=checkbox]', function (e) {
+            var empid = this.id.replace("Present_", "");
+            var absent = $("#Present_" + empid);
+            var remark = "";
+            if ($("#Present_" + empid).is(":checked")) {
+                $("#Reason_" + empid).attr("disabled", true);
+            }
+            else {
+                $("#Reason_" + empid).attr("disabled", false);
+            }
         });
         $('#subjectid').change(function () {
             debugger;
@@ -427,6 +442,30 @@
                                                     @Html.TextBoxFor(model => model.AttendanceDate, new { id = "datepicker", placeholder = "Select Date of Attendance"})
                                                     @Html.ValidationMessageFor(model => model.AttendanceDate)
                                                            </div>
+                                                </div>
+                                                <div class="control-group required span5">
+                                                    @Html.LabelFor(model => model.session, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        <div class="pull-left">
+                                                            @{
+                                                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                                                listItems.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Morning",
+                                                                    Value = "1"
+                                                                });
+                                                                listItems.Add(new SelectListItem
+                                                                {
+                                                                    Text = "Afternoon",
+                                                                    Value = "2",
+
+                                                                });
+                                                                }
+                                                            @Html.DropDownListFor(model => model.session, listItems, "-- Select Session --")
+
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.session)
+                                                    </div>
                                                 </div>
                                                 <div class="control-group span5" id="staffreason" style="display: none;">
                                                 </div>

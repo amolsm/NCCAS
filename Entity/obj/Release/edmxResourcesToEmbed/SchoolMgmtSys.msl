@@ -955,20 +955,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_Division_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Division_DML" />
-    <EntitySetMapping Name="tbl_StudentAttendance">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentAttendance">
-        <MappingFragment StoreEntitySet="tbl_StudentAttendance">
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-          <ScalarProperty Name="Present" ColumnName="Present" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-          <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_Attandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Attandance_DML" />
     <EntitySetMapping Name="tbl_AssignDivision">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_AssignDivision">
         <MappingFragment StoreEntitySet="tbl_AssignDivision">
@@ -1267,20 +1253,6 @@
           <ScalarProperty Name="divisionid" ColumnName="divisionid" />
           <ScalarProperty Name="studentid" ColumnName="studentid" />
           <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Chaptercomplete">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
-        <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
-          <ScalarProperty Name="complete" ColumnName="complete" />
-          <ScalarProperty Name="Chapterid" ColumnName="Chapterid" />
-          <ScalarProperty Name="Yearid" ColumnName="Yearid" />
-          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-          <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1752,5 +1724,37 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
     <FunctionImportMapping FunctionImportName="sp_GetStdCount" FunctionName="SchoolMgmtSysModel.Store.sp_GetStdCount" />
+    <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
+    <EntitySetMapping Name="tbl_Chaptercomplete">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
+        <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="complete" ColumnName="complete" />
+          <ScalarProperty Name="Chapterid" ColumnName="Chapterid" />
+          <ScalarProperty Name="Yearid" ColumnName="Yearid" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_StudentAttendance">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentAttendance">
+        <MappingFragment StoreEntitySet="tbl_StudentAttendance">
+          <ScalarProperty Name="Session" ColumnName="Session" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Attandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Attandance_DML" />
   </EntityContainerMapping>
 </Mapping>

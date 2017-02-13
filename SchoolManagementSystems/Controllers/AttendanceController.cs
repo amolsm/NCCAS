@@ -7,6 +7,8 @@ using Entity;
 using System.Net.Mail;
 using System.Configuration;
 using System.Globalization;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -265,16 +267,22 @@ namespace SchoolManagementSystems.Controllers
                 sa.AttendanceDate = Convert.ToDateTime(s1[1].ToString());
                 sa.Present = Convert.ToBoolean(s1[2].ToString());
                 sa.Reason = s1[3].ToString();
-
-
-               // db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason,sa.CreatedBy,sa.AttendanceDate);
-
                 sa.Subjectid = Convert.ToInt32(s1[4].ToString());
+                sa.Session = Convert.ToInt32(s1[5].ToString());
+                if(sa.Present==false)
+                {
+                    SendSMS(sa.StudentID, Convert.ToInt32(sa.Session));
+                }
+
+               
+                // db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason,sa.CreatedBy,sa.AttendanceDate);
+
+
                 //sa.CreatedBy = Convert.ToInt32(s1[5].ToString());
                 //string session =  System.Web.HttpContext.Current.Session["sessionString"]; 
                 try
                 {
-                    db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid);
+                    db.sp_Attandance_DML(sa.StudentID, sa.Present, sa.Reason, sa.CreatedBy, sa.AttendanceDate, sa.Subjectid,sa.Session);
                 }
                 catch(Exception ex)
                 { string msg = ex.ToString(); }
@@ -628,6 +636,44 @@ namespace SchoolManagementSystems.Controllers
             var students = db.tbl_employee.Select(m => new { m.Empid, m.FirstName}).ToList();
             var leave = db.tbl_leave.Select(m => new { m.leaveid, m.leavename }).ToList();
             return Json(new { sub = students, leaves = leave }, JsonRequestBehavior.AllowGet);
+        }
+
+        private string SendSMS(int studentid,int Sessionid)
+        {
+            string stemailid;
+            string mobileno;
+            string studentname;
+            string sessionname;
+            tbl_student st = db.tbl_student.Where(x => x.Studid == studentid).FirstOrDefault();
+            stemailid = st.StudEmail;
+            mobileno = st.StdMobNo;
+            studentname = st.Studnm;
+            if (Sessionid == 1)
+            { sessionname = "Morning"; }
+            else
+            { sessionname = "Afternoon"; }
+
+
+
+            string msg = "Your ward " + studentname + Environment.NewLine;
+            msg = msg + "is absent for " + sessionname + "session" +Environment.NewLine;
+            msg = msg + "NCCAS";
+
+
+            String message = HttpUtility.UrlEncode(msg);
+            using (var wb = new WebClient())
+            {
+                byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"username" , "ranjithkumar01@gmail.com"},
+                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"numbers" , mobileno},
+                {"message" , message},
+                {"sender" , "24HDS"}
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                return result;
+            }
         }
 
     }
