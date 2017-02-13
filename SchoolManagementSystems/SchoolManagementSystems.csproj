@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\ChapterCompleteController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ExaminationController.cs" />
@@ -685,11 +686,9 @@
     <Content Include="Views\Masters\_CoursemasterList.cshtml" />
     <Content Include="Views\Masters\Course.cshtml" />
     <Content Include="Views\Masters\_courselistdetails.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\Attendance\Test.cshtml" />
->>>>>>> origin/master
     <Content Include="Views\Attendance\TeacherSubject.cshtml" />
+    <Content Include="Views\ChapterComplete\ChapterComplete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

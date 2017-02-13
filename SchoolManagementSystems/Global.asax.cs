@@ -27,8 +27,8 @@ namespace SchoolManagementSystems
 
         protected void Application_Error()
         {
-            Server.ClearError();
-            Response.Redirect("~/Login/Login");
+        //    Server.ClearError();
+        //    Response.Redirect("~/Login/Login");
         }
 
         public class SessionExpireAttribute : ActionFilterAttribute

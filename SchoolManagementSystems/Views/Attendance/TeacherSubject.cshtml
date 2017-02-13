@@ -152,17 +152,38 @@
         });
 
         $("#header").click(function () {
+
             if ($("#Add_header").is(":checked")) {
                 $(".addcls").prop('checked', true);
+                $(".show1").attr("disabled", true);
             }
             else {
                 $(".addcls").prop('checked', false);
+                $(".show1").attr("disabled", false);
+
             }
 
         });
+        $(document).on('change', '[type=checkbox]', function (e) {
 
-        $('#year').change(function () {
             debugger;
+            var empid = this.id.replace("Present_", "");
+
+            var absent = $("#Present_" + empid);
+            var remark = "";
+
+            if ($("#Present_" + empid).is(":checked")) {
+                $("#leave" + empid).attr("disabled", true);
+
+            }
+            else {
+                $("#leave" + empid).attr("disabled", false);
+
+            }
+
+
+        });
+        $('#year').change(function () {
             $("#insert").show();
             var Classid = $('#Classid').val();
             if (Classid == '') {
@@ -185,9 +206,9 @@
 
                     result.html('');
                     //$("#students").val(data.length);
-                    header = "<tr><th width='10%;' style='text-align:center'>Subject ID</th><th  width='30%;' style='text-align:center'>Subject Name</th><th width='10%;' style='text-align:center'><input type='checkbox' id='Add_header' />Select</th><th width='30%;' style='text-align:center'>Teacher Name</th>";
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='10%;' style='text-align:center'>Subject ID</th><th  width='30%;' style='text-align:center'>Subject Name</th><th width='10%;'><input type='checkbox' id='Add_header' />Select</th><th width='30%;' style='text-align:center'>Teacher Name</th></thead><table>";
                     head.html(header);
-                    table = "<table class='table-responsive tbl' id='tbl'><tbody>";
+                    table = "<table class='table tb-parshav tablesorter' id='tbl'><tbody>";
 
                     for (var i = 0; i < data.sub.length; i++) {
 
@@ -197,8 +218,8 @@
                         table += "<tr id=" + Subjectids + "><td width='10%;' style='text-align:center' id='subid " + Subjectids + "'>" + data.sub[i].Subjectid.toString()
                             + "</td><td  width='30%;'style='text-align:center'>"
                             + data.sub[i].SubjectNm.toString()
-                            + "</td><td width='10%;'><input class='addcls' type='checkbox' onchange='valueChanged()'  id='Present_" + data.sub[i].Subjectid.toString() + "'  value='" + data.sub[i].Subjectid.toString()
-                            + "'></td><td width='30%;' style='text-align:center'><select id='leave" + Subjectids + "'><option values='0'>---Select Teacher---</option>"
+                            + "</td><td width='10%;'><input class='addcls' type='checkbox' id='Present_" + data.sub[i].Subjectid.toString() + "'  value='" + data.sub[i].Subjectid.toString()
+                            + "'></td><td width='30%;' style='text-align:center'><select class='show1' id='leave" + Subjectids + "'><option values='0'>---Select Teacher---</option>"
                         for (var n = 0; n < data.teach.length; n++) {
                             table += "<option id='teacherid" + data.teach[n].Empid.toString() + "' values=" + data.teach[n].Empid.toString() + ">"
                             + data.teach[n].FirstName.toString() + "</option>";

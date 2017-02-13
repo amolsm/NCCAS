@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="assigndivisionviewmodel.cs" />
     <Compile Include="Attendanceviewmodel.cs" />
+    <Compile Include="Chaptercompleteviewmodel.cs" />
     <Compile Include="chapterviewmodel.cs" />
     <Compile Include="classviewmodel.cs" />
     <Compile Include="cityviewmodel.cs" />

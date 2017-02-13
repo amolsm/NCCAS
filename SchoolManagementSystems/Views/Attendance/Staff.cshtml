@@ -41,6 +41,7 @@
 
 
     $(document).ready(function () {
+        
 
         $("#insert").click(function () {
             debugger;
@@ -135,19 +136,6 @@
 
 
 
-
-        $("#header").click(function () {
-            if ($("#Add_header").is(":checked")) {
-                $(".addcls").prop('checked', true);
-            }
-            else {
-                $(".addcls").prop('checked', false);
-            }
-
-        });
-
-        //$("#Add_header").prop('checked', true);
-
         $.ajax({
 
             type: 'POST',
@@ -162,13 +150,13 @@
                     var StudentIds = $("#students").val(data.sub.length);
                     result.html('');
 
-                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='15%;' style='text-align:center'>Employee ID</th><th  width='25%;'  style='text-align:center'>Employee Name</th><th width='10%;'><input type='checkbox' id='Add_header' />Present</th><th width='25%;' style='text-align:center'>Leave Type</th><th width='25%;' style='text-align:center'>Reason</th></thead></table>";
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='15%;' style='text-align:center'>Employee ID</th><th  width='25%;'  style='text-align:center'>Employee Name</th><th width='10%;'><input  type='checkbox' id='Add_header' />Present</th><th width='25%;' style='text-align:center'>Leave Type</th><th width='25%;' style='text-align:center'>Reason</th></thead></table>";
                     head.html(header);
                     table = "<table class='table tb-parshav tablesorter'><tbody>";
                     for (var i = 0; i < data.sub.length; i++) {
                         StudentIds = data.sub[i].Empid;                                                                                                                                                                                                                     //onchange='valueChanged()'  
                         table += "<tr id=" + StudentIds + "><td width='15%;'  style='text-align:center'>" + data.sub[i].Empid.toString() + "</td><td  style='text-align:center' width='25%;'>" + data.sub[i].FirstName.toString() + "</td><td width='10%;'><input class='addcls' type='checkbox' id='Present_" + data.sub[i].Empid.toString() + "'  value='" + data.sub[i].Empid.toString()
-                       + "'></td><td width='25%;' style='text-align:center'><select style='text-align:center' id='leave" + StudentIds + "'><option values='0'>---Select Leave---</option>"
+                       + "'></td><td class='hchk' width='25%;' style='text-align:center'><select class='show1' style='text-align:center' id='leave" + StudentIds + "'><option values='0'>---Select Leave---</option>"
                         for (var n = 0; n < data.leaves.length; n++) {
                             table += "<option id='teacher" + data.leaves[n].leaveid.toString() + "' values=" + data.leaves[n].leaveid.toString() + ">"
                             + data.leaves[n].leavename.toString() + "</option>";
@@ -183,24 +171,49 @@
                 }
 
         });
-
-        $('input:checkbox.addcls').change(function (e) {
-
-            var empid = this.id.replace("Present_", "");
-
-            var absent = $("#Present_" + empid);
-            var remark = "";
-            if ($("#Present_" + empid).is(":checked")) {
-                $("#leave" + empid).removeClass("show");
-                $("#leave" + empid).addClass("hide");
-
-                return false;
+        //document.getElementById("Add_header").checked = true;
+       // $('#Add_header').prop('checked', true)
+        $("#header").click(function () {
+          
+            if ($("#Add_header").is(":checked")) {
+                $(".addcls").prop('checked', true); 
+                $(".show1").attr("disabled", true);
+                $(".Reason").attr("disabled", true);
             }
             else {
-                $("#leave" + empid).removeClass("hide");
-                $("#leave" + empid).addClass("show");
+                $(".addcls").prop('checked', false);
+                $(".show1").attr("disabled", false);
+                $(".Reason").attr("disabled", false);
+              
+               
             }
+            
         });
+
+       
+            $(document).on('change', '[type=checkbox]', function (e) {
+
+                debugger;
+                var empid = this.id.replace("Present_", "");
+
+                var absent = $("#Present_" + empid);
+                var remark = "";
+
+                if ($("#Present_" + empid).is(":checked")) {
+                    $("#leave" + empid).attr("disabled", true);
+                    $("#Reason_" + empid).attr("disabled", true);
+
+                }
+                else {
+                    $("#leave" + empid).attr("disabled", false);
+                    $("#Reason_" + empid).attr("disabled", false);
+
+                }
+
+
+            });
+        
+        
     });
 
 </script>
