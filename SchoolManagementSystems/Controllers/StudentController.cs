@@ -693,8 +693,9 @@ namespace SchoolManagementSystems.Controllers
                         {
                             int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
                             CreateUsers(svm.StudEmail, 1, studid, yr);
-                            CreateUsers(svm.FatherEmail, 2, studid, yr);
                             SendSMS(studid);
+                            CreateUsers(svm.FatherEmail, 2, studid, yr);
+                            
                         }
                         catch (Exception ex) { string msg = ex.ToString(); }
                     }

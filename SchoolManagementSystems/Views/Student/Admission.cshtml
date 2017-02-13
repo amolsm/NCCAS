@@ -19,24 +19,7 @@
         if ($("#DocumentType").val() == 7)
         { $("#doctype").show(); }
         else { $("#doctype").hide(); }
-        @*$("#insert").click(function (e) {
-            Validations(e);
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("Admission_DML")',
-                data: $('#frm').serialize() + "&evt=submit",
-                success: function (result) {
-                    $("#msgs").show();
-                    $("#lblmsgs").text("Student Info updated successfully!..");
-                    $("#lblmsgs").css({ "color": "green" });
-                    $("#lblmsgs").css({ "font-size": "15px" });
-                    $("#result").html(result);
-                    clear();
-
-                    ReloadPaging();
-                }
-          });
-        });*@
+      
         $("#insert").click(function (e) {
             Validations(e);
         });
@@ -1021,39 +1004,300 @@
                 });
             }
 
-
-
-            if ($("#Studfathernm").val() == '') {
+            if ($("#Gender").val() == '' || $("#Gender").val() == 0) {
                 cnt++;
-                $("#Studfathernm").css({
+                $("#Gender").css({
                     "border": "1px solid red"
                 });
-                alert("Father Name Mandatory!");
+                alert("Gender is Mandatory!");
                 e.preventDefault();
+                $("#Gender").focus();
                 return false;
             }
             else {
-                $("#Studfathernm").css({
+                $("#Gender").css({
                     "border": "",
                     "background": ""
                 });
             }
 
-            if ($("#Studmothernm").val() == '') {
+            if ($("#Classid").val() == '' || $("#Classid").val() == 0) {
                 cnt++;
-                $("#Studmothernm").css({
+                $("#Classid").css({
                     "border": "1px solid red"
                 });
-                alert("Mother Name Mandatory!");
+                alert("Course is Mandatory!");
                 e.preventDefault();
+                $("#Classid").focus();
                 return false;
             }
             else {
-                $("#Studmothernm").css({
+                $("#Classid").css({
                     "border": "",
                     "background": ""
                 });
             }
+
+            if ($("#DepartmentId").val() == '' || $("#DepartmentId").val() == 0) {
+                cnt++;
+                $("#DepartmentId").css({
+                    "border": "1px solid red"
+                });
+                alert("Department is Mandatory!");
+                e.preventDefault();
+                $("#DepartmentId").focus();
+                return false;
+            }
+            else {
+                $("#DepartmentId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#courseyear").val() == '' || $("#courseyear").val() == 0) {
+                cnt++;
+                $("#courseyear").css({
+                    "border": "1px solid red"
+                });
+                alert("Course Year is Mandatory!");
+                e.preventDefault();
+                $("#courseyear").focus();
+                return false;
+            }
+            else {
+                $("#courseyear").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#academicyear").val() == '' || $("#academicyear").val() == 0) {
+                cnt++;
+                $("#academicyear").css({
+                    "border": "1px solid red"
+                });
+                alert("Academic Year is Mandatory!");
+                e.preventDefault();
+                $("#academicyear").focus();
+                return false;
+            }
+            else {
+                $("#academicyear").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#StdRegNo").val() == '') {
+                cnt++;
+                $("#StdRegNo").css({
+                    "border": "1px solid red"
+                });
+                alert("Student Register No. is Mandatory!");
+                e.preventDefault();
+                $("#StdRegNo").focus();
+                return false;
+            }
+            else {
+                $("#StdRegNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#ApplicationID").val() == '') {
+                cnt++;
+                $("#ApplicationID").css({
+                    "border": "1px solid red"
+                });
+                alert("Application Id is Mandatory!");
+                e.preventDefault();
+                $("#ApplicationID").focus();
+                return false;
+            }
+            else {
+                $("#ApplicationID").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#RollNo").val() == '' || $("#RollNo").val() == 0) {
+                cnt++;
+                $("#RollNo").css({
+                    "border": "1px solid red"
+                });
+                alert("Roll Number is Mandatory!");
+                e.preventDefault();
+                $("#RollNo").focus();
+                return false;
+            }
+            else {
+                $("#RollNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#UniversityRegId").val() == '') {
+                cnt++;
+                $("#UniversityRegId").css({
+                    "border": "1px solid red"
+                });
+                alert("University Registration no. is Mandatory!");
+                e.preventDefault();
+                $("#UniversityRegId").focus();
+                return false;
+            }
+            else {
+                $("#UniversityRegId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#datepicker").val() == '01-Jan-01 12:00:00 AM' ||$("#datepicker").val() =='') {
+                cnt++;
+                $("#datepicker").css({
+                    "border": "1px solid red"
+                });
+                alert("DOB Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#datepicker").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+         
+
+            if ($("#StudEmail").val() == '') {
+                cnt++;
+                $("#StudEmail").css({
+                    "border": "1px solid red"
+                });
+                alert("Student Email is Mandatory!");
+                e.preventDefault();
+                $("#StudEmail").focus();
+                return false;
+            }
+            else {
+                $("#StudEmail").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#Religionid").val() == '' || $("#Religionid").val() == 0) {
+                cnt++;
+                $("#Religionid").css({
+                    "border": "1px solid red"
+                });
+                alert("Religion  is Mandatory!");
+                e.preventDefault();
+                $("#Religionid").focus();
+                return false;
+            }
+            else {
+                $("#Religionid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#StudCategoryid").val() == '' || $("#StudCategoryid").val() == 0) {
+                cnt++;
+                $("#StudCategoryid").css({
+                    "border": "1px solid red"
+                });
+                alert("Category  is Mandatory!");
+                e.preventDefault();
+                $("#StudCategoryid").focus();
+                return false;
+            }
+            else {
+                $("#StudCategoryid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#MotherTongue").val() == '') {
+                cnt++;
+                $("#MotherTongue").css({
+                    "border": "1px solid red"
+                });
+                alert("Mother Tongue  is Mandatory!");
+                e.preventDefault();
+                $("#MotherTongue").focus();
+                return false;
+            }
+            else {
+                $("#MotherTongue").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#DocumentType").val() == '' || $("#DocumentType").val()==7) {
+                cnt++;
+                $("#Documenttypename").css({
+                    "border": "1px solid red"
+                });
+                alert("Document Type  is Mandatory!");
+                e.preventDefault();
+                $("#Documenttypename").focus();
+                return false;
+            }
+            else {
+                $("#doctype").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#DocumentIDNo").val() == '') {
+                cnt++;
+                $("#DocumentIDNo").css({
+                    "border": "1px solid red"
+                });
+                alert("Document ID No.  is Mandatory!");
+                e.preventDefault();
+                $("#DocumentIDNo").focus();
+                return false;
+            }
+            else {
+                $("#DocumentIDNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            //if ($("#Studfathernm").val() == '') {
+            //    cnt++;
+            //    $("#Studfathernm").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("Father Name Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Studfathernm").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
+
+            //if ($("#Studmothernm").val() == '') {
+            //    cnt++;
+            //    $("#Studmothernm").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("Mother Name Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Studmothernm").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
             if ($("#Religionid").val() == 2 && $("#Casteid").val() == 2)
             {
                 if ($("#ParishName").val() == ''){
@@ -1095,23 +1339,9 @@
             }
 
 
-            if ($("#datepicker").val() == '') {
-                cnt++;
-                $("#datepicker").css({
-                    "border": "1px solid red"
-                });
-                alert("DOB Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#datepicker").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+         
 
-            if ($("#Weight").val() == '0') {
+            if ($("#Weight").val() == '0' || $("#Weight").val() == '') {
                 cnt++;
                 $("#Weight").css({
                     "border": "1px solid red"
@@ -1127,7 +1357,7 @@
                 });
             }
 
-            if ($("#Height").val() == '0') {
+            if ($("#Height").val() == '0' || $("#Height").val() == '') {
                 cnt++;
                 $("#Height").css({
                     "border": "1px solid red"
@@ -1143,7 +1373,7 @@
                 });
             }
 
-            if ($("#StudBldGrp").val() == '') {
+            if ($("#StudBldGrp").val() == ''|| $("#StudBldGrp").val() == 0) {
                 cnt++;
                 $("#StudBldGrp").css({
                     "border": "1px solid red"
@@ -1159,55 +1389,11 @@
                 });
             }
 
-            if ($("#StudEmail").val() == '') {
-                cnt++;
-                $("#StudEmail").css({
-                    "border": "1px solid red"
-                });
-                alert("student email Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#StudEmail").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+        
 
 
 
-            if ($("#Religionid").val() == '') {
-                cnt++;
-                $("#Religionid").css({
-                    "border": "1px solid red"
-                });
-                alert("religion Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Religionid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#StudCategoryid").val() == '') {
-                cnt++;
-                $("#StudCategoryid").css({
-                    "border": "1px solid red"
-                });
-                alert("category Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#StudCategoryid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+     
 
             if ($("#Casteid").val() == '') {
                 cnt++;
@@ -1225,288 +1411,233 @@
                 });
             }
 
-            if ($("#RollNo").val() == '0') {
+          
+
+
+                        if ($("#PreviousSchool").val() == '') {
+                            cnt++;
+                            $("#PreviousSchool").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Previous School Name is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#PreviousSchool").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+
+                        if ($("#SchoolAddress").val() == '') {
+                            cnt++;
+                            $("#SchoolAddress").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Previous School Address is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#SchoolAddress").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+
+                        if ($("#PrScObtainMark").val() == 0 || $("#PrScObtainMark").val() == '') {
+                            cnt++;
+                            $("#PrScObtainMark").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Previous School Obtain Marks is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#PrScObtainMark").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+                        if ($("#PrScTotalMarks").val() == 0 || $("#PrScTotalMarks").val() == '') {
+                            cnt++;
+                            $("#PrScTotalMarks").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Previous School Total Marks is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#PrScTotalMarks").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+                        if ($("#LeaveYear").val() == '') {
+                            cnt++;
+                            $("#LeaveYear").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Year of leaving is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#LeaveYear").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+
+                        if ($("#PrScRegisterNumber").val() == '') {
+                            cnt++;
+                            $("#PrScRegisterNumber").css({
+                                "border": "1px solid red"
+                            });
+                            alert("Previous School Registeration No. is Mandatory!");
+                            e.preventDefault();
+                            return false;
+                        }
+                        else {
+                            $("#PrScRegisterNumber").css({
+                                "border": "",
+                                "background": ""
+                            });
+                        }
+
+          
+           
+          
+        
+
+                if ($("#PrincipalNm").val() == '') {
                 cnt++;
-                $("#RollNo").css({
+                $("#PrincipalNm").css({
                     "border": "1px solid red"
                 });
-                alert("roll no Mandatory!");
+                alert("Principal Name Mandatory!");
                 e.preventDefault();
                 return false;
             }
             else {
-                $("#RollNo").css({
+                    $("#PrincipalNm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+                if ($("#ReferenceNm").val() == '') {
+                    cnt++;
+                    $("#ReferenceNm").css({
+                        "border": "1px solid red"
+                    });
+                    alert("Reference Name Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#ReferenceNm").css({
+                        "border": "",
+                        "background": ""
+                    });
+                }
+     
+                if ($("#ReferenceContact").val() == '') {
+                    cnt++;
+                    $("#ReferenceContact").css({
+                        "border": "1px solid red"
+                    });
+                    alert("Reference Contact Number Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#ReferenceContact").css({
+                        "border": "",
+                        "background": ""
+                    });
+                }
+                if ($("#PrScTCNumber").val() == '') {
+                    cnt++;
+                    $("#PrScTCNumber").css({
+                        "border": "1px solid red"
+                    });
+                    alert("TC Number Mandatory!");
+                    e.preventDefault();
+                    return false;
+                }
+                else {
+                    $("#PrScTCNumber").css({
+                        "border": "",
+                        "background": ""
+                    });
+                }
+
+            if ($("#EmergencyPhysicianNm").val() == '') {
+                cnt++;
+                $("#EmergencyPhysicianNm").css({
+                    "border": "1px solid red"
+                });
+                alert("Emergency Contact Name Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#EmergencyPhysicianNm").css({
                     "border": "",
                     "background": ""
                 });
             }
 
-            if ($("#MotherTongue").val() == '') {
+            if ($("#EmergencyPhysicianContact").val() == '') {
                 cnt++;
-                $("#MotherTongue").css({
+                $("#EmergencyPhysicianContact").css({
                     "border": "1px solid red"
                 });
-                alert("mother tongue Mandatory!");
+                alert("Emergecy Contact Mandatory!");
                 e.preventDefault();
                 return false;
             }
             else {
-                $("#MotherTongue").css({
+                $("#EmergencyPhysicianContact").css({
                     "border": "",
                     "background": ""
                 });
             }
 
-            //            if ($("#PreviousSchool").val() == '') {
-            //                cnt++;
-            //                $("#PreviousSchool").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#PreviousSchool").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
+       
 
-            //            if ($("#SchoolAddress").val() == '') {
-            //                cnt++;
-            //                $("#SchoolAddress").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#SchoolAddress").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#LastClass").val() == '') {
-            //                cnt++;
-            //                $("#LastClass").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#LastClass").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#Grade").val() == '') {
-            //                cnt++;
-            //                $("#Grade").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#Grade").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#LeaveYear").val() == '') {
-            //                cnt++;
-            //                $("#LeaveYear").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#LeaveYear").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#LeaveReason").val() == '') {
-            //                cnt++;
-            //                $("#LeaveReason").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#LeaveReason").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#PrincipalNm").val() == '') {
-            //                cnt++;
-            //                $("#PrincipalNm").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#PrincipalNm").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#ReferenceNm").val() == '') {
-            //                cnt++;
-            //                $("#ReferenceNm").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#ReferenceNm").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //            if ($("#ReferenceContact").val() == '') {
-            //                cnt++;
-            //                $("#ReferenceContact").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#ReferenceContact").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            if ($("#BusFacility").val() == '') {
+            if ($("#EmergencyAddress").val() == '') {
                 cnt++;
-                $("#BusFacility").css({
+                $("#EmergencyAddress").css({
                     "border": "1px solid red"
                 });
-                alert("bus facility Mandatory!");
+                alert("Emergency address Mandatory!");
                 e.preventDefault();
                 return false;
             }
             else {
-                $("#BusFacility").css({
+                $("#EmergencyAddress").css({
                     "border": "",
                     "background": ""
                 });
             }
 
-            //            if ($("#BusNo").val() == '') {
-            //                cnt++;
-            //                $("#BusNo").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#BusNo").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
+          
 
-            //            if ($("#BusRTONo").val() == '') {
-            //                cnt++;
-            //                $("#BusRTONo").css({
-            //                    "border": "1px solid red"
-            //                });
-            //            }
-            //            else {
-            //                $("#BusRTONo").css({
-            //                    "border": "",
-            //                    "background": ""
-            //                });
-            //            }
-
-            //if ($("#EmergencyPhysicianNm").val() == '') {
-            //    cnt++;
-            //    $("#EmergencyPhysicianNm").css({
-            //        "border": "1px solid red"
-            //    });
-            //    alert("physician name Mandatory!");
-            //    e.preventDefault();
-            //    return false;
-            //}
-            //else {
-            //    $("#EmergencyPhysicianNm").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-
-            //if ($("#EmergencyPhysicianContact").val() == '') {
-            //    cnt++;
-            //    $("#EmergencyPhysicianContact").css({
-            //        "border": "1px solid red"
-            //    });
-            //    alert("physician contact Mandatory!");
-            //    e.preventDefault();
-            //    return false;
-            //}
-            //else {
-            //    $("#EmergencyPhysicianContact").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-
-            //if ($("#ECode").val() == '') {
-            //    cnt++;
-            //    $("#ECode").css({
-            //        "border": "1px solid red"
-            //    });
-            //    alert("physician contact Code Mandatory!");
-            //    e.preventDefault();
-            //    return false;
-            //}
-            //else {
-            //    $("#ECode").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-
-            //if ($("#EmergencyAddress").val() == '') {
-            //    cnt++;
-            //    $("#EmergencyAddress").css({
-            //        "border": "1px solid red"
-            //    });
-            //    alert("emergency address Mandatory!");
-            //    e.preventDefault();
-            //    return false;
-            //}
-            //else {
-            //    $("#EmergencyAddress").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
-
-            if ($("#FatherOccpationid").val() == '') {
+            if ($("#Studfathernm").val() == '') {
                 cnt++;
-                $("#FatherOccpationid").css({
+                $("#Studfathernm").css({
                     "border": "1px solid red"
                 });
-                alert("father occupation Mandatory!");
+                alert("Father email Mandatory!");
                 e.preventDefault();
                 return false;
             }
             else {
-                $("#FatherOccpationid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#FatherQualificationid").val() == '') {
-                cnt++;
-                $("#FatherQualificationid").css({
-                    "border": "1px solid red"
-                });
-                alert("father qualification Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FatherQualificationid").css({
+                $("#Studfathernm").css({
                     "border": "",
                     "background": ""
                 });
@@ -1561,21 +1692,21 @@
                 });
             }
 
-            if ($("#FCode").val() == '') {
-                cnt++;
-                $("#FCode").css({
-                    "border": "1px solid red"
-                });
-                alert("father contact Code Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FCode").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#FCode").val() == '') {
+            //    cnt++;
+            //    $("#FCode").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("father contact Code Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#FCode").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             //=============================
 
@@ -2409,6 +2540,10 @@
     .ui-icon ui-icon-circle-triangle-w {
         background-color: antiquewhite;
     }
+    .control-group.required .control-label:after {
+        content: "*";
+        color: red;
+    }
 </style>
 <script>
     function scrollWin() {
@@ -2482,7 +2617,9 @@
                                                 var fromdt = Convert.ToString(System.DateTime.Now.Year);
                                                 var todt = Convert.ToString(System.DateTime.Now.AddYears(1).Year);
                                                 var session = Convert.ToString(fromdt + "-" + todt);
-
+                                                <div class="control-group span10">
+                                                    <span style="color:red">&nbsp;* fields are required</span>
+                                                </div>
                                                 <div id="tabs-1">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Student Details</legend>
@@ -2496,7 +2633,7 @@
                                                                 </div>
                                                             </div>
                                                        
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Studnm, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Studnm, new { placeholder = "Enter Student Name", maxlength = "20", @class = "input" })
@@ -2504,7 +2641,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 <div class="pull-left">
@@ -2537,7 +2674,7 @@
 
                                                
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Classid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Classid, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
@@ -2545,28 +2682,28 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label", @for = "focusedInput" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.DepartmentId)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.courseyear, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(model => model.courseyear, new SelectList(Model.yearlist, "yearid", "YearName", "Select Course Year"), "Select Course Year", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.courseyear)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.academicyear, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(model => model.academicyear, new SelectList(Model.academicyear), "Select Year", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.academicyear)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.StdRegNo, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.StdRegNo, new { placeholder = "Student Registeration No.", maxlength = "50", @readonly="true", @class = "input" })
@@ -2575,14 +2712,14 @@
                                                         </div>
                                                         
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.ApplicationID, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.ApplicationID, new { placeholder = "Enter Application ID.", maxlength = "50", @class = "input" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.RollNo, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.RollNo, new { placeholder = "Enter Roll No", maxlength = "3", @class = "input" })
@@ -2590,13 +2727,13 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.UniversityRegId, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.UniversityRegId, new { placeholder = "Enter University Reg.", maxlength = "50", @class = "input" })
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DOB, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", placeholder = "Select Date of birth", @class = "input" })
@@ -2606,7 +2743,7 @@
 
 
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.StudEmail, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.StudEmail, new { placeholder = "Enter Student's Email", maxlength = "30", @class = "input" })
@@ -2616,7 +2753,7 @@
 
 
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Religionid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Religionid, new SelectList(Model.religionlist, "Religionid", "Religionnm", "Select Religion"), "Select Religion", new { @for = "select" })
@@ -2654,14 +2791,14 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.StudCategoryid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.StudCategoryid, new SelectList(Model.categorylist, "StudCategoryid", "StudCategoryname", "Select Category"), "Select Category", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.StudCategoryid)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.MotherTongue, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.MotherTongue, new { placeholder = "Enter Mother Tongue", maxlength = "45", @class = "input" })
@@ -2670,7 +2807,7 @@
                                                         </div>
 
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DocumentType, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @{
@@ -2729,7 +2866,7 @@
                                                                 @Html.TextBoxFor(model => model.Documenttypename, new { placeholder = "Enter Document Type.", type="text",maxlength = "100", @class = "input" })
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DocumentIDNo, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "50", @class = "input" })
@@ -2753,14 +2890,14 @@
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Medical Info</legend>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Weight, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Weight, new { placeholder = "Enter Weight in Kg", maxlength = "3", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.Weight)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Height, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Height, new { placeholder = "Enter Height in Cms", maxlength = "3", @class = "input" })
@@ -2768,7 +2905,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.StudBldGrp, new { @class = "control-label ", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.StudBldGrp, new SelectList(Model.bloodgrouplist, "bloodgroupid", "bloodgroupnm", "Select Blood Group"), "Select Blood Group", new { @for = "select" })
@@ -2793,33 +2930,33 @@
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Emergency Contact Details</legend>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.EmergencyPhysicianNm, new { @class = "control-label" })
 
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.EmergencyPhysicianNm, new { placeholder = "Enter Emergency Physician Name", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.EmergencyPhysicianNm, new { placeholder = "Enter  Name", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.EmergencyPhysicianNm)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.EmergencyPhysicianContact, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.ECode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
-                                                                @Html.TextBoxFor(model => model.EmergencyPhysicianContact, new { placeholder = "Enter Emergency Physician Contact", maxlength = "10" })
+                                                                @Html.TextBoxFor(model => model.EmergencyPhysicianContact, new { placeholder = "Enter Emergency  Contact", maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.EmergencyPhysicianContact)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.emcontactrel, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.emcontactrel, new { placeholder = "Enter RelationShip", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.emcontactrel)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.EmergencyAddress, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextAreaFor(model => model.EmergencyAddress, new { placeholder = "Enter Emergency Address", @class = "input" })
+                                                                @Html.TextAreaFor(model => model.EmergencyAddress, new { placeholder = "Enter  Address", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.EmergencyAddress)
                                                             </div>
                                                         </div>
@@ -2839,7 +2976,7 @@
                                                     </fieldset>
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Father's Details</legend>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Studfathernm, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Studfathernm, new { placeholder = "Enter Father's Name", maxlength = "20", @class = "input" })
@@ -2848,7 +2985,7 @@
                                                         </div>
                                                     
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group  span5">
                                                             @Html.LabelFor(model => model.FatherOccpationid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.FatherOccpationid, new SelectList(Model.occupationlist, "occupationid", "occupationnm", "Select Occupation"), "Select Occupation", new { @for = "select" })
@@ -2878,21 +3015,21 @@
                                                                 @Html.ValidationMessageFor(model => model.FatherQualificationName)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.FatherEmail, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.FatherEmail, new { placeholder = "Enter Father's Email", maxlength = "30", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.FatherEmail)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.FatherOfficeAddress, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.FatherOfficeAddress, new { placeholder = "Enter Father's Office Address", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.FatherOfficeAddress)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.FatherContact, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.FCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
@@ -3081,35 +3218,35 @@
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Address Details</legend>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Countryid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Countryid, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.Countryid)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Stateid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Stateid, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.Stateid)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Cityid, new { @class = "control-label", @for = "select" })
                                                             <div class="controls">
                                                                 @Html.DropDownListFor(m => m.Cityid, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select City", new { @for = "select" })
                                                                 @Html.ValidationMessageFor(model => model.Cityid)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.CurrentAddress, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.CurrentAddress, new { placeholder = "Enter Current Address", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.CurrentAddress)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PermanentAddress, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.PermanentAddress, new { placeholder = "Enter Permanent Address", @class = "input" })
@@ -3117,7 +3254,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Pincode, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Pincode, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
@@ -3125,7 +3262,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.StdRegMob, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.StdRegMob, new { placeholder = "Enter Mobile No. For SMS", maxlength = "10", @class = "input" })
@@ -3208,21 +3345,21 @@ new { style = "display:block;width:200px;height:178px;" })
                                                 <div id="tabs-3">
                                                     <fieldset class="test" style="width: 100%;">
                                                         <legend>Secondary Education Details</legend>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PreviousSchool, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PreviousSchool, new { placeholder = "Enter Previous School", maxlength = "30", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PreviousSchool)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.SchoolAddress, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.SchoolAddress, new { placeholder = "Enter School Address", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.SchoolAddress)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5 hide">
+                                                        <div class="control-group required span5 hide">
                                                             @Html.LabelFor(model => model.LastClass, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @*@Html.DropDownListFor(m => m.LastClass, new SelectList(Model.classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "form-control mar" })*@
@@ -3231,14 +3368,14 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group  required span5">
                                                             @Html.LabelFor(model => model.PrScObtainMark, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PrScObtainMark, new { placeholder = "Enter SC  Obtain Marks", maxlength = "10", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrScObtainMark)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PrScTotalMarks, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PrScTotalMarks, new { placeholder = "Enter SC Total Marks", maxlength = "10", @class = "input" })
@@ -3246,7 +3383,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.Grade, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.Grade, new { placeholder = "Enter Grade While Leaving", @readonly = "readonly", maxlength = "10", @class = "input" })
@@ -3254,7 +3391,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PrScPercentage, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PrScPercentage, new { placeholder = "Percentage While Leaving", @readonly = "readonly", maxlength = "10", @class = "input" })
@@ -3262,42 +3399,42 @@ new { style = "display:block;width:200px;height:178px;" })
                                                             </div>
                                                         </div>
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.LeaveYear, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.LeaveYear, new { @class = "date-own form-control",placeholder = "Enter Year of Leaving", maxlength = "9"})
                                                                 @Html.ValidationMessageFor(model => model.LeaveYear)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5 hide">
+                                                        <div class="control-group required span5 hide">
                                                             @Html.LabelFor(model => model.LeaveReason, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextAreaFor(model => model.LeaveReason, new { placeholder = "Enter Leave Reason", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.LeaveReason)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5 ">
+                                                        <div class="control-group required span5 ">
                                                             @Html.LabelFor(model => model.PrScRegisterNumber, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PrScRegisterNumber, new { placeholder = "Enter Register Number", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrScRegisterNumber)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PrincipalNm, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.PrincipalNm, new { placeholder = "Enter Principal Name", maxlength = "20", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.PrincipalNm)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.ReferenceNm, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.ReferenceNm, new { placeholder = "Enter Reference Contact Name", maxlength = "20", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.ReferenceNm)
                                                             </div>
                                                         </div>
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.ReferenceContact, new { @class = "control-label" })
                                                             <div class="controls">
                                                                 @Html.TextBoxFor(model => model.RCode, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:30%" })
@@ -3308,7 +3445,7 @@ new { style = "display:block;width:200px;height:178px;" })
 
                                                      
 
-                                                        <div class="control-group span5">
+                                                        <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.PrScTCNumber, new { @class = "control-label" })
                                                             <div class="controls">
 

@@ -1234,7 +1234,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-<<<<<<< HEAD
     <EntitySetMapping Name="tbl_teachersubject">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
         <MappingFragment StoreEntitySet="tbl_teachersubject">
@@ -1248,8 +1247,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-=======
->>>>>>> origin/master
     <FunctionImportMapping FunctionImportName="sp_getyear" FunctionName="SchoolMgmtSysModel.Store.sp_getyear">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getyear_Result">
@@ -1258,6 +1255,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
     <EntitySetMapping Name="tbl_studentdivision">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_studentdivision">
         <MappingFragment StoreEntitySet="tbl_studentdivision">
@@ -1589,6 +1587,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
+    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
     <FunctionImportMapping FunctionImportName="sp_StaffAttandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_StaffAttandance_DML" />
     <EntitySetMapping Name="tbl_EmployeeLeave">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_EmployeeLeave">
@@ -1603,7 +1602,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-<<<<<<< HEAD
     <EntitySetMapping Name="tbl_student">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
@@ -1754,22 +1752,5 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
     <FunctionImportMapping FunctionImportName="sp_GetStdCount" FunctionName="SchoolMgmtSysModel.Store.sp_GetStdCount" />
-=======
-    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
-    <EntitySetMapping Name="tbl_teachersubject">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_teachersubject">
-        <MappingFragment StoreEntitySet="tbl_teachersubject">
-          <ScalarProperty Name="teachername" ColumnName="teachername" />
-          <ScalarProperty Name="subjectid" ColumnName="subjectid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="departmentid" ColumnName="departmentid" />
-          <ScalarProperty Name="courseid" ColumnName="courseid" />
-          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
->>>>>>> origin/master
   </EntityContainerMapping>
 </Mapping>
