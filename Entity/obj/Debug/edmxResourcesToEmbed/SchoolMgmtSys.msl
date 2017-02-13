@@ -1738,6 +1738,7 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
     <FunctionImportMapping FunctionImportName="sp_GetStdCount" FunctionName="SchoolMgmtSysModel.Store.sp_GetStdCount" />
+<<<<<<< HEAD
     <EntitySetMapping Name="tbl_Chaptercomplete">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Chaptercomplete">
         <MappingFragment StoreEntitySet="tbl_Chaptercomplete">
@@ -1755,5 +1756,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
+=======
+>>>>>>> origin/master
   </EntityContainerMapping>
 </Mapping>

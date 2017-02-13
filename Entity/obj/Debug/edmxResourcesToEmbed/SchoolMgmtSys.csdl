@@ -2387,6 +2387,7 @@
     <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+<<<<<<< HEAD
   </EntityType>
   <EntityType Name="tbl_Chaptercomplete">
     <Key>
@@ -2402,5 +2403,7 @@
     <Property Type="Boolean" Name="complete" />
     <Property Type="DateTime" Name="CompleteDate" Precision="3" />
     <Property Type="String" Name="Remark" MaxLength="500" FixedLength="false" Unicode="false" />
+=======
+>>>>>>> origin/master
   </EntityType>
 </Schema>
