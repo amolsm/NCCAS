@@ -5,6 +5,41 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="lib_Bookentry">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booktitle" Type="varchar" MaxLength="100" />
+          <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+          <Property Name="SerielNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Authorid" Type="int" />
+          <Property Name="Authorname" Type="varchar" MaxLength="100" />
+          <Property Name="PublishedByid" Type="int" />
+          <Property Name="PublishedByName" Type="varchar" MaxLength="100" />
+          <Property Name="Edition" Type="varchar" MaxLength="100" />
+          <Property Name="Vendorid" Type="int" />
+          <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+          <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+          <Property Name="BillNo" Type="nvarchar(max)" />
+          <Property Name="Cost" Type="money" />
+        </EntityType>
+        <EntityType Name="lib_Journal">
+          <Key>
+            <PropertyRef Name="lib_Jid" />
+          </Key>
+          <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LibType" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
+          <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+          <Property Name="Number" Type="nvarchar(max)" />
+          <Property Name="IssueDate" Type="datetime2" Precision="7" />
+          <Property Name="Vendorid" Type="int" />
+          <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
+          <Property Name="JBillNo" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="sys_Module">
           <Key>
             <PropertyRef Name="Moduleid" />
@@ -1428,6 +1463,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="Empid" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1901,6 +1937,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="Courseid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
+          <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sys_UserRole" EntityType="Self.sys_UserRole" Schema="dbo" store:Type="Tables" />
@@ -2973,6 +3011,9 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="subjectid" Mode="In" Type="Int32" />
             <Parameter Name="session" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
+          <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
+          <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -4393,6 +4434,58 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="Subjectid" Type="Int32" />
           <Property Name="Session" Type="Int32" />
         </EntityType>
+        <EntityType Name="lib_Bookentry">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booktitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SerielNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Authorid" Type="Int32" />
+          <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedByid" Type="Int32" />
+          <Property Name="PublishedByName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Vendorid" Type="Int32" />
+          <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+          <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="lib_Journal">
+          <Key>
+            <PropertyRef Name="lib_Jid" />
+          </Key>
+          <Property Name="lib_Jid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LibType" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="JournalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IssueDate" Type="DateTime" Precision="7" />
+          <Property Name="Vendorid" Type="Int32" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="7" />
+          <Property Name="JBillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_getBookentry_Result">
+          <Property Type="Int32" Name="bookid" Nullable="false" />
+          <Property Type="String" Name="booktitle" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SerielNumber" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Authorid" Nullable="true" />
+          <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PublishedByid" Nullable="true" />
+          <Property Type="String" Name="PublishedByName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Vendorid" Nullable="true" />
+          <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
+          <Property Type="String" Name="BillNo" Nullable="true" />
+          <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6154,6 +6247,64 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_Attandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Attandance_DML" />
+          <EntitySetMapping Name="lib_Bookentry">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.lib_Bookentry">
+              <MappingFragment StoreEntitySet="lib_Bookentry">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="Dateofpurchase" ColumnName="Dateofpurchase" />
+                <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="PublishedByName" ColumnName="PublishedByName" />
+                <ScalarProperty Name="PublishedByid" ColumnName="PublishedByid" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+                <ScalarProperty Name="SerielNumber" ColumnName="SerielNumber" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+                <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lib_Journal">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.lib_Journal">
+              <MappingFragment StoreEntitySet="lib_Journal">
+                <ScalarProperty Name="JBillNo" ColumnName="JBillNo" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="JournalTitle" ColumnName="JournalTitle" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="LibType" ColumnName="LibType" />
+                <ScalarProperty Name="lib_Jid" ColumnName="lib_Jid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookentry" FunctionName="SchoolMgmtSysModel.Store.sp_getBookentry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getBookentry_Result">
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="SerielNumber" ColumnName="SerielNumber" />
+                <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="PublishedByid" ColumnName="PublishedByid" />
+                <ScalarProperty Name="PublishedByName" ColumnName="PublishedByName" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+                <ScalarProperty Name="Dateofpurchase" ColumnName="Dateofpurchase" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6236,6 +6387,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="24.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" Width="1.5" PointX="5.375" PointY="24.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" Width="1.5" PointX="7.375" PointY="24.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.lib_Bookentry" Width="1.5" PointX="12.375" PointY="25.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.lib_Journal" Width="1.5" PointX="14.375" PointY="25.75" />
       </Diagram>
     </Diagrams>
   </Designer>

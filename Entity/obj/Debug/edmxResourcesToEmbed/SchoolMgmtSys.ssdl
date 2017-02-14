@@ -1,5 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booktitle" Type="varchar" MaxLength="100" />
+    <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerielNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="PublishedByid" Type="int" />
+    <Property Name="PublishedByName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
+  </EntityType>
+  <EntityType Name="lib_Journal">
+    <Key>
+      <PropertyRef Name="lib_Jid" />
+    </Key>
+    <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibType" Type="int" />
+    <Property Name="Department" Type="int" />
+    <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="Number" Type="nvarchar(max)" />
+    <Property Name="IssueDate" Type="datetime2" Precision="7" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
+    <Property Name="JBillNo" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="sys_Module">
     <Key>
       <PropertyRef Name="Moduleid" />
@@ -1423,6 +1458,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1896,6 +1932,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Courseid" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
+    <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_UserRole" EntityType="Self.sys_UserRole" Schema="dbo" store:Type="Tables" />

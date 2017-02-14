@@ -71,6 +71,7 @@
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
+    <Compile Include="libBookentry.cs" />
     <Compile Include="smsviewmodel.cs" />
     <Compile Include="studentdivisionmodel.cs" />
     <Compile Include="teachersubjectmodel.cs" />
