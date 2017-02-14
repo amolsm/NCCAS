@@ -985,6 +985,7 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
       <Parameter Name="session" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
     <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.tbl_SessionMaster" />
     <FunctionImport Name="sp_getSession" ReturnType="Collection(SchoolMgmtSysModel.sp_getSession_Result)" />
     <FunctionImport Name="sp_Session">
@@ -992,6 +993,11 @@
       <Parameter Name="sessionname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
+=======
+    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
+    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
+    <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
+>>>>>>> origin/master
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2412,6 +2418,7 @@
     <Property Name="Subjectid" Type="Int32" />
     <Property Name="Session" Type="Int32" />
   </EntityType>
+<<<<<<< HEAD
   <EntityType Name="tbl_SessionMaster">
     <Key>
       <PropertyRef Name="ID" />
@@ -2424,5 +2431,58 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+=======
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="booktitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SerielNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Authorid" Type="Int32" />
+    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PublishedByid" Type="Int32" />
+    <Property Name="PublishedByName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="lib_Journal">
+    <Key>
+      <PropertyRef Name="lib_Jid" />
+    </Key>
+    <Property Name="lib_Jid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LibType" Type="Int32" />
+    <Property Name="Department" Type="Int32" />
+    <Property Name="JournalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IssueDate" Type="DateTime" Precision="7" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="7" />
+    <Property Name="JBillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_getBookentry_Result">
+    <Property Type="Int32" Name="bookid" Nullable="false" />
+    <Property Type="String" Name="booktitle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SerielNumber" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Authorid" Nullable="true" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="PublishedByid" Nullable="true" />
+    <Property Type="String" Name="PublishedByName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Vendorid" Nullable="true" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
+    <Property Type="String" Name="BillNo" Nullable="true" />
+    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
+>>>>>>> origin/master
   </ComplexType>
 </Schema>

@@ -271,7 +271,7 @@
                             var dept = $("#DepartmentId option:selected").text();
                             var deptname = dept.substring(0, 3);
                             var count = data;
-                            var stdreg = (year + deptname + "00" + count)
+                            var stdreg = (year + deptname.toUpperCase() + "0000" + count)
                             $("#StdRegNo").val(stdreg);
                         }
                         else {

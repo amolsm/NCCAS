@@ -139,6 +139,7 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\FeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\ShowTimetableController.cs" />
     <Compile Include="Controllers\SmsController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -690,8 +691,14 @@
     <Content Include="Views\Attendance\Test.cshtml" />
     <Content Include="Views\Attendance\TeacherSubject.cshtml" />
     <Content Include="Views\ChapterComplete\ChapterComplete.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Masters\SessionMaster.cshtml" />
     <Content Include="Views\Masters\_SessionList.cshtml" />
+=======
+    <Content Include="Views\Library\Index.cshtml" />
+    <Content Include="Views\Library\BookEntry.cshtml" />
+    <Content Include="Views\shared\_LibrarymanagementList.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
