@@ -985,6 +985,13 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
       <Parameter Name="session" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.tbl_SessionMaster" />
+    <FunctionImport Name="sp_getSession" ReturnType="Collection(SchoolMgmtSysModel.sp_getSession_Result)" />
+    <FunctionImport Name="sp_Session">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="sessionname" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2405,4 +2412,17 @@
     <Property Name="Subjectid" Type="Int32" />
     <Property Name="Session" Type="Int32" />
   </EntityType>
+  <EntityType Name="tbl_SessionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="SessionName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsActive" />
+  </EntityType>
+  <ComplexType Name="sp_getSession_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
 </Schema>

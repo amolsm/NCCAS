@@ -1388,5 +1388,34 @@ namespace SchoolManagementSystems.Controllers
         }
         #endregion
 
+        #region SessionMaster
+        public ActionResult SessionMaster()
+        {
+            sessionviewmodel _cvm = new sessionviewmodel();
+            FillPermission(35);
+            _cvm._Sessionlist = db.sp_getSession().ToList();
+            return View(_cvm);
+        }
+        public JsonResult Fillsession(int id)
+        {
+            var data = db.tbl_SessionMaster.Where(m => m.ID == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_session(string SessionName)
+        {
+            var data = db.tbl_SessionMaster.Where(m => m.SessionName == SessionName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLSession(sessionviewmodel _cvm)
+        {
+
+            db.sp_Session(_cvm.ID,_cvm.SessionName, _cvm.status).ToString();
+
+            _cvm._Sessionlist = db.sp_getSession().ToList();
+            return PartialView("_SessionList", _cvm);
+        }
+        #endregion
+
     }
 }
