@@ -1056,6 +1056,22 @@ namespace Entity
             }
         }
         private ObjectSet<lib_Journal> _lib_Journal;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_SessionMaster> tbl_SessionMaster
+        {
+            get
+            {
+                if ((_tbl_SessionMaster == null))
+                {
+                    _tbl_SessionMaster = base.CreateObjectSet<tbl_SessionMaster>("tbl_SessionMaster");
+                }
+                return _tbl_SessionMaster;
+            }
+        }
+        private ObjectSet<tbl_SessionMaster> _tbl_SessionMaster;
 
         #endregion
 
@@ -1555,6 +1571,14 @@ namespace Entity
         public void AddTolib_Journal(lib_Journal lib_Journal)
         {
             base.AddObject("lib_Journal", lib_Journal);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_SessionMaster EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_SessionMaster(tbl_SessionMaster tbl_SessionMaster)
+        {
+            base.AddObject("tbl_SessionMaster", tbl_SessionMaster);
         }
 
         #endregion
@@ -10692,6 +10716,55 @@ namespace Entity
         public ObjectResult<sp_getBookentry_Result> sp_getBookentry()
         {
             return base.ExecuteFunction<sp_getBookentry_Result>("sp_getBookentry");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getSession_Result> sp_getSession()
+        {
+            return base.ExecuteFunction<sp_getSession_Result>("sp_getSession");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="iD">No Metadata Documentation available.</param>
+        /// <param name="sessionname">No Metadata Documentation available.</param>
+        /// <param name="isActive">No Metadata Documentation available.</param>
+        public int sp_Session(Nullable<global::System.Int32> iD, global::System.String sessionname, Nullable<global::System.Boolean> isActive)
+        {
+            ObjectParameter iDParameter;
+            if (iD.HasValue)
+            {
+                iDParameter = new ObjectParameter("ID", iD);
+            }
+            else
+            {
+                iDParameter = new ObjectParameter("ID", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter sessionnameParameter;
+            if (sessionname != null)
+            {
+                sessionnameParameter = new ObjectParameter("sessionname", sessionname);
+            }
+            else
+            {
+                sessionnameParameter = new ObjectParameter("sessionname", typeof(global::System.String));
+            }
+    
+            ObjectParameter isActiveParameter;
+            if (isActive.HasValue)
+            {
+                isActiveParameter = new ObjectParameter("IsActive", isActive);
+            }
+            else
+            {
+                isActiveParameter = new ObjectParameter("IsActive", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction("sp_Session", iDParameter, sessionnameParameter, isActiveParameter);
         }
 
         #endregion
@@ -24685,6 +24758,111 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_SessionMaster")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_SessionMaster : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_SessionMaster object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static tbl_SessionMaster Createtbl_SessionMaster(global::System.Int32 id)
+        {
+            tbl_SessionMaster tbl_SessionMaster = new tbl_SessionMaster();
+            tbl_SessionMaster.ID = id;
+            return tbl_SessionMaster;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SessionName
+        {
+            get
+            {
+                return _SessionName;
+            }
+            set
+            {
+                OnSessionNameChanging(value);
+                ReportPropertyChanging("SessionName");
+                _SessionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SessionName");
+                OnSessionNameChanged();
+            }
+        }
+        private global::System.String _SessionName;
+        partial void OnSessionNameChanging(global::System.String value);
+        partial void OnSessionNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_StaffAttendance")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -37648,6 +37826,109 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getSession_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getSession_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getSession_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        public static sp_getSession_Result Createsp_getSession_Result(global::System.Int32 id, global::System.String status)
+        {
+            sp_getSession_Result sp_getSession_Result = new sp_getSession_Result();
+            sp_getSession_Result.ID = id;
+            sp_getSession_Result.Status = status;
+            return sp_getSession_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                OnIDChanging(value);
+                ReportPropertyChanging("ID");
+                _ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID");
+                OnIDChanged();
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SessionName
+        {
+            get
+            {
+                return _SessionName;
+            }
+            set
+            {
+                OnSessionNameChanging(value);
+                ReportPropertyChanging("SessionName");
+                _SessionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SessionName");
+                OnSessionNameChanged();
+            }
+        }
+        private global::System.String _SessionName;
+        partial void OnSessionNameChanging(global::System.String value);
+        partial void OnSessionNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
 
         #endregion
 

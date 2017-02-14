@@ -985,7 +985,9 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
       <Parameter Name="session" Mode="In" Type="Int32" />
     </FunctionImport>
-<<<<<<< HEAD
+    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
+    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
+    <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
     <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.tbl_SessionMaster" />
     <FunctionImport Name="sp_getSession" ReturnType="Collection(SchoolMgmtSysModel.sp_getSession_Result)" />
     <FunctionImport Name="sp_Session">
@@ -993,11 +995,6 @@
       <Parameter Name="sessionname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
-=======
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
-    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
-    <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
->>>>>>> origin/master
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2418,20 +2415,6 @@
     <Property Name="Subjectid" Type="Int32" />
     <Property Name="Session" Type="Int32" />
   </EntityType>
-<<<<<<< HEAD
-  <EntityType Name="tbl_SessionMaster">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="SessionName" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsActive" />
-  </EntityType>
-  <ComplexType Name="sp_getSession_Result">
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-=======
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
@@ -2483,6 +2466,18 @@
     <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
     <Property Type="String" Name="BillNo" Nullable="true" />
     <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
->>>>>>> origin/master
+  </ComplexType>
+  <EntityType Name="tbl_SessionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getSession_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
   </ComplexType>
 </Schema>

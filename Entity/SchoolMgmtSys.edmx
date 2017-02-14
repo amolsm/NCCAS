@@ -757,6 +757,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="status" Type="bit" Nullable="false" />
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_SessionMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionName" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="tbl_StaffAttendance">
           <Key>
             <PropertyRef Name="StaffAttendanceId" />
@@ -1509,6 +1517,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1621,6 +1630,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="academicyear" Type="varchar" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="sessionname" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
         </Function>
         <Function Name="sp_StaffAttandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="staffid" Type="int" Mode="In" />
@@ -1979,6 +1993,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_qualification" EntityType="Self.tbl_qualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_religion" EntityType="Self.tbl_religion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_route" EntityType="Self.tbl_route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SessionMaster" EntityType="Self.tbl_SessionMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
@@ -3014,6 +3029,13 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
           <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
           <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
+          <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.tbl_SessionMaster" />
+          <FunctionImport Name="sp_getSession" ReturnType="Collection(SchoolMgmtSysModel.sp_getSession_Result)" />
+          <FunctionImport Name="sp_Session">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="sessionname" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -4485,6 +4507,19 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
           <Property Type="String" Name="BillNo" Nullable="true" />
           <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="tbl_SessionMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_getSession_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6305,6 +6340,25 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_SessionMaster">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_SessionMaster">
+              <MappingFragment StoreEntitySet="tbl_SessionMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getSession" FunctionName="SchoolMgmtSysModel.Store.sp_getSession">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getSession_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Session" FunctionName="SchoolMgmtSysModel.Store.sp_Session" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6389,6 +6443,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" Width="1.5" PointX="7.375" PointY="24.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.lib_Bookentry" Width="1.5" PointX="12.375" PointY="25.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.lib_Journal" Width="1.5" PointX="14.375" PointY="25.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_SessionMaster" Width="1.5" PointX="3.375" PointY="21.75" />
       </Diagram>
     </Diagrams>
   </Designer>

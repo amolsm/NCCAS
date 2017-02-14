@@ -71,11 +71,11 @@
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
-<<<<<<< HEAD
+
     <Compile Include="sessionviewmodel.cs" />
-=======
+
     <Compile Include="libBookentry.cs" />
->>>>>>> origin/master
+
     <Compile Include="smsviewmodel.cs" />
     <Compile Include="studentdivisionmodel.cs" />
     <Compile Include="teachersubjectmodel.cs" />

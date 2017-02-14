@@ -1,5 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booktitle" Type="varchar" MaxLength="100" />
+    <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerielNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="PublishedByid" Type="int" />
+    <Property Name="PublishedByName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
+  </EntityType>
+  <EntityType Name="lib_Journal">
+    <Key>
+      <PropertyRef Name="lib_Jid" />
+    </Key>
+    <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibType" Type="int" />
+    <Property Name="Department" Type="int" />
+    <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="Number" Type="nvarchar(max)" />
+    <Property Name="IssueDate" Type="datetime2" Precision="7" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
+    <Property Name="JBillNo" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="sys_Module">
     <Key>
       <PropertyRef Name="Moduleid" />
@@ -717,6 +752,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_SessionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionName" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="tbl_StaffAttendance">
     <Key>
       <PropertyRef Name="StaffAttendanceId" />
@@ -1423,6 +1466,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1468,6 +1512,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1580,6 +1625,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="sessionname" Type="varchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
   <Function Name="sp_StaffAttandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="staffid" Type="int" Mode="In" />
@@ -1896,6 +1946,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Courseid" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
+    <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sys_UserRole" EntityType="Self.sys_UserRole" Schema="dbo" store:Type="Tables" />
@@ -1936,6 +1988,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_qualification" EntityType="Self.tbl_qualification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_religion" EntityType="Self.tbl_religion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_route" EntityType="Self.tbl_route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SessionMaster" EntityType="Self.tbl_SessionMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
