@@ -103,6 +103,7 @@ namespace SchoolManagementSystems.Controllers
             _avm.SubjectList = new List<tbl_subject>();
             _avm.DivisionList = new List<tbl_division>();
             _avm.Classlist = db.tbl_CourseMaster.ToList();
+            _avm.SessionList = db.tbl_SessionMaster.ToList();
             return View(_avm);
         }
         public JsonResult GetYearClass(string depid, string cid)
@@ -137,16 +138,6 @@ namespace SchoolManagementSystems.Controllers
 
             return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
         }
-        //public JsonResult GetClass(string id)
-        //{
-        //    int deptid = 0;
-        //    if (id != null && id != "")
-        //    {
-        //        deptid = Convert.ToInt32(id);
-        //    }
-        //    var DClass = db.tbl_class.Where(m => m.Dept_id == deptid).ToList();
-        //    return Json(new SelectList(DClass, "Classid", "Classnm"));
-        //}
         public JsonResult GetDivision(string id)
         {
             int classid = 0;
@@ -571,7 +562,7 @@ namespace SchoolManagementSystems.Controllers
 
             tbl_teachersubject sa = new tbl_teachersubject();
             string s;
-
+            int created = Convert.ToInt32(Session["Userid"].ToString());
             for (int i = 0; i < presentdetails.Count(); i++)
             {
                 //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
@@ -579,14 +570,14 @@ namespace SchoolManagementSystems.Controllers
                 string[] s1 = s.ToString().Split(',');
                 sa.departmentid = Convert.ToInt32(s1[0].ToString());
                 sa.courseid = Convert.ToInt32(s1[1].ToString());
-                sa.teachername = s1[2].ToString();
+                sa.teacherid = Convert.ToInt32(s1[2].ToString());
                 sa.yearid = Convert.ToInt32(s1[3].ToString());
                 sa.subjectid = Convert.ToInt32(s1[4].ToString());
-
+                sa.createdby = created;
                 //sring session =  System.Web.HttpContext.Current.Session["sessionString"]; 
                 try
                 {
-                    db.sp_teachersubject_DML(sa.id, sa.teachername, sa.courseid, sa.departmentid, sa.yearid, sa.subjectid);
+                    db.sp_teachersubject_DML(sa.id, sa.teacherid, sa.courseid, sa.departmentid, sa.yearid,sa.createdby,sa.subjectid);
                 }
                 catch (Exception ex)
                 { string msg = ex.ToString(); }

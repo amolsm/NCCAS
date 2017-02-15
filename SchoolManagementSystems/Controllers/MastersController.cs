@@ -935,12 +935,17 @@ namespace SchoolManagementSystems.Controllers
         #region Chapter master
         public ActionResult Chapter(string Search_Data)
         {
+            
             chapterviewmodel _chapter = new chapterviewmodel();
-            _chapter._subjectlist = new List<tbl_subject>();
+
+            _chapter.YearList = db.tbl_YearMaster.ToList();//new List<tbl_YearMaster>();
+            _chapter.DepartmentList = db.tblDepartment.ToList(); // new List<tblDepartment>();
+            _chapter.Classlist = db.tbl_CourseMaster.ToList();
+            _chapter._subjectlist = db.tbl_subject.ToList();//new List<tbl_subject>();
             FillPermission(49);
             if (String.IsNullOrEmpty(Search_Data))
             {
-                _chapter._subjectlist = db.tbl_subject.ToList();
+                _chapter.Classlist = db.tbl_CourseMaster.ToList();
                 _chapter._chapterlists = db.sp_getchapter().ToList();
             }
             else
@@ -952,13 +957,14 @@ namespace SchoolManagementSystems.Controllers
         }
         public ActionResult DMLchapter(chapterviewmodel _chapter, string evt, int id)
         {
+            _chapter.teacherid = Convert.ToInt32(Session["Userid"].ToString());// HttpContext.Current.Session["Userid"]; 
             if (evt == "submit")
-            { 
-                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid,_chapter.subject).ToString();
+            {
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid, _chapter.year, _chapter.department, _chapter.teacherid, _chapter.Classid, "act").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid, "del").ToString();
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid,  _chapter.year, _chapter.department,_chapter.teacherid, _chapter.Classid,"del").ToString();
             }
             _chapter._chapterlists = db.sp_getchapter().ToList();
             return PartialView("_ChapterList", _chapter);
@@ -973,21 +979,71 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_Chapter.Where(m => m.ChapterName == ChapterName).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetYearClass(string depid, string cid)
+        {
+            int coureid = 0;
+            int detid = 0;
+            if (depid != null && depid != "" && cid != null && cid != "")
+            {
+                coureid = Convert.ToInt32(cid);
+                detid = Convert.ToInt32(depid);
+            }
+            var yeardata = from post in db.tbl_CourseYearMaster
+                           join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
+                           where post.courseid == coureid && post.dept_id == detid && post.status == true
+                           select new { meta.yearid, meta.YearName };
+
+            return Json(new SelectList(yeardata, "yearid", "YearName"));
+
+        }
+        public JsonResult GetDepartment(string id)
+        {
+            int courseid = 0;
+            if (id != null && id != "")
+            {
+                courseid = Convert.ToInt32(id);
+            }
+
+            var DClass = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == courseid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
+
+            return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
+        }
+        public JsonResult GetSubject(string id, string year)
+        {
+            int yearid = 0;
+            int Courseid = 0;
+            if (id != null && id != "" && year != null && year != "")
+            {
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+            var subject = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).ToList();
+            return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
+        }
         #endregion
 
         #region Content master
         public ActionResult Contents(string Search_Data)
         {
             contentviewmodel _content = new contentviewmodel();
-            
+            _content.YearList = db.tbl_YearMaster.ToList();//new List<tbl_YearMaster>();
+            _content.DepartmentList = db.tblDepartment.ToList(); // new List<tblDepartment>();
+            _content.Classlist = db.tbl_CourseMaster.ToList();
+            _content._subjectlist = db.tbl_subject.ToList();//new List<tbl_subject>()
             FillPermission(49);
             if (String.IsNullOrEmpty(Search_Data))
             {
+                _content.Classlist = db.tbl_CourseMaster.ToList();
                 _content._chaptername = db.tbl_Chapter.ToList();
                 
             }
             else
             {
+                _content.Classlist = db.tbl_CourseMaster.ToList();
                 _content._chaptername = db.tbl_Chapter.ToList();
             }
             
@@ -997,13 +1053,14 @@ namespace SchoolManagementSystems.Controllers
         }
         public ActionResult DMLContent(contentviewmodel _content, string evt, int id)
         {
+            _content.teacherid = Convert.ToInt32(Session["Userid"].ToString());
             if (evt == "submit")
             {
-                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status,"").ToString();
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, "del").ToString();
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year, "del").ToString();
             }
             var data = db.sp_getcontent().ToList();
             ViewBag.contentdetails = data; 
@@ -1018,6 +1075,26 @@ namespace SchoolManagementSystems.Controllers
         {
             var data = db.tbl_Content.Where(m => m.Content_Name == ContentName).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetChapter(string year,string dept,string subject,string courseid)
+        {
+            contentviewmodel _content = new contentviewmodel();
+            int teacherid = Convert.ToInt32(Session["Userid"].ToString());
+            int subjectid = 0;
+            int yeari = 0;
+            int depti = 0;
+            int coursei = 0;
+            if (subject != null && subject != "" && year != null && year != "" && dept != null && dept != "" && courseid != null && courseid != "")
+            {
+                subjectid = Convert.ToInt32(subject);
+                yeari = Convert.ToInt32(year);
+                depti = Convert.ToInt32(dept);
+                coursei = Convert.ToInt32(courseid); 
+
+            }
+            var chapter = db.tbl_Chapter.Where(m => m.Subjectid == subjectid && m.teacherid == teacherid && m.yearid == yeari && m.dept_id == depti && m.Courseid == coursei).ToList();
+            return Json(new SelectList(chapter, "Chapter_id", "ChapterName"));
         }
         #endregion
 
@@ -1282,22 +1359,22 @@ namespace SchoolManagementSystems.Controllers
             return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
 
-        public JsonResult GetYearClass(string depid, string cid)
-        {
-            int coureid = 0;
-            int detid = 0;
-            if (depid != null && depid != "" && cid != null && cid != "")
-            {
-                coureid = Convert.ToInt32(cid);
-                detid = Convert.ToInt32(depid);
-            }
-            var year = from post in db.tbl_CourseYearMaster
-                           join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
-                           where post.courseid == coureid && post.dept_id == detid && post.status == true
-                           select new { meta.yearid, meta.YearName };
+        //public JsonResult GetYearClass(string depid, string cid)
+        //{
+        //    int coureid = 0;
+        //    int detid = 0;
+        //    if (depid != null && depid != "" && cid != null && cid != "")
+        //    {
+        //        coureid = Convert.ToInt32(cid);
+        //        detid = Convert.ToInt32(depid);
+        //    }
+        //    var year = from post in db.tbl_CourseYearMaster
+        //                   join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
+        //                   where post.courseid == coureid && post.dept_id == detid && post.status == true
+        //                   select new { meta.yearid, meta.YearName };
 
-            return Json(new SelectList(year, "yearid", "YearName"));
-        }
+        //    return Json(new SelectList(year, "yearid", "YearName"));
+        //}
         #endregion
 
         #region CourseMaster master
