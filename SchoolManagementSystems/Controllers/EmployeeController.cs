@@ -75,7 +75,7 @@ namespace SchoolManagementSystems.Controllers
                 _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
             _bgv.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
             _bgv._emplist = db.sp_getemp().ToList();
-            _bgv.citylist = new List<tbl_city>();
+            _bgv.citylist = db.tbl_city.Where(m => m.Status == true).ToList();
             _bgv.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
             _bgv.countrylist = db.tbl_country.Where(m => m.status == true).ToList();
             _bgv.bloodgrouplist = db.tbl_bloodgroup.Where(m => m.status == true).ToList();
@@ -291,7 +291,7 @@ namespace SchoolManagementSystems.Controllers
             string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br/><br/>";
             msg = msg + "Your UserName : " + Email + ".<br/>";
             msg = msg + "Your Password : " + pass + ".<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -307,8 +307,8 @@ namespace SchoolManagementSystems.Controllers
 
             string pass = db.tbl_user.Where(m => m.UserName == stemailid).Select(m => m.Password).FirstOrDefault();
             string msg = "Welcome to Nanjil Catholic College of Arts & Science" + Environment.NewLine;
-            msg = msg + "U/N: " + stemailid + Environment.NewLine;
-            msg = msg + "P/W: " + pass + Environment.NewLine;
+            msg = msg + "USER NAME: " + stemailid + Environment.NewLine;
+            msg = msg + "PASSWORD: " + pass + Environment.NewLine;
 
             String message = HttpUtility.UrlEncode(msg);
             using (var wb = new WebClient())
@@ -344,7 +344,7 @@ namespace SchoolManagementSystems.Controllers
             string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br/><br/>";
             msg = msg +  db.tbl_employee.OrderByDescending(m => m.Empid).Select(m => m.Emailid).FirstOrDefault() + " .<br/>";
             msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }

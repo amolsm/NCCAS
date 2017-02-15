@@ -271,7 +271,7 @@ namespace SchoolManagementSystems.Controllers
                 sa.Session = Convert.ToInt32(s1[5].ToString());
                 if(sa.Present==false)
                 {
-                    SendSMS(sa.StudentID, Convert.ToInt32(sa.Session));
+                    SendSMS(sa.StudentID, Convert.ToInt32(sa.Session), Convert.ToDateTime(sa.AttendanceDate));
                 }
 
                
@@ -638,12 +638,13 @@ namespace SchoolManagementSystems.Controllers
             return Json(new { sub = students, leaves = leave }, JsonRequestBehavior.AllowGet);
         }
 
-        private string SendSMS(int studentid,int Sessionid)
+        private string SendSMS(int studentid,int Sessionid,DateTime date)
         {
             string stemailid;
             string mobileno;
             string studentname;
             string sessionname;
+            
             tbl_student st = db.tbl_student.Where(x => x.Studid == studentid).FirstOrDefault();
             stemailid = st.StudEmail;
             mobileno = st.StdMobNo;
@@ -655,9 +656,9 @@ namespace SchoolManagementSystems.Controllers
 
 
 
-            string msg = "Your ward " + studentname + Environment.NewLine;
-            msg = msg + "is absent for " + sessionname + "session" +Environment.NewLine;
-            msg = msg + "NCCAS";
+            string msg = "Dear Parent,Your Son/Daughter " + studentname + Environment.NewLine;
+            msg = msg + "is absent on " + (Convert.ToDateTime(date)).ToString("dd-MM-yyyy") + " for "+ sessionname + " session" + Environment.NewLine;
+            msg = msg + "NACCAS";
 
 
             String message = HttpUtility.UrlEncode(msg);

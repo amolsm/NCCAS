@@ -41,6 +41,23 @@
                 $('#colexp3').hide();
             }
         });
+
+        $('#cbxFillCurrentAdd').change(function () {
+            if (this.checked) {
+                $('#pacountry').val($('#ccountry').val());
+                $('#pastate').val($('#cstate').val());
+                $('#pacity').val($('#ccity').val());
+                $('#pastreet').val($('#cstreet').val());
+                $('#papin').val($('#cpin').val());
+            }
+            else {
+                $('#pacountry').val('');
+                $('#pastate').val('');
+                $('#pacity').val('');
+                $('#pastreet').val('');
+                $('#papin').val('');
+            }
+        });
         $('#cbxShowHide1').change(function () {
             if (this.checked) {
                 $('#autoUpdate1').show();
@@ -3387,48 +3404,6 @@
                                                 </fieldset>
                                                 <br />
                                                 <fieldset class="test" style="width: 100%;">
-                                                    <legend>Permanant Address</legend>
-
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.pacountry, new { @class = "control-label", @for = "select" })
-                                                        <div class="controls">
-
-                                                            @Html.DropDownListFor(m => m.pacountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
-                                                            @Html.ValidationMessageFor(model => model.pacountry)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.pastate, new { @class = "control-label", @for = "select" })
-                                                        <div class="controls">
-                                                            @Html.DropDownListFor(m => m.pastate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
-                                                            @Html.ValidationMessageFor(model => model.pastate)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.pacity, new { @class = "control-label", @for = "select" })
-                                                        <div class="controls">
-                                                            @Html.DropDownListFor(m => m.pacity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
-                                                            @Html.ValidationMessageFor(model => model.pacity)
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.pastreet, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @Html.TextAreaFor(model => model.pastreet, new { placeholder = "Enter Street", @class = "input" })
-                                                            @Html.ValidationMessageFor(model => model.pastreet)
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-group span5">
-                                                        @Html.LabelFor(model => model.papin, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @Html.TextBoxFor(model => model.papin, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
-                                                            @Html.ValidationMessageFor(model => model.papin)
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <br />
-                                                <fieldset class="test" style="width: 100%;">
                                                     <legend>Current Address</legend>
 
                                                     <div class="control-group required span5">
@@ -3489,6 +3464,53 @@
                                                     </div>
 
                                                 </fieldset>
+                                             
+                                                <br />
+                                                <fieldset class="test" style="width: 100%;">
+                                                    <legend>Permanant Address</legend>
+                                                    <div class="control-group span10">
+                                                        <input type="checkbox" class="control-group" name="sameasabovecheckbox" id="cbxFillCurrentAdd" value="sameasabovecheckbox"> Same as above
+                                                   
+                                                        </div>
+                                                    <br />
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pacountry, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+
+                                                                @Html.DropDownListFor(m => m.pacountry, new SelectList(Model.countrylist, "Countryid", "CountryName", "Select Country"), "Select Country", new { @for = "select" })
+                                                                @Html.ValidationMessageFor(model => model.pacountry)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pastate, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.pastate, new SelectList(Model.statelist, "Stateid", "StateName", "Select State"), "Select state")
+                                                                @Html.ValidationMessageFor(model => model.pastate)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pacity, new { @class = "control-label", @for = "select" })
+                                                            <div class="controls">
+                                                                @Html.DropDownListFor(m => m.pacity, new SelectList(Model.citylist, "Cityid", "CityName", "Select City"), "Select city")
+                                                                @Html.ValidationMessageFor(model => model.pacity)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.pastreet, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextAreaFor(model => model.pastreet, new { placeholder = "Enter Street", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.pastreet)
+                                                            </div>
+                                                        </div>
+                                                        <div class="control-group span5">
+                                                            @Html.LabelFor(model => model.papin, new { @class = "control-label" })
+                                                            <div class="controls">
+                                                                @Html.TextBoxFor(model => model.papin, new { placeholder = "Enter Pincode", maxlength = "6", @class = "input" })
+                                                                @Html.ValidationMessageFor(model => model.papin)
+                                                            </div>
+                                                        </div>
+</fieldset>
                                                 <br />
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>Bank Details</legend>

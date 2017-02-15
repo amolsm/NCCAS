@@ -793,7 +793,7 @@ namespace SchoolManagementSystems.Controllers
             string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br/><br/>";
             msg = msg + "Your UserName : " + Email + ".<br/>";
             msg = msg + "Your Password : " + pass + ".<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -814,7 +814,7 @@ namespace SchoolManagementSystems.Controllers
             string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br/><br/>";
             msg = msg + "Dear Student: "  + db.tbl_student.OrderByDescending(m => m.Studid).Select(m => m.Studnm).FirstOrDefault() + " .<br/>";
             msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NCCAS Management";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -1034,8 +1034,8 @@ namespace SchoolManagementSystems.Controllers
          
             string pass = db.tbl_user.Where(m => m.UserName == stemailid).Select(m => m.Password).FirstOrDefault();
             string msg = "Welcome to Nanjil Catholic College of Arts & Science"+ Environment.NewLine;
-            msg = msg + "U/N: " + stemailid + Environment.NewLine;
-            msg = msg + "P/W: " + pass + Environment.NewLine;
+            msg = msg + "USER NAME: " + stemailid + Environment.NewLine;
+            msg = msg + "PASSWORD: " + pass + Environment.NewLine;
            
             String message = HttpUtility.UrlEncode(msg);
             using (var wb = new WebClient())
