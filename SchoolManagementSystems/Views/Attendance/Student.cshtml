@@ -443,29 +443,12 @@
                                                     @Html.ValidationMessageFor(model => model.AttendanceDate)
                                                            </div>
                                                 </div>
-                                                <div class="control-group required span5">
+                                               <div class="control-group span5">
                                                     @Html.LabelFor(model => model.session, new { @class = "control-label" })
-                                                    <div class="controls">
-                                                        <div class="pull-left">
-                                                            @{
-                                                                List<SelectListItem> listItems = new List<SelectListItem>();
-                                                                listItems.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Morning",
-                                                                    Value = "1"
-                                                                });
-                                                                listItems.Add(new SelectListItem
-                                                                {
-                                                                    Text = "Afternoon",
-                                                                    Value = "2",
-
-                                                                });
-                                                                }
-                                                            @Html.DropDownListFor(model => model.session, listItems, "-- Select Session --")
-
-                                                        </div>
-                                                        @Html.ValidationMessageFor(model => model.session)
-                                                    </div>
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.session, new SelectList(Model.SessionList, "ID", "SessionName", "Select Session"), "Select Session")
+                                                    @Html.ValidationMessageFor(model => model.session)
+                                                           </div>
                                                 </div>
                                                 <div class="control-group span5" id="staffreason" style="display: none;">
                                                 </div>

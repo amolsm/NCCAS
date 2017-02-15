@@ -97,29 +97,23 @@
                var classid;
                var subject;
                var years;
-
+               @* @{int userid;
+                    userid = Convert.ToInt32(HttpContext.Current.Session["Userid"]); }
+               var createdby = @userid;*@
                if ($(this).prop('checked')) {
                 var departmentid = ($("#department").val());
                 var classid = ($("#Classid").val());
                 var subject = ($(this).val());
                 
                 var years = ($("#year").val());
-               
-                    var Subjectids = ($(this).val());
-                    teacher = ($("#leave" + Subjectids).val());
-                    presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
-
+                var Subjectids = ($(this).val());
+                var teacherid = ($("#leave" + Subjectids).val().replace(/\D/g, ''));
+                presentdetails.push(departmentid + "," + classid + "," + years + "," + subject + "," + teacherid);
                 }
                 else {
                    //var Subjectids = ($(this).val());
-                   teacher = ($("#leave" + Subjectids).val());
-                   presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
-
-                   //alert("Please Check the box !!");
-                   //presentdetails = [];
-                   //return false;
-          
-                    //presentdetails.push(departmentid + "," + classid + "," + teacher + "," + years + "," + subject);
+                   var teacherid = ($("#leave" + Subjectids).val().replace(/\D/g, ''));
+                   presentdetails.push(departmentid + "," + classid + "," + years + "," + subject + "," + teacherid);
                 }
             });
             //});
@@ -136,7 +130,7 @@
                     $("#lblmsgs").css({ "color": "green" });
                     $("#lblmsgs").css({ "font-size": "15px" });
                     $("#result").html(result);
-                    clear();
+                    
 
                     ReloadPaging();
                 };
@@ -146,7 +140,7 @@
                     $("#lblmsg").css({ "color": "orange" });
                     $("#lblmsg").css({ "font-size": "15px" });
                     $("#result").html(result);
-                    clear();
+                    
 
                     ReloadPaging();
                 };
@@ -224,8 +218,8 @@
                             + "</td><td width='10%;'><input class='addcls' type='checkbox' id='Present_" + data.sub[i].Subjectid.toString() + "'  value='" + data.sub[i].Subjectid.toString()
                             + "'></td><td width='30%;' style='text-align:center'><select class='show1' id='leave" + Subjectids + "'><option values='0'>---Select Teacher---</option>"
                         for (var n = 0; n < data.teach.length; n++) {
-                            table += "<option id='teacherid" + data.teach[n].Empid.toString() + "' values=" + data.teach[n].Empid.toString() + ">"
-                            + data.teach[n].FirstName.toString() + "</option>";
+                            table += "<option class='ab' id='teacherid" + data.teach[n].Empid.toString() + "' values=" + data.teach[n].Empid.toString() + ">"
+                            + data.teach[n].Empid.toString() + data.teach[n].FirstName.toString() + "</option>";
                         }
 
                         table += "</select></td></tr>";

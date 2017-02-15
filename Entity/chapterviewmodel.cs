@@ -23,9 +23,25 @@ namespace Entity
         [DisplayName("Subject")]
         public string subject { get; set; }
 
+        [DisplayName("Department")]
+        public int department { get; set; }
+
+        [DisplayName("Year")]
+        public int year { get; set; }
+
+        [DisplayName("Course Name")]
+        public int Classid { get; set; }
+
+        [DisplayName("Teacher Name")]
+        public int teacherid { get; set; }
+
         [DisplayName("Active")]
         public bool status { get; set; }
 
+
+        public List<tblDepartment> DepartmentList { get; set; }
+        public List<tbl_YearMaster> YearList { get; set; }
+        public List<tbl_CourseMaster> Classlist { get; set; }
         public List<tbl_subject> _subjectlist { get; set; }
         public List<sp_getchapter_Result> _chapterlists { get; set; }
 

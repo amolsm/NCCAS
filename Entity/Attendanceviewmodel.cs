@@ -64,9 +64,12 @@ namespace Entity
         [DisplayName("Leave End Date")]
         public DateTime LeaveEndDate { get; set; }
 
+        
+
         public List<tbl_subject> SubjectList { get; set; }
         public SelectList ylist { get; set; }
         public List<tbl_CourseYearMaster> tblcourse { get; set; }
+        public List<tbl_SessionMaster> SessionList { get; set; }
         public List<tbl_employee> Employeelist { get; set; }
         public List<tbl_division> DivisionList { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
