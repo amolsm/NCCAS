@@ -1,0 +1,50 @@
+﻿@model Entity.courseassigndeptmodel
+
+<div id="result" class="table-responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dept_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+             
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model._CoursedetailsList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dept_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+           
+                <td>
+                    <input type="button" id="@item.Cid" class="btn btn-default btn_edit edit" value="Edit" />
+
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>

@@ -1,0 +1,420 @@
+﻿@model Entity.Chaptercompleteviewmodel
+@{
+    ViewBag.Title = "ChapterComplete";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+@*<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>*@
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<style type="text/css">
+    .ui-datepicker-calendar {
+        background-color: antiquewhite;
+    }
+
+    .ui-datepicker-title {
+        background-color: antiquewhite;
+    }
+
+    .ui-icon ui-icon-circle-triangle-w {
+        background-color: antiquewhite;
+    }
+
+    #ui-datepicker-div {
+        display: none;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#insert").hide();
+        $("#CourseId").change(function () {
+            $("#Departmentid").empty();
+            debugger;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Getdepartment")',
+                dataType: 'json',
+                data: { id: $("#CourseId").val() },
+                success: function (DClass) {
+                    if (DClass != "") {
+                        var item = '<option value="0">Select Department</option>';
+                        $.each(DClass, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#Departmentid").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Department</option>';
+                        $("#Departmentid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Class.' + ex);
+                }
+            });
+            return false;
+        })
+        //////////////////////////////////////////////////////////////
+
+        $("#Departmentid").change(function () {
+            $("#YearId").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#Departmentid").val(), cid: $("#CourseId").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#YearId").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#YearId").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+            return false;
+        });
+
+
+        $("#YearId").change(function () {
+            $("#Subjectid").empty();
+            debugger;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSubject")',
+                dataType: 'json',
+                data: { id: $("#CourseId").val(), year: $("#YearId").val() },
+                success: function (subject) {
+                    if (subject != "") {
+                        var item = '<option value="0">Select Subject</option>';
+                        $.each(subject, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#Subjectid").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Subject</option>';
+                        $("#Subjectid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Subject.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+
+
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker').datepicker('setDate', new Date());
+       
+        function myFunction() { var ChapterIds = $("#chaplist").val(data.length); }
+
+        $("#header").click(function () {
+            if ($("#Add_header").is(":checked")) {
+                $(".addcls").prop('checked', true);
+                $(".Reason").attr("disabled", true);
+            }
+            else {
+                $(".addcls").prop('checked', false);
+                $(".Reason").attr("disabled", false);
+            }
+
+        });
+
+        $(document).on('change', '[type=checkbox]', function (e) {
+
+            var empid = this.id.replace("Present_", "");
+            var absent = $("#Present_" + empid);
+            var remark = "";
+
+            if ($("#Present_" + empid).is(":checked")) {
+                $("#Remark_" + empid).attr("disabled", true);
+            }
+            else {
+                $("#Remark_" + empid).attr("disabled", false);
+            }
+        });
+
+        $('#Subjectid').change(function () {
+            $("#insert").show();
+            var SubjectId = $('#Subjectid').val();
+            if (SubjectId == '') {
+                $("#insert").hide();
+                $('#result').html('');
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetChapterlist")',
+                dataType: 'json',
+                data: { id: $("#Subjectid").val() },
+                success: function (data) {
+
+                    var result = $('#result');
+                    var head = $('#header');
+                    var table; var header;
+                    var ChapterIds;
+                    result.html('');
+                    $("#chaplist").val(data.length);
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='100px;'>Chapter ID</th><th  width='200px;'>Chapter Name</th><th width='100px;'><input type='checkbox' id='Add_header' />Complete</th><th width='300px;'>Remark</th></thead></table>";
+                    head.html(header);
+                    table = "<table class='table tb-parshav tablesorter'><tbody>";
+                    for (var i = 0; i < data.length; i++) {
+                        ChapterIds = data[i].Chapter_id;
+                        table += "<tr id=" + ChapterIds + "><td width='100px;'>" + data[i].Chapter_id.toString() + "</td><td  width='200px;'>" + data[i].ChapterName.toString() + "</td><td width='100px;'><input class='addcls' type='checkbox' onchange='valueChanged()'  id='Present_" + data[i].Chapter_id.toString() + "'  value='" + data[i].Chapter_id.toString() + "'></td><td width='300px;'><input  type='text' id='Remark_" + data[i].Chapter_id + "'  class='Reason' /></td></tr>";
+                    }
+                    table += "</tbody><table>";
+                    result.html(table);
+                    myFunction();
+                }
+
+            });
+        });
+
+        $("#insert").click(function () {
+            //debugger;
+            var completiondetails = [];
+            $('input:checkbox.addcls').each(function (evt) {
+                var CompletionDate = ($("#datepicker").val());
+
+                @{int userid;
+                    userid = Convert.ToInt32(HttpContext.Current.Session["Userid"]); }
+                debugger;
+                var teacherid = @userid;
+               
+                var complete = '';
+                var remark = '';
+                var department = ($("#Departmentid").val());
+                var chapterid = ($(this).val());
+                var subject = ($("#Subjectid").val());
+                var course = ($("#CourseId").val());
+                var year = ($("#YearId").val());
+                //var complete = '';
+                if ($(this).prop('checked')) {
+                    complete = 'true';
+                    //var remark = ($("#Remark_" + chapterid).val());
+                    completiondetails.push(teacherid + "," + CompletionDate + "," + complete + "," + remark + "," + department + "," + chapterid + "," + subject + "," + course + "," + year);
+
+                }
+                else
+                {
+                    complete = 'false';
+                    var remark = ($("#Remark_" + chapterid).val());
+                    completiondetails.push(teacherid + "," + CompletionDate + "," + complete + "," + remark + "," + department + "," + chapterid + "," + subject + "," + course + "," + year);
+                }
+                
+            });
+            if (completiondetails != "") {
+                var options = {};
+                options.type = "POST",
+                options.url = '@Url.Action("DMLCompletion")',
+                options.data = JSON.stringify(completiondetails);
+                options.contentType = "application/json";
+                options.success = function (completiondetails) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Chapter details updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                    //alert("PresentList updated successfully!..");
+                };
+                options.error = function (completiondetails) {
+                    $("#msg").show();
+                    $("#lblmsg").text("Error while save the records!..");
+                    $("#lblmsg").css({ "color": "orange" });
+                    $("#lblmsg").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                    //alert("Error while save the records!");
+                };
+                $.ajax(options);
+            }
+
+
+        });
+
+    });
+    ReloadPaging();
+</script>
+
+
+@Html.Hidden("ChapterIds")@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+
+    <div class="row-fluid">
+        @Html.Partial("_AttendanceMenuList")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Chapter Complete", "Index", "ChapterComplete", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">Chapter Details</li>
+
+                    <div id="srch_criteria" style="float: right;display:none;">
+
+                        @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                        <input type="submit" id="srch" value="Find" />
+
+                    </div>
+                </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Chapter Completion Details</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal">
+
+
+                                <fieldset>
+                                    @using (Html.BeginForm("ClassChapterComplete", "Complete", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                    {
+                                        @Html.ValidationSummary(true)
+                                        <div>
+                                            <h2 style="color:red;">
+                                                @TempData["ErrorMessage"]
+                                            </h2>
+                                        </div>
+
+                                        @*<div class="control-group span5">
+                                                @Html.LabelFor(model => model.Teacherid, new { @class = "control-label" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.Teacherid, new SelectList(Model.Teacherlist, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                    @Html.ValidationMessageFor(model => model.Teacherid)
+                                                </div>
+                                            </div>*@
+
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.Courselist, "Courseid", "CourseName", "Select Course"), "Select Course")
+                                                @Html.ValidationMessageFor(model => model.CourseId)
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.Departmentid, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.Departmentid, new SelectList(Model.Departmentlist, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                @Html.ValidationMessageFor(model => model.Departmentid)
+                                            </div>
+                                        </div>
+
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.YearId, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.YearId, new SelectList(Model.Yearlist, "yearid", "YearName", "Select Year"), "Select Year")
+                                                @Html.ValidationMessageFor(model => model.YearId)
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.Subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
+                                                @Html.ValidationMessageFor(model => model.Subjectid)
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.CompleteDate, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.CompleteDate, new { id = "datepicker", placeholder = "Select Date of Attendance" })
+                                                @Html.ValidationMessageFor(model => model.CompleteDate)
+                                            </div>
+                                        </div>
+
+                                                <div class="control-group span5" id="staffreason" style="display: none;">
+                                                </div>
+
+                                                <div>
+                                                    <input type="button" class="btn btn-primary" id="insert" value="submit" />
+                                                </div>
+
+
+
+
+
+                                    }
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!--/span-->
+
+                </div><!--/row-->
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Chapter List</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div id="header" class="table-responsive">
+                            </div>
+                            <div id="result" class="table-responsive">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

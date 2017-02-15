@@ -1,0 +1,336 @@
+﻿@model Entity.Attendanceviewmodel
+@{
+    ViewBag.Title = "Leave";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<style type="text/css">
+    .ui-datepicker-calendar {
+        background-color: antiquewhite;
+    }
+
+    .ui-datepicker-title {
+        background-color: antiquewhite;
+    }
+
+    .ui-icon ui-icon-circle-triangle-w {
+        background-color: antiquewhite;
+    }
+
+    #ui-datepicker-div {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        FillPermission();
+        var Leavedays = 0;
+        $("#insert").click(function (e) {
+            Validations(e);
+            var LeaveType = $("#LeaveTypeid").val();
+            var EMPid = $("#Empid").val();
+
+            CalculateDiff();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_Leave")',
+                dataType: 'JSON',
+                data: { Empid: EMPid, LeaveTypeid: LeaveType, Days: Leavedays },
+                success: function (data) {
+                    if (data.Leaves != null && data.Leaves < 0) {
+                        $("#LeaveTypeid").val('');
+                        $("#Empid").val('');
+                        alert("Employee has no balance for this leave type");
+                        return false;
+                    }
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("EmployeeLeave")',
+                data: $('#frm').serialize() + "&evt=submit",
+                success: function (result) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("EmployeeLeave  updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                }
+                });
+        });
+
+        $('#datepicker1').attr("readonly", true);
+
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'mm/dd/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker1').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'mm/dd/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker').datepicker('setDate', new Date());
+        $('#datepicker1').datepicker('setDate', new Date());
+
+        $('#StaffAbsent').change(function () {
+            if ($(this).is(":checked")) {
+                $('#staffreason').css('display', 'block');
+            }
+            else {
+                $('#staffreason').css('display', 'none');
+            }
+        });
+
+
+        $("#Empid").change(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetAvailableLeaves")',
+                data:  $('#frm').serialize() ,
+                success: function (result) {
+                    $("#result").html(result);
+                }
+            });
+        })
+
+        $("#LeaveTypeid").change(function () {
+            if ($("#Empid").val() == null || $("#Empid").val() == "")
+            {
+                $("#LeaveTypeid").val('');
+                alert("Please select Employee First");
+                return;
+            }
+            var LeaveType = $("#LeaveTypeid").val();
+            var EMPid = $("#Empid").val();
+            if (LeaveType == "" || LeaveType == "undefined")
+            {
+                return false;
+            }
+            CalculateDiff();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_Leave")',
+                dataType: 'JSON',
+                data: { Empid: EMPid, LeaveTypeid: LeaveType, Days: Leavedays },
+                success: function (data) {
+                    if (data.Leaves != null && data.Leaves < 0) {
+                        $("#LeaveTypeid").val('');
+                        alert("Employee has no balance for this leave type");
+                        return false;
+                    }
+                }
+            });
+        });
+
+        function CalculateDiff() {
+
+            if ($("#LeaveStartDate").val() != "" && $("#LeaveEndDate").val() != "") {
+
+                var From_date = new Date($("#datepicker").val());
+                var To_date = new Date($("#datepicker1").val());
+                var diff_date = To_date - From_date;
+
+                Leavedays = (Math.floor(((diff_date % 31536000000) % 2628000000) / 86400000))+1;
+            }
+            else {
+                alert("Please select dates");
+                return false;
+            }
+        }
+
+        function Validations(e) {
+            var cnt = 0;
+            if ($("#Empid").val() == '') {
+                cnt++;
+                $("#Empid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Empid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#LeaveTypeid").val() == '') {
+                cnt++;
+                $("#LeaveTypeid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#LeaveTypeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#LeaveStartDate").val() == '') {
+                cnt++;
+                $("#LeaveStartDate").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#LeaveStartDate").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#LeaveEndDate").val() == '') {
+                cnt++;
+                $("#LeaveEndDate").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#LeaveEndDate").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0) {
+                e.preventDefault();
+            }
+        }
+
+
+    });
+</script>
+@Html.Partial("_PermissionHiddenFlds")
+                <div class="container-fluid-full">
+             
+		<div class="row-fluid">
+          @Html.Partial("_EmployeeSubMenuList")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+               
+                    <ul class="breadcrumb">
+                          <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Employee Management", "Index", "Attendance", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Apply for Leave</li>
+                    </ul>
+
+                       <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                                            @using (Html.BeginForm("EmployeeLeave", "Attendance", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                            {
+                                                @Html.ValidationSummary(true)
+                                                <div class="control-group">
+                                                    @TempData["ErrorMessage"]
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.Empid, new { @class = "control-label" })
+                                                          <div class="controls">
+                                                    @Html.DropDownListFor(model => model.Empid, new SelectList(Model.Employeelist, "Empid", "FirstName", "Select Employee"), "Select Employee")
+                                                    @Html.ValidationMessageFor(model => model.Empid)
+                                                              </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.LeaveStartDate, new { @class = "control-label" })
+                                                          <div class="controls">
+                                                    @Html.TextBoxFor(model => model.LeaveStartDate, new { id = "datepicker", placeholder = "Select Date of Leave Start Date" , @class="focused" })
+                                                    @Html.ValidationMessageFor(model => model.LeaveStartDate)
+                                                              </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.LeaveEndDate, new { @class = "control-label" })
+                                                          <div class="controls">
+                                                    @Html.TextBoxFor(model => model.LeaveEndDate, new { id = "datepicker1", placeholder = "Select Date of Leave End Date" , @class="focused"})
+                                                    @Html.ValidationMessageFor(model => model.LeaveEndDate)
+                                                              </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <span class="control-label">
+                                                        <b>Leave</b>
+                                                    </span>
+                                                     <div class="controls">
+                                                    @Html.DropDownListFor(model => model.LeaveTypeid, new SelectList(Model.Leavelist, "leaveid", "leavename", "Select leave"), "Select leave")
+                                                    @Html.ValidationMessageFor(model => model.LeaveTypeid)
+                                                         </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                                                     <div class="controls">
+                                                    @Html.TextAreaFor(model => model.Description, new { id = "Description",  @class="focused"})
+                                                    @Html.ValidationMessageFor(model => model.Description)
+                                                         </div>
+                                                </div>
+                                                <div class="control-group" id="staffreason" style="display:none;">
+                                                </div>
+                                               <div class="form-actions">
+                                                    <input type="submit" action="insert" class="btn btn-primary" id="insert" value="Submit" />
+                                                </div>
+                                            }
+                                                 </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row--><div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                   <div class="box-content span11">
+                      <div class="box-content span12">
+                                                @Html.Partial("_LeaveList")
+                                        </div>
+                       </div>
+        </div>
+    </div>
+</div>
+   
+            </div>
+    </div>
+              </div>      
+
+
+
+
+
+

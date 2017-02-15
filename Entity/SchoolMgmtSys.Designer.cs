@@ -820,54 +820,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Chapter> tbl_Chapter
-        {
-            get
-            {
-                if ((_tbl_Chapter == null))
-                {
-                    _tbl_Chapter = base.CreateObjectSet<tbl_Chapter>("tbl_Chapter");
-                }
-                return _tbl_Chapter;
-            }
-        }
-        private ObjectSet<tbl_Chapter> _tbl_Chapter;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_Content> tbl_Content
-        {
-            get
-            {
-                if ((_tbl_Content == null))
-                {
-                    _tbl_Content = base.CreateObjectSet<tbl_Content>("tbl_Content");
-                }
-                return _tbl_Content;
-            }
-        }
-        private ObjectSet<tbl_Content> _tbl_Content;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_teachersubject> tbl_teachersubject
-        {
-            get
-            {
-                if ((_tbl_teachersubject == null))
-                {
-                    _tbl_teachersubject = base.CreateObjectSet<tbl_teachersubject>("tbl_teachersubject");
-                }
-                return _tbl_teachersubject;
-            }
-        }
-        private ObjectSet<tbl_teachersubject> _tbl_teachersubject;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_studentdivision> tbl_studentdivision
         {
             get
@@ -996,22 +948,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Chaptercomplete> tbl_Chaptercomplete
-        {
-            get
-            {
-                if ((_tbl_Chaptercomplete == null))
-                {
-                    _tbl_Chaptercomplete = base.CreateObjectSet<tbl_Chaptercomplete>("tbl_Chaptercomplete");
-                }
-                return _tbl_Chaptercomplete;
-            }
-        }
-        private ObjectSet<tbl_Chaptercomplete> _tbl_Chaptercomplete;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_StudentAttendance> tbl_StudentAttendance
         {
             get
@@ -1072,6 +1008,70 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_SessionMaster> _tbl_SessionMaster;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Chapter> tbl_Chapter
+        {
+            get
+            {
+                if ((_tbl_Chapter == null))
+                {
+                    _tbl_Chapter = base.CreateObjectSet<tbl_Chapter>("tbl_Chapter");
+                }
+                return _tbl_Chapter;
+            }
+        }
+        private ObjectSet<tbl_Chapter> _tbl_Chapter;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Chaptercomplete> tbl_Chaptercomplete
+        {
+            get
+            {
+                if ((_tbl_Chaptercomplete == null))
+                {
+                    _tbl_Chaptercomplete = base.CreateObjectSet<tbl_Chaptercomplete>("tbl_Chaptercomplete");
+                }
+                return _tbl_Chaptercomplete;
+            }
+        }
+        private ObjectSet<tbl_Chaptercomplete> _tbl_Chaptercomplete;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Content> tbl_Content
+        {
+            get
+            {
+                if ((_tbl_Content == null))
+                {
+                    _tbl_Content = base.CreateObjectSet<tbl_Content>("tbl_Content");
+                }
+                return _tbl_Content;
+            }
+        }
+        private ObjectSet<tbl_Content> _tbl_Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_teachersubject> tbl_teachersubject
+        {
+            get
+            {
+                if ((_tbl_teachersubject == null))
+                {
+                    _tbl_teachersubject = base.CreateObjectSet<tbl_teachersubject>("tbl_teachersubject");
+                }
+                return _tbl_teachersubject;
+            }
+        }
+        private ObjectSet<tbl_teachersubject> _tbl_teachersubject;
 
         #endregion
 
@@ -1454,30 +1454,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Chapter EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Chapter(tbl_Chapter tbl_Chapter)
-        {
-            base.AddObject("tbl_Chapter", tbl_Chapter);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Content EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Content(tbl_Content tbl_Content)
-        {
-            base.AddObject("tbl_Content", tbl_Content);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_teachersubject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_teachersubject(tbl_teachersubject tbl_teachersubject)
-        {
-            base.AddObject("tbl_teachersubject", tbl_teachersubject);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_studentdivision EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_studentdivision(tbl_studentdivision tbl_studentdivision)
@@ -1542,14 +1518,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Chaptercomplete EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Chaptercomplete(tbl_Chaptercomplete tbl_Chaptercomplete)
-        {
-            base.AddObject("tbl_Chaptercomplete", tbl_Chaptercomplete);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_StudentAttendance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_StudentAttendance(tbl_StudentAttendance tbl_StudentAttendance)
@@ -1579,6 +1547,38 @@ namespace Entity
         public void AddTotbl_SessionMaster(tbl_SessionMaster tbl_SessionMaster)
         {
             base.AddObject("tbl_SessionMaster", tbl_SessionMaster);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Chapter EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Chapter(tbl_Chapter tbl_Chapter)
+        {
+            base.AddObject("tbl_Chapter", tbl_Chapter);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Chaptercomplete EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Chaptercomplete(tbl_Chaptercomplete tbl_Chaptercomplete)
+        {
+            base.AddObject("tbl_Chaptercomplete", tbl_Chaptercomplete);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Content EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Content(tbl_Content tbl_Content)
+        {
+            base.AddObject("tbl_Content", tbl_Content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_teachersubject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_teachersubject(tbl_teachersubject tbl_teachersubject)
+        {
+            base.AddObject("tbl_teachersubject", tbl_teachersubject);
         }
 
         #endregion
@@ -6139,154 +6139,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="chapterid">No Metadata Documentation available.</param>
-        /// <param name="chaptername">No Metadata Documentation available.</param>
-        /// <param name="description">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_chapter_DML(Nullable<global::System.Int32> chapterid, global::System.String chaptername, global::System.String description, Nullable<global::System.Boolean> status, Nullable<global::System.Int32> subjectid, global::System.String act)
-        {
-            ObjectParameter chapteridParameter;
-            if (chapterid.HasValue)
-            {
-                chapteridParameter = new ObjectParameter("chapterid", chapterid);
-            }
-            else
-            {
-                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter chapternameParameter;
-            if (chaptername != null)
-            {
-                chapternameParameter = new ObjectParameter("chaptername", chaptername);
-            }
-            else
-            {
-                chapternameParameter = new ObjectParameter("chaptername", typeof(global::System.String));
-            }
-    
-            ObjectParameter descriptionParameter;
-            if (description != null)
-            {
-                descriptionParameter = new ObjectParameter("description", description);
-            }
-            else
-            {
-                descriptionParameter = new ObjectParameter("description", typeof(global::System.String));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_chapter_DML", chapteridParameter, chapternameParameter, descriptionParameter, statusParameter, subjectidParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="contentid">No Metadata Documentation available.</param>
-        /// <param name="contentname">No Metadata Documentation available.</param>
-        /// <param name="chapterid">No Metadata Documentation available.</param>
-        /// <param name="contentdescription">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_Content_DML(Nullable<global::System.Int32> contentid, global::System.String contentname, Nullable<global::System.Int32> chapterid, global::System.String contentdescription, Nullable<global::System.Boolean> status, global::System.String act)
-        {
-            ObjectParameter contentidParameter;
-            if (contentid.HasValue)
-            {
-                contentidParameter = new ObjectParameter("contentid", contentid);
-            }
-            else
-            {
-                contentidParameter = new ObjectParameter("contentid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter contentnameParameter;
-            if (contentname != null)
-            {
-                contentnameParameter = new ObjectParameter("contentname", contentname);
-            }
-            else
-            {
-                contentnameParameter = new ObjectParameter("contentname", typeof(global::System.String));
-            }
-    
-            ObjectParameter chapteridParameter;
-            if (chapterid.HasValue)
-            {
-                chapteridParameter = new ObjectParameter("chapterid", chapterid);
-            }
-            else
-            {
-                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter contentdescriptionParameter;
-            if (contentdescription != null)
-            {
-                contentdescriptionParameter = new ObjectParameter("contentdescription", contentdescription);
-            }
-            else
-            {
-                contentdescriptionParameter = new ObjectParameter("contentdescription", typeof(global::System.String));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_Content_DML", contentidParameter, contentnameParameter, chapteridParameter, contentdescriptionParameter, statusParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectResult<sp_getchapter_Result> sp_getchapter()
         {
             return base.ExecuteFunction<sp_getchapter_Result>("sp_getchapter");
@@ -6336,80 +6188,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction<sp_getyear_Result>("sp_getyear", dept_idParameter, courseidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="id">No Metadata Documentation available.</param>
-        /// <param name="teachername">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="departmenid">No Metadata Documentation available.</param>
-        /// <param name="yearid">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        public int sp_teachersubject_DML(Nullable<global::System.Int32> id, global::System.String teachername, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> departmenid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> subjectid)
-        {
-            ObjectParameter idParameter;
-            if (id.HasValue)
-            {
-                idParameter = new ObjectParameter("id", id);
-            }
-            else
-            {
-                idParameter = new ObjectParameter("id", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter teachernameParameter;
-            if (teachername != null)
-            {
-                teachernameParameter = new ObjectParameter("teachername", teachername);
-            }
-            else
-            {
-                teachernameParameter = new ObjectParameter("teachername", typeof(global::System.String));
-            }
-    
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
-            {
-                courseidParameter = new ObjectParameter("courseid", courseid);
-            }
-            else
-            {
-                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter departmenidParameter;
-            if (departmenid.HasValue)
-            {
-                departmenidParameter = new ObjectParameter("departmenid", departmenid);
-            }
-            else
-            {
-                departmenidParameter = new ObjectParameter("departmenid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yearidParameter;
-            if (yearid.HasValue)
-            {
-                yearidParameter = new ObjectParameter("yearid", yearid);
-            }
-            else
-            {
-                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_teachersubject_DML", idParameter, teachernameParameter, courseidParameter, departmenidParameter, yearidParameter, subjectidParameter);
         }
     
         /// <summary>
@@ -10521,113 +10299,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="teacherid">No Metadata Documentation available.</param>
-        /// <param name="complete">No Metadata Documentation available.</param>
-        /// <param name="remark">No Metadata Documentation available.</param>
-        /// <param name="completeDate">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="chapterid">No Metadata Documentation available.</param>
-        /// <param name="departmentid">No Metadata Documentation available.</param>
-        /// <param name="yearid">No Metadata Documentation available.</param>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        public int sp_ChapterComplete_DML(Nullable<global::System.Int32> teacherid, Nullable<global::System.Boolean> complete, global::System.String remark, Nullable<global::System.DateTime> completeDate, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> chapterid, Nullable<global::System.Int32> departmentid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> courseid)
-        {
-            ObjectParameter teacheridParameter;
-            if (teacherid.HasValue)
-            {
-                teacheridParameter = new ObjectParameter("Teacherid", teacherid);
-            }
-            else
-            {
-                teacheridParameter = new ObjectParameter("Teacherid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter completeParameter;
-            if (complete.HasValue)
-            {
-                completeParameter = new ObjectParameter("complete", complete);
-            }
-            else
-            {
-                completeParameter = new ObjectParameter("complete", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter remarkParameter;
-            if (remark != null)
-            {
-                remarkParameter = new ObjectParameter("Remark", remark);
-            }
-            else
-            {
-                remarkParameter = new ObjectParameter("Remark", typeof(global::System.String));
-            }
-    
-            ObjectParameter completeDateParameter;
-            if (completeDate.HasValue)
-            {
-                completeDateParameter = new ObjectParameter("CompleteDate", completeDate);
-            }
-            else
-            {
-                completeDateParameter = new ObjectParameter("CompleteDate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter chapteridParameter;
-            if (chapterid.HasValue)
-            {
-                chapteridParameter = new ObjectParameter("Chapterid", chapterid);
-            }
-            else
-            {
-                chapteridParameter = new ObjectParameter("Chapterid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter departmentidParameter;
-            if (departmentid.HasValue)
-            {
-                departmentidParameter = new ObjectParameter("Departmentid", departmentid);
-            }
-            else
-            {
-                departmentidParameter = new ObjectParameter("Departmentid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yearidParameter;
-            if (yearid.HasValue)
-            {
-                yearidParameter = new ObjectParameter("Yearid", yearid);
-            }
-            else
-            {
-                yearidParameter = new ObjectParameter("Yearid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
-            {
-                courseidParameter = new ObjectParameter("Courseid", courseid);
-            }
-            else
-            {
-                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_ChapterComplete_DML", teacheridParameter, completeParameter, remarkParameter, completeDateParameter, subjectidParameter, chapteridParameter, departmentidParameter, yearidParameter, courseidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="studentID">No Metadata Documentation available.</param>
         /// <param name="present">No Metadata Documentation available.</param>
         /// <param name="reason">No Metadata Documentation available.</param>
@@ -10765,6 +10436,456 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_Session", iDParameter, sessionnameParameter, isActiveParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="chapterid">No Metadata Documentation available.</param>
+        /// <param name="chaptername">No Metadata Documentation available.</param>
+        /// <param name="description">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="dept_id">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="createdby">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_chapter_DML(Nullable<global::System.Int32> chapterid, global::System.String chaptername, global::System.String description, Nullable<global::System.Boolean> status, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> dept_id, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> createdby, global::System.String act)
+        {
+            ObjectParameter chapteridParameter;
+            if (chapterid.HasValue)
+            {
+                chapteridParameter = new ObjectParameter("chapterid", chapterid);
+            }
+            else
+            {
+                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter chapternameParameter;
+            if (chaptername != null)
+            {
+                chapternameParameter = new ObjectParameter("chaptername", chaptername);
+            }
+            else
+            {
+                chapternameParameter = new ObjectParameter("chaptername", typeof(global::System.String));
+            }
+    
+            ObjectParameter descriptionParameter;
+            if (description != null)
+            {
+                descriptionParameter = new ObjectParameter("description", description);
+            }
+            else
+            {
+                descriptionParameter = new ObjectParameter("description", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dept_idParameter;
+            if (dept_id.HasValue)
+            {
+                dept_idParameter = new ObjectParameter("dept_id", dept_id);
+            }
+            else
+            {
+                dept_idParameter = new ObjectParameter("dept_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter createdbyParameter;
+            if (createdby.HasValue)
+            {
+                createdbyParameter = new ObjectParameter("createdby", createdby);
+            }
+            else
+            {
+                createdbyParameter = new ObjectParameter("createdby", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_chapter_DML", chapteridParameter, chapternameParameter, descriptionParameter, statusParameter, subjectidParameter, yearidParameter, dept_idParameter, teacheridParameter, courseidParameter, createdbyParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="complete">No Metadata Documentation available.</param>
+        /// <param name="remark">No Metadata Documentation available.</param>
+        /// <param name="completeDate">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="chapterid">No Metadata Documentation available.</param>
+        /// <param name="departmentid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        public int sp_ChapterComplete_DML(Nullable<global::System.Int32> teacherid, Nullable<global::System.Boolean> complete, global::System.String remark, Nullable<global::System.DateTime> completeDate, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> chapterid, Nullable<global::System.Int32> departmentid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> courseid)
+        {
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("Teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("Teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter completeParameter;
+            if (complete.HasValue)
+            {
+                completeParameter = new ObjectParameter("complete", complete);
+            }
+            else
+            {
+                completeParameter = new ObjectParameter("complete", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter remarkParameter;
+            if (remark != null)
+            {
+                remarkParameter = new ObjectParameter("Remark", remark);
+            }
+            else
+            {
+                remarkParameter = new ObjectParameter("Remark", typeof(global::System.String));
+            }
+    
+            ObjectParameter completeDateParameter;
+            if (completeDate.HasValue)
+            {
+                completeDateParameter = new ObjectParameter("CompleteDate", completeDate);
+            }
+            else
+            {
+                completeDateParameter = new ObjectParameter("CompleteDate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter chapteridParameter;
+            if (chapterid.HasValue)
+            {
+                chapteridParameter = new ObjectParameter("Chapterid", chapterid);
+            }
+            else
+            {
+                chapteridParameter = new ObjectParameter("Chapterid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter departmentidParameter;
+            if (departmentid.HasValue)
+            {
+                departmentidParameter = new ObjectParameter("Departmentid", departmentid);
+            }
+            else
+            {
+                departmentidParameter = new ObjectParameter("Departmentid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("Yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("Yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("Courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_ChapterComplete_DML", teacheridParameter, completeParameter, remarkParameter, completeDateParameter, subjectidParameter, chapteridParameter, departmentidParameter, yearidParameter, courseidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="contentid">No Metadata Documentation available.</param>
+        /// <param name="contentname">No Metadata Documentation available.</param>
+        /// <param name="chapterid">No Metadata Documentation available.</param>
+        /// <param name="contentdescription">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="dept_id">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_Content_DML(Nullable<global::System.Int32> contentid, global::System.String contentname, Nullable<global::System.Int32> chapterid, global::System.String contentdescription, Nullable<global::System.Boolean> status, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> dept_id, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> yearid, global::System.String act)
+        {
+            ObjectParameter contentidParameter;
+            if (contentid.HasValue)
+            {
+                contentidParameter = new ObjectParameter("contentid", contentid);
+            }
+            else
+            {
+                contentidParameter = new ObjectParameter("contentid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter contentnameParameter;
+            if (contentname != null)
+            {
+                contentnameParameter = new ObjectParameter("contentname", contentname);
+            }
+            else
+            {
+                contentnameParameter = new ObjectParameter("contentname", typeof(global::System.String));
+            }
+    
+            ObjectParameter chapteridParameter;
+            if (chapterid.HasValue)
+            {
+                chapteridParameter = new ObjectParameter("chapterid", chapterid);
+            }
+            else
+            {
+                chapteridParameter = new ObjectParameter("chapterid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter contentdescriptionParameter;
+            if (contentdescription != null)
+            {
+                contentdescriptionParameter = new ObjectParameter("contentdescription", contentdescription);
+            }
+            else
+            {
+                contentdescriptionParameter = new ObjectParameter("contentdescription", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("Courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("Courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dept_idParameter;
+            if (dept_id.HasValue)
+            {
+                dept_idParameter = new ObjectParameter("dept_id", dept_id);
+            }
+            else
+            {
+                dept_idParameter = new ObjectParameter("dept_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("Subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_Content_DML", contentidParameter, contentnameParameter, chapteridParameter, contentdescriptionParameter, statusParameter, teacheridParameter, courseidParameter, dept_idParameter, subjectidParameter, yearidParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="id">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="departmenid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="createdby">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        public int sp_teachersubject_DML(Nullable<global::System.Int32> id, Nullable<global::System.Int32> teacherid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> departmenid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> createdby, Nullable<global::System.Int32> subjectid)
+        {
+            ObjectParameter idParameter;
+            if (id.HasValue)
+            {
+                idParameter = new ObjectParameter("id", id);
+            }
+            else
+            {
+                idParameter = new ObjectParameter("id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter departmenidParameter;
+            if (departmenid.HasValue)
+            {
+                departmenidParameter = new ObjectParameter("departmenid", departmenid);
+            }
+            else
+            {
+                departmenidParameter = new ObjectParameter("departmenid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter createdbyParameter;
+            if (createdby.HasValue)
+            {
+                createdbyParameter = new ObjectParameter("createdby", createdby);
+            }
+            else
+            {
+                createdbyParameter = new ObjectParameter("createdby", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_teachersubject_DML", idParameter, teacheridParameter, courseidParameter, departmenidParameter, yearidParameter, createdbyParameter, subjectidParameter);
         }
 
         #endregion
@@ -12641,6 +12762,150 @@ namespace Entity
         private Nullable<global::System.Int32> _Subjectid;
         partial void OnSubjectidChanging(Nullable<global::System.Int32> value);
         partial void OnSubjectidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _yearid;
+        partial void OnyearidChanging(Nullable<global::System.Int32> value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dept_id
+        {
+            get
+            {
+                return _dept_id;
+            }
+            set
+            {
+                Ondept_idChanging(value);
+                ReportPropertyChanging("dept_id");
+                _dept_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dept_id");
+                Ondept_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dept_id;
+        partial void Ondept_idChanging(Nullable<global::System.Int32> value);
+        partial void Ondept_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> teacherid
+        {
+            get
+            {
+                return _teacherid;
+            }
+            set
+            {
+                OnteacheridChanging(value);
+                ReportPropertyChanging("teacherid");
+                _teacherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("teacherid");
+                OnteacheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _teacherid;
+        partial void OnteacheridChanging(Nullable<global::System.Int32> value);
+        partial void OnteacheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Courseid;
+        partial void OnCourseidChanging(Nullable<global::System.Int32> value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> createdby
+        {
+            get
+            {
+                return _createdby;
+            }
+            set
+            {
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Date;
+        partial void OnDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateChanged();
 
         #endregion
 
@@ -12914,6 +13179,54 @@ namespace Entity
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> createdby
+        {
+            get
+            {
+                return _createdby;
+            }
+            set
+            {
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Date;
+        partial void OnDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateChanged();
 
         #endregion
 
@@ -13379,6 +13692,174 @@ namespace Entity
         private global::System.String _Content_Name;
         partial void OnContent_NameChanging(global::System.String value);
         partial void OnContent_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> teacherid
+        {
+            get
+            {
+                return _teacherid;
+            }
+            set
+            {
+                OnteacheridChanging(value);
+                ReportPropertyChanging("teacherid");
+                _teacherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("teacherid");
+                OnteacheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _teacherid;
+        partial void OnteacheridChanging(Nullable<global::System.Int32> value);
+        partial void OnteacheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Courseid;
+        partial void OnCourseidChanging(Nullable<global::System.Int32> value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dept_id
+        {
+            get
+            {
+                return _dept_id;
+            }
+            set
+            {
+                Ondept_idChanging(value);
+                ReportPropertyChanging("dept_id");
+                _dept_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dept_id");
+                Ondept_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dept_id;
+        partial void Ondept_idChanging(Nullable<global::System.Int32> value);
+        partial void Ondept_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Subjectid
+        {
+            get
+            {
+                return _Subjectid;
+            }
+            set
+            {
+                OnSubjectidChanging(value);
+                ReportPropertyChanging("Subjectid");
+                _Subjectid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Subjectid");
+                OnSubjectidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Subjectid;
+        partial void OnSubjectidChanging(Nullable<global::System.Int32> value);
+        partial void OnSubjectidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _yearid;
+        partial void OnyearidChanging(Nullable<global::System.Int32> value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> createdby
+        {
+            get
+            {
+                return _createdby;
+            }
+            set
+            {
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Date;
+        partial void OnDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateChanged();
 
         #endregion
 
@@ -29815,6 +30296,30 @@ namespace Entity
         private Nullable<global::System.Int32> _DeptId;
         partial void OnDeptIdChanging(Nullable<global::System.Int32> value);
         partial void OnDeptIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> createdby
+        {
+            get
+            {
+                return _createdby;
+            }
+            set
+            {
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
 
         #endregion
 
@@ -30155,24 +30660,48 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String teachername
+        public Nullable<global::System.Int32> createdby
         {
             get
             {
-                return _teachername;
+                return _createdby;
             }
             set
             {
-                OnteachernameChanging(value);
-                ReportPropertyChanging("teachername");
-                _teachername = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("teachername");
-                OnteachernameChanged();
+                OncreatedbyChanging(value);
+                ReportPropertyChanging("createdby");
+                _createdby = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("createdby");
+                OncreatedbyChanged();
             }
         }
-        private global::System.String _teachername;
-        partial void OnteachernameChanging(global::System.String value);
-        partial void OnteachernameChanged();
+        private Nullable<global::System.Int32> _createdby;
+        partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
+        partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Date;
+        partial void OnDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateChanged();
 
         #endregion
 

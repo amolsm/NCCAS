@@ -1,0 +1,495 @@
+﻿@model Entity.timetableviewmodel
+@{
+    ViewBag.Title = "New Timetable Information";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Fillhr();
+        Fillmin();
+        FillPermission();
+        function Fillhr() {
+            var item = '<option value="">Hour</option>';
+            for (var i = 1; i <= 24; i++) {
+                if (i < 10) {
+                    item += '<option value=' + i + '>0' + i + '</option>';
+                }
+                else {
+                    item += '<option value=' + i + '>' + i + '</option>';
+                }
+            }
+            $("#ddlhr").append(item);
+            $("#ddlhr1").append(item);
+        }
+
+        function Fillmin() {
+            var item = '<option value="">Min</option>';
+            for (var i = 0; i < 60; i++) {
+                if (i < 10) {
+                    item += '<option value=' + i + '>0' + i + '</option>';
+                }
+                else {
+                    item += '<option value=' + i + '>' + i + '</option>';
+                }
+            }
+            $("#ddlmin").append(item);
+            $("#ddlmin1").append(item);
+        }
+
+        $("#ddlhr").change(function () {
+            $("#ddlmin").val('');
+        });
+        $("#ddlmin").change(function () {
+            $("#LecTime").val($("#ddlhr").val() + ':' + $("#ddlmin").val());
+        });
+
+        $("#ddlhr1").change(function () {
+            $("#ddlmin1").val('');
+        });
+        $("#ddlmin1").change(function () {
+            $("#LecETime").val($("#ddlhr1").val() + ':' + $("#ddlmin1").val());
+        });
+
+        $("#lblmsg").text('');
+        $('#tid input').attr("readonly", true);
+        if ($("#tid input").val() == "0" || $("#tid input").val() == "") {
+            $("#tid").hide();
+        }
+
+        function clear() {
+            $("#tid").hide();
+            $('#tid input').val('0');
+            $("#Classid").val('');
+            $("#Day").val('');
+            $("#LecNo").val('');
+            $("#Subjectid").val('');
+            $("#ddlhr").val('');
+            $("#ddlhr1").val('');
+            $("#ddlmin").val('');
+            $("#ddlmin1").val('');
+            $("#LecTime").val('');
+            $("#LecETime").val('');
+            $("#Empid").val('');
+        }
+        $('#LecNo').change(function () {
+            var LecNo = $('#LecNo').val();
+            var Day = $('#Day').val();
+            var Classid = $('#Classid').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_LecNo")',
+                dataType: 'JSON',
+                data: { LecNo: LecNo, Day: Day, Classid: Classid },
+                success: function (data) {
+                    if (data.LecNo != null) {
+                        $("#lblmsg").text("Lecture Number Already Exists for this Day!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#LecNo').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+        $("#result").on("click", ".edit", function (evt) {
+            var Tid = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillTimetableInfo")',
+                dataType: 'JSON',
+                data: { Tid: Tid },
+                success: function (data) {
+                    $("#tid").show();
+                    $("#tid input").val(data.Tid);
+                    $("#Classid").val(data.Classid);
+                    $("#Subjectid").empty();
+                    if ($("#Classid") != "") {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("GetSubjects")',
+                            dataType: 'json',
+                            data: { id: $("#Classid").val() },
+                            success: function (subjects) {
+                                if (subjects != "") {
+                                    var item = '<option value="">select subject</option>';
+                                    $.each(subjects, function (i, subject) {
+                                        item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
+                                    });
+                                    $("#Subjectid").append(item);
+                                    $("#Subjectid").val(data.Subjectid);
+                                }
+                                else {
+                                    var item = '<option value="">select subject</option>';
+                                    $("#Subjectid").append(item);
+                                }
+                            },
+                            error: function (ex) {
+                                alert('Failed to retrieve subjects.' + ex);
+                            }
+                        });
+                    }
+                    else {
+                        $("#Subjectid").val('');
+                    }
+                    $("#Day").val(data.Day);
+                    $("#LecNo").val(data.LecNo);
+                    $("#LecTime").val(data.LecTime);
+                    $("#LecETime").val(data.LecETime);
+                    var arr = data.LecTime.split(':');
+                    $("#ddlhr").val(arr[0]); $("#ddlmin").val(arr[1]);
+                    var arr1 = data.LecETime.split(':');
+                    $("#ddlhr1").val(arr1[0]); $("#ddlmin1").val(arr1[1]);
+                    $("#Empid").val(data.Empid);
+                }
+            });
+        });
+
+        $("#result").on("click", ".delete", function (evt) {
+            var Tid = this.id;
+            var flag = confirm('Are you sure you want to delete this Timetable?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLTimetable")',
+                    data: $('#frm').serialize() + "&evt=Delete&id=" + Tid + "",
+                    success: function (result) {
+                        $("#lblmsg").text("Timetable Entry deleted successfully!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                        ReloadPaging();
+                    }
+                });
+            }
+        });
+        $("#insert").click(function () {
+            validations();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLTimetable")',
+                data: $('#frm').serialize() + "&evt=submit&id=0",
+                success: function (result) {
+                    $("#lblmsg").text("Information in Timetable updated successfully!..");
+                    $("#lblmsg").css({ "color": "lime" });
+                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#result").html(result);
+                    clear();
+                    ReloadPaging();
+                }
+            });
+        });
+
+        $("#reset").click(function () {
+            clear();
+        });
+
+        $("#Classid").change(function () {
+            $("#Subjectid").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSubjects")',
+                dataType: 'json',
+                data: { id: $("#Classid").val() },
+                success: function (subjects) {
+                    if (subjects != "") {
+                        var item = '<option value="">Select Subject</option>';
+                        $.each(subjects, function (i, subject) {
+                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
+                        });
+                        $("#Subjectid").append(item);
+                    }
+                    else {
+                        var item = '<option value="">Select Subject</option>';
+                        $("#Subjectid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve subjects.' + ex);
+                }
+            });
+        })
+
+        function validations() {
+            var cnt = 0;
+
+            if ($("#Classid").val() == '') {
+                cnt++;
+                $("#Classid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Classid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Day").val() == '') {
+                cnt++;
+                $("#Day").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Day").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#LecNo").val() == '' || $("#LecNo").val() == '0') {
+                cnt++;
+                $("#LecNo").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#LecNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Subjectid").val() == '') {
+                cnt++;
+                $("#Subjectid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Subjectid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#LecTime").val() == '') {
+                cnt++;
+                $("#LecTime").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#LecTime").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ddlhr").val() == '') {
+                cnt++;
+                $("#ddlhr").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#ddlhr").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ddlhr1").val() == '') {
+                cnt++;
+                $("#ddlhr1").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#ddlhr1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ddlmin").val() == '') {
+                cnt++;
+                $("#ddlmin").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#ddlmin").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ddlmin1").val() == '') {
+                cnt++;
+                $("#ddlmin1").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#ddlmin1").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#Empid").val() == '') {
+                cnt++;
+                $("#Empid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#Empid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+        ReloadPaging();
+    });
+</script>
+@Html.HiddenFor(m => m.Tid)
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+                @Html.Partial("_TimetableSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+              
+                    <ul class="breadcrumb">
+                      <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                      @Html.ActionLink("Timetable Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Customize New Timetable Information</li>
+                        <div style="float: right;">
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                                <input type="submit" value="Find" />
+                            }
+                        </div>
+                    </ul>
+                     <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class="form-horizontal" }))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div id="lblmsg" class="control-group">
+                                </div>
+                                <div id="tid" class="control-group">
+                                    @Html.LabelFor(model => model.Tid, new { @class = "control-label" })
+                                    <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.Tid, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Tid)
+                                        </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
+                                     <div class="controls">
+                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Classid)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
+                                     <div class="controls">
+                                    @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Subjectid)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Day, new { @class = "control-label" })
+                                     <div class="controls">
+                                    @Html.DropDownListFor(model => model.Day, new SelectList(Model.Daylist, "dayid", "daynm", "Select Day"), "Select Day", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Day)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
+                                     <div class="controls">
+                                    @Html.TextBoxFor(model => model.LecNo, new { @class = "col-md-5 form-control form_in", placeholder = "Enter Lecture Number" })
+                                    @Html.ValidationMessageFor(model => model.LecNo)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.LecTime, new { @class = "control-label" })
+                                     <div class="controls">
+                                    <select id="ddlhr" class="col-md-5 form-control form_in" name="ddlhr">
+                                    </select>
+                                    <select id="ddlmin" class="col-md-5 form-control form_in" name="ddlmin">
+                                    </select>
+                                    @Html.HiddenFor(model => model.LecTime)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.LecETime, new { @class = "control-label" })
+                                     <div class="controls">
+                                    <select id="ddlhr1" class="col-md-5 form-control form_in" name="ddlhr1">
+                                    </select>
+                                    <select id="ddlmin1" class="col-md-5 form-control form_in" name="ddlmin1">
+                                    </select>
+                                    @Html.HiddenFor(model => model.LecETime)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Empid, new { @class = "control-label" })
+                                     <div class="controls">
+                                    @Html.DropDownListFor(model => model.Empid, new SelectList(Model.Emplist, "Empid", "fullnm", "Select Teacher"), "Select Teacher", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.ValidationMessageFor(model => model.Empid)
+                                         </div>
+                                </div>
+                               <div class="form-actions">
+                                    <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                    <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                    <br />
+                                </div>
+
+                            }
+                        </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                 <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                            @Html.Partial("_Timetablelist")
+                        </div>
+                  </div>
+                                             
+                                                
+
+                                         </div>
+        </div>
+             
+    </div>
+</div>
+   
+            </div>
+    

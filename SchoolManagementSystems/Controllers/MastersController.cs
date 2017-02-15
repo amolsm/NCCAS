@@ -960,11 +960,11 @@ namespace SchoolManagementSystems.Controllers
             _chapter.teacherid = Convert.ToInt32(Session["Userid"].ToString());// HttpContext.Current.Session["Userid"]; 
             if (evt == "submit")
             {
-                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid, _chapter.year, _chapter.department, _chapter.teacherid, _chapter.Classid, "act").ToString();
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid, _chapter.year, _chapter.department, _chapter.teacherid, _chapter.Classid, _chapter.teacherid, "act").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid,  _chapter.year, _chapter.department,_chapter.teacherid, _chapter.Classid,"del").ToString();
+                db.sp_chapter_DML(_chapter.chapterid, _chapter.chaptername, _chapter.description, _chapter.status, _chapter.subjectid,  _chapter.year, _chapter.department,_chapter.teacherid, _chapter.Classid, _chapter.teacherid,"del").ToString();
             }
             _chapter._chapterlists = db.sp_getchapter().ToList();
             return PartialView("_ChapterList", _chapter);

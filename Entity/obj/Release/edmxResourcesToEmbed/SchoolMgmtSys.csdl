@@ -538,39 +538,12 @@
     <FunctionImport Name="sp_GetCourseforsubjectbydeptid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetCourseforsubjectbydeptid_Result)">
       <Parameter Name="deptid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.tbl_Chapter" />
-    <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.tbl_Content" />
-    <FunctionImport Name="sp_chapter_DML">
-      <Parameter Name="chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="chaptername" Mode="In" Type="String" />
-      <Parameter Name="description" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_Content_DML">
-      <Parameter Name="contentid" Mode="In" Type="Int32" />
-      <Parameter Name="contentname" Mode="In" Type="String" />
-      <Parameter Name="chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="contentdescription" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_getchapter" ReturnType="Collection(SchoolMgmtSysModel.sp_getchapter_Result)" />
     <FunctionImport Name="sp_getcontent" ReturnType="Collection(SchoolMgmtSysModel.sp_getcontent_Result)" />
     <FunctionImport Name="sp_getemp" ReturnType="Collection(SchoolMgmtSysModel.sp_getemp_Result)" />
-    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
     <FunctionImport Name="sp_getyear" ReturnType="Collection(SchoolMgmtSysModel.sp_getyear_Result)">
       <Parameter Name="dept_id" Mode="In" Type="Int32" />
       <Parameter Name="courseid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_teachersubject_DML">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="teachername" Mode="In" Type="String" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="departmenid" Mode="In" Type="Int32" />
-      <Parameter Name="yearid" Mode="In" Type="Int32" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
     <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
@@ -963,18 +936,6 @@
       <Parameter Name="empContactRel" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_GetStdCount" ReturnType="Collection(Int32)" />
-    <FunctionImport Name="sp_ChapterComplete_DML">
-      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="complete" Mode="In" Type="Boolean" />
-      <Parameter Name="Remark" Mode="In" Type="String" />
-      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
-      <Parameter Name="Yearid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" />
     <FunctionImport Name="sp_Attandance_DML">
       <Parameter Name="StudentID" Mode="In" Type="Int32" />
@@ -994,6 +955,56 @@
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="sessionname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.tbl_Chapter" />
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
+    <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.tbl_Content" />
+    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
+    <FunctionImport Name="sp_chapter_DML">
+      <Parameter Name="chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="chaptername" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="dept_id" Mode="In" Type="Int32" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ChapterComplete_DML">
+      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="complete" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Content_DML">
+      <Parameter Name="contentid" Mode="In" Type="Int32" />
+      <Parameter Name="contentname" Mode="In" Type="String" />
+      <Parameter Name="chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="contentdescription" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="dept_id" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_teachersubject_DML">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="departmenid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -1868,26 +1879,6 @@
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="Course" Nullable="true" MaxLength="202" />
   </ComplexType>
-  <EntityType Name="tbl_Chapter">
-    <Key>
-      <PropertyRef Name="Chapter_id" />
-    </Key>
-    <Property Name="Chapter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ChapterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="Subjectid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_Content">
-    <Key>
-      <PropertyRef Name="Content_id" />
-    </Key>
-    <Property Name="Content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Chapter_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Content_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="Content_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
   <ComplexType Name="sp_getchapter_Result">
     <Property Type="Int32" Name="Chapter_id" Nullable="false" />
     <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
@@ -1913,18 +1904,6 @@
     <Property Type="String" Name="DateOfJoin" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="Typeid" Nullable="true" MaxLength="8" />
   </ComplexType>
-  <EntityType Name="tbl_teachersubject">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="teacherid" Type="Int32" />
-    <Property Name="courseid" Type="Int32" />
-    <Property Name="departmentid" Type="Int32" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="subjectid" Type="Int32" />
-    <Property Name="teachername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <ComplexType Name="sp_getyear_Result">
     <Property Type="Int32" Name="yearid" Nullable="false" />
     <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
@@ -1954,6 +1933,7 @@
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <Property Name="yearid" Type="Int32" />
     <Property Name="DeptId" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_CourseMaster">
     <Key>
@@ -2387,21 +2367,6 @@
     <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tbl_Chaptercomplete">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Teacherid" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="Departmentid" Type="Int32" />
-    <Property Name="Courseid" Type="Int32" />
-    <Property Name="Yearid" Type="Int32" />
-    <Property Name="Chapterid" Type="Int32" />
-    <Property Name="complete" Type="Boolean" />
-    <Property Name="CompleteDate" Type="DateTime" Precision="3" />
-    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="tbl_StudentAttendance">
     <Key>
       <PropertyRef Name="AttendanceID" />
@@ -2480,4 +2445,67 @@
     <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
   </ComplexType>
+  <EntityType Name="tbl_Chapter">
+    <Key>
+      <PropertyRef Name="Chapter_id" />
+    </Key>
+    <Property Name="Chapter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChapterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacherid" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Departmentid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="Yearid" Type="Int32" />
+    <Property Name="Chapterid" Type="Int32" />
+    <Property Name="complete" Type="Boolean" />
+    <Property Name="CompleteDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Content">
+    <Key>
+      <PropertyRef Name="Content_id" />
+    </Key>
+    <Property Name="Content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Chapter_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Content_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Content_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_teachersubject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="departmentid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="subjectid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

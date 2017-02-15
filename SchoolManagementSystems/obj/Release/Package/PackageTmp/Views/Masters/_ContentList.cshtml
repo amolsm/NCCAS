@@ -1,0 +1,43 @@
+﻿@model Entity.contentviewmodel
+<div id="result" class="table-responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                <th>Content ID</th>
+                <th>Content Name</th>
+                <th>Content Description</th>
+                <th>Status</th>
+                 <th>Chapter Name</th>
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in ViewBag.contentdetails)
+            {
+                <tr>
+                    <td>
+                        @item.Content_id
+                    </td>
+                    <td>
+                        @item.Content_Name
+                    </td>
+                    <td>
+                       @item.Content_Description
+                    </td>
+                    <td>
+                       @item.Status
+                    </td>
+                    <td>
+                        @item.ChapterName
+                    </td>
+                    <td>
+                        <input type="button" id="@item.Content_id" class="btn btn-default btn_edit" value="Edit" />
+                        @*<input type="button" id="@item.posid" class="btn btn-default btn_delete" value="Delete" />*@
+                    </td>
+                </tr>
+            }
+            </tbody>
+</table>
+</div>

@@ -1,0 +1,297 @@
+﻿@model Entity.transportviewmodel
+@{
+    ViewBag.Title = "NewBusInfo";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#status").prop('checked', true);
+        $("#M_b td").css({ "background-color": "orange" });
+        $("#lblmsg").text('');
+        $('#Busid input').attr("readonly", true);
+        if ($("#Busid input").val() == "0" || $("#Busid input").val() == "") {
+            $("#Busid").hide();
+        }
+
+        function clear() {
+            $("#Busid").hide();
+            $('#Busid input').val('0');
+            $("#busNo").val('');
+            $("#busRoute").val('');
+            $("#busDriverNm").val('');
+            $("#busDrivercontact").val('');
+            $("#busRTONo").val('');
+            $("#busDateTime").val('');
+        }
+
+        $('#busNo').change(function () {
+            var busNo = $('#busNo').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_busno")',
+                dataType: 'JSON',
+                data: { busNo: busNo },
+                success: function (data) {
+                    if (data.busNo != null) {
+                        $("#lblmsg").text("This Bus Information Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#busNo').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            validations();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLTransport")',
+                data: $('#frm').serialize() + "&evt=submit&id=0",
+                success: function (result) {
+                    $("#lblmsg").text("Bus Information updated successfully!..");
+                    $("#lblmsg").css({ "color": "lime" });
+                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#result").html(result);
+                    clear();
+                }
+            });
+        });
+
+        $("#reset").click(function () {
+            clear();
+        });
+
+        $("#result").on("click", ".delete", function (evt) {
+            var Bloodgroupid = this.id;
+            var flag = confirm('Are you sure you want to delete this Bus Information?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLBloodGroup")',
+                    data: $('#frm').serialize() + "&evt=Delete&id=" + Bloodgroupid + "",
+                    success: function (result) {
+                        $("#lblmsg").text("Bus Information deleted successfully!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                    }
+                });
+            }
+        });
+
+        $('#datepicker').attr("readonly", true);
+        $(function () {
+            $('#datepicker').appendDtpicker({
+                "closeOnSelected": true
+            });
+        });
+
+
+        function validations() {
+            var cnt = 0;
+
+            if ($("#busNo").val() == '') {
+                cnt++;
+                $("#busNo").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#busRoute").val() == '') {
+                cnt++;
+                $("#busRoute").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busRoute").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#busDriverNm").val() == '') {
+                cnt++;
+                $("#busDriverNm").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busDriverNm").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#busDrivercontact").val() == '') {
+                cnt++;
+                $("#busDrivercontact").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busDrivercontact").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#busRTONo").val() == '') {
+                cnt++;
+                $("#busRTONo").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busRTONo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#busDateTime").val() == '') {
+                cnt++;
+                $("#busDateTime").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#busDateTime").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+    });
+</script>
+@Html.HiddenFor(m => m.busid)
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+                  @Html.Partial("_TransportSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+           
+                    <ul class="breadcrumb">
+                       <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Transport Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Customize Bus Information</li>
+                    </ul>
+
+                  <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div id="lblmsg" class="control-group">
+                                </div>
+                                <div id="Busid" class="control-group">
+                                    @Html.LabelFor(model => model.busid, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busid, new { @type="text",@id="inputSuccess" })
+                                    @Html.ValidationMessageFor(model => model.busid)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busNo, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busNo, new {  @type="text",@id="inputSuccess", placeholder = "Enter Bus Number" })
+                                    @Html.ValidationMessageFor(model => model.busNo)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busRoute, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @*@Html.TextBoxFor(model => model.busRoute, new {  @type="text",@id="inputSuccess", placeholder = "Enter Bus Route" })*@
+                                    @Html.DropDownListFor(model => model.busRoute, new SelectList(Model.Routelist, "routeid", "routename", "Select Route"), "Select Route", new {  @type="text",@id="inputSuccess" })
+                                    @Html.ValidationMessageFor(model => model.busRoute)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busDriverNm, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busDriverNm, new {  @type="text",@id="inputSuccess", placeholder = "Enter Driver Name" })
+                                    @Html.ValidationMessageFor(model => model.busDriverNm)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busDrivercontact, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busDrivercontact, new {  @type="text",@id="inputSuccess", placeholder = "Enter Driver contact" })
+                                    @Html.ValidationMessageFor(model => model.busDrivercontact)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busRTONo, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busRTONo, new {  @type="text",@id="inputSuccess", placeholder = "Enter Bus RTO Number" })
+                                    @Html.ValidationMessageFor(model => model.busRTONo)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.busDateTime, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.busDateTime, new { id = "datepicker",  @type="text", placeholder = "Select Bus Date & Time" })
+                                    @Html.ValidationMessageFor(model => model.busDateTime)
+                                         </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.status, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.CheckBoxFor(model => model.status, new {  @type="checkbox", @id="inlineCheckbox1" })
+                                    @Html.ValidationMessageFor(model => model.status)
+                                         </div>
+                                </div>
+                                <div style="display: none;" class="control-group">
+                                    @Html.LabelFor(model => model.academicyear, new { @class = "control-label" })
+                                     <div class="controls"> 
+                                    @Html.TextBoxFor(model => model.academicyear, new {  @type="text",@id="inputSuccess" })
+                                    @Html.ValidationMessageFor(model => model.academicyear)
+                                         </div>
+                                </div>
+                                <div class="form-actions">
+                                    <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                    <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                    <br />
+                                </div>
+
+                            }
+                            </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+    </div>
+</div>
+            </div>
+    </div>
+

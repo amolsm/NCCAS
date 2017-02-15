@@ -1,0 +1,50 @@
+﻿<div id="sidebar-left" class="span2">
+    <div class="nav-collapse sidebar-nav">
+        <ul class="nav nav-tabs nav-stacked main-menu">
+
+            <li>
+                <a href="#"><i class="fa-3x"></i><span class="hidden-tablet"> Library Management</span></a>
+                @{
+                    string roleid;
+                    roleid = HttpContext.Current.Session["Role"].ToString();
+
+                    switch (roleid)
+                    {
+                        case "3":
+
+                            <text>
+                            <li><a href="~/Library/Index"><i class="icon-edit"></i><span class="hidden-tablet"> Book details</span></a></li>
+                            <li><a href="~/Library/BookEntry"><i class="icon-edit"></i><span class="hidden-tablet"> Book Entry</span></a></li>
+                           
+                            </text>
+                            break;  // Always break each case
+                        case "4":
+                            <text>
+        <li><a href="~/Library/Index"><i class="icon-edit"></i><span class="hidden-tablet"> Book details</span></a></li>
+        @*<li><a href="~/Library/BookEntry"><i class="icon-edit"></i><span class="hidden-tablet"> Book Entry</span></a></li>*@
+                    </text>
+
+                            break;
+                        case "5":
+                            <text>
+            <li><a href="~/Library/Index"><i class="icon-edit"></i><span class="hidden-tablet"> Book details</span></a></li>
+            @*<li><a href="~/Library/BookEntry"><i class="icon-edit"></i><span class="hidden-tablet"> Book Entry</span></a></li>*@
+
+                            </text>
+
+                            break;
+                        default:
+                            <text>
+
+            <li><a href="~/Library/Index"><i class="icon-edit"></i><span class="hidden-tablet"> Book details</span></a></li>
+            @*<li><a href="~/Library/BookEntry"><i class="icon-edit"></i><span class="hidden-tablet"> Book Entry</span></a></li>*@
+
+                            </text>
+                            break;
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+    <!-- end: Main Menu -->
