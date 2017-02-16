@@ -35,6 +35,28 @@ namespace SchoolManagementSystems.Controllers
             return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
         }
 
+        public JsonResult GetSubjects(string id, string year, string department)
+        {
+            int subid = Convert.ToInt32(Session["Userid"].ToString());
+            int yearid = 0;
+            int Courseid = 0;
+            int dept = 0;
+            if (id != null && id != "" && year != null && year != "" && department != null && department != "")
+            {
+                dept = Convert.ToInt32(department);
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+
+            var subject = from t in db.tbl_teachersubject
+                          join s in db.tbl_subject on t.subjectid equals s.Subjectid
+                          where t.courseid == Courseid && t.departmentid == dept && t.yearid == yearid && t.teacherid == subid
+                          select new { s.Subjectid, s.SubjectNm };
+
+            //var course =  db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+            return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
+        }
+
         public JsonResult GetYearClass(string depid, string cid)
         {
             int coureid = 0;
@@ -87,7 +109,7 @@ namespace SchoolManagementSystems.Controllers
             tbl_Chaptercomplete cc = new tbl_Chaptercomplete();
 
             string s;
-
+            int createdby = Convert.ToInt32(Session["Genid"].ToString());
             for (int i = 0; i < completiondetails.Count(); i++)
             {
                 //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
@@ -102,10 +124,10 @@ namespace SchoolManagementSystems.Controllers
                 cc.Departmentid = Convert.ToInt32(s1[4].ToString());
                 cc.Yearid = Convert.ToInt32(s1[8].ToString());
                 cc.Courseid = Convert.ToInt32(s1[7].ToString());
-
+                cc.createdby = createdby;
                 try
                 {
-                    db.sp_ChapterComplete_DML(cc.Teacherid, cc.complete, cc.Remark, cc.CompleteDate, cc.Subjectid, cc.Chapterid, cc.Departmentid, cc.Yearid, cc.Courseid);
+                    db.sp_ChapterComplete_DML(cc.Teacherid, cc.complete, cc.Remark, cc.CompleteDate, cc.Subjectid, cc.Chapterid, cc.Departmentid, cc.Yearid, cc.Courseid,cc.createdby);
                 }
                 catch (Exception ex)
                 { string msg = ex.ToString(); }
