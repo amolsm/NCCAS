@@ -104,16 +104,15 @@
                 var departmentid = ($("#department").val());
                 var classid = ($("#Classid").val());
                 var subject = ($(this).val());
-                
-                var years = ($("#year").val());
+                var year = ($("#year").val());
                 var Subjectids = ($(this).val());
                 var teacherid = ($("#leave" + Subjectids).val().replace(/\D/g, ''));
-                presentdetails.push(departmentid + "," + classid + "," + years + "," + subject + "," + teacherid);
+                presentdetails.push(departmentid + "," + classid + "," + teacherid + "," + year + "," + subject);
                 }
                 else {
                    //var Subjectids = ($(this).val());
                    var teacherid = ($("#leave" + Subjectids).val().replace(/\D/g, ''));
-                   presentdetails.push(departmentid + "," + classid + "," + years + "," + subject + "," + teacherid);
+                   presentdetails.push(departmentid + "," + classid + "," + teacherid + "," + year + "," + subject);
                 }
             });
             //});

@@ -43,6 +43,7 @@ namespace SchoolManagementSystems.Controllers
                         Session["Userid"] = uvm.Userdatacollection[0].Userid.ToString();
                         Session["User"] = uvm.Userdatacollection[0].UserName.ToString();
                         Session["Role"] = uvm.Userdatacollection[0].Type.ToString();
+                        Session["Genid"] = uvm.Userdatacollection[0].Genid.ToString();
                         dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
                         dvm.BirthdaylistDetails = db.tbl_student.Where(m => m.Studid != 0).ToList();
                         return View("DashBoard", dvm);

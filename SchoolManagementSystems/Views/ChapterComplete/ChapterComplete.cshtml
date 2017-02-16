@@ -88,12 +88,11 @@
 
         $("#YearId").change(function () {
             $("#Subjectid").empty();
-            debugger;
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetSubject")',
+                url: '@Url.Action("GetSubjects")',
                 dataType: 'json',
-                data: { id: $("#CourseId").val(), year: $("#YearId").val() },
+                data: { id: $("#CourseId").val(), year: $("#YearId").val(), department: $("#Departmentid").val() },
                 success: function (subject) {
                     if (subject != "") {
                         var item = '<option value="0">Select Subject</option>';
@@ -110,7 +109,7 @@
                 error: function (ex) {
                     alert('Failed to retrieve Subject.' + ex);
                 }
-            });
+               });
             return false;
         })
 

@@ -937,11 +937,12 @@ namespace SchoolManagementSystems.Controllers
         {
             
             chapterviewmodel _chapter = new chapterviewmodel();
-
+        
             _chapter.YearList = db.tbl_YearMaster.ToList();//new List<tbl_YearMaster>();
             _chapter.DepartmentList = db.tblDepartment.ToList(); // new List<tblDepartment>();
             _chapter.Classlist = db.tbl_CourseMaster.ToList();
-            _chapter._subjectlist = db.tbl_subject.ToList();//new List<tbl_subject>();
+            _chapter._subjectlist = db.tbl_subject.ToList();
+            
             FillPermission(49);
             if (String.IsNullOrEmpty(Search_Data))
             {
@@ -989,6 +990,7 @@ namespace SchoolManagementSystems.Controllers
                 coureid = Convert.ToInt32(cid);
                 detid = Convert.ToInt32(depid);
             }
+           
             var yeardata = from post in db.tbl_CourseYearMaster
                            join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
                            where post.courseid == coureid && post.dept_id == detid && post.status == true
@@ -1024,6 +1026,26 @@ namespace SchoolManagementSystems.Controllers
             var subject = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).ToList();
             return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
         }
+        public JsonResult GetSubjects(string id, string year,string department)
+        {
+            int subid = Convert.ToInt32(Session["Genid"].ToString());
+            int yearid = 0;
+            int Courseid = 0;
+            int dept = 0;
+            if (id != null && id != "" && year != null && year != "" && department != null && department != "")
+            {
+                dept = Convert.ToInt32(department);
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+            var subject = from t in db.tbl_teachersubject
+                          join s in db.tbl_subject on t.subjectid equals s.Subjectid
+                          where t.courseid == Courseid && t.departmentid == dept && t.yearid == yearid && t.teacherid == subid  
+                          select new { s.Subjectid, s.SubjectNm };
+
+            //var course =  db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+            return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
+        }
         #endregion
 
         #region Content master
@@ -1053,14 +1075,15 @@ namespace SchoolManagementSystems.Controllers
         }
         public ActionResult DMLContent(contentviewmodel _content, string evt, int id)
         {
+            _content.createdby = Convert.ToInt32(Session["Userid"].ToString());
             _content.teacherid = Convert.ToInt32(Session["Userid"].ToString());
             if (evt == "submit")
             {
-                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year, "").ToString();
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year,_content.createdby, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year, "del").ToString();
+                db.sp_Content_DML(_content.contentid, _content.contentname, _content.chapterid, _content.cdescription, _content.status, _content.teacherid, _content.Classid, _content.department, _content.subjectid, _content.year,_content.createdby, "del").ToString();
             }
             var data = db.sp_getcontent().ToList();
             ViewBag.contentdetails = data; 

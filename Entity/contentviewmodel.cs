@@ -38,6 +38,9 @@ namespace Entity
         [DisplayName("Year")]
         public int year { get; set; }
 
+        [DisplayName("Createdt By")]
+        public int createdby { get; set; }
+
         [DisplayName("Course Name")]
         public int Classid { get; set; }
 

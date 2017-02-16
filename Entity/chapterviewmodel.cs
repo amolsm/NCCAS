@@ -38,11 +38,11 @@ namespace Entity
         [DisplayName("Active")]
         public bool status { get; set; }
 
-
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }
         public List<tbl_CourseMaster> Classlist { get; set; }
         public List<tbl_subject> _subjectlist { get; set; }
+        public List<sp_getchaptersubject_Result> _subjectl { get; set; }
         public List<sp_getchapter_Result> _chapterlists { get; set; }
 
        

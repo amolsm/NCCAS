@@ -69,6 +69,7 @@
             return false;
         });
         $("#year").change(function () {
+            debugger;
             $("#subjectid").empty();
             $.ajax({
                 type: 'POST',
@@ -124,10 +125,7 @@
             $('#Chapterid input').val('0');
             $("#chaptername").val('');
             $('#description').val('');
-            $("#subjectid").val('');
-            $("#department").val('');
-            $('#year').val('');
-            $("#Classid").val('');
+           
         }
 
         function clearmsg() {
