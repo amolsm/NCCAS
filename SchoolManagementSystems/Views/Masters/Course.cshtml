@@ -53,6 +53,7 @@
         $("#insert").click(function () {
             setTimeout(function () {
                 validations();
+              
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("DMLAssignCourseDept")',

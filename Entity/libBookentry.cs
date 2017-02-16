@@ -52,7 +52,7 @@ namespace Entity
         public string BillNo { get; set; }
 
         [DisplayName("Cost Amt.")]
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
 
         [DisplayName("Journal Id.")]
         public int lib_Jid { get; set; }
@@ -83,6 +83,9 @@ namespace Entity
 
         [DisplayName("Bill No.")]
         public string JBillNo { get; set; }
+
+        [DisplayName("Select Option")]
+        public int Option { get; set; }
 
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 

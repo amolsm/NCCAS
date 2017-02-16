@@ -13,6 +13,8 @@ namespace SchoolManagementSystems.Controllers
         // GET: /Library/
         SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
 
+    
+
         public ActionResult Index(string Search_Data)
         {
             libBookentry lb = new libBookentry();
@@ -24,7 +26,7 @@ namespace SchoolManagementSystems.Controllers
                                                         x.CallNo.ToUpper().Contains(Search_Data.ToUpper()) ||
                x.SerielNumber.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.bookid).ToList();
             lb._bookentrylist = db.sp_getBookentry().ToList();
-          
+            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
             return View(lb);
           
         }
@@ -32,54 +34,79 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult BookEntry()
          {
             libBookentry lb = new libBookentry();
+            TempData["Error"] = "";
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
             return View(lb);
 
         }
         [HttpPost]
-        public ActionResult BookEntry(libBookentry _lb, string action,string command)
+        public ActionResult BookEntry(libBookentry _lb,string command)
         {
           
             if (command.Equals("BookSubmit"))
             {
-                if (string.IsNullOrEmpty(_lb.booktitle))
+                lib_Bookentry tbl_Book = new lib_Bookentry();
+                tbl_Book.booktitle = _lb.booktitle;
+                tbl_Book.CallNo = _lb.CallNo;
+                tbl_Book.Volume = _lb.Volume;
+                tbl_Book.SerielNumber = _lb.SerielNumber;
+                tbl_Book.Authorid = _lb.Authorid;
+                tbl_Book.Authorname = _lb.Authorname;
+                tbl_Book.PublishedByid = _lb.PublishedByid;
+                tbl_Book.PublishedByName = _lb.PublishedByName;
+                tbl_Book.Edition = _lb.Edition;
+                tbl_Book.Vendorid = _lb.Vendorid;
+                tbl_Book.Vendorname = _lb.Vendorname;
+                tbl_Book.Dateofpurchase = _lb.Dateofpurchase;
+                tbl_Book.BillNo = _lb.BillNo;
+                tbl_Book.Cost = _lb.Cost;
+                try
                 {
-                    ModelState.AddModelError("booktitle", "Book Title is Required");
+                    db.lib_Bookentry.AddObject(tbl_Book);
+                    db.SaveChanges();
+                    TempData["Error"] = "Success";
+                 
+
                 }
-                if (string.IsNullOrEmpty(_lb.CallNo))
-                { ModelState.AddModelError("CallNo", "Call No is Required"); }
-                if (string.IsNullOrEmpty(_lb.Volume))
-                { ModelState.AddModelError("Volume", "Volume is Required"); }
-                if (string.IsNullOrEmpty(_lb.SerielNumber))
-                { ModelState.AddModelError("SerielNumber", "SerielNumber is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.Authorid)))
-                { ModelState.AddModelError("Authorid", "Author is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.PublishedByid)))
-                { ModelState.AddModelError("PublishedByid", "Publisher is Required"); }
-                if (string.IsNullOrEmpty(_lb.Edition))
-                { ModelState.AddModelError("Edition", "Edition is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.Vendorid)))
-                { ModelState.AddModelError("Vendorid", "Vendor is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.PurchaseDate)))
-                { ModelState.AddModelError("PurchaseDate", "Purchase Date is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.BillNo)))
-                { ModelState.AddModelError("BillNo", "Bill No. is Required"); }
-                if (string.IsNullOrEmpty(Convert.ToString(_lb.Cost)))
-                { ModelState.AddModelError("Cost", "Cost Amt is Required"); }
+                catch { TempData["Error"] = "Failed"; }
+                
+
+
 
             }
-            else if (command.Equals("JournalSubmit"))
+            if (command.Equals("JournalSubmit"))
             {
-                
-              
+                lib_Journal tbl_journal = new lib_Journal();
+                tbl_journal.LibType = _lb.LibType;
+                tbl_journal.Department = _lb.Department;
+                tbl_journal.JournalTitle = _lb.JournalTitle;
+                tbl_journal.Volume = _lb.LibJVolume;
+                tbl_journal.Number = _lb.Number;
+                tbl_journal.IssueDate = _lb.IssueDate;
+                tbl_journal.Vendorid = _lb.JVendorId;
+                tbl_journal.PurchaseDate = _lb.PurchaseDate;
+                tbl_journal.JBillNo = _lb.JBillNo;
+                try
+                {
+                    db.lib_Journal.AddObject(tbl_journal);
+                    db.SaveChanges();
+                    TempData["Error"] = "Success";
+
+                }
+                catch { TempData["Error"] = "Failed"; }
+
+
+
+
+
             }
-            else { }
-            if (ModelState.IsValid)
-            {
-                string msg = "test";
-            }
+           
+           
             _lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+
             return View(_lb);
+           
         }
+
         }
 }
