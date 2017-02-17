@@ -960,6 +960,47 @@
     <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
     <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.tbl_Content" />
     <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
+    <FunctionImport Name="sp_Content_DML">
+      <Parameter Name="contentid" Mode="In" Type="Int32" />
+      <Parameter Name="contentname" Mode="In" Type="String" />
+      <Parameter Name="chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="contentdescription" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="dept_id" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getchaptersubject" ReturnType="Collection(SchoolMgmtSysModel.sp_getchaptersubject_Result)">
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="course" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_teachersubject_DML">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="departmenid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ChapterComplete_DML">
+      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="complete" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_chapter_DML">
       <Parameter Name="chapterid" Mode="In" Type="Int32" />
       <Parameter Name="chaptername" Mode="In" Type="String" />
@@ -972,39 +1013,6 @@
       <Parameter Name="courseid" Mode="In" Type="Int32" />
       <Parameter Name="createdby" Mode="In" Type="Int32" />
       <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_ChapterComplete_DML">
-      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="complete" Mode="In" Type="Boolean" />
-      <Parameter Name="Remark" Mode="In" Type="String" />
-      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
-      <Parameter Name="Yearid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_Content_DML">
-      <Parameter Name="contentid" Mode="In" Type="Int32" />
-      <Parameter Name="contentname" Mode="In" Type="String" />
-      <Parameter Name="chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="contentdescription" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-      <Parameter Name="dept_id" Mode="In" Type="Int32" />
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="yearid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_teachersubject_DML">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="departmenid" Mode="In" Type="Int32" />
-      <Parameter Name="yearid" Mode="In" Type="Int32" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2508,4 +2516,8 @@
     <Property Name="createdby" Type="Int32" />
     <Property Name="Date" Type="DateTime" Precision="3" />
   </EntityType>
+  <ComplexType Name="sp_getchaptersubject_Result">
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+  </ComplexType>
 </Schema>

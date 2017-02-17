@@ -1103,7 +1103,7 @@ namespace SchoolManagementSystems.Controllers
         public JsonResult GetChapter(string year,string dept,string subject,string courseid)
         {
             contentviewmodel _content = new contentviewmodel();
-            int teacherid = Convert.ToInt32(Session["Userid"].ToString());
+            //int teacherid = Convert.ToInt32(Session["Userid"].ToString());
             int subjectid = 0;
             int yeari = 0;
             int depti = 0;
@@ -1116,7 +1116,7 @@ namespace SchoolManagementSystems.Controllers
                 coursei = Convert.ToInt32(courseid); 
 
             }
-            var chapter = db.tbl_Chapter.Where(m => m.Subjectid == subjectid && m.teacherid == teacherid && m.yearid == yeari && m.dept_id == depti && m.Courseid == coursei).ToList();
+            var chapter = db.tbl_Chapter.Where(m => m.Subjectid == subjectid && m.yearid == yeari && m.dept_id == depti && m.Courseid == coursei).ToList();
             return Json(new SelectList(chapter, "Chapter_id", "ChapterName"));
         }
         #endregion

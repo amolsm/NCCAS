@@ -640,15 +640,12 @@ namespace SchoolManagementSystems.Controllers
             stemailid = st.StudEmail;
             mobileno = st.StdMobNo;
             studentname = st.Studnm;
-            if (Sessionid == 1)
-            { sessionname = "Morning"; }
-            else
-            { sessionname = "Afternoon"; }
-
-
+            tbl_SessionMaster s = db.tbl_SessionMaster.Where(x => x.ID == Sessionid).FirstOrDefault();
+            sessionname =s.SessionName;
+         
 
             string msg = "Dear Parent,Your Son/Daughter " + studentname + Environment.NewLine;
-            msg = msg + "is absent on " + (Convert.ToDateTime(date)).ToString("dd-MM-yyyy") + " for "+ sessionname + " session" + Environment.NewLine;
+            msg = msg + "is absent on " + (Convert.ToDateTime(date)).ToString("dd-MM-yyyy") + " for "+ sessionname  + Environment.NewLine;
             msg = msg + "NACCAS";
 
 
