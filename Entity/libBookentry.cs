@@ -93,6 +93,9 @@ namespace Entity
 
         public List<lib_Journal> Journalentrydetails { get; set; }
         public List<sp_getBookentry_Result> _bookentrylist { get; set; }
+        public List<sp_GetSearchBookAndJournal_Result> _bookandJournallist { get; set; }
+
+        public List<sp_GetSearchJournal_Result> _journalList { get; set; }
     }
 }
 

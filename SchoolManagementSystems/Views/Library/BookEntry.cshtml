@@ -200,13 +200,12 @@
         });
         function Validations2(e) {
             var cnt = 0;
-            if ($("#LibType").val() == '') {
+            if ($("#LibType").val() == '' || $("#LibType").val() == '0') {
                 cnt++;
-                $("#LibType").css({
-                    "border": "1px solid red"
+                $("#LibType .add-on").css({
+                    "border": "solid 2px #004a80"
                 });
-                alert("Journal Type is  Mandatory!");
-                e.preventDefault();
+               e.preventDefault();
                 return false;
             }
             else {
@@ -218,9 +217,9 @@
             if ($("#Department").val() == '') {
                 cnt++;
                 $("#Department").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Department  is  Mandatory!");
+              
                 e.preventDefault();
                 return false;
             }
@@ -233,9 +232,9 @@
             if ($("#JournalTitle").val() == '') {
                 cnt++;
                 $("#JournalTitle").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px"
                 });
-                alert("Journal Title  is  Mandatory!");
+           
                 e.preventDefault();
                 return false;
             }
@@ -248,9 +247,9 @@
             if ($("#LibJVolume").val() == '') {
                 cnt++;
                 $("#LibJVolume").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Volume   is  Mandatory!");
+              
                 e.preventDefault();
                 return false;
             }
@@ -263,9 +262,9 @@
             if ($("#Number").val() == '') {
                 cnt++;
                 $("#Number").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Serial Number   is  Mandatory!");
+              
                 e.preventDefault();
                 return false;
             }
@@ -278,9 +277,9 @@
             if ($("#datepicker2").val() == '') {
                 cnt++;
                 $("#datepicker2").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Issue Date  is  Mandatory!");
+             
                 e.preventDefault();
                 return false;
             }
@@ -293,9 +292,9 @@
             if ($("#datepicker3").val() == '') {
                 cnt++;
                 $("#datepicker3").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Purchase Date  is  Mandatory!");
+              
                 e.preventDefault();
                 return false;
             }
@@ -308,9 +307,9 @@
             if ($("#JVendorId").val() == '') {
                 cnt++;
                 $("#JVendorId").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Vendor  is  Mandatory!");
+              
                 e.preventDefault();
                 return false;
             }
@@ -323,9 +322,9 @@
             if ($("#JBillNo").val() == '') {
                 cnt++;
                 $("#JBillNo").css({
-                    "border": "1px solid red"
+                    "border": "solid 2px #004a80"
                 });
-                alert("Bill Number  is  Mandatory!");
+               
                 e.preventDefault();
                 return false;
             }

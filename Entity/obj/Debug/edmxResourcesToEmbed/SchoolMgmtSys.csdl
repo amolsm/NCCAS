@@ -1014,6 +1014,23 @@
       <Parameter Name="createdby" Mode="In" Type="Int32" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.tbl_lib_Author" />
+    <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
+    <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
+    <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
+    <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="authorname" Mode="In" Type="String" />
+      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2519,5 +2536,49 @@
   <ComplexType Name="sp_getchaptersubject_Result">
     <Property Type="Int32" Name="Subjectid" Nullable="false" />
     <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tbl_lib_Author">
+    <Key>
+      <PropertyRef Name="Authorid" />
+    </Key>
+    <Property Name="Authorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_lib_JournalType">
+    <Key>
+      <PropertyRef Name="JTypeid" />
+    </Key>
+    <Property Name="JTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Publisher">
+    <Key>
+      <PropertyRef Name="PublisherId" />
+    </Key>
+    <Property Name="PublisherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Publishername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Vendor">
+    <Key>
+      <PropertyRef Name="Vendorid" />
+    </Key>
+    <Property Name="Vendorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_GetSearchJournal_Result">
+    <Property Type="Int32" Name="JId" Nullable="false" />
+    <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_GetSearchBookAndJournal_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
 </Schema>

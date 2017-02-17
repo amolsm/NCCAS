@@ -606,6 +606,38 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LeaveBalance" Type="int" />
         </EntityType>
+        <EntityType Name="tbl_lib_Author">
+          <Key>
+            <PropertyRef Name="Authorid" />
+          </Key>
+          <Property Name="Authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Authorname" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_lib_JournalType">
+          <Key>
+            <PropertyRef Name="JTypeid" />
+          </Key>
+          <Property Name="JTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JTypeName" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_lib_Publisher">
+          <Key>
+            <PropertyRef Name="PublisherId" />
+          </Key>
+          <Property Name="PublisherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Publishername" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_lib_Vendor">
+          <Key>
+            <PropertyRef Name="Vendorid" />
+          </Key>
+          <Property Name="Vendorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
         <EntityType Name="tbl_menu">
           <Key>
             <PropertyRef Name="Menuid" />
@@ -1563,6 +1595,19 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetSearchBookAndJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="option" Type="int" Mode="In" />
+          <Parameter Name="department" Type="int" Mode="In" />
+          <Parameter Name="booktitle" Type="varchar" Mode="In" />
+          <Parameter Name="authorname" Type="varchar" Mode="In" />
+          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="option" Type="int" Mode="In" />
+          <Parameter Name="department" Type="int" Mode="In" />
+          <Parameter Name="booktitle" Type="varchar" Mode="In" />
+          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+        </Function>
         <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2018,6 +2063,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
@@ -3090,6 +3139,23 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="courseid" Mode="In" Type="Int32" />
             <Parameter Name="createdby" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.tbl_lib_Author" />
+          <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
+          <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
+          <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
+          <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
+            <Parameter Name="option" Mode="In" Type="Int32" />
+            <Parameter Name="department" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
+            <Parameter Name="option" Mode="In" Type="Int32" />
+            <Parameter Name="department" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="authorname" Mode="In" Type="String" />
+            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -4596,6 +4662,50 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <ComplexType Name="sp_getchaptersubject_Result">
           <Property Type="Int32" Name="Subjectid" Nullable="false" />
           <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="tbl_lib_Author">
+          <Key>
+            <PropertyRef Name="Authorid" />
+          </Key>
+          <Property Name="Authorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_lib_JournalType">
+          <Key>
+            <PropertyRef Name="JTypeid" />
+          </Key>
+          <Property Name="JTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_lib_Publisher">
+          <Key>
+            <PropertyRef Name="PublisherId" />
+          </Key>
+          <Property Name="PublisherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Publishername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_lib_Vendor">
+          <Key>
+            <PropertyRef Name="Vendorid" />
+          </Key>
+          <Property Name="Vendorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_GetSearchJournal_Result">
+          <Property Type="Int32" Name="JId" Nullable="false" />
+          <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_GetSearchBookAndJournal_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6460,6 +6570,62 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
           <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
           <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
+          <EntitySetMapping Name="tbl_lib_Author">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
+              <MappingFragment StoreEntitySet="tbl_lib_Author">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_lib_JournalType">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_JournalType">
+              <MappingFragment StoreEntitySet="tbl_lib_JournalType">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="JTypeName" ColumnName="JTypeName" />
+                <ScalarProperty Name="JTypeid" ColumnName="JTypeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_lib_Publisher">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Publisher">
+              <MappingFragment StoreEntitySet="tbl_lib_Publisher">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Publishername" ColumnName="Publishername" />
+                <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_lib_Vendor">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Vendor">
+              <MappingFragment StoreEntitySet="tbl_lib_Vendor">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetSearchJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchJournal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchJournal_Result">
+                <ScalarProperty Name="JId" ColumnName="JId" />
+                <ScalarProperty Name="JTitleName" ColumnName="JTitleName" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6545,6 +6711,10 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" Width="1.5" PointX="19.375" PointY="7.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_teachersubject" Width="1.5" PointX="21.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Author" Width="1.5" PointX="16.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" Width="1.5" PointX="26.75" PointY="3.75" />
       </Diagram>
     </Diagrams>
   </Designer>

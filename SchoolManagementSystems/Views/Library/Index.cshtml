@@ -3,7 +3,96 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/shared/_SharedLayout.cshtml";
-}
+}<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datepicker1').attr("readonly", true);
+
+        $('#datepicker1').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+
+        $('#datepicker1').datepicker('setDate', new Date());
+    });
+    @*$("#insert").click(function () {
+        setTimeout(function () {
+            validations();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLClass")',
+                data: $('#frm').serialize() + "&evt=submit&id=0",
+                success: function (result) {
+                    //$("#msgs").show();
+                    //$("#lblmsgs").text("Class updated successfully!..");
+                    //$("#lblmsgs").css({ "color": "green" });
+                    //$("#lblmsgs").css({ "font-size": "15px" });
+                    //$("#result").html(result);
+                    //clear();
+                    ReloadPaging();
+                }
+            });
+        }, 1000);
+    });*@
+    </script>
+<style type="text/css">
+    .ui-datepicker-calendar {
+        background-color: antiquewhite;
+    }
+
+    fieldset {
+        border: 1px solid #777;
+    }
+
+    /*.controls {
+        border: 1px solid;
+    }
+    .input {
+        border: 1px solid;
+        border-color:red;
+    }*/
+    .form-horizontal .controls {
+        margin-left: 45.5%;
+    }
+
+    .form-horizontal .control-group {
+        margin-bottom: 5px;
+        margin-left: 5%;
+        margin-top: 5px;
+    }
+
+    legend {
+        float: left;
+        margin-right: 0.5em;
+        padding-top: 0.2em;
+        text-align: left;
+        font-size: 18px;
+        background-color: gainsboro;
+    }
+
+    .ui-datepicker-title {
+        background-color: antiquewhite;
+    }
+
+    .form-horizontal .control-group {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .ui-icon ui-icon-circle-triangle-w {
+        background-color: antiquewhite;
+    }
+
+    .control-group.required .control-label:after {
+        content: "*";
+        color: red;
+    }
+</style>
 
 <div class="container-fluid-full">
 
@@ -38,7 +127,10 @@
                             </div>
                         </div>
                         <div class="box-content">
-                            <div class="box  span10">
+@using (Html.BeginForm())
+{
+                            <div class="box bg-color-blue span10">
+                                <br />
                                 <div class="control-group span5">
 
                                     @Html.LabelFor(model => model.Option, new { @class = "control-label", @for = "focusedInput" })
@@ -60,7 +152,7 @@
                                             });
                                         }
                                         @Html.DropDownListFor(model => model.Option, listItems, "Select Option")
-                                       
+
                                     </div>
 
                                 </div>
@@ -72,17 +164,50 @@
 
                                         </div>
                                     </div>
+                                <div class="control-group span5">
 
+                                    @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter  Book Title Name", @class = "input" })
+
+                                    </div>
                                 </div>
-                                &nbsp;&nbsp;<input type="submit" class="btn btn-primary" id="insert" value="Submit" />
+                                <div class="control-group span5">
+
+                                    @Html.LabelFor(model => model.Authorname, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Enter  Author Name", @class = "input" })
+
+                                    </div>
+                                </div>
+                                <div class="control-group span5">
+
+                                    @Html.LabelFor(model => model.Dateofpurchase, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Dateofpurchase, new { id = "datepicker1", @readonly = "readonly", placeholder = "Select Date of Purchase" })
+
+                                    </div>
+                                </div>
+                                <div class="control-group span5 pull-right">
+                                    &nbsp; &nbsp;<input type="submit" class="btn btn-primary" id="insert" value="Search" />
+                                </div>
+                                </div>
+                                            }
+                                           
+
                             </div>
 
-                           
-                         
-                              
-                           
+
+
+
+
                                 <div id="result" class="table-responsive">
-                                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+@if (Model._bookandJournallist.Count != 0)
+{
+                                    <table class="table tb-parshav tablesorter">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -93,11 +218,11 @@
                                                 </th>
 
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.CallNo)
+                                                    @Html.DisplayNameFor(model => model.Authorname)
                                                 </th>
 
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.Authorname)
+                                                    @Html.DisplayNameFor(model => model.PublishedByName)
                                                 </th>
 
                                                 <th class="edt">
@@ -106,31 +231,72 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model._bookentrylist)
-            {
+                                            @foreach (var item in Model._bookandJournallist)
+                                            {
                                                 <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.bookid)
+                                                        @Html.DisplayFor(modelItem => item.Id)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.booktitle)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.CallNo)
+                                                        @Html.DisplayFor(modelItem => item.TitleName)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.Authorname)
                                                     </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Publisher)
+                                                    </td>
 
 
                                                     <td>
-                                                        <input type="button" id="@item.bookid" class="btn btn-default btn_edit" value="Edit" />
+                                                        <input type="button" id="@item.Id" class="btn btn-default btn_edit" value="Edit" />
 
                                                     </td>
                                                 </tr>
                                             }
                                         </tbody>
                                     </table>
+}
+                                    @if (Model._journalList.Count != 0)
+                                    {
+                                    <table class="table tb-parshav tablesorter">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.bookid)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.booktitle)
+                                                </th>
+
+                                           
+                                                <th class="edt">
+                                                    @Html.DisplayName("Action")
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model._journalList)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.JId)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.JTitleName)
+                                                    </td>
+                                                 
+
+
+                                                    <td>
+                                                        <input type="button" id="@item.JId" class="btn btn-default btn_edit" value="Edit" />
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -138,5 +304,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 

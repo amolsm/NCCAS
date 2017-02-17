@@ -15,20 +15,39 @@ namespace SchoolManagementSystems.Controllers
 
     
 
-        public ActionResult Index(string Search_Data)
+        public ActionResult Index()
         {
             libBookentry lb = new libBookentry();
             //FillPermission(47);
-            if (Search_Data == null || Search_Data == "")
-                lb.Bookentrycollection = db.lib_Bookentry.OrderBy(m => m.bookid).ToList();
-            else
-                lb.Bookentrycollection = db.lib_Bookentry.Where(x => x.booktitle.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.CallNo.ToUpper().Contains(Search_Data.ToUpper()) ||
-               x.SerielNumber.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.bookid).ToList();
+          
             lb._bookentrylist = db.sp_getBookentry().ToList();
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList();
+            lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3,0,null, null, DateTime.Now).ToList();
             return View(lb);
           
+        }
+        [HttpPost]
+        public ActionResult Index(libBookentry lb)
+        {
+           
+            //FillPermission(47);
+
+            lb._bookentrylist = db.sp_getBookentry().ToList();
+            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+
+            if (lb.Option == 2)
+            {
+                lb._journalList = db.sp_GetSearchJournal(lb.Option, lb.Department, lb.booktitle, lb.Dateofpurchase).ToList();
+            }
+            else { lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList(); }
+            if (lb.Option == 1 || lb.Option == 3)
+            {
+                lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, lb.Department, lb.booktitle,lb.Authorname, lb.Dateofpurchase).ToList();
+            }
+            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, "", "", DateTime.Now).ToList(); }
+            return View(lb);
+
         }
 
         public ActionResult BookEntry()

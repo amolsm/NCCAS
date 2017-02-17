@@ -601,6 +601,38 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LeaveBalance" Type="int" />
   </EntityType>
+  <EntityType Name="tbl_lib_Author">
+    <Key>
+      <PropertyRef Name="Authorid" />
+    </Key>
+    <Property Name="Authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_JournalType">
+    <Key>
+      <PropertyRef Name="JTypeid" />
+    </Key>
+    <Property Name="JTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JTypeName" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Publisher">
+    <Key>
+      <PropertyRef Name="PublisherId" />
+    </Key>
+    <Property Name="PublisherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Publishername" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Vendor">
+    <Key>
+      <PropertyRef Name="Vendorid" />
+    </Key>
+    <Property Name="Vendorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
   <EntityType Name="tbl_menu">
     <Key>
       <PropertyRef Name="Menuid" />
@@ -1558,6 +1590,19 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetSearchBookAndJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="option" Type="int" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="authorname" Type="varchar" Mode="In" />
+    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="option" Type="int" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+  </Function>
   <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2013,6 +2058,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
