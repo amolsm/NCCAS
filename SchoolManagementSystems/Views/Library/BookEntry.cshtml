@@ -12,15 +12,77 @@
         $('#Bookid input').attr("readonly", true);
         if ($("#Bookid input").val() == "0") {
             $("#Bookid").hide();
-        } else { $("#Bookid").show(); }
+        } else {
+            act = '@Url.Action("FillBookDetails")';
+            var bookid = $("#Bookid input").val();
+            $.ajax({
+                type: 'GET',
+                url: act,
+                dataType: 'JSON',
+                data: { bookid: bookid },
+                success: function (data) {
+                   
+                    $("#Bookid input").val(data.bookid);
+                    $("#booktitle").val(data.booktitle);
+                    $("#CallNo").val(data.CallNo);
+                    $("#Volume").val(data.Volume);
+                    $("#SerielNumber").val(data.SerielNumber);
+                    $("#Authorid").val(data.Authorid);
+                    $("#Authorname").val(data.Authorname);
+                    $("#PublishedByid").val(data.PublishedByid);
+                    $("#PublishedByName").val(data.PublishedByName);
+                    $("#Edition").val(data.Edition);
+                    $("#Vendorid").val(data.Vendorid);
+                    $("#Vendorname").val(data.Vendorname);
+                    var date1 = new Date(parseInt(data.Dateofpurchase.substr(6)));
+                    $('#datepicker1').datepicker('setDate', date1);
+                
+                    $("#BillNo").val(data.BillNo);
+                    $("#Cost").val(data.Cost);
+                }
+            });
+        }
+       
         $('#journalid input').attr("readonly", true);
         if ($("#journalid input").val() == "0") {
             $("#journalid").hide();
-        } else { $("#journalid").show(); }
+        } else {
+            act = '@Url.Action("FillJournalDetails")';
+            var jid = $("#journalid input").val();
+            $.ajax({
+                type: 'GET',
+                url: act,
+                dataType: 'JSON',
+                data: { jid: jid },
+                success: function (data) {
+                   
+                    $("#journalid input").val(data.lib_Jid);
+                    $("#LibType").val(data.LibType);
+                    $("#Department").val(data.Department);
+                    $("#JournalTitle").val(data.JournalTitle);
+                    $("#LibJVolume").val(data.Volume);
+                    $("#Number").val(data.Number);
+                    var date2 = new Date(parseInt(data.IssueDate.substr(6)));
+                    $('#datepicker2').datepicker('setDate', date2);
+                   
+                    $("#JVendorId").val(data.Vendorid);
+                    var date3 = new Date(parseInt(data.PurchaseDate.substr(6)));
+                    $('#datepicker3').datepicker('setDate', date3);
+
+               
+                    $("#JBillNo").val(data.JBillNo);
+                    if (data.lib_Jid != 0) {
+
+                        $('.navbar-nav > .active').next('li').find('a').trigger('click');
+                    }
+                 
+                }
+            });
+        }
 
         $("#BookInsert").click(function (e) {
          Validations1(e);
-             
+
         });
         function Validations1(e) {
             var cnt = 0;
@@ -219,7 +281,7 @@
                 $("#Department").css({
                     "border": "solid 2px #004a80"
                 });
-              
+
                 e.preventDefault();
                 return false;
             }
@@ -234,7 +296,7 @@
                 $("#JournalTitle").css({
                     "border": "solid 2px"
                 });
-           
+
                 e.preventDefault();
                 return false;
             }
@@ -249,7 +311,7 @@
                 $("#LibJVolume").css({
                     "border": "solid 2px #004a80"
                 });
-              
+
                 e.preventDefault();
                 return false;
             }
@@ -264,7 +326,7 @@
                 $("#Number").css({
                     "border": "solid 2px #004a80"
                 });
-              
+
                 e.preventDefault();
                 return false;
             }
@@ -279,7 +341,7 @@
                 $("#datepicker2").css({
                     "border": "solid 2px #004a80"
                 });
-             
+
                 e.preventDefault();
                 return false;
             }
@@ -294,7 +356,7 @@
                 $("#datepicker3").css({
                     "border": "solid 2px #004a80"
                 });
-              
+
                 e.preventDefault();
                 return false;
             }
@@ -309,7 +371,7 @@
                 $("#JVendorId").css({
                     "border": "solid 2px #004a80"
                 });
-              
+
                 e.preventDefault();
                 return false;
             }
@@ -324,7 +386,7 @@
                 $("#JBillNo").css({
                     "border": "solid 2px #004a80"
                 });
-               
+
                 e.preventDefault();
                 return false;
             }
@@ -339,7 +401,7 @@
             }
         }
 
-      
+
         $("#Authorid").change(function () {
 
             if ($("#Authorid option:selected").text() == "Others") {
@@ -431,12 +493,7 @@
         $('#datepicker3').datepicker();
         $('#datepicker3').val("");
 
-      
-    });
-    </script>
-<script type="text/javascript">
-    window.onload = function () {
-       
+        function clear() {
             $("#Bookid").hide();
             $('#Bookid input').val('0');
             $("#booktitle").val('');
@@ -463,8 +520,17 @@
             $("#datepicker3").val('');
             $("#JBillNo").val('');
 
+        }
+
+    });
+    </script>
+<script type="text/javascript">
+    window.onload = function () {
+       
+            
        
     }
+   
 </script>
 <style type="text/css">
     .ui-datepicker-calendar {
@@ -535,6 +601,7 @@
                     <li class="active">Enter Book/Journal Entries</li>
                 </ul>
                 <div class="panel-body">
+                  
                     @{string status = "";
                         status = (TempData["Error"]).ToString();
 
@@ -544,7 +611,7 @@
                       <text><div id="msg"  class="alert alert-success" visible="true">
                      <strong><label id="lblmsg">Records Updated Successfully</label></strong>
                      </div>
-                 
+                   
                     </text>
                         }
                         else if (status == "Failed")

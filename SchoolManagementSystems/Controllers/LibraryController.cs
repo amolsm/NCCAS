@@ -64,51 +64,21 @@ namespace SchoolManagementSystems.Controllers
           
             if (command.Equals("BookSubmit"))
             {
-                lib_Bookentry tbl_Book = new lib_Bookentry();
-                tbl_Book.booktitle = _lb.booktitle;
-                tbl_Book.CallNo = _lb.CallNo;
-                tbl_Book.Volume = _lb.Volume;
-                tbl_Book.SerielNumber = _lb.SerielNumber;
-                tbl_Book.Authorid = _lb.Authorid;
-                tbl_Book.Authorname = _lb.Authorname;
-                tbl_Book.PublishedByid = _lb.PublishedByid;
-                tbl_Book.PublishedByName = _lb.PublishedByName;
-                tbl_Book.Edition = _lb.Edition;
-                tbl_Book.Vendorid = _lb.Vendorid;
-                tbl_Book.Vendorname = _lb.Vendorname;
-                tbl_Book.Dateofpurchase = _lb.Dateofpurchase;
-                tbl_Book.BillNo = _lb.BillNo;
-                tbl_Book.Cost = _lb.Cost;
-                try
-                {
-                    db.lib_Bookentry.AddObject(tbl_Book);
-                    db.SaveChanges();
-                    TempData["Error"] = "Success";
-                 
-
+               try { 
+                db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
+                    _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
+                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost).ToString();
+              TempData["Error"] = "Success";
                 }
                 catch { TempData["Error"] = "Failed"; }
-                
-
-
-
-            }
+                 }
             if (command.Equals("JournalSubmit"))
             {
-                lib_Journal tbl_journal = new lib_Journal();
-                tbl_journal.LibType = _lb.LibType;
-                tbl_journal.Department = _lb.Department;
-                tbl_journal.JournalTitle = _lb.JournalTitle;
-                tbl_journal.Volume = _lb.LibJVolume;
-                tbl_journal.Number = _lb.Number;
-                tbl_journal.IssueDate = _lb.IssueDate;
-                tbl_journal.Vendorid = _lb.JVendorId;
-                tbl_journal.PurchaseDate = _lb.PurchaseDate;
-                tbl_journal.JBillNo = _lb.JBillNo;
+               
                 try
                 {
-                    db.lib_Journal.AddObject(tbl_journal);
-                    db.SaveChanges();
+                    db.sp_AddLibraryJournal(_lb.lib_Jid,_lb.LibType,_lb.Department,_lb.JournalTitle,_lb.LibJVolume,
+                        _lb.Number,_lb.IssueDate,_lb.Vendorid,_lb.PurchaseDate,_lb.JBillNo).ToString();
                     TempData["Error"] = "Success";
 
                 }
@@ -119,7 +89,7 @@ namespace SchoolManagementSystems.Controllers
 
 
             }
-           
+          
            
             _lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
 
@@ -127,5 +97,34 @@ namespace SchoolManagementSystems.Controllers
            
         }
 
+        public ActionResult BookEdit(int? bookid)
+        {
+            libBookentry lb = new libBookentry();
+            TempData["Error"] = "";
+            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            return View("BookEntry", lb);
         }
+
+        public ActionResult JournalEdit(int? lib_Jid)
+        {
+            libBookentry lb = new libBookentry();
+            TempData["Error"] = "";
+            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            return View("BookEntry", lb);
+        }
+        public JsonResult FillBookDetails(int bookid)
+        {
+            TempData["Error"] = "";
+            var data = db.lib_Bookentry.Where(m => m.bookid == bookid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult FillJournalDetails(int jid)
+        {
+            TempData["Error"] = "";
+            var data = db.lib_Journal.Where(m => m.lib_Jid == jid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+    }
 }

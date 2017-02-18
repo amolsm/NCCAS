@@ -1133,6 +1133,35 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="ExamClassid" Type="int" Mode="In" />
     <Parameter Name="ExamYear" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="CallNo" Type="varchar" Mode="In" />
+    <Parameter Name="Volume" Type="varchar" Mode="In" />
+    <Parameter Name="SerielNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Authorid" Type="int" Mode="In" />
+    <Parameter Name="Authorname" Type="varchar" Mode="In" />
+    <Parameter Name="PublishedByid" Type="int" Mode="In" />
+    <Parameter Name="PublishedByName" Type="varchar" Mode="In" />
+    <Parameter Name="Edition" Type="varchar" Mode="In" />
+    <Parameter Name="Vendorid" Type="int" Mode="In" />
+    <Parameter Name="Vendorname" Type="varchar" Mode="In" />
+    <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="Cost" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lib_Jid" Type="int" Mode="In" />
+    <Parameter Name="LibType" Type="int" Mode="In" />
+    <Parameter Name="Department" Type="int" Mode="In" />
+    <Parameter Name="JournalTitle" Type="varchar" Mode="In" />
+    <Parameter Name="Volume" Type="varchar" Mode="In" />
+    <Parameter Name="Number" Type="varchar" Mode="In" />
+    <Parameter Name="IssueDate" Type="datetime2" Mode="In" />
+    <Parameter Name="Vendorid" Type="int" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="datetime2" Mode="In" />
+    <Parameter Name="JBillNo" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_Attandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="StudentID" Type="int" Mode="In" />
     <Parameter Name="Present" Type="bit" Mode="In" />

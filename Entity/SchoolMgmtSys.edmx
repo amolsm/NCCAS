@@ -1138,6 +1138,35 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="ExamClassid" Type="int" Mode="In" />
           <Parameter Name="ExamYear" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bookid" Type="int" Mode="In" />
+          <Parameter Name="booktitle" Type="varchar" Mode="In" />
+          <Parameter Name="CallNo" Type="varchar" Mode="In" />
+          <Parameter Name="Volume" Type="varchar" Mode="In" />
+          <Parameter Name="SerielNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Authorid" Type="int" Mode="In" />
+          <Parameter Name="Authorname" Type="varchar" Mode="In" />
+          <Parameter Name="PublishedByid" Type="int" Mode="In" />
+          <Parameter Name="PublishedByName" Type="varchar" Mode="In" />
+          <Parameter Name="Edition" Type="varchar" Mode="In" />
+          <Parameter Name="Vendorid" Type="int" Mode="In" />
+          <Parameter Name="Vendorname" Type="varchar" Mode="In" />
+          <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
+          <Parameter Name="BillNo" Type="varchar" Mode="In" />
+          <Parameter Name="Cost" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lib_Jid" Type="int" Mode="In" />
+          <Parameter Name="LibType" Type="int" Mode="In" />
+          <Parameter Name="Department" Type="int" Mode="In" />
+          <Parameter Name="JournalTitle" Type="varchar" Mode="In" />
+          <Parameter Name="Volume" Type="varchar" Mode="In" />
+          <Parameter Name="Number" Type="varchar" Mode="In" />
+          <Parameter Name="IssueDate" Type="datetime2" Mode="In" />
+          <Parameter Name="Vendorid" Type="int" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="datetime2" Mode="In" />
+          <Parameter Name="JBillNo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_Attandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentID" Type="int" Mode="In" />
           <Parameter Name="Present" Type="bit" Mode="In" />
@@ -3156,6 +3185,35 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="booktitle" Mode="In" Type="String" />
             <Parameter Name="authorname" Mode="In" Type="String" />
             <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddLibraryBook">
+            <Parameter Name="bookid" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="CallNo" Mode="In" Type="String" />
+            <Parameter Name="Volume" Mode="In" Type="String" />
+            <Parameter Name="SerielNumber" Mode="In" Type="String" />
+            <Parameter Name="Authorid" Mode="In" Type="Int32" />
+            <Parameter Name="Authorname" Mode="In" Type="String" />
+            <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
+            <Parameter Name="PublishedByName" Mode="In" Type="String" />
+            <Parameter Name="Edition" Mode="In" Type="String" />
+            <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+            <Parameter Name="Vendorname" Mode="In" Type="String" />
+            <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
+            <Parameter Name="BillNo" Mode="In" Type="String" />
+            <Parameter Name="Cost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddLibraryJournal">
+            <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
+            <Parameter Name="LibType" Mode="In" Type="Int32" />
+            <Parameter Name="Department" Mode="In" Type="Int32" />
+            <Parameter Name="JournalTitle" Mode="In" Type="String" />
+            <Parameter Name="Volume" Mode="In" Type="String" />
+            <Parameter Name="Number" Mode="In" Type="String" />
+            <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="JBillNo" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -6626,6 +6684,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
+          <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

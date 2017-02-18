@@ -1031,6 +1031,35 @@
       <Parameter Name="authorname" Mode="In" Type="String" />
       <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="sp_AddLibraryBook">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="CallNo" Mode="In" Type="String" />
+      <Parameter Name="Volume" Mode="In" Type="String" />
+      <Parameter Name="SerielNumber" Mode="In" Type="String" />
+      <Parameter Name="Authorid" Mode="In" Type="Int32" />
+      <Parameter Name="Authorname" Mode="In" Type="String" />
+      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
+      <Parameter Name="PublishedByName" Mode="In" Type="String" />
+      <Parameter Name="Edition" Mode="In" Type="String" />
+      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="Vendorname" Mode="In" Type="String" />
+      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="Cost" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_AddLibraryJournal">
+      <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
+      <Parameter Name="LibType" Mode="In" Type="Int32" />
+      <Parameter Name="Department" Mode="In" Type="Int32" />
+      <Parameter Name="JournalTitle" Mode="In" Type="String" />
+      <Parameter Name="Volume" Mode="In" Type="String" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="JBillNo" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>

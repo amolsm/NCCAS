@@ -19,26 +19,17 @@
         });
 
         $('#datepicker1').datepicker('setDate', new Date());
+        $(".btn_edit").click(function () {
+       
+            var bookid = this.id;
+            location.href = '/Library/BookEdit?bookid=' + bookid;
+        });
+        $(".btn_Jedit").click(function () {
+            var lib_Jid = this.id;
+            location.href = '/Library/JournalEdit?lib_Jid=' + lib_Jid;
+        });
     });
-    @*$("#insert").click(function () {
-        setTimeout(function () {
-            validations();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("DMLClass")',
-                data: $('#frm').serialize() + "&evt=submit&id=0",
-                success: function (result) {
-                    //$("#msgs").show();
-                    //$("#lblmsgs").text("Class updated successfully!..");
-                    //$("#lblmsgs").css({ "color": "green" });
-                    //$("#lblmsgs").css({ "font-size": "15px" });
-                    //$("#result").html(result);
-                    //clear();
-                    ReloadPaging();
-                }
-            });
-        }, 1000);
-    });*@
+  
     </script>
 <style type="text/css">
     .ui-datepicker-calendar {
@@ -289,7 +280,7 @@
 
 
                                                     <td>
-                                                        <input type="button" id="@item.JId" class="btn btn-default btn_edit" value="Edit" />
+                                                        <input type="button" id="@item.JId" class="btn btn-default btn_Jedit" value="Edit" />
 
                                                     </td>
                                                 </tr>
