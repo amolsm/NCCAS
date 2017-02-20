@@ -53,7 +53,7 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult BookEntry()
          {
             libBookentry lb = new libBookentry();
-            TempData["Error"] = "";
+           
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
             return View(lb);
 
@@ -92,8 +92,8 @@ namespace SchoolManagementSystems.Controllers
           
            
             _lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
-
-            return View(_lb);
+         
+            return RedirectToAction("BookEntry");
            
         }
 
@@ -114,14 +114,13 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult FillBookDetails(int bookid)
         {
-            TempData["Error"] = "";
             var data = db.lib_Bookentry.Where(m => m.bookid == bookid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult FillJournalDetails(int jid)
         {
-            TempData["Error"] = "";
+          
             var data = db.lib_Journal.Where(m => m.lib_Jid == jid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
