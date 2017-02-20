@@ -41,6 +41,34 @@
         ReloadPaging();
     });
 </script>
+<script>
+    function printContent(el) {
+        //$("#printt").removeClass("dataTables_wrapper")
+        //var printcontent = window.open('', '', 'height=400,width=800');
+        var restorepage = document.body.innerHTML;
+       var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>
+   <script type = "text/javascript">
+       function printContents(el) {
+           var panel = document.getElementById(el);
+           // document.getElementById("#printt");
+           $("#printt").removeClass("bootstrap-datatable datatable")
+           var printWindow = window.open('', '', 'height=400,width=800');
+           printWindow.document.write("<html> <head>");
+           printWindow.document.write('</head><body ><table>');
+           printWindow.document.write(panel.innerHTML);
+           printWindow.document.write('</table></body></html>');
+           printWindow.document.close();
+           setTimeout(function () {
+               printWindow.print();
+           }, 500);
+           return true;
+       }
+    </script>
 @Html.Hidden("Add", ViewData["Add"])
 @Html.Hidden("Modify", ViewData["Modify"])
 @Html.Hidden("View", ViewData["View"])
@@ -63,23 +91,23 @@
                             {
 
                                 @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
-                                <input type="submit" value="Find" />
+                                <input type="submit" value="Find" style="margin-bottom:10px" class="btn btn-default" />
                             }
                         </div>
                     </ul>
                     <div class="col-md-10" style="width: 100%;">
                         <div class="" style=" color: #23527c;">
                             <div class="col-md-4 col-md-offset-8">
-                                <form class="navbar-form navbar-left pull-right" role="search" style="margin-right: -30px;">
+                                <form class="navbar-form navbar-left" role="search" style="text-align:center">
                                 <div class="form-group">
-                                    <input type="button" class="test btn btn-default" value="print" />
-                                    @*<input type="text" class="form-control ptext" placeholder="Search">*@
+                                    <input id="printdiv" type="submit" value="Print" onclick="printContent('result')" class="test btn btn-danger"/>
+                                    @*<input type="button" onclick="PrintPanel();"  value="print" />*@
                                 </div>
                                 </form>
                             </div>
                             <!-- table start -->
                             <div id="result" class="table-responsive">
-                                <table class="table tb-parshav tablesorter">
+                                   <table class="table table-striped table-bordered bootstrap-datatable datatable" id="printt">
                                 <thead>
                                     <tr>
                                         <th>
@@ -148,7 +176,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="pager" class="col-md-4 col-md-offset-8" style="position: none;">
+                           @* <div id="pager" class="col-md-4 col-md-offset-8" style="position: none;">
                                     <img src="../../Content/images/first.png" style="width:19px;" class="first" />
                                     <img src="../../Content/images/prev.png"  style="width:19px;" class="prev" />
                                     <input type="text" style="width:50px;" disabled="disabled" class="pagedisplay" />
@@ -162,7 +190,7 @@
                                         <option value="50">50</option>
                                         <option value="100">100</option>
                                     </select>
-                                </div>
+                                </div>*@
                             <!-- table end -->
                         </div>
                     </div>
