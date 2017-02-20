@@ -1843,6 +1843,7 @@
     <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
     <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
     <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
+<<<<<<< HEAD
     <EntitySetMapping Name="tbl_timetable">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
         <MappingFragment StoreEntitySet="tbl_timetable">
@@ -1860,5 +1861,65 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
+=======
+    <EntitySetMapping Name="tbl_lib_Author">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
+        <MappingFragment StoreEntitySet="tbl_lib_Author">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+          <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_lib_JournalType">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_JournalType">
+        <MappingFragment StoreEntitySet="tbl_lib_JournalType">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="JTypeName" ColumnName="JTypeName" />
+          <ScalarProperty Name="JTypeid" ColumnName="JTypeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_lib_Publisher">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Publisher">
+        <MappingFragment StoreEntitySet="tbl_lib_Publisher">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Publishername" ColumnName="Publishername" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_lib_Vendor">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Vendor">
+        <MappingFragment StoreEntitySet="tbl_lib_Vendor">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+          <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSearchJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchJournal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchJournal_Result">
+          <ScalarProperty Name="JId" ColumnName="JId" />
+          <ScalarProperty Name="JTitleName" ColumnName="JTitleName" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
+    <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
+>>>>>>> origin/master
   </EntityContainerMapping>
 </Mapping>

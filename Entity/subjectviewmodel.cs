@@ -15,7 +15,7 @@ namespace Entity
         public int Dept_Id { get; set; }
 
         [DisplayName("Course Name")]
-        public int Classid { get; set; }
+        public int Courseid { get; set; }
 
         [DisplayName("Subject Name ")]
         public string SubjectNm { get; set; }
@@ -34,7 +34,7 @@ namespace Entity
 
         public List<tbl_YearMaster> yearlist { get; set; }
         public List<tblDepartment> departmentlistdetails { get; set; }
-        public List<tbl_class> Classlist { get; set; }
+        public List<tbl_CourseMaster> Courselist { get; set; }
         public List<sp_getSubject_Result> _Subjectlist { get; set; }
         public List<sp_GetCourseforsubject_Result> _courselist { get; set; }
         public List<sp_GetCourseforsubjectbydeptid_Result> _courselistbydeptid { get; set; }

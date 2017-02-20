@@ -449,12 +449,12 @@ namespace SchoolManagementSystems.Controllers
             _svm.academicyear = GetYear();
             if (String.IsNullOrEmpty(Search_Data))
             {
-                _svm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+                _svm.Courselist = db.tbl_CourseMaster.Where(c => c.Status == true).ToList();
                 _svm._Subjectlist = db.sp_getSubject().ToList();
             }
             else
             {
-                _svm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+                _svm.Courselist = db.tbl_CourseMaster.Where(c => c.Status == true).ToList();
                 _svm._Subjectlist = db.sp_getSubject().Where(c => c.Classnm.ToString().ToUpper().Contains(Search_Data.ToUpper())
                                                              || c.SubjectNm.ToUpper().Contains(Search_Data.ToUpper())
                                                              || c.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
@@ -469,9 +469,9 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_subject.Where(m => m.Subjectid == Subjectid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_Subject(string SubjectNm, int Classid)
+        public JsonResult check_duplicate_Subject(string SubjectNm, int Courseid,int Dept_id,int academicyear)
         {
-            var data = db.tbl_subject.Where(m => m.SubjectNm == SubjectNm && m.Courseid == Classid).FirstOrDefault();
+            var data = db.tbl_subject.Where(m => m.SubjectNm == (SubjectNm).Trim() && m.Courseid == Courseid &&   m.DeptId == Dept_id &&   m.yearid == academicyear).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLSubject(Subjectviewmodel _svm, string evt, int id)
@@ -479,11 +479,11 @@ namespace SchoolManagementSystems.Controllers
             string yr = _svm.academicyear[0].ToString();
             if (evt == "submit")
             {
-                db.sp_Subject_DML(_svm.Subjectid, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "",_svm.Dept_Id).ToString();
+                db.sp_Subject_DML(_svm.Subjectid, _svm.Courseid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "",_svm.Dept_Id).ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_Subject_DML(id, _svm.Classid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "del", _svm.Dept_Id).ToString();
+                db.sp_Subject_DML(id, _svm.Courseid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "del", _svm.Dept_Id).ToString();
             }
             _svm._Subjectlist = db.sp_getSubject().ToList();
             return PartialView("_SubjectList", _svm);
@@ -1466,9 +1466,9 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_Course.Where(m => m.Cid == Cid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_assigncourse(int courseid, int dept_id)
+        public JsonResult check_duplicate_assigncourse(int CourseId, int Dept_Id)
         {
-            var data = db.tbl_Course.Where(m => (m.Course_id == courseid) && (m.Dept_id == dept_id) ).FirstOrDefault();
+            var data = db.tbl_Course.Where(m => (m.Course_id == CourseId) && (m.Dept_id == Dept_Id) ).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
 
         }
