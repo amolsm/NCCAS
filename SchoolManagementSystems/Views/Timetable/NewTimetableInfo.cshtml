@@ -3,95 +3,164 @@
     ViewBag.Title = "New Timetable Information";
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }
+
+<!-- Latest compiled and minified CSS -->
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>*@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<style>
+    .box-header {
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 20px;
+    background: #797a7d;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+    .box-header h2 {
+    float: left;
+    margin-top: -7px;
+    font-weight: 300;
+}
+
+    .add-on, select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], input[type="file"], .uneditable-input {
+    border-color: #b7abab !important;
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    vertical-align: middle;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.bootstrap-timepicker-widget table td input {
+    width: 35px;
+    margin: 0;
+    text-align: center;
+}
+
+</style>
 <script type="text/javascript">
     $(document).ready(function () {
-
-        Fillhr();
-        Fillmin();
-        FillPermission();
-        function Fillhr() {
-            var item = '<option value="">Hour</option>';
-            for (var i = 1; i <= 24; i++) {
-                if (i < 10) {
-                    item += '<option value=' + i + '>0' + i + '</option>';
-                }
-                else {
-                    item += '<option value=' + i + '>' + i + '</option>';
-                }
-            }
-            $("#ddlhr").append(item);
-            $("#ddlhr1").append(item);
-        }
-
-        function Fillmin() {
-            var item = '<option value="">Min</option>';
-            for (var i = 0; i < 60; i++) {
-                if (i < 10) {
-                    item += '<option value=' + i + '>0' + i + '</option>';
-                }
-                else {
-                    item += '<option value=' + i + '>' + i + '</option>';
-                }
-            }
-            $("#ddlmin").append(item);
-            $("#ddlmin1").append(item);
-        }
-
-        $("#ddlhr").change(function () {
-            $("#ddlmin").val('');
-        });
-        $("#ddlmin").change(function () {
-            $("#LecTime").val($("#ddlhr").val() + ':' + $("#ddlmin").val());
-        });
-
-        $("#ddlhr1").change(function () {
-            $("#ddlmin1").val('');
-        });
-        $("#ddlmin1").change(function () {
-            $("#LecETime").val($("#ddlhr1").val() + ':' + $("#ddlmin1").val());
-        });
-
-        $("#lblmsg").text('');
-        $('#tid input').attr("readonly", true);
-        if ($("#tid input").val() == "0" || $("#tid input").val() == "") {
-            $("#tid").hide();
-        }
-
-        function clear() {
-            $("#tid").hide();
-            $('#tid input').val('0');
-            $("#Classid").val('');
-            $("#Day").val('');
-            $("#LecNo").val('');
-            $("#Subjectid").val('');
-            $("#ddlhr").val('');
-            $("#ddlhr1").val('');
-            $("#ddlmin").val('');
-            $("#ddlmin1").val('');
-            $("#LecTime").val('');
-            $("#LecETime").val('');
-            $("#Empid").val('');
-        }
-        $('#LecNo').change(function () {
-            var LecNo = $('#LecNo').val();
-            var Day = $('#Day').val();
-            var Classid = $('#Classid').val();
+    
+        $("#year").change(function () {
+            debugger;
+            $("#Subjectid").empty();
             $.ajax({
-                type: 'GET',
-                url: '@Url.Action("check_duplicate_LecNo")',
-                dataType: 'JSON',
-                data: { LecNo: LecNo, Day: Day, Classid: Classid },
-                success: function (data) {
-                    if (data.LecNo != null) {
-                        $("#lblmsg").text("Lecture Number Already Exists for this Day!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
-                        $('#LecNo').val('');
-                        return false;
+                type: 'POST',
+                url: '@Url.Action("GetSubjects")',
+                dataType: 'json',
+                data: { id: $("#Classid").val(), year: $("#year").val(),dept: $("#department").val() },
+                success: function (subjects) {
+                    if (subjects != "") {
+                        var item = '<option value="">Select Subject</option>';
+                        $.each(subjects, function (i, subject) {
+                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
+                        });
+                        $("#Subjectid").append(item);
                     }
+                    else {
+                        var item = '<option value="">Select Subject</option>';
+                        $("#Subjectid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve subjects.' + ex);
+                }
+            });
+        })
+
+        $("#Classid").change(function () {
+            $("#department").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDepartment")',
+                dataType: 'json',
+                data: { id: $("#Classid").val() },
+                success: function (DClass) {
+                    if (DClass != "") {
+                        var item = '<option value="0">Select Class</option>';
+                        $.each(DClass, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#department").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Class</option>';
+                        $("#department").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Class.' + ex);
+                }
+            });
+             return false;
+         })
+
+        $("#department").change(function () {
+            $("#year").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#department").val(), cid: $("#Classid").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#insert").click(function () {
+            debugger;
+            //validations();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLTimetable")',
+                data: $('#frm').serialize() + "&evt=submit&id=0",
+                success: function (result) {
+                    $("#lblmsgs").show();
+                    $("#lblmsg").text("Information in Timetable updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result); 
+                    ReloadPaging();
                 }
             });
         });
+
         $("#result").on("click", ".edit", function (evt) {
             var Tid = this.id;
             $.ajax({
@@ -134,16 +203,257 @@
                     }
                     $("#Day").val(data.Day);
                     $("#LecNo").val(data.LecNo);
-                    $("#LecTime").val(data.LecTime);
-                    $("#LecETime").val(data.LecETime);
-                    var arr = data.LecTime.split(':');
-                    $("#ddlhr").val(arr[0]); $("#ddlmin").val(arr[1]);
-                    var arr1 = data.LecETime.split(':');
-                    $("#ddlhr1").val(arr1[0]); $("#ddlmin1").val(arr1[1]);
+                    $("#timepicker1").val(data.LecTime);
+                    $("#timepicker2").val(data.LecETime);
                     $("#Empid").val(data.Empid);
                 }
             });
+           });
+
+        $("#lblmsg").text('');
+        $('#tid input').attr("readonly", true);
+        if ($("#tid input").val() == "0" || $("#tid input").val() == "") {
+            $("#tid").hide();
+        }
+
+       
+    });
+    </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //function validations() {
+        //    var cnt = 0;
+
+        //    if ($("#Classid").val() == '') {
+        //        cnt++;
+        //        $("#Classid").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#Classid").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    if ($("#Day").val() == '') {
+        //        cnt++;
+        //        $("#Day").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#Day").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    if ($("#LecNo").val() == '' || $("#LecNo").val() == '0') {
+        //        cnt++;
+        //        $("#LecNo").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#LecNo").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    if ($("#Subjectid").val() == '') {
+        //        cnt++;
+        //        $("#Subjectid").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#Subjectid").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    if ($("#LecTime").val() == '') {
+        //        cnt++;
+        //        $("#LecTime").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#LecTime").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    //if ($("#ddlhr").val() == '') {
+        //    //    cnt++;
+        //    //    $("#ddlhr").css({
+        //    //        "border": "2px solid red"
+        //    //    });
+        //    //}
+        //    //else {
+        //    //    $("#ddlhr").css({
+        //    //        "border": "",
+        //    //        "background": ""
+        //    //    });
+        //    //}
+
+        //    //if ($("#ddlhr1").val() == '') {
+        //    //    cnt++;
+        //    //    $("#ddlhr1").css({
+        //    //        "border": "2px solid red"
+        //    //    });
+        //    //}
+        //    //else {
+        //    //    $("#ddlhr1").css({
+        //    //        "border": "",
+        //    //        "background": ""
+        //    //    });
+        //    //}
+
+        //    //if ($("#ddlmin").val() == '') {
+        //    //    cnt++;
+        //    //    $("#ddlmin").css({
+        //    //        "border": "2px solid red"
+        //    //    });
+        //    //}
+        //    //else {
+        //    //    $("#ddlmin").css({
+        //    //        "border": "",
+        //    //        "background": ""
+        //    //    });
+        //    //}
+
+        //    //if ($("#ddlmin1").val() == '') {
+        //    //    cnt++;
+        //    //    $("#ddlmin1").css({
+        //    //        "border": "2px solid red"
+        //    //    });
+        //    //}
+        //    //else {
+        //    //    $("#ddlmin1").css({
+        //    //        "border": "",
+        //    //        "background": ""
+        //    //    });
+        //    //}
+
+        //    if ($("#Empid").val() == '') {
+        //        cnt++;
+        //        $("#Empid").css({
+        //            "border": "2px solid red"
+        //        });
+        //    }
+        //    else {
+        //        $("#Empid").css({
+        //            "border": "",
+        //            "background": ""
+        //        });
+        //    }
+
+        //    if (cnt != 0)
+        //        e.preventDefault();
+        //}
+
+        //Fillhr();
+        //Fillmin();
+        FillPermission();
+        //function Fillhr() {
+        //    var item = '<option value="">Hour</option>';
+        //    for (var i = 1; i <= 24; i++) {
+        //        if (i < 10) {
+        //            item += '<option value=' + i + '>0' + i + '</option>';
+        //        }
+        //        else {
+        //            item += '<option value=' + i + '>' + i + '</option>';
+        //        }
+        //    }
+        //    $("#ddlhr").append(item);
+        //    $("#ddlhr1").append(item);
+        //}
+        $('#timepicker1').timepicker();
+
+        $('.datepicker').datetimepicker({
+            dateFormat: '',
+            timeFormat: 'hh:mm tt'
         });
+        $(function () {
+            $('#timepicker2').datetimepicker({
+                inline: true,
+                sideBySide: true
+            });
+        });
+
+        //function Fillmin() {
+        //    var item = '<option value="">Min</option>';
+        //    for (var i = 0; i < 60; i++) {
+        //        if (i < 10) {
+        //            item += '<option value=' + i + '>0' + i + '</option>';
+        //        }
+        //        else {
+        //            item += '<option value=' + i + '>' + i + '</option>';
+        //        }
+        //    }
+        //    $("#ddlmin").append(item);
+        //    $("#ddlmin1").append(item);
+        //}
+
+        //$("#ddlhr").change(function () {
+        //    $("#ddlmin").val('');
+        //});
+        //$("#ddlmin").change(function () {
+        //    $("#LecTime").val($("#ddlhr").val() + ':' + $("#ddlmin").val());
+        //});
+
+        //$("#ddlhr1").change(function () {
+        //    $("#ddlmin1").val('');
+        //});
+        //$("#ddlmin1").change(function () {
+        //    $("#LecETime").val($("#ddlhr1").val() + ':' + $("#ddlmin1").val());
+        //});
+
+        
+
+        function clear() {
+            $("#tid").hide();
+            $('#tid input').val('0');
+            $("#Classid").val('');
+            $("#Day").val('');
+            $("#LecNo").val('');
+            $("#Subjectid").val('');
+            $("#ddlhr").val('');
+            $("#ddlhr1").val('');
+            $("#ddlmin").val('');
+            $("#ddlmin1").val('');
+            $("#LecTime").val('');
+            $("#LecETime").val('');
+            $("#Empid").val('');
+        }
+        $('#LecNo').change(function () {
+            var LecNo = $('#LecNo').val();
+            var Day = $('#Day').val();
+            var Classid = $('#Classid').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_LecNo")',
+                dataType: 'JSON',
+                data: { LecNo: LecNo, Day: Day, Classid: Classid },
+                success: function (data) {
+                    if (data.LecNo != null) {
+                        $("#lblmsg").text("Lecture Number Already Exists for this Day!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#LecNo').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+     
 
         $("#result").on("click", ".delete", function (evt) {
             var Tid = this.id;
@@ -164,189 +474,15 @@
                 });
             }
         });
-        $("#insert").click(function () {
-            validations();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("DMLTimetable")',
-                data: $('#frm').serialize() + "&evt=submit&id=0",
-                success: function (result) {
-                    $("#lblmsg").text("Information in Timetable updated successfully!..");
-                    $("#lblmsg").css({ "color": "lime" });
-                    $("#lblmsg").css({ "font-size": "25px" });
-                    $("#result").html(result);
-                    clear();
-                    ReloadPaging();
-                }
-            });
-        });
+        
 
         $("#reset").click(function () {
             clear();
         });
 
-        $("#Classid").change(function () {
-            $("#Subjectid").empty();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetSubjects")',
-                dataType: 'json',
-                data: { id: $("#Classid").val() },
-                success: function (subjects) {
-                    if (subjects != "") {
-                        var item = '<option value="">Select Subject</option>';
-                        $.each(subjects, function (i, subject) {
-                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
-                        });
-                        $("#Subjectid").append(item);
-                    }
-                    else {
-                        var item = '<option value="">Select Subject</option>';
-                        $("#Subjectid").append(item);
-                    }
-                },
-                error: function (ex) {
-                    alert('Failed to retrieve subjects.' + ex);
-                }
-            });
-        })
+      
 
-        function validations() {
-            var cnt = 0;
-
-            if ($("#Classid").val() == '') {
-                cnt++;
-                $("#Classid").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#Classid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Day").val() == '') {
-                cnt++;
-                $("#Day").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#Day").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#LecNo").val() == '' || $("#LecNo").val() == '0') {
-                cnt++;
-                $("#LecNo").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#LecNo").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Subjectid").val() == '') {
-                cnt++;
-                $("#Subjectid").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#Subjectid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#LecTime").val() == '') {
-                cnt++;
-                $("#LecTime").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#LecTime").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ddlhr").val() == '') {
-                cnt++;
-                $("#ddlhr").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#ddlhr").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ddlhr1").val() == '') {
-                cnt++;
-                $("#ddlhr1").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#ddlhr1").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ddlmin").val() == '') {
-                cnt++;
-                $("#ddlmin").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#ddlmin").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ddlmin1").val() == '') {
-                cnt++;
-                $("#ddlmin1").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#ddlmin1").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Empid").val() == '') {
-                cnt++;
-                $("#Empid").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#Empid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if (cnt != 0)
-                e.preventDefault();
-        }
+       
         ReloadPaging();
     });
 </script>
@@ -372,6 +508,17 @@
                             }
                         </div>
                     </ul>
+                  <div id="lblmsgs" hidden="hidden"  visible="false" class="alert alert-success">
+                       <strong><label id="lblmsg"></label></strong>
+                                </div>
+                @*<div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="lblmsg">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>*@
                      <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>
@@ -389,72 +536,88 @@
                                   <fieldset>
                             @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class="form-horizontal" }))
                             {
-                                @Html.ValidationSummary(true)
-                                <div id="lblmsg" class="control-group">
-                                </div>
-                                <div id="tid" class="control-group">
+                                 @Html.ValidationSummary(true)
+                                <table>
+                                <tr>
+                                    <td class="span5">
+                                    <div id="tid">
                                     @Html.LabelFor(model => model.Tid, new { @class = "control-label" })
                                     <div class="controls"> 
-                                    @Html.TextBoxFor(model => model.Tid, new { @class = "col-md-5 form-control form_in" })
+                                    @Html.TextBoxFor(model => model.Tid, new { @Style="width:220px"})
                                     @Html.ValidationMessageFor(model => model.Tid)
                                         </div>
                                 </div>
-                                <div class="control-group">
+                                <div style="margin-bottom:10px">
                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
                                      <div class="controls">
-                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Class"), "Select Class")
                                     @Html.ValidationMessageFor(model => model.Classid)
                                          </div>
                                 </div>
-                                <div class="control-group">
+                                        <div style="margin-bottom:10px">
+                                                    @Html.LabelFor(model => model.department, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.department, new SelectList(Model.DepartmentList, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                    @Html.ValidationMessageFor(model => model.department)
+                                                           </div>
+                                                </div>
+                                                
+                                                 <div style="margin-bottom:10px">
+                                                    @Html.LabelFor(model => model.year, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.year, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
+                                                    @Html.ValidationMessageFor(model => model.year)
+                                                           </div>
+                                                </div>  
+                                <div style="margin-bottom:10px">
                                     @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
                                      <div class="controls">
-                                    @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
                                     @Html.ValidationMessageFor(model => model.Subjectid)
                                          </div>
                                 </div>
-                                <div class="control-group">
+                                <div>
                                     @Html.LabelFor(model => model.Day, new { @class = "control-label" })
                                      <div class="controls">
-                                    @Html.DropDownListFor(model => model.Day, new SelectList(Model.Daylist, "dayid", "daynm", "Select Day"), "Select Day", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.DropDownListFor(model => model.Day, new SelectList(Model.Daylist, "dayid", "daynm", "Select Day"), "Select Day")
                                     @Html.ValidationMessageFor(model => model.Day)
                                          </div>
                                 </div>
-                                <div class="control-group">
+                                    </td>
+                               <td class="span5">
+                                <div class="">
                                     @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
                                      <div class="controls">
-                                    @Html.TextBoxFor(model => model.LecNo, new { @class = "col-md-5 form-control form_in", placeholder = "Enter Lecture Number" })
+                                    @Html.TextBoxFor(model => model.LecNo, new { @Style="width: 220px;", placeholder = "Enter Lecture Number" })
                                     @Html.ValidationMessageFor(model => model.LecNo)
                                          </div>
                                 </div>
-                                <div class="control-group">
+                                <div>
                                     @Html.LabelFor(model => model.LecTime, new { @class = "control-label" })
                                      <div class="controls">
-                                    <select id="ddlhr" class="col-md-5 form-control form_in" name="ddlhr">
-                                    </select>
-                                    <select id="ddlmin" class="col-md-5 form-control form_in" name="ddlmin">
-                                    </select>
+                                          @Html.TextBoxFor(model => model.LecTime, new {id="timepicker1", @Style="width:220px", @readonly = "readonly", placeholder = "Select Time"})
                                     @Html.HiddenFor(model => model.LecTime)
                                          </div>
-                                </div>
-                                <div class="control-group">
+                                </div>   
+                                <div>
                                     @Html.LabelFor(model => model.LecETime, new { @class = "control-label" })
                                      <div class="controls">
-                                    <select id="ddlhr1" class="col-md-5 form-control form_in" name="ddlhr1">
-                                    </select>
-                                    <select id="ddlmin1" class="col-md-5 form-control form_in" name="ddlmin1">
-                                    </select>
+                                          @Html.TextBoxFor(model => model.LecETime, new {id="timepicker2", @readonly = "readonly",  @Style="width:220px", placeholder = "Select Time"})
+                                         @Html.ValidationMessageFor(model => model.LecETime)
                                     @Html.HiddenFor(model => model.LecETime)
                                          </div>
                                 </div>
-                                <div class="control-group">
+                                <div>
                                     @Html.LabelFor(model => model.Empid, new { @class = "control-label" })
                                      <div class="controls">
                                     @Html.DropDownListFor(model => model.Empid, new SelectList(Model.Emplist, "Empid", "fullnm", "Select Teacher"), "Select Teacher", new { @class = "col-md-5 form-control form_in" })
                                     @Html.ValidationMessageFor(model => model.Empid)
                                          </div>
                                 </div>
-                               <div class="form-actions">
+                                    </td>
+                                </tr>
+                             </table>
+                               <div class="form-actions" style="padding-left:40%" >
                                     <input type="button" class="btn btn-primary" id="insert" value="Submit" />
                                     <input type="button" class="btn btn-primary" id="reset" value="Reset" />
                                     <br />
@@ -492,4 +655,9 @@
 </div>
    
             </div>
-    
+  
+ 
+        <script type="text/javascript">
+            $('#timepicker1').timepicker();
+            $('#timepicker2').timepicker();
+        </script>

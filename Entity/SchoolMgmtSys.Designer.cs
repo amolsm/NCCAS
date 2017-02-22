@@ -1072,6 +1072,7 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_teachersubject> _tbl_teachersubject;
+<<<<<<< HEAD
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1152,6 +1153,8 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_lib_BookIssue> _tbl_lib_BookIssue;
+=======
+>>>>>>> origin/master
 
         #endregion
 
@@ -1660,6 +1663,7 @@ namespace Entity
         {
             base.AddObject("tbl_teachersubject", tbl_teachersubject);
         }
+<<<<<<< HEAD
     
         /// <summary>
         /// Deprecated Method for adding a new object to the tbl_lib_Author EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -1700,6 +1704,8 @@ namespace Entity
         {
             base.AddObject("tbl_lib_BookIssue", tbl_lib_BookIssue);
         }
+=======
+>>>>>>> origin/master
 
         #endregion
 
@@ -10974,6 +10980,7 @@ namespace Entity
     
             return base.ExecuteFunction("sp_chapter_DML", chapteridParameter, chapternameParameter, descriptionParameter, statusParameter, subjectidParameter, yearidParameter, dept_idParameter, teacheridParameter, courseidParameter, createdbyParameter, actParameter);
         }
+<<<<<<< HEAD
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11509,6 +11516,8 @@ namespace Entity
     
             return base.ExecuteFunction("sp_timetable_DML", tidParameter, classidParameter, dayParameter, lecNoParameter, subjectidParameter, lecTimeParameter, lecETimeParameter, empidParameter, yearParameter, deptidParameter, actParameter);
         }
+=======
+>>>>>>> origin/master
 
         #endregion
 
@@ -22762,6 +22771,7 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+<<<<<<< HEAD
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_lib_Author")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -23359,6 +23369,8 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+=======
+>>>>>>> origin/master
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_menu")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -39701,256 +39713,6 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetSearchBookAndJournal_Result")]
-    [DataContractAttribute(IsReference=true)]
-    [Serializable()]
-    public partial class sp_GetSearchBookAndJournal_Result : ComplexObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sp_GetSearchBookAndJournal_Result object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        public static sp_GetSearchBookAndJournal_Result Createsp_GetSearchBookAndJournal_Result(global::System.Int32 id)
-        {
-            sp_GetSearchBookAndJournal_Result sp_GetSearchBookAndJournal_Result = new sp_GetSearchBookAndJournal_Result();
-            sp_GetSearchBookAndJournal_Result.Id = id;
-            return sp_GetSearchBookAndJournal_Result;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                OnIdChanging(value);
-                ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Id");
-                OnIdChanged();
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String TitleName
-        {
-            get
-            {
-                return _TitleName;
-            }
-            set
-            {
-                OnTitleNameChanging(value);
-                ReportPropertyChanging("TitleName");
-                _TitleName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("TitleName");
-                OnTitleNameChanged();
-            }
-        }
-        private global::System.String _TitleName;
-        partial void OnTitleNameChanging(global::System.String value);
-        partial void OnTitleNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Authorname
-        {
-            get
-            {
-                return _Authorname;
-            }
-            set
-            {
-                OnAuthornameChanging(value);
-                ReportPropertyChanging("Authorname");
-                _Authorname = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Authorname");
-                OnAuthornameChanged();
-            }
-        }
-        private global::System.String _Authorname;
-        partial void OnAuthornameChanging(global::System.String value);
-        partial void OnAuthornameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Publisher
-        {
-            get
-            {
-                return _Publisher;
-            }
-            set
-            {
-                OnPublisherChanging(value);
-                ReportPropertyChanging("Publisher");
-                _Publisher = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Publisher");
-                OnPublisherChanged();
-            }
-        }
-        private global::System.String _Publisher;
-        partial void OnPublisherChanging(global::System.String value);
-        partial void OnPublisherChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Vendor
-        {
-            get
-            {
-                return _Vendor;
-            }
-            set
-            {
-                OnVendorChanging(value);
-                ReportPropertyChanging("Vendor");
-                _Vendor = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Vendor");
-                OnVendorChanged();
-            }
-        }
-        private global::System.String _Vendor;
-        partial void OnVendorChanging(global::System.String value);
-        partial void OnVendorChanged();
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetSearchJournal_Result")]
-    [DataContractAttribute(IsReference=true)]
-    [Serializable()]
-    public partial class sp_GetSearchJournal_Result : ComplexObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sp_GetSearchJournal_Result object.
-        /// </summary>
-        /// <param name="jId">Initial value of the JId property.</param>
-        public static sp_GetSearchJournal_Result Createsp_GetSearchJournal_Result(global::System.Int32 jId)
-        {
-            sp_GetSearchJournal_Result sp_GetSearchJournal_Result = new sp_GetSearchJournal_Result();
-            sp_GetSearchJournal_Result.JId = jId;
-            return sp_GetSearchJournal_Result;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 JId
-        {
-            get
-            {
-                return _JId;
-            }
-            set
-            {
-                OnJIdChanging(value);
-                ReportPropertyChanging("JId");
-                _JId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("JId");
-                OnJIdChanged();
-            }
-        }
-        private global::System.Int32 _JId;
-        partial void OnJIdChanging(global::System.Int32 value);
-        partial void OnJIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String JTitleName
-        {
-            get
-            {
-                return _JTitleName;
-            }
-            set
-            {
-                OnJTitleNameChanging(value);
-                ReportPropertyChanging("JTitleName");
-                _JTitleName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("JTitleName");
-                OnJTitleNameChanged();
-            }
-        }
-        private global::System.String _JTitleName;
-        partial void OnJTitleNameChanging(global::System.String value);
-        partial void OnJTitleNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Vendor
-        {
-            get
-            {
-                return _Vendor;
-            }
-            set
-            {
-                OnVendorChanging(value);
-                ReportPropertyChanging("Vendor");
-                _Vendor = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Vendor");
-                OnVendorChanged();
-            }
-        }
-        private global::System.String _Vendor;
-        partial void OnVendorChanging(global::System.String value);
-        partial void OnVendorChanged();
 
         #endregion
 

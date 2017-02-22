@@ -37,8 +37,11 @@ namespace SchoolManagementSystems.Controllers
         {
             timetableviewmodel _tvm = new timetableviewmodel();
             FillPermission(17);
-            _tvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _tvm.YearList = new List<tbl_YearMaster>();
+            _tvm.DepartmentList = new List<tblDepartment>();
             _tvm.subjectlist = new List<tbl_subject>();
+            _tvm.Classlist = db.tbl_CourseMaster.ToList();
+            //_tvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
             _tvm.Emplist = db.sp_getteachers().ToList();
             _tvm.Daylist = db.tbl_days.ToList();
             if (Tid != null)
@@ -70,18 +73,50 @@ namespace SchoolManagementSystems.Controllers
             return View(_tvm);
         }
 
-        public JsonResult GetSubjects(string id)
+        public JsonResult GetYearClass(string depid, string cid)
         {
-            int Courseid = 0;
+            int coureid = 0;
+            int detid = 0;
+            if (depid != null && depid != "" && cid != null && cid != "")
+            {
+                coureid = Convert.ToInt32(cid);
+                detid = Convert.ToInt32(depid);
+            }
+            var yeardata = from post in db.tbl_CourseYearMaster
+                           join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
+                           where post.courseid == coureid && post.dept_id == detid && post.status == true
+                           select new { meta.yearid, meta.YearName };
+
+            return Json(new SelectList(yeardata, "yearid", "YearName"));
+
+        }
+        public JsonResult Getdepartment(string id)
+        {
+            int courseid = 0;
             if (id != null && id != "")
             {
-                Courseid = Convert.ToInt32(id);
+                courseid = Convert.ToInt32(id);
             }
 
-          
+            var DClass = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == courseid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
 
-            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.Status == true).ToList();
-
+            return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
+        }
+        public JsonResult GetSubjects(string id,string year,string dept)
+        {
+            int yearid = 0;
+            int Courseid = 0;
+            int department = 0;
+            if (id != null && id != "" && year != null && year != "")
+            {
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+                department = Convert.ToInt32(dept);
+            }
+            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid && m.DeptId == department).ToList();
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
         public JsonResult FillTimetableInfo(int Tid)
@@ -99,11 +134,19 @@ namespace SchoolManagementSystems.Controllers
             if (evt == "submit")
             {
                 if (_tvm.Tid == null) { _tvm.Tid = 0; }
+<<<<<<< HEAD
                 db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "").ToString();
             }
             else if (evt == "Delete")
             {
                 db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "del").ToString();
+=======
+                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid,_tvm.year,_tvm.department, "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.year, _tvm.department, "del").ToString();
+>>>>>>> origin/master
             }
             _tvm._Timetablelist = db.sp_gettimetable().ToList();
             return PartialView("_Timetablelist", _tvm);
@@ -114,7 +157,8 @@ namespace SchoolManagementSystems.Controllers
             timetableviewmodel _tvm = new timetableviewmodel();
             FillPermission(19);
             _tvm._Timetablelistpivot = new List<sp_gettimetable_pivot_Result>();
-            _tvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _tvm.Classlist = db.tbl_CourseMaster.ToList();
+
             return View(_tvm);
         }
 

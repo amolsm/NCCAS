@@ -11,7 +11,7 @@ namespace Entity
         [DisplayName("Timetable ID ")]
         public int Tid { get; set; }
 
-        [DisplayName("Class Name ")]
+        [DisplayName("Course Name ")]
         public int Classid { get; set; }
 
         [DisplayName("Day ")]
@@ -29,6 +29,12 @@ namespace Entity
         [DisplayName("Subject Name ")]
         public int Subjectid { get; set; }
 
+        [DisplayName("Department")]
+        public int department { get; set; }
+
+        [DisplayName("Year")]
+        public int year { get; set; }
+
         [DisplayName("Lecture Start Time ")]
         public string LecTime { get; set; }
 
@@ -39,10 +45,11 @@ namespace Entity
         public int Empid { get; set; }
 
         public List<sp_gettimetable_Result> _Timetablelist { get; set; }
-
+        public List<tblDepartment> DepartmentList { get; set; }
+        public List<tbl_YearMaster> YearList { get; set; }
         public List<sp_gettimetable_pivot_Result> _Timetablelistpivot { get; set; }
 
-        public List<tbl_class> Classlist { get; set; }
+        public List<tbl_CourseMaster> Classlist { get; set; }
 
         public List<tbl_subject> subjectlist { get; set; }
 

@@ -606,6 +606,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LeaveBalance" Type="int" />
         </EntityType>
+<<<<<<< HEAD
         <EntityType Name="tbl_lib_Author">
           <Key>
             <PropertyRef Name="Authorid" />
@@ -649,6 +650,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="Vendorname" Type="varchar" MaxLength="100" />
           <Property Name="status" Type="bit" />
         </EntityType>
+=======
+>>>>>>> origin/master
         <EntityType Name="tbl_menu">
           <Key>
             <PropertyRef Name="Menuid" />
@@ -1151,35 +1154,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="ExamClassid" Type="int" Mode="In" />
           <Parameter Name="ExamYear" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="bookid" Type="int" Mode="In" />
-          <Parameter Name="booktitle" Type="varchar" Mode="In" />
-          <Parameter Name="CallNo" Type="varchar" Mode="In" />
-          <Parameter Name="Volume" Type="varchar" Mode="In" />
-          <Parameter Name="SerielNumber" Type="varchar" Mode="In" />
-          <Parameter Name="Authorid" Type="int" Mode="In" />
-          <Parameter Name="Authorname" Type="varchar" Mode="In" />
-          <Parameter Name="PublishedByid" Type="int" Mode="In" />
-          <Parameter Name="PublishedByName" Type="varchar" Mode="In" />
-          <Parameter Name="Edition" Type="varchar" Mode="In" />
-          <Parameter Name="Vendorid" Type="int" Mode="In" />
-          <Parameter Name="Vendorname" Type="varchar" Mode="In" />
-          <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
-          <Parameter Name="BillNo" Type="varchar" Mode="In" />
-          <Parameter Name="Cost" Type="decimal" Mode="In" />
-        </Function>
-        <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="lib_Jid" Type="int" Mode="In" />
-          <Parameter Name="LibType" Type="int" Mode="In" />
-          <Parameter Name="Department" Type="int" Mode="In" />
-          <Parameter Name="JournalTitle" Type="varchar" Mode="In" />
-          <Parameter Name="Volume" Type="varchar" Mode="In" />
-          <Parameter Name="Number" Type="varchar" Mode="In" />
-          <Parameter Name="IssueDate" Type="datetime2" Mode="In" />
-          <Parameter Name="Vendorid" Type="int" Mode="In" />
-          <Parameter Name="PurchaseDate" Type="datetime2" Mode="In" />
-          <Parameter Name="JBillNo" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="sp_Attandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentID" Type="int" Mode="In" />
           <Parameter Name="Present" Type="bit" Mode="In" />
@@ -1637,19 +1611,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_GetSearchBookAndJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="option" Type="int" Mode="In" />
-          <Parameter Name="department" Type="int" Mode="In" />
-          <Parameter Name="booktitle" Type="varchar" Mode="In" />
-          <Parameter Name="authorname" Type="varchar" Mode="In" />
-          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
-        </Function>
-        <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="option" Type="int" Mode="In" />
-          <Parameter Name="department" Type="int" Mode="In" />
-          <Parameter Name="booktitle" Type="varchar" Mode="In" />
-          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
-        </Function>
         <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2107,11 +2068,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+<<<<<<< HEAD
           <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_BookIssue" EntityType="Self.tbl_lib_BookIssue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />
+=======
+>>>>>>> origin/master
           <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
@@ -3175,6 +3139,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="createdby" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+<<<<<<< HEAD
           <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.tbl_lib_Author" />
           <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
           <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
@@ -3235,6 +3200,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="deptid" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+=======
+>>>>>>> origin/master
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -4743,6 +4710,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="Int32" Name="Subjectid" Nullable="false" />
           <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
         </ComplexType>
+<<<<<<< HEAD
         <EntityType Name="tbl_lib_Author">
           <Key>
             <PropertyRef Name="Authorid" />
@@ -4798,6 +4766,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="NoOfDays" Type="Int32" />
           <Property Name="PanaltyStatus" Type="Boolean" />
         </EntityType>
+=======
+>>>>>>> origin/master
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6662,6 +6632,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
           <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
           <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
+<<<<<<< HEAD
           <EntitySetMapping Name="tbl_lib_Author">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
               <MappingFragment StoreEntitySet="tbl_lib_Author">
@@ -6733,6 +6704,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
+=======
+>>>>>>> origin/master
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6818,11 +6791,14 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" Width="1.5" PointX="19.375" PointY="7.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_teachersubject" Width="1.5" PointX="21.375" PointY="8.75" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Author" Width="1.5" PointX="16.75" PointY="25.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" Width="1.5" PointX="26.75" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" Width="1.5" PointX="0.75" PointY="26.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" Width="1.5" PointX="26.75" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" Width="1.5" PointX="26.375" PointY="6.75" />
+=======
+>>>>>>> origin/master
       </Diagram>
     </Diagrams>
   </Designer>
