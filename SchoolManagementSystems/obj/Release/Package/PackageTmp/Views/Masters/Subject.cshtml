@@ -25,12 +25,12 @@
                 data: { Subjectid: Subjectid },
                 success: function (data) {
                     clearmsg();
-                    $("#Classid").val(data.Classid)
+                    $("#Courseid").val(data.Courseid)
                     $("#subjectid").show();
                     $("#subjectid input").val(data.Subjectid);
                     $("#SubjectNm").val(data.SubjectNm);
                     $("#Dept_Id").val(data.DeptId);
-                    $("#Classid").val(data.Courseid);
+                    $("#Courseid").val(data.Courseid);
                     $("#Marks").val(data.Marks);
                     $("#Pass_Marks").val(data.Pass_Marks);
                     $("#status").prop('checked', data.Status);
@@ -40,7 +40,7 @@
         });
 
         function clear() {
-            $("#Classid").val('');
+            $("#Courseid").val('');
             $("#subjectid").hide();
             $('#subjectid input').val('0');
             $("#SubjectNm").val('');
@@ -58,12 +58,14 @@
         $('#SubjectNm').blur(function () {
             $("#lblmsg").text("");
             var SubjectNm = $('#SubjectNm').val();
-            var Classid = $("#Classid").val();
+            var Courseid = $("#Courseid").val();
+            var Dept_id = $("#Dept_Id").val();
+            var academicyear = $("#academicyear").val();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_Subject")',
                 dataType: 'JSON',
-                data: { SubjectNm: SubjectNm, Classid: Classid },
+                data: { SubjectNm: SubjectNm, Courseid: Courseid, Dept_id: Dept_id, academicyear: academicyear },
                 success: function (data) {
                     if (data.SubjectNm != null) {
                         $("#msg").show();
@@ -79,49 +81,49 @@
 
 
         function ReloadState() {
-            $("#Classid").empty();
-            var item = '<option value="">select Course</option>';
-            $("#Classid").append(item);
+            $("#Dept_Id").empty();
+            var item = '<option value="">select Department</option>';
+            $("#Dept_Id").append(item);
         }
 
         function ReloadCountry() {
-            if ($("#Dept_Id").val() == "") {
+            if ($("#Courseid").val() == "") {
                 ReloadState();
             }
             else {
-                $("#Classid").empty();
+                $("#Dept_Id").empty();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetCourse")',
                     dataType: 'json',
-                    data: { id: $("#Dept_Id").val() },
+                    data: { id: $("#Courseid").val() },
                     success: function (course) {
                         if (course != "") {
 
-                            var item = '<option value="">select Course</option>';
+                            var item = '<option value="">select Department</option>';
                             $.each(course, function (i, course) {
                                 item += '<option value="' + course.Value + '">' + course.Text + '</option>';
                             });
-                            $("#Classid").append(item);
+                            $("#Dept_Id").append(item);
                         }
                         else {
-                            var item = '<option value="">select Course</option>';
-                            $("#Classid").append(item);
+                            var item = '<option value="">select Department</option>';
+                            $("#Dept_Id").append(item);
                         }
                     },
                     error: function (ex) {
-                        alert('Failed to retrieve course.' + ex);
+                        alert('Failed to retrieve department.' + ex);
                     }
                 });
             }
             return false;
         }
-
-        $("#Dept_Id").change(function () {
+        
+        $("#Courseid").change(function () {
             ReloadCountry();
         })
 
-        $("#Classid").change(function () {
+        $("#Dept_Id").change(function () {
            
             ReloadClass();
         })
@@ -132,7 +134,7 @@
             $("#academicyear").append(item);
         }
         function ReloadClass() {
-            if ($("#Classid").val() == "") {
+            if ($("#Dept_Id").val() == "") {
                 ReloadYear();
                 debugger;
             }
@@ -145,7 +147,7 @@
                     dataType: 'json',
                     data: {
                         depid: $("#Dept_Id").val(),
-                        cid: $("#Classid").val()
+                        cid: $("#Courseid").val()
 
                     },
                     success: function (year) {
@@ -163,7 +165,7 @@
                         }
                     },
                     error: function (ex) {
-                        alert('Failed to retrieve course.' + ex);
+                        alert('Failed to retrieve year.' + ex);
                     }
                 });
             }
@@ -220,14 +222,14 @@
         function validations() {
             var cnt = 0;
 
-            if ($("#Classid").val() == '') {
+            if ($("#Courseid").val() == '') {
                 cnt++;
-                $("#Classid").css({
+                $("#Courseid").css({
                     "border": "2px solid red"
                 });
             }
             else {
-                $("#Classid").css({
+                $("#Courseid").css({
                     "border": "",
                     "background": ""
                 });
@@ -351,19 +353,21 @@
                                               </div>
                                     </div>
                                     <div class="control-group">
+                                        @Html.LabelFor(model => model.Courseid, new { @class = "control-label", @for = "focusedInput" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(model => model.Courseid, new SelectList(Model.Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.Courseid)
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
                                         @Html.LabelFor(model => model.Dept_Id, new { @class = "control-label", @for = "focusedInput" })
                                         <div class="controls">
                                             @Html.DropDownListFor(model => model.Dept_Id, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
                                             @Html.ValidationMessageFor(model => model.Dept_Id)
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        @Html.LabelFor(model => model.Classid, new {  @class="control-label", @for="focusedInput"})
-                                          <div class="controls">
-                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Course"), "Select Course", new { @for = "select" })
-                                        @Html.ValidationMessageFor(model => model.Classid)
-                                              </div>
-                                    </div>
+                                 
 
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.academicyear, new { @class = "control-label", @for = "select" })

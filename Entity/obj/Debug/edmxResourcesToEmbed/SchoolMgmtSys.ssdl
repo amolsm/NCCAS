@@ -609,6 +609,17 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Authorname" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
   </EntityType>
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Name="BookIssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="Issuedatetime" Type="datetime2" Precision="7" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="PanaltyStatus" Type="bit" />
+  </EntityType>
   <EntityType Name="tbl_lib_JournalType">
     <Key>
       <PropertyRef Name="JTypeid" />
@@ -1080,6 +1091,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="LecTime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="LecETime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Empid" Type="int" Nullable="false" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="deptid" Type="int" />
   </EntityType>
   <EntityType Name="tbl_transport">
     <Key>
@@ -2031,6 +2044,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="LecTime" Type="varchar" Mode="In" />
     <Parameter Name="LecETime" Type="varchar" Mode="In" />
     <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_transport_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2088,6 +2103,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="Self.tbl_lib_BookIssue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />

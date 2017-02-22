@@ -202,17 +202,6 @@
       <Parameter Name="cats" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
-    <FunctionImport Name="sp_timetable_DML">
-      <Parameter Name="Tid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="Day" Mode="In" Type="Int32" />
-      <Parameter Name="LecNo" Mode="In" Type="Int32" />
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="LecTime" Mode="In" Type="String" />
-      <Parameter Name="LecETime" Mode="In" Type="String" />
-      <Parameter Name="Empid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
     <FunctionImport Name="sp_EmployeeAttendance">
       <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
@@ -1060,6 +1049,20 @@
       <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
       <Parameter Name="JBillNo" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+    <FunctionImport Name="sp_timetable_DML">
+      <Parameter Name="Tid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="Day" Mode="In" Type="Int32" />
+      <Parameter Name="LecNo" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="LecTime" Mode="In" Type="String" />
+      <Parameter Name="LecETime" Mode="In" Type="String" />
+      <Parameter Name="Empid" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1478,6 +1481,8 @@
     <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="Empid" Nullable="false" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="deptid" Type="Int32" />
   </EntityType>
   <ComplexType Name="sp_GetEmployeeLeave_Result">
     <Property Type="Int32" Name="Leaveid" Nullable="false" />
@@ -2610,4 +2615,15 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="PanaltyStatus" Type="Boolean" />
+  </EntityType>
 </Schema>

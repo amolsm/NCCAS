@@ -1,0 +1,263 @@
+﻿@model Entity.BookAllocation
+    @{
+    ViewBag.Title = "BookIssue";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+     
+
+      rel="Stylesheet" type="text/css" /> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+     fieldset {
+        border: 1px solid #777;
+    }
+
+    legend {
+        float: left;
+        margin-right: 0.5em;
+        padding-top: 0.2em;
+        text-align: left;
+        font-size: 18px;
+        background-color: gainsboro;
+    }
+</style>
+
+<script type="text/javascript">
+   
+        $(function () {
+            $("#StudentName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Library/AutoComplete/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfStudentid").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+        $(document).ready(function () {
+            debugger;
+            $('#btnSubmit').click(function () {
+                var stdid = $('#hfStudentid').val();
+                var stdname = $('#StudentName').val();
+                $("#tblProducts tbody tr").remove();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetBookIssueDetails")',
+                    dataType: 'JSON',
+                    data: { StudentName: stdname, Studentid: stdid },
+                    success: function (data) {
+                        var items = '';
+                      
+                        $.each(data, function (i, item) {
+                            
+
+                            var rows = "<tr>"
+                            + "<td class='prtoducttd'>" + item.BookIssueId + "</td>"
+                            + "<td class='prtoducttd'>" + item.StudentId + "</td>"
+                            + "<td class='prtoducttd'>" + item.BookId + "</td>"
+                            + "<td class='prtoducttd'>"+ (new Date(parseInt(item.Issuedatetime.substr(6)))).toDateString() +"</td>"
+                            + "<td class='prtoducttd'>" + item.NoOfDays + "</td>"
+                            + "<td class='prtoducttd'>" + item.PanaltyStatus + "</td>"
+                            + "</tr>";
+                            $('#tblProducts tbody').append(rows);
+                            $('#myModal').modal('show');
+                            
+                        });
+
+                    },
+                    error: function (ex) {
+                        var r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                        alert("StackTrace: " + r.StackTrace);
+                        alert("ExceptionType: " + r.ExceptionType);
+                    }
+                });
+                return false;
+              
+              
+            })
+
+        });
+</script>
+
+<style type="text/css">
+    .modal {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 1050;
+    width: 60%;
+    margin-left: -30%;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,0.3);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+    .tblProducts {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+    .productth {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+
+    .prtoducttd {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+</style>
+    
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">List Of Books Not Return By Student</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <b>List of Books</b><br>
+                        <table id="tblProducts" class="tblProducts">
+                            <thead>
+                                <tr>
+                                    <th align="left" class="productth">BookIssueId</th>
+                                    <th align="left" class="productth">StudentId</th>
+                                    <th align="left" class="productth">BookId</th>
+                                    <th align="left" class="productth">Issuedatetime</th>
+                                    <th align="left" class="productth">NoOfDays</th>
+                                    <th align="left" class="productth">PanaltyStatus</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+ 
+<div class="container-fluid-full">
+   
+    <div class="row-fluid">
+        @Html.Partial("_LibrarymanagementList")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Library Management", "Index", "Library", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">Book Issue Form</li>
+                </ul>
+                <div class="panel-body">
+                </div>
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Allocate Books</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+@using (Html.BeginForm("BookIssue", "Library", FormMethod.Post))
+{
+
+                            <div id="frm" class="form-horizontal">
+                                <div class="control-group span5 required">
+
+                                    @Html.LabelFor(model => model.StudentName, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.StudentName, new { placeholder = "Enter Student Name", @class = "input" })
+                                        <input type="hidden" id="hfStudentid" name="Studentid" />
+                                        <br /><br />
+                                      
+                                    </div>
+                                </div>
+
+                                    @*<input type="text" id="txtBookName" name="BookName" />*@
+                                 <div class="control-group span5">
+
+                                    <input type="submit" id="btnSubmit" value="Search" class="btn-primary" />
+                                    
+                                </div>
+                              
+                                <div id="bookshow" class="pull-left span10">
+                                    <fieldset class="test">
+                                    <br />
+                                        <legend>Book Search</legend>
+                                    <div class="control-group span5">
+                                        @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
+
+                                        <div class="controls">
+                                            @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter Book Name", @class = "input" })
+                                        </div>
+                                    </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+</div>

@@ -99,11 +99,11 @@ namespace SchoolManagementSystems.Controllers
             if (evt == "submit")
             {
                 if (_tvm.Tid == null) { _tvm.Tid = 0; }
-                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, "").ToString();
+                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, "del").ToString();
+                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "del").ToString();
             }
             _tvm._Timetablelist = db.sp_gettimetable().ToList();
             return PartialView("_Timetablelist", _tvm);
