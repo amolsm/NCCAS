@@ -140,10 +140,10 @@
                 url: '@Url.Action("DMLTimetable")',
                 data: $('#frm').serialize() + "&evt=submit&id=0",
                 success: function (result) {
-                    $("#lblmsgss").show();
-                    $("#lblmsgs").text("Information in Timetable updated successfully!..");
-                    $("#lblmsgss").css({ "color": "green" });
-                    $("#lblmsgss").css({ "font-size": "15px" });
+                    $("#lblmsgss1").show();
+                    $("#lblmsgs1").text("Information in Timetable updated successfully!..");
+                    $("#lblmsgss1").css({ "color": "green" });
+                    $("#lblmsgss1").css({ "font-size": "15px" });
                     $("#result").html(result);
                     ReloadPaging();
                 }
@@ -257,15 +257,15 @@
                             }
                         </div>*@
                     </ul>
-                 <div id="lblmsgss" hidden="hidden"  visible="false" class="alert alert-success">
-                       <strong>Success!</strong><label id="lblmsgs"></label>
+                 <div id="lblmsgss1" hidden="hidden"  visible="false" class="alert alert-success">
+                       <strong>Success!</strong><label id="lblmsgs1"></label>
                      </div>
                  <div id="lblmsgs" hidden="hidden"  visible="false" class="alert alert-warning">
                        <strong>Warning!</strong><label id="lblmsg"></label>
                      </div>
                      <div class="row-fluid sortable">
               <div class="box span12">
-					<div class="box-header" data-original-title>
+					<div class="box-header">
 						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
 						<div class="box-icon">
 						
@@ -378,7 +378,7 @@
 			</div><!--/row-->
                  <div class="row-fluid sortable">
               <div class="box span12">
-                  	<div class="box-header" data-original-title>
+                  	<div class="box-header">
 						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
 						<div class="box-icon">
 						

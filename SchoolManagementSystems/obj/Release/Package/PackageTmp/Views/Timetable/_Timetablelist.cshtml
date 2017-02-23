@@ -7,10 +7,13 @@
                 @Html.DisplayName("ID")
             </th>
             <th>
-                @Html.DisplayName("Class")
+                @Html.DisplayName("Course")
             </th>
             <th>
-                @Html.DisplayName("Day")
+                @Html.DisplayName("Year")
+            </th>
+            <th>
+                @Html.DisplayName("Day Order")
             </th>
             <th>
                 @Html.DisplayName("LecNo.")
@@ -41,6 +44,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Classid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.yearid)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Day)

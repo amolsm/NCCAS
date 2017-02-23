@@ -21,3 +21,15 @@ D:\NCCProject\NCCAS\DAL\bin\Release\System.Web.Razor.xml
 D:\NCCProject\NCCAS\DAL\bin\Release\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\DAL\bin\Release\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\DAL\bin\Release\System.Web.WebPages.Deployment.xml
+D:\NCCAS\NCCAS\DAL\bin\Release\DAL.dll.config
+D:\NCCAS\NCCAS\DAL\bin\Release\DAL.dll
+D:\NCCAS\NCCAS\DAL\bin\Release\DAL.pdb
+D:\NCCAS\NCCAS\DAL\bin\Release\Entity.dll
+D:\NCCAS\NCCAS\DAL\bin\Release\EntityFramework.dll
+D:\NCCAS\NCCAS\DAL\bin\Release\EntityFramework.SqlServer.dll
+D:\NCCAS\NCCAS\DAL\bin\Release\Entity.pdb
+D:\NCCAS\NCCAS\DAL\bin\Release\EntityFramework.xml
+D:\NCCAS\NCCAS\DAL\bin\Release\EntityFramework.SqlServer.xml
+D:\NCCAS\NCCAS\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+D:\NCCAS\NCCAS\DAL\obj\Release\DAL.dll
+D:\NCCAS\NCCAS\DAL\obj\Release\DAL.pdb

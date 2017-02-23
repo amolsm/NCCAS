@@ -24,36 +24,32 @@ namespace SchoolManagementSystems.Controllers
             _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
             //_tvm._Timetablelist = db.sp_gettimetable().ToList();
             _tvm.Classlist = db.tbl_CourseMaster.ToList();
-            if (_tvm.Classid != null || _tvm.Classid != 0 && _tvm.Subjectid != null || _tvm.Subjectid != 0 && _tvm.Empid != null || _tvm.Empid != 0 && _tvm.Day != null || _tvm.Day != 0)
-            {
-                string Classids,subject,day,emp;
-                try
-                {
-                    Classids = Convert.ToString(_tvm.Classid);
-                    subject = Convert.ToString(_tvm.Subjectid);
-                    day = Convert.ToString(_tvm.Day);
-                    emp = Convert.ToString(_tvm.Empid);
-                    _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
-                }
-                catch { Classids = "0"; }             
-            }
-            else
-<<<<<<< HEAD
-            {
-                _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
-            }
+            //if (_tvm.Classid != null || _tvm.Classid != 0 && _tvm.Subjectid != null || _tvm.Subjectid != 0 && _tvm.Empid != null || _tvm.Empid != 0 && _tvm.Day != null || _tvm.Day != 0)
+            //{
+            //    string Classids,subject,day,emp;
+            //    try
+            //    {
+            //        Classids = Convert.ToString(_tvm.Classid);
+            //        subject = Convert.ToString(_tvm.Subjectid);
+            //        day = Convert.ToString(_tvm.Day);
+            //        emp = Convert.ToString(_tvm.Empid);
+            //        _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
+            //    }
+            //    catch { Classids = "0"; }             
+            //}
+            //else
+            //{
+            //    _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
+            //}
           
-=======
-                _tvm._Timetablelist = db.sp_gettimetable().Where(x => x.Classid.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.Day.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Tid.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecNo.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Subjectid.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecTime.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecETime.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Empid.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Tid).ToList();
-
->>>>>>> origin/master
+            //    _tvm._Timetablelist = db.sp_gettimetable().Where(x => x.Classid.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Day.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Tid.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecNo.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Subjectid.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecTime.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecETime.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Empid.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Tid).ToList();
             return View(_tvm);
         }
 
@@ -128,6 +124,17 @@ namespace SchoolManagementSystems.Controllers
             var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid && m.DeptId == department).ToList();
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
+        public JsonResult GetSubjectsc(string id)
+        {
+            int Courseid = 0;
+            if (id != null && id != "")
+            {
+                Courseid = Convert.ToInt32(id);
+               
+            }
+            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid).ToList();
+            return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
+        }
         public JsonResult FillTimetableInfo(int Tid)
         {
             var data = db.tbl_timetable.Where(m => m.Tid == Tid).FirstOrDefault();
@@ -171,11 +178,11 @@ namespace SchoolManagementSystems.Controllers
             string CourseName = db.tbl_CourseMaster.Where(m => m.Courseid == Classid).Select(m => m.CourseName).FirstOrDefault();
             timetableviewmodel _tvm = new timetableviewmodel();
             //_tvm._Timetablelist = db.sp_gettimetable().Where(m => m.Classid == ClassNm).OrderBy(m => m.Day).ThenBy(m => m.LecNo).ToList();
-<<<<<<< HEAD
+
             _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == CourseName).ToList();
-=======
-            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == ClassNm).ToList();
->>>>>>> origin/master
+
+            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == CourseName).ToList();
+
             return PartialView("_publishedtimetable", _tvm);
         }
 

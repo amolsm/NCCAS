@@ -695,12 +695,9 @@
     <Content Include="Views\Library\Index.cshtml" />
     <Content Include="Views\Library\BookEntry.cshtml" />
     <Content Include="Views\shared\_LibrarymanagementList.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
-=======
     <Content Include="Views\Library\BookIssue.cshtml" />
     <Content Include="Views\Library\_BookIssueList.cshtml" />
->>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

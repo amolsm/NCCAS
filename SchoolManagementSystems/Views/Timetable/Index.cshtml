@@ -45,7 +45,7 @@
             }
         });
 
-        $('#Classid').change(function () {
+        @*$('#Classid').change(function () {
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("FillTimetable_class")',
@@ -56,7 +56,33 @@
                     $("#result").show();
                 }
             });
-        });
+        });*@
+
+        $("#Classid").change(function () {
+            $("#Subjectid").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSubjectsc")',
+                dataType: 'json',
+                data: { id: $("#Classid").val()},
+                success: function (subjects) {
+                    if (subjects != "") {
+                        var item = '<option value="">Select Subject</option>';
+                        $.each(subjects, function (i, subject) {
+                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
+                        });
+                        $("#Subjectid").append(item);
+                    }
+                    else {
+                        var item = '<option value="">Select Subject</option>';
+                        $("#Subjectid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve subjects.' + ex);
+                }
+            });
+         })
         ReloadPaging();
     });
 </script>

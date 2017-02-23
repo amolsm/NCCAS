@@ -535,13 +535,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
     <EntitySetMapping Name="tbl_timetable">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
         <MappingFragment StoreEntitySet="tbl_timetable">
@@ -558,16 +551,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
-=======
-    <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
->>>>>>> origin/master
     <FunctionImportMapping FunctionImportName="sp_GetEmployeeLeave" FunctionName="SchoolMgmtSysModel.Store.sp_GetEmployeeLeave">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetEmployeeLeave_Result">
@@ -1905,7 +1889,6 @@
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteachers_Result">
           <ScalarProperty Name="Empid" ColumnName="Empid" />
           <ScalarProperty Name="fullnm" ColumnName="fullnm" />
-<<<<<<< HEAD
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1938,75 +1921,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-<<<<<<< HEAD
-=======
-    <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
-    <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
-<<<<<<< HEAD
-=======
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetable_pivot" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable_pivot">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_pivot_Result">
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Monday" ColumnName="Monday" />
-          <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
-          <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
-          <ScalarProperty Name="Thursday" ColumnName="Thursday" />
-          <ScalarProperty Name="Friday" ColumnName="Friday" />
-          <ScalarProperty Name="Saturday" ColumnName="Saturday" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetable" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
->>>>>>> origin/master
     <EntitySetMapping Name="tbl_lib_BookIssue">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
         <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
@@ -2019,13 +1933,33 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-<<<<<<< HEAD
-    <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
-=======
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+    <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="NoOfDaysTill" ColumnName="NoOfDaysTill" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
