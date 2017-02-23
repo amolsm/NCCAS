@@ -601,7 +601,6 @@
     <Content Include="Views\shared\_AttendanceMenuList.cshtml" />
     <Content Include="Views\shared\_TransportSubMenu.cshtml" />
     <Content Include="Views\Timetable\Index.cshtml" />
-    <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
     <Content Include="Views\shared\_TimetableSubMenu.cshtml" />
     <Content Include="Views\Timetable\_Timetablelist.cshtml" />
     <Content Include="Views\Timetable\publish.cshtml" />
@@ -691,14 +690,12 @@
     <Content Include="Views\Attendance\Test.cshtml" />
     <Content Include="Views\Attendance\TeacherSubject.cshtml" />
     <Content Include="Views\ChapterComplete\ChapterComplete.cshtml" />
-
     <Content Include="Views\Masters\SessionMaster.cshtml" />
     <Content Include="Views\Masters\_SessionList.cshtml" />
-
     <Content Include="Views\Library\Index.cshtml" />
     <Content Include="Views\Library\BookEntry.cshtml" />
     <Content Include="Views\shared\_LibrarymanagementList.cshtml" />
-
+    <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

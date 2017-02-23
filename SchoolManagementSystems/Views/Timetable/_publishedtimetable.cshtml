@@ -3,35 +3,35 @@
     <table class="table tb-parshav">
         <tr>
             <th>
-                @Html.DisplayName("Class")
+                @Html.DisplayName("CourseName")
             </th>            
             <th>
                 @Html.DisplayName("LecNo.")
             </th>
             <th>
-                @Html.DisplayName("Mon")
+                @Html.DisplayName("1")
             </th>
             <th>
-                @Html.DisplayName("Tue")
+                @Html.DisplayName("2")
             </th>
             <th>
-                @Html.DisplayName("Wed")
+                @Html.DisplayName("3")
             </th>
             <th>
-                @Html.DisplayName("Thur")
+                @Html.DisplayName("4")
             </th>
             <th>
-                @Html.DisplayName("Fri")
+                @Html.DisplayName("5")
             </th>
             <th>
-                @Html.DisplayName("Sat")
+                @Html.DisplayName("6")
             </th>
         </tr>
         @foreach (var item in Model._Timetablelistpivot)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Classnm)
+                    @Html.DisplayFor(modelItem => item.CourseName)
                 </td>                
                 <td>
                     @Html.DisplayFor(modelItem => item.LecNo)

@@ -152,7 +152,6 @@
       <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
     </FunctionImport>
     <EntitySet Name="tbl_days" EntityType="SchoolMgmtSysModel.tbl_days" />
-    <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
     <FunctionImport Name="sp_getteacheremail" ReturnType="Collection(SchoolMgmtSysModel.sp_getteacheremail_Result)">
       <Parameter Name="Classid" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -200,6 +199,20 @@
     </FunctionImport>
     <FunctionImport Name="sp_getproductsbycat" ReturnType="Collection(SchoolMgmtSysModel.sp_getproductsbycat_Result)">
       <Parameter Name="cats" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
+    <FunctionImport Name="sp_timetable_DML">
+      <Parameter Name="Tid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="Day" Mode="In" Type="Int32" />
+      <Parameter Name="LecNo" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="LecTime" Mode="In" Type="String" />
+      <Parameter Name="LecETime" Mode="In" Type="String" />
+      <Parameter Name="Empid" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
     <FunctionImport Name="sp_EmployeeAttendance">
@@ -311,8 +324,6 @@
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
-    <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
-    <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
     <EntitySet Name="sys_Module" EntityType="SchoolMgmtSysModel.sys_Module" />
     <EntitySet Name="sys_Permission" EntityType="SchoolMgmtSysModel.sys_Permission" />
     <EntitySet Name="sys_UserPermission" EntityType="SchoolMgmtSysModel.sys_UserPermission" />
@@ -1002,38 +1013,10 @@
       <Parameter Name="createdby" Mode="In" Type="Int32" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-<<<<<<< HEAD
-    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
-    <FunctionImport Name="sp_timetable_DML">
-      <Parameter Name="Tid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="Day" Mode="In" Type="Int32" />
-      <Parameter Name="LecNo" Mode="In" Type="Int32" />
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="LecTime" Mode="In" Type="String" />
-      <Parameter Name="LecETime" Mode="In" Type="String" />
-      <Parameter Name="Empid" Mode="In" Type="Int32" />
-      <Parameter Name="year" Mode="In" Type="Int32" />
-      <Parameter Name="deptid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-=======
     <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.tbl_lib_Author" />
     <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
     <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
     <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
-    <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
-      <Parameter Name="option" Mode="In" Type="Int32" />
-      <Parameter Name="department" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
-      <Parameter Name="option" Mode="In" Type="Int32" />
-      <Parameter Name="department" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="authorname" Mode="In" Type="String" />
-      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
-    </FunctionImport>
     <FunctionImport Name="sp_AddLibraryBook">
       <Parameter Name="bookid" Mode="In" Type="Int32" />
       <Parameter Name="booktitle" Mode="In" Type="String" />
@@ -1062,7 +1045,28 @@
       <Parameter Name="Vendorid" Mode="In" Type="Int32" />
       <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
       <Parameter Name="JBillNo" Mode="In" Type="String" />
->>>>>>> origin/master
+    </FunctionImport>
+    <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="authorname" Mode="In" Type="String" />
+      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
+    <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
+    <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
+    <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="day" Mode="In" Type="Int32" />
+      <Parameter Name="subject" Mode="In" Type="Int32" />
+      <Parameter Name="teacher" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -1347,10 +1351,6 @@
     <Property Type="Int32" Name="dayid" Nullable="false" />
     <Property Type="String" Name="daynm" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <ComplexType Name="sp_getteachers_Result">
-    <Property Type="Int32" Name="Empid" Nullable="false" />
-    <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
-  </ComplexType>
   <ComplexType Name="sp_getteacheremail_Result">
     <Property Type="String" Name="Emailid" Nullable="true" MaxLength="100" />
   </ComplexType>
@@ -1470,6 +1470,21 @@
     <Property Type="String" Name="Product" Nullable="true" MaxLength="255" />
     <Property Type="Boolean" Name="Status" Nullable="true" />
   </ComplexType>
+  <EntityType Name="tbl_timetable">
+    <Key>
+      <PropertyRef Name="Tid" />
+    </Key>
+    <Property Type="Int32" Name="Tid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Classid" Nullable="false" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Empid" Nullable="false" />
+    <Property Type="Int32" Name="yearid" />
+    <Property Type="Int32" Name="deptid" />
+  </EntityType>
   <ComplexType Name="sp_GetEmployeeLeave_Result">
     <Property Type="Int32" Name="Leaveid" Nullable="false" />
     <Property Type="String" Name="Employee" Nullable="false" MaxLength="100" />
@@ -1656,26 +1671,6 @@
     <Property Type="DateTime" Name="busDateTime" Nullable="true" Precision="23" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
     <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetable_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Day" Nullable="true" MaxLength="4" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetable_pivot_Result">
-    <Property Type="String" Name="Classnm" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
   </ComplexType>
   <EntityType Name="sys_Module">
     <Key>
@@ -2444,6 +2439,8 @@
     <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
     <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -2557,60 +2554,38 @@
     <Property Type="Int32" Name="Subjectid" Nullable="false" />
     <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
   </ComplexType>
-<<<<<<< HEAD
-  <EntityType Name="tbl_timetable">
-    <Key>
-      <PropertyRef Name="Tid" />
-    </Key>
-    <Property Type="Int32" Name="Tid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Classid" Nullable="false" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="Int32" Name="Subjectid" Nullable="false" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Empid" Nullable="false" />
-    <Property Type="Int32" Name="yearid" />
-    <Property Type="Int32" Name="deptid" />
-  </EntityType>
-=======
   <EntityType Name="tbl_lib_Author">
     <Key>
       <PropertyRef Name="Authorid" />
     </Key>
-    <Property Name="Authorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="Boolean" />
+    <Property Type="Int32" Name="Authorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Authorname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
   </EntityType>
   <EntityType Name="tbl_lib_JournalType">
     <Key>
       <PropertyRef Name="JTypeid" />
     </Key>
-    <Property Name="JTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="JTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="Boolean" />
+    <Property Type="Int32" Name="JTypeid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="JTypeName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
   </EntityType>
   <EntityType Name="tbl_lib_Publisher">
     <Key>
       <PropertyRef Name="PublisherId" />
     </Key>
-    <Property Name="PublisherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Publishername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="Boolean" />
+    <Property Type="Int32" Name="PublisherId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Publishername" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
   </EntityType>
   <EntityType Name="tbl_lib_Vendor">
     <Key>
       <PropertyRef Name="Vendorid" />
     </Key>
-    <Property Name="Vendorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="Boolean" />
+    <Property Type="Int32" Name="Vendorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Vendorname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
   </EntityType>
-  <ComplexType Name="sp_GetSearchJournal_Result">
-    <Property Type="Int32" Name="JId" Nullable="false" />
-    <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-  </ComplexType>
   <ComplexType Name="sp_GetSearchBookAndJournal_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
@@ -2618,5 +2593,45 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
->>>>>>> origin/master
+  <ComplexType Name="sp_GetSearchJournal_Result">
+    <Property Type="Int32" Name="JId" Nullable="false" />
+    <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_getteachers_Result">
+    <Property Type="Int32" Name="Empid" Nullable="false" />
+    <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetable_pivot_Result">
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetable_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetableclass_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
 </Schema>
