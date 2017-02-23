@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="assigndivisionviewmodel.cs" />
     <Compile Include="Attendanceviewmodel.cs" />
+    <Compile Include="BookAllocation.cs" />
     <Compile Include="Chaptercompleteviewmodel.cs" />
     <Compile Include="chapterviewmodel.cs" />
     <Compile Include="classviewmodel.cs" />
@@ -71,11 +72,8 @@
     <Compile Include="departmentviewmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
-
     <Compile Include="sessionviewmodel.cs" />
-
     <Compile Include="libBookentry.cs" />
-
     <Compile Include="smsviewmodel.cs" />
     <Compile Include="studentdivisionmodel.cs" />
     <Compile Include="teachersubjectmodel.cs" />

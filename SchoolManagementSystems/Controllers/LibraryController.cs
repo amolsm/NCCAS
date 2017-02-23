@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -125,5 +127,54 @@ namespace SchoolManagementSystems.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult BookIssue()
+        {
+            BookAllocation b = new BookAllocation();
+
+            b._BookIssueList = db.tbl_lib_BookIssue.ToList();
+            return View(b);
+        }
+        [HttpPost]
+        public JsonResult AutoComplete(string prefix)
+        {
+            var StudentName = (from bi in db.tbl_student
+                           where bi.Studnm.StartsWith(prefix)
+                           select new {label=bi.Studnm ,
+                           val=bi.Studid}).ToList();
+            return Json(StudentName, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult BookIssue(string StudentName, string Studentid)
+        {
+            int stid;
+            try { stid = Convert.ToInt32(Studentid); } catch { stid = 0; }
+            var BookIssueDetails = from bi in db.tbl_lib_BookIssue
+                                   join st in db.tbl_student on bi.StudentId equals st.Studid
+                                   where st.Studid == stid && st.Studnm == StudentName
+                                   select new {bi.StudentId,st.Studnm,bi.BookId };
+            ViewBag.Message = "Student Name:"+ StudentName+"Student Id:"+ Studentid;
+            BookAllocation b = new BookAllocation();
+
+            b._BookIssueList = db.tbl_lib_BookIssue.ToList();
+            return View("BookIssue",b);
+        }
+
+        public JsonResult GetBookIssueDetails(string StudentName, int Studentid)
+        {
+            int stid;
+            try { stid = Convert.ToInt32(Studentid); } catch { stid = 0; }
+            var BookIssueDetails = from bi in db.tbl_lib_BookIssue
+                                   join st in db.tbl_student on bi.StudentId equals st.Studid
+                                   where st.Studid == stid && st.Studnm == StudentName
+                                   select new { bi.StudentId, st.Studnm, bi.BookId };
+            //ViewBag.Message = "Student Name:" + StudentName + "Student Id:" + Studentid;
+            BookAllocation b = new BookAllocation();
+
+            var data = db.tbl_lib_BookIssue.ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+       
     }
 }

@@ -200,6 +200,7 @@
     <FunctionImport Name="sp_getproductsbycat" ReturnType="Collection(SchoolMgmtSysModel.sp_getproductsbycat_Result)">
       <Parameter Name="cats" Mode="In" Type="String" />
     </FunctionImport>
+<<<<<<< HEAD
     <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
     <FunctionImport Name="sp_timetable_DML">
       <Parameter Name="Tid" Mode="In" Type="Int32" />
@@ -214,6 +215,12 @@
       <Parameter Name="deptid" Mode="In" Type="Int32" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
+=======
+<<<<<<< HEAD
+    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
     <FunctionImport Name="sp_EmployeeAttendance">
       <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
@@ -1068,6 +1075,20 @@
       <Parameter Name="subject" Mode="In" Type="Int32" />
       <Parameter Name="teacher" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+    <FunctionImport Name="sp_timetable_DML">
+      <Parameter Name="Tid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="Day" Mode="In" Type="Int32" />
+      <Parameter Name="LecNo" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="LecTime" Mode="In" Type="String" />
+      <Parameter Name="LecETime" Mode="In" Type="String" />
+      <Parameter Name="Empid" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1470,6 +1491,10 @@
     <Property Type="String" Name="Product" Nullable="true" MaxLength="255" />
     <Property Type="Boolean" Name="Status" Nullable="true" />
   </ComplexType>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   <EntityType Name="tbl_timetable">
     <Key>
       <PropertyRef Name="Tid" />
@@ -1482,9 +1507,17 @@
     <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="Empid" Nullable="false" />
+<<<<<<< HEAD
     <Property Type="Int32" Name="yearid" />
     <Property Type="Int32" Name="deptid" />
   </EntityType>
+=======
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="deptid" Type="Int32" />
+  </EntityType>
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
   <ComplexType Name="sp_GetEmployeeLeave_Result">
     <Property Type="Int32" Name="Leaveid" Nullable="false" />
     <Property Type="String" Name="Employee" Nullable="false" MaxLength="100" />
@@ -2593,6 +2626,7 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
+<<<<<<< HEAD
   <ComplexType Name="sp_GetSearchJournal_Result">
     <Property Type="Int32" Name="JId" Nullable="false" />
     <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
@@ -2634,4 +2668,21 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+=======
+<<<<<<< HEAD
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="PanaltyStatus" Type="Boolean" />
+  </EntityType>
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
 </Schema>

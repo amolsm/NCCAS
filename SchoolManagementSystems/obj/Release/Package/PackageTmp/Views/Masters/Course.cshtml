@@ -80,6 +80,41 @@
             $("#msg").hide();
             $("#msgs").hide();
         }
+        $("#Dept_Id").change(function () {
+            CheckDuplicate();
+        })
+        function ReloadDept()
+        {
+            $("#Dept_Id").empty();
+            var item = '<option value="">select Department</option>';
+            $("#Dept_Id").append(item);
+        }
+        function CheckDuplicate()
+        {
+            if ($("#Dept_Id").val() == "") {
+                ReloadDept();
+            } else {
+                $("#lblmsg").text("");
+                var CourseId = $("#CourseId").val();
+                var Dept_Id = $("#Dept_Id").val();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("check_duplicate_assigncourse")',
+                    dataType: 'JSON',
+                    data: { CourseId: CourseId, Dept_Id: Dept_Id },
+                    success: function (data) {
+                        if (data != null) {
+                            $("#msg").show();
+                            $("#lblmsg").text("Course Assign to this department Already Exists!..");
+                            $("#lblmsg").css({ "color": "orange" });
+                            $("#lblmsg").css({ "font-size": "15px" });
+                            $('#Dept_Id').val(0);
+                            return false;
+                        }
+                    }
+                });
+            }
+        }
 
         $("#result").on("click", ".delete", function (evt) {
             var cid = this.id;

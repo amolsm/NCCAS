@@ -20,6 +20,12 @@ namespace Entity
         [DisplayName("Lecture No ")]
         public int LecNo { get; set; }
 
+        [DisplayName("year")]
+        public int yearid { get; set; }
+
+        [DisplayName("Department")]
+        public int deptid { get; set; }
+
         [DisplayName("Subject Name ")]
         public int Subjectid { get; set; }
 
