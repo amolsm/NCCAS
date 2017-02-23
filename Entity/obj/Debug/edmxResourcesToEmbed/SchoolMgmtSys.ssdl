@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <Schema Namespace="SchoolMgmtSysModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.Store.lib_Bookentry" store:Type="Tables" Schema="dbo" />
@@ -91,11 +92,14 @@
     <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.Store.tbl_YearMaster" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.Store.tblDepartment" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
+=======
+<Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+>>>>>>> origin/master
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
     </Key>
-    <Property Name="bookid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="booktitle" Type="varchar" MaxLength="100" />
     <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
@@ -107,7 +111,7 @@
     <Property Name="Edition" Type="varchar" MaxLength="100" />
     <Property Name="Vendorid" Type="int" />
     <Property Name="Vendorname" Type="varchar" MaxLength="100" />
-    <Property Name="Dateofpurchase" Type="datetime2" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
     <Property Name="BillNo" Type="nvarchar(max)" />
     <Property Name="Cost" Type="money" />
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
@@ -117,22 +121,22 @@
     <Key>
       <PropertyRef Name="lib_Jid" />
     </Key>
-    <Property Name="lib_Jid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LibType" Type="int" />
     <Property Name="Department" Type="int" />
     <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
     <Property Name="Number" Type="nvarchar(max)" />
-    <Property Name="IssueDate" Type="datetime2" />
+    <Property Name="IssueDate" Type="datetime2" Precision="7" />
     <Property Name="Vendorid" Type="int" />
-    <Property Name="PurchaseDate" Type="datetime2" />
+    <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
     <Property Name="JBillNo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sys_Module">
     <Key>
       <PropertyRef Name="Moduleid" />
     </Key>
-    <Property Name="Moduleid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Moduleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ModuleName" Type="varchar" MaxLength="255" />
     <Property Name="Parentmoduleid" Type="int" />
   </EntityType>
@@ -140,12 +144,11 @@
     <Key>
       <PropertyRef Name="Permissionid" />
     </Key>
-    <Property Name="Permissionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Permissionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PermissionName" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
-      warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="sys_UserPermission">
     <Key>
       <PropertyRef Name="moduleid" />
@@ -158,7 +161,7 @@
     <Key>
       <PropertyRef Name="Roleid" />
     </Key>
-    <Property Name="Roleid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="varchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
@@ -166,7 +169,7 @@
     <Key>
       <PropertyRef Name="Sysid" />
     </Key>
-    <Property Name="Sysid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Sysid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="KeyName" Type="varchar" MaxLength="255" />
     <Property Name="KeyValue" Type="varchar" MaxLength="4000" />
   </EntityType>
@@ -174,7 +177,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studid" Type="int" />
     <Property Name="Classid" Type="int" />
     <Property Name="DivisionId" Type="int" />
@@ -184,26 +187,26 @@
     <Key>
       <PropertyRef Name="bloodgroupid" />
     </Key>
-    <Property Name="bloodgroupid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bloodgroupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="bloodgroupnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
       <PropertyRef Name="Casteid" />
     </Key>
-    <Property Name="Casteid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Casteid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CasteName" Type="varchar" MaxLength="100" />
     <Property Name="Religionid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_category">
     <Key>
       <PropertyRef Name="catid" />
     </Key>
-    <Property Name="catid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="catname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -211,7 +214,7 @@
     <Key>
       <PropertyRef Name="Chapter_id" />
     </Key>
-    <Property Name="Chapter_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ChapterName" Type="varchar" MaxLength="100" />
     <Property Name="Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -227,7 +230,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Teacherid" Type="int" />
     <Property Name="Subjectid" Type="int" />
     <Property Name="Departmentid" Type="int" />
@@ -244,7 +247,7 @@
     <Key>
       <PropertyRef Name="Cityid" />
     </Key>
-    <Property Name="Cityid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Cityid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CityName" Type="varchar" MaxLength="100" />
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="Stateid" Type="int" Nullable="false" />
@@ -254,7 +257,7 @@
     <Key>
       <PropertyRef Name="Classid" />
     </Key>
-    <Property Name="Classid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Classnm" Type="varchar" MaxLength="100" />
     <Property Name="Dept_id" Type="int" />
     <Property Name="status" Type="bit" />
@@ -264,7 +267,7 @@
     <Key>
       <PropertyRef Name="Content_id" />
     </Key>
-    <Property Name="Content_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
     <Property Name="Content_Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -281,7 +284,7 @@
     <Key>
       <PropertyRef Name="Countryid" />
     </Key>
-    <Property Name="Countryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Countryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CountryName" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -289,7 +292,7 @@
     <Key>
       <PropertyRef Name="Cid" />
     </Key>
-    <Property Name="Cid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Course_id" Type="int" />
     <Property Name="Dept_id" Type="int" />
     <Property Name="status" Type="bit" />
@@ -298,7 +301,7 @@
     <Key>
       <PropertyRef Name="Courseid" />
     </Key>
-    <Property Name="Courseid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CourseName" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
@@ -306,15 +309,14 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dept_id" Type="int" />
     <Property Name="courseid" Type="int" />
     <Property Name="academicyear" Type="int" />
     <Property Name="status" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_days">
     <Key>
       <PropertyRef Name="dayid" />
@@ -326,7 +328,7 @@
     <Key>
       <PropertyRef Name="DivisionId" />
     </Key>
-    <Property Name="DivisionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DivisionName" Type="nvarchar" MaxLength="50" />
     <Property Name="Classid" Type="int" />
     <Property Name="status" Type="bit" />
@@ -335,126 +337,126 @@
     <Key>
       <PropertyRef Name="empexpid" />
     </Key>
-    <Property Name="empexpid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="empexpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="empId" Type="int" />
     <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp1" Type="datetime2" />
-    <Property Name="lastdate1_exp1" Type="datetime2" />
+    <Property Name="joiningdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp1" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp1" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp1" Type="datetime2" />
-    <Property Name="clastdate_exp1" Type="datetime2" />
+    <Property Name="cjoiningdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp2" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp2" Type="datetime2" />
-    <Property Name="lastdate1_exp2" Type="datetime2" />
+    <Property Name="joiningdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp2" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp2" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp2" Type="datetime2" />
-    <Property Name="clastdate_exp2" Type="datetime2" />
+    <Property Name="cjoiningdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp3" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp3" Type="datetime2" />
-    <Property Name="lastdate1_exp3" Type="datetime2" />
+    <Property Name="joiningdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp3" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp3" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp3" Type="datetime2" />
-    <Property Name="clastdate_exp3" Type="datetime2" />
+    <Property Name="cjoiningdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp4" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp4" Type="datetime2" />
-    <Property Name="lastdate1_exp4" Type="datetime2" />
+    <Property Name="joiningdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp4" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp4" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp4" Type="datetime2" />
-    <Property Name="clastdate_exp4" Type="datetime2" />
+    <Property Name="cjoiningdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp5" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp5" Type="datetime2" />
-    <Property Name="lastdate1_exp5" Type="datetime2" />
+    <Property Name="joiningdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp5" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp5" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp5" Type="datetime2" />
-    <Property Name="clastdate_exp5" Type="datetime2" />
+    <Property Name="cjoiningdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp6" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp6" Type="datetime2" />
-    <Property Name="lastdate1_exp6" Type="datetime2" />
+    <Property Name="joiningdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp6" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp6" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp6" Type="datetime2" />
-    <Property Name="clastdate_exp6" Type="datetime2" />
+    <Property Name="cjoiningdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp7" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp7" Type="datetime2" />
-    <Property Name="lastdate1_exp7" Type="datetime2" />
+    <Property Name="joiningdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp7" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp7" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp7" Type="datetime2" />
-    <Property Name="clastdate_exp7" Type="datetime2" />
+    <Property Name="cjoiningdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp8" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp8" Type="datetime2" />
-    <Property Name="lastdate1_exp8" Type="datetime2" />
+    <Property Name="joiningdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp8" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp8" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp8" Type="datetime2" />
-    <Property Name="clastdate_exp8" Type="datetime2" />
+    <Property Name="cjoiningdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp9" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp9" Type="datetime2" />
-    <Property Name="lastdate1_exp9" Type="datetime2" />
+    <Property Name="joiningdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp9" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp9" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp9" Type="datetime2" />
-    <Property Name="clastdate_exp9" Type="datetime2" />
+    <Property Name="cjoiningdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp10" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp10" Type="datetime2" />
-    <Property Name="lastdate1_exp10" Type="datetime2" />
+    <Property Name="joiningdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp10" Type="datetime2" Precision="7" />
     <Property Name="totalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp10" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp10" Type="datetime2" />
-    <Property Name="clastdate_exp10" Type="datetime2" />
+    <Property Name="cjoiningdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -462,7 +464,7 @@
     <Key>
       <PropertyRef Name="Empid" />
     </Key>
-    <Property Name="Empid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="MiddleName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
@@ -475,7 +477,7 @@
     <Property Name="Address" Type="varchar(max)" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="DOB" Type="datetime2" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="Quallification" Type="varchar" MaxLength="250" />
@@ -483,9 +485,9 @@
     <Property Name="TeachStandard" Type="varchar" MaxLength="500" />
     <Property Name="Payroll" Type="money" />
     <Property Name="Schedule" Type="varchar" MaxLength="50" />
-    <Property Name="SysDt" Type="datetime2" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="Payrollid" Type="int" Nullable="false" />
-    <Property Name="DateOfJoin" Type="datetime2" />
+    <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="int" />
     <Property Name="OtherQualification" Type="varchar(max)" />
@@ -545,14 +547,14 @@
     <Property Name="accountname" Type="varchar" MaxLength="50" />
     <Property Name="collagename" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate" Type="datetime2" />
-    <Property Name="lastdate" Type="datetime2" />
+    <Property Name="joiningdate" Type="datetime2" Precision="7" />
+    <Property Name="lastdate" Type="datetime2" Precision="7" />
     <Property Name="totalexperience" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
     <Property Name="companyname" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate" Type="datetime2" />
-    <Property Name="clastdate" Type="datetime2" />
+    <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
+    <Property Name="clastdate" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
     <Property Name="empemail" Type="varchar" MaxLength="50" />
     <Property Name="empreligion" Type="int" />
@@ -561,14 +563,14 @@
     <Property Name="empmothertongue" Type="varchar" MaxLength="100" />
     <Property Name="collagename1" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate1" Type="datetime2" />
-    <Property Name="lastdate1" Type="datetime2" />
+    <Property Name="joiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1" Type="datetime2" Precision="7" />
     <Property Name="totalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation1" Type="varchar" MaxLength="50" />
     <Property Name="companyname1" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation1" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate1" Type="datetime2" />
-    <Property Name="clastdate1" Type="datetime2" />
+    <Property Name="cjoiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate1" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="doctypename" Type="varchar" MaxLength="50" />
     <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
@@ -580,7 +582,7 @@
     <Key>
       <PropertyRef Name="Leaveid" />
     </Key>
-    <Property Name="Leaveid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Empid" Type="int" />
     <Property Name="LeaveStartDate" Type="datetime" />
     <Property Name="LeaveEndDate" Type="datetime" />
@@ -592,7 +594,7 @@
     <Key>
       <PropertyRef Name="Eventid" />
     </Key>
-    <Property Name="Eventid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Eventid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EventDescription" Type="varchar" MaxLength="255" />
     <Property Name="EventUrl" Type="varchar" MaxLength="255" />
   </EntityType>
@@ -600,29 +602,29 @@
     <Key>
       <PropertyRef Name="ExaminationTypeId" />
     </Key>
-    <Property Name="ExaminationTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ExaminationType" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ExaminationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExaminationType" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_ExamTImeTable">
     <Key>
       <PropertyRef Name="ExamId" />
     </Key>
-    <Property Name="ExamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ExamName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
     <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
     <Property Name="ExamTypeId" Type="int" Nullable="false" />
     <Property Name="ExamClassId" Type="int" Nullable="false" />
     <Property Name="ExamSubjectId" Type="int" Nullable="false" />
-    <Property Name="ExamYear" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="IsPublish" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_fees">
     <Key>
       <PropertyRef Name="Feesid" />
     </Key>
-    <Property Name="Feesid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Feesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="LFees" Type="money" Nullable="false" />
     <Property Name="TFees" Type="money" Nullable="false" />
@@ -633,8 +635,7 @@
     <Property Name="PTypeid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_feeschild">
     <Key>
       <PropertyRef Name="Feesid" />
@@ -642,20 +643,19 @@
       <PropertyRef Name="Fees" />
     </Key>
     <Property Name="Feesid" Type="int" Nullable="false" />
-    <Property Name="FeesNm" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FeesNm" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Fees" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_feeslabel">
     <Key>
       <PropertyRef Name="feeslblid" />
     </Key>
-    <Property Name="feeslblid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="feeslblid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ctrlcnt" Type="int" Nullable="false" />
     <Property Name="classid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_feeslabelchild">
     <Key>
       <PropertyRef Name="feeslblid" />
@@ -667,7 +667,7 @@
     <Key>
       <PropertyRef Name="Pid" />
     </Key>
-    <Property Name="Pid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="Studid" Type="int" Nullable="false" />
     <Property Name="Scholarship" Type="bit" Nullable="false" />
@@ -683,19 +683,19 @@
     <Key>
       <PropertyRef Name="Inventoryid" />
     </Key>
-    <Property Name="Inventoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Inventoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Productid" Type="int" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Price" Type="decimal" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="tbl_leave">
     <Key>
       <PropertyRef Name="leaveid" />
     </Key>
-    <Property Name="leaveid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="leavename" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leavename" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LeaveBalance" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_Author">
@@ -745,7 +745,7 @@
     <Key>
       <PropertyRef Name="Menuid" />
     </Key>
-    <Property Name="Menuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MenuName" Type="varchar" MaxLength="50" />
     <Property Name="MenuLink" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -754,7 +754,7 @@
     <Key>
       <PropertyRef Name="Newsid" />
     </Key>
-    <Property Name="Newsid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NewsDate" Type="datetime" Nullable="false" />
     <Property Name="NewsTitle" Type="varchar" MaxLength="100" />
     <Property Name="NewsDesc" Type="varchar(max)" />
@@ -764,7 +764,7 @@
     <Key>
       <PropertyRef Name="Newsimageid" />
     </Key>
-    <Property Name="Newsimageid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Newsimageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Newsid" Type="int" Nullable="false" />
     <Property Name="image" Type="image" Nullable="false" />
   </EntityType>
@@ -772,16 +772,16 @@
     <Key>
       <PropertyRef Name="occupationid" />
     </Key>
-    <Property Name="occupationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="occupationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="occupationnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_online_student">
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
@@ -856,25 +856,25 @@
     <Key>
       <PropertyRef Name="paytermid" />
     </Key>
-    <Property Name="paytermid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="paytermname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="paytermid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paytermname" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_position">
     <Key>
       <PropertyRef Name="posid" />
     </Key>
-    <Property Name="posid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="posid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="posname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_Product">
     <Key>
       <PropertyRef Name="Productid" />
     </Key>
-    <Property Name="Productid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Categoryid" Type="int" />
     <Property Name="Product" Type="varchar" MaxLength="255" />
     <Property Name="Status" Type="bit" />
@@ -884,34 +884,34 @@
     <Key>
       <PropertyRef Name="qualificationid" />
     </Key>
-    <Property Name="qualificationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="qualificationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="qualificationnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_religion">
     <Key>
       <PropertyRef Name="Religionid" />
     </Key>
-    <Property Name="Religionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Religionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Religionnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_route">
     <Key>
       <PropertyRef Name="routeid" />
     </Key>
-    <Property Name="routeid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="routeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="routename" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_SessionMaster">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SessionName" Type="varchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
@@ -919,7 +919,7 @@
     <Key>
       <PropertyRef Name="StaffAttendanceId" />
     </Key>
-    <Property Name="StaffAttendanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StaffAttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StaffId" Type="int" />
     <Property Name="AttendanceDate" Type="datetime" />
     <Property Name="InTime" Type="datetime" />
@@ -931,7 +931,7 @@
     <Key>
       <PropertyRef Name="Stateid" />
     </Key>
-    <Property Name="Stateid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Stateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StateName" Type="varchar" MaxLength="100" />
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
@@ -940,11 +940,11 @@
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
-    <Property Name="DOB" Type="datetime2" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
     <Property Name="Weight" Type="int" Nullable="false" />
     <Property Name="Height" Type="int" Nullable="false" />
     <Property Name="StudBldGrp" Type="int" Nullable="false" />
@@ -992,7 +992,7 @@
     <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
     <Property Name="PermanentAddress" Type="varchar(max)" />
     <Property Name="academicyear" Type="varchar" MaxLength="10" />
-    <Property Name="SysDt" Type="datetime2" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="busid" Type="int" />
     <Property Name="cats" Type="varchar(max)" />
     <Property Name="prds" Type="varchar(max)" />
@@ -1044,19 +1044,19 @@
     <Property Name="PGMarksheet" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling2DOB" Type="datetime2" />
+    <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
     <Property Name="Sibling2Ql" Type="varchar(max)" />
     <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling1DOB" Type="datetime2" />
+    <Property Name="Sibling1DOB" Type="datetime2" Precision="7" />
     <Property Name="Sibling1Ql" Type="varchar(max)" />
     <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling3DOB" Type="datetime2" />
+    <Property Name="Sibling3DOB" Type="datetime2" Precision="7" />
     <Property Name="Sibling3Ql" Type="varchar(max)" />
     <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling4DOB" Type="datetime2" />
+    <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
     <Property Name="Sibling4Ql" Type="varchar(max)" />
     <Property Name="ParishName" Type="varchar" MaxLength="100" />
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
@@ -1087,7 +1087,7 @@
     <Key>
       <PropertyRef Name="AttendanceID" />
     </Key>
-    <Property Name="AttendanceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="Present" Type="bit" />
     <Property Name="Reason" Type="varchar" MaxLength="500" />
@@ -1100,7 +1100,7 @@
     <Key>
       <PropertyRef Name="StudCategoryid" />
     </Key>
-    <Property Name="StudCategoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StudCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudCategoryname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -1108,7 +1108,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="studentid" Type="int" />
     <Property Name="divisionid" Type="int" />
     <Property Name="courseid" Type="int" />
@@ -1121,12 +1121,12 @@
     <Key>
       <PropertyRef Name="Marksid" />
     </Key>
-    <Property Name="Marksid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Marksid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studentid" Type="int" />
     <Property Name="Examid" Type="int" />
     <Property Name="Subjectid" Type="int" />
-    <Property Name="Marks" Type="decimal" />
-    <Property Name="TotalMarks" Type="decimal" />
+    <Property Name="Marks" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="0" />
     <Property Name="AcadamicYear" Type="varchar" MaxLength="50" />
     <Property Name="Remark" Type="bit" />
   </EntityType>
@@ -1134,7 +1134,7 @@
     <Key>
       <PropertyRef Name="SubCategoryid" />
     </Key>
-    <Property Name="SubCategoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SubCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubCategoryname" Type="varchar" MaxLength="50" />
     <Property Name="Categoryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
@@ -1143,9 +1143,9 @@
     <Key>
       <PropertyRef Name="Subjectid" />
     </Key>
-    <Property Name="Subjectid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Subjectid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Courseid" Type="int" Nullable="false" />
-    <Property Name="SubjectNm" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SubjectNm" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Marks" Type="float" Nullable="false" />
     <Property Name="Pass_Marks" Type="float" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -1157,7 +1157,7 @@
     <Key>
       <PropertyRef Name="Submenuid" />
     </Key>
-    <Property Name="Submenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Submenuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubmenuName" Type="varchar" MaxLength="50" />
     <Property Name="Submenulink" Type="varchar" MaxLength="50" />
     <Property Name="Menuid" Type="int" Nullable="false" />
@@ -1167,7 +1167,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="teacherid" Type="int" />
     <Property Name="courseid" Type="int" />
     <Property Name="departmentid" Type="int" />
@@ -1180,13 +1180,13 @@
     <Key>
       <PropertyRef Name="Tid" />
     </Key>
-    <Property Name="Tid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="Day" Type="int" Nullable="false" />
     <Property Name="LecNo" Type="int" Nullable="false" />
     <Property Name="Subjectid" Type="int" Nullable="false" />
-    <Property Name="LecTime" Type="varchar" Nullable="false" MaxLength="25" />
-    <Property Name="LecETime" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="LecTime" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LecETime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Empid" Type="int" Nullable="false" />
     <Property Name="yearid" Type="int" />
     <Property Name="deptid" Type="int" />
@@ -1195,7 +1195,7 @@
     <Key>
       <PropertyRef Name="busid" />
     </Key>
-    <Property Name="busid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="busid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="busNo" Type="varchar" MaxLength="50" />
     <Property Name="busRoute" Type="int" Nullable="false" />
     <Property Name="busDriverNm" Type="varchar" MaxLength="50" />
@@ -1203,25 +1203,25 @@
     <Property Name="busRTONo" Type="varchar" MaxLength="50" />
     <Property Name="busDateTime" Type="datetime" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_user">
     <Key>
       <PropertyRef Name="Userid" />
     </Key>
-    <Property Name="Userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="100" />
     <Property Name="Password" Type="varchar" MaxLength="100" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Genid" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_YearMaster">
     <Key>
       <PropertyRef Name="yearid" />
     </Key>
-    <Property Name="yearid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="yearid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="YearName" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
@@ -1229,11 +1229,11 @@
     <Key>
       <PropertyRef Name="Dept_id" />
     </Key>
-    <Property Name="Dept_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
-  <Function Name="checkUserLogin" ReturnType="bit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
   </Function>
@@ -2174,9 +2174,12 @@
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
@@ -2269,6 +2272,9 @@ FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
+<<<<<<< HEAD
 >>>>>>> origin/master
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 </Schema>

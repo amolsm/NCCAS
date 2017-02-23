@@ -38,10 +38,22 @@ namespace SchoolManagementSystems.Controllers
                 catch { Classids = "0"; }             
             }
             else
+<<<<<<< HEAD
             {
                 _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
             }
           
+=======
+                _tvm._Timetablelist = db.sp_gettimetable().Where(x => x.Classid.ToUpper().Contains(Search_Data.ToUpper()) ||
+                                                        x.Day.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.Tid.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.LecNo.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.Subjectid.ToUpper().Contains(Search_Data.ToUpper()) ||
+                                                        x.LecTime.ToUpper().Contains(Search_Data.ToUpper()) ||
+                                                        x.LecETime.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.Empid.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Tid).ToList();
+
+>>>>>>> origin/master
             return View(_tvm);
         }
 
@@ -131,19 +143,14 @@ namespace SchoolManagementSystems.Controllers
             if (evt == "submit")
             {
                 if (_tvm.Tid == null) { _tvm.Tid = 0; }
-<<<<<<< HEAD
-                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "").ToString();
+
+                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.year, _tvm.department, "").ToString();
             }
-            else if (evt == "Delete")
-            {
-                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.yearid, _tvm.deptid, "del").ToString();
-=======
-                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid,_tvm.year,_tvm.department, "").ToString();
-            }
+        
             else if (evt == "Delete")
             {
                 db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.LecTime, _tvm.LecETime, _tvm.Empid, _tvm.year, _tvm.department, "del").ToString();
->>>>>>> origin/master
+
             }
             _tvm._Timetablelist = db.sp_gettimetable().ToList();
             return PartialView("_Timetablelist", _tvm);
@@ -164,7 +171,11 @@ namespace SchoolManagementSystems.Controllers
             string CourseName = db.tbl_CourseMaster.Where(m => m.Courseid == Classid).Select(m => m.CourseName).FirstOrDefault();
             timetableviewmodel _tvm = new timetableviewmodel();
             //_tvm._Timetablelist = db.sp_gettimetable().Where(m => m.Classid == ClassNm).OrderBy(m => m.Day).ThenBy(m => m.LecNo).ToList();
+<<<<<<< HEAD
             _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == CourseName).ToList();
+=======
+            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == ClassNm).ToList();
+>>>>>>> origin/master
             return PartialView("_publishedtimetable", _tvm);
         }
 
