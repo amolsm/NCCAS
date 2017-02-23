@@ -222,6 +222,16 @@
                             <div id="frm" class="form-horizontal">
                                 <div class="control-group span5 required">
 
+                                    @Html.LabelFor(model => model.StudentId, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @class = "input" })
+                                      
+
+                                    </div>
+                                </div>
+                                <div class="control-group span5 required">
+
                                     @Html.LabelFor(model => model.StudentName, new { @class = "control-label", @for = "focusedInput" })
 
                                     <div class="controls">
@@ -233,7 +243,7 @@
                                 </div>
 
                                     @*<input type="text" id="txtBookName" name="BookName" />*@
-                                 <div class="control-group span5">
+                                 <div class="control-group span5  pull-right">
 
                                     <input type="submit" id="btnSubmit" value="Search" class="btn-primary" />
                                     

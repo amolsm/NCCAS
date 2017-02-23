@@ -1,13 +1,3 @@
-D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
-D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.dll
-D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.pdb
-D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.dll.config
-D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.dll
-D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.pdb
-D:\NCCAS\NCCAS\Entity\bin\Debug\EntityFramework.dll
-D:\NCCAS\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.dll
-D:\NCCAS\NCCAS\Entity\bin\Debug\EntityFramework.xml
-D:\NCCAS\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.dll.config
 D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.dll
 D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.pdb
@@ -21,11 +11,6 @@ D:\NCCProject\NCCAS\Entity\bin\Debug\Microsoft.Web.Infrastructure.dll
 D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.xml
 D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
-D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.Mvc.xml
-D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.Razor.xml
-D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Razor.xml
-D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.xml
-D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.dll
 D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.pdb
 D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
