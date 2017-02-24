@@ -1062,15 +1062,15 @@
     <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
     <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
     <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
-    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
-    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
-      <Parameter Name="Studentid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
       <Parameter Name="courseid" Mode="In" Type="Int32" />
       <Parameter Name="day" Mode="In" Type="Int32" />
       <Parameter Name="subject" Mode="In" Type="Int32" />
       <Parameter Name="teacher" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
+      <Parameter Name="Studentid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2627,6 +2627,17 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+  <ComplexType Name="sp_gettimetableclass_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
   <EntityType Name="tbl_lib_BookIssue">
     <Key>
       <PropertyRef Name="BookIssueId" />
@@ -2646,16 +2657,5 @@
     <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
     <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
     <Property Type="Int32" Name="NoOfDays" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetableclass_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
 </Schema>

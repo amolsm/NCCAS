@@ -1517,5 +1517,78 @@ namespace SchoolManagementSystems.Controllers
         }
         #endregion
 
+        #region AssignedDevisionMaster
+        public ActionResult AssignedDivisionMaster()
+        {
+            divisionmodel division = new divisionmodel();
+
+            division.YearList = db.tbl_YearMaster.ToList();//new List<tbl_YearMaster>();
+            division.DepartmentList = db.tblDepartment.ToList(); // new List<tblDepartment>();
+            division.Courselist = db.tbl_CourseMaster.ToList();
+            return View(division);
+        }
+        //public JsonResult Filldivision(int id)
+        //{
+        //    var data = db.tbl_AssignDivision.Where(m => m.ID == id).FirstOrDefault();
+
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
+        public JsonResult check_duplicate_divisiond(string divisionid,int studid,int courseid)
+        {
+            var data = db.tbl_AssignDivision.Where(m => m.Studid == studid && m.Classid == courseid && m.divisionId == divisionid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        
+        }
+
+        public JsonResult GettDivision(string id, string year,string department, divisionmodel avm)
+        {
+
+            int yearid = 0;
+            int Courseid = 0;
+            int deptid = 0;
+            if (id != null && id != "" && year != null && year != "" && department != null && department != "")
+            {
+                deptid = Convert.ToInt32(department);
+                Courseid = Convert.ToInt32(id);
+                yearid = Convert.ToInt32(year);
+            }
+            var student = db.tbl_student
+                .Where(m => (m.Classid == Courseid && m.Dept_Id == deptid && m.courseyearid == yearid))
+                .Select(m => new { m.Studid, m.Studnm}).ToList();
+            var division = db.tbl_division.Where(m => m.Classid == Courseid).Select(m => new { m.DivisionId, m.DivisionName }).ToList();
+            return Json(new { sub = student, teach = division }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult assignDMLDivision(string[] presentdetails)
+        {
+
+            //db.sp_divisionDML(_cvm.ID, _cvm.SessionName, _cvm.status).ToString();
+
+            tbl_AssignDivision sa = new tbl_AssignDivision();
+            string s;
+            int created = Convert.ToInt32(Session["Userid"].ToString());
+            for (int i = 0; i < presentdetails.Count(); i++)
+            {
+                //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
+                s = presentdetails[i].ToString();
+                string[] s1 = s.ToString().Split(',');
+                sa.Studid = Convert.ToInt32(s1[0].ToString());
+                sa.Classid = Convert.ToInt32(s1[1].ToString());
+                sa.divisionId = s1[2].ToString();
+                sa.department = Convert.ToInt32(s1[3].ToString());
+                sa.year = Convert.ToInt32(s1[4].ToString());
+                //sring session =  System.Web.HttpContext.Current.Session["sessionString"]; 
+                try
+                {
+                    db.sp_divisionDML(sa.id, sa.Studid, sa.Classid, sa.divisionId, sa.department, sa.year);
+                }
+                catch (Exception ex)
+                { string msg = ex.ToString(); }
+                db.SaveChanges();
+
+            }
+            return Json(presentdetails);
+        }
+        #endregion
+
     }
 }

@@ -87,6 +87,13 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
+        [DisplayName("Self")]
+        public string self { get; set; }
+
+        [DisplayName("self")]
+        public string self1 { get; set; }
+
+
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 
         public List<tblDepartment> _departmentlist { get; set; }

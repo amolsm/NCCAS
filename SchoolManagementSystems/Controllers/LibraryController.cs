@@ -69,7 +69,7 @@ namespace SchoolManagementSystems.Controllers
                try { 
                 db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
-                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost).ToString();
+                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.self,_lb.self1).ToString();
               TempData["Error"] = "Success";
                 }
                 catch { TempData["Error"] = "Failed"; }

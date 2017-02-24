@@ -1921,6 +1921,21 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="tbl_lib_BookIssue">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
         <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
@@ -1943,21 +1958,6 @@
           <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
           <ScalarProperty Name="NoOfDaysTill" ColumnName="NoOfDaysTill" />
           <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

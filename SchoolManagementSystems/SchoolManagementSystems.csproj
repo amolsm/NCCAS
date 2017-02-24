@@ -698,6 +698,7 @@
     <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
     <Content Include="Views\Library\BookIssue.cshtml" />
     <Content Include="Views\Library\_BookIssueList.cshtml" />
+    <Content Include="Views\Masters\AssignedDivisionMaster.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

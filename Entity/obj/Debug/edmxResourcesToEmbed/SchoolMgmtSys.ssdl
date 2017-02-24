@@ -112,7 +112,7 @@
     <Property Name="BillNo" Type="nvarchar(max)" />
     <Property Name="Cost" Type="money" />
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
-    <Property Name="ShelfNo" Type="varchar" MaxLength="50" />
+    <Property Name="SelfNo" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -178,8 +178,9 @@
     <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Studid" Type="int" />
     <Property Name="Classid" Type="int" />
-    <Property Name="DivisionId" Type="int" />
-    <Property Name="status" Type="bit" />
+    <Property Name="department" Type="int" />
+    <Property Name="year" Type="int" />
+    <Property Name="divisionId" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1260,6 +1261,8 @@
     <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
     <Parameter Name="BillNo" Type="varchar" Mode="In" />
     <Parameter Name="Cost" Type="decimal" Mode="In" />
+    <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
+    <Parameter Name="SelfNo" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="lib_Jid" Type="int" Mode="In" />
@@ -1408,6 +1411,14 @@
     <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_divisionDML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="DivisionId" Type="varchar" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="leaveid" Type="int" Mode="In" />

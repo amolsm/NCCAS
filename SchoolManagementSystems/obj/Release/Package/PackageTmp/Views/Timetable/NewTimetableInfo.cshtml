@@ -135,19 +135,41 @@
         });
 
         $("#insert").click(function () {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("DMLTimetable")',
-                data: $('#frm').serialize() + "&evt=submit&id=0",
-                success: function (result) {
-                    $("#lblmsgss1").show();
-                    $("#lblmsgs1").text("Information in Timetable updated successfully!..");
-                    $("#lblmsgss1").css({ "color": "green" });
-                    $("#lblmsgss1").css({ "font-size": "15px" });
-                    $("#result").html(result);
-                    ReloadPaging();
-                }
-            });
+            debugger;
+            var LecNo = $('#LecNo').val();
+            var Day = $('#Day').val();
+            var Classid = $('#Classid').val();
+            var Subjectid = $("#Subjectid").val();
+            var yearid = $("#year").val();
+            var deptid = $("#department").val();
+            var LecTime = $("#timepicker1").val();
+            var LecETime = $("#timepicker2").val();
+            if (LecTime == LecETime) {
+                $("#lblmsgs").show();
+                $("#lblmsg").text("Both time are equal ! Please change time..");
+            }
+            else if (LecNo == "" || LecNo == "0", Day == "" || Day == "0", Classid == "" || Classid == "0", Subjectid == "" || Subjectid == "0", yearid == "" || yearid == "0") {
+             $("#lblmsgs").show();
+             $("#lblmsg").text("Are Fields are required !..");
+            }
+
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLTimetable")',
+                    data: $('#frm').serialize() + "&evt=submit&id=0",
+                    success: function (result) {
+                        $("#lblmsgs").hide();
+                        $("#lblmsgss1").show();
+                        $("#lblmsgs1").text("Information in Timetable updated successfully!..");
+                        $("#lblmsgss1").css({ "color": "green" });
+                        $("#lblmsgss1").css({ "font-size": "15px" });
+                        $("#result").html(result);
+                        ReloadPaging();
+
+                    }
+                });
+            }
         });
 
         $("#result").on("click", ".edit", function (evt) {
@@ -196,7 +218,6 @@
         }
 
         $('#LecNo').change(function () {
-            debugger;
             var LecNo = $('#LecNo').val();
             var Day = $('#Day').val();
             var Classid = $('#Classid').val();
@@ -258,10 +279,10 @@
                         </div>*@
                     </ul>
                  <div id="lblmsgss1" hidden="hidden"  visible="false" class="alert alert-success">
-                       <strong>Success!</strong><label id="lblmsgs1"></label>
+                       <strong><label id="lblmsgs1"></label></strong>
                      </div>
                  <div id="lblmsgs" hidden="hidden"  visible="false" class="alert alert-warning">
-                       <strong>Warning!</strong><label id="lblmsg"></label>
+                       <strong><label id="lblmsg"></label></strong>
                      </div>
                      <div class="row-fluid sortable">
               <div class="box span12">

@@ -11,7 +11,7 @@
         $("#From").empty();
     
 
-        function checkChecked() {
+       @* function checkChecked() {
             var anyBoxesChecked = "";
             $('#result input[type="checkbox"]').each(function () {
                 if ($(this).is(":checked")) {
@@ -29,13 +29,12 @@
                     window.location.replace("Sms");
                 }
             });
-        }
-
-        $("#insert").click(function () {
-            if (valid()) {
-                checkChecked();
-            }
-        });
+        }*@
+        //$("#insert").click(function () {
+        //    if (valid()) {
+        //        checkChecked();
+        //    }
+        //});
 
         //$("#insert").hide();
 
@@ -49,7 +48,7 @@
 
         });
 
-        $("#DivisionId").change(function () {
+       @* $("#DivisionId").change(function () {
             $("#result").empty();
             var Classid = $('#Classid').val();
             var Divisionid = $('#DivisionId').val();
@@ -86,11 +85,10 @@
                     }
                 });
             }
-        });
+        });*@
       
         function myFunction() {
-            var StudentIds = $("#students").val(data.length)
-            ;
+            var StudentIds = $("#students").val(data.length);
         }
         function clearBox(elementID) {
             document.getElementById(elementID).innerHTML = "";
@@ -126,9 +124,36 @@
 
 
         }
-             $('#Classid').change(function () {
-                 $("#result").empty();
-                 $("#DivisionId").empty();
+        $("#Classid").change(function () {
+            $("#year").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#department").val(), cid: $("#Classid").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+             return false;
+         });
+        $('#year').change(function () {
+                 //$("#result").empty();
+                 //$("#DivisionId").empty();
                  var Classid = $("#Classid").val();
                  $.ajax({
                      type: 'GET',
@@ -160,28 +185,62 @@
 
                 }
                     });
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("BindSubClass")',
-                dataType: 'JSON',
-                data: { ClassId: Classid },
-                success: function (data) {
+              
+        });
 
-                    if (data != null)   {
-                        var item = '<option value="0">All Division</option>';
-                        $.each(data, function (i, d) {
-                            item += '<option value="' + d.Value + '">' + d.Text + '</option>';
-                        });
-                        $("#DivisionId").append(item);
+        $("#insert").click(function () {
+            debugger;
+            var presentdetails = [];
+            var msgss = ($("#msg").val());
+            if (msgss != '') {
+                $('input:checkbox.addcls').each(function (evt) {
+                    var msg = ($("#msg").val());
+                    var student = ($(this).val());
+                    remark = '';
+                    if ($(this).prop('checked')) {
+                        remark = 'true';
+                        presentdetails.push(msg + "," + student + "," + remark);
+
                     }
                     else {
-                        var item = '<option value="0">All Division</option>';
-                        $("#DivisionId").append(item);
+                        var msg = '';
+                        var student = '';
+                        remark = '';
                     }
-                   
+
+                });
+                if (presentdetails != "") {
+                    var options = {};
+                    options.type = "POST",
+                    options.url = '@Url.Action("studentmsg")',
+                        options.data = JSON.stringify(presentdetails);
+                    options.contentType = "application/json";
+                    options.success = function (presentdetails) {
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Massage send successfully!..");
+                        $("#lblmsgs").css({ "color": "green" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
+                        $("#result").html(result);
+                    };
+                    options.error = function (presentdetails) {
+                        $("#msg1").show();
+                        $("#lblmsg1").text("Error while sending massage !..");
+                        $("#lblmsg1").css({ "color": "orange" });
+                        $("#lblmsg1").css({ "font-size": "15px" });
+                        $("#result").html(result);
+                    };
+                    $.ajax(options);
                 }
-            });
-        });
+            }
+            else {
+                $("#msg1").show();
+                $("#lblmsg1").text("Massage box empty !..");
+                $("#lblmsg1").css({ "color": "orange" });
+                $("#lblmsg1").css({ "font-size": "15px" });
+                $("#result").html(result);
+
+            }
+           });
     });
      
 </script>
@@ -197,6 +256,12 @@
                       @Html.ActionLink("Sms Management", "Sms", "Sms", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Sms Management</li>
                     </ul>
+                 <div id="msgs" hidden="hidden"  visible="false" class="alert alert-success">
+                       <strong><label id="lblmsgs"></label></strong>
+                     </div>
+                 <div id="msg1" hidden="hidden"  visible="false" class="alert alert-warning">
+                       <strong><label id="lblmsg1"></label></strong>
+                     </div>
                    <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>
@@ -223,20 +288,19 @@
                                                         @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
                                                          <div class="controls"> 
                                                      
-                                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model._Classlist, "Classid", "Classnm", "0"), "All Class")
+                                                        @Html.DropDownListFor(model => model.Classid, new SelectList(Model._Classlist, "Courseid", "CourseName", "0"), "Select Course")
                                                         @Html.ValidationMessageFor(model => model.Classid)
                                                              </div>
                                                     </div>
                                                 </div>
                                                 
                                                     <div class="control-group" >
-                                                        @Html.LabelFor(model => model.DivisionId, new { @class = "control-label" })
-                                                         <div class="controls"> 
-                                                     
-                                                        @Html.DropDownListFor(model => model.DivisionId, new SelectList(Model._Divisionlist, "DivisionId", "DivisionName", "0"), "All Division")
-                                                        @Html.ValidationMessageFor(model => model.DivisionId)
-                                                             </div>
-                                                    </div>
+                                                        @Html.LabelFor(model => model.year, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.year, new SelectList(Model.yearlist, "yearid", "YearName", "Select Year"), "Select Year")
+                                                    @Html.ValidationMessageFor(model => model.year)
+                                                           </div>
+                                                </div> 
                                              
                                                 <div class="control-group">
                                                     @Html.Label("Message", new {  @class = "control-label" })

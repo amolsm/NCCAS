@@ -70,6 +70,7 @@
     <Compile Include="coursemasterviewmodel.cs" />
     <Compile Include="CourseYearviewmodel.cs" />
     <Compile Include="departmentviewmodel.cs" />
+    <Compile Include="divisionmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
     <Compile Include="sessionviewmodel.cs" />

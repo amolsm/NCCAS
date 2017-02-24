@@ -41,20 +41,16 @@ namespace SchoolManagementSystems.Controllers
 
 
         }
-
         public FileContentResult getImg1(int id)
         {
             byte[] byteArray = db.tbl_employee.Where(m => m.Empid == id).Select(m => m.emppic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
-
         public FileContentResult getImg2(int id)
         {
             byte[] byteArray = db.tbl_employee.Where(m => m.Empid == id).Select(m => m.parentspic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
-
-     
         public void FillPermission(int modid)
         {
             var per = db.sp_get_permission(Convert.ToInt32(Session["Role"]), modid).ToList();
@@ -66,7 +62,6 @@ namespace SchoolManagementSystems.Controllers
                 else if (per[i].Permissionid == 4) { ViewData["Delete"] = "Allow"; }
             }
         }
-     
         public ActionResult EmpAdmission(int? Empid)
         {
             employeeviewmodel _bgv = new employeeviewmodel();
@@ -87,7 +82,6 @@ namespace SchoolManagementSystems.Controllers
     
             return View("EmpAdmission", _bgv);
         }
-      
         [HttpGet]
         public JsonResult FillEmpDetails(int empid)
         {
@@ -219,7 +213,6 @@ namespace SchoolManagementSystems.Controllers
             //_bgv._emplist = db.sp_getemp().ToList();
             return RedirectToAction("Index");
         }
-
         public JsonResult GetCities(string id)
         {
             int stateid = 0;
@@ -230,14 +223,11 @@ namespace SchoolManagementSystems.Controllers
             var cities = db.tbl_city.Where(m => m.Stateid == stateid).ToList();
             return Json(new SelectList(cities, "Cityid", "CityName"));
         }
-
         public JsonResult check_duplicate_Emp(string Emailid)
         {
             var data = db.tbl_employee.Where(m => m.Emailid == Emailid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-
-
         public JsonResult GetExperience(string EmpId)
         {
             int employeeid = 0;
@@ -248,7 +238,6 @@ namespace SchoolManagementSystems.Controllers
             var exp = db.tbl_Empexperience.Where(m => m.empId == employeeid).FirstOrDefault();
             return Json(exp, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetCastes(string id)
         {
             int Religionid = 0;
@@ -259,7 +248,6 @@ namespace SchoolManagementSystems.Controllers
             var castes = db.tbl_caste.Where(m => m.Religionid == Religionid).ToList();
             return Json(new SelectList(castes, "Casteid", "CasteName"));
         }
-
         private void CreateUsers(string UserName, int Type, int Genid, string academicyear)
         {
             string Password = Guid.NewGuid().ToString().Substring(0, 8);
@@ -271,7 +259,6 @@ namespace SchoolManagementSystems.Controllers
 
             }
         }
-
         private void SendUserEmails(string Email)
         {
 
@@ -295,7 +282,6 @@ namespace SchoolManagementSystems.Controllers
             message.Body = msg;
             smtpClient.Send(message);
         }
-
         private string SendSMS(int EmpId)
         {
             string stemailid;
@@ -326,7 +312,6 @@ namespace SchoolManagementSystems.Controllers
                 return result;
             }
         }
-
         private void SendEmails(string Email)
         {
             SmtpClient smtpClient = new SmtpClient();
@@ -348,7 +333,6 @@ namespace SchoolManagementSystems.Controllers
             message.Body = msg;
             smtpClient.Send(message);
         }
-
         private string SendUpdateSMS(int EmpId)
         {
             string stemailid;
