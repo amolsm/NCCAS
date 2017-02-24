@@ -14,50 +14,55 @@ namespace SchoolManagementSystems.Controllers
     public class TimetableController : Controller
     {
         SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
-        public ActionResult Index(string Search_Data)
+        [HttpGet]
+        public ActionResult Index(timetableviewmodel _tvm)
         {
-            timetableviewmodel _tvm = new timetableviewmodel();
             FillPermission(18);
-            if (Search_Data == null || Search_Data == "")
-                _tvm._Timetablelist = db.sp_gettimetable().OrderBy(m => m.Tid).ToList();
-            else
-                _tvm._Timetablelist = db.sp_gettimetable().Where(x => x.Classid.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.Day.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Tid.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecNo.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Subjectid.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecTime.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.LecETime.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.Empid.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Tid).ToList();
-
+            _tvm.Emplist = db.sp_getteachers().ToList();
+            _tvm.Daylist = db.tbl_days.ToList();
+            _tvm.subjectlist = db.tbl_subject.ToList();
+            _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
+            //_tvm._Timetablelist = db.sp_gettimetable().ToList();
+            _tvm.Classlist = db.tbl_CourseMaster.ToList();
+            //if (_tvm.Classid != null || _tvm.Classid != 0 && _tvm.Subjectid != null || _tvm.Subjectid != 0 && _tvm.Empid != null || _tvm.Empid != 0 && _tvm.Day != null || _tvm.Day != 0)
+            //{
+            //    string Classids,subject,day,emp;
+            //    try
+            //    {
+            //        Classids = Convert.ToString(_tvm.Classid);
+            //        subject = Convert.ToString(_tvm.Subjectid);
+            //        day = Convert.ToString(_tvm.Day);
+            //        emp = Convert.ToString(_tvm.Empid);
+            //        _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
+            //    }
+            //    catch { Classids = "0"; }             
+            //}
+            //else
+            //{
+            //    _tvm.timetableclass = db.sp_gettimetableclass(_tvm.Classid, _tvm.Day, _tvm.Subjectid, _tvm.Empid).ToList();
+            //}
+          
+            //    _tvm._Timetablelist = db.sp_gettimetable().Where(x => x.Classid.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Day.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Tid.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecNo.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Subjectid.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecTime.ToUpper().Contains(Search_Data.ToUpper()) ||
+            //                                            x.LecETime.ToString().Contains(Search_Data.ToUpper()) ||
+            //                                            x.Empid.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Tid).ToList();
             return View(_tvm);
         }
 
-        public ActionResult NewTimetableInfo(int? Tid, string Search_Data)
+        public ActionResult NewTimetableInfo(string Search_Data)
         {
             timetableviewmodel _tvm = new timetableviewmodel();
             FillPermission(17);
-            _tvm.YearList = new List<tbl_YearMaster>();
-            _tvm.DepartmentList = new List<tblDepartment>();
-            _tvm.subjectlist = new List<tbl_subject>();
+            _tvm.YearList = db.tbl_YearMaster.ToList();
+            _tvm.DepartmentList = db.tblDepartment.ToList();
+            _tvm.subjectlist = db.tbl_subject.ToList();
             _tvm.Classlist = db.tbl_CourseMaster.ToList();
-            //_tvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
             _tvm.Emplist = db.sp_getteachers().ToList();
             _tvm.Daylist = db.tbl_days.ToList();
-            if (Tid != null)
-            {
-                var data = db.tbl_timetable.Where(m => m.Tid == Tid).FirstOrDefault();
-                if (data != null)
-                {
-                    _tvm.Tid = data.Tid;
-                    _tvm.Classid = data.Classid;
-                    _tvm.Day = data.Day;
-                    _tvm.LecNo = data.LecNo;
-                    _tvm.Subjectid = data.Subjectid;
-                    _tvm.LecTime = data.LecTime;
-                    _tvm.Empid = data.Empid;
-                }
-            }
             if (Search_Data == null || Search_Data == "")
                 _tvm._Timetablelist = db.sp_gettimetable().OrderBy(m => m.Tid).ToList();
             else
@@ -119,14 +124,25 @@ namespace SchoolManagementSystems.Controllers
             var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid && m.DeptId == department).ToList();
             return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
         }
+        public JsonResult GetSubjectsc(string id)
+        {
+            int Courseid = 0;
+            if (id != null && id != "")
+            {
+                Courseid = Convert.ToInt32(id);
+               
+            }
+            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid).ToList();
+            return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
+        }
         public JsonResult FillTimetableInfo(int Tid)
         {
             var data = db.tbl_timetable.Where(m => m.Tid == Tid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_LecNo(int LecNo, int Day, int Classid)
+        public JsonResult check_duplicate_LecNo( int Classid,int yearid,int deptid, int Day,int LecNo,string LecTime,string LecETime,int Subjectid )
         {
-            var data = db.tbl_timetable.Where(m => m.LecNo == LecNo && m.Classid == Classid && m.Day == Day).FirstOrDefault();
+            var data = db.tbl_timetable.Where(m => m.Classid == Classid && m.yearid == yearid && m.deptid == deptid && m.Day == Day && m.LecNo == LecNo && m.LecTime == LecTime && m.LecETime == LecETime && m.Subjectid == Subjectid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLTimetable(timetableviewmodel _tvm, string evt, int id)
@@ -159,10 +175,14 @@ namespace SchoolManagementSystems.Controllers
 
         public ActionResult FillTimetable_classwise(int Classid)
         {
-            string ClassNm = db.tbl_class.Where(m => m.Classid == Classid).Select(m => m.Classnm).FirstOrDefault();
+            string CourseName = db.tbl_CourseMaster.Where(m => m.Courseid == Classid).Select(m => m.CourseName).FirstOrDefault();
             timetableviewmodel _tvm = new timetableviewmodel();
             //_tvm._Timetablelist = db.sp_gettimetable().Where(m => m.Classid == ClassNm).OrderBy(m => m.Day).ThenBy(m => m.LecNo).ToList();
-            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == ClassNm).ToList();
+
+            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == CourseName).ToList();
+
+            _tvm._Timetablelistpivot = db.sp_gettimetable_pivot().Where(m => m.CourseName == CourseName).ToList();
+
             return PartialView("_publishedtimetable", _tvm);
         }
 

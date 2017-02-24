@@ -24,8 +24,11 @@
           <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
           <Property Name="BillNo" Type="nvarchar(max)" />
           <Property Name="Cost" Type="money" />
+<<<<<<< HEAD
           <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
           <Property Name="SelfNo" Type="varchar" MaxLength="50" />
+=======
+>>>>>>> origin/master
         </EntityType>
         <EntityType Name="lib_Journal">
           <Key>
@@ -616,6 +619,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LeaveBalance" Type="int" />
         </EntityType>
+<<<<<<< HEAD
         <EntityType Name="tbl_lib_Author">
           <Key>
             <PropertyRef Name="Authorid" />
@@ -659,6 +663,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="Vendorname" Type="varchar" MaxLength="100" />
           <Property Name="status" Type="bit" />
         </EntityType>
+=======
+>>>>>>> origin/master
         <EntityType Name="tbl_menu">
           <Key>
             <PropertyRef Name="Menuid" />
@@ -1161,6 +1167,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="ExamClassid" Type="int" Mode="In" />
           <Parameter Name="ExamYear" Type="varchar" Mode="In" />
         </Function>
+<<<<<<< HEAD
         <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bookid" Type="int" Mode="In" />
           <Parameter Name="booktitle" Type="varchar" Mode="In" />
@@ -1192,6 +1199,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="PurchaseDate" Type="datetime2" Mode="In" />
           <Parameter Name="JBillNo" Type="varchar" Mode="In" />
         </Function>
+=======
+>>>>>>> origin/master
         <Function Name="sp_Attandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentID" Type="int" Mode="In" />
           <Parameter Name="Present" Type="bit" Mode="In" />
@@ -1660,19 +1669,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_GetSearchBookAndJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="option" Type="int" Mode="In" />
-          <Parameter Name="department" Type="int" Mode="In" />
-          <Parameter Name="booktitle" Type="varchar" Mode="In" />
-          <Parameter Name="authorname" Type="varchar" Mode="In" />
-          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
-        </Function>
-        <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="option" Type="int" Mode="In" />
-          <Parameter Name="department" Type="int" Mode="In" />
-          <Parameter Name="booktitle" Type="varchar" Mode="In" />
-          <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
-        </Function>
         <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1694,12 +1690,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getteachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_gettimetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_gettimetable_pivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_gettimetableclass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="courseid" Type="int" Mode="In" />
-          <Parameter Name="day" Type="int" Mode="In" />
-          <Parameter Name="subject" Type="int" Mode="In" />
-          <Parameter Name="teacher" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_gettransport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2137,11 +2127,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+<<<<<<< HEAD
           <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_BookIssue" EntityType="Self.tbl_lib_BookIssue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />
+=======
+>>>>>>> origin/master
           <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
@@ -2353,6 +2346,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="tbl_days" EntityType="SchoolMgmtSysModel.tbl_days" />
+          <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
           <FunctionImport Name="sp_getteacheremail" ReturnType="Collection(SchoolMgmtSysModel.sp_getteacheremail_Result)">
           <Parameter Name="Classid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2402,19 +2396,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Parameter Name="cats" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
-          <FunctionImport Name="sp_timetable_DML">
-            <Parameter Name="Tid" Mode="In" Type="Int32" />
-            <Parameter Name="Classid" Mode="In" Type="Int32" />
-            <Parameter Name="Day" Mode="In" Type="Int32" />
-            <Parameter Name="LecNo" Mode="In" Type="Int32" />
-            <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-            <Parameter Name="LecTime" Mode="In" Type="String" />
-            <Parameter Name="LecETime" Mode="In" Type="String" />
-            <Parameter Name="Empid" Mode="In" Type="Int32" />
-            <Parameter Name="year" Mode="In" Type="Int32" />
-            <Parameter Name="deptid" Mode="In" Type="Int32" />
-            <Parameter Name="act" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_GetEmployeeLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetEmployeeLeave_Result)" />
           <FunctionImport Name="sp_EmployeeAttendance">
           <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
@@ -2525,6 +2506,9 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
+          <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" >
+          </FunctionImport>
+          <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
           <EntitySet Name="sys_Module" EntityType="SchoolMgmtSysModel.sys_Module" />
           <EntitySet Name="sys_Permission" EntityType="SchoolMgmtSysModel.sys_Permission" />
           <EntitySet Name="sys_UserPermission" EntityType="SchoolMgmtSysModel.sys_UserPermission" />
@@ -3213,10 +3197,44 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="createdby" Mode="In" Type="Int32" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
+<<<<<<< HEAD
           <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.tbl_lib_Author" />
           <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
           <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
           <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
+<<<<<<< HEAD
+=======
+          <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
+            <Parameter Name="option" Mode="In" Type="Int32" />
+            <Parameter Name="department" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
+            <Parameter Name="option" Mode="In" Type="Int32" />
+            <Parameter Name="department" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="authorname" Mode="In" Type="String" />
+            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddLibraryBook">
+            <Parameter Name="bookid" Mode="In" Type="Int32" />
+            <Parameter Name="booktitle" Mode="In" Type="String" />
+            <Parameter Name="CallNo" Mode="In" Type="String" />
+            <Parameter Name="Volume" Mode="In" Type="String" />
+            <Parameter Name="SerielNumber" Mode="In" Type="String" />
+            <Parameter Name="Authorid" Mode="In" Type="Int32" />
+            <Parameter Name="Authorname" Mode="In" Type="String" />
+            <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
+            <Parameter Name="PublishedByName" Mode="In" Type="String" />
+            <Parameter Name="Edition" Mode="In" Type="String" />
+            <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+            <Parameter Name="Vendorname" Mode="In" Type="String" />
+            <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
+            <Parameter Name="BillNo" Mode="In" Type="String" />
+            <Parameter Name="Cost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+>>>>>>> origin/master
           <FunctionImport Name="sp_AddLibraryJournal">
             <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
             <Parameter Name="LibType" Mode="In" Type="Int32" />
@@ -3229,29 +3247,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
             <Parameter Name="JBillNo" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
-            <Parameter Name="option" Mode="In" Type="Int32" />
-            <Parameter Name="department" Mode="In" Type="Int32" />
-            <Parameter Name="booktitle" Mode="In" Type="String" />
-            <Parameter Name="authorname" Mode="In" Type="String" />
-            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
-            <Parameter Name="option" Mode="In" Type="Int32" />
-            <Parameter Name="department" Mode="In" Type="Int32" />
-            <Parameter Name="booktitle" Mode="In" Type="String" />
-            <Parameter Name="purchasedate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
-          <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
-          <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
-          <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="day" Mode="In" Type="Int32" />
-            <Parameter Name="subject" Mode="In" Type="Int32" />
-            <Parameter Name="teacher" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+<<<<<<< HEAD
           <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
           <Parameter Name="Studentid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -3284,6 +3281,23 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="authorname" Mode="In" Type="String" />
             <Parameter Name="bookid" Mode="In" Type="Int32" />
           </FunctionImport>
+=======
+          <FunctionImport Name="sp_timetable_DML">
+            <Parameter Name="Tid" Mode="In" Type="Int32" />
+            <Parameter Name="Classid" Mode="In" Type="Int32" />
+            <Parameter Name="Day" Mode="In" Type="Int32" />
+            <Parameter Name="LecNo" Mode="In" Type="Int32" />
+            <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="LecTime" Mode="In" Type="String" />
+            <Parameter Name="LecETime" Mode="In" Type="String" />
+            <Parameter Name="Empid" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="deptid" Mode="In" Type="Int32" />
+            <Parameter Name="act" Mode="In" Type="String" />
+          </FunctionImport>
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -3567,6 +3581,10 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="Int32" Name="dayid" Nullable="false" />
           <Property Type="String" Name="daynm" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="sp_getteachers_Result">
+          <Property Type="Int32" Name="Empid" Nullable="false" />
+          <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
+        </ComplexType>
         <ComplexType Name="sp_getteacheremail_Result">
           <Property Type="String" Name="Emailid" Nullable="true" MaxLength="100" />
         </ComplexType>
@@ -3698,8 +3716,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Empid" Nullable="false" />
-          <Property Type="Int32" Name="yearid" />
-          <Property Type="Int32" Name="deptid" />
+          <Property Name="yearid" Type="Int32" />
+          <Property Name="deptid" Type="Int32" />
         </EntityType>
         <ComplexType Name="sp_GetEmployeeLeave_Result">
           <Property Type="Int32" Name="Leaveid" Nullable="false" />
@@ -3887,6 +3905,26 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="DateTime" Name="busDateTime" Nullable="true" Precision="23" />
           <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_gettimetable_Result">
+          <Property Type="Int32" Name="Tid" Nullable="false" />
+          <Property Type="String" Name="Classid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="LecNo" Nullable="false" />
+          <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="sp_gettimetable_pivot_Result">
+          <Property Type="String" Name="Classnm" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LecNo" Nullable="false" />
+          <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
+          <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
+          <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
+          <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
+          <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
+          <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
         </ComplexType>
         <EntityType Name="sys_Module">
           <Key>
@@ -4636,6 +4674,29 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="Subjectid" Type="Int32" />
           <Property Name="Session" Type="Int32" />
         </EntityType>
+<<<<<<< HEAD
+=======
+        <EntityType Name="lib_Bookentry">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booktitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SerielNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Authorid" Type="Int32" />
+          <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedByid" Type="Int32" />
+          <Property Name="PublishedByName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Vendorid" Type="Int32" />
+          <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+          <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+>>>>>>> origin/master
         <EntityType Name="lib_Journal">
           <Key>
             <PropertyRef Name="lib_Jid" />
@@ -4748,85 +4809,50 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="Int32" Name="Subjectid" Nullable="false" />
           <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
         </ComplexType>
+<<<<<<< HEAD
         <EntityType Name="tbl_lib_Author">
           <Key>
             <PropertyRef Name="Authorid" />
           </Key>
-          <Property Type="Int32" Name="Authorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Authorname" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="status" />
+          <Property Name="Authorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_lib_JournalType">
           <Key>
             <PropertyRef Name="JTypeid" />
           </Key>
-          <Property Type="Int32" Name="JTypeid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="JTypeName" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="status" />
+          <Property Name="JTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_lib_Publisher">
           <Key>
             <PropertyRef Name="PublisherId" />
           </Key>
-          <Property Type="Int32" Name="PublisherId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Publishername" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="status" />
+          <Property Name="PublisherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Publishername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_lib_Vendor">
           <Key>
             <PropertyRef Name="Vendorid" />
           </Key>
-          <Property Type="Int32" Name="Vendorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Vendorname" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="status" />
+          <Property Name="Vendorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
         </EntityType>
+        <ComplexType Name="sp_GetSearchJournal_Result">
+          <Property Type="Int32" Name="JId" Nullable="false" />
+          <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="sp_GetSearchBookAndJournal_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="sp_GetSearchJournal_Result">
-          <Property Type="Int32" Name="JId" Nullable="false" />
-          <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="sp_getteachers_Result">
-          <Property Type="Int32" Name="Empid" Nullable="false" />
-          <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
-        </ComplexType>
-        <ComplexType Name="sp_gettimetable_pivot_Result">
-          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="LecNo" Nullable="false" />
-          <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
-          <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
-          <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
-          <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
-          <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
-          <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
-        </ComplexType>
-        <ComplexType Name="sp_gettimetable_Result">
-          <Property Type="Int32" Name="Tid" Nullable="false" />
-          <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Day" Nullable="false" />
-          <Property Type="Int32" Name="LecNo" Nullable="false" />
-          <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-          <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-          <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-        </ComplexType>
-        <ComplexType Name="sp_gettimetableclass_Result">
-          <Property Type="Int32" Name="Tid" Nullable="false" />
-          <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Day" Nullable="false" />
-          <Property Type="Int32" Name="LecNo" Nullable="false" />
-          <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-          <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-          <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
         </ComplexType>
         <EntityType Name="tbl_lib_BookIssue">
           <Key>
@@ -4839,6 +4865,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="NoOfDays" Type="Int32" />
           <Property Name="PanaltyStatus" Type="Boolean" />
         </EntityType>
+<<<<<<< HEAD
         <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
           <Property Type="Int32" Name="StudentId" Nullable="true" />
           <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
@@ -4892,6 +4919,10 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
         </ComplexType>
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5276,6 +5307,14 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getteachers" FunctionName="SchoolMgmtSysModel.Store.sp_getteachers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteachers_Result">
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="fullnm" ColumnName="fullnm" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_getteacheremail" FunctionName="SchoolMgmtSysModel.Store.sp_getteacheremail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteacheremail_Result">
@@ -5448,7 +5487,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
           <FunctionImportMapping FunctionImportName="sp_GetEmployeeLeave" FunctionName="SchoolMgmtSysModel.Store.sp_GetEmployeeLeave">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetEmployeeLeave_Result">
@@ -5705,6 +5743,34 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
                 <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gettimetable" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_Result">
+                <ScalarProperty Name="Tid" ColumnName="Tid" />
+                <ScalarProperty Name="Classid" ColumnName="Classid" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+                <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+                <ScalarProperty Name="LecETime" ColumnName="LecETime" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gettimetable_pivot" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable_pivot">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_pivot_Result">
+                <ScalarProperty Name="Classnm" ColumnName="Classnm" />
+                <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+                <ScalarProperty Name="Monday" ColumnName="Monday" />
+                <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+                <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+                <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+                <ScalarProperty Name="Friday" ColumnName="Friday" />
+                <ScalarProperty Name="Saturday" ColumnName="Saturday" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -6565,6 +6631,30 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_Attandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Attandance_DML" />
+<<<<<<< HEAD
+=======
+          <EntitySetMapping Name="lib_Bookentry">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.lib_Bookentry">
+              <MappingFragment StoreEntitySet="lib_Bookentry">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="Dateofpurchase" ColumnName="Dateofpurchase" />
+                <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+                <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="PublishedByName" ColumnName="PublishedByName" />
+                <ScalarProperty Name="PublishedByid" ColumnName="PublishedByid" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+                <ScalarProperty Name="SerielNumber" ColumnName="SerielNumber" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+                <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+>>>>>>> origin/master
           <EntitySetMapping Name="lib_Journal">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.lib_Journal">
               <MappingFragment StoreEntitySet="lib_Journal">
@@ -6700,6 +6790,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
           <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
           <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
+<<<<<<< HEAD
           <EntitySetMapping Name="tbl_lib_Author">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
               <MappingFragment StoreEntitySet="tbl_lib_Author">
@@ -6736,6 +6827,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
           <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
             <ResultMapping>
@@ -6748,6 +6840,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+=======
+>>>>>>> origin/master
           <FunctionImportMapping FunctionImportName="sp_GetSearchJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchJournal">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchJournal_Result">
@@ -6757,58 +6851,19 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_getteachers" FunctionName="SchoolMgmtSysModel.Store.sp_getteachers">
+          <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteachers_Result">
-                <ScalarProperty Name="Empid" ColumnName="Empid" />
-                <ScalarProperty Name="fullnm" ColumnName="fullnm" />
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_gettimetable_pivot" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable_pivot">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_pivot_Result">
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-                <ScalarProperty Name="Monday" ColumnName="Monday" />
-                <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
-                <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
-                <ScalarProperty Name="Thursday" ColumnName="Thursday" />
-                <ScalarProperty Name="Friday" ColumnName="Friday" />
-                <ScalarProperty Name="Saturday" ColumnName="Saturday" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_gettimetable" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_Result">
-                <ScalarProperty Name="Tid" ColumnName="Tid" />
-                <ScalarProperty Name="Classid" ColumnName="Classid" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-                <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-                <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-                <ScalarProperty Name="Empid" ColumnName="Empid" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
-                <ScalarProperty Name="Tid" ColumnName="Tid" />
-                <ScalarProperty Name="Classid" ColumnName="Classid" />
-                <ScalarProperty Name="yearid" ColumnName="yearid" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-                <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-                <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-                <ScalarProperty Name="LecETime" ColumnName="LecETime" />
-                <ScalarProperty Name="Empid" ColumnName="Empid" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
+          <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
           <EntitySetMapping Name="tbl_lib_BookIssue">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
               <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
@@ -6821,6 +6876,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
@@ -6889,6 +6945,11 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+=======
+          <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6973,6 +7034,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" Width="1.5" PointX="19.375" PointY="7.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Content" Width="1.5" PointX="21.375" PointY="3.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_teachersubject" Width="1.5" PointX="21.375" PointY="8.75" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Author" Width="1.5" PointX="9.8878221632390382" PointY="31.57750739137526" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" Width="1.5" PointX="3.2086213581304168" PointY="13.855628988638348" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" Width="1.5" PointX="1.360508418344198" PointY="19.29638735358435" />
@@ -6980,6 +7042,16 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" Width="1.5" PointX="16.375" PointY="25.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.lib_Bookentry" Width="1.5" PointX="26.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_BookStock" Width="1.5" PointX="0.75" PointY="26.75" />
+=======
+<<<<<<< HEAD
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Author" Width="1.5" PointX="16.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" Width="1.5" PointX="26.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" Width="1.5" PointX="26.375" PointY="6.75" />
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
       </Diagram>
     </Diagrams>
   </Designer>

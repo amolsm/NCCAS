@@ -1897,6 +1897,31 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_lib_BookIssue">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
+        <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
+          <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="NoOfDaysTill" ColumnName="NoOfDaysTill" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
@@ -1912,6 +1937,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="tbl_lib_BookIssue">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
         <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
@@ -1992,5 +2018,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+=======
+>>>>>>> origin/master
   </EntityContainerMapping>
 </Mapping>

@@ -32,10 +32,13 @@
         font-size: 18px;
         background-color: gainsboro;
     }
+<<<<<<< HEAD
       .control-group.addor .control-label:before {
         content: "OR       ";
         color: red;
     }
+=======
+>>>>>>> origin/master
 </style>
 
 <script type="text/javascript">
@@ -64,6 +67,7 @@
                 },
                 select: function (e, i) {
                     $("#hfStudentid").val(i.item.val);
+<<<<<<< HEAD
                     $("#StudentId").val(i.item.val);
                 },
                 minLength: 1
@@ -94,11 +98,14 @@
                 select: function (e, i) {
                     $("#hfBookId").val(i.item.val);
                     $("#bookid").val(i.item.val);
+=======
+>>>>>>> origin/master
                 },
                 minLength: 1
             });
         });
         $(document).ready(function () {
+<<<<<<< HEAD
            
             
             $('#btnSubmit').click(function () {
@@ -109,11 +116,18 @@
                 if ($('#hfStudentid').val() == '')
                 { var stdid = "0" }
                 else { var stdid = $('#hfStudentid').val() }
+=======
+            debugger;
+            $('#btnSubmit').click(function () {
+                var stdid = $('#hfStudentid').val();
+                var stdname = $('#StudentName').val();
+>>>>>>> origin/master
                 $("#tblProducts tbody tr").remove();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetBookIssueDetails")',
                     dataType: 'JSON',
+<<<<<<< HEAD
                     data: { StudentName: stdname, Studentid: stdid, Stdid: studentid },
                     success: function (data) {
                         if (data != "") {
@@ -142,6 +156,28 @@
                                 + "</tr>";
                             $('#tblProducts tbody').append(rows);
                         }
+=======
+                    data: { StudentName: stdname, Studentid: stdid },
+                    success: function (data) {
+                        var items = '';
+                      
+                        $.each(data, function (i, item) {
+                            
+
+                            var rows = "<tr>"
+                            + "<td class='prtoducttd'>" + item.BookIssueId + "</td>"
+                            + "<td class='prtoducttd'>" + item.StudentId + "</td>"
+                            + "<td class='prtoducttd'>" + item.BookId + "</td>"
+                            + "<td class='prtoducttd'>"+ (new Date(parseInt(item.Issuedatetime.substr(6)))).toDateString() +"</td>"
+                            + "<td class='prtoducttd'>" + item.NoOfDays + "</td>"
+                            + "<td class='prtoducttd'>" + item.PanaltyStatus + "</td>"
+                            + "</tr>";
+                            $('#tblProducts tbody').append(rows);
+                            $('#myModal').modal('show');
+                            
+                        });
+
+>>>>>>> origin/master
                     },
                     error: function (ex) {
                         var r = jQuery.parseJSON(response.responseText);
@@ -150,12 +186,16 @@
                         alert("ExceptionType: " + r.ExceptionType);
                     }
                 });
+<<<<<<< HEAD
                 $('#myModal').modal('show');
+=======
+>>>>>>> origin/master
                 return false;
               
               
             })
 
+<<<<<<< HEAD
             //
 
             $('#btnBookDetails').click(function () {
@@ -211,6 +251,8 @@
 
             })
            
+=======
+>>>>>>> origin/master
         });
 </script>
 
@@ -275,6 +317,7 @@
                         <table id="tblProducts" class="tblProducts">
                             <thead>
                                 <tr>
+<<<<<<< HEAD
                                     <th align="left" class="productth">Student Id</th>
                                     <th align="left" class="productth">Student Name</th>
                                     <th align="left" class="productth">BookId</th>
@@ -282,6 +325,14 @@
                                     <th align="left" class="productth">Issue Date</th>
                                     <th align="left" class="productth">No Of Days till</th>
                                     <th align="left" class="productth">Total Days</th>
+=======
+                                    <th align="left" class="productth">BookIssueId</th>
+                                    <th align="left" class="productth">StudentId</th>
+                                    <th align="left" class="productth">BookId</th>
+                                    <th align="left" class="productth">Issuedatetime</th>
+                                    <th align="left" class="productth">NoOfDays</th>
+                                    <th align="left" class="productth">PanaltyStatus</th>
+>>>>>>> origin/master
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -325,11 +376,16 @@
 {
 
                             <div id="frm" class="form-horizontal">
+<<<<<<< HEAD
                                 <div class="control-group span5 ">
+=======
+                                <div class="control-group span5 required">
+>>>>>>> origin/master
 
                                     @Html.LabelFor(model => model.StudentId, new { @class = "control-label", @for = "focusedInput" })
 
                                     <div class="controls">
+<<<<<<< HEAD
                                         @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @type = "number", @min = "0", @class = "input" })
                                       
 
@@ -339,11 +395,24 @@
                               
                                 <div class="control-group span5 addor ">
                                     
+=======
+                                        @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @class = "input" })
+                                      
+
+                                    </div>
+                                </div>
+                                <div class="control-group span5 required">
+
+>>>>>>> origin/master
                                     @Html.LabelFor(model => model.StudentName, new { @class = "control-label", @for = "focusedInput" })
 
                                     <div class="controls">
                                         @Html.TextBoxFor(model => model.StudentName, new { placeholder = "Enter Student Name", @class = "input" })
+<<<<<<< HEAD
                                         <input type="hidden" id="hfStudentid" name="Studentids" />
+=======
+                                        <input type="hidden" id="hfStudentid" name="Studentid" />
+>>>>>>> origin/master
                                         <br /><br />
                                       
                                     </div>
@@ -352,12 +421,17 @@
                                     @*<input type="text" id="txtBookName" name="BookName" />*@
                                  <div class="control-group span5  pull-right">
 
+<<<<<<< HEAD
                                     <input type="submit" id="btnSubmit" value="Check Previous Record" class="btn-primary" />
+=======
+                                    <input type="submit" id="btnSubmit" value="Search" class="btn-primary" />
+>>>>>>> origin/master
                                     
                                 </div>
                               
                                 <div id="bookshow" class="pull-left span10">
                                     <fieldset class="test">
+<<<<<<< HEAD
                                  
                                         <legend>Book Search</legend>
                                         <br />
@@ -369,10 +443,16 @@
                                             </div>
                                         </div>
                                     <div class="control-group span5 addor">
+=======
+                                    <br />
+                                        <legend>Book Search</legend>
+                                    <div class="control-group span5">
+>>>>>>> origin/master
                                         @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
 
                                         <div class="controls">
                                             @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter Book Name", @class = "input" })
+<<<<<<< HEAD
                                             <input type="hidden" id="hfBookId" name="BookIds" />
                                             <br /><br />
                                         </div>
@@ -405,6 +485,10 @@
                                            
 
                                        
+=======
+                                        </div>
+                                    </div>
+>>>>>>> origin/master
                                         </fieldset>
                                     </div>
                                 </div>

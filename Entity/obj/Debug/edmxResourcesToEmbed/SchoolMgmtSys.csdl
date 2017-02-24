@@ -1044,12 +1044,17 @@
     <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
     <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
     <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
+      <Parameter Name="Studentid" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
       <Parameter Name="courseid" Mode="In" Type="Int32" />
       <Parameter Name="day" Mode="In" Type="Int32" />
       <Parameter Name="subject" Mode="In" Type="Int32" />
       <Parameter Name="teacher" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
     <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
       <Parameter Name="Studentid" Mode="In" Type="Int32" />
@@ -1083,6 +1088,8 @@
       <Parameter Name="authorname" Mode="In" Type="String" />
       <Parameter Name="bookid" Mode="In" Type="Int32" />
     </FunctionImport>
+=======
+>>>>>>> origin/master
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2616,6 +2623,26 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Type="Int32" Name="BookIssueId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="StudentId" />
+    <Property Type="Int32" Name="BookId" />
+    <Property Type="DateTime" Name="Issuedatetime" Precision="7" />
+    <Property Type="Int32" Name="NoOfDays" />
+    <Property Type="Boolean" Name="PanaltyStatus" />
+  </EntityType>
+  <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookId" Nullable="true" />
+    <Property Type="String" Name="booktitle" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
+    <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
+    <Property Type="Int32" Name="NoOfDays" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="sp_gettimetableclass_Result">
     <Property Type="Int32" Name="Tid" Nullable="false" />
     <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
@@ -2627,6 +2654,7 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+<<<<<<< HEAD
   <EntityType Name="tbl_lib_BookIssue">
     <Key>
       <PropertyRef Name="BookIssueId" />
@@ -2691,4 +2719,6 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
+=======
+>>>>>>> origin/master
 </Schema>

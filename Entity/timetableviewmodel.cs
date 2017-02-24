@@ -14,7 +14,7 @@ namespace Entity
         [DisplayName("Course Name ")]
         public int Classid { get; set; }
 
-        [DisplayName("Day ")]
+        [DisplayName("Day Order")]
         public int Day { get; set; }
 
         [DisplayName("Lecture No ")]
@@ -48,7 +48,7 @@ namespace Entity
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }
         public List<sp_gettimetable_pivot_Result> _Timetablelistpivot { get; set; }
-
+        public List<sp_gettimetableclass_Result> timetableclass { get; set; }
         public List<tbl_CourseMaster> Classlist { get; set; }
 
         public List<tbl_subject> subjectlist { get; set; }

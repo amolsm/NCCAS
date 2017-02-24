@@ -76,7 +76,11 @@
                    <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>
+<<<<<<< HEAD
 						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+=======
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Publish Time Table to Parents and Teacher</h2>
+>>>>>>> origin/master
 						<div class="box-icon">
 						
 							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
@@ -95,13 +99,22 @@
                                 <div  class="control-group">
                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
                                       <div class="controls"> 
+<<<<<<< HEAD
                                     @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+=======
+                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+>>>>>>> origin/master
                                     @Html.ValidationMessageFor(model => model.Classid)
                                           </div>
                                 </div>
 
+<<<<<<< HEAD
                                      <div class="form-actions">
                                    <label id="lbl1">Publish Time Table to Parents and Teachers</label><input type="button" class="btn btn-primary" id="Send" value="Publish" />
+=======
+                                     <div class="form-actions" style="height:20px; padding-left:40%">
+                                   <input type="button" class="btn btn-primary" id="Send" value="Publish" />
+>>>>>>> origin/master
                                     <br />
                                     <br />
                                 </div>

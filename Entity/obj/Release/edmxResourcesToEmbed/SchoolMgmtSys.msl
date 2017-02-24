@@ -1921,6 +1921,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
@@ -1936,6 +1937,8 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+=======
+>>>>>>> origin/master
     <EntitySetMapping Name="tbl_lib_BookIssue">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
         <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
@@ -1961,6 +1964,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="sp_GetBookDetailsbyBookid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookDetailsbyBookid">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookDetailsbyBookid_Result">
@@ -1969,6 +1973,20 @@
           <ScalarProperty Name="Authorname" ColumnName="Authorname" />
           <ScalarProperty Name="Publisher" ColumnName="Publisher" />
           <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+=======
+    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LecETime" ColumnName="LecETime" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+>>>>>>> origin/master
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
