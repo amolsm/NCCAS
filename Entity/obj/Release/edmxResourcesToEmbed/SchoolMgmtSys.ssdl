@@ -1,110 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-=======
-<Schema Namespace="SchoolMgmtSysModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.Store.lib_Bookentry" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.Store.lib_Journal" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_Module" EntityType="SchoolMgmtSysModel.Store.sys_Module" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_Permission" EntityType="SchoolMgmtSysModel.Store.sys_Permission" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_UserPermission" EntityType="SchoolMgmtSysModel.Store.sys_UserPermission" store:Type="Tables" store:Schema="dbo" store:Name="sys_UserPermission">
-      <DefiningQuery>SELECT 
-      [sys_UserPermission].[moduleid] AS [moduleid], 
-      [sys_UserPermission].[UserRoleid] AS [UserRoleid], 
-      [sys_UserPermission].[Permissionid] AS [Permissionid]
-      FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="sys_UserRole" EntityType="SchoolMgmtSysModel.Store.sys_UserRole" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="System" EntityType="SchoolMgmtSysModel.Store.System" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_AssignDivision" EntityType="SchoolMgmtSysModel.Store.tbl_AssignDivision" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_bloodgroup" EntityType="SchoolMgmtSysModel.Store.tbl_bloodgroup" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_caste" EntityType="SchoolMgmtSysModel.Store.tbl_caste" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_category" EntityType="SchoolMgmtSysModel.Store.tbl_category" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.Store.tbl_Chapter" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.Store.tbl_Chaptercomplete" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.Store.tbl_city" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_class" EntityType="SchoolMgmtSysModel.Store.tbl_class" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.Store.tbl_Content" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.Store.tbl_country" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.Store.tbl_Course" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.Store.tbl_CourseMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.Store.tbl_CourseYearMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_days" EntityType="SchoolMgmtSysModel.Store.tbl_days" store:Type="Tables" store:Schema="dbo" store:Name="tbl_days">
-      <DefiningQuery>SELECT 
-      [tbl_days].[dayid] AS [dayid], 
-      [tbl_days].[daynm] AS [daynm]
-      FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_division" EntityType="SchoolMgmtSysModel.Store.tbl_division" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.Store.tbl_Empexperience" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.Store.tbl_employee" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.Store.tbl_EmployeeLeave" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Event" EntityType="SchoolMgmtSysModel.Store.tbl_Event" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_ExaminationType" EntityType="SchoolMgmtSysModel.Store.tbl_ExaminationType" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.Store.tbl_ExamTImeTable" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_fees" EntityType="SchoolMgmtSysModel.Store.tbl_fees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_feeschild" EntityType="SchoolMgmtSysModel.Store.tbl_feeschild" store:Type="Tables" store:Schema="dbo" store:Name="tbl_feeschild">
-      <DefiningQuery>SELECT 
-      [tbl_feeschild].[Feesid] AS [Feesid], 
-      [tbl_feeschild].[FeesNm] AS [FeesNm], 
-      [tbl_feeschild].[Fees] AS [Fees]
-      FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_feeslabel" EntityType="SchoolMgmtSysModel.Store.tbl_feeslabel" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_feeslabelchild" EntityType="SchoolMgmtSysModel.Store.tbl_feeslabelchild" store:Type="Tables" store:Schema="dbo" store:Name="tbl_feeslabelchild">
-      <DefiningQuery>SELECT 
-      [tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
-      [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
-      FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_feespayment" EntityType="SchoolMgmtSysModel.Store.tbl_feespayment" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Inventory" EntityType="SchoolMgmtSysModel.Store.tbl_Inventory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_leave" EntityType="SchoolMgmtSysModel.Store.tbl_leave" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Author" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.Store.tbl_lib_BookIssue" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.Store.tbl_lib_JournalType" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Publisher" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Vendor" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_menu" EntityType="SchoolMgmtSysModel.Store.tbl_menu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_news" EntityType="SchoolMgmtSysModel.Store.tbl_news" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_newsimage" EntityType="SchoolMgmtSysModel.Store.tbl_newsimage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_occupation" EntityType="SchoolMgmtSysModel.Store.tbl_occupation" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_online_student" EntityType="SchoolMgmtSysModel.Store.tbl_online_student" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_payterm" EntityType="SchoolMgmtSysModel.Store.tbl_payterm" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_position" EntityType="SchoolMgmtSysModel.Store.tbl_position" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Product" EntityType="SchoolMgmtSysModel.Store.tbl_Product" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_qualification" EntityType="SchoolMgmtSysModel.Store.tbl_qualification" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_religion" EntityType="SchoolMgmtSysModel.Store.tbl_religion" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_route" EntityType="SchoolMgmtSysModel.Store.tbl_route" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.Store.tbl_SessionMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StaffAttendance" EntityType="SchoolMgmtSysModel.Store.tbl_StaffAttendance" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.Store.tbl_state" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.Store.tbl_student" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.Store.tbl_StudentAttendance" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentCategory" EntityType="SchoolMgmtSysModel.Store.tbl_StudentCategory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.Store.tbl_studentdivision" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.Store.tbl_StudentMark" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_SubCategory" EntityType="SchoolMgmtSysModel.Store.tbl_SubCategory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.Store.tbl_subject" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_submenu" EntityType="SchoolMgmtSysModel.Store.tbl_submenu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.Store.tbl_teachersubject" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.Store.tbl_timetable" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_transport" EntityType="SchoolMgmtSysModel.Store.tbl_transport" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_user" EntityType="SchoolMgmtSysModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.Store.tbl_YearMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.Store.tblDepartment" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
->>>>>>> origin/master
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="bookid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="booktitle" Type="varchar" MaxLength="100" />
     <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
@@ -116,50 +16,32 @@
     <Property Name="Edition" Type="varchar" MaxLength="100" />
     <Property Name="Vendorid" Type="int" />
     <Property Name="Vendorname" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
-=======
-    <Property Name="Dateofpurchase" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="BillNo" Type="nvarchar(max)" />
     <Property Name="Cost" Type="money" />
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
-    <Property Name="ShelfNo" Type="varchar" MaxLength="50" />
+    <Property Name="SelfNo" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
       <PropertyRef Name="lib_Jid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="lib_Jid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="LibType" Type="int" />
     <Property Name="Department" Type="int" />
     <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
     <Property Name="Number" Type="nvarchar(max)" />
-<<<<<<< HEAD
     <Property Name="IssueDate" Type="datetime2" Precision="7" />
     <Property Name="Vendorid" Type="int" />
     <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
-=======
-    <Property Name="IssueDate" Type="datetime2" />
-    <Property Name="Vendorid" Type="int" />
-    <Property Name="PurchaseDate" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="JBillNo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sys_Module">
     <Key>
       <PropertyRef Name="Moduleid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Moduleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Moduleid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="ModuleName" Type="varchar" MaxLength="255" />
     <Property Name="Parentmoduleid" Type="int" />
   </EntityType>
@@ -167,20 +49,11 @@
     <Key>
       <PropertyRef Name="Permissionid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Permissionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PermissionName" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-=======
-    <Property Name="Permissionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="PermissionName" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <!--Errors Found During Generation:
-      warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
->>>>>>> origin/master
   <EntityType Name="sys_UserPermission">
     <Key>
       <PropertyRef Name="moduleid" />
@@ -193,11 +66,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Roleid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Roleid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="RoleName" Type="varchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
@@ -205,11 +74,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Sysid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Sysid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Sysid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="KeyName" Type="varchar" MaxLength="255" />
     <Property Name="KeyValue" Type="varchar" MaxLength="4000" />
   </EntityType>
@@ -217,59 +82,48 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Studid" Type="int" />
     <Property Name="Classid" Type="int" />
-    <Property Name="DivisionId" Type="int" />
-    <Property Name="status" Type="bit" />
+    <Property Name="department" Type="int" />
+    <Property Name="year" Type="int" />
+    <Property Name="divisionId" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="tbl_bloodgroup">
     <Key>
       <PropertyRef Name="bloodgroupid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="bloodgroupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="bloodgroupnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="bloodgroupid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="bloodgroupnm" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
+  </EntityType>
+  <EntityType Name="tbl_BookStock">
+    <Key>
+      <PropertyRef Name="BStockid" />
+    </Key>
+    <Property Name="BStockid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CallNo" Type="varchar" MaxLength="100" />
+    <Property Name="BookQty" Type="int" />
+    <Property Name="AllocateQty" Type="int" />
+    <Property Name="AvailQty" Type="int" />
+    <Property Name="LostQty" Type="int" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
       <PropertyRef Name="Casteid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Casteid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CasteName" Type="varchar" MaxLength="100" />
     <Property Name="Religionid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="Casteid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="CasteName" Type="varchar" MaxLength="100" />
-    <Property Name="Religionid" Type="int" Nullable="false" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_category">
     <Key>
       <PropertyRef Name="catid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="catid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="catname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -277,11 +131,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Chapter_id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Chapter_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="ChapterName" Type="varchar" MaxLength="100" />
     <Property Name="Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -297,11 +147,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-<<<<<<< HEAD
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Teacherid" Type="int" />
     <Property Name="Subjectid" Type="int" />
     <Property Name="Departmentid" Type="int" />
@@ -318,11 +164,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Cityid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Cityid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Cityid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="CityName" Type="varchar" MaxLength="100" />
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="Stateid" Type="int" Nullable="false" />
@@ -332,11 +174,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Classid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Classid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Classnm" Type="varchar" MaxLength="100" />
     <Property Name="Dept_id" Type="int" />
     <Property Name="status" Type="bit" />
@@ -346,11 +184,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Content_id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Content_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
     <Property Name="Content_Description" Type="text" />
     <Property Name="IsActive" Type="bit" />
@@ -367,11 +201,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Countryid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Countryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Countryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="CountryName" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -379,11 +209,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Cid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Cid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Course_id" Type="int" />
     <Property Name="Dept_id" Type="int" />
     <Property Name="status" Type="bit" />
@@ -392,11 +218,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="Courseid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Courseid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="CourseName" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
@@ -404,23 +226,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="dept_id" Type="int" />
     <Property Name="courseid" Type="int" />
     <Property Name="academicyear" Type="int" />
     <Property Name="status" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
-<<<<<<< HEAD
 warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-=======
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
->>>>>>> origin/master
   <EntityType Name="tbl_days">
     <Key>
       <PropertyRef Name="dayid" />
@@ -432,11 +245,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="DivisionId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="DivisionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="DivisionName" Type="nvarchar" MaxLength="50" />
     <Property Name="Classid" Type="int" />
     <Property Name="status" Type="bit" />
@@ -445,230 +254,126 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="empexpid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="empexpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="empId" Type="int" />
     <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
     <Property Name="joiningdate_exp1" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp1" Type="datetime2" Precision="7" />
-=======
-    <Property Name="empexpid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="empId" Type="int" />
-    <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
-    <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp1" Type="datetime2" />
-    <Property Name="lastdate1_exp1" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp1" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp1" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp1" Type="datetime2" />
-    <Property Name="clastdate_exp1" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp2" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp2" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp2" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp2" Type="datetime2" />
-    <Property Name="lastdate1_exp2" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp2" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp2" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp2" Type="datetime2" />
-    <Property Name="clastdate_exp2" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp3" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp3" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp3" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp3" Type="datetime2" />
-    <Property Name="lastdate1_exp3" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp3" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp3" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp3" Type="datetime2" />
-    <Property Name="clastdate_exp3" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp4" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp4" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp4" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp4" Type="datetime2" />
-    <Property Name="lastdate1_exp4" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp4" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp4" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp4" Type="datetime2" />
-    <Property Name="clastdate_exp4" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp5" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp5" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp5" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp5" Type="datetime2" />
-    <Property Name="lastdate1_exp5" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp5" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp5" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp5" Type="datetime2" />
-    <Property Name="clastdate_exp5" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp6" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp6" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp6" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp6" Type="datetime2" />
-    <Property Name="lastdate1_exp6" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp6" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp6" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp6" Type="datetime2" />
-    <Property Name="clastdate_exp6" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp7" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp7" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp7" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp7" Type="datetime2" />
-    <Property Name="lastdate1_exp7" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp7" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp7" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp7" Type="datetime2" />
-    <Property Name="clastdate_exp7" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp8" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp8" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp8" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp8" Type="datetime2" />
-    <Property Name="lastdate1_exp8" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp8" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp8" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp8" Type="datetime2" />
-    <Property Name="clastdate_exp8" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp9" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp9" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp9" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp9" Type="datetime2" />
-    <Property Name="lastdate1_exp9" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp9" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp9" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp9" Type="datetime2" />
-    <Property Name="clastdate_exp9" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp10" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="joiningdate_exp10" Type="datetime2" Precision="7" />
     <Property Name="lastdate1_exp10" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate_exp10" Type="datetime2" />
-    <Property Name="lastdate1_exp10" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp10" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate_exp10" Type="datetime2" Precision="7" />
     <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate_exp10" Type="datetime2" />
-    <Property Name="clastdate_exp10" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -676,11 +381,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="Empid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Empid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="MiddleName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
@@ -693,11 +394,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="Address" Type="varchar(max)" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="int" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="DOB" Type="datetime2" Precision="7" />
-=======
-    <Property Name="DOB" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="Quallification" Type="varchar" MaxLength="250" />
@@ -705,15 +402,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="TeachStandard" Type="varchar" MaxLength="500" />
     <Property Name="Payroll" Type="money" />
     <Property Name="Schedule" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="Payrollid" Type="int" Nullable="false" />
     <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
-=======
-    <Property Name="SysDt" Type="datetime2" />
-    <Property Name="Payrollid" Type="int" Nullable="false" />
-    <Property Name="DateOfJoin" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="int" />
     <Property Name="OtherQualification" Type="varchar(max)" />
@@ -773,24 +464,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="accountname" Type="varchar" MaxLength="50" />
     <Property Name="collagename" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="joiningdate" Type="datetime2" Precision="7" />
     <Property Name="lastdate" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate" Type="datetime2" />
-    <Property Name="lastdate" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
     <Property Name="companyname" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
     <Property Name="clastdate" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate" Type="datetime2" />
-    <Property Name="clastdate" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
     <Property Name="empemail" Type="varchar" MaxLength="50" />
     <Property Name="empreligion" Type="int" />
@@ -799,24 +480,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="empmothertongue" Type="varchar" MaxLength="100" />
     <Property Name="collagename1" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="joiningdate1" Type="datetime2" Precision="7" />
     <Property Name="lastdate1" Type="datetime2" Precision="7" />
-=======
-    <Property Name="joiningdate1" Type="datetime2" />
-    <Property Name="lastdate1" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="totalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation1" Type="varchar" MaxLength="50" />
     <Property Name="companyname1" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation1" Type="varchar" MaxLength="50" />
-<<<<<<< HEAD
     <Property Name="cjoiningdate1" Type="datetime2" Precision="7" />
     <Property Name="clastdate1" Type="datetime2" Precision="7" />
-=======
-    <Property Name="cjoiningdate1" Type="datetime2" />
-    <Property Name="clastdate1" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="ctotalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="doctypename" Type="varchar" MaxLength="50" />
     <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
@@ -828,11 +499,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="Leaveid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Leaveid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Empid" Type="int" />
     <Property Name="LeaveStartDate" Type="datetime" />
     <Property Name="LeaveEndDate" Type="datetime" />
@@ -844,11 +511,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="Eventid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Eventid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Eventid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="EventDescription" Type="varchar" MaxLength="255" />
     <Property Name="EventUrl" Type="varchar" MaxLength="255" />
   </EntityType>
@@ -856,47 +519,29 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Key>
       <PropertyRef Name="ExaminationTypeId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="ExaminationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExaminationType" Type="varchar" MaxLength="255" Nullable="false" />
-=======
-    <Property Name="ExaminationTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ExaminationType" Type="varchar" Nullable="false" MaxLength="255" />
->>>>>>> origin/master
     <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_ExamTImeTable">
     <Key>
       <PropertyRef Name="ExamId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
-=======
-    <Property Name="ExamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ExamName" Type="varchar" Nullable="false" MaxLength="255" />
->>>>>>> origin/master
     <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
     <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
     <Property Name="ExamTypeId" Type="int" Nullable="false" />
     <Property Name="ExamClassId" Type="int" Nullable="false" />
     <Property Name="ExamSubjectId" Type="int" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
-=======
-    <Property Name="ExamYear" Type="varchar" Nullable="false" MaxLength="255" />
->>>>>>> origin/master
     <Property Name="IsPublish" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_fees">
     <Key>
       <PropertyRef Name="Feesid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Feesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Feesid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="LFees" Type="money" Nullable="false" />
     <Property Name="TFees" Type="money" Nullable="false" />
@@ -907,12 +552,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="PTypeid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-<<<<<<< HEAD
 warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-=======
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
->>>>>>> origin/master
   <EntityType Name="tbl_feeschild">
     <Key>
       <PropertyRef Name="Feesid" />
@@ -920,32 +560,19 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a pr
       <PropertyRef Name="Fees" />
     </Key>
     <Property Name="Feesid" Type="int" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="FeesNm" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="FeesNm" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
     <Property Name="Fees" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_feeslabel">
     <Key>
       <PropertyRef Name="feeslblid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="feeslblid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="feeslblid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="ctrlcnt" Type="int" Nullable="false" />
     <Property Name="classid" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-<<<<<<< HEAD
 warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-=======
-      warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
->>>>>>> origin/master
   <EntityType Name="tbl_feeslabelchild">
     <Key>
       <PropertyRef Name="feeslblid" />
@@ -957,11 +584,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Pid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Pid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="Studid" Type="int" Nullable="false" />
     <Property Name="Scholarship" Type="bit" Nullable="false" />
@@ -977,44 +600,26 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Inventoryid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Inventoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Productid" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
-=======
-    <Property Name="Inventoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Productid" Type="int" />
-    <Property Name="Quantity" Type="int" />
-    <Property Name="Price" Type="decimal" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_leave">
     <Key>
       <PropertyRef Name="leaveid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="leavename" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="leaveid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="leavename" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
     <Property Name="LeaveBalance" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_Author">
     <Key>
       <PropertyRef Name="Authorid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Authorid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Authorname" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
   </EntityType>
@@ -1022,17 +627,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="BookIssueId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="BookIssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentId" Type="int" />
     <Property Name="BookId" Type="int" />
     <Property Name="Issuedatetime" Type="datetime2" Precision="7" />
-=======
-    <Property Name="BookIssueId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="StudentId" Type="int" />
-    <Property Name="BookId" Type="int" />
-    <Property Name="Issuedatetime" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="NoOfDays" Type="int" />
     <Property Name="PanaltyStatus" Type="bit" />
   </EntityType>
@@ -1040,11 +638,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="JTypeid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="JTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="JTypeid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="JTypeName" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
   </EntityType>
@@ -1052,11 +646,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="PublisherId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="PublisherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="PublisherId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Publishername" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
   </EntityType>
@@ -1064,11 +654,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Vendorid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Vendorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Vendorid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Vendorname" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
   </EntityType>
@@ -1076,11 +662,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Menuid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Menuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="MenuName" Type="varchar" MaxLength="50" />
     <Property Name="MenuLink" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -1089,11 +671,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Newsid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Newsid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="NewsDate" Type="datetime" Nullable="false" />
     <Property Name="NewsTitle" Type="varchar" MaxLength="100" />
     <Property Name="NewsDesc" Type="varchar(max)" />
@@ -1103,11 +681,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Newsimageid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Newsimageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Newsimageid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Newsid" Type="int" Nullable="false" />
     <Property Name="image" Type="image" Nullable="false" />
   </EntityType>
@@ -1115,27 +689,16 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="occupationid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="occupationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="occupationnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="occupationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="occupationnm" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_online_student">
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
@@ -1210,43 +773,25 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="paytermid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="paytermid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="paytermname" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="paytermid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="paytermname" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_position">
     <Key>
       <PropertyRef Name="posid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="posid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="posname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="posid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="posname" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_Product">
     <Key>
       <PropertyRef Name="Productid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Productid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Categoryid" Type="int" />
     <Property Name="Product" Type="varchar" MaxLength="255" />
     <Property Name="Status" Type="bit" />
@@ -1256,59 +801,34 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="qualificationid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="qualificationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="qualificationnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="qualificationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="qualificationnm" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_religion">
     <Key>
       <PropertyRef Name="Religionid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Religionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Religionnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="Religionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Religionnm" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_route">
     <Key>
       <PropertyRef Name="routeid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="routeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="routename" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="routeid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="routename" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_SessionMaster">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-<<<<<<< HEAD
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="SessionName" Type="varchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
@@ -1316,11 +836,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="StaffAttendanceId" />
     </Key>
-<<<<<<< HEAD
     <Property Name="StaffAttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="StaffAttendanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="StaffId" Type="int" />
     <Property Name="AttendanceDate" Type="datetime" />
     <Property Name="InTime" Type="datetime" />
@@ -1332,11 +848,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Stateid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Stateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Stateid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="StateName" Type="varchar" MaxLength="100" />
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
@@ -1345,19 +857,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="datetime2" Precision="7" />
-=======
-    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Studnm" Type="varchar" MaxLength="50" />
-    <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
-    <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
-    <Property Name="DOB" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="Weight" Type="int" Nullable="false" />
     <Property Name="Height" Type="int" Nullable="false" />
     <Property Name="StudBldGrp" Type="int" Nullable="false" />
@@ -1405,11 +909,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
     <Property Name="PermanentAddress" Type="varchar(max)" />
     <Property Name="academicyear" Type="varchar" MaxLength="10" />
-<<<<<<< HEAD
     <Property Name="SysDt" Type="datetime2" Precision="7" />
-=======
-    <Property Name="SysDt" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="busid" Type="int" />
     <Property Name="cats" Type="varchar(max)" />
     <Property Name="prds" Type="varchar(max)" />
@@ -1461,7 +961,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="PGMarksheet" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
-<<<<<<< HEAD
     <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
     <Property Name="Sibling2Ql" Type="varchar(max)" />
     <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
@@ -1475,21 +974,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
-=======
-    <Property Name="Sibling2DOB" Type="datetime2" />
-    <Property Name="Sibling2Ql" Type="varchar(max)" />
-    <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling1DOB" Type="datetime2" />
-    <Property Name="Sibling1Ql" Type="varchar(max)" />
-    <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling3DOB" Type="datetime2" />
-    <Property Name="Sibling3Ql" Type="varchar(max)" />
-    <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling4DOB" Type="datetime2" />
->>>>>>> origin/master
     <Property Name="Sibling4Ql" Type="varchar(max)" />
     <Property Name="ParishName" Type="varchar" MaxLength="100" />
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
@@ -1520,11 +1004,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="AttendanceID" />
     </Key>
-<<<<<<< HEAD
     <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="AttendanceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="Present" Type="bit" />
     <Property Name="Reason" Type="varchar" MaxLength="500" />
@@ -1537,11 +1017,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="StudCategoryid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="StudCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="StudCategoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="StudCategoryname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
@@ -1549,11 +1025,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="studentid" Type="int" />
     <Property Name="divisionid" Type="int" />
     <Property Name="courseid" Type="int" />
@@ -1566,21 +1038,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Marksid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Marksid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studentid" Type="int" />
     <Property Name="Examid" Type="int" />
     <Property Name="Subjectid" Type="int" />
     <Property Name="Marks" Type="decimal" Precision="18" Scale="0" />
     <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="0" />
-=======
-    <Property Name="Marksid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Studentid" Type="int" />
-    <Property Name="Examid" Type="int" />
-    <Property Name="Subjectid" Type="int" />
-    <Property Name="Marks" Type="decimal" />
-    <Property Name="TotalMarks" Type="decimal" />
->>>>>>> origin/master
     <Property Name="AcadamicYear" Type="varchar" MaxLength="50" />
     <Property Name="Remark" Type="bit" />
   </EntityType>
@@ -1588,11 +1051,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="SubCategoryid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="SubCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="SubCategoryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="SubCategoryname" Type="varchar" MaxLength="50" />
     <Property Name="Categoryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
@@ -1601,15 +1060,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Subjectid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Subjectid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Courseid" Type="int" Nullable="false" />
     <Property Name="SubjectNm" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="Subjectid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Courseid" Type="int" Nullable="false" />
-    <Property Name="SubjectNm" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
     <Property Name="Marks" Type="float" Nullable="false" />
     <Property Name="Pass_Marks" Type="float" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -1621,11 +1074,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Submenuid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Submenuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Submenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="SubmenuName" Type="varchar" MaxLength="50" />
     <Property Name="Submenulink" Type="varchar" MaxLength="50" />
     <Property Name="Menuid" Type="int" Nullable="false" />
@@ -1635,11 +1084,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="teacherid" Type="int" />
     <Property Name="courseid" Type="int" />
     <Property Name="departmentid" Type="int" />
@@ -1652,22 +1097,13 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Tid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Tid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="Classid" Type="int" Nullable="false" />
     <Property Name="Day" Type="int" Nullable="false" />
     <Property Name="LecNo" Type="int" Nullable="false" />
     <Property Name="Subjectid" Type="int" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="LecTime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="LecETime" Type="varchar" MaxLength="25" Nullable="false" />
-=======
-    <Property Name="LecTime" Type="varchar" Nullable="false" MaxLength="25" />
-    <Property Name="LecETime" Type="varchar" Nullable="false" MaxLength="25" />
->>>>>>> origin/master
     <Property Name="Empid" Type="int" Nullable="false" />
     <Property Name="yearid" Type="int" />
     <Property Name="deptid" Type="int" />
@@ -1676,11 +1112,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="busid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="busid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="busid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="busNo" Type="varchar" MaxLength="50" />
     <Property Name="busRoute" Type="int" Nullable="false" />
     <Property Name="busDriverNm" Type="varchar" MaxLength="50" />
@@ -1688,41 +1120,25 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="busRTONo" Type="varchar" MaxLength="50" />
     <Property Name="busDateTime" Type="datetime" />
     <Property Name="status" Type="bit" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_user">
     <Key>
       <PropertyRef Name="Userid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="Userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="UserName" Type="varchar" MaxLength="100" />
     <Property Name="Password" Type="varchar" MaxLength="100" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Genid" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
-<<<<<<< HEAD
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
-=======
-    <Property Name="academicyear" Type="varchar" Nullable="false" MaxLength="50" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="tbl_YearMaster">
     <Key>
       <PropertyRef Name="yearid" />
     </Key>
-<<<<<<< HEAD
     <Property Name="yearid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-=======
-    <Property Name="yearid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
->>>>>>> origin/master
     <Property Name="YearName" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
@@ -1730,19 +1146,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Key>
       <PropertyRef Name="Dept_id" />
     </Key>
-<<<<<<< HEAD
     <Property Name="Dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
   <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
-=======
-    <Property Name="Dept_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Dept_name" Type="varchar" MaxLength="100" />
-    <Property Name="Status" Type="bit" />
-  </EntityType>
-  <Function Name="checkUserLogin" ReturnType="bit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
->>>>>>> origin/master
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
   </Function>
@@ -1768,6 +1176,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
     <Parameter Name="BillNo" Type="varchar" Mode="In" />
     <Parameter Name="Cost" Type="decimal" Mode="In" />
+    <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
+    <Parameter Name="SelfNo" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="lib_Jid" Type="int" Mode="In" />
@@ -1916,6 +1326,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_divisionDML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="DivisionId" Type="varchar" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="leaveid" Type="int" Mode="In" />
@@ -2186,12 +1604,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-<<<<<<< HEAD
   <Function Name="sp_GetBookDetailsbyBookid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Bookid" Type="int" Mode="In" />
   </Function>
-=======
->>>>>>> origin/master
+  <Function Name="sp_GetBookDetailsbyBookidorBookname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="authorname" Type="varchar" Mode="In" />
+    <Parameter Name="bookid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetBookIssueDetailsbyStudentid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Studentid" Type="int" Mode="In" />
@@ -2691,7 +2111,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
-<<<<<<< HEAD
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
@@ -2701,6 +2120,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="System" EntityType="Self.System" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_AssignDivision" EntityType="Self.tbl_AssignDivision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BookStock" EntityType="Self.tbl_BookStock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
@@ -2784,6 +2204,4 @@ FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
-=======
->>>>>>> origin/master
 </Schema>

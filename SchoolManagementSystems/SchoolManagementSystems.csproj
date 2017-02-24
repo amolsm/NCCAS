@@ -700,11 +700,11 @@
     <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
     <Content Include="Views\Library\BookIssue.cshtml" />
     <Content Include="Views\Library\_BookIssueList.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Masters\AssignedDivisionMaster.cshtml" />
-=======
+
     <Content Include="Views\Library\_BookList.cshtml" />
->>>>>>> origin/master
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
