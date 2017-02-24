@@ -87,6 +87,12 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
+        [DisplayName("Accessor No")]
+        public string AccessorNo { get; set; }
+
+        [DisplayName("Shelf No")]
+        public string ShelfNo { get; set; }
+
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 
         public List<tblDepartment> _departmentlist { get; set; }

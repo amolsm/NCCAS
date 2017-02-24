@@ -1,0 +1,53 @@
+﻿@model Entity.BookAllocation
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav tablesorter">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.bookid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.booktitle)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Authorname)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishedByName)
+                </th>
+
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._bookslist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TitleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Authorname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publisher)
+                    </td>
+
+
+                    <td>
+                        <input type="button" id="@item.Id" class="btn btn-default btn_edit" value="Edit" />
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

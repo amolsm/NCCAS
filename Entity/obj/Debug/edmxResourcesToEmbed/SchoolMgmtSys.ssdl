@@ -20,7 +20,7 @@
     <Property Name="BillNo" Type="nvarchar(max)" />
     <Property Name="Cost" Type="money" />
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
-    <Property Name="ShelfNo" Type="varchar" MaxLength="50" />
+    <Property Name="SelfNo" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -96,6 +96,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="bloodgroupnm" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_BookStock">
+    <Key>
+      <PropertyRef Name="BStockid" />
+    </Key>
+    <Property Name="BStockid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CallNo" Type="varchar" MaxLength="100" />
+    <Property Name="BookQty" Type="int" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
@@ -1164,6 +1172,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
     <Parameter Name="BillNo" Type="varchar" Mode="In" />
     <Parameter Name="Cost" Type="decimal" Mode="In" />
+    <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
+    <Parameter Name="SelfNo" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="lib_Jid" Type="int" Mode="In" />
@@ -1582,7 +1592,18 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetBookDetailsbyBookid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Bookid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetBookDetailsbyBookidorBookname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="authorname" Type="varchar" Mode="In" />
+    <Parameter Name="bookid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetBookIssueDetailsbyStudentid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Studentid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2087,6 +2108,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="System" EntityType="Self.System" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_AssignDivision" EntityType="Self.tbl_AssignDivision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BookStock" EntityType="Self.tbl_BookStock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />

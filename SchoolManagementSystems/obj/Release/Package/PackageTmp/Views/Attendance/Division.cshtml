@@ -1,0 +1,146 @@
+﻿ @model Entity.studentdivisionmodel
+@{
+    ViewBag.Title = "Division";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+           @Html.Partial("_AttendanceMenuList")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+              
+                    <ul class="breadcrumb">
+                        <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Attendance Management", "Index", "Attendance", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Student Attendances</li>
+                        <div id="srch_criteria" style="float: right;display:none;">
+                            @*@using (Html.BeginForm())
+                            {*@
+                            @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                            <input type="submit" id="srch" value="Find" />
+                            @*}*@
+                        </div>
+                    </ul>
+                 <div class="panel-body"> 
+                  <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+	                <strong><label id="lblmsg"></label></strong> 
+	                </div>
+                <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+	              <strong><label id="lblmsgs"></label></strong> 
+                </div>
+                </div>
+               <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header">
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                                            @using (Html.BeginForm("ClassStudentAttendance", "Attendance", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",@class="form-horizontal" }))
+                                            {
+                                                @Html.ValidationSummary(true)
+                                                <div>
+                                                    <h2 style="color:red;">
+                                                        @TempData["ErrorMessage"]
+                                                    </h2>
+                                                </div>
+                                              <div id="Contentid" class="control-group">
+                                        @Html.LabelFor(model => model.id, new {  @class="control-label", @for="focusedInput"  })
+                                         <div class="controls">
+                                        @Html.EditorFor(model => model.id, new {  @class="input-xlarge focused"  })
+                                        @Html.ValidationMessageFor(model => model.id)
+                                             </div>
+                                    </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.studentid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.studentid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class")
+                                                    @Html.ValidationMessageFor(model => model.studentid)
+                                                           </div>
+                                                </div>
+                                                 <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.divisionid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.divisionid, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
+                                                    @Html.ValidationMessageFor(model => model.divisionid)
+                                                           </div>
+                                                </div>
+                                                 <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.courseid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.courseid, new SelectList(Model.DivisionList, "Divisionid", "DivisionName", "Select Division"), "Select Division")
+                                                    @Html.ValidationMessageFor(model => model.courseid)
+                                                           </div>
+                                                </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.departmentid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.departmentid, new SelectList(Model.DivisionList, "Divisionid", "DivisionName", "Select Division"), "Select Division")
+                                                    @Html.ValidationMessageFor(model => model.departmentid)
+                                                           </div>
+                                                </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.yearid, new { @class = "control-label" })
+                                                       <div class="controls">
+                                                    @Html.DropDownListFor(model => model.yearid, new SelectList(Model.DivisionList, "Divisionid", "DivisionName", "Select Division"), "Select Division")
+                                                    @Html.ValidationMessageFor(model => model.yearid)
+                                                           </div>
+                                                </div>
+                                                <div class="control-group span5" id="staffreason" style="display: none;">
+                                                </div>
+                                             
+                                                    <div>
+                                            <input type="button" class="btn btn-primary" id="insert" value="submit" />
+                                        </div>
+                                              
+                                                
+                                              
+                                                  
+                                               
+                                            }
+                                                 </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                                                
+                                                 <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                                               <div id="header" class="table-responsive">
+                                        </div>
+                                        <div id="result" class="table-responsive">
+                                        </div>
+                                                </div>
+                                             
+                                                
+
+                                         </div>
+        </div>
+             
+    </div>
+</div>
+   
+            </div>
+    </div>

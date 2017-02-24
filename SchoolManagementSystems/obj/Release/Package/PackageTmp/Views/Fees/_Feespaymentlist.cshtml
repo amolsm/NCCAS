@@ -1,0 +1,97 @@
+﻿@model Entity.paymentviewmodel
+<div id="result" class="table-responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("Class")
+            </th>
+            <th>
+                @Html.DisplayName("Student")
+            </th>
+            <th>
+                @Html.DisplayName("Scholar-ship")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScholarshipFees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalFees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaidFees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PendingFees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PTypeid)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>*@
+            <th>
+                @Html.DisplayName("Stat")
+            </th>
+            <th class="edt">
+                @Html.DisplayName("Action")
+            </th>
+        </tr>
+        </thead>
+                                    <tbody>
+        @foreach (var item in Model._Feespaymentlist)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Studid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scholarship)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScholarshipFees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalFees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaidFees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PendingFees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PTypeid)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Remarks)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @if (item.status != "Paid")
+                    {
+                        <input type="button" id="@item.Pid" class="btn btn-default btn_edit" value="Pay Now" />                                                
+@*<input type="button" id="@item.Pid" class="delete" value="Delete" />*@
+                    }
+                    else
+                    {
+                        <input type="button" id="@item.Pid" disabled="disabled" class="btn btn-default btn_edit" value="Pay Now" />                                                
+@*<input type="button" id="@item.Pid" class="delete" value="Delete" />*@
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
