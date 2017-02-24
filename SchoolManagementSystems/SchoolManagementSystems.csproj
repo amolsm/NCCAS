@@ -265,6 +265,8 @@
     <Content Include="img\icons\Studentmanagement2.png" />
     <Content Include="img\icons\TimeReport1.png" />
     <Content Include="img\icons\Transportmanagement.png" />
+    <Content Include="img\login.png" />
+    <Content Include="img\loginnew2 .png" />
     <Content Include="img\NACCASImage.jpg" />
     <Content Include="img\report.png" />
     <Content Include="img\sms.png" />
@@ -698,7 +700,11 @@
     <Content Include="Views\Timetable\NewTimetableInfo.cshtml" />
     <Content Include="Views\Library\BookIssue.cshtml" />
     <Content Include="Views\Library\_BookIssueList.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Masters\AssignedDivisionMaster.cshtml" />
+=======
+    <Content Include="Views\Library\_BookList.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

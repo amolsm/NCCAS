@@ -12,6 +12,14 @@ D:\NCCProject\NCCAS\BAL\bin\Release\Microsoft.Web.Infrastructure.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\Newtonsoft.Json.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Optimization.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\WebGrease.dll
+<<<<<<< HEAD
+D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Mvc.dll
+D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.dll
+D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Deployment.dll
+=======
+>>>>>>> origin/master
 D:\NCCProject\NCCAS\BAL\bin\Release\DAL.pdb
 D:\NCCProject\NCCAS\BAL\bin\Release\Entity.pdb
 D:\NCCProject\NCCAS\BAL\bin\Release\Antlr3.Runtime.pdb
@@ -20,6 +28,8 @@ D:\NCCProject\NCCAS\BAL\bin\Release\EntityFramework.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\EntityFramework.SqlServer.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\Newtonsoft.Json.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Optimization.xml
+<<<<<<< HEAD
+=======
 D:\NCCProject\NCCAS\BAL\obj\Release\BAL.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\BAL\obj\Release\BAL.dll
 D:\NCCProject\NCCAS\BAL\obj\Release\BAL.pdb
@@ -28,11 +38,17 @@ D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Razor.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Razor.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.dll
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Deployment.dll
+>>>>>>> origin/master
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Mvc.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.Razor.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\BAL\bin\Release\System.Web.WebPages.Deployment.xml
+<<<<<<< HEAD
+D:\NCCProject\NCCAS\BAL\obj\Release\BAL.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\BAL\obj\Release\BAL.dll
+D:\NCCProject\NCCAS\BAL\obj\Release\BAL.pdb
+=======
 D:\NCCAS\NCCAS\BAL\bin\Release\BAL.dll.config
 D:\NCCAS\NCCAS\BAL\bin\Release\BAL.dll
 D:\NCCAS\NCCAS\BAL\bin\Release\BAL.pdb
@@ -58,3 +74,4 @@ D:\NCCAS\NCCAS\BAL\bin\Release\System.Web.Optimization.xml
 D:\NCCAS\NCCAS\BAL\obj\Release\BAL.csprojResolveAssemblyReference.cache
 D:\NCCAS\NCCAS\BAL\obj\Release\BAL.dll
 D:\NCCAS\NCCAS\BAL\obj\Release\BAL.pdb
+>>>>>>> origin/master

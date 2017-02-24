@@ -1062,16 +1062,38 @@
     <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
     <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
     <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
+      <Parameter Name="Studentid" Mode="In" Type="Int32" />
+    </FunctionImport>
+>>>>>>> origin/master
+>>>>>>> origin/master
     <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
       <Parameter Name="courseid" Mode="In" Type="Int32" />
       <Parameter Name="day" Mode="In" Type="Int32" />
       <Parameter Name="subject" Mode="In" Type="Int32" />
       <Parameter Name="teacher" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
     <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
       <Parameter Name="Studentid" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
+=======
+    <FunctionImport Name="sp_GetBookDetailsbyBookid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookid_Result)">
+      <Parameter Name="Bookid" Mode="In" Type="Int32" />
+    </FunctionImport>
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2627,6 +2649,10 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   <ComplexType Name="sp_gettimetableclass_Result">
     <Property Type="Int32" Name="Tid" Nullable="false" />
     <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
@@ -2638,16 +2664,30 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
   <EntityType Name="tbl_lib_BookIssue">
     <Key>
       <PropertyRef Name="BookIssueId" />
     </Key>
+<<<<<<< HEAD
+    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="PanaltyStatus" Type="Boolean" />
+=======
     <Property Type="Int32" Name="BookIssueId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="StudentId" />
     <Property Type="Int32" Name="BookId" />
     <Property Type="DateTime" Name="Issuedatetime" Precision="7" />
     <Property Type="Int32" Name="NoOfDays" />
     <Property Type="Boolean" Name="PanaltyStatus" />
+>>>>>>> origin/master
   </EntityType>
   <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
     <Property Type="Int32" Name="StudentId" Nullable="true" />
@@ -2658,4 +2698,27 @@
     <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
     <Property Type="Int32" Name="NoOfDays" Nullable="true" />
   </ComplexType>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  <ComplexType Name="sp_GetBookDetailsbyBookid_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+=======
+  <ComplexType Name="sp_gettimetableclass_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+>>>>>>> origin/master
+  </ComplexType>
+>>>>>>> origin/master
 </Schema>

@@ -57,6 +57,10 @@ namespace SchoolManagementSystems.Controllers
             libBookentry lb = new libBookentry();
            
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            int count = (from p in db.lib_Bookentry
+                         select p).Count();
+            count=count + 1;
+            lb.AccessorNo = count.ToString();
             return View(lb);
 
         }
@@ -69,7 +73,11 @@ namespace SchoolManagementSystems.Controllers
                try { 
                 db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
+<<<<<<< HEAD
                      _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.self,_lb.self1).ToString();
+=======
+                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo).ToString();
+>>>>>>> origin/master
               TempData["Error"] = "Success";
                 }
                 catch { TempData["Error"] = "Failed"; }
@@ -133,6 +141,7 @@ namespace SchoolManagementSystems.Controllers
             BookAllocation b = new BookAllocation();
 
             b._BookIssueList = db.tbl_lib_BookIssue.ToList();
+            b._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, null, null, DateTime.Now).ToList();
             return View(b);
         }
         [HttpPost]
@@ -145,36 +154,62 @@ namespace SchoolManagementSystems.Controllers
             return Json(StudentName, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult BookIssue(string StudentName, string Studentid)
+        public JsonResult BookAutoComplete(string prefix)
         {
-            int stid;
-            try { stid = Convert.ToInt32(Studentid); } catch { stid = 0; }
-            var BookIssueDetails = from bi in db.tbl_lib_BookIssue
-                                   join st in db.tbl_student on bi.StudentId equals st.Studid
-                                   where st.Studid == stid && st.Studnm == StudentName
-                                   select new {bi.StudentId,st.Studnm,bi.BookId };
-            ViewBag.Message = "Student Name:"+ StudentName+"Student Id:"+ Studentid;
-            BookAllocation b = new BookAllocation();
-
-            b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            return View("BookIssue",b);
+            var BookName = (from bi in db.lib_Bookentry
+                               where bi.booktitle.StartsWith(prefix)
+                               select new
+                               {
+                                   label = bi.booktitle,
+                                   val = bi.bookid
+                               }).ToList();
+            return Json(BookName, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult GetBookIssueDetails(string StudentName, int Studentid)
-        {
-            int stid;
-            try { stid = Convert.ToInt32(Studentid); } catch { stid = 0; }
-            var BookIssueDetails = from bi in db.tbl_lib_BookIssue
-                                   join st in db.tbl_student on bi.StudentId equals st.Studid
-                                   where st.Studid == stid && st.Studnm == StudentName
-                                   select new { bi.StudentId, st.Studnm, bi.BookId };
-            //ViewBag.Message = "Student Name:" + StudentName + "Student Id:" + Studentid;
-            BookAllocation b = new BookAllocation();
-
-            var data = db.tbl_lib_BookIssue.ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
        
+
+        public JsonResult GetBookIssueDetails(string StudentName, int Studentid,int Stdid)
+        {
+            int stid;
+            int Stdids;
+           
+            try { stid = Convert.ToInt32(Studentid);
+           
+            } catch { stid = 0; }
+            try { Stdids = Convert.ToInt32(Stdid); }
+            catch { Stdids = 0; }
+           
+            if (Stdids != 0)
+            {
+                var data = db.sp_GetBookIssueDetailsbyStudentid(Stdids);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+
+                var data = db.sp_GetBookIssueDetailsbyStudentid(stid);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+           
+           
+            
+
+        }
+
+
+        public JsonResult GetBookDetails(string BookName, int hBookid, int bookid)
+        {
+            BookAllocation b = new BookAllocation();
+            b._BookIssueList = db.tbl_lib_BookIssue.ToList();
+            var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, "", bookid).ToList();
+            return Json(data);
+        }
+
+        public JsonResult SaveAllotment(int Stdid, int bookid)
+        {
+            BookAllocation b = new BookAllocation();
+            //b._BookIssueList = db.tbl_lib_BookIssue.ToList();
+            var data = db.sp_GetBookDetailsbyBookidorBookname("", "", bookid).ToList();
+            return Json(data);
+        }
     }
 }

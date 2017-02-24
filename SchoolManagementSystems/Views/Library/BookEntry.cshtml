@@ -10,6 +10,7 @@
     });
     $(document).ready(function () {
         $('#Bookid input').attr("readonly", true);
+        $('#AccessorNo').attr("readonly", true);
         if ($("#Bookid input").val() == "0") {
             $("#Bookid").hide();
         } else {
@@ -40,6 +41,8 @@
                 
                     $("#BillNo").val(data.BillNo);
                     $("#Cost").val(data.Cost);
+                    $("#AccessorNo").val(data.AccessorNo);
+                    $("#ShelfNo").val(data.SelfNo);
                 }
             });
         }
@@ -252,6 +255,36 @@
                     "background": ""
                 });
             }
+            if ($("#AccessorNo").val() == '') {
+                cnt++;
+                $("#AccessorNo").css({
+                    "border": "1px solid red"
+                });
+                alert("AccessorNo  is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#AccessorNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#ShelfNo").val() == '') {
+                cnt++;
+                $("#ShelfNo").css({
+                    "border": "1px solid red"
+                });
+                alert("ShelfNo  is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#ShelfNo").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if (cnt != 0) {
                 e.preventDefault();
             }
@@ -406,12 +439,12 @@
         $("#Authorid").change(function () {
 
             if ($("#Authorid option:selected").text() == "Others") {
-                $('#author').show();
-                $('#author').fadeIn('slow');
+                //$('#author').show();
+                $('#author input').attr("readonly", false);
+                //$('#author').fadeIn('slow');
             }
             else {
-                $('#author').hide();
-                $('#author').fadeOut('slow');
+                $('#author input').attr("readonly", true);
             }
 
 
@@ -419,12 +452,14 @@
         $("#PublishedByid").change(function () {
 
             if ($("#PublishedByid option:selected").text() == "Others") {
-                $('#publisher').show();
-                $('#publisher').fadeIn('slow');
+                $('#publisher input').attr("readonly", false);
+                //$('#publisher').show();
+                //$('#publisher').fadeIn('slow');
             }
             else {
-                $('#publisher').hide();
-                $('#publisher').fadeOut('slow');
+                //$('#publisher').hide();
+                //$('#publisher').fadeOut('slow');
+                $('#publisher input').attr("readonly", true);
             }
 
 
@@ -432,12 +467,12 @@
         $("#Vendorid").change(function () {
 
             if ($("#Vendorid option:selected").text() == "Others") {
-                $('#vendor').show();
-                $('#vendor').fadeIn('slow');
+                //$('#vendor').show();
+                //$('#vendor').fadeIn('slow');
+                $('#vendor input').attr("readonly", false);
             }
             else {
-                $('#vendor').hide();
-                $('#vendor').fadeOut('slow');
+                $('#vendor input').attr("readonly", true);
             }
 
 
@@ -533,6 +568,10 @@
 
         $('#Bookid input').attr("readonly", true);
         $("#Bookid input").val() == "0";
+        $('#author input').attr("readonly", true);
+        $('#publisher input').attr("readonly", true);
+        $('#vendor input').attr("readonly", true);
+       
     });
    
 </script>
@@ -745,7 +784,7 @@
 
                     </div>
                 </div>
-                <div id="author" hidden>
+                <div id="author">
                     <br/>
                 <div class="control-group span5 required" >
 
@@ -799,7 +838,7 @@
 
                     </div>
                 </div>
-                <div id="publisher" hidden>
+                <div id="publisher">
                     <br />
                 <div class="control-group span5 required" >
 
@@ -862,7 +901,7 @@
 
                     </div>
                 </div>
-                <div id="vendor" hidden>
+                <div id="vendor">
                     <br />
                 <div class="control-group span5 required" >
 
@@ -901,6 +940,26 @@
 
                     <div class="controls">
                         @Html.TextBoxFor(model => model.Cost, new { placeholder = "Enter Cost", @class = "input" })
+
+                    </div>
+                </div>
+
+                <div class="control-group span5 required">
+
+                    @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.AccessorNo, new { placeholder = "Enter AccessorNo", @class = "input" })
+
+                    </div>
+                </div>
+
+                <div class="control-group span5 required">
+
+                    @Html.LabelFor(model => model.ShelfNo, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.ShelfNo, new { placeholder = "Enter Self", @class = "input" })
 
                     </div>
                 </div>

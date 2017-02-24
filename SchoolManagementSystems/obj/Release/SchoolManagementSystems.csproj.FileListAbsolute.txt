@@ -38,6 +38,8 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.pdb
+<<<<<<< HEAD
+=======
 D:\NCCAS\NCCAS\SchoolManagementSystems\bin\SchoolManagementSystems.dll
 D:\NCCAS\NCCAS\SchoolManagementSystems\bin\SchoolManagementSystems.pdb
 D:\NCCAS\NCCAS\SchoolManagementSystems\bin\BAL.dll
@@ -76,3 +78,4 @@ D:\NCCAS\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCAS\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.csprojResolveAssemblyReference.cache
 D:\NCCAS\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.dll
 D:\NCCAS\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.pdb
+>>>>>>> origin/master
