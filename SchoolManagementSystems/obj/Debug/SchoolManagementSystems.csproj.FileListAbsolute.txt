@@ -20,7 +20,6 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Deployment.d
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\WebGrease.dll
-D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Antlr3.Runtime.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\BAL.pdb
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Entity.pdb
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\EntityFramework.xml
@@ -38,3 +37,4 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Deployment.x
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.pdb
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Antlr3.Runtime.dll

@@ -87,8 +87,11 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
+        [DisplayName("No Of Days")]
+        public int NoDays { get; set; }
 
-      
+
+
 
 
         [DisplayName("Accessor No")]
@@ -96,6 +99,9 @@ namespace Entity
 
         [DisplayName("Shelf No")]
         public string ShelfNo { get; set; }
+
+        [DisplayName("No Of Copy")]
+        public int NoOfCopy { get; set; }
 
 
         public List<lib_Bookentry> Bookentrycollection { get; set; }

@@ -11044,201 +11044,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="bookid">No Metadata Documentation available.</param>
-        /// <param name="booktitle">No Metadata Documentation available.</param>
-        /// <param name="callNo">No Metadata Documentation available.</param>
-        /// <param name="volume">No Metadata Documentation available.</param>
-        /// <param name="serielNumber">No Metadata Documentation available.</param>
-        /// <param name="authorid">No Metadata Documentation available.</param>
-        /// <param name="authorname">No Metadata Documentation available.</param>
-        /// <param name="publishedByid">No Metadata Documentation available.</param>
-        /// <param name="publishedByName">No Metadata Documentation available.</param>
-        /// <param name="edition">No Metadata Documentation available.</param>
-        /// <param name="vendorid">No Metadata Documentation available.</param>
-        /// <param name="vendorname">No Metadata Documentation available.</param>
-        /// <param name="dateofpurchase">No Metadata Documentation available.</param>
-        /// <param name="billNo">No Metadata Documentation available.</param>
-        /// <param name="cost">No Metadata Documentation available.</param>
-        /// <param name="accessorNo">No Metadata Documentation available.</param>
-        /// <param name="selfNo">No Metadata Documentation available.</param>
-        public int sp_AddLibraryBook(Nullable<global::System.Int32> bookid, global::System.String booktitle, global::System.String callNo, global::System.String volume, global::System.String serielNumber, Nullable<global::System.Int32> authorid, global::System.String authorname, Nullable<global::System.Int32> publishedByid, global::System.String publishedByName, global::System.String edition, Nullable<global::System.Int32> vendorid, global::System.String vendorname, Nullable<global::System.DateTime> dateofpurchase, global::System.String billNo, Nullable<global::System.Decimal> cost, global::System.String accessorNo, global::System.String selfNo)
-        {
-            ObjectParameter bookidParameter;
-            if (bookid.HasValue)
-            {
-                bookidParameter = new ObjectParameter("bookid", bookid);
-            }
-            else
-            {
-                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter booktitleParameter;
-            if (booktitle != null)
-            {
-                booktitleParameter = new ObjectParameter("booktitle", booktitle);
-            }
-            else
-            {
-                booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
-            }
-    
-            ObjectParameter callNoParameter;
-            if (callNo != null)
-            {
-                callNoParameter = new ObjectParameter("CallNo", callNo);
-            }
-            else
-            {
-                callNoParameter = new ObjectParameter("CallNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter volumeParameter;
-            if (volume != null)
-            {
-                volumeParameter = new ObjectParameter("Volume", volume);
-            }
-            else
-            {
-                volumeParameter = new ObjectParameter("Volume", typeof(global::System.String));
-            }
-    
-            ObjectParameter serielNumberParameter;
-            if (serielNumber != null)
-            {
-                serielNumberParameter = new ObjectParameter("SerielNumber", serielNumber);
-            }
-            else
-            {
-                serielNumberParameter = new ObjectParameter("SerielNumber", typeof(global::System.String));
-            }
-    
-            ObjectParameter authoridParameter;
-            if (authorid.HasValue)
-            {
-                authoridParameter = new ObjectParameter("Authorid", authorid);
-            }
-            else
-            {
-                authoridParameter = new ObjectParameter("Authorid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter authornameParameter;
-            if (authorname != null)
-            {
-                authornameParameter = new ObjectParameter("Authorname", authorname);
-            }
-            else
-            {
-                authornameParameter = new ObjectParameter("Authorname", typeof(global::System.String));
-            }
-    
-            ObjectParameter publishedByidParameter;
-            if (publishedByid.HasValue)
-            {
-                publishedByidParameter = new ObjectParameter("PublishedByid", publishedByid);
-            }
-            else
-            {
-                publishedByidParameter = new ObjectParameter("PublishedByid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter publishedByNameParameter;
-            if (publishedByName != null)
-            {
-                publishedByNameParameter = new ObjectParameter("PublishedByName", publishedByName);
-            }
-            else
-            {
-                publishedByNameParameter = new ObjectParameter("PublishedByName", typeof(global::System.String));
-            }
-    
-            ObjectParameter editionParameter;
-            if (edition != null)
-            {
-                editionParameter = new ObjectParameter("Edition", edition);
-            }
-            else
-            {
-                editionParameter = new ObjectParameter("Edition", typeof(global::System.String));
-            }
-    
-            ObjectParameter vendoridParameter;
-            if (vendorid.HasValue)
-            {
-                vendoridParameter = new ObjectParameter("Vendorid", vendorid);
-            }
-            else
-            {
-                vendoridParameter = new ObjectParameter("Vendorid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter vendornameParameter;
-            if (vendorname != null)
-            {
-                vendornameParameter = new ObjectParameter("Vendorname", vendorname);
-            }
-            else
-            {
-                vendornameParameter = new ObjectParameter("Vendorname", typeof(global::System.String));
-            }
-    
-            ObjectParameter dateofpurchaseParameter;
-            if (dateofpurchase.HasValue)
-            {
-                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", dateofpurchase);
-            }
-            else
-            {
-                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter billNoParameter;
-            if (billNo != null)
-            {
-                billNoParameter = new ObjectParameter("BillNo", billNo);
-            }
-            else
-            {
-                billNoParameter = new ObjectParameter("BillNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter costParameter;
-            if (cost.HasValue)
-            {
-                costParameter = new ObjectParameter("Cost", cost);
-            }
-            else
-            {
-                costParameter = new ObjectParameter("Cost", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter accessorNoParameter;
-            if (accessorNo != null)
-            {
-                accessorNoParameter = new ObjectParameter("AccessorNo", accessorNo);
-            }
-            else
-            {
-                accessorNoParameter = new ObjectParameter("AccessorNo", typeof(global::System.String));
-            }
-    
-            ObjectParameter selfNoParameter;
-            if (selfNo != null)
-            {
-                selfNoParameter = new ObjectParameter("SelfNo", selfNo);
-            }
-            else
-            {
-                selfNoParameter = new ObjectParameter("SelfNo", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_AddLibraryBook", bookidParameter, booktitleParameter, callNoParameter, volumeParameter, serielNumberParameter, authoridParameter, authornameParameter, publishedByidParameter, publishedByNameParameter, editionParameter, vendoridParameter, vendornameParameter, dateofpurchaseParameter, billNoParameter, costParameter, accessorNoParameter, selfNoParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="lib_Jid">No Metadata Documentation available.</param>
         /// <param name="libType">No Metadata Documentation available.</param>
         /// <param name="department">No Metadata Documentation available.</param>
@@ -11723,10 +11528,216 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        /// <param name="bookid">No Metadata Documentation available.</param>
+        /// <param name="booktitle">No Metadata Documentation available.</param>
+        /// <param name="callNo">No Metadata Documentation available.</param>
+        /// <param name="volume">No Metadata Documentation available.</param>
+        /// <param name="serielNumber">No Metadata Documentation available.</param>
+        /// <param name="authorid">No Metadata Documentation available.</param>
+        /// <param name="authorname">No Metadata Documentation available.</param>
+        /// <param name="publishedByid">No Metadata Documentation available.</param>
+        /// <param name="publishedByName">No Metadata Documentation available.</param>
+        /// <param name="edition">No Metadata Documentation available.</param>
+        /// <param name="vendorid">No Metadata Documentation available.</param>
+        /// <param name="vendorname">No Metadata Documentation available.</param>
+        /// <param name="dateofpurchase">No Metadata Documentation available.</param>
+        /// <param name="billNo">No Metadata Documentation available.</param>
+        /// <param name="cost">No Metadata Documentation available.</param>
+        /// <param name="accessorNo">No Metadata Documentation available.</param>
+        /// <param name="selfNo">No Metadata Documentation available.</param>
+        /// <param name="noOfCopy">No Metadata Documentation available.</param>
+        public int sp_AddLibraryBook(Nullable<global::System.Int32> bookid, global::System.String booktitle, global::System.String callNo, global::System.String volume, global::System.String serielNumber, Nullable<global::System.Int32> authorid, global::System.String authorname, Nullable<global::System.Int32> publishedByid, global::System.String publishedByName, global::System.String edition, Nullable<global::System.Int32> vendorid, global::System.String vendorname, Nullable<global::System.DateTime> dateofpurchase, global::System.String billNo, Nullable<global::System.Decimal> cost, global::System.String accessorNo, global::System.String selfNo, Nullable<global::System.Int32> noOfCopy)
+        {
+            ObjectParameter bookidParameter;
+            if (bookid.HasValue)
+            {
+                bookidParameter = new ObjectParameter("bookid", bookid);
+            }
+            else
+            {
+                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter booktitleParameter;
+            if (booktitle != null)
+            {
+                booktitleParameter = new ObjectParameter("booktitle", booktitle);
+            }
+            else
+            {
+                booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
+            }
+    
+            ObjectParameter callNoParameter;
+            if (callNo != null)
+            {
+                callNoParameter = new ObjectParameter("CallNo", callNo);
+            }
+            else
+            {
+                callNoParameter = new ObjectParameter("CallNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter volumeParameter;
+            if (volume != null)
+            {
+                volumeParameter = new ObjectParameter("Volume", volume);
+            }
+            else
+            {
+                volumeParameter = new ObjectParameter("Volume", typeof(global::System.String));
+            }
+    
+            ObjectParameter serielNumberParameter;
+            if (serielNumber != null)
+            {
+                serielNumberParameter = new ObjectParameter("SerielNumber", serielNumber);
+            }
+            else
+            {
+                serielNumberParameter = new ObjectParameter("SerielNumber", typeof(global::System.String));
+            }
+    
+            ObjectParameter authoridParameter;
+            if (authorid.HasValue)
+            {
+                authoridParameter = new ObjectParameter("Authorid", authorid);
+            }
+            else
+            {
+                authoridParameter = new ObjectParameter("Authorid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter authornameParameter;
+            if (authorname != null)
+            {
+                authornameParameter = new ObjectParameter("Authorname", authorname);
+            }
+            else
+            {
+                authornameParameter = new ObjectParameter("Authorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter publishedByidParameter;
+            if (publishedByid.HasValue)
+            {
+                publishedByidParameter = new ObjectParameter("PublishedByid", publishedByid);
+            }
+            else
+            {
+                publishedByidParameter = new ObjectParameter("PublishedByid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter publishedByNameParameter;
+            if (publishedByName != null)
+            {
+                publishedByNameParameter = new ObjectParameter("PublishedByName", publishedByName);
+            }
+            else
+            {
+                publishedByNameParameter = new ObjectParameter("PublishedByName", typeof(global::System.String));
+            }
+    
+            ObjectParameter editionParameter;
+            if (edition != null)
+            {
+                editionParameter = new ObjectParameter("Edition", edition);
+            }
+            else
+            {
+                editionParameter = new ObjectParameter("Edition", typeof(global::System.String));
+            }
+    
+            ObjectParameter vendoridParameter;
+            if (vendorid.HasValue)
+            {
+                vendoridParameter = new ObjectParameter("Vendorid", vendorid);
+            }
+            else
+            {
+                vendoridParameter = new ObjectParameter("Vendorid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter vendornameParameter;
+            if (vendorname != null)
+            {
+                vendornameParameter = new ObjectParameter("Vendorname", vendorname);
+            }
+            else
+            {
+                vendornameParameter = new ObjectParameter("Vendorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter dateofpurchaseParameter;
+            if (dateofpurchase.HasValue)
+            {
+                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", dateofpurchase);
+            }
+            else
+            {
+                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter billNoParameter;
+            if (billNo != null)
+            {
+                billNoParameter = new ObjectParameter("BillNo", billNo);
+            }
+            else
+            {
+                billNoParameter = new ObjectParameter("BillNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter costParameter;
+            if (cost.HasValue)
+            {
+                costParameter = new ObjectParameter("Cost", cost);
+            }
+            else
+            {
+                costParameter = new ObjectParameter("Cost", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter accessorNoParameter;
+            if (accessorNo != null)
+            {
+                accessorNoParameter = new ObjectParameter("AccessorNo", accessorNo);
+            }
+            else
+            {
+                accessorNoParameter = new ObjectParameter("AccessorNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter selfNoParameter;
+            if (selfNo != null)
+            {
+                selfNoParameter = new ObjectParameter("SelfNo", selfNo);
+            }
+            else
+            {
+                selfNoParameter = new ObjectParameter("SelfNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter noOfCopyParameter;
+            if (noOfCopy.HasValue)
+            {
+                noOfCopyParameter = new ObjectParameter("NoOfCopy", noOfCopy);
+            }
+            else
+            {
+                noOfCopyParameter = new ObjectParameter("NoOfCopy", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_AddLibraryBook", bookidParameter, booktitleParameter, callNoParameter, volumeParameter, serielNumberParameter, authoridParameter, authornameParameter, publishedByidParameter, publishedByNameParameter, editionParameter, vendoridParameter, vendornameParameter, dateofpurchaseParameter, billNoParameter, costParameter, accessorNoParameter, selfNoParameter, noOfCopyParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         /// <param name="booktitle">No Metadata Documentation available.</param>
         /// <param name="authorname">No Metadata Documentation available.</param>
-        /// <param name="bookid">No Metadata Documentation available.</param>
-        public ObjectResult<sp_GetBookDetailsbyBookidorBookname_Result> sp_GetBookDetailsbyBookidorBookname(global::System.String booktitle, global::System.String authorname, Nullable<global::System.Int32> bookid)
+        /// <param name="callno">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetBookDetailsbyBookidorBookname_Result> sp_GetBookDetailsbyBookidorBookname(global::System.String booktitle, global::System.String authorname, global::System.String callno)
         {
             ObjectParameter booktitleParameter;
             if (booktitle != null)
@@ -11748,17 +11759,17 @@ namespace Entity
                 authornameParameter = new ObjectParameter("authorname", typeof(global::System.String));
             }
     
-            ObjectParameter bookidParameter;
-            if (bookid.HasValue)
+            ObjectParameter callnoParameter;
+            if (callno != null)
             {
-                bookidParameter = new ObjectParameter("bookid", bookid);
+                callnoParameter = new ObjectParameter("callno", callno);
             }
             else
             {
-                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+                callnoParameter = new ObjectParameter("callno", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<sp_GetBookDetailsbyBookidorBookname_Result>("sp_GetBookDetailsbyBookidorBookname", booktitleParameter, authornameParameter, bookidParameter);
+            return base.ExecuteFunction<sp_GetBookDetailsbyBookidorBookname_Result>("sp_GetBookDetailsbyBookidorBookname", booktitleParameter, authornameParameter, callnoParameter);
         }
 
         #endregion
@@ -11783,10 +11794,12 @@ namespace Entity
         /// Create a new lib_Bookentry object.
         /// </summary>
         /// <param name="bookid">Initial value of the bookid property.</param>
-        public static lib_Bookentry Createlib_Bookentry(global::System.Int32 bookid)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static lib_Bookentry Createlib_Bookentry(global::System.Int32 bookid, global::System.Int32 status)
         {
             lib_Bookentry lib_Bookentry = new lib_Bookentry();
             lib_Bookentry.bookid = bookid;
+            lib_Bookentry.Status = status;
             return lib_Bookentry;
         }
 
@@ -12204,6 +12217,54 @@ namespace Entity
         private global::System.String _SelfNo;
         partial void OnSelfNoChanging(global::System.String value);
         partial void OnSelfNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NoOfCopy
+        {
+            get
+            {
+                return _NoOfCopy;
+            }
+            set
+            {
+                OnNoOfCopyChanging(value);
+                ReportPropertyChanging("NoOfCopy");
+                _NoOfCopy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NoOfCopy");
+                OnNoOfCopyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NoOfCopy;
+        partial void OnNoOfCopyChanging(Nullable<global::System.Int32> value);
+        partial void OnNoOfCopyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
 
         #endregion
 
@@ -13465,6 +13526,30 @@ namespace Entity
         private Nullable<global::System.Int32> _LostQty;
         partial void OnLostQtyChanging(Nullable<global::System.Int32> value);
         partial void OnLostQtyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TotalBook
+        {
+            get
+            {
+                return _TotalBook;
+            }
+            set
+            {
+                OnTotalBookChanging(value);
+                ReportPropertyChanging("TotalBook");
+                _TotalBook = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalBook");
+                OnTotalBookChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TotalBook;
+        partial void OnTotalBookChanging(Nullable<global::System.Int32> value);
+        partial void OnTotalBookChanged();
 
         #endregion
 
@@ -34785,10 +34870,12 @@ namespace Entity
         /// Create a new sp_GetBookDetailsbyBookidorBookname_Result object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static sp_GetBookDetailsbyBookidorBookname_Result Createsp_GetBookDetailsbyBookidorBookname_Result(global::System.Int32 id)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static sp_GetBookDetailsbyBookidorBookname_Result Createsp_GetBookDetailsbyBookidorBookname_Result(global::System.Int32 id, global::System.String status)
         {
             sp_GetBookDetailsbyBookidorBookname_Result sp_GetBookDetailsbyBookidorBookname_Result = new sp_GetBookDetailsbyBookidorBookname_Result();
             sp_GetBookDetailsbyBookidorBookname_Result.Id = id;
+            sp_GetBookDetailsbyBookidorBookname_Result.Status = status;
             return sp_GetBookDetailsbyBookidorBookname_Result;
         }
 
@@ -34915,6 +35002,30 @@ namespace Entity
         private global::System.String _Vendor;
         partial void OnVendorChanging(global::System.String value);
         partial void OnVendorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
 
         #endregion
 

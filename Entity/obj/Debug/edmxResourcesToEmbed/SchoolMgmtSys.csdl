@@ -1008,25 +1008,6 @@
     <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
     <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
     <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
-    <FunctionImport Name="sp_AddLibraryBook">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="CallNo" Mode="In" Type="String" />
-      <Parameter Name="Volume" Mode="In" Type="String" />
-      <Parameter Name="SerielNumber" Mode="In" Type="String" />
-      <Parameter Name="Authorid" Mode="In" Type="Int32" />
-      <Parameter Name="Authorname" Mode="In" Type="String" />
-      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
-      <Parameter Name="PublishedByName" Mode="In" Type="String" />
-      <Parameter Name="Edition" Mode="In" Type="String" />
-      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
-      <Parameter Name="Vendorname" Mode="In" Type="String" />
-      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
-      <Parameter Name="BillNo" Mode="In" Type="String" />
-      <Parameter Name="Cost" Mode="In" Type="Decimal" />
-      <Parameter Name="AccessorNo" Mode="In" Type="String" />
-      <Parameter Name="SelfNo" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_AddLibraryJournal">
       <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
       <Parameter Name="LibType" Mode="In" Type="Int32" />
@@ -1086,10 +1067,30 @@
       <Parameter Name="Bookid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
+    <FunctionImport Name="sp_AddLibraryBook">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="CallNo" Mode="In" Type="String" />
+      <Parameter Name="Volume" Mode="In" Type="String" />
+      <Parameter Name="SerielNumber" Mode="In" Type="String" />
+      <Parameter Name="Authorid" Mode="In" Type="Int32" />
+      <Parameter Name="Authorname" Mode="In" Type="String" />
+      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
+      <Parameter Name="PublishedByName" Mode="In" Type="String" />
+      <Parameter Name="Edition" Mode="In" Type="String" />
+      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="Vendorname" Mode="In" Type="String" />
+      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="Cost" Mode="In" Type="Decimal" />
+      <Parameter Name="AccessorNo" Mode="In" Type="String" />
+      <Parameter Name="SelfNo" Mode="In" Type="String" />
+      <Parameter Name="NoOfCopy" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
       <Parameter Name="booktitle" Mode="In" Type="String" />
       <Parameter Name="authorname" Mode="In" Type="String" />
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="callno" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2666,6 +2667,7 @@
     <Property Type="Int32" Name="AllocateQty" />
     <Property Type="Int32" Name="AvailQty" />
     <Property Type="Int32" Name="LostQty" />
+    <Property Name="TotalBook" Type="Int32" />
   </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookid_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2678,23 +2680,25 @@
     <Key>
       <PropertyRef Name="bookid" />
     </Key>
-    <Property Type="Int32" Name="bookid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="booktitle" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="CallNo" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Volume" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="SerielNumber" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="Authorid" />
-    <Property Type="String" Name="Authorname" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="PublishedByid" />
-    <Property Type="String" Name="PublishedByName" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Edition" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Vendorid" />
-    <Property Type="String" Name="Vendorname" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Dateofpurchase" Precision="7" />
-    <Property Type="String" Name="BillNo" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="Cost" Precision="19" Scale="4" />
-    <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="SelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="booktitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SerielNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Authorid" Type="Int32" />
+    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PublishedByid" Type="Int32" />
+    <Property Name="PublishedByName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AccessorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SelfNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfCopy" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
   </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2702,5 +2706,6 @@
     <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="13" />
   </ComplexType>
 </Schema>

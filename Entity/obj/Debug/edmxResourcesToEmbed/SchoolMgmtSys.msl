@@ -1827,7 +1827,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
     <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
     <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
       <ResultMapping>
@@ -1943,6 +1942,7 @@
     <EntitySetMapping Name="tbl_BookStock">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_BookStock">
         <MappingFragment StoreEntitySet="tbl_BookStock">
+          <ScalarProperty Name="TotalBook" ColumnName="TotalBook" />
           <ScalarProperty Name="LostQty" ColumnName="LostQty" />
           <ScalarProperty Name="AvailQty" ColumnName="AvailQty" />
           <ScalarProperty Name="AllocateQty" ColumnName="AllocateQty" />
@@ -1966,6 +1966,8 @@
     <EntitySetMapping Name="lib_Bookentry">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.lib_Bookentry">
         <MappingFragment StoreEntitySet="lib_Bookentry">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NoOfCopy" ColumnName="NoOfCopy" />
           <ScalarProperty Name="SelfNo" ColumnName="SelfNo" />
           <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
@@ -1986,6 +1988,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
     <FunctionImportMapping FunctionImportName="sp_GetBookDetailsbyBookidorBookname" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookDetailsbyBookidorBookname">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result">
@@ -1994,6 +1997,7 @@
           <ScalarProperty Name="Authorname" ColumnName="Authorname" />
           <ScalarProperty Name="Publisher" ColumnName="Publisher" />
           <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

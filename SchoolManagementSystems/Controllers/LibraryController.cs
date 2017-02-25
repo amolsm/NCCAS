@@ -74,7 +74,7 @@ namespace SchoolManagementSystems.Controllers
                 db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
 
-                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo).ToString();
+                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
 
               TempData["Error"] = "Success";
                 }
@@ -159,7 +159,7 @@ namespace SchoolManagementSystems.Controllers
                                select new
                                {
                                    label = bi.booktitle,
-                                   val = bi.bookid
+                                   val = bi.CallNo
                                }).ToList();
             return Json(BookName, JsonRequestBehavior.AllowGet);
         }
@@ -194,19 +194,27 @@ namespace SchoolManagementSystems.Controllers
         }
 
 
-        public JsonResult GetBookDetails(string BookName, int hBookid, int bookid)
+        public JsonResult GetBookDetails(string BookName, string hcallid, string callno)
         {
-            BookAllocation b = new BookAllocation();
-            b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, "", bookid).ToList();
-            return Json(data);
+          
+            
+            if (callno == "" || callno==null)
+            { var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, hcallid, null).ToList();
+              return Json(data);
+            }
+            else
+            { var data = db.sp_GetBookDetailsbyBookidorBookname(null, null, callno).ToList();
+              return Json(data);
+            }
+           
+           
         }
 
-        public JsonResult SaveAllotment(int Stdid, int bookid)
+        public JsonResult SaveAllotment(int Stdid, int bookid,int NoOfDays)
         {
             BookAllocation b = new BookAllocation();
             //b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            var data = db.sp_GetBookDetailsbyBookidorBookname("", "", bookid).ToList();
+            var data = db.sp_GetBookDetailsbyBookidorBookname(null, null, null).ToList();
             return Json(data);
         }
     }
