@@ -1008,7 +1008,6 @@
     <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.tbl_lib_JournalType" />
     <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.tbl_lib_Publisher" />
     <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.tbl_lib_Vendor" />
-<<<<<<< HEAD
     <FunctionImport Name="sp_AddLibraryBook">
       <Parameter Name="bookid" Mode="In" Type="Int32" />
       <Parameter Name="booktitle" Mode="In" Type="String" />
@@ -1028,8 +1027,6 @@
       <Parameter Name="AccessorNo" Mode="In" Type="String" />
       <Parameter Name="SelfNo" Mode="In" Type="String" />
     </FunctionImport>
-=======
->>>>>>> origin/master
     <FunctionImport Name="sp_AddLibraryJournal">
       <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
       <Parameter Name="LibType" Mode="In" Type="Int32" />
@@ -1064,15 +1061,10 @@
       <Parameter Name="subject" Mode="In" Type="Int32" />
       <Parameter Name="teacher" Mode="In" Type="Int32" />
     </FunctionImport>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
     <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
       <Parameter Name="Studentid" Mode="In" Type="Int32" />
     </FunctionImport>
-<<<<<<< HEAD
     <FunctionImport Name="sp_Division_DML">
       <Parameter Name="DivisionId" Mode="In" Type="Int32" />
       <Parameter Name="DivisionName" Mode="In" Type="String" />
@@ -1080,7 +1072,6 @@
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
     <EntitySet Name="tbl_AssignDivision" EntityType="SchoolMgmtSysModel.tbl_AssignDivision" />
     <FunctionImport Name="sp_divisionDML">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -1090,39 +1081,22 @@
       <Parameter Name="department" Mode="In" Type="Int32" />
       <Parameter Name="year" Mode="In" Type="Int32" />
     </FunctionImport>
-=======
+    <EntitySet Name="tbl_BookStock" EntityType="SchoolMgmtSysModel.tbl_BookStock" />
     <FunctionImport Name="sp_GetBookDetailsbyBookid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookid_Result)">
       <Parameter Name="Bookid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_AddLibraryBook">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="CallNo" Mode="In" Type="String" />
-      <Parameter Name="Volume" Mode="In" Type="String" />
-      <Parameter Name="SerielNumber" Mode="In" Type="String" />
-      <Parameter Name="Authorid" Mode="In" Type="Int32" />
-      <Parameter Name="Authorname" Mode="In" Type="String" />
-      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
-      <Parameter Name="PublishedByName" Mode="In" Type="String" />
-      <Parameter Name="Edition" Mode="In" Type="String" />
-      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
-      <Parameter Name="Vendorname" Mode="In" Type="String" />
-      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
-      <Parameter Name="BillNo" Mode="In" Type="String" />
-      <Parameter Name="Cost" Mode="In" Type="Decimal" />
-      <Parameter Name="AccessorNo" Mode="In" Type="String" />
-      <Parameter Name="SelfNo" Mode="In" Type="String" />
-    </FunctionImport>
     <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
-    <EntitySet Name="tbl_BookStock" EntityType="SchoolMgmtSysModel.tbl_BookStock" />
     <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
       <Parameter Name="booktitle" Mode="In" Type="String" />
       <Parameter Name="authorname" Mode="In" Type="String" />
       <Parameter Name="bookid" Mode="In" Type="Int32" />
     </FunctionImport>
-=======
->>>>>>> origin/master
->>>>>>> origin/master
+    <FunctionImport Name="sp_getVendor" ReturnType="Collection(SchoolMgmtSysModel.sp_getVendor_Result)" />
+    <FunctionImport Name="sp_Vendor">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="vendorname" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2677,40 +2651,28 @@
     <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
     <Property Type="Int32" Name="NoOfDays" Nullable="true" />
   </ComplexType>
-<<<<<<< HEAD
-=======
-  <ComplexType Name="sp_gettimetableclass_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-  </ComplexType>
-<<<<<<< HEAD
-  <EntityType Name="tbl_lib_BookIssue">
+  <EntityType Name="tbl_AssignDivision">
     <Key>
-      <PropertyRef Name="BookIssueId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StudentId" Type="Int32" />
-    <Property Name="BookId" Type="Int32" />
-    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
-    <Property Name="NoOfDays" Type="Int32" />
-    <Property Name="PanaltyStatus" Type="Boolean" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Studid" />
+    <Property Type="Int32" Name="Classid" />
+    <Property Type="Int32" Name="department" />
+    <Property Type="Int32" Name="year" />
+    <Property Type="String" Name="divisionId" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
-    <Property Type="Int32" Name="StudentId" Nullable="true" />
-    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="BookId" Nullable="true" />
-    <Property Type="String" Name="booktitle" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
-    <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
-    <Property Type="Int32" Name="NoOfDays" Nullable="true" />
-  </ComplexType>
+  <EntityType Name="tbl_BookStock">
+    <Key>
+      <PropertyRef Name="BStockid" />
+    </Key>
+    <Property Type="Int32" Name="BStockid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CallNo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BookQty" />
+    <Property Type="Int32" Name="AllocateQty" />
+    <Property Type="Int32" Name="AvailQty" />
+    <Property Type="Int32" Name="LostQty" />
+  </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookid_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
@@ -2718,12 +2680,10 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
->>>>>>> origin/master
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
     </Key>
-<<<<<<< HEAD
     <Property Type="Int32" Name="bookid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="booktitle" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="CallNo" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -2741,44 +2701,8 @@
     <Property Type="Decimal" Name="Cost" Precision="19" Scale="4" />
     <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="SelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_AssignDivision">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Studid" />
-    <Property Type="Int32" Name="Classid" />
-    <Property Type="Int32" Name="department" />
-    <Property Type="Int32" Name="year" />
-    <Property Type="String" Name="divisionId" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
-=======
-    <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="booktitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SerielNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Authorid" Type="Int32" />
-    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PublishedByid" Type="Int32" />
-    <Property Name="PublishedByName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Vendorid" Type="Int32" />
-    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
-    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="AccessorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SelfNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_BookStock">
-    <Key>
-      <PropertyRef Name="BStockid" />
-    </Key>
-    <Property Name="BStockid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="BookQty" Type="Int32" />
+    <Property Type="Int32" Name="NoOfCopy" />
+    <Property Type="Int32" Name="Status" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
   </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2787,7 +2711,9 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
-=======
->>>>>>> origin/master
->>>>>>> origin/master
+  <ComplexType Name="sp_getVendor_Result">
+    <Property Type="Int32" Name="Vendorid" Nullable="false" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
 </Schema>

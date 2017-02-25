@@ -1590,5 +1590,34 @@ namespace SchoolManagementSystems.Controllers
         }
         #endregion
 
+        #region Lib_VenderMaster
+        public ActionResult VendorMaster()
+        {
+            lib_vendormodel _cvm = new lib_vendormodel();
+            FillPermission(35);
+            _cvm._Vendorlist = db.sp_getVendor().ToList();
+            return View(_cvm);
+        }
+        public JsonResult check_duplicate_vender(string Vendorname)
+        {
+            var data = db.tbl_lib_Vendor.Where(m => m.Vendorname == Vendorname).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Fillvendor(int id)
+        {
+            var data = db.tbl_lib_Vendor.Where(m => m.Vendorid == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLvender(lib_vendormodel _lvm)
+        {
+
+            db.sp_Vendor(_lvm.venderId, _lvm.Vendername, _lvm.status).ToString();
+
+            _lvm._Vendorlist = db.sp_getVendor().ToList();
+            return PartialView("_VenderList", _lvm);
+        }
+        #endregion
+
     }
 }
