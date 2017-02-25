@@ -1091,12 +1091,15 @@
       <Parameter Name="authorname" Mode="In" Type="String" />
       <Parameter Name="bookid" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
     <FunctionImport Name="sp_getVendor" ReturnType="Collection(SchoolMgmtSysModel.sp_getVendor_Result)" />
     <FunctionImport Name="sp_Vendor">
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="vendorname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
+=======
+>>>>>>> origin/master
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2701,8 +2704,11 @@
     <Property Type="Decimal" Name="Cost" Precision="19" Scale="4" />
     <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="SelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
+<<<<<<< HEAD
     <Property Type="Int32" Name="NoOfCopy" />
     <Property Type="Int32" Name="Status" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+=======
+>>>>>>> origin/master
   </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2711,9 +2717,12 @@
     <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
   </ComplexType>
+<<<<<<< HEAD
   <ComplexType Name="sp_getVendor_Result">
     <Property Type="Int32" Name="Vendorid" Nullable="false" />
     <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
   </ComplexType>
+=======
+>>>>>>> origin/master
 </Schema>

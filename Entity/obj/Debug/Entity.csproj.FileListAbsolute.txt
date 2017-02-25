@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.dll.config
 D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.dll
 D:\NCCAS\NCCAS\Entity\bin\Debug\Entity.pdb
@@ -8,3 +9,21 @@ D:\NCCAS\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
 D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.dll
 D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.pdb
 D:\NCCAS\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+=======
+D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.dll.config
+D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\Entity.pdb
+D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.Mvc.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.Razor.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Razor.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.xml
+D:\NCCProject\NCCAS\Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.dll
+D:\NCCProject\NCCAS\Entity\obj\Debug\Entity.pdb
+>>>>>>> origin/master

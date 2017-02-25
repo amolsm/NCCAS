@@ -44,7 +44,7 @@
 
 
 
-        function checkChecked() {
+       @* function checkChecked() {
             var anyBoxesChecked = "";
             $('#result input[type="checkbox"]').each(function () {
                 if ($(this).is(":checked")) {
@@ -62,7 +62,7 @@
                     window.location.replace("Sms");
                 }
             });
-        }
+        }*@
 
 
         //$("#insert").hide();
@@ -102,6 +102,60 @@
 
         }
 
+        $("#insert").click(function () {
+            debugger;
+            var presentdetails = [];
+            var msgss = ($("#msg").val());
+            if (msgss != '') {
+                $('input:checkbox.chcktbl').each(function (evt) {
+                    var msg = ($("#msg").val());
+                    var student = ($(this).val());
+                    remark = '';
+                    if ($(this).prop('checked')) {
+                        remark = 'true';
+                        presentdetails.push(msg + "," + student + "," + remark);
+
+                    }
+                    else {
+                        var msg = '';
+                        var student = '';
+                        remark = '';
+                    }
+
+                });
+                if (presentdetails != "") {
+                    var options = {};
+                    options.type = "POST",
+                    options.url = '@Url.Action("studentmsgclass")',
+                        options.data = JSON.stringify(presentdetails);
+                    options.contentType = "application/json";
+                    options.success = function (presentdetails) {
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Massage send successfully!..");
+                        $("#lblmsgs").css({ "color": "green" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
+                        $("#result").html(result);
+                    };
+                    options.error = function (presentdetails) {
+                        $("#msg1").show();
+                        $("#lblmsg").text("Error while sending massage !..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "15px" });
+                        $("#result").html(result);
+                    };
+                    $.ajax(options);
+                }
+            }
+            else {
+                $("#msg1").show();
+                $("#lblmsg").text("Massage box empty !..");
+                $("#lblmsg").css({ "color": "orange" });
+                $("#lblmsg").css({ "font-size": "15px" });
+                $("#result").html(result);
+
+            }
+         });
+
 
     });
 </script>
@@ -117,6 +171,12 @@
                       @Html.ActionLink("Sms Management", "Sms", "Sms", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Sms Management</li>
                     </ul>
+                 <div id="msgs" hidden="hidden"  visible="false" class="alert alert-success">
+                       <strong><label id="lblmsgs"></label></strong>
+                     </div>
+                 <div id="msg1" hidden="hidden"  visible="false" class="alert alert-warning">
+                       <strong><label id="lblmsg"></label></strong>
+                     </div>
                    <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>
@@ -162,13 +222,13 @@
   
     <tr>
            <td>
-              <input type="checkbox" class = "chcktbl" checked="checked"  value="@item.Classid"/>
+              <input type="checkbox" class = "chcktbl" checked="checked"  value="@item.Courseid"/>
             
         </td>
        
         
         <td>
-            @Html.DisplayFor(modelItem => item.Classnm)
+            @Html.DisplayFor(modelItem => item.CourseName)
         </td>
       
       

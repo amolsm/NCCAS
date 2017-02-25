@@ -87,11 +87,22 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
+<<<<<<< HEAD
+=======
+
+      
+
+
+>>>>>>> origin/master
         [DisplayName("Accessor No")]
         public string AccessorNo { get; set; }
 
         [DisplayName("Shelf No")]
         public string ShelfNo { get; set; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 

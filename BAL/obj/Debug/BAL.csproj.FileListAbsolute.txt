@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\NCCAS\NCCAS\BAL\bin\Debug\BAL.dll.config
 D:\NCCAS\NCCAS\BAL\bin\Debug\BAL.dll
 D:\NCCAS\NCCAS\BAL\bin\Debug\BAL.pdb
@@ -23,3 +24,35 @@ D:\NCCAS\NCCAS\BAL\bin\Debug\System.Web.Optimization.xml
 D:\NCCAS\NCCAS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
 D:\NCCAS\NCCAS\BAL\obj\Debug\BAL.dll
 D:\NCCAS\NCCAS\BAL\obj\Debug\BAL.pdb
+=======
+D:\NCCProject\NCCAS\BAL\bin\Debug\BAL.dll.config
+D:\NCCProject\NCCAS\BAL\bin\Debug\BAL.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\BAL.pdb
+D:\NCCProject\NCCAS\BAL\bin\Debug\Antlr3.Runtime.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\DAL.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\DotNetZip.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\Entity.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\EntityFramework.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\Ionic.Zip.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\Newtonsoft.Json.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Optimization.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\WebGrease.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Mvc.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\NCCProject\NCCAS\BAL\bin\Debug\DAL.pdb
+D:\NCCProject\NCCAS\BAL\bin\Debug\Entity.pdb
+D:\NCCProject\NCCAS\BAL\bin\Debug\Antlr3.Runtime.pdb
+D:\NCCProject\NCCAS\BAL\bin\Debug\DotNetZip.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\EntityFramework.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\Newtonsoft.Json.xml
+D:\NCCProject\NCCAS\BAL\bin\Debug\System.Web.Optimization.xml
+D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.dll
+D:\NCCProject\NCCAS\BAL\obj\Debug\BAL.pdb
+>>>>>>> origin/master
