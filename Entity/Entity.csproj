@@ -73,6 +73,7 @@
     <Compile Include="divisionmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
+    <Compile Include="lib_vendormodel.cs" />
     <Compile Include="sessionviewmodel.cs" />
     <Compile Include="libBookentry.cs" />
     <Compile Include="smsviewmodel.cs" />

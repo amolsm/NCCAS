@@ -2001,5 +2001,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+<<<<<<< HEAD
+    <FunctionImportMapping FunctionImportName="sp_getVendor" FunctionName="SchoolMgmtSysModel.Store.sp_getVendor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getVendor_Result">
+          <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+          <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Vendor" FunctionName="SchoolMgmtSysModel.Store.sp_Vendor" />
+=======
+>>>>>>> origin/master
   </EntityContainerMapping>
 </Mapping>
