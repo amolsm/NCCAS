@@ -11813,8 +11813,61 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        /// <param name="studentid">No Metadata Documentation available.</param>
         /// <param name="bookid">No Metadata Documentation available.</param>
-        public int sp_updatereturnbook(Nullable<global::System.Int32> bookid)
+        /// <param name="noofdays">No Metadata Documentation available.</param>
+        /// <param name="returnflag">No Metadata Documentation available.</param>
+        public int AddBookAllotment(Nullable<global::System.Int32> studentid, Nullable<global::System.Int32> bookid, Nullable<global::System.Int32> noofdays, Nullable<global::System.Int32> returnflag)
+        {
+            ObjectParameter studentidParameter;
+            if (studentid.HasValue)
+            {
+                studentidParameter = new ObjectParameter("studentid", studentid);
+            }
+            else
+            {
+                studentidParameter = new ObjectParameter("studentid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter bookidParameter;
+            if (bookid.HasValue)
+            {
+                bookidParameter = new ObjectParameter("bookid", bookid);
+            }
+            else
+            {
+                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter noofdaysParameter;
+            if (noofdays.HasValue)
+            {
+                noofdaysParameter = new ObjectParameter("noofdays", noofdays);
+            }
+            else
+            {
+                noofdaysParameter = new ObjectParameter("noofdays", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter returnflagParameter;
+            if (returnflag.HasValue)
+            {
+                returnflagParameter = new ObjectParameter("returnflag", returnflag);
+            }
+            else
+            {
+                returnflagParameter = new ObjectParameter("returnflag", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("AddBookAllotment", studentidParameter, bookidParameter, noofdaysParameter, returnflagParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="bookid">No Metadata Documentation available.</param>
+        /// <param name="cretedby">No Metadata Documentation available.</param>
+        public int sp_updatereturnbook(Nullable<global::System.Int32> bookid, Nullable<global::System.Int32> cretedby)
         {
             ObjectParameter bookidParameter;
             if (bookid.HasValue)
@@ -11826,7 +11879,36 @@ namespace Entity
                 bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction("sp_updatereturnbook", bookidParameter);
+            ObjectParameter cretedbyParameter;
+            if (cretedby.HasValue)
+            {
+                cretedbyParameter = new ObjectParameter("cretedby", cretedby);
+            }
+            else
+            {
+                cretedbyParameter = new ObjectParameter("cretedby", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_updatereturnbook", bookidParameter, cretedbyParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="student">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getbookissue_Result> sp_getbookissue(Nullable<global::System.Int32> student)
+        {
+            ObjectParameter studentParameter;
+            if (student.HasValue)
+            {
+                studentParameter = new ObjectParameter("student", student);
+            }
+            else
+            {
+                studentParameter = new ObjectParameter("student", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getbookissue_Result>("sp_getbookissue", studentParameter);
         }
 
         #endregion
@@ -23725,6 +23807,54 @@ namespace Entity
         private Nullable<global::System.Int32> _Returnflag;
         partial void OnReturnflagChanging(Nullable<global::System.Int32> value);
         partial void OnReturnflagChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ReturnDate
+        {
+            get
+            {
+                return _ReturnDate;
+            }
+            set
+            {
+                OnReturnDateChanging(value);
+                ReportPropertyChanging("ReturnDate");
+                _ReturnDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ReturnDate");
+                OnReturnDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ReturnDate;
+        partial void OnReturnDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnReturnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Return_CreatedBy
+        {
+            get
+            {
+                return _Return_CreatedBy;
+            }
+            set
+            {
+                OnReturn_CreatedByChanging(value);
+                ReportPropertyChanging("Return_CreatedBy");
+                _Return_CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Return_CreatedBy");
+                OnReturn_CreatedByChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Return_CreatedBy;
+        partial void OnReturn_CreatedByChanging(Nullable<global::System.Int32> value);
+        partial void OnReturn_CreatedByChanged();
 
         #endregion
 
@@ -35520,6 +35650,203 @@ namespace Entity
         private Nullable<global::System.Decimal> _Cost;
         partial void OnCostChanging(Nullable<global::System.Decimal> value);
         partial void OnCostChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getbookissue_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getbookissue_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getbookissue_Result object.
+        /// </summary>
+        /// <param name="bookIssueId">Initial value of the BookIssueId property.</param>
+        public static sp_getbookissue_Result Createsp_getbookissue_Result(global::System.Int32 bookIssueId)
+        {
+            sp_getbookissue_Result sp_getbookissue_Result = new sp_getbookissue_Result();
+            sp_getbookissue_Result.BookIssueId = bookIssueId;
+            return sp_getbookissue_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BookIssueId
+        {
+            get
+            {
+                return _BookIssueId;
+            }
+            set
+            {
+                OnBookIssueIdChanging(value);
+                ReportPropertyChanging("BookIssueId");
+                _BookIssueId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BookIssueId");
+                OnBookIssueIdChanged();
+            }
+        }
+        private global::System.Int32 _BookIssueId;
+        partial void OnBookIssueIdChanging(global::System.Int32 value);
+        partial void OnBookIssueIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> StudentId
+        {
+            get
+            {
+                return _StudentId;
+            }
+            set
+            {
+                OnStudentIdChanging(value);
+                ReportPropertyChanging("StudentId");
+                _StudentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StudentId");
+                OnStudentIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _StudentId;
+        partial void OnStudentIdChanging(Nullable<global::System.Int32> value);
+        partial void OnStudentIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> BookId
+        {
+            get
+            {
+                return _BookId;
+            }
+            set
+            {
+                OnBookIdChanging(value);
+                ReportPropertyChanging("BookId");
+                _BookId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BookId");
+                OnBookIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _BookId;
+        partial void OnBookIdChanging(Nullable<global::System.Int32> value);
+        partial void OnBookIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Issuedatetime
+        {
+            get
+            {
+                return _Issuedatetime;
+            }
+            set
+            {
+                OnIssuedatetimeChanging(value);
+                ReportPropertyChanging("Issuedatetime");
+                _Issuedatetime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Issuedatetime");
+                OnIssuedatetimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Issuedatetime;
+        partial void OnIssuedatetimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnIssuedatetimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CallNo
+        {
+            get
+            {
+                return _CallNo;
+            }
+            set
+            {
+                OnCallNoChanging(value);
+                ReportPropertyChanging("CallNo");
+                _CallNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CallNo");
+                OnCallNoChanged();
+            }
+        }
+        private global::System.String _CallNo;
+        partial void OnCallNoChanging(global::System.String value);
+        partial void OnCallNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AccessorNo
+        {
+            get
+            {
+                return _AccessorNo;
+            }
+            set
+            {
+                OnAccessorNoChanging(value);
+                ReportPropertyChanging("AccessorNo");
+                _AccessorNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("AccessorNo");
+                OnAccessorNoChanged();
+            }
+        }
+        private global::System.String _AccessorNo;
+        partial void OnAccessorNoChanging(global::System.String value);
+        partial void OnAccessorNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NoOfDaysTillt
+        {
+            get
+            {
+                return _NoOfDaysTillt;
+            }
+            set
+            {
+                OnNoOfDaysTilltChanging(value);
+                ReportPropertyChanging("NoOfDaysTillt");
+                _NoOfDaysTillt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NoOfDaysTillt");
+                OnNoOfDaysTilltChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NoOfDaysTillt;
+        partial void OnNoOfDaysTilltChanging(Nullable<global::System.Int32> value);
+        partial void OnNoOfDaysTilltChanged();
 
         #endregion
 

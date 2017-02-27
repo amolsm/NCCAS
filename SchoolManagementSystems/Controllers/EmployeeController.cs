@@ -14,7 +14,6 @@ using System.Text;
 using Ionic.Zip;
 using System.Web.UI.WebControls;
 using System.Web.UI;
-using ASPSnippets.SmsAPI;
 using System.Net;
 using System.Collections.Specialized;
 

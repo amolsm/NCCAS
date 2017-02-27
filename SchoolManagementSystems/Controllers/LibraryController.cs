@@ -73,15 +73,8 @@ namespace SchoolManagementSystems.Controllers
                try { 
                 db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
-<<<<<<< HEAD
                      _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
 
-
-=======
-
-                   _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
-
->>>>>>> origin/master
               TempData["Error"] = "Success";
                 }
                 catch { TempData["Error"] = "Failed"; }
@@ -202,38 +195,14 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult GetBookDetails(string BookName, string callno)
         {
-          
-            
-<<<<<<< HEAD
-            if (callno == "" || callno==null)
-            { var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, hcallid).ToList();
-              return Json(data);
-            }
-            else
-            { var data = db.sp_GetBookDetailsbyBookidorBookname(null, callno).ToList();
-              return Json(data);
-            }
-           
-           
-        }
-        public JsonResult SaveAllotment(int Stdid, int bookid,int NoOfDays)
-        {
-            BookAllocation b = new BookAllocation();
-            //b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            var data = db.sp_GetBookDetailsbyBookidorBookname(null, null).ToList();
-            return Json(data);
-=======
-             var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, callno).ToList();
-              return Json(data);
-         
-           
-           
-        }
 
+            var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, callno).ToList();
+             return Json(data);
+           
+        }
+        
         public JsonResult StudentBookAllotment(string[] bookallotments)
         {
-
-           
             string s;
 
             for (int i = 0; i < bookallotments.Count(); i++)
@@ -262,7 +231,6 @@ namespace SchoolManagementSystems.Controllers
             int result;
             result = db.AddBookAllotment(studentid, bookid, noofdays, returnflag);
             return result;
->>>>>>> origin/master
         }
 
         public ActionResult BookReturn()
@@ -274,7 +242,7 @@ namespace SchoolManagementSystems.Controllers
         public JsonResult GetBookreturn(int studid)
         {
             int flag = 0;
-            var bookreturn = db.tbl_lib_BookIssue.Where(m => (m.Returnflag == flag && m.StudentId == studid)).ToList();
+            var bookreturn = db.sp_getbookissue(studid).ToList();
             return Json(bookreturn,JsonRequestBehavior.AllowGet);
         }
 
@@ -282,14 +250,15 @@ namespace SchoolManagementSystems.Controllers
         {
             tbl_lib_BookIssue sa = new tbl_lib_BookIssue();
             string s;
-            
+            int createdby = Convert.ToInt32(Session["Userid"].ToString());
             for (int i = 0; i < presentdetails.Count(); i++)
             {
 
                 s = presentdetails[i].ToString();
                 string[] s1 = s.ToString().Split(',');
                 sa.BookIssueId = Convert.ToInt32(s1[0].ToString());
-                db.sp_updatereturnbook(sa.BookIssueId);
+                sa.Return_CreatedBy = createdby;
+                db.sp_updatereturnbook(sa.BookIssueId, createdby);
                 db.SaveChanges();
 
             }

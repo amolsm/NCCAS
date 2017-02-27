@@ -740,6 +740,8 @@
           <Property Name="NoOfDays" Type="int" />
           <Property Name="PanaltyStatus" Type="bit" />
           <Property Name="Returnflag" Type="int" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="Return_CreatedBy" Type="int" />
         </EntityType>
         <EntityType Name="tbl_lib_JournalType">
           <Key>
@@ -1257,6 +1259,12 @@
           <Property Name="Dept_name" Type="varchar" MaxLength="100" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <Function Name="AddBookAllotment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studentid" Type="int" Mode="In" />
+          <Parameter Name="bookid" Type="int" Mode="In" />
+          <Parameter Name="noofdays" Type="int" Mode="In" />
+          <Parameter Name="returnflag" Type="int" Mode="In" />
+        </Function>
         <Function Name="checkUserLogin" ReturnType="bit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1720,6 +1728,9 @@
           <Parameter Name="callno" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getbookissue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="student" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_GetBookIssueDetailsbyStudentid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Studentid" Type="int" Mode="In" />
         </Function>
@@ -2211,6 +2222,7 @@
         </Function>
         <Function Name="sp_updatereturnbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bookid" Type="int" Mode="In" />
+          <Parameter Name="cretedby" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_User_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Userid" Type="int" Mode="In" />
@@ -3328,8 +3340,18 @@
             <Parameter Name="IsActive" Mode="In" Type="Boolean" />
           </FunctionImport>
           <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
+          <FunctionImport Name="AddBookAllotment">
+            <Parameter Name="studentid" Mode="In" Type="Int32" />
+            <Parameter Name="bookid" Mode="In" Type="Int32" />
+            <Parameter Name="noofdays" Mode="In" Type="Int32" />
+            <Parameter Name="returnflag" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_updatereturnbook">
             <Parameter Name="bookid" Mode="In" Type="Int32" />
+            <Parameter Name="cretedby" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getbookissue" ReturnType="Collection(SchoolMgmtSysModel.sp_getbookissue_Result)">
+            <Parameter Name="student" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -4953,7 +4975,18 @@
           <Property Type="Int32" Name="NoOfDays" />
           <Property Type="Boolean" Name="PanaltyStatus" />
           <Property Type="Int32" Name="Returnflag" />
+          <Property Type="DateTime" Name="ReturnDate" Precision="3" />
+          <Property Type="Int32" Name="Return_CreatedBy" />
         </EntityType>
+        <ComplexType Name="sp_getbookissue_Result">
+          <Property Type="Int32" Name="BookIssueId" Nullable="false" />
+          <Property Type="Int32" Name="StudentId" Nullable="true" />
+          <Property Type="Int32" Name="BookId" Nullable="true" />
+          <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
+          <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="NoOfDaysTillt" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6962,6 +6995,8 @@
           <EntitySetMapping Name="tbl_lib_BookIssue">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
               <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
+                <ScalarProperty Name="Return_CreatedBy" ColumnName="Return_CreatedBy" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
                 <ScalarProperty Name="Returnflag" ColumnName="Returnflag" />
                 <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
                 <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
@@ -6972,7 +7007,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddBookAllotment" FunctionName="SchoolMgmtSysModel.Store.AddBookAllotment" />
           <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
+          <FunctionImportMapping FunctionImportName="sp_getbookissue" FunctionName="SchoolMgmtSysModel.Store.sp_getbookissue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getbookissue_Result">
+                <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+                <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+                <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
+                <ScalarProperty Name="NoOfDaysTillt" ColumnName="NoOfDaysTillt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
