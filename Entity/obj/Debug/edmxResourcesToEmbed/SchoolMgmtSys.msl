@@ -1900,18 +1900,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_lib_BookIssue">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
-        <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
-          <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
-          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
-          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
-          <ScalarProperty Name="BookId" ColumnName="BookId" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
@@ -1942,6 +1930,7 @@
     <EntitySetMapping Name="tbl_BookStock">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_BookStock">
         <MappingFragment StoreEntitySet="tbl_BookStock">
+          <ScalarProperty Name="ReturnQty" ColumnName="ReturnQty" />
           <ScalarProperty Name="TotalBook" ColumnName="TotalBook" />
           <ScalarProperty Name="LostQty" ColumnName="LostQty" />
           <ScalarProperty Name="AvailQty" ColumnName="AvailQty" />
@@ -2001,7 +1990,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="sp_getVendor" FunctionName="SchoolMgmtSysModel.Store.sp_getVendor">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getVendor_Result">
@@ -2012,7 +2000,19 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_Vendor" FunctionName="SchoolMgmtSysModel.Store.sp_Vendor" />
-=======
->>>>>>> origin/master
+    <EntitySetMapping Name="tbl_lib_BookIssue">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
+        <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
+          <ScalarProperty Name="Returnflag" ColumnName="Returnflag" />
+          <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
   </EntityContainerMapping>
 </Mapping>

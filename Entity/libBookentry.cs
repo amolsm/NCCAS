@@ -87,38 +87,29 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
-<<<<<<< HEAD
         [DisplayName("No Of Days")]
         public int NoDays { get; set; }
 
-
-=======
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-
-
-
->>>>>>> origin/master
         [DisplayName("Accessor No")]
         public string AccessorNo { get; set; }
 
         [DisplayName("Shelf No")]
         public string ShelfNo { get; set; }
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
         [DisplayName("No Of Copy")]
         public int NoOfCopy { get; set; }
 
-=======
->>>>>>> origin/master
->>>>>>> origin/master
+        [DisplayName("Student Name")]
+        public string StudentName { get; set; }
+
+        [DisplayName("Student ID")]
+        public int StudentId { get; set; }
 
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 
         public List<tblDepartment> _departmentlist { get; set; }
+
+        public List<tbl_lib_BookIssue> _bookissuelist { get; set; }
 
         public List<lib_Journal> Journalentrydetails { get; set; }
         public List<sp_getBookentry_Result> _bookentrylist { get; set; }

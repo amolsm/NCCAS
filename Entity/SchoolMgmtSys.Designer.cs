@@ -1108,22 +1108,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_lib_BookIssue> tbl_lib_BookIssue
-        {
-            get
-            {
-                if ((_tbl_lib_BookIssue == null))
-                {
-                    _tbl_lib_BookIssue = base.CreateObjectSet<tbl_lib_BookIssue>("tbl_lib_BookIssue");
-                }
-                return _tbl_lib_BookIssue;
-            }
-        }
-        private ObjectSet<tbl_lib_BookIssue> _tbl_lib_BookIssue;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_AssignDivision> tbl_AssignDivision
         {
             get
@@ -1168,6 +1152,22 @@ namespace Entity
             }
         }
         private ObjectSet<lib_Bookentry> _lib_Bookentry;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_lib_BookIssue> tbl_lib_BookIssue
+        {
+            get
+            {
+                if ((_tbl_lib_BookIssue == null))
+                {
+                    _tbl_lib_BookIssue = base.CreateObjectSet<tbl_lib_BookIssue>("tbl_lib_BookIssue");
+                }
+                return _tbl_lib_BookIssue;
+            }
+        }
+        private ObjectSet<tbl_lib_BookIssue> _tbl_lib_BookIssue;
 
         #endregion
 
@@ -1694,14 +1694,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_lib_BookIssue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_lib_BookIssue(tbl_lib_BookIssue tbl_lib_BookIssue)
-        {
-            base.AddObject("tbl_lib_BookIssue", tbl_lib_BookIssue);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_AssignDivision EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_AssignDivision(tbl_AssignDivision tbl_AssignDivision)
@@ -1723,6 +1715,14 @@ namespace Entity
         public void AddTolib_Bookentry(lib_Bookentry lib_Bookentry)
         {
             base.AddObject("lib_Bookentry", lib_Bookentry);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_lib_BookIssue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_lib_BookIssue(tbl_lib_BookIssue tbl_lib_BookIssue)
+        {
+            base.AddObject("tbl_lib_BookIssue", tbl_lib_BookIssue);
         }
 
         #endregion
@@ -11735,9 +11735,8 @@ namespace Entity
         /// No Metadata Documentation available.
         /// </summary>
         /// <param name="booktitle">No Metadata Documentation available.</param>
-        /// <param name="authorname">No Metadata Documentation available.</param>
         /// <param name="callno">No Metadata Documentation available.</param>
-        public ObjectResult<sp_GetBookDetailsbyBookidorBookname_Result> sp_GetBookDetailsbyBookidorBookname(global::System.String booktitle, global::System.String authorname, global::System.String callno)
+        public ObjectResult<sp_GetBookDetailsbyBookidorBookname_Result> sp_GetBookDetailsbyBookidorBookname(global::System.String booktitle, global::System.String callno)
         {
             ObjectParameter booktitleParameter;
             if (booktitle != null)
@@ -11747,16 +11746,6 @@ namespace Entity
             else
             {
                 booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
-            }
-    
-            ObjectParameter authornameParameter;
-            if (authorname != null)
-            {
-                authornameParameter = new ObjectParameter("authorname", authorname);
-            }
-            else
-            {
-                authornameParameter = new ObjectParameter("authorname", typeof(global::System.String));
             }
     
             ObjectParameter callnoParameter;
@@ -11769,7 +11758,75 @@ namespace Entity
                 callnoParameter = new ObjectParameter("callno", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<sp_GetBookDetailsbyBookidorBookname_Result>("sp_GetBookDetailsbyBookidorBookname", booktitleParameter, authornameParameter, callnoParameter);
+            return base.ExecuteFunction<sp_GetBookDetailsbyBookidorBookname_Result>("sp_GetBookDetailsbyBookidorBookname", booktitleParameter, callnoParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getVendor_Result> sp_getVendor()
+        {
+            return base.ExecuteFunction<sp_getVendor_Result>("sp_getVendor");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="iD">No Metadata Documentation available.</param>
+        /// <param name="vendorname">No Metadata Documentation available.</param>
+        /// <param name="isActive">No Metadata Documentation available.</param>
+        public int sp_Vendor(Nullable<global::System.Int32> iD, global::System.String vendorname, Nullable<global::System.Boolean> isActive)
+        {
+            ObjectParameter iDParameter;
+            if (iD.HasValue)
+            {
+                iDParameter = new ObjectParameter("ID", iD);
+            }
+            else
+            {
+                iDParameter = new ObjectParameter("ID", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter vendornameParameter;
+            if (vendorname != null)
+            {
+                vendornameParameter = new ObjectParameter("vendorname", vendorname);
+            }
+            else
+            {
+                vendornameParameter = new ObjectParameter("vendorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter isActiveParameter;
+            if (isActive.HasValue)
+            {
+                isActiveParameter = new ObjectParameter("IsActive", isActive);
+            }
+            else
+            {
+                isActiveParameter = new ObjectParameter("IsActive", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction("sp_Vendor", iDParameter, vendornameParameter, isActiveParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="bookid">No Metadata Documentation available.</param>
+        public int sp_updatereturnbook(Nullable<global::System.Int32> bookid)
+        {
+            ObjectParameter bookidParameter;
+            if (bookid.HasValue)
+            {
+                bookidParameter = new ObjectParameter("bookid", bookid);
+            }
+            else
+            {
+                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_updatereturnbook", bookidParameter);
         }
 
         #endregion
@@ -13550,6 +13607,30 @@ namespace Entity
         private Nullable<global::System.Int32> _TotalBook;
         partial void OnTotalBookChanging(Nullable<global::System.Int32> value);
         partial void OnTotalBookChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ReturnQty
+        {
+            get
+            {
+                return _ReturnQty;
+            }
+            set
+            {
+                OnReturnQtyChanging(value);
+                ReportPropertyChanging("ReturnQty");
+                _ReturnQty = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ReturnQty");
+                OnReturnQtyChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ReturnQty;
+        partial void OnReturnQtyChanging(Nullable<global::System.Int32> value);
+        partial void OnReturnQtyChanged();
 
         #endregion
 
@@ -23620,6 +23701,30 @@ namespace Entity
         private Nullable<global::System.Boolean> _PanaltyStatus;
         partial void OnPanaltyStatusChanging(Nullable<global::System.Boolean> value);
         partial void OnPanaltyStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Returnflag
+        {
+            get
+            {
+                return _Returnflag;
+            }
+            set
+            {
+                OnReturnflagChanging(value);
+                ReportPropertyChanging("Returnflag");
+                _Returnflag = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Returnflag");
+                OnReturnflagChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Returnflag;
+        partial void OnReturnflagChanging(Nullable<global::System.Int32> value);
+        partial void OnReturnflagChanged();
 
         #endregion
 
@@ -43337,6 +43442,109 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getVendor_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getVendor_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getVendor_Result object.
+        /// </summary>
+        /// <param name="vendorid">Initial value of the Vendorid property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        public static sp_getVendor_Result Createsp_getVendor_Result(global::System.Int32 vendorid, global::System.String status)
+        {
+            sp_getVendor_Result sp_getVendor_Result = new sp_getVendor_Result();
+            sp_getVendor_Result.Vendorid = vendorid;
+            sp_getVendor_Result.Status = status;
+            return sp_getVendor_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Vendorid
+        {
+            get
+            {
+                return _Vendorid;
+            }
+            set
+            {
+                OnVendoridChanging(value);
+                ReportPropertyChanging("Vendorid");
+                _Vendorid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Vendorid");
+                OnVendoridChanged();
+            }
+        }
+        private global::System.Int32 _Vendorid;
+        partial void OnVendoridChanging(global::System.Int32 value);
+        partial void OnVendoridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Vendorname
+        {
+            get
+            {
+                return _Vendorname;
+            }
+            set
+            {
+                OnVendornameChanging(value);
+                ReportPropertyChanging("Vendorname");
+                _Vendorname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Vendorname");
+                OnVendornameChanged();
+            }
+        }
+        private global::System.String _Vendorname;
+        partial void OnVendornameChanging(global::System.String value);
+        partial void OnVendornameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
 
         #endregion
 

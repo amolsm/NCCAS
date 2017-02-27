@@ -1,0 +1,258 @@
+﻿@model Entity.libBookentry
+@{
+    ViewBag.Title = "BookReturn";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+@*<script src="../../Scripts/jquery-1.10.2.js" type="text/javascript"></script>*@
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<style type="text/css">
+    .ui-datepicker-calendar
+    {
+        background-color: antiquewhite;
+    }
+    
+    .ui-datepicker-title
+    {
+        background-color: antiquewhite;
+    }
+    
+    .ui-icon ui-icon-circle-triangle-w
+    {
+        background-color: antiquewhite;
+    }
+    #ui-datepicker-div
+    {
+        display: none;
+    }
+    .hide
+    {
+        display:none;
+    }
+    .show
+    {
+        display:block;
+    }
+</style>
+ 
+    
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        $("#StudentName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/Library/AutoComplete/',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },
+            select: function (e, i) {
+                $("#StudentId").val(i.item.val);
+            },
+            minLength: 1
+        });
+    });
+    $(document).ready(function () {
+        
+
+        $("#insert").click(function () {
+            debugger;
+            var presentdetails = [];
+            $('input:checkbox.addcls').each(function (evt) {
+               
+
+                if ($(this).prop('checked')) {
+                    var BookIssueId = ($(this).val());
+                    presentdetails.push(BookIssueId);
+                }
+                else {
+                    var BookIssueId = null;
+                }
+            });
+            if (presentdetails != "") {
+                var options = {};
+                options.type = "POST",
+                options.url = '@Url.Action("BookUpdate")',
+                options.data = JSON.stringify(presentdetails);
+                options.contentType = "application/json";
+                options.success = function (presentdetails) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Book Return updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                    //alert("PresentList updated successfully!..");
+                };
+                options.error = function (presentdetails) {
+                    $("#msg").show();
+                    $("#lblmsg").text("Error while save the records!..");
+                    $("#lblmsg").css({ "color": "orange" });
+                    $("#lblmsg").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                    //alert("Error while save the records!");
+                };
+                $.ajax(options);
+            }
+
+        });
+        $("#search").click(function () {
+        $.ajax({    
+            type: 'POST',
+            url: '@Url.Action("GetBookreturn")',
+                dataType: 'json',
+                data: {studid: $("#StudentId").val()},
+                success: function (data) {
+                    debugger;
+                    var result = $('#result');
+                    var head = $('#header');
+                    var table; var header
+                    var Bookids;// = $("#bookids").val(data.length);
+                    result.html('');
+
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='15%;' style='text-align:center'>Book Issue ID</th><th  width='15%;'  style='text-align:center'>Student ID</th><th  width='10%;'  style='text-align:center'>Book ID</th><th  width='15%;'  style='text-align:center'>Issue Date</th><th  width='15%;'  style='text-align:center'>No. of Days</th><th  width='12%;'  style='text-align:center'>Panalty Status</th><th width='18%;'><input  type='checkbox' id='Add_header' />Return Book</th></thead></table>";
+                    head.html(header);
+                    table = "<table class='table tb-parshav tablesorter'><tbody>";
+                    debugger;
+                    for (var i = 0; i < data.length; i++) {
+                        debugger;
+                        Bookids = data[i].BookIssueId;                                                                                                                                                                                                                     //onchange='valueChanged()'  
+                        table += "<tr id=" + Bookids + "><td width='15%;' style='text-align:center'>" + data[i].BookIssueId.toString() + "</td><td  style='text-align:center' width='15%;'>" + data[i].StudentId.toString() + "</td><td  style='text-align:center' width='10%;'>" + data[i].BookId.toString() + "</td><td  style='text-align:center' width='15%;'>" + (new Date(parseInt(data[i].Issuedatetime.substr(6)))).toDateString() + "</td><td  style='text-align:center' width='15%;'>" + data[i].NoOfDays.toString() + "</td><td  style='text-align:center' width='12%;'>" + data[i].PanaltyStatus.toString() + "</td><td width='18%;'><input class='addcls' type='checkbox' id='Present_" + data[i].BookIssueId.toString() + "'  value='" + data[i].BookIssueId.toString() + "'></td></tr>";
+                        
+                    }
+                    table += "</tbody><table>";
+                    result.html(table);
+                    // myFunction();
+                }
+
+        });
+        });
+        $("#header").click(function () {
+          
+            if ($("#Add_header").is(":checked")) {
+                $(".addcls").prop('checked', true); 
+            }
+            else {
+                $(".addcls").prop('checked', false);       
+            }
+            
+        });
+        
+    });
+
+</script>
+
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+          @Html.Partial("_LibrarymanagementList")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+              
+                    <ul class="breadcrumb">
+                        <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Library Management", "Index", "Library", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Student Attendances</li>
+                    </ul>
+                 <div class="panel-body"> 
+                  <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+	                <strong><label id="lblmsg"></label></strong> 
+	                </div>
+                <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+	              <strong><label id="lblmsgs"></label></strong> 
+                </div>
+                </div>
+               <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                             <div class="control-group span5 ">
+
+                                    @Html.LabelFor(model => model.StudentId, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @type = "number", @min = "0", @class = "input" })
+                                      
+
+                                    </div>
+                                   
+                                </div>
+                              
+                                <div class="control-group span5 addor ">
+                                    
+                                    @Html.LabelFor(model => model.StudentName, new { @class = "control-label", @for = "focusedInput" })
+
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.StudentName, new { placeholder = "Enter Student Name", @class = "input" })
+                                        <input type="hidden" id="hfStudentid" name="Studentids" />
+                                        <br /><br />
+                                      
+                                    </div>
+                                </div>
+                            <div class="control-group span5  pull-right">
+                                <input type="button" class="btn btn-primary" id="search" value="Search" />
+						<input type="button" class="btn btn-primary" id="insert" value="submit" />
+                                 </div>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                                                
+                                                 <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                                               <div id="header" class="table-responsive">
+                                        </div>
+                                        <div id="result" class="table-responsive">
+                                           
+                                        </div>
+                                                </div>
+                                             
+                                                
+
+                                         </div>
+        </div>
+             
+    </div>
+</div>
+   
+            </div>
+    </div>
