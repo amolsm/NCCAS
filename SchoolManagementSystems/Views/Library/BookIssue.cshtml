@@ -125,11 +125,12 @@
                                 var rows = "<tr>"
                                 + "<td class='prtoducttd'>" + item.StudentId + "</td>"
                                 + "<td class='prtoducttd'>" + item.Studnm + "</td>"
-                                + "<td class='prtoducttd'>" + item.BookId + "</td>"
+                                + "<td class='prtoducttd'>" + item.CallNo + "</td>"
+                                + "<td class='prtoducttd'>" + item.AccessorNo + "</td>"
                                 + "<td class='prtoducttd'>" + item.booktitle + "</td>"
                                 + "<td class='prtoducttd'>" + (new Date(parseInt(item.Issuedatetime.substr(6)))).toDateString() + "</td>"
                                 + "<td class='prtoducttd'>" + item.NoOfDaysTill + "</td>"
-                                + "<td class='prtoducttd'>" + item.NoOfDays + "</td>"
+                             
                                 + "</tr>";
                                 $('#tblProducts tbody').append(rows);
 
@@ -199,7 +200,7 @@
 
                             });
                         } else {
-
+                            $("#tblBooks tbody tr").remove();
                             var rows = "<tr>"
                                 + "<td class='prtoducttd' colspan='7'>" + "No Records Found" + "</td>"
 
@@ -262,7 +263,13 @@
                         $("#lblmsgs").text("Book Allotment  successfully!..");
                         $("#lblmsgs").css({ "color": "green" });
                         $("#lblmsgs").css({ "font-size": "15px" });
-                        $("#tblBooks").html(result);
+                        var Table = document.getElementById("tblBooksBody");
+                        Table.innerHTML = "<tr>"
+                                + "<td class='prtoducttd' colspan='7'>" + "" + "</td>"
+
+                                + "</tr>";
+                      
+                        ReloadPaging();
                     };
                     options.error = function (bookallotments) {
                         $("#msg1").show();
@@ -399,11 +406,12 @@
                                 <tr>
                                     <th align="left" class="productth">Student Id</th>
                                     <th align="left" class="productth">Student Name</th>
-                                    <th align="left" class="productth">BookId</th>
+                                    <th align="left" class="productth">CallNo</th>
+                                    <th align="left" class="productth">AccessorNo</th>
                                     <th align="left" class="productth">Book Name</th>
                                     <th align="left" class="productth">Issue Date</th>
-                                    <th align="left" class="productth">No Of Days till</th>
-                                    <th align="left" class="productth">Total Days</th>
+                                    <th align="left" class="productth">No Of Days</th>
+                                  
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -533,7 +541,7 @@
 
                                                         </tr>
                                                     </thead>
-                                                    <tbody></tbody>
+                                                    <tbody id="tblBooksBody"></tbody>
                                                 </table>
                                             </div>
                                             <br />
