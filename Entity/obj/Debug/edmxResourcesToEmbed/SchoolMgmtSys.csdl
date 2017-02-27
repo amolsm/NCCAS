@@ -1086,19 +1086,34 @@
       <Parameter Name="SelfNo" Mode="In" Type="String" />
       <Parameter Name="NoOfCopy" Mode="In" Type="Int32" />
     </FunctionImport>
+<<<<<<< HEAD
     <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
       <Parameter Name="booktitle" Mode="In" Type="String" />
       <Parameter Name="callno" Mode="In" Type="String" />
     </FunctionImport>
+=======
+>>>>>>> origin/master
     <FunctionImport Name="sp_getVendor" ReturnType="Collection(SchoolMgmtSysModel.sp_getVendor_Result)" />
     <FunctionImport Name="sp_Vendor">
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="vendorname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
+<<<<<<< HEAD
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
     <FunctionImport Name="sp_updatereturnbook">
       <Parameter Name="bookid" Mode="In" Type="Int32" />
+=======
+    <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="callno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddBookAllotment">
+      <Parameter Name="studentid" Mode="In" Type="Int32" />
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="noofdays" Mode="In" Type="Int32" />
+      <Parameter Name="returnflag" Mode="In" Type="Int32" />
+>>>>>>> origin/master
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2634,6 +2649,21 @@
     <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
   </ComplexType>
+<<<<<<< HEAD
+=======
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Type="Int32" Name="BookIssueId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="StudentId" />
+    <Property Type="Int32" Name="BookId" />
+    <Property Type="DateTime" Name="Issuedatetime" Precision="7" />
+    <Property Type="Int32" Name="NoOfDays" />
+    <Property Type="Boolean" Name="PanaltyStatus" />
+    <Property Name="Returnflag" Type="Int32" />
+  </EntityType>
+>>>>>>> origin/master
   <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
     <Property Type="Int32" Name="StudentId" Nullable="true" />
     <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
@@ -2665,7 +2695,11 @@
     <Property Type="Int32" Name="AvailQty" />
     <Property Type="Int32" Name="LostQty" />
     <Property Name="TotalBook" Type="Int32" />
+<<<<<<< HEAD
     <Property Type="Int32" Name="ReturnQty" />
+=======
+    <Property Name="ReturnQty" Type="Int32" />
+>>>>>>> origin/master
   </EntityType>
   <ComplexType Name="sp_GetBookDetailsbyBookid_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2698,6 +2732,11 @@
     <Property Name="NoOfCopy" Type="Int32" />
     <Property Name="Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
   </EntityType>
+  <ComplexType Name="sp_getVendor_Result">
+    <Property Type="Int32" Name="Vendorid" Nullable="false" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
   <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
@@ -2706,6 +2745,7 @@
     <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Status" Nullable="false" MaxLength="13" />
   </ComplexType>
+<<<<<<< HEAD
   <ComplexType Name="sp_getVendor_Result">
     <Property Type="Int32" Name="Vendorid" Nullable="false" />
     <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
@@ -2723,4 +2763,6 @@
     <Property Type="Boolean" Name="PanaltyStatus" />
     <Property Type="Int32" Name="Returnflag" />
   </EntityType>
+=======
+>>>>>>> origin/master
 </Schema>

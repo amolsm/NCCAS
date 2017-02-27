@@ -73,9 +73,15 @@ namespace SchoolManagementSystems.Controllers
                try { 
                 db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
+<<<<<<< HEAD
                      _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
 
 
+=======
+
+                   _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
+
+>>>>>>> origin/master
               TempData["Error"] = "Success";
                 }
                 catch { TempData["Error"] = "Failed"; }
@@ -194,10 +200,11 @@ namespace SchoolManagementSystems.Controllers
         }
 
 
-        public JsonResult GetBookDetails(string BookName, string hcallid, string callno)
+        public JsonResult GetBookDetails(string BookName, string callno)
         {
           
             
+<<<<<<< HEAD
             if (callno == "" || callno==null)
             { var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, hcallid).ToList();
               return Json(data);
@@ -215,6 +222,47 @@ namespace SchoolManagementSystems.Controllers
             //b._BookIssueList = db.tbl_lib_BookIssue.ToList();
             var data = db.sp_GetBookDetailsbyBookidorBookname(null, null).ToList();
             return Json(data);
+=======
+             var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, callno).ToList();
+              return Json(data);
+         
+           
+           
+        }
+
+        public JsonResult StudentBookAllotment(string[] bookallotments)
+        {
+
+           
+            string s;
+
+            for (int i = 0; i < bookallotments.Count(); i++)
+            {
+                s = bookallotments[i].ToString();
+                string[] s1 = s.ToString().Split(',');
+                int Studentid = Convert.ToInt32(s1[0].ToString());
+                int bookid = Convert.ToInt32(s1[1].ToString());
+                int noofdays = Convert.ToInt32(s1[2].ToString());
+                int returnflag = Convert.ToInt32(s1[3].ToString());
+
+               int result= AddBookAllotment(Studentid, bookid, noofdays, returnflag);
+                if (result < 0)
+                { }
+
+
+
+            }
+            return Json(bookallotments);
+
+
+        }
+
+        public int AddBookAllotment(int studentid, int bookid, int noofdays, int returnflag)
+        {
+            int result;
+            result = db.AddBookAllotment(studentid, bookid, noofdays, returnflag);
+            return result;
+>>>>>>> origin/master
         }
 
         public ActionResult BookReturn()
