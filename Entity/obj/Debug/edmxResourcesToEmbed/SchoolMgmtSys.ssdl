@@ -1,102 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<Schema Namespace="SchoolMgmtSysModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.Store.lib_Bookentry" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.Store.lib_Journal" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_Module" EntityType="SchoolMgmtSysModel.Store.sys_Module" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_Permission" EntityType="SchoolMgmtSysModel.Store.sys_Permission" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sys_UserPermission" EntityType="SchoolMgmtSysModel.Store.sys_UserPermission" store:Type="Tables" store:Schema="dbo" store:Name="sys_UserPermission">
-      <DefiningQuery>SELECT 
-      [sys_UserPermission].[moduleid] AS [moduleid], 
-      [sys_UserPermission].[UserRoleid] AS [UserRoleid], 
-      [sys_UserPermission].[Permissionid] AS [Permissionid]
-      FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="sys_UserRole" EntityType="SchoolMgmtSysModel.Store.sys_UserRole" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="System" EntityType="SchoolMgmtSysModel.Store.System" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_AssignDivision" EntityType="SchoolMgmtSysModel.Store.tbl_AssignDivision" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_bloodgroup" EntityType="SchoolMgmtSysModel.Store.tbl_bloodgroup" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_BookStock" EntityType="SchoolMgmtSysModel.Store.tbl_BookStock" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_caste" EntityType="SchoolMgmtSysModel.Store.tbl_caste" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_category" EntityType="SchoolMgmtSysModel.Store.tbl_category" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.Store.tbl_Chapter" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.Store.tbl_Chaptercomplete" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_city" EntityType="SchoolMgmtSysModel.Store.tbl_city" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_class" EntityType="SchoolMgmtSysModel.Store.tbl_class" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.Store.tbl_Content" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_country" EntityType="SchoolMgmtSysModel.Store.tbl_country" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.Store.tbl_Course" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.Store.tbl_CourseMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_CourseYearMaster" EntityType="SchoolMgmtSysModel.Store.tbl_CourseYearMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_days" EntityType="SchoolMgmtSysModel.Store.tbl_days" store:Type="Tables" store:Schema="dbo" store:Name="tbl_days">
-      <DefiningQuery>SELECT 
-      [tbl_days].[dayid] AS [dayid], 
-      [tbl_days].[daynm] AS [daynm]
-      FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_division" EntityType="SchoolMgmtSysModel.Store.tbl_division" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.Store.tbl_Empexperience" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.Store.tbl_employee" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.Store.tbl_EmployeeLeave" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Event" EntityType="SchoolMgmtSysModel.Store.tbl_Event" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_ExaminationType" EntityType="SchoolMgmtSysModel.Store.tbl_ExaminationType" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.Store.tbl_ExamTImeTable" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_fees" EntityType="SchoolMgmtSysModel.Store.tbl_fees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_feeschild" EntityType="SchoolMgmtSysModel.Store.tbl_feeschild" store:Type="Tables" store:Schema="dbo" store:Name="tbl_feeschild">
-      <DefiningQuery>SELECT 
-      [tbl_feeschild].[Feesid] AS [Feesid], 
-      [tbl_feeschild].[FeesNm] AS [FeesNm], 
-      [tbl_feeschild].[Fees] AS [Fees]
-      FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_feeslabel" EntityType="SchoolMgmtSysModel.Store.tbl_feeslabel" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_feeslabelchild" EntityType="SchoolMgmtSysModel.Store.tbl_feeslabelchild" store:Type="Tables" store:Schema="dbo" store:Name="tbl_feeslabelchild">
-      <DefiningQuery>SELECT 
-      [tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
-      [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
-      FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_feespayment" EntityType="SchoolMgmtSysModel.Store.tbl_feespayment" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Inventory" EntityType="SchoolMgmtSysModel.Store.tbl_Inventory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_leave" EntityType="SchoolMgmtSysModel.Store.tbl_leave" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Author" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Author" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.Store.tbl_lib_BookIssue" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_JournalType" EntityType="SchoolMgmtSysModel.Store.tbl_lib_JournalType" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Publisher" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Publisher" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_lib_Vendor" EntityType="SchoolMgmtSysModel.Store.tbl_lib_Vendor" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_menu" EntityType="SchoolMgmtSysModel.Store.tbl_menu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_news" EntityType="SchoolMgmtSysModel.Store.tbl_news" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_newsimage" EntityType="SchoolMgmtSysModel.Store.tbl_newsimage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_occupation" EntityType="SchoolMgmtSysModel.Store.tbl_occupation" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_online_student" EntityType="SchoolMgmtSysModel.Store.tbl_online_student" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_payterm" EntityType="SchoolMgmtSysModel.Store.tbl_payterm" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_position" EntityType="SchoolMgmtSysModel.Store.tbl_position" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_Product" EntityType="SchoolMgmtSysModel.Store.tbl_Product" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_qualification" EntityType="SchoolMgmtSysModel.Store.tbl_qualification" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_religion" EntityType="SchoolMgmtSysModel.Store.tbl_religion" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_route" EntityType="SchoolMgmtSysModel.Store.tbl_route" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.Store.tbl_SessionMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StaffAttendance" EntityType="SchoolMgmtSysModel.Store.tbl_StaffAttendance" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_state" EntityType="SchoolMgmtSysModel.Store.tbl_state" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.Store.tbl_student" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.Store.tbl_StudentAttendance" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentCategory" EntityType="SchoolMgmtSysModel.Store.tbl_StudentCategory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.Store.tbl_studentdivision" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.Store.tbl_StudentMark" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_SubCategory" EntityType="SchoolMgmtSysModel.Store.tbl_SubCategory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.Store.tbl_subject" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_submenu" EntityType="SchoolMgmtSysModel.Store.tbl_submenu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.Store.tbl_teachersubject" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.Store.tbl_timetable" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_transport" EntityType="SchoolMgmtSysModel.Store.tbl_transport" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_user" EntityType="SchoolMgmtSysModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tbl_YearMaster" EntityType="SchoolMgmtSysModel.Store.tbl_YearMaster" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblDepartment" EntityType="SchoolMgmtSysModel.Store.tblDepartment" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-=======
 <Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
->>>>>>> origin/master
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
@@ -119,11 +22,7 @@
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
     <Property Name="SelfNo" Type="varchar" MaxLength="50" />
     <Property Name="NoOfCopy" Type="int" />
-<<<<<<< HEAD
     <Property Name="Status" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
-=======
-    <Property Name="Status" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
->>>>>>> origin/master
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -205,13 +104,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Key>
       <PropertyRef Name="BStockid" />
     </Key>
-    <Property Name="BStockid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BStockid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CallNo" Type="varchar" MaxLength="100" />
     <Property Name="BookQty" Type="int" />
     <Property Name="AllocateQty" Type="int" />
     <Property Name="AvailQty" Type="int" />
     <Property Name="LostQty" Type="int" />
     <Property Name="TotalBook" Type="int" />
+    <Property Name="ReturnQty" Type="int" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
@@ -737,6 +637,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Issuedatetime" Type="datetime2" Precision="7" />
     <Property Name="NoOfDays" Type="int" />
     <Property Name="PanaltyStatus" Type="bit" />
+    <Property Name="Returnflag" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_JournalType">
     <Key>
@@ -1254,6 +1155,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
+  <Function Name="AddBookAllotment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="studentid" Type="int" Mode="In" />
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="noofdays" Type="int" Mode="In" />
+    <Parameter Name="returnflag" Type="int" Mode="In" />
+  </Function>
   <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1714,7 +1621,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_GetBookDetailsbyBookidorBookname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="booktitle" Type="varchar" Mode="In" />
-    <Parameter Name="authorname" Type="varchar" Mode="In" />
     <Parameter Name="callno" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2217,13 +2123,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
-<<<<<<< HEAD
   <Function Name="sp_Vendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="vendorname" Type="varchar" Mode="In" />
     <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
-=======
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
@@ -2317,5 +2221,4 @@ FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
->>>>>>> origin/master
 </Schema>

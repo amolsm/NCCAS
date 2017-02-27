@@ -21,6 +21,8 @@
     <Property Name="Cost" Type="money" />
     <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
     <Property Name="SelfNo" Type="varchar" MaxLength="50" />
+    <Property Name="NoOfCopy" Type="int" />
+    <Property Name="Status" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -108,6 +110,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="AllocateQty" Type="int" />
     <Property Name="AvailQty" Type="int" />
     <Property Name="LostQty" Type="int" />
+    <Property Name="TotalBook" Type="int" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
@@ -1178,6 +1181,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Cost" Type="decimal" Mode="In" />
     <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
     <Parameter Name="SelfNo" Type="varchar" Mode="In" />
+    <Parameter Name="NoOfCopy" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="lib_Jid" Type="int" Mode="In" />
@@ -1610,7 +1614,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_GetBookDetailsbyBookidorBookname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="booktitle" Type="varchar" Mode="In" />
     <Parameter Name="authorname" Type="varchar" Mode="In" />
-    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="callno" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetBookIssueDetailsbyStudentid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1709,6 +1713,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_gettransport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getVendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dept_id" Type="int" Mode="In" />
     <Parameter Name="courseid" Type="int" Mode="In" />
@@ -2110,6 +2115,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Status" Type="int" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Vendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="vendorname" Type="varchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />

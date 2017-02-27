@@ -39,7 +39,7 @@
 </style>
 
 <script type="text/javascript">
-   
+
         $(function () {
             $("#StudentName").autocomplete({
                 source: function (request, response) {
@@ -93,16 +93,16 @@
                 },
                 select: function (e, i) {
                     $("#hfcallno").val(i.item.val);
-                 
+
                 },
                 minLength: 1
             });
         });
         $(document).ready(function () {
-           
-            
+
+
             $('#btnSubmit').click(function () {
-              
+
                 var stdname = $('#StudentName').val();
                 if ($('#StudentId').val() == '')
                 { studentid = "0"; } else { var studentid = $('#StudentId').val(); }
@@ -138,7 +138,7 @@
                         } else {
                             var rows = "<tr>"
                                 + "<td class='prtoducttd' colspan='7'>" +"No Records Found"+ "</td>"
-                               
+
                                 + "</tr>";
                             $('#tblProducts tbody').append(rows);
                         }
@@ -152,39 +152,48 @@
                 });
                 $('#myModal').modal('show');
                 return false;
-              
-              
+
+
             })
 
-      
+            function clearmsg() {
+                $("#msgs").hide();
+                $("#msg1").hide();
+            }
+           
 
             $('#btnBookDetails').click(function () {
-
+                debugger;
+                clearmsg();
                 var bookname = $('#booktitle').val();
-                 var callno = $('#CallNo').val(); 
-                 var hcallid = $('#hfcallno').val()
-                 debugger;
+                var callno = $('#CallNo').val();
+                var hcallid = $('#hfcallno').val()
+             
                 $("#tblBooks tbody tr").remove();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetBookDetails")',
                     dataType: 'JSON',
-                    data: { BookName: bookname, hcallid: hcallid, callno: callno },
+                    data: { BookName: bookname, callno: callno },
                     success: function (data) {
                         if (data != "") {
                             var items = '';
 
                             $.each(data, function (i, item) {
-                                debugger;
 
-                                var rows = "<tr>"
-                                + "<td class='prtoducttd'>" + '<input type=checkbox id="' + item.Id + '">' + "</td>"
-                                + "<td class='prtoducttd'>" + item.Id + "</td>"
-                                + "<td class='prtoducttd'>" + item.TitleName + "</td>"
-                                + "<td class='prtoducttd'>" + item.Authorname + "</td>"
-                                + "<td class='prtoducttd'>" + item.Publisher + "</td>"
-                                 + "<td class='prtoducttd'>" + item.Status + "</td>"
-                                + "</tr>";
+                                var id = "<tr id=" + item.Id + ">";
+                                if (item.Status == "Not Available")
+                                { var checkbox = "<td class='prtoducttd'>" + "<input type=checkbox disabled class='addcls' id=Allot_" + item.Id + " value='" + item.Id + "'>" + "</td>" }
+                                else { var checkbox = "<td class='prtoducttd'>" + "<input type=checkbox class='addcls'  id=Allot_" + item.Id +" value='" + item.Id + "'>"+ "</td>" }
+
+                                var row="<td class='prtoducttd'>" + item.Id + "</td>"
+                                 + "<td class='prtoducttd'>" + item.TitleName + "</td>"
+                                 + "<td class='prtoducttd'>" + item.Authorname + "</td>"
+                                 + "<td class='prtoducttd'>" + item.Publisher + "</td>"
+                                 + "<td class='prtoducttd' id='s "+ item.Status + "'>" + item.Status + "</td>"
+
+                                 + "</tr>";
+                                var rows = id + checkbox + row;
                                 $('#tblBooks tbody').append(rows);
 
 
@@ -211,48 +220,69 @@
 
             });
 
-            $("#btnSaveBookAllotment").click(function (e) {
-                debugger;
-                Validations(e);
-                debugger;
-                var stdname = $('#StudentName').val();
-                if ($('#StudentId').val() == '')
-                { studentid = "0"; } else { var studentid = $('#StudentId').val(); }
-                if ($('#hfStudentid').val() == '')
-                { var stdid = "0" }
-                else { var stdid = $('#hfStudentid').val() }
-                var bookname = $('#booktitle').val();
-                if ($('#bookid').val() == '')
-                { var bookid = "0"; } else { var bookid = $('#bookid').val(); }
-                if ($('#hfBookId').val() == '')
-                { var hbkid = "0" }
-                else { var hbkid = $('#hfBookId').val() }
-                if ($('#NoDays').val() == '')
-                { var NoOfDays = "0" }
-                else { var NoOfDays = $('#NoDays').val() }
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("SaveAllotment")',
-                    dataType: 'JSON',
-                    data: { Stdid: studentid, bookid: bookid, NoOfDays: NoOfDays },
-                    success: function (data){
-                        if (data != "") {
-                       
-                           // alert("Data save Succefully");
-                    } else {
+            $("#btnSaveBookAllotment").click(function () {
+                clearmsg();
+                var bookallotments = [];
+                if ($("#NoDays").val()=='') {
+                    var nodays = 0;
+                } else { var nodays = $("#NoDays").val(); }
+                if ($("#StudentId").val() == '') {
+                    var studentids = 0;
+                } else { var studentids = $("#StudentId").val(); }
+               var booktitle = ($("#booktitle").val());
+               if (nodays != 0 && studentids != 0)
+               {
+                $('input:checkbox.addcls').each(function (evt) {
+                    
+                    var ndays = ($("#NoDays").val());
+                    var studentid = ($("#StudentId").val());
+                    var bookids = ($(this).val());
+                    if ($(this).prop('checked')) {
+                        var rturnflag = 0;
+                        bookallotments.push(studentid + "," + bookids + "," + ndays+","+rturnflag);
 
-                           // alert("Data save Succefully");
                     }
-                    },
-                    error: function (ex) {
-                        var r = jQuery.parseJSON(response.responseText);
-                        alert("Message: " + r.Message);
-                        alert("StackTrace: " + r.StackTrace);
-                        alert("ExceptionType: " + r.ExceptionType);
+                    else {
+                        //var ndays= '';
+                        //var studentid = '';
+                        //var bookids = '';
+                       
                     }
+
                 });
-               // alert("Data save Succefully");
-                return false;
+               
+                if (bookallotments != "") {
+                    var options = {};
+                    options.type = "POST",
+                    options.url = '@Url.Action("StudentBookAllotment")',
+                    options.data = JSON.stringify(bookallotments);
+                    options.contentType = "application/json";
+                    options.success = function (bookallotments) {
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Book Allotment  successfully!..");
+                        $("#lblmsgs").css({ "color": "green" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
+                        $("#tblBooks").html(result);
+                    };
+                    options.error = function (bookallotments) {
+                        $("#msg1").show();
+                        $("#lblmsg").text("Error while sending massage !..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "15px" });
+                        $("#tblBooks").html(result);
+                    };
+                    $.ajax(options);
+                }
+            }
+            else {
+                $("#msg1").show();
+                $("#lblmsg").text("Please Fill Proper Details for Book Allotment");
+                $("#lblmsg").css({ "color": "orange" });
+                $("#lblmsg").css({ "font-size": "15px" });
+                $("#tblBooks").html(result);
+               
+            }
+
 
 
             });
@@ -295,9 +325,9 @@
                     e.preventDefault();
                 }
             }
-        
+
             ReloadPaging();
-           
+
         });
 </script>
 
@@ -347,6 +377,11 @@
         border-color: #666666;
         background-color: #ffffff;
     }
+      .control-group.required .control-label:after {
+        content: "*";
+        color: red;
+
+    }
 </style>
     
     <div class="modal fade" id="myModal">
@@ -395,7 +430,11 @@
                     </li>
                     <li class="active">Book Issue Form</li>
                 </ul>
-                <div class="panel-body">
+                <div id="msgs" hidden="hidden" visible="false" class="alert alert-success">
+                    <strong><label id="lblmsgs"></label></strong>
+                </div>
+                <div id="msg1" hidden="hidden" visible="false" class="alert alert-warning">
+                    <strong><label id="lblmsg"></label></strong>
                 </div>
                 <div class="row-fluid sortable">
                     <div class="box span12">
@@ -408,11 +447,10 @@
                             </div>
                         </div>
                         <div class="box-content">
-@using (Html.BeginForm("BookIssue", "Library", FormMethod.Post))
-{
+
 
                             <div id="frm" class="form-horizontal">
-                                <div class="control-group span5 ">
+                                <div class="control-group span5 required ">
 
                                     @Html.LabelFor(model => model.StudentId, new { @class = "control-label", @for = "focusedInput" })
 
@@ -440,6 +478,7 @@
                                  <div class="control-group span5  pull-right">
 
                                     <input type="submit" id="btnSubmit" value="Check Previous Record" class="btn-primary" />
+                                    &nbsp;&nbsp;&nbsp;<input type="button" value="Add New" class="btn-primary" onClick="window.location.reload()">
                                     
                                 </div>
                               
@@ -465,7 +504,7 @@
                                         </div>
                                     </div>
 
-                                        <div class="control-group span5">
+                                        <div class="control-group span5 required">
                                             @Html.LabelFor(model => model.NoDays, new { @class = "control-label", @for = "focusedInput" })
 
                                             <div class="controls">
@@ -473,32 +512,33 @@
                                               
                                             </div>
                                         </div>
-                                        <div class="control-group span5  pull-right">
+                                     
+                                            <div class="control-group span5  pull-right">
 
-                                            <input type="submit" id="btnBookDetails" value="Search Book" class="btn-primary" />
-                                           &nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" id="btnSaveBookAllotment" value="Allotment Book" class="btn-primary" />
+                                                <input type="submit" id="btnBookDetails" value="Search Book" class="btn-primary" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" id="btnSaveBookAllotment" value="Allotment Book" class="btn-primary" />
 
-                                        </div>
-                                        <br/>
-                                        <div id="tblBook" hidden>
-                                            <table id="tblBooks" class="table tb-parshav tablesorter">
-                                                <thead>
-                                                    <tr>
-                                                        <th align="left" class="productth">Select</th>
-                                                        <th align="left" class="productth">Book Id</th>
-                                                        <th align="left" class="productth">Book Name</th>
-                                                        <th align="left" class="productth">Author Name</th>
-                                                        <th align="left" class="productth">Publisher Name</th>
-                                                        <th align="left" class="productth">Status</th>
+                                            </div>
+                                            <br />
+                                            <div id="tblBook" hidden>
+                                                <table id="tblBooks" class="table tb-parshav tablesorter">
+                                                    <thead>
+                                                        <tr>
+                                                            <th align="left" class="productth">Select</th>
+                                                            <th align="left" class="productth">Book Id</th>
+                                                            <th align="left" class="productth">Book Name</th>
+                                                            <th align="left" class="productth">Author Name</th>
+                                                            <th align="left" class="productth">Publisher Name</th>
+                                                            <th align="left" class="productth">Status</th>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                        <br/>
-                                      
-                                      
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <br />
+
+
 
 </fieldset>
                                  
@@ -506,7 +546,7 @@
                                
 
                                 </div>
-}
+
                             </div>
                        
 

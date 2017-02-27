@@ -92,8 +92,8 @@
                     });
                 },
                 select: function (e, i) {
-                    $("#hfBookId").val(i.item.val);
-                    $("#bookid").val(i.item.val);
+                    $("#hfcallno").val(i.item.val);
+                 
                 },
                 minLength: 1
             });
@@ -161,17 +161,15 @@
             $('#btnBookDetails').click(function () {
 
                 var bookname = $('#booktitle').val();
-                if ($('#bookid').val() == '')
-                { var bookid = "0"; } else { var bookid = $('#bookid').val(); }
-                if ($('#hfBookId').val() == '')
-                { var hbkid = "0" }
-                else { var hbkid = $('#hfBookId').val() }
+                 var callno = $('#CallNo').val(); 
+                 var hcallid = $('#hfcallno').val()
+                 debugger;
                 $("#tblBooks tbody tr").remove();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetBookDetails")',
                     dataType: 'JSON',
-                    data: { BookName: bookname, hBookid: hbkid, bookid: bookid },
+                    data: { BookName: bookname, hcallid: hcallid, callno: callno },
                     success: function (data) {
                         if (data != "") {
                             var items = '';
@@ -185,6 +183,7 @@
                                 + "<td class='prtoducttd'>" + item.TitleName + "</td>"
                                 + "<td class='prtoducttd'>" + item.Authorname + "</td>"
                                 + "<td class='prtoducttd'>" + item.Publisher + "</td>"
+                                 + "<td class='prtoducttd'>" + item.Status + "</td>"
                                 + "</tr>";
                                 $('#tblBooks tbody').append(rows);
 
@@ -228,11 +227,14 @@
                 if ($('#hfBookId').val() == '')
                 { var hbkid = "0" }
                 else { var hbkid = $('#hfBookId').val() }
+                if ($('#NoDays').val() == '')
+                { var NoOfDays = "0" }
+                else { var NoOfDays = $('#NoDays').val() }
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SaveAllotment")',
                     dataType: 'JSON',
-                    data: { Stdid: studentid, bookid: bookid },
+                    data: { Stdid: studentid, bookid: bookid, NoOfDays: NoOfDays },
                     success: function (data){
                         if (data != "") {
                        
@@ -272,17 +274,17 @@
                         "background": ""
                     });
                 }
-                if ($("#bookid").val() == '') {
+                if ($("#CallNo").val() == '') {
                     cnt++;
-                    $("#bookid").css({
+                    $("#CallNo").css({
                         "border": "1px solid red"
                     });
-                    alert("Book Id  is Mandatory!");
+                    alert("CallNo Id  is Mandatory!");
                     e.preventDefault();
                     return false;
                 }
                 else {
-                    $("#bookid").css({
+                    $("#CallNo").css({
                         "border": "",
                         "background": ""
                     });
@@ -447,10 +449,10 @@
                                         <legend>Book Search</legend>
                                         <br />
                                         <div class="control-group span5">
-                                            @Html.LabelFor(model => model.bookid, new { @class = "control-label", @for = "focusedInput" })
+                                            @Html.LabelFor(model => model.CallNo, new { @class = "control-label", @for = "focusedInput" })
 
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.bookid, new { placeholder = "Enter Book Id", @type = "number", @min = "0", @class = "input" })
+                                                @Html.TextBoxFor(model => model.CallNo, new { placeholder = "Enter Call Number", @class = "input" })
                                             </div>
                                         </div>
                                     <div class="control-group span5 addor">
@@ -458,10 +460,19 @@
 
                                         <div class="controls">
                                             @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter Book Name", @class = "input" })
-                                            <input type="hidden" id="hfBookId" name="BookIds" />
+                                            <input type="hidden" id="hfcallno" name="hfcallno" />
                                             <br /><br />
                                         </div>
                                     </div>
+
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.NoDays, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.NoDays, new { placeholder = "Enter Number Of Days", @type = "number", @min = "1",@class = "input" })
+                                              
+                                            </div>
+                                        </div>
                                         <div class="control-group span5  pull-right">
 
                                             <input type="submit" id="btnBookDetails" value="Search Book" class="btn-primary" />
@@ -478,7 +489,7 @@
                                                         <th align="left" class="productth">Book Name</th>
                                                         <th align="left" class="productth">Author Name</th>
                                                         <th align="left" class="productth">Publisher Name</th>
-
+                                                        <th align="left" class="productth">Status</th>
 
                                                     </tr>
                                                 </thead>
