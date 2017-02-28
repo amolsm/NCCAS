@@ -996,6 +996,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_student_online_admission1" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
     <FunctionImportMapping FunctionImportName="sp_department_DML" FunctionName="SchoolMgmtSysModel.Store.sp_department_DML" />
     <FunctionImportMapping FunctionImportName="sp_getDepartment" FunctionName="SchoolMgmtSysModel.Store.sp_getDepartment">
       <ResultMapping>
@@ -1899,22 +1900,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-<<<<<<< HEAD
-    <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
-          <ScalarProperty Name="BookId" ColumnName="BookId" />
-          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
-          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
-          <ScalarProperty Name="NoOfDaysTill" ColumnName="NoOfDaysTill" />
-          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-=======
->>>>>>> origin/master
     <FunctionImportMapping FunctionImportName="sp_Division_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Division_DML" />
     <EntitySetMapping Name="tbl_AssignDivision">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_AssignDivision">
@@ -1980,18 +1965,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_AddLibraryBook" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryBook" />
-    <FunctionImportMapping FunctionImportName="sp_GetBookDetailsbyBookidorBookname" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookDetailsbyBookidorBookname">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
-          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
-          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
-          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_getVendor" FunctionName="SchoolMgmtSysModel.Store.sp_getVendor">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getVendor_Result">
@@ -2002,43 +1975,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_Vendor" FunctionName="SchoolMgmtSysModel.Store.sp_Vendor" />
-    <EntitySetMapping Name="tbl_lib_BookIssue">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
-        <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
-<<<<<<< HEAD
-=======
-          <ScalarProperty Name="AllotedBy" ColumnName="AllotedBy" />
->>>>>>> origin/master
-          <ScalarProperty Name="Return_CreatedBy" ColumnName="Return_CreatedBy" />
-          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
-          <ScalarProperty Name="Returnflag" ColumnName="Returnflag" />
-          <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
-          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
-          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
-          <ScalarProperty Name="BookId" ColumnName="BookId" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-<<<<<<< HEAD
-    <FunctionImportMapping FunctionImportName="AddBookAllotment" FunctionName="SchoolMgmtSysModel.Store.AddBookAllotment" />
-    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
-    <FunctionImportMapping FunctionImportName="sp_getbookissue" FunctionName="SchoolMgmtSysModel.Store.sp_getbookissue">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getbookissue_Result">
-          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="BookId" ColumnName="BookId" />
-          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
-          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
-          <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
-          <ScalarProperty Name="NoOfDaysTillt" ColumnName="NoOfDaysTillt" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-=======
-    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
     <FunctionImportMapping FunctionImportName="sp_GetBookIssueDetailsbyStudentid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookIssueDetailsbyStudentid">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result">
@@ -2052,8 +1988,50 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_student_online_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
+    <FunctionImportMapping FunctionImportName="sp_GetBookDetailsbyBookidorBookname" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookDetailsbyBookidorBookname">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+          <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getbookissue" FunctionName="SchoolMgmtSysModel.Store.sp_getbookissue">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getbookissue_Result">
+          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+          <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
+          <ScalarProperty Name="NoOfDaysTillt" ColumnName="NoOfDaysTillt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_lib_BookIssue">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
+        <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
+          <ScalarProperty Name="CallNumber" ColumnName="CallNumber" />
+          <ScalarProperty Name="AllotedBy" ColumnName="AllotedBy" />
+          <ScalarProperty Name="Return_CreatedBy" ColumnName="Return_CreatedBy" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="Returnflag" ColumnName="Returnflag" />
+          <ScalarProperty Name="PanaltyStatus" ColumnName="PanaltyStatus" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="Issuedatetime" ColumnName="Issuedatetime" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="BookIssueId" ColumnName="BookIssueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="AddBookAllotment" FunctionName="SchoolMgmtSysModel.Store.AddBookAllotment" />
->>>>>>> origin/master
+    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
   </EntityContainerMapping>
 </Mapping>

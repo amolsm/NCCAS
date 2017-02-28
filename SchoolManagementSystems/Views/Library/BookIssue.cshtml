@@ -187,7 +187,8 @@
                                 { var checkbox = "<td class='prtoducttd'>" + "<input type=checkbox disabled class='addcls' id=Allot_" + item.Id + " value='" + item.Id + "'>" + "</td>" }
                                 else { var checkbox = "<td class='prtoducttd'>" + "<input type=checkbox class='addcls'  id=Allot_" + item.Id +" value='" + item.Id + "'>"+ "</td>" }
 
-                                var row="<td class='prtoducttd'>" + item.Id + "</td>"
+                                var row = "<td class='prtoducttd' id='call"+ item.Id + "'>" + item.CallNo + "</td>"
+                                 + "<td class='prtoducttd'>" + item.AccessorNo + "</td>"
                                  + "<td class='prtoducttd'>" + item.TitleName + "</td>"
                                  + "<td class='prtoducttd'>" + item.Authorname + "</td>"
                                  + "<td class='prtoducttd'>" + item.Publisher + "</td>"
@@ -237,10 +238,13 @@
                     
                     var ndays = ($("#NoDays").val());
                     var studentid = ($("#StudentId").val());
+                    
                     var bookids = ($(this).val());
                     if ($(this).prop('checked')) {
                         var rturnflag = 0;
-                        bookallotments.push(studentid + "," + bookids + "," + ndays+","+rturnflag);
+                        var hcallid = $('#hfcallno').val()
+                       
+                        bookallotments.push(studentid + "," + bookids + "," + ndays + "," + rturnflag + "," + hcallid);
 
                     }
                     else {
@@ -533,7 +537,8 @@
                                                     <thead>
                                                         <tr>
                                                             <th align="left" class="productth">Select</th>
-                                                            <th align="left" class="productth">Book Id</th>
+                                                            <th align="left" class="productth">CallNo</th>
+                                                            <th align="left" class="productth">AccessorNo</th>
                                                             <th align="left" class="productth">Book Name</th>
                                                             <th align="left" class="productth">Author Name</th>
                                                             <th align="left" class="productth">Publisher Name</th>
