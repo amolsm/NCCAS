@@ -1,0 +1,60 @@
+﻿@model Entity.timetableviewmodel
+<div id="result" class="table-responsive">
+    <table class="table tb-parshav">
+        <tr>
+            <th>
+                @Html.DisplayName("CourseName")
+            </th>            
+            <th>
+                @Html.DisplayName("LecNo.")
+            </th>
+            <th>
+                @Html.DisplayName("1")
+            </th>
+            <th>
+                @Html.DisplayName("2")
+            </th>
+            <th>
+                @Html.DisplayName("3")
+            </th>
+            <th>
+                @Html.DisplayName("4")
+            </th>
+            <th>
+                @Html.DisplayName("5")
+            </th>
+            <th>
+                @Html.DisplayName("6")
+            </th>
+        </tr>
+        @foreach (var item in Model._Timetablelistpivot)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tuesday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wednesday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thursday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Friday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Saturday)
+                </td>                
+            </tr>
+        }
+    </table>
+</div>

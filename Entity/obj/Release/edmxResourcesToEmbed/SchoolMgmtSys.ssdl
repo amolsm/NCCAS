@@ -1,0 +1,2237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolMgmtSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Name="bookid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booktitle" Type="varchar" MaxLength="100" />
+    <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerielNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="PublishedByid" Type="int" />
+    <Property Name="PublishedByName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="AccessorNo" Type="varchar" MaxLength="50" />
+    <Property Name="SelfNo" Type="varchar" MaxLength="50" />
+    <Property Name="NoOfCopy" Type="int" />
+    <Property Name="Status" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lib_Journal">
+    <Key>
+      <PropertyRef Name="lib_Jid" />
+    </Key>
+    <Property Name="lib_Jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibType" Type="int" />
+    <Property Name="Department" Type="int" />
+    <Property Name="JournalTitle" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="Number" Type="nvarchar(max)" />
+    <Property Name="IssueDate" Type="datetime2" Precision="7" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
+    <Property Name="JBillNo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sys_Module">
+    <Key>
+      <PropertyRef Name="Moduleid" />
+    </Key>
+    <Property Name="Moduleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModuleName" Type="varchar" MaxLength="255" />
+    <Property Name="Parentmoduleid" Type="int" />
+  </EntityType>
+  <EntityType Name="sys_Permission">
+    <Key>
+      <PropertyRef Name="Permissionid" />
+    </Key>
+    <Property Name="Permissionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermissionName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sys_UserPermission">
+    <Key>
+      <PropertyRef Name="moduleid" />
+    </Key>
+    <Property Name="moduleid" Type="int" Nullable="false" />
+    <Property Name="UserRoleid" Type="int" />
+    <Property Name="Permissionid" Type="int" />
+  </EntityType>
+  <EntityType Name="sys_UserRole">
+    <Key>
+      <PropertyRef Name="Roleid" />
+    </Key>
+    <Property Name="Roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="System">
+    <Key>
+      <PropertyRef Name="Sysid" />
+    </Key>
+    <Property Name="Sysid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyName" Type="varchar" MaxLength="255" />
+    <Property Name="KeyValue" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="tbl_AssignDivision">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studid" Type="int" />
+    <Property Name="Classid" Type="int" />
+    <Property Name="department" Type="int" />
+    <Property Name="year" Type="int" />
+    <Property Name="divisionId" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_bloodgroup">
+    <Key>
+      <PropertyRef Name="bloodgroupid" />
+    </Key>
+    <Property Name="bloodgroupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bloodgroupnm" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_BookStock">
+    <Key>
+      <PropertyRef Name="BStockid" />
+    </Key>
+    <Property Name="BStockid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CallNo" Type="varchar" MaxLength="100" />
+    <Property Name="BookQty" Type="int" />
+    <Property Name="AllocateQty" Type="int" />
+    <Property Name="AvailQty" Type="int" />
+    <Property Name="LostQty" Type="int" />
+    <Property Name="TotalBook" Type="int" />
+    <Property Name="ReturnQty" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_caste">
+    <Key>
+      <PropertyRef Name="Casteid" />
+    </Key>
+    <Property Name="Casteid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CasteName" Type="varchar" MaxLength="100" />
+    <Property Name="Religionid" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="catid" />
+    </Key>
+    <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="catname" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Chapter">
+    <Key>
+      <PropertyRef Name="Chapter_id" />
+    </Key>
+    <Property Name="Chapter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChapterName" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="text" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="dept_id" Type="int" />
+    <Property Name="teacherid" Type="int" />
+    <Property Name="Courseid" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teacherid" Type="int" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="Departmentid" Type="int" />
+    <Property Name="Courseid" Type="int" />
+    <Property Name="Yearid" Type="int" />
+    <Property Name="Chapterid" Type="int" />
+    <Property Name="complete" Type="bit" />
+    <Property Name="CompleteDate" Type="datetime" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_city">
+    <Key>
+      <PropertyRef Name="Cityid" />
+    </Key>
+    <Property Name="Cityid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="100" />
+    <Property Name="Countryid" Type="int" Nullable="false" />
+    <Property Name="Stateid" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_class">
+    <Key>
+      <PropertyRef Name="Classid" />
+    </Key>
+    <Property Name="Classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classnm" Type="varchar" MaxLength="100" />
+    <Property Name="Dept_id" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="academicyear" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_Content">
+    <Key>
+      <PropertyRef Name="Content_id" />
+    </Key>
+    <Property Name="Content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Chapter_id" Type="varchar" MaxLength="100" />
+    <Property Name="Content_Description" Type="text" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Content_Name" Type="varchar" MaxLength="100" />
+    <Property Name="teacherid" Type="int" />
+    <Property Name="Courseid" Type="int" />
+    <Property Name="dept_id" Type="int" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_country">
+    <Key>
+      <PropertyRef Name="Countryid" />
+    </Key>
+    <Property Name="Countryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Course">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_id" Type="int" />
+    <Property Name="Dept_id" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_CourseMaster">
+    <Key>
+      <PropertyRef Name="Courseid" />
+    </Key>
+    <Property Name="Courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_CourseYearMaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dept_id" Type="int" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="academicyear" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_days">
+    <Key>
+      <PropertyRef Name="dayid" />
+    </Key>
+    <Property Name="dayid" Type="int" Nullable="false" />
+    <Property Name="daynm" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_division">
+    <Key>
+      <PropertyRef Name="DivisionId" />
+    </Key>
+    <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DivisionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Classid" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Empexperience">
+    <Key>
+      <PropertyRef Name="empexpid" />
+    </Key>
+    <Property Name="empexpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="empId" Type="int" />
+    <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp1" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp1" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp1" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp2" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp2" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp2" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp2" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp3" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp3" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp3" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp3" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp4" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp4" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp4" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp4" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp5" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp5" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp5" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp5" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp6" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp6" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp6" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp6" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp7" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp7" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp7" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp7" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp8" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp8" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp8" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp8" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp9" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp9" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp9" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp9" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
+    <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
+    <Property Name="affliateduniversity_exp10" Type="varchar" MaxLength="100" />
+    <Property Name="joiningdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1_exp10" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience_exp10" Type="varchar" MaxLength="50" />
+    <Property Name="lastdesignation_exp10" Type="varchar" MaxLength="100" />
+    <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
+    <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
+    <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_employee">
+    <Key>
+      <PropertyRef Name="Empid" />
+    </Key>
+    <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Cityid" Type="int" Nullable="false" />
+    <Property Name="Stateid" Type="int" Nullable="false" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="20" />
+    <Property Name="Emailid" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="20" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Fax" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="Quallification" Type="varchar" MaxLength="250" />
+    <Property Name="Subjects" Type="varchar(max)" />
+    <Property Name="TeachStandard" Type="varchar" MaxLength="500" />
+    <Property Name="Payroll" Type="money" />
+    <Property Name="Schedule" Type="varchar" MaxLength="50" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
+    <Property Name="Payrollid" Type="int" Nullable="false" />
+    <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
+    <Property Name="Typeid" Type="int" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="OtherQualification" Type="varchar(max)" />
+    <Property Name="department" Type="int" />
+    <Property Name="bloodgroup" Type="int" />
+    <Property Name="qualication1" Type="int" />
+    <Property Name="university1" Type="varchar" MaxLength="50" />
+    <Property Name="precentage1" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing1" Type="varchar" MaxLength="10" />
+    <Property Name="qualication2" Type="int" />
+    <Property Name="university2" Type="varchar" MaxLength="50" />
+    <Property Name="precentage2" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing2" Type="varchar" MaxLength="10" />
+    <Property Name="qualication3" Type="int" />
+    <Property Name="university3" Type="varchar" MaxLength="50" />
+    <Property Name="precentage3" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing3" Type="varchar" MaxLength="10" />
+    <Property Name="qualication4" Type="int" />
+    <Property Name="university4" Type="varchar" MaxLength="50" />
+    <Property Name="precentage4" Type="varchar" MaxLength="10" />
+    <Property Name="yearpasing4" Type="varchar" MaxLength="10" />
+    <Property Name="weightinkg" Type="varchar" MaxLength="10" />
+    <Property Name="heightc" Type="varchar" MaxLength="10" />
+    <Property Name="emppic" Type="image" />
+    <Property Name="eidtype" Type="int" />
+    <Property Name="doctorname" Type="varchar" MaxLength="50" />
+    <Property Name="doctorcode" Type="varchar" MaxLength="5" />
+    <Property Name="doctorcontact" Type="varchar" MaxLength="15" />
+    <Property Name="doctoraddress" Type="text" />
+    <Property Name="relation" Type="int" />
+    <Property Name="parentsname" Type="varchar" MaxLength="50" />
+    <Property Name="parentoccupation" Type="varchar" MaxLength="50" />
+    <Property Name="parentqualification" Type="varchar" MaxLength="50" />
+    <Property Name="parentsemail" Type="varchar" MaxLength="50" />
+    <Property Name="parentsaddress" Type="text" />
+    <Property Name="parentscode" Type="int" />
+    <Property Name="parentscontact" Type="varchar" MaxLength="15" />
+    <Property Name="parentspic" Type="image" />
+    <Property Name="pstreet" Type="text" />
+    <Property Name="pcity" Type="int" />
+    <Property Name="pstate" Type="int" />
+    <Property Name="pcountry" Type="int" />
+    <Property Name="ppin" Type="varchar" MaxLength="6" />
+    <Property Name="cstreet" Type="text" />
+    <Property Name="ccity" Type="int" />
+    <Property Name="cstate" Type="int" />
+    <Property Name="ccountry" Type="int" />
+    <Property Name="cpin" Type="varchar" MaxLength="6" />
+    <Property Name="homecode" Type="int" />
+    <Property Name="homecontact" Type="varchar" MaxLength="15" />
+    <Property Name="cmobilecode" Type="int" />
+    <Property Name="cmobile" Type="varchar" MaxLength="15" />
+    <Property Name="bankname" Type="varchar" MaxLength="50" />
+    <Property Name="branch" Type="varchar" MaxLength="50" />
+    <Property Name="ifsccode" Type="varchar" MaxLength="30" />
+    <Property Name="accountno" Type="varchar" MaxLength="30" />
+    <Property Name="accountname" Type="varchar" MaxLength="50" />
+    <Property Name="collagename" Type="varchar" MaxLength="50" />
+    <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
+    <Property Name="joiningdate" Type="datetime2" Precision="7" />
+    <Property Name="lastdate" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience" Type="varchar" MaxLength="30" />
+    <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
+    <Property Name="companyname" Type="varchar" MaxLength="50" />
+    <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
+    <Property Name="clastdate" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
+    <Property Name="empemail" Type="varchar" MaxLength="50" />
+    <Property Name="empreligion" Type="int" />
+    <Property Name="empcategory" Type="int" />
+    <Property Name="empcast" Type="int" />
+    <Property Name="empmothertongue" Type="varchar" MaxLength="100" />
+    <Property Name="collagename1" Type="varchar" MaxLength="50" />
+    <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
+    <Property Name="joiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="lastdate1" Type="datetime2" Precision="7" />
+    <Property Name="totalexperience1" Type="varchar" MaxLength="30" />
+    <Property Name="lastdesignation1" Type="varchar" MaxLength="50" />
+    <Property Name="companyname1" Type="varchar" MaxLength="50" />
+    <Property Name="clastdesignation1" Type="varchar" MaxLength="50" />
+    <Property Name="cjoiningdate1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate1" Type="datetime2" Precision="7" />
+    <Property Name="ctotalexperience1" Type="varchar" MaxLength="30" />
+    <Property Name="doctypename" Type="varchar" MaxLength="50" />
+    <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="contrelation" Type="varchar" MaxLength="50" />
+    <Property Name="ParishName" Type="varchar" MaxLength="100" />
+    <Property Name="DioceseName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_EmployeeLeave">
+    <Key>
+      <PropertyRef Name="Leaveid" />
+    </Key>
+    <Property Name="Leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empid" Type="int" />
+    <Property Name="LeaveStartDate" Type="datetime" />
+    <Property Name="LeaveEndDate" Type="datetime" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="IsApprove" Type="bit" />
+    <Property Name="LeaveType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Event">
+    <Key>
+      <PropertyRef Name="Eventid" />
+    </Key>
+    <Property Name="Eventid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventDescription" Type="varchar" MaxLength="255" />
+    <Property Name="EventUrl" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tbl_ExaminationType">
+    <Key>
+      <PropertyRef Name="ExaminationTypeId" />
+    </Key>
+    <Property Name="ExaminationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExaminationType" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTImeTable">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
+    <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
+    <Property Name="ExamTypeId" Type="int" Nullable="false" />
+    <Property Name="ExamClassId" Type="int" Nullable="false" />
+    <Property Name="ExamSubjectId" Type="int" Nullable="false" />
+    <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsPublish" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_fees">
+    <Key>
+      <PropertyRef Name="Feesid" />
+    </Key>
+    <Property Name="Feesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="LFees" Type="money" Nullable="false" />
+    <Property Name="TFees" Type="money" Nullable="false" />
+    <Property Name="UFees" Type="money" Nullable="false" />
+    <Property Name="HFees" Type="money" Nullable="false" />
+    <Property Name="OFees" Type="money" Nullable="false" />
+    <Property Name="TotalFees" Type="money" Nullable="false" />
+    <Property Name="PTypeid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_feeschild">
+    <Key>
+      <PropertyRef Name="Feesid" />
+      <PropertyRef Name="FeesNm" />
+      <PropertyRef Name="Fees" />
+    </Key>
+    <Property Name="Feesid" Type="int" Nullable="false" />
+    <Property Name="FeesNm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fees" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_feeslabel">
+    <Key>
+      <PropertyRef Name="feeslblid" />
+    </Key>
+    <Property Name="feeslblid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ctrlcnt" Type="int" Nullable="false" />
+    <Property Name="classid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_feeslabelchild">
+    <Key>
+      <PropertyRef Name="feeslblid" />
+    </Key>
+    <Property Name="feeslblid" Type="int" Nullable="false" />
+    <Property Name="ctrlnm" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_feespayment">
+    <Key>
+      <PropertyRef Name="Pid" />
+    </Key>
+    <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="Studid" Type="int" Nullable="false" />
+    <Property Name="Scholarship" Type="bit" Nullable="false" />
+    <Property Name="ScholarshipFees" Type="money" Nullable="false" />
+    <Property Name="TotalFees" Type="money" Nullable="false" />
+    <Property Name="PaidFees" Type="money" Nullable="false" />
+    <Property Name="PendingFees" Type="money" Nullable="false" />
+    <Property Name="PTypeid" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Inventory">
+    <Key>
+      <PropertyRef Name="Inventoryid" />
+    </Key>
+    <Property Name="Inventoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Productid" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbl_leave">
+    <Key>
+      <PropertyRef Name="leaveid" />
+    </Key>
+    <Property Name="leaveid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leavename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LeaveBalance" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Author">
+    <Key>
+      <PropertyRef Name="Authorid" />
+    </Key>
+    <Property Name="Authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Name="BookIssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="Issuedatetime" Type="datetime2" Precision="7" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="PanaltyStatus" Type="bit" />
+    <Property Name="Returnflag" Type="int" />
+    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="Return_CreatedBy" Type="int" />
+    <Property Name="AllotedBy" Type="int" />
+    <Property Name="CallNumber" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_lib_JournalType">
+    <Key>
+      <PropertyRef Name="JTypeid" />
+    </Key>
+    <Property Name="JTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JTypeName" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Publisher">
+    <Key>
+      <PropertyRef Name="PublisherId" />
+    </Key>
+    <Property Name="PublisherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Publishername" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Vendor">
+    <Key>
+      <PropertyRef Name="Vendorid" />
+    </Key>
+    <Property Name="Vendorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_menu">
+    <Key>
+      <PropertyRef Name="Menuid" />
+    </Key>
+    <Property Name="Menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuName" Type="varchar" MaxLength="50" />
+    <Property Name="MenuLink" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_news">
+    <Key>
+      <PropertyRef Name="Newsid" />
+    </Key>
+    <Property Name="Newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsDate" Type="datetime" Nullable="false" />
+    <Property Name="NewsTitle" Type="varchar" MaxLength="100" />
+    <Property Name="NewsDesc" Type="varchar(max)" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_newsimage">
+    <Key>
+      <PropertyRef Name="Newsimageid" />
+    </Key>
+    <Property Name="Newsimageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Newsid" Type="int" Nullable="false" />
+    <Property Name="image" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_occupation">
+    <Key>
+      <PropertyRef Name="occupationid" />
+    </Key>
+    <Property Name="occupationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="occupationnm" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_online_student">
+    <Key>
+      <PropertyRef Name="Studid" />
+    </Key>
+    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studnm" Type="varchar" MaxLength="50" />
+    <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
+    <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="Weight" Type="int" Nullable="false" />
+    <Property Name="Height" Type="int" Nullable="false" />
+    <Property Name="StudBldGrp" Type="int" Nullable="false" />
+    <Property Name="StudEmail" Type="varchar" MaxLength="50" />
+    <Property Name="Disease" Type="varchar" MaxLength="20" />
+    <Property Name="Religionid" Type="int" Nullable="false" />
+    <Property Name="Casteid" Type="int" Nullable="false" />
+    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="RollNo" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="int" />
+    <Property Name="MotherTongue" Type="varchar" MaxLength="50" />
+    <Property Name="PreviousSchool" Type="varchar" MaxLength="100" />
+    <Property Name="SchoolAddress" Type="varchar(max)" />
+    <Property Name="LastClass" Type="varchar" MaxLength="50" />
+    <Property Name="Grade" Type="varchar" MaxLength="20" />
+    <Property Name="LeaveYear" Type="varchar" MaxLength="20" />
+    <Property Name="LeaveReason" Type="varchar" MaxLength="200" />
+    <Property Name="PrincipalNm" Type="varchar" MaxLength="20" />
+    <Property Name="ReferenceNm" Type="varchar" MaxLength="50" />
+    <Property Name="ReferenceContact" Type="varchar" MaxLength="20" />
+    <Property Name="BusFacility" Type="bit" Nullable="false" />
+    <Property Name="BusNo" Type="varchar" MaxLength="50" />
+    <Property Name="BusRTONo" Type="varchar" MaxLength="50" />
+    <Property Name="EmergencyPhysicianNm" Type="varchar" MaxLength="50" />
+    <Property Name="EmergencyPhysicianContact" Type="varchar" MaxLength="20" />
+    <Property Name="EmergencyAddress" Type="varchar(max)" />
+    <Property Name="StudPic" Type="image" />
+    <Property Name="FatherOccpationid" Type="int" Nullable="false" />
+    <Property Name="FatherQualificationid" Type="int" Nullable="false" />
+    <Property Name="FatherEmail" Type="varchar" MaxLength="50" />
+    <Property Name="FatherOfficeAddress" Type="varchar(max)" />
+    <Property Name="FatherContact" Type="varchar" MaxLength="20" />
+    <Property Name="FatherBldGrpid" Type="int" />
+    <Property Name="FatherPic" Type="image" />
+    <Property Name="MotherOccpationid" Type="int" Nullable="false" />
+    <Property Name="MotherQualificationid" Type="int" Nullable="false" />
+    <Property Name="MotherEmail" Type="varchar" MaxLength="50" />
+    <Property Name="MotherOfficeAddress" Type="varchar(max)" />
+    <Property Name="MotherContact" Type="varchar" MaxLength="20" />
+    <Property Name="MotherBldGrpid" Type="int" />
+    <Property Name="MotherPic" Type="image" />
+    <Property Name="Countryid" Type="int" Nullable="false" />
+    <Property Name="Stateid" Type="int" Nullable="false" />
+    <Property Name="Cityid" Type="int" Nullable="false" />
+    <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="PermanentAddress" Type="varchar(max)" />
+    <Property Name="academicyear" Type="varchar" MaxLength="10" />
+    <Property Name="SysDt" Type="datetime" Nullable="false" />
+    <Property Name="busid" Type="int" />
+    <Property Name="cats" Type="varchar(max)" />
+    <Property Name="prds" Type="varchar(max)" />
+    <Property Name="Docs" Type="nvarchar(max)" />
+    <Property Name="subcats" Type="varchar(max)" />
+    <Property Name="StudCategoryid" Type="int" />
+    <Property Name="GuardianOccpationid" Type="int" />
+    <Property Name="GuardianQualificationid" Type="int" />
+    <Property Name="GuardianEmail" Type="varchar" MaxLength="50" />
+    <Property Name="GuardianOfficeAddress" Type="varchar(max)" />
+    <Property Name="GuardianContact" Type="varchar" MaxLength="20" />
+    <Property Name="GuardianName" Type="varchar" MaxLength="50" />
+    <Property Name="FCode" Type="int" />
+    <Property Name="MCode" Type="int" />
+    <Property Name="RCode" Type="int" />
+    <Property Name="ECode" Type="int" />
+    <Property Name="GCode" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_payterm">
+    <Key>
+      <PropertyRef Name="paytermid" />
+    </Key>
+    <Property Name="paytermid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paytermname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_position">
+    <Key>
+      <PropertyRef Name="posid" />
+    </Key>
+    <Property Name="posid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="posname" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Product">
+    <Key>
+      <PropertyRef Name="Productid" />
+    </Key>
+    <Property Name="Productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Categoryid" Type="int" />
+    <Property Name="Product" Type="varchar" MaxLength="255" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="SubCategoryid" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_qualification">
+    <Key>
+      <PropertyRef Name="qualificationid" />
+    </Key>
+    <Property Name="qualificationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="qualificationnm" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_religion">
+    <Key>
+      <PropertyRef Name="Religionid" />
+    </Key>
+    <Property Name="Religionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Religionnm" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_route">
+    <Key>
+      <PropertyRef Name="routeid" />
+    </Key>
+    <Property Name="routeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="routename" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_SessionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionName" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_StaffAttendance">
+    <Key>
+      <PropertyRef Name="StaffAttendanceId" />
+    </Key>
+    <Property Name="StaffAttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="InTime" Type="datetime" />
+    <Property Name="OutTime" Type="datetime" />
+    <Property Name="Absent" Type="bit" />
+    <Property Name="Reason" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_state">
+    <Key>
+      <PropertyRef Name="Stateid" />
+    </Key>
+    <Property Name="Stateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="100" />
+    <Property Name="Countryid" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_student">
+    <Key>
+      <PropertyRef Name="Studid" />
+    </Key>
+    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studnm" Type="varchar" MaxLength="50" />
+    <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
+    <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
+    <Property Name="Weight" Type="int" Nullable="false" />
+    <Property Name="Height" Type="int" Nullable="false" />
+    <Property Name="StudBldGrp" Type="int" Nullable="false" />
+    <Property Name="StudEmail" Type="varchar" MaxLength="50" />
+    <Property Name="Disease" Type="varchar" MaxLength="20" />
+    <Property Name="Religionid" Type="int" Nullable="false" />
+    <Property Name="Casteid" Type="int" Nullable="false" />
+    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="RollNo" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="MotherTongue" Type="varchar" MaxLength="50" />
+    <Property Name="PreviousSchool" Type="varchar" MaxLength="100" />
+    <Property Name="SchoolAddress" Type="varchar(max)" />
+    <Property Name="LastClass" Type="varchar" MaxLength="50" />
+    <Property Name="Grade" Type="varchar" MaxLength="20" />
+    <Property Name="LeaveYear" Type="varchar" MaxLength="20" />
+    <Property Name="LeaveReason" Type="varchar" MaxLength="200" />
+    <Property Name="PrincipalNm" Type="varchar" MaxLength="20" />
+    <Property Name="ReferenceNm" Type="varchar" MaxLength="50" />
+    <Property Name="ReferenceContact" Type="varchar" MaxLength="20" />
+    <Property Name="BusFacility" Type="bit" Nullable="false" />
+    <Property Name="BusNo" Type="varchar" MaxLength="50" />
+    <Property Name="BusRTONo" Type="varchar" MaxLength="50" />
+    <Property Name="EmergencyPhysicianNm" Type="varchar" MaxLength="50" />
+    <Property Name="EmergencyPhysicianContact" Type="varchar" MaxLength="20" />
+    <Property Name="EmergencyAddress" Type="varchar(max)" />
+    <Property Name="StudPic" Type="image" />
+    <Property Name="FatherOccpationid" Type="int" Nullable="false" />
+    <Property Name="FatherQualificationid" Type="int" Nullable="false" />
+    <Property Name="FatherEmail" Type="varchar" MaxLength="50" />
+    <Property Name="FatherOfficeAddress" Type="varchar(max)" />
+    <Property Name="FatherContact" Type="varchar" MaxLength="20" />
+    <Property Name="FatherBldGrpid" Type="int" />
+    <Property Name="FatherPic" Type="image" />
+    <Property Name="MotherOccpationid" Type="int" Nullable="false" />
+    <Property Name="MotherQualificationid" Type="int" Nullable="false" />
+    <Property Name="MotherEmail" Type="varchar" MaxLength="50" />
+    <Property Name="MotherOfficeAddress" Type="varchar(max)" />
+    <Property Name="MotherContact" Type="varchar" MaxLength="20" />
+    <Property Name="MotherBldGrpid" Type="int" />
+    <Property Name="MotherPic" Type="image" />
+    <Property Name="Countryid" Type="int" Nullable="false" />
+    <Property Name="Stateid" Type="int" Nullable="false" />
+    <Property Name="Cityid" Type="int" Nullable="false" />
+    <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="PermanentAddress" Type="varchar(max)" />
+    <Property Name="academicyear" Type="varchar" MaxLength="10" />
+    <Property Name="SysDt" Type="datetime2" Precision="7" />
+    <Property Name="busid" Type="int" />
+    <Property Name="cats" Type="varchar(max)" />
+    <Property Name="prds" Type="varchar(max)" />
+    <Property Name="Docs" Type="nvarchar(max)" />
+    <Property Name="subcats" Type="varchar(max)" />
+    <Property Name="StudCategoryid" Type="int" />
+    <Property Name="GuardianOccpationid" Type="int" />
+    <Property Name="GuardianQualificationid" Type="int" />
+    <Property Name="GuardianEmail" Type="varchar" MaxLength="50" />
+    <Property Name="GuardianOfficeAddress" Type="varchar(max)" />
+    <Property Name="GuardianContact" Type="varchar" MaxLength="20" />
+    <Property Name="GuardianName" Type="varchar" MaxLength="50" />
+    <Property Name="FCode" Type="int" />
+    <Property Name="MCode" Type="int" />
+    <Property Name="GCode" Type="int" />
+    <Property Name="RCode" Type="int" />
+    <Property Name="ECode" Type="int" />
+    <Property Name="GuardianPic" Type="image" />
+    <Property Name="SecondaryTotalMarks" Type="int" />
+    <Property Name="SecondaryObtainMarks" Type="int" />
+    <Property Name="SecondaryPercetage" Type="float" />
+    <Property Name="SecondaryTCScanCopy" Type="image" />
+    <Property Name="SecondaryMarksheetCopy" Type="image" />
+    <Property Name="PrUgCollegeName" Type="varchar" MaxLength="100" />
+    <Property Name="PrUgCollegeAddress" Type="varchar" MaxLength="100" />
+    <Property Name="PrUgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
+    <Property Name="PrUgRefContactNo" Type="varchar" MaxLength="20" />
+    <Property Name="PrUgTotalMark" Type="int" />
+    <Property Name="PrUgObtainMark" Type="int" />
+    <Property Name="PrUgPercentage" Type="float" />
+    <Property Name="PrUgGradeLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrUgYearLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrUgReasonofLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrUgPrincipalName" Type="varchar" MaxLength="20" />
+    <Property Name="PrUgRefContactName" Type="varchar" MaxLength="20" />
+    <Property Name="UGMarksheet" Type="image" />
+    <Property Name="PrPgCollegeName" Type="varchar" MaxLength="100" />
+    <Property Name="PrPgCollegeAddress" Type="varchar" MaxLength="100" />
+    <Property Name="PrPgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
+    <Property Name="PrPgRefContactNo" Type="varchar" MaxLength="20" />
+    <Property Name="PrPgTotalMark" Type="int" />
+    <Property Name="PrPgObtainMark" Type="int" />
+    <Property Name="PrPgPercentage" Type="float" />
+    <Property Name="PrPgGradeLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrPgYearLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrPgReasonofLeaving" Type="varchar" MaxLength="20" />
+    <Property Name="PrPgPrincipalName" Type="varchar" MaxLength="20" />
+    <Property Name="PrPgRefContactName" Type="varchar" MaxLength="20" />
+    <Property Name="PGMarksheet" Type="image" />
+    <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling2Ql" Type="varchar(max)" />
+    <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling1DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling1Ql" Type="varchar(max)" />
+    <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling3DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling3Ql" Type="varchar(max)" />
+    <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
+    <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling4Ql" Type="varchar(max)" />
+    <Property Name="ParishName" Type="varchar" MaxLength="100" />
+    <Property Name="DioceseName" Type="varchar" MaxLength="100" />
+    <Property Name="DocumentType" Type="varchar" MaxLength="100" />
+    <Property Name="DocumentIDNo" Type="varchar" MaxLength="100" />
+    <Property Name="Dept_Id" Type="int" />
+    <Property Name="app_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="ug_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="pincode" Type="varchar" MaxLength="10" />
+    <Property Name="sc_regno" Type="nvarchar" MaxLength="50" />
+    <Property Name="sc_refletter" Type="image" />
+    <Property Name="sc_tcno" Type="nvarchar" MaxLength="50" />
+    <Property Name="prug_regno" Type="nvarchar" MaxLength="50" />
+    <Property Name="prpg_regno" Type="nvarchar" MaxLength="50" />
+    <Property Name="doc_typename" Type="varchar" MaxLength="100" />
+    <Property Name="courseyearid" Type="int" />
+    <Property Name="FatherOtherOccName" Type="varchar" MaxLength="100" />
+    <Property Name="FatherOtherQualName" Type="varchar" MaxLength="100" />
+    <Property Name="GuardianOtherOccName" Type="varchar" MaxLength="100" />
+    <Property Name="GuardianOtherQalName" Type="varchar" MaxLength="100" />
+    <Property Name="MotherOtherOccName" Type="varchar" MaxLength="100" />
+    <Property Name="MotherOtherQualName" Type="varchar" MaxLength="100" />
+    <Property Name="StdMobNo" Type="varchar" MaxLength="15" />
+    <Property Name="StdRegNo" Type="varchar(max)" />
+    <Property Name="emContactRel" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tbl_StudentAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+    </Key>
+    <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="Present" Type="bit" />
+    <Property Name="Reason" Type="varchar" MaxLength="500" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="Session" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_StudentCategory">
+    <Key>
+      <PropertyRef Name="StudCategoryid" />
+    </Key>
+    <Property Name="StudCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudCategoryname" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_studentdivision">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentid" Type="int" />
+    <Property Name="divisionid" Type="int" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="departmentid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_StudentMark">
+    <Key>
+      <PropertyRef Name="Marksid" />
+    </Key>
+    <Property Name="Marksid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studentid" Type="int" />
+    <Property Name="Examid" Type="int" />
+    <Property Name="Subjectid" Type="int" />
+    <Property Name="Marks" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="AcadamicYear" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryid" />
+    </Key>
+    <Property Name="SubCategoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubCategoryname" Type="varchar" MaxLength="50" />
+    <Property Name="Categoryid" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_subject">
+    <Key>
+      <PropertyRef Name="Subjectid" />
+    </Key>
+    <Property Name="Subjectid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Courseid" Type="int" Nullable="false" />
+    <Property Name="SubjectNm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Marks" Type="float" Nullable="false" />
+    <Property Name="Pass_Marks" Type="float" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="DeptId" Type="int" />
+    <Property Name="createdby" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_submenu">
+    <Key>
+      <PropertyRef Name="Submenuid" />
+    </Key>
+    <Property Name="Submenuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubmenuName" Type="varchar" MaxLength="50" />
+    <Property Name="Submenulink" Type="varchar" MaxLength="50" />
+    <Property Name="Menuid" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_teachersubject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherid" Type="int" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="departmentid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="subjectid" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_timetable">
+    <Key>
+      <PropertyRef Name="Tid" />
+    </Key>
+    <Property Name="Tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="Day" Type="int" Nullable="false" />
+    <Property Name="LecNo" Type="int" Nullable="false" />
+    <Property Name="Subjectid" Type="int" Nullable="false" />
+    <Property Name="LecTime" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LecETime" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Empid" Type="int" Nullable="false" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="deptid" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_transport">
+    <Key>
+      <PropertyRef Name="busid" />
+    </Key>
+    <Property Name="busid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="busNo" Type="varchar" MaxLength="50" />
+    <Property Name="busRoute" Type="int" Nullable="false" />
+    <Property Name="busDriverNm" Type="varchar" MaxLength="50" />
+    <Property Name="busDrivercontact" Type="varchar" MaxLength="50" />
+    <Property Name="busRTONo" Type="varchar" MaxLength="50" />
+    <Property Name="busDateTime" Type="datetime" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="Userid" />
+    </Key>
+    <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Genid" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_YearMaster">
+    <Key>
+      <PropertyRef Name="yearid" />
+    </Key>
+    <Property Name="yearid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YearName" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="Dept_id" />
+    </Key>
+    <Property Name="Dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dept_name" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <Function Name="AddBookAllotment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="studentid" Type="int" Mode="In" />
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="noofdays" Type="int" Mode="In" />
+    <Parameter Name="returnflag" Type="int" Mode="In" />
+    <Parameter Name="CallNumber" Type="varchar" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DateofBirth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ExaminationDetail_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamTypeid" Type="int" Mode="In" />
+    <Parameter Name="ExamClassid" Type="int" Mode="In" />
+    <Parameter Name="ExamYear" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="CallNo" Type="varchar" Mode="In" />
+    <Parameter Name="Volume" Type="varchar" Mode="In" />
+    <Parameter Name="SerielNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Authorid" Type="int" Mode="In" />
+    <Parameter Name="Authorname" Type="varchar" Mode="In" />
+    <Parameter Name="PublishedByid" Type="int" Mode="In" />
+    <Parameter Name="PublishedByName" Type="varchar" Mode="In" />
+    <Parameter Name="Edition" Type="varchar" Mode="In" />
+    <Parameter Name="Vendorid" Type="int" Mode="In" />
+    <Parameter Name="Vendorname" Type="varchar" Mode="In" />
+    <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="Cost" Type="decimal" Mode="In" />
+    <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
+    <Parameter Name="SelfNo" Type="varchar" Mode="In" />
+    <Parameter Name="NoOfCopy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AddLibraryJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lib_Jid" Type="int" Mode="In" />
+    <Parameter Name="LibType" Type="int" Mode="In" />
+    <Parameter Name="Department" Type="int" Mode="In" />
+    <Parameter Name="JournalTitle" Type="varchar" Mode="In" />
+    <Parameter Name="Volume" Type="varchar" Mode="In" />
+    <Parameter Name="Number" Type="varchar" Mode="In" />
+    <Parameter Name="IssueDate" Type="datetime2" Mode="In" />
+    <Parameter Name="Vendorid" Type="int" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="datetime2" Mode="In" />
+    <Parameter Name="JBillNo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Attandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentID" Type="int" Mode="In" />
+    <Parameter Name="Present" Type="bit" Mode="In" />
+    <Parameter Name="Reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="session" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Automation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_bloodgroup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bloodgroupid" Type="int" Mode="In" />
+    <Parameter Name="bloodgroupnm" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Caste_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Casteid" Type="int" Mode="In" />
+    <Parameter Name="CasteName" Type="varchar" Mode="In" />
+    <Parameter Name="Religionid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_category_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="catid" Type="int" Mode="In" />
+    <Parameter Name="catname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_changepassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Userid" Type="int" Mode="In" />
+    <Parameter Name="newPassword" Type="varchar" Mode="In" />
+    <Parameter Name="oldPassword" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_chapter_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chapterid" Type="int" Mode="In" />
+    <Parameter Name="chaptername" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="text" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+    <Parameter Name="dept_id" Type="int" Mode="In" />
+    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ChapterComplete_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Teacherid" Type="int" Mode="In" />
+    <Parameter Name="complete" Type="bit" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteDate" Type="datetime" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="Chapterid" Type="int" Mode="In" />
+    <Parameter Name="Departmentid" Type="int" Mode="In" />
+    <Parameter Name="Yearid" Type="int" Mode="In" />
+    <Parameter Name="Courseid" Type="int" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_City_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cityid" Type="int" Mode="In" />
+    <Parameter Name="CityName" Type="varchar" Mode="In" />
+    <Parameter Name="Countryid" Type="int" Mode="In" />
+    <Parameter Name="Stateid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_class_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="Classnm" Type="varchar" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Content_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="contentid" Type="int" Mode="In" />
+    <Parameter Name="contentname" Type="varchar" Mode="In" />
+    <Parameter Name="chapterid" Type="int" Mode="In" />
+    <Parameter Name="contentdescription" Type="text" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="Courseid" Type="int" Mode="In" />
+    <Parameter Name="dept_id" Type="int" Mode="In" />
+    <Parameter Name="Subjectid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Country_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Countryid" Type="int" Mode="In" />
+    <Parameter Name="CountryName" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_course_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_coursemaster_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="CourseName" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CourseYearMaster_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="dept_id" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="academicyear" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_department_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeptId" Type="int" Mode="In" />
+    <Parameter Name="Deptname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Division_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DivisionId" Type="int" Mode="In" />
+    <Parameter Name="DivisionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_divisionDML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="DivisionId" Type="varchar" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="leaveid" Type="int" Mode="In" />
+    <Parameter Name="empid" Type="int" Mode="In" />
+    <Parameter Name="startdate" Type="datetime" Mode="In" />
+    <Parameter Name="enddate" Type="datetime" Mode="In" />
+    <Parameter Name="leavetype" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="isapprove" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_employee_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="Cityid" Type="int" Mode="In" />
+    <Parameter Name="Stateid" Type="int" Mode="In" />
+    <Parameter Name="Zipcode" Type="varchar" Mode="In" />
+    <Parameter Name="Emailid" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNo" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Gender" Type="int" Mode="In" />
+    <Parameter Name="Quallification" Type="int" Mode="In" />
+    <Parameter Name="DateOfJoin" Type="datetime2" Mode="In" />
+    <Parameter Name="Typeid" Type="int" Mode="In" />
+    <Parameter Name="Code" Type="int" Mode="In" />
+    <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="bloodgroup" Type="int" Mode="In" />
+    <Parameter Name="qualication1" Type="int" Mode="In" />
+    <Parameter Name="university1" Type="varchar" Mode="In" />
+    <Parameter Name="precentage1" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing1" Type="varchar" Mode="In" />
+    <Parameter Name="qualication2" Type="int" Mode="In" />
+    <Parameter Name="university2" Type="varchar" Mode="In" />
+    <Parameter Name="precentage2" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing2" Type="varchar" Mode="In" />
+    <Parameter Name="qualication3" Type="int" Mode="In" />
+    <Parameter Name="university3" Type="varchar" Mode="In" />
+    <Parameter Name="precentage3" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing3" Type="varchar" Mode="In" />
+    <Parameter Name="qualication4" Type="int" Mode="In" />
+    <Parameter Name="university4" Type="varchar" Mode="In" />
+    <Parameter Name="precentage4" Type="varchar" Mode="In" />
+    <Parameter Name="yearpasing4" Type="varchar" Mode="In" />
+    <Parameter Name="weightinkg" Type="varchar" Mode="In" />
+    <Parameter Name="heightc" Type="varchar" Mode="In" />
+    <Parameter Name="emppic" Type="image" Mode="In" />
+    <Parameter Name="eidtype" Type="int" Mode="In" />
+    <Parameter Name="doctorname" Type="varchar" Mode="In" />
+    <Parameter Name="doctorcode" Type="varchar" Mode="In" />
+    <Parameter Name="doctorcontact" Type="varchar" Mode="In" />
+    <Parameter Name="doctoraddress" Type="text" Mode="In" />
+    <Parameter Name="relation" Type="int" Mode="In" />
+    <Parameter Name="parentsname" Type="varchar" Mode="In" />
+    <Parameter Name="parentoccupation" Type="varchar" Mode="In" />
+    <Parameter Name="parentqualification" Type="varchar" Mode="In" />
+    <Parameter Name="parentsemail" Type="varchar" Mode="In" />
+    <Parameter Name="parentsaddress" Type="text" Mode="In" />
+    <Parameter Name="parentscode" Type="int" Mode="In" />
+    <Parameter Name="parentscontact" Type="varchar" Mode="In" />
+    <Parameter Name="parentspic" Type="image" Mode="In" />
+    <Parameter Name="pstreet" Type="text" Mode="In" />
+    <Parameter Name="pcity" Type="int" Mode="In" />
+    <Parameter Name="pstate" Type="int" Mode="In" />
+    <Parameter Name="pcountry" Type="int" Mode="In" />
+    <Parameter Name="ppin" Type="varchar" Mode="In" />
+    <Parameter Name="cstreet" Type="text" Mode="In" />
+    <Parameter Name="ccity" Type="int" Mode="In" />
+    <Parameter Name="cstate" Type="int" Mode="In" />
+    <Parameter Name="ccountry" Type="int" Mode="In" />
+    <Parameter Name="cpin" Type="varchar" Mode="In" />
+    <Parameter Name="homecode" Type="int" Mode="In" />
+    <Parameter Name="homecontact" Type="varchar" Mode="In" />
+    <Parameter Name="cmobilecode" Type="int" Mode="In" />
+    <Parameter Name="cmobile" Type="varchar" Mode="In" />
+    <Parameter Name="bankname" Type="varchar" Mode="In" />
+    <Parameter Name="branch" Type="varchar" Mode="In" />
+    <Parameter Name="ifsccode" Type="varchar" Mode="In" />
+    <Parameter Name="accountno" Type="varchar" Mode="In" />
+    <Parameter Name="accountname" Type="varchar" Mode="In" />
+    <Parameter Name="collagename" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
+    <Parameter Name="companyname" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
+    <Parameter Name="empemail" Type="varchar" Mode="In" />
+    <Parameter Name="empreligion" Type="int" Mode="In" />
+    <Parameter Name="empcategory" Type="int" Mode="In" />
+    <Parameter Name="empcast" Type="int" Mode="In" />
+    <Parameter Name="empmothertongue" Type="varchar" Mode="In" />
+    <Parameter Name="collagename1" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity1" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience1" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation1" Type="varchar" Mode="In" />
+    <Parameter Name="companyname1" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation1" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience1" Type="varchar" Mode="In" />
+    <Parameter Name="doctypename" Type="varchar" Mode="In" />
+    <Parameter Name="docnumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="contrelation" Type="varchar" Mode="In" />
+    <Parameter Name="ParishName" Type="varchar" Mode="In" />
+    <Parameter Name="DioceseName" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="collagename_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="affliateduniversity_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="joiningdate_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="lastdate1_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="totalexperience_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="lastdesignation_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="companyname_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="clastdesignation_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="cjoiningdate_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="clastdate_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="ctotalexperience_exp10" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_EmployeeAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ExaminationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamTypeid" Type="int" Mode="In" />
+    <Parameter Name="ExamClassid" Type="int" Mode="In" />
+    <Parameter Name="ExamYear" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ExaminationDetailbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Examid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_feeschild_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Feesid" Type="int" Mode="In" />
+    <Parameter Name="FeesNm" Type="varchar" Mode="In" />
+    <Parameter Name="Fees" Type="money" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_feeslabel_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="feeslblid" Type="int" Mode="In" />
+    <Parameter Name="ctrlcnt" Type="int" Mode="In" />
+    <Parameter Name="classid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_feeslabelchild_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="feeslblid" Type="int" Mode="In" />
+    <Parameter Name="ctrlnm" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_feespayment_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Pid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Scholarship" Type="bit" Mode="In" />
+    <Parameter Name="ScholarshipFees" Type="money" Mode="In" />
+    <Parameter Name="TotalFees" Type="money" Mode="In" />
+    <Parameter Name="PaidFees" Type="money" Mode="In" />
+    <Parameter Name="PendingFees" Type="money" Mode="In" />
+    <Parameter Name="PTypeid" Type="int" Mode="In" />
+    <Parameter Name="Remarks" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_feessetup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Feesid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="LFees" Type="money" Mode="In" />
+    <Parameter Name="TFees" Type="money" Mode="In" />
+    <Parameter Name="UFees" Type="money" Mode="In" />
+    <Parameter Name="HFees" Type="money" Mode="In" />
+    <Parameter Name="OFees" Type="money" Mode="In" />
+    <Parameter Name="TotalFees" Type="money" Mode="In" />
+    <Parameter Name="PTypeid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_get_permission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserRoleid" Type="int" Mode="In" />
+    <Parameter Name="moduleid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetAvailableEmpLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetAvailableLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetBookDetailsbyBookid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Bookid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetBookDetailsbyBookidorBookname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="callno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getBookentry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getbookissue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="student" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetBookIssueDetailsbyStudentid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Studentid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getchaptersubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="course" Type="int" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getcontent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getCourseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCoursefordevision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCourseforsubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetCourseforsubjectbydeptid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getCourseMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getCourseYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getDivision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetEmpLeaveDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetEmployeeLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getfeeslabels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getFeespaymentlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getFeessetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getNewslist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getOccupation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetParentsEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Classid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getPaymentHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getPayterm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getposition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getproductsbycat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cats" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_getproductsbycatexclude" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cats" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_getQualification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getReligion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getroute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetSearchBookAndJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="option" Type="int" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="authorname" Type="varchar" Mode="In" />
+    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="option" Type="int" Mode="In" />
+    <Parameter Name="department" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
+  </Function>
+  <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetStudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="ExamTypeid" Type="int" Mode="In" />
+    <Parameter Name="ExamYear" Type="varchar" Mode="In" />
+    <Parameter Name="Studentid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getsubcatbycat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cats" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_getSubCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getteacheremail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Classid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getteachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_gettimetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_gettimetable_pivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_gettimetableclass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="day" Type="int" Mode="In" />
+    <Parameter Name="subject" Type="int" Mode="In" />
+    <Parameter Name="teacher" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_gettransport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getVendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dept_id" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Productid" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="Inventoryid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_leave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="leaveid" Type="int" Mode="In" />
+    <Parameter Name="leavename" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="leaveBalance" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_menudatacollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menuid" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_news_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Newsid" Type="int" Mode="In" />
+    <Parameter Name="NewsDate" Type="datetime" Mode="In" />
+    <Parameter Name="NewsTitle" Type="varchar" Mode="In" />
+    <Parameter Name="NewsDesc" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_occupation_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="occupationid" Type="int" Mode="In" />
+    <Parameter Name="occupationnm" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_payterm_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="paytermid" Type="int" Mode="In" />
+    <Parameter Name="paytermname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Permission_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="moduleid" Type="int" Mode="In" />
+    <Parameter Name="UserRoleid" Type="int" Mode="In" />
+    <Parameter Name="Permissionid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_position_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="posid" Type="int" Mode="In" />
+    <Parameter Name="posname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Product_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Productid" Type="int" Mode="In" />
+    <Parameter Name="catid" Type="int" Mode="In" />
+    <Parameter Name="subcatid" Type="int" Mode="In" />
+    <Parameter Name="productname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PublishExamination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamTypeid" Type="int" Mode="In" />
+    <Parameter Name="ExamClassid" Type="int" Mode="In" />
+    <Parameter Name="ExamYear" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_qualification_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Qualificationid" Type="int" Mode="In" />
+    <Parameter Name="Qualificationnm" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_religion_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Religionid" Type="int" Mode="In" />
+    <Parameter Name="Religionnm" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_route_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="routeid" Type="int" Mode="In" />
+    <Parameter Name="routename" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="sessionname" Type="varchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_StaffAttandance_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="staffid" Type="int" Mode="In" />
+    <Parameter Name="attendancedate" Type="datetime" Mode="In" />
+    <Parameter Name="intime" Type="datetime" Mode="In" />
+    <Parameter Name="outtime" Type="datetime" Mode="In" />
+    <Parameter Name="absent" Type="bit" Mode="In" />
+    <Parameter Name="reason" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_State_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Stateid" Type="int" Mode="In" />
+    <Parameter Name="StateName" Type="varchar" Mode="In" />
+    <Parameter Name="Countryid" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_student_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Studnm" Type="varchar" Mode="In" />
+    <Parameter Name="Studfathernm" Type="varchar" Mode="In" />
+    <Parameter Name="Studmothernm" Type="varchar" Mode="In" />
+    <Parameter Name="DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Weight" Type="int" Mode="In" />
+    <Parameter Name="Height" Type="int" Mode="In" />
+    <Parameter Name="StudBldGrp" Type="int" Mode="In" />
+    <Parameter Name="StudEmail" Type="varchar" Mode="In" />
+    <Parameter Name="Disease" Type="varchar" Mode="In" />
+    <Parameter Name="Religionid" Type="int" Mode="In" />
+    <Parameter Name="Casteid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="RollNo" Type="int" Mode="In" />
+    <Parameter Name="Gender" Type="int" Mode="In" />
+    <Parameter Name="MotherTongue" Type="varchar" Mode="In" />
+    <Parameter Name="PreviousSchool" Type="varchar" Mode="In" />
+    <Parameter Name="SchoolAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="LastClass" Type="varchar" Mode="In" />
+    <Parameter Name="Grade" Type="varchar" Mode="In" />
+    <Parameter Name="LeaveYear" Type="varchar" Mode="In" />
+    <Parameter Name="LeaveReason" Type="varchar" Mode="In" />
+    <Parameter Name="PrincipalNm" Type="varchar" Mode="In" />
+    <Parameter Name="ReferenceNm" Type="varchar" Mode="In" />
+    <Parameter Name="ReferenceContact" Type="varchar" Mode="In" />
+    <Parameter Name="BusFacility" Type="bit" Mode="In" />
+    <Parameter Name="BusNo" Type="varchar" Mode="In" />
+    <Parameter Name="BusRTONo" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyPhysicianNm" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyPhysicianContact" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StudPic" Type="image" Mode="In" />
+    <Parameter Name="FatherOccpationid" Type="int" Mode="In" />
+    <Parameter Name="FatherQualificationid" Type="int" Mode="In" />
+    <Parameter Name="FatherEmail" Type="varchar" Mode="In" />
+    <Parameter Name="FatherOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FatherContact" Type="varchar" Mode="In" />
+    <Parameter Name="FatherBldGrpid" Type="int" Mode="In" />
+    <Parameter Name="FatherPic" Type="image" Mode="In" />
+    <Parameter Name="MotherOccpationid" Type="int" Mode="In" />
+    <Parameter Name="MotherQualificationid" Type="int" Mode="In" />
+    <Parameter Name="MotherEmail" Type="varchar" Mode="In" />
+    <Parameter Name="MotherOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MotherContact" Type="varchar" Mode="In" />
+    <Parameter Name="MotherBldGrpid" Type="int" Mode="In" />
+    <Parameter Name="MotherPic" Type="image" Mode="In" />
+    <Parameter Name="Countryid" Type="int" Mode="In" />
+    <Parameter Name="Stateid" Type="int" Mode="In" />
+    <Parameter Name="Cityid" Type="int" Mode="In" />
+    <Parameter Name="CurrentAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PermanentAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="busid" Type="int" Mode="In" />
+    <Parameter Name="cats" Type="varchar(max)" Mode="In" />
+    <Parameter Name="prds" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Docs" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="subcats" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="StudCategoryid" Type="int" Mode="In" />
+    <Parameter Name="GuardianOccpationid" Type="int" Mode="In" />
+    <Parameter Name="GuardianQualificationid" Type="int" Mode="In" />
+    <Parameter Name="GuardianEmail" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="GuardianContact" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianName" Type="varchar" Mode="In" />
+    <Parameter Name="FCode" Type="varchar" Mode="In" />
+    <Parameter Name="MCode" Type="varchar" Mode="In" />
+    <Parameter Name="GCode" Type="varchar" Mode="In" />
+    <Parameter Name="ECode" Type="varchar" Mode="In" />
+    <Parameter Name="RCode" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianPic" Type="image" Mode="In" />
+    <Parameter Name="SecondaryTotalMarks" Type="int" Mode="In" />
+    <Parameter Name="SecondaryObtainMarks" Type="int" Mode="In" />
+    <Parameter Name="SecondaryPercetage" Type="float" Mode="In" />
+    <Parameter Name="SecondaryTCScanCopy" Type="image" Mode="In" />
+    <Parameter Name="SecondaryMarksheetCopy" Type="image" Mode="In" />
+    <Parameter Name="PrUgCollegeName" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgCollegeAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgAffilatedUniversity" Type="nvarchar" Mode="In" />
+    <Parameter Name="PrUgRefContactNo" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgTotalMark" Type="int" Mode="In" />
+    <Parameter Name="PrUgObtainMark" Type="int" Mode="In" />
+    <Parameter Name="PrUgPercentage" Type="float" Mode="In" />
+    <Parameter Name="PrUgGradeLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgYearLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgReasonofLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgPrincipalName" Type="varchar" Mode="In" />
+    <Parameter Name="PrUgRefContactName" Type="varchar" Mode="In" />
+    <Parameter Name="UGMarksheet" Type="image" Mode="In" />
+    <Parameter Name="PrPgCollegeName" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgCollegeAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgAffilatedUniversity" Type="nvarchar" Mode="In" />
+    <Parameter Name="PrPgRefContactNo" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgTotalMark" Type="int" Mode="In" />
+    <Parameter Name="PrPgObtainMark" Type="int" Mode="In" />
+    <Parameter Name="PrPgPercentage" Type="float" Mode="In" />
+    <Parameter Name="PrPgGradeLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgYearLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgReasonofLeaving" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgPrincipalName" Type="varchar" Mode="In" />
+    <Parameter Name="PrPgRefContactName" Type="varchar" Mode="In" />
+    <Parameter Name="PGMarksheet" Type="image" Mode="In" />
+    <Parameter Name="Sibling1Name" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling1Rel" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling1DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling1Ql" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling2Name" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling2Rel" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling2DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling2Ql" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling3Name" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling3Rel" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling3DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling3Ql" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling4Name" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling4Rel" Type="varchar" Mode="In" />
+    <Parameter Name="Sibling4DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling4Ql" Type="varchar" Mode="In" />
+    <Parameter Name="ParishName" Type="varchar" Mode="In" />
+    <Parameter Name="DioceseName" Type="varchar" Mode="In" />
+    <Parameter Name="DocumentType" Type="varchar" Mode="In" />
+    <Parameter Name="DocumentIDNo" Type="varchar" Mode="In" />
+    <Parameter Name="Dept_Id" Type="int" Mode="In" />
+    <Parameter Name="app_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="ug_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="pincode" Type="varchar" Mode="In" />
+    <Parameter Name="sc_regno" Type="nvarchar" Mode="In" />
+    <Parameter Name="sc_refletter" Type="image" Mode="In" />
+    <Parameter Name="sc_tcno" Type="nvarchar" Mode="In" />
+    <Parameter Name="prug_regno" Type="nvarchar" Mode="In" />
+    <Parameter Name="prpg_regno" Type="nvarchar" Mode="In" />
+    <Parameter Name="doc_typename" Type="varchar" Mode="In" />
+    <Parameter Name="courseyearid" Type="int" Mode="In" />
+    <Parameter Name="FatherOtherOccName" Type="varchar" Mode="In" />
+    <Parameter Name="FatherOtherQualName" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianOtherOccName" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianOtherQalName" Type="varchar" Mode="In" />
+    <Parameter Name="MotherOtherOccName" Type="varchar" Mode="In" />
+    <Parameter Name="MotherOtherQualName" Type="varchar" Mode="In" />
+    <Parameter Name="StdMobNo" Type="varchar" Mode="In" />
+    <Parameter Name="StdRegNo" Type="varchar" Mode="In" />
+    <Parameter Name="empContactRel" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="Studnm" Type="varchar" Mode="In" />
+    <Parameter Name="Studfathernm" Type="varchar" Mode="In" />
+    <Parameter Name="Studmothernm" Type="varchar" Mode="In" />
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
+    <Parameter Name="Weight" Type="int" Mode="In" />
+    <Parameter Name="Height" Type="int" Mode="In" />
+    <Parameter Name="StudBldGrp" Type="int" Mode="In" />
+    <Parameter Name="StudEmail" Type="varchar" Mode="In" />
+    <Parameter Name="Disease" Type="varchar" Mode="In" />
+    <Parameter Name="Religionid" Type="int" Mode="In" />
+    <Parameter Name="Casteid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="RollNo" Type="int" Mode="In" />
+    <Parameter Name="Gender" Type="int" Mode="In" />
+    <Parameter Name="MotherTongue" Type="varchar" Mode="In" />
+    <Parameter Name="PreviousSchool" Type="varchar" Mode="In" />
+    <Parameter Name="SchoolAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="LastClass" Type="varchar" Mode="In" />
+    <Parameter Name="Grade" Type="varchar" Mode="In" />
+    <Parameter Name="LeaveYear" Type="varchar" Mode="In" />
+    <Parameter Name="LeaveReason" Type="varchar" Mode="In" />
+    <Parameter Name="PrincipalNm" Type="varchar" Mode="In" />
+    <Parameter Name="ReferenceNm" Type="varchar" Mode="In" />
+    <Parameter Name="ReferenceContact" Type="varchar" Mode="In" />
+    <Parameter Name="BusFacility" Type="bit" Mode="In" />
+    <Parameter Name="BusNo" Type="varchar" Mode="In" />
+    <Parameter Name="BusRTONo" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyPhysicianNm" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyPhysicianContact" Type="varchar" Mode="In" />
+    <Parameter Name="EmergencyAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StudPic" Type="image" Mode="In" />
+    <Parameter Name="FatherOccpationid" Type="int" Mode="In" />
+    <Parameter Name="FatherQualificationid" Type="int" Mode="In" />
+    <Parameter Name="FatherEmail" Type="varchar" Mode="In" />
+    <Parameter Name="FatherOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FatherContact" Type="varchar" Mode="In" />
+    <Parameter Name="FatherBldGrpid" Type="int" Mode="In" />
+    <Parameter Name="FatherPic" Type="image" Mode="In" />
+    <Parameter Name="MotherOccpationid" Type="int" Mode="In" />
+    <Parameter Name="MotherQualificationid" Type="int" Mode="In" />
+    <Parameter Name="MotherEmail" Type="varchar" Mode="In" />
+    <Parameter Name="MotherOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MotherContact" Type="varchar" Mode="In" />
+    <Parameter Name="MotherBldGrpid" Type="int" Mode="In" />
+    <Parameter Name="MotherPic" Type="image" Mode="In" />
+    <Parameter Name="Countryid" Type="int" Mode="In" />
+    <Parameter Name="Stateid" Type="int" Mode="In" />
+    <Parameter Name="Cityid" Type="int" Mode="In" />
+    <Parameter Name="CurrentAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PermanentAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="busid" Type="int" Mode="In" />
+    <Parameter Name="cats" Type="varchar(max)" Mode="In" />
+    <Parameter Name="prds" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Docs" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="subcats" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="StudCategoryid" Type="int" Mode="In" />
+    <Parameter Name="GuardianOccpationid" Type="int" Mode="In" />
+    <Parameter Name="GuardianQualificationid" Type="int" Mode="In" />
+    <Parameter Name="GuardianEmail" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianOfficeAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="GuardianContact" Type="varchar" Mode="In" />
+    <Parameter Name="GuardianName" Type="varchar" Mode="In" />
+    <Parameter Name="FCode" Type="varchar" Mode="In" />
+    <Parameter Name="MCode" Type="varchar" Mode="In" />
+    <Parameter Name="GCode" Type="varchar" Mode="In" />
+    <Parameter Name="ECode" Type="varchar" Mode="In" />
+    <Parameter Name="RCode" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_StudentAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="classid" Type="int" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_StudentCategory_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudCategoryid" Type="int" Mode="In" />
+    <Parameter Name="StudCategoryname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_StudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Examid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SubCategory_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SubCategoryid" Type="int" Mode="In" />
+    <Parameter Name="SubCategoryname" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="Categoryid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Subject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Subjectid" Type="int" Mode="In" />
+    <Parameter Name="Courseid" Type="int" Mode="In" />
+    <Parameter Name="SubjectNm" Type="varchar" Mode="In" />
+    <Parameter Name="Marks" Type="float" Mode="In" />
+    <Parameter Name="Pass_Marks" Type="float" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="yearid" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_teachersubject_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="teacherid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="departmenid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_timetable_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Tid" Type="int" Mode="In" />
+    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="Day" Type="int" Mode="In" />
+    <Parameter Name="LecNo" Type="int" Mode="In" />
+    <Parameter Name="Subjectid" Type="int" Mode="In" />
+    <Parameter Name="LecTime" Type="varchar" Mode="In" />
+    <Parameter Name="LecETime" Type="varchar" Mode="In" />
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_transport_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="busid" Type="int" Mode="In" />
+    <Parameter Name="busNo" Type="varchar" Mode="In" />
+    <Parameter Name="busRoute" Type="int" Mode="In" />
+    <Parameter Name="busDriverNm" Type="varchar" Mode="In" />
+    <Parameter Name="busDrivercontact" Type="varchar" Mode="In" />
+    <Parameter Name="busRTONo" Type="varchar" Mode="In" />
+    <Parameter Name="busDateTime" Type="datetime" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_updatereturnbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="cretedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Userid" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="Genid" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Vendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="vendorname" Type="varchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
+    <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Permission" EntityType="Self.sys_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_UserRole" EntityType="Self.sys_UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="System" EntityType="Self.System" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AssignDivision" EntityType="Self.tbl_AssignDivision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BookStock" EntityType="Self.tbl_BookStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Chapter" EntityType="Self.tbl_Chapter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="Self.tbl_Chaptercomplete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Course" EntityType="Self.tbl_Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CourseMaster" EntityType="Self.tbl_CourseMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CourseYearMaster" EntityType="Self.tbl_CourseYearMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_division" EntityType="Self.tbl_division" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Empexperience" EntityType="Self.tbl_Empexperience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_EmployeeLeave" EntityType="Self.tbl_EmployeeLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExaminationType" EntityType="Self.tbl_ExaminationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_BookIssue" EntityType="Self.tbl_lib_BookIssue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_JournalType" EntityType="Self.tbl_lib_JournalType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Publisher" EntityType="Self.tbl_lib_Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_lib_Vendor" EntityType="Self.tbl_lib_Vendor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_newsimage" EntityType="Self.tbl_newsimage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_occupation" EntityType="Self.tbl_occupation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_online_student" EntityType="Self.tbl_online_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_payterm" EntityType="Self.tbl_payterm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_position" EntityType="Self.tbl_position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_qualification" EntityType="Self.tbl_qualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_religion" EntityType="Self.tbl_religion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_route" EntityType="Self.tbl_route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SessionMaster" EntityType="Self.tbl_SessionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentAttendance" EntityType="Self.tbl_StudentAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentCategory" EntityType="Self.tbl_StudentCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_studentdivision" EntityType="Self.tbl_studentdivision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StudentMark" EntityType="Self.tbl_StudentMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SubCategory" EntityType="Self.tbl_SubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_submenu" EntityType="Self.tbl_submenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_teachersubject" EntityType="Self.tbl_teachersubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_timetable" EntityType="Self.tbl_timetable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_transport" EntityType="Self.tbl_transport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[sys_UserPermission].[moduleid] AS [moduleid], 
+[sys_UserPermission].[UserRoleid] AS [UserRoleid], 
+[sys_UserPermission].[Permissionid] AS [Permissionid]
+FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_days" EntityType="Self.tbl_days" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_days].[dayid] AS [dayid], 
+[tbl_days].[daynm] AS [daynm]
+FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_feeschild" EntityType="Self.tbl_feeschild" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_feeschild].[Feesid] AS [Feesid], 
+[tbl_feeschild].[FeesNm] AS [FeesNm], 
+[tbl_feeschild].[Fees] AS [Fees]
+FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_feeslabelchild" EntityType="Self.tbl_feeslabelchild" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
+[tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
+FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

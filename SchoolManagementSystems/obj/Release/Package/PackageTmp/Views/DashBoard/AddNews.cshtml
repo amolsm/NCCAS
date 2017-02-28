@@ -1,0 +1,280 @@
+﻿@model Entity.Dashboardviewmodel
+
+@{
+    ViewBag.Title = "AddNews";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#status").prop('checked', true);
+        $("#lblmsg").text('');
+        $('#Newsid input').attr("readonly", true);
+        if ($("#Newsid").val() == "0") {
+            $("#Newsid").hide();
+        }
+
+        $("#result").on("click", ".edit", function (evt) {
+            var Newsid = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillNewsDetails")',
+                dataType: 'JSON',
+                data: { Newsid: Newsid },
+                success: function (data) {
+                    $("#Newsid").show();
+                    $('#Newsid input').val(data.Newsid);
+                
+                    var value = new Date(parseInt(data.NewsDate.substr(6)));
+                    $('#datepicker').datepicker('setDate', value);
+                    $('#datepicker').focus();
+                    $("#NewsTitle").val(data.NewsTitle);
+                    $("#NewsDesc").val(data.NewsDesc);
+                    $("#Status").val(data.Status);
+                }
+            });
+        });
+        $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'mm/dd/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+        $('#datepicker').datepicker('setDate', new Date());
+        function clear() {
+            $("#Newsid").hide();
+            $('#Newsid input').val('0');
+            $('#datepicker').datepicker('setDate', new Date());
+        
+            $("#NewsTitle").val('');
+            $("#NewsDesc").val('');
+        
+        }
+
+        $('#NewsTitle').blur(function () {
+            var NewsTitle = $('#NewsTitle').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_news")',
+                dataType: 'JSON',
+                data: { NewsTitle: NewsTitle },
+                success: function (data) {
+                    if (data.NewsTitle != null) {
+                        $("#lblmsg").text("News Title Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $('#NewsTitle').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            validations();
+            var remark = "false";
+            if ($("#Status").is(":checked")) {
+                remark = "true";
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DMLNews")',
+                data: $('#frm').serialize() + "&evt=submit&id=0",
+                success: function (result) {
+                    $("#lblmsg").text("News updated successfully!..");
+                    $("#lblmsg").css({ "color": "lime" });
+                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#result").html(result);
+                    clear();
+                    ReloadPaging();
+                }
+            });
+        });
+
+        $("#reset").click(function () {
+            clear();
+        });
+
+        $("#result").on("click", ".delete", function (evt) {
+            var Newsid = this.id;
+            var flag = confirm('Are you sure you want to delete this News?');
+            if (flag) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DMLNews")',
+                    data: $('#frm').serialize() + "&evt=Delete&id=" + Newsid + "",
+                    success: function (result) {
+                        $("#lblmsg").text("News deleted successfully!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#result").html(result);
+                        clear();
+                        ReloadPaging();
+                    }
+                });
+            }
+        });
+
+        function validations() {
+            var cnt = 0;
+
+            if ($("#datepicker").val() == '') {
+                cnt++;
+                $("#datepicker").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#datepicker").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+         
+              
+
+            if (cnt != 0)
+                e.preventDefault();
+        }
+        ReloadPaging();
+    });
+</script>
+<style type="text/css">
+    .ui-datepicker-calendar {
+        background-color: antiquewhite;
+    }
+
+    .ui-datepicker-title {
+        background-color: antiquewhite;
+    }
+
+    .ui-icon ui-icon-circle-triangle-w {
+        background-color: antiquewhite;
+    }
+    </style>
+@Html.HiddenFor(m => m.Newsid)
+@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+                  @Html.Partial("_DashboardSubMenu")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+             
+                    <ul class="breadcrumb">
+                         <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                      @Html.ActionLink("Dashboard Management", "Index", "DashBoard", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Add News</li>
+                        <div style="float: right;">
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                                <input type="submit" value="Find" />
+                            }
+                        </div>
+                    </ul>
+                 <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Add News</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+
+                                           @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class="form-horizontal" }))
+                                        {
+                                            @Html.ValidationSummary(true)
+                                            <div id="lblmsg"  class="control-group">
+                                            </div>
+                                            <div id="Newsid"  class="control-group">
+                                                @Html.LabelFor(model => model.Newsid, new {@class = "control-label" })
+                                                  <div class="controls"> 
+                                                @Html.EditorFor(model => model.Newsid, new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.Newsid)
+                                                      </div>
+                                            </div>
+                                            <div  class="control-group">
+                                                @Html.LabelFor(model => model.NewsDate, new {@class = "control-label" })
+                                                  <div class="controls"> 
+                                                @Html.TextBoxFor(model => model.NewsDate,  new { id = "datepicker", placeholder = "Select Date of News" })
+                                                @Html.ValidationMessageFor(model => model.NewsDate)
+                                                      </div>
+                                            </div>
+                                            <div  class="control-group">
+                                                @Html.LabelFor(model => model.NewsTitle, new {@class = "control-label" })
+                                                  <div class="controls"> 
+                                                @Html.EditorFor(model => model.NewsTitle, new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.NewsTitle)
+                                                      </div>
+                                            </div>
+                                               
+                                                  <div  class="control-group">
+                                                @Html.LabelFor(model => model.NewsDesc, new {@class = "control-label" })
+                                                  <div class="controls"> 
+                                                @Html.EditorFor(model => model.NewsDesc, new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.NewsDesc)
+                                                      </div>
+                                            </div>
+                                               
+                                                   <div  class="control-group">
+                                                @Html.LabelFor(model => model.Status, new {@class = "control-label" })
+                                                  <div class="controls"> 
+                                                @Html.CheckBoxFor(model => model.Status, new { @type = "checkbox", @id = "inlineCheckbox1" })
+                                                @Html.ValidationMessageFor(model => model.Status)
+                                                      </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                                <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                            </div>
+                                        }
+                                  </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                   <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>News List</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                     
+                                                @Html.Partial("_Newslist")
+                                     
+                                         </div>
+                  </div>
+                                             
+                                                
+
+                                         </div>
+        </div>
+             
+    </div>
+</div>
+   
+            </div>

@@ -1,0 +1,320 @@
+﻿@model Entity.Examinationviewmodel
+@{
+    ViewBag.Title = "ShowExamTimeTable";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        FillPermission();
+
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+
+        var Examyear = GetParameterValues('ExamYear');
+        var ExamTypeid = GetParameterValues('ExaminationTypeid');
+        var Classid = GetParameterValues('Classid');
+        if (Examyear != null && ExamTypeid != null && Classid != null) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DisplayExamTimeTable")',
+                dataType: 'json',
+                data: { Classid: Classid, ExamTypeid: ExamTypeid, ExamYear: Examyear },
+                success: function (ExaminationDetail) {
+                    if (ExaminationDetail != "") {
+                        var item = '<tr><th>Exam Name</th><th>Exam Date</th><th>Exam Start Time</th><th>Exam End Time</th><th>Exam Type</th><th>Exam Subject</th><th>Exam Class</th><th>Exam Year</th></tr>';
+                        $.each(ExaminationDetail, function (i, Exam) {
+                            item += '<tr>'
+                            item += '<td>' + Exam.ExamName + '</td>';
+                            item += '<td>' + Exam.ExamDate + '</td>';
+                            item += '<td>' + Exam.ExamStartDate + '</td>';
+                            item += '<td>' + Exam.ExamEndDate + '</td>';
+                            item += '<td>' + Exam.ExamType + '</td>';
+                            item += '<td>' + Exam.ExamSubject + '</td>';
+                            item += '<td>' + Exam.ExamClass + '</td>';
+                            item += '<td>' + Exam.ExamYear + '</td>';
+                        });
+                        $("#tblExamTimeTable").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">No Records</option>';
+                        $("#tblExamTimeTable").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+
+            $("#Classid").prop("disabled", true);
+            $("#ExaminationTypeid").prop("disabled", true);
+            $("#ExamYear").prop("disabled", true);
+            $("#display").hide();
+            $("#publish").hide();
+
+        }
+
+        $("#display").click(function (e) {
+            if (Validations(e) == false)
+                return false;
+            $("#tblExamTimeTable").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DisplayExamTimeTable")',
+                dataType: 'json',
+                data: { Classid: $("#Classid").val(), ExamTypeid: $("#ExaminationTypeid").val(), ExamYear: $("#ExamYear").val() },
+                success: function (ExaminationDetail) {
+                    if (ExaminationDetail != "") {
+                        var item = '<tr><th>Exam Name</th><th>Exam Date</th><th>Exam Start Time</th><th>Exam End Time</th><th>Exam Type</th><th>Exam Subject</th><th>Exam Class</th><th>Exam Year</th><th colspan="2">Action</th></tr>';
+                        $.each(ExaminationDetail, function (i, Exam) {
+                            item += '<tr>'
+                            item += '<td>' + Exam.ExamName + '</td>';
+                            item += '<td>' + Exam.ExamDate + '</td>';
+                            item += '<td>' + Exam.ExamStartDate + '</td>';
+                            item += '<td>' + Exam.ExamEndDate + '</td>';
+                            item += '<td>' + Exam.ExamType + '</td>';
+                            item += '<td>' + Exam.ExamSubject + '</td>';
+                            item += '<td>' + Exam.ExamClass + '</td>';
+                            item += '<td>' + Exam.ExamYear + '</td>';
+                            item += '<td><input type="submit" Class="edit btn btn-default btn_edit" id=' + Exam.ExamId + ' value="Edit" /></td>';
+                            //item += '<td><input type="submit" Class="delete btn btn-default btn_delete" id=' + Exam.ExamId + ' value="Delete" /></td>';
+                        });
+                        $("#tblExamTimeTable").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">No Records</option>';
+                        $("#tblExamTimeTable").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+
+
+            $("#tblExamTimeTable").on("click", "input.edit", function () {
+                var Examid = this.id;
+                location.href = '/Examination/ExamTimeTable?Examid=' + Examid;
+            });
+            $("#tblExamTimeTable").on("click", "input.delete", function () {
+                var busid = this.id;
+                var act = 'Delete';
+                var flag = confirm('Are you sure you want to delete this Information?');
+                if (flag) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("RemoveExamination")',
+                        dataType: 'json',
+                        data: { evt: act, id: busid },
+                        success: function () {
+                        }
+                    });
+                }
+            });
+
+            return false;
+        })
+
+
+
+
+        $("#publish").click(function (e) {
+            if (Validations(e) == false)
+                return false;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PublishExam")',
+                data: $('#frm').serialize() + "&evt=submit",
+                success: function (result) {
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Exam Time table  updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
+                    $("#result").html(result);
+                    clear();
+
+                    ReloadPaging();
+                }
+                });
+        });
+
+        function Validations(e) {
+            var cnt = 0;
+
+            if ($("#Classid").val() == '' || $("#Classid").val() == '0') {
+                cnt++;
+                $("#Classid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#Classid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ExaminationTypeid").val() == '' || $("#ExaminationTypeid").val() == '0') {
+                cnt++;
+                $("#ExaminationTypeid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#ExaminationTypeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if ($("#ExamYear").val() == '') {
+                cnt++;
+                $("#ExamYear").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#ExamYear").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            if (cnt != 0) {
+                return false;
+            }
+        }
+
+
+        $("#Classid").change(function () {
+            $("#Subjectid").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSubject")',
+                dataType: 'json',
+                data: { id: $("#Classid").val() },
+                success: function (Subjects) {
+                    if (Subjects != "") {
+                        var item = '<option value="0">Select Subject</option>';
+                        $.each(Subjects, function (i, subject) {
+                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
+                        });
+                        $("#Subjectid").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">select Subject</option>';
+                        $("#Subjectid").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+    });
+</script>@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+             
+		<div class="row-fluid">
+              @Html.Partial("_ExaminationMenuList")
+	<div id="content" class="span10">
+        	<div class="row-fluid">
+              
+                    <ul class="breadcrumb">
+                         <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                       @Html.ActionLink("Examination Management", "Index", "Attendance", "")<i class="icon-angle-right"></i></li>
+                        <li class="active">Exam Time Table</li>
+                    </ul>
+                 <div class="row-fluid sortable">
+              <div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div>
+                               		<div class="box-content">
+						<form id="frm" class="form-horizontal">
+                              
+						
+                                  <fieldset>
+                 
+                                        @using (Html.BeginForm("PublishExam", "Examination", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
+                                        {
+                                           <div class="control-group">
+                                                @TempData["ErrorMessage"]
+                                            </div>
+                                            <div class="control-group">
+                                                @Html.LabelFor(model => model.Classid, new { @class="control-label"  })
+                                                  <div class="controls">
+                                                @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.Classid)
+                                                      </div>
+                                            </div>
+                                            <div class="control-group">
+                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class="control-label"  })
+                                                  <div class="controls">
+                                                @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @class = "col-md-5 form-control form_in" })
+                                                @Html.ValidationMessageFor(model => model.ExaminationTypeid)
+                                                      </div>
+                                            </div>
+                                            <div class="control-group">
+                                                @Html.LabelFor(model => model.ExamYear, new { @class="control-label", @for="select" })
+                                                  <div class="controls">
+                                                @*@Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", @class = "col-md-5 form-control form_in" })*@
+                                                @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @for="select" })
+                                                @Html.ValidationMessageFor(model => model.ExamYear)
+                                                      </div>
+                                            </div>
+                                           <div class="form-actions">
+                                                <input type="submit" action="display" class="btn btn-primary" id="display" value="Display" />
+                                                <input type="submit" action="publish" class="btn btn-primary" id="publish" value="Publish" />
+                                            </div>
+                                        }  </fieldset>
+                                </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+                <div class="row-fluid sortable">
+              <div class="box span12">
+                  	<div class="box-header" data-original-title>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<div class="box-icon">
+						
+							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+						
+						</div>
+					</div> 
+                  <div class="box-content">
+                            <div id="result" class="table-responsive" style=" color: #23527c;">
+                                <table class="table tb-parshav" id="tblExamTimeTable">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- table end -->
+                        </div>
+                        
+                
+        </div>
+        </div>
+    </div>
+</div>
+   
+            </div>
+    </div>
