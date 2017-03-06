@@ -79,9 +79,34 @@
             return false;
         }
 
-        $("#CourseId").change(function () {
-            ReloadCountry();
-        })
+        $("#academicyear").change(function () {
+            var accadmicyear = $('#academicyear').val();
+            var deptid = $('#DeptId').val();
+            var courseid = $('#CourseId').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_CourseYear")',
+                dataType: 'JSON',
+                data: { deptid: deptid, courseid: courseid, accadmicyear: accadmicyear },
+                success: function (data) {
+                    if (data != null) {
+                        $("#msg").show();
+                        $("#lblmsg").text("Cobination of Selected Course and Department and Year  Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "15px" });
+                        $('#academicyear').val('');
+                       
+                    }
+                    else {
+                        debugger;
+                        clearmsg();
+                    }
+                }
+            });
+        });
+     
+
+        
         function clear() {
            
             $("#id").hide();

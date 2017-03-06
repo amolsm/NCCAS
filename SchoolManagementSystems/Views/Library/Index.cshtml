@@ -118,78 +118,79 @@
                             </div>
                         </div>
                         <div class="box-content">
-@using (Html.BeginForm())
-{
-                            <div class="box bg-color-blue span10">
-                                <br />
-                                <div class="control-group span5">
+                            <div id="frm" class="form-horizontal">
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="box bg-color-blue span12">
+                                        <br />
+                                        <div class="control-group span5">
 
-                                    @Html.LabelFor(model => model.Option, new { @class = "control-label", @for = "focusedInput" })
+                                            @Html.LabelFor(model => model.Option, new { @class = "control-label", @for = "focusedInput" })
 
-                                    <div class="controls">
-                                        @{
-                                            List<SelectListItem> listItems = new List<SelectListItem>();
-                                            listItems.Add(new SelectListItem
-                                            {
-                                                Text = "Book",
-                                                Value = "1",
-                                                Selected = true,
-                                            });
-                                            listItems.Add(new SelectListItem
-                                            {
-                                                Text = "Journal",
-                                                Value = "2",
+                                            <div class="controls">
+                                                @{
+                                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                                    listItems.Add(new SelectListItem
+                                                    {
+                                                        Text = "Book",
+                                                        Value = "1",
+                                                        Selected = true,
+                                                    });
+                                                    listItems.Add(new SelectListItem
+                                                    {
+                                                        Text = "Journal",
+                                                        Value = "2",
 
-                                            });
-                                        }
-                                        @Html.DropDownListFor(model => model.Option, listItems, "Select Option")
+                                                    });
+                                                }
+                                                @Html.DropDownListFor(model => model.Option, listItems, "Select Option")
 
-                                    </div>
-
-                                </div>
-                                <div class="control-group span5">
-
-                                    @Html.LabelFor(model => model.Department, new { @class = "control-label", @for = "focusedInput" })
-                                     <div class="controls">
-                                            @Html.DropDownListFor(model => model.Department, new SelectList(Model._departmentlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                            </div>
 
                                         </div>
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.Department, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.Department, new SelectList(Model._departmentlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+
+                                            </div>
+                                        </div>
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter  Book Title Name", @class = "input" })
+
+                                            </div>
+                                        </div>
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.Authorname, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Enter  Author Name", @class = "input" })
+
+                                            </div>
+                                        </div>
+                                        @*<div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.Dateofpurchase, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.Dateofpurchase, new { id = "datepicker1", @readonly = "readonly", placeholder = "Select Date of Purchase" })
+
+                                            </div>
+                                        </div>*@
+                                        <div class="control-group span4 pull-right">
+                                            &nbsp; &nbsp;<input type="submit" class="btn btn-primary" id="insert" value="Search" />
+                                        </div>
                                     </div>
-                                <div class="control-group span5">
+                                                    }
 
-                                    @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
 
-                                    <div class="controls">
-                                        @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter  Book Title Name", @class = "input" })
-
-                                    </div>
-                                </div>
-                                <div class="control-group span5">
-
-                                    @Html.LabelFor(model => model.Authorname, new { @class = "control-label", @for = "focusedInput" })
-
-                                    <div class="controls">
-                                        @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Enter  Author Name", @class = "input" })
-
-                                    </div>
-                                </div>
-                                <div class="control-group span5">
-
-                                    @Html.LabelFor(model => model.Dateofpurchase, new { @class = "control-label", @for = "focusedInput" })
-
-                                    <div class="controls">
-                                        @Html.TextBoxFor(model => model.Dateofpurchase, new { id = "datepicker1", @readonly = "readonly", placeholder = "Select Date of Purchase" })
-
-                                    </div>
-                                </div>
-                                <div class="control-group span5 pull-right">
-                                    &nbsp; &nbsp;<input type="submit" class="btn btn-primary" id="insert" value="Search" />
-                                </div>
-                                </div>
-                                            }
-                                           
-
-                            </div>
+</div>
 
 
 
@@ -202,7 +203,10 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.bookid)
+                                                    @Html.DisplayNameFor(model => model.CallNo)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.AccessorNo)
                                                 </th>
                                                 <th>
                                                     @Html.DisplayNameFor(model => model.booktitle)
@@ -226,7 +230,10 @@
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.Id)
+                                                        @Html.DisplayFor(modelItem => item.CallNo)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.AccessorNo)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.TitleName)
@@ -289,6 +296,7 @@
                                     </table>
                                     }
                                 </div>
+                        </div>
                             </div>
                         </div>
                     </div>

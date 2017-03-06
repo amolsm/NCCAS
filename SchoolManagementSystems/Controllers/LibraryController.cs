@@ -13,7 +13,7 @@ namespace SchoolManagementSystems.Controllers
     {
         //
         // GET: /Library/
-        SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
+            SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
 
     
 
@@ -25,7 +25,7 @@ namespace SchoolManagementSystems.Controllers
             lb._bookentrylist = db.sp_getBookentry().ToList();
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
             lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList();
-            lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3,0,null, null, DateTime.Now).ToList();
+            lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3,0,null, null).ToList();
             return View(lb);
           
         }
@@ -45,9 +45,9 @@ namespace SchoolManagementSystems.Controllers
             else { lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList(); }
             if (lb.Option == 1 || lb.Option == 3)
             {
-                lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, lb.Department, lb.booktitle,lb.Authorname, lb.Dateofpurchase).ToList();
+                lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, lb.Department, lb.booktitle,lb.Authorname).ToList();
             }
-            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, "", "", DateTime.Now).ToList(); }
+            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, "", "").ToList(); }
             return View(lb);
 
         }
@@ -70,8 +70,9 @@ namespace SchoolManagementSystems.Controllers
           
             if (command.Equals("BookSubmit"))
             {
-               try { 
-                db.sp_AddLibraryBook(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
+               
+                try { 
+                db.sp_AddBookEntry(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
 
                      _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
@@ -141,7 +142,7 @@ namespace SchoolManagementSystems.Controllers
             BookAllocation b = new BookAllocation();
 
             b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            b._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, null, null, DateTime.Now).ToList();
+            b._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, null, null).ToList();
             return View(b);
         }
         [HttpPost]
@@ -156,11 +157,11 @@ namespace SchoolManagementSystems.Controllers
         [HttpPost]
         public JsonResult BookAutoComplete(string prefix)
         {
-            var BookName = (from bi in db.lib_Bookentry
-                               where bi.booktitle.StartsWith(prefix)
+            var BookName = (from bi in db.tbl_BookStock
+                               where bi.BookName.StartsWith(prefix)
                                select new
                                {
-                                   label = bi.booktitle,
+                                   label = bi.BookName,
                                    val = bi.CallNo
                                }).ToList();
             return Json(BookName, JsonRequestBehavior.AllowGet);
@@ -281,7 +282,22 @@ namespace SchoolManagementSystems.Controllers
             return Json(presentdetails);
 
 
-        }      
+        }
+
+        public ActionResult BookCallStock(BookAllocation b)
+        {
+            b._BookStockList = db.tbl_BookStock.ToList();
+            
+            return View(b);
+        }
+
+
         
+       public JsonResult check_duplicate_CallNo(string Call_number)
+        {
+            var data = db.tbl_BookStock.Where(m => m.CallNo == Call_number).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

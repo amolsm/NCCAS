@@ -1124,22 +1124,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_BookStock> tbl_BookStock
-        {
-            get
-            {
-                if ((_tbl_BookStock == null))
-                {
-                    _tbl_BookStock = base.CreateObjectSet<tbl_BookStock>("tbl_BookStock");
-                }
-                return _tbl_BookStock;
-            }
-        }
-        private ObjectSet<tbl_BookStock> _tbl_BookStock;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<lib_Bookentry> lib_Bookentry
         {
             get
@@ -1168,6 +1152,38 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_lib_BookIssue> _tbl_lib_BookIssue;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_BookStock> tbl_BookStock
+        {
+            get
+            {
+                if ((_tbl_BookStock == null))
+                {
+                    _tbl_BookStock = base.CreateObjectSet<tbl_BookStock>("tbl_BookStock");
+                }
+                return _tbl_BookStock;
+            }
+        }
+        private ObjectSet<tbl_BookStock> _tbl_BookStock;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_BookDetails> tbl_BookDetails
+        {
+            get
+            {
+                if ((_tbl_BookDetails == null))
+                {
+                    _tbl_BookDetails = base.CreateObjectSet<tbl_BookDetails>("tbl_BookDetails");
+                }
+                return _tbl_BookDetails;
+            }
+        }
+        private ObjectSet<tbl_BookDetails> _tbl_BookDetails;
 
         #endregion
 
@@ -1702,14 +1718,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_BookStock EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_BookStock(tbl_BookStock tbl_BookStock)
-        {
-            base.AddObject("tbl_BookStock", tbl_BookStock);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the lib_Bookentry EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTolib_Bookentry(lib_Bookentry lib_Bookentry)
@@ -1723,6 +1731,22 @@ namespace Entity
         public void AddTotbl_lib_BookIssue(tbl_lib_BookIssue tbl_lib_BookIssue)
         {
             base.AddObject("tbl_lib_BookIssue", tbl_lib_BookIssue);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_BookStock EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_BookStock(tbl_BookStock tbl_BookStock)
+        {
+            base.AddObject("tbl_BookStock", tbl_BookStock);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_BookDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_BookDetails(tbl_BookDetails tbl_BookDetails)
+        {
+            base.AddObject("tbl_BookDetails", tbl_BookDetails);
         }
 
         #endregion
@@ -11165,69 +11189,6 @@ namespace Entity
         /// <param name="option">No Metadata Documentation available.</param>
         /// <param name="department">No Metadata Documentation available.</param>
         /// <param name="booktitle">No Metadata Documentation available.</param>
-        /// <param name="authorname">No Metadata Documentation available.</param>
-        /// <param name="purchasedate">No Metadata Documentation available.</param>
-        public ObjectResult<sp_GetSearchBookAndJournal_Result> sp_GetSearchBookAndJournal(Nullable<global::System.Int32> option, Nullable<global::System.Int32> department, global::System.String booktitle, global::System.String authorname, Nullable<global::System.DateTime> purchasedate)
-        {
-            ObjectParameter optionParameter;
-            if (option.HasValue)
-            {
-                optionParameter = new ObjectParameter("option", option);
-            }
-            else
-            {
-                optionParameter = new ObjectParameter("option", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter departmentParameter;
-            if (department.HasValue)
-            {
-                departmentParameter = new ObjectParameter("department", department);
-            }
-            else
-            {
-                departmentParameter = new ObjectParameter("department", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter booktitleParameter;
-            if (booktitle != null)
-            {
-                booktitleParameter = new ObjectParameter("booktitle", booktitle);
-            }
-            else
-            {
-                booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
-            }
-    
-            ObjectParameter authornameParameter;
-            if (authorname != null)
-            {
-                authornameParameter = new ObjectParameter("authorname", authorname);
-            }
-            else
-            {
-                authornameParameter = new ObjectParameter("authorname", typeof(global::System.String));
-            }
-    
-            ObjectParameter purchasedateParameter;
-            if (purchasedate.HasValue)
-            {
-                purchasedateParameter = new ObjectParameter("purchasedate", purchasedate);
-            }
-            else
-            {
-                purchasedateParameter = new ObjectParameter("purchasedate", typeof(global::System.DateTime));
-            }
-    
-            return base.ExecuteFunction<sp_GetSearchBookAndJournal_Result>("sp_GetSearchBookAndJournal", optionParameter, departmentParameter, booktitleParameter, authornameParameter, purchasedateParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="option">No Metadata Documentation available.</param>
-        /// <param name="department">No Metadata Documentation available.</param>
-        /// <param name="booktitle">No Metadata Documentation available.</param>
         /// <param name="purchasedate">No Metadata Documentation available.</param>
         public ObjectResult<sp_GetSearchJournal_Result> sp_GetSearchJournal(Nullable<global::System.Int32> option, Nullable<global::System.Int32> department, global::System.String booktitle, Nullable<global::System.DateTime> purchasedate)
         {
@@ -11931,6 +11892,264 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_updatereturnbook", bookidParameter, cretedbyParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="option">No Metadata Documentation available.</param>
+        /// <param name="department">No Metadata Documentation available.</param>
+        /// <param name="booktitle">No Metadata Documentation available.</param>
+        /// <param name="authorname">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetSearchBookAndJournal_Result> sp_GetSearchBookAndJournal(Nullable<global::System.Int32> option, Nullable<global::System.Int32> department, global::System.String booktitle, global::System.String authorname)
+        {
+            ObjectParameter optionParameter;
+            if (option.HasValue)
+            {
+                optionParameter = new ObjectParameter("option", option);
+            }
+            else
+            {
+                optionParameter = new ObjectParameter("option", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter departmentParameter;
+            if (department.HasValue)
+            {
+                departmentParameter = new ObjectParameter("department", department);
+            }
+            else
+            {
+                departmentParameter = new ObjectParameter("department", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter booktitleParameter;
+            if (booktitle != null)
+            {
+                booktitleParameter = new ObjectParameter("booktitle", booktitle);
+            }
+            else
+            {
+                booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
+            }
+    
+            ObjectParameter authornameParameter;
+            if (authorname != null)
+            {
+                authornameParameter = new ObjectParameter("authorname", authorname);
+            }
+            else
+            {
+                authornameParameter = new ObjectParameter("authorname", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<sp_GetSearchBookAndJournal_Result>("sp_GetSearchBookAndJournal", optionParameter, departmentParameter, booktitleParameter, authornameParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="bookid">No Metadata Documentation available.</param>
+        /// <param name="booktitle">No Metadata Documentation available.</param>
+        /// <param name="callNo">No Metadata Documentation available.</param>
+        /// <param name="volume">No Metadata Documentation available.</param>
+        /// <param name="serielNumber">No Metadata Documentation available.</param>
+        /// <param name="authorid">No Metadata Documentation available.</param>
+        /// <param name="authorname">No Metadata Documentation available.</param>
+        /// <param name="publishedByid">No Metadata Documentation available.</param>
+        /// <param name="publishedByName">No Metadata Documentation available.</param>
+        /// <param name="edition">No Metadata Documentation available.</param>
+        /// <param name="vendorid">No Metadata Documentation available.</param>
+        /// <param name="vendorname">No Metadata Documentation available.</param>
+        /// <param name="dateofpurchase">No Metadata Documentation available.</param>
+        /// <param name="billNo">No Metadata Documentation available.</param>
+        /// <param name="cost">No Metadata Documentation available.</param>
+        /// <param name="accessorNo">No Metadata Documentation available.</param>
+        /// <param name="selfNo">No Metadata Documentation available.</param>
+        /// <param name="noOfCopy">No Metadata Documentation available.</param>
+        public int sp_AddBookEntry(Nullable<global::System.Int32> bookid, global::System.String booktitle, global::System.String callNo, global::System.String volume, global::System.String serielNumber, Nullable<global::System.Int32> authorid, global::System.String authorname, Nullable<global::System.Int32> publishedByid, global::System.String publishedByName, global::System.String edition, Nullable<global::System.Int32> vendorid, global::System.String vendorname, Nullable<global::System.DateTime> dateofpurchase, global::System.String billNo, Nullable<global::System.Decimal> cost, global::System.String accessorNo, global::System.String selfNo, Nullable<global::System.Int32> noOfCopy)
+        {
+            ObjectParameter bookidParameter;
+            if (bookid.HasValue)
+            {
+                bookidParameter = new ObjectParameter("bookid", bookid);
+            }
+            else
+            {
+                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter booktitleParameter;
+            if (booktitle != null)
+            {
+                booktitleParameter = new ObjectParameter("booktitle", booktitle);
+            }
+            else
+            {
+                booktitleParameter = new ObjectParameter("booktitle", typeof(global::System.String));
+            }
+    
+            ObjectParameter callNoParameter;
+            if (callNo != null)
+            {
+                callNoParameter = new ObjectParameter("CallNo", callNo);
+            }
+            else
+            {
+                callNoParameter = new ObjectParameter("CallNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter volumeParameter;
+            if (volume != null)
+            {
+                volumeParameter = new ObjectParameter("Volume", volume);
+            }
+            else
+            {
+                volumeParameter = new ObjectParameter("Volume", typeof(global::System.String));
+            }
+    
+            ObjectParameter serielNumberParameter;
+            if (serielNumber != null)
+            {
+                serielNumberParameter = new ObjectParameter("SerielNumber", serielNumber);
+            }
+            else
+            {
+                serielNumberParameter = new ObjectParameter("SerielNumber", typeof(global::System.String));
+            }
+    
+            ObjectParameter authoridParameter;
+            if (authorid.HasValue)
+            {
+                authoridParameter = new ObjectParameter("Authorid", authorid);
+            }
+            else
+            {
+                authoridParameter = new ObjectParameter("Authorid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter authornameParameter;
+            if (authorname != null)
+            {
+                authornameParameter = new ObjectParameter("Authorname", authorname);
+            }
+            else
+            {
+                authornameParameter = new ObjectParameter("Authorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter publishedByidParameter;
+            if (publishedByid.HasValue)
+            {
+                publishedByidParameter = new ObjectParameter("PublishedByid", publishedByid);
+            }
+            else
+            {
+                publishedByidParameter = new ObjectParameter("PublishedByid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter publishedByNameParameter;
+            if (publishedByName != null)
+            {
+                publishedByNameParameter = new ObjectParameter("PublishedByName", publishedByName);
+            }
+            else
+            {
+                publishedByNameParameter = new ObjectParameter("PublishedByName", typeof(global::System.String));
+            }
+    
+            ObjectParameter editionParameter;
+            if (edition != null)
+            {
+                editionParameter = new ObjectParameter("Edition", edition);
+            }
+            else
+            {
+                editionParameter = new ObjectParameter("Edition", typeof(global::System.String));
+            }
+    
+            ObjectParameter vendoridParameter;
+            if (vendorid.HasValue)
+            {
+                vendoridParameter = new ObjectParameter("Vendorid", vendorid);
+            }
+            else
+            {
+                vendoridParameter = new ObjectParameter("Vendorid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter vendornameParameter;
+            if (vendorname != null)
+            {
+                vendornameParameter = new ObjectParameter("Vendorname", vendorname);
+            }
+            else
+            {
+                vendornameParameter = new ObjectParameter("Vendorname", typeof(global::System.String));
+            }
+    
+            ObjectParameter dateofpurchaseParameter;
+            if (dateofpurchase.HasValue)
+            {
+                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", dateofpurchase);
+            }
+            else
+            {
+                dateofpurchaseParameter = new ObjectParameter("Dateofpurchase", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter billNoParameter;
+            if (billNo != null)
+            {
+                billNoParameter = new ObjectParameter("BillNo", billNo);
+            }
+            else
+            {
+                billNoParameter = new ObjectParameter("BillNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter costParameter;
+            if (cost.HasValue)
+            {
+                costParameter = new ObjectParameter("Cost", cost);
+            }
+            else
+            {
+                costParameter = new ObjectParameter("Cost", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter accessorNoParameter;
+            if (accessorNo != null)
+            {
+                accessorNoParameter = new ObjectParameter("AccessorNo", accessorNo);
+            }
+            else
+            {
+                accessorNoParameter = new ObjectParameter("AccessorNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter selfNoParameter;
+            if (selfNo != null)
+            {
+                selfNoParameter = new ObjectParameter("SelfNo", selfNo);
+            }
+            else
+            {
+                selfNoParameter = new ObjectParameter("SelfNo", typeof(global::System.String));
+            }
+    
+            ObjectParameter noOfCopyParameter;
+            if (noOfCopy.HasValue)
+            {
+                noOfCopyParameter = new ObjectParameter("NoOfCopy", noOfCopy);
+            }
+            else
+            {
+                noOfCopyParameter = new ObjectParameter("NoOfCopy", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_AddBookEntry", bookidParameter, booktitleParameter, callNoParameter, volumeParameter, serielNumberParameter, authoridParameter, authornameParameter, publishedByidParameter, publishedByNameParameter, editionParameter, vendoridParameter, vendornameParameter, dateofpurchaseParameter, billNoParameter, costParameter, accessorNoParameter, selfNoParameter, noOfCopyParameter);
         }
 
         #endregion
@@ -13519,6 +13738,423 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_BookDetails")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_BookDetails : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_BookDetails object.
+        /// </summary>
+        /// <param name="bookDetailsId">Initial value of the BookDetailsId property.</param>
+        public static tbl_BookDetails Createtbl_BookDetails(global::System.Int32 bookDetailsId)
+        {
+            tbl_BookDetails tbl_BookDetails = new tbl_BookDetails();
+            tbl_BookDetails.BookDetailsId = bookDetailsId;
+            return tbl_BookDetails;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BookDetailsId
+        {
+            get
+            {
+                return _BookDetailsId;
+            }
+            set
+            {
+                if (_BookDetailsId != value)
+                {
+                    OnBookDetailsIdChanging(value);
+                    ReportPropertyChanging("BookDetailsId");
+                    _BookDetailsId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("BookDetailsId");
+                    OnBookDetailsIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _BookDetailsId;
+        partial void OnBookDetailsIdChanging(global::System.Int32 value);
+        partial void OnBookDetailsIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CallNo
+        {
+            get
+            {
+                return _CallNo;
+            }
+            set
+            {
+                OnCallNoChanging(value);
+                ReportPropertyChanging("CallNo");
+                _CallNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CallNo");
+                OnCallNoChanged();
+            }
+        }
+        private global::System.String _CallNo;
+        partial void OnCallNoChanging(global::System.String value);
+        partial void OnCallNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BookName
+        {
+            get
+            {
+                return _BookName;
+            }
+            set
+            {
+                OnBookNameChanging(value);
+                ReportPropertyChanging("BookName");
+                _BookName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BookName");
+                OnBookNameChanged();
+            }
+        }
+        private global::System.String _BookName;
+        partial void OnBookNameChanging(global::System.String value);
+        partial void OnBookNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Volume
+        {
+            get
+            {
+                return _Volume;
+            }
+            set
+            {
+                OnVolumeChanging(value);
+                ReportPropertyChanging("Volume");
+                _Volume = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Volume");
+                OnVolumeChanged();
+            }
+        }
+        private global::System.String _Volume;
+        partial void OnVolumeChanging(global::System.String value);
+        partial void OnVolumeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SerialNo
+        {
+            get
+            {
+                return _SerialNo;
+            }
+            set
+            {
+                OnSerialNoChanging(value);
+                ReportPropertyChanging("SerialNo");
+                _SerialNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SerialNo");
+                OnSerialNoChanged();
+            }
+        }
+        private global::System.String _SerialNo;
+        partial void OnSerialNoChanging(global::System.String value);
+        partial void OnSerialNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Authorid
+        {
+            get
+            {
+                return _Authorid;
+            }
+            set
+            {
+                OnAuthoridChanging(value);
+                ReportPropertyChanging("Authorid");
+                _Authorid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Authorid");
+                OnAuthoridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Authorid;
+        partial void OnAuthoridChanging(Nullable<global::System.Int32> value);
+        partial void OnAuthoridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Authorname
+        {
+            get
+            {
+                return _Authorname;
+            }
+            set
+            {
+                OnAuthornameChanging(value);
+                ReportPropertyChanging("Authorname");
+                _Authorname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Authorname");
+                OnAuthornameChanged();
+            }
+        }
+        private global::System.String _Authorname;
+        partial void OnAuthornameChanging(global::System.String value);
+        partial void OnAuthornameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Publisherid
+        {
+            get
+            {
+                return _Publisherid;
+            }
+            set
+            {
+                OnPublisheridChanging(value);
+                ReportPropertyChanging("Publisherid");
+                _Publisherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Publisherid");
+                OnPublisheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Publisherid;
+        partial void OnPublisheridChanging(Nullable<global::System.Int32> value);
+        partial void OnPublisheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PublisherName
+        {
+            get
+            {
+                return _PublisherName;
+            }
+            set
+            {
+                OnPublisherNameChanging(value);
+                ReportPropertyChanging("PublisherName");
+                _PublisherName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PublisherName");
+                OnPublisherNameChanged();
+            }
+        }
+        private global::System.String _PublisherName;
+        partial void OnPublisherNameChanging(global::System.String value);
+        partial void OnPublisherNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Edition
+        {
+            get
+            {
+                return _Edition;
+            }
+            set
+            {
+                OnEditionChanging(value);
+                ReportPropertyChanging("Edition");
+                _Edition = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Edition");
+                OnEditionChanged();
+            }
+        }
+        private global::System.String _Edition;
+        partial void OnEditionChanging(global::System.String value);
+        partial void OnEditionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Vendorid
+        {
+            get
+            {
+                return _Vendorid;
+            }
+            set
+            {
+                OnVendoridChanging(value);
+                ReportPropertyChanging("Vendorid");
+                _Vendorid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Vendorid");
+                OnVendoridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Vendorid;
+        partial void OnVendoridChanging(Nullable<global::System.Int32> value);
+        partial void OnVendoridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Vendorname
+        {
+            get
+            {
+                return _Vendorname;
+            }
+            set
+            {
+                OnVendornameChanging(value);
+                ReportPropertyChanging("Vendorname");
+                _Vendorname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Vendorname");
+                OnVendornameChanged();
+            }
+        }
+        private global::System.String _Vendorname;
+        partial void OnVendornameChanging(global::System.String value);
+        partial void OnVendornameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Dateofpurchase
+        {
+            get
+            {
+                return _Dateofpurchase;
+            }
+            set
+            {
+                OnDateofpurchaseChanging(value);
+                ReportPropertyChanging("Dateofpurchase");
+                _Dateofpurchase = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dateofpurchase");
+                OnDateofpurchaseChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Dateofpurchase;
+        partial void OnDateofpurchaseChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateofpurchaseChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BillNo
+        {
+            get
+            {
+                return _BillNo;
+            }
+            set
+            {
+                OnBillNoChanging(value);
+                ReportPropertyChanging("BillNo");
+                _BillNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BillNo");
+                OnBillNoChanged();
+            }
+        }
+        private global::System.String _BillNo;
+        partial void OnBillNoChanging(global::System.String value);
+        partial void OnBillNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Cost
+        {
+            get
+            {
+                return _Cost;
+            }
+            set
+            {
+                OnCostChanging(value);
+                ReportPropertyChanging("Cost");
+                _Cost = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cost");
+                OnCostChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Cost;
+        partial void OnCostChanging(Nullable<global::System.Decimal> value);
+        partial void OnCostChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Active
+        {
+            get
+            {
+                return _Active;
+            }
+            set
+            {
+                OnActiveChanging(value);
+                ReportPropertyChanging("Active");
+                _Active = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Active");
+                OnActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Active;
+        partial void OnActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnActiveChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_BookStock")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -13735,6 +14371,342 @@ namespace Entity
         private Nullable<global::System.Int32> _ReturnQty;
         partial void OnReturnQtyChanging(Nullable<global::System.Int32> value);
         partial void OnReturnQtyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NotReturn
+        {
+            get
+            {
+                return _NotReturn;
+            }
+            set
+            {
+                OnNotReturnChanging(value);
+                ReportPropertyChanging("NotReturn");
+                _NotReturn = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NotReturn");
+                OnNotReturnChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NotReturn;
+        partial void OnNotReturnChanging(Nullable<global::System.Int32> value);
+        partial void OnNotReturnChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BookName
+        {
+            get
+            {
+                return _BookName;
+            }
+            set
+            {
+                OnBookNameChanging(value);
+                ReportPropertyChanging("BookName");
+                _BookName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BookName");
+                OnBookNameChanged();
+            }
+        }
+        private global::System.String _BookName;
+        partial void OnBookNameChanging(global::System.String value);
+        partial void OnBookNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Volume
+        {
+            get
+            {
+                return _Volume;
+            }
+            set
+            {
+                OnVolumeChanging(value);
+                ReportPropertyChanging("Volume");
+                _Volume = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Volume");
+                OnVolumeChanged();
+            }
+        }
+        private global::System.String _Volume;
+        partial void OnVolumeChanging(global::System.String value);
+        partial void OnVolumeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SerialNo
+        {
+            get
+            {
+                return _SerialNo;
+            }
+            set
+            {
+                OnSerialNoChanging(value);
+                ReportPropertyChanging("SerialNo");
+                _SerialNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SerialNo");
+                OnSerialNoChanged();
+            }
+        }
+        private global::System.String _SerialNo;
+        partial void OnSerialNoChanging(global::System.String value);
+        partial void OnSerialNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Authorid
+        {
+            get
+            {
+                return _Authorid;
+            }
+            set
+            {
+                OnAuthoridChanging(value);
+                ReportPropertyChanging("Authorid");
+                _Authorid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Authorid");
+                OnAuthoridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Authorid;
+        partial void OnAuthoridChanging(Nullable<global::System.Int32> value);
+        partial void OnAuthoridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Authorname
+        {
+            get
+            {
+                return _Authorname;
+            }
+            set
+            {
+                OnAuthornameChanging(value);
+                ReportPropertyChanging("Authorname");
+                _Authorname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Authorname");
+                OnAuthornameChanged();
+            }
+        }
+        private global::System.String _Authorname;
+        partial void OnAuthornameChanging(global::System.String value);
+        partial void OnAuthornameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Publisherid
+        {
+            get
+            {
+                return _Publisherid;
+            }
+            set
+            {
+                OnPublisheridChanging(value);
+                ReportPropertyChanging("Publisherid");
+                _Publisherid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Publisherid");
+                OnPublisheridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Publisherid;
+        partial void OnPublisheridChanging(Nullable<global::System.Int32> value);
+        partial void OnPublisheridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PublisherName
+        {
+            get
+            {
+                return _PublisherName;
+            }
+            set
+            {
+                OnPublisherNameChanging(value);
+                ReportPropertyChanging("PublisherName");
+                _PublisherName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PublisherName");
+                OnPublisherNameChanged();
+            }
+        }
+        private global::System.String _PublisherName;
+        partial void OnPublisherNameChanging(global::System.String value);
+        partial void OnPublisherNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Edition
+        {
+            get
+            {
+                return _Edition;
+            }
+            set
+            {
+                OnEditionChanging(value);
+                ReportPropertyChanging("Edition");
+                _Edition = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Edition");
+                OnEditionChanged();
+            }
+        }
+        private global::System.String _Edition;
+        partial void OnEditionChanging(global::System.String value);
+        partial void OnEditionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Vendorid
+        {
+            get
+            {
+                return _Vendorid;
+            }
+            set
+            {
+                OnVendoridChanging(value);
+                ReportPropertyChanging("Vendorid");
+                _Vendorid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Vendorid");
+                OnVendoridChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Vendorid;
+        partial void OnVendoridChanging(Nullable<global::System.Int32> value);
+        partial void OnVendoridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Vendorname
+        {
+            get
+            {
+                return _Vendorname;
+            }
+            set
+            {
+                OnVendornameChanging(value);
+                ReportPropertyChanging("Vendorname");
+                _Vendorname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Vendorname");
+                OnVendornameChanged();
+            }
+        }
+        private global::System.String _Vendorname;
+        partial void OnVendornameChanging(global::System.String value);
+        partial void OnVendornameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Dateofpurchase
+        {
+            get
+            {
+                return _Dateofpurchase;
+            }
+            set
+            {
+                OnDateofpurchaseChanging(value);
+                ReportPropertyChanging("Dateofpurchase");
+                _Dateofpurchase = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dateofpurchase");
+                OnDateofpurchaseChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Dateofpurchase;
+        partial void OnDateofpurchaseChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateofpurchaseChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BillNo
+        {
+            get
+            {
+                return _BillNo;
+            }
+            set
+            {
+                OnBillNoChanging(value);
+                ReportPropertyChanging("BillNo");
+                _BillNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BillNo");
+                OnBillNoChanged();
+            }
+        }
+        private global::System.String _BillNo;
+        partial void OnBillNoChanging(global::System.String value);
+        partial void OnBillNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Cost
+        {
+            get
+            {
+                return _Cost;
+            }
+            set
+            {
+                OnCostChanging(value);
+                ReportPropertyChanging("Cost");
+                _Cost = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cost");
+                OnCostChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Cost;
+        partial void OnCostChanging(Nullable<global::System.Decimal> value);
+        partial void OnCostChanged();
 
         #endregion
 
@@ -23925,6 +24897,30 @@ namespace Entity
         private global::System.String _CallNumber;
         partial void OnCallNumberChanging(global::System.String value);
         partial void OnCallNumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> flag
+        {
+            get
+            {
+                return _flag;
+            }
+            set
+            {
+                OnflagChanging(value);
+                ReportPropertyChanging("flag");
+                _flag = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("flag");
+                OnflagChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _flag;
+        partial void OnflagChanging(Nullable<global::System.Int32> value);
+        partial void OnflagChanged();
 
         #endregion
 
@@ -41371,6 +42367,54 @@ namespace Entity
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CallNo
+        {
+            get
+            {
+                return _CallNo;
+            }
+            set
+            {
+                OnCallNoChanging(value);
+                ReportPropertyChanging("CallNo");
+                _CallNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CallNo");
+                OnCallNoChanged();
+            }
+        }
+        private global::System.String _CallNo;
+        partial void OnCallNoChanging(global::System.String value);
+        partial void OnCallNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AccessorNo
+        {
+            get
+            {
+                return _AccessorNo;
+            }
+            set
+            {
+                OnAccessorNoChanging(value);
+                ReportPropertyChanging("AccessorNo");
+                _AccessorNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("AccessorNo");
+                OnAccessorNoChanged();
+            }
+        }
+        private global::System.String _AccessorNo;
+        partial void OnAccessorNoChanging(global::System.String value);
+        partial void OnAccessorNoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

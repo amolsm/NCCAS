@@ -100,6 +100,27 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_BookDetails">
+    <Key>
+      <PropertyRef Name="BookDetailsId" />
+    </Key>
+    <Property Name="BookDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="BookName" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerialNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="Publisherid" Type="int" />
+    <Property Name="PublisherName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
   <EntityType Name="tbl_BookStock">
     <Key>
       <PropertyRef Name="BStockid" />
@@ -112,6 +133,20 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="LostQty" Type="int" />
     <Property Name="TotalBook" Type="int" />
     <Property Name="ReturnQty" Type="int" />
+    <Property Name="NotReturn" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="BookName" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerialNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="Publisherid" Type="int" />
+    <Property Name="PublisherName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
@@ -642,6 +677,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Return_CreatedBy" Type="int" />
     <Property Name="AllotedBy" Type="int" />
     <Property Name="CallNumber" Type="varchar" MaxLength="100" />
+    <Property Name="flag" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_JournalType">
     <Key>
@@ -1177,6 +1213,26 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="ExamClassid" Type="int" Mode="In" />
     <Parameter Name="ExamYear" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_AddBookEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bookid" Type="int" Mode="In" />
+    <Parameter Name="booktitle" Type="varchar" Mode="In" />
+    <Parameter Name="CallNo" Type="varchar" Mode="In" />
+    <Parameter Name="Volume" Type="varchar" Mode="In" />
+    <Parameter Name="SerielNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Authorid" Type="int" Mode="In" />
+    <Parameter Name="Authorname" Type="varchar" Mode="In" />
+    <Parameter Name="PublishedByid" Type="int" Mode="In" />
+    <Parameter Name="PublishedByName" Type="varchar" Mode="In" />
+    <Parameter Name="Edition" Type="varchar" Mode="In" />
+    <Parameter Name="Vendorid" Type="int" Mode="In" />
+    <Parameter Name="Vendorname" Type="varchar" Mode="In" />
+    <Parameter Name="Dateofpurchase" Type="datetime2" Mode="In" />
+    <Parameter Name="BillNo" Type="varchar" Mode="In" />
+    <Parameter Name="Cost" Type="decimal" Mode="In" />
+    <Parameter Name="AccessorNo" Type="varchar" Mode="In" />
+    <Parameter Name="SelfNo" Type="varchar" Mode="In" />
+    <Parameter Name="NoOfCopy" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_AddLibraryBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="bookid" Type="int" Mode="In" />
     <Parameter Name="booktitle" Type="varchar" Mode="In" />
@@ -1692,7 +1748,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="department" Type="int" Mode="In" />
     <Parameter Name="booktitle" Type="varchar" Mode="In" />
     <Parameter Name="authorname" Type="varchar" Mode="In" />
-    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
   </Function>
   <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="option" Type="int" Mode="In" />
@@ -2150,6 +2205,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="System" EntityType="Self.System" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_AssignDivision" EntityType="Self.tbl_AssignDivision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_bloodgroup" EntityType="Self.tbl_bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BookDetails" EntityType="Self.tbl_BookDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_BookStock" EntityType="Self.tbl_BookStock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_caste" EntityType="Self.tbl_caste" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />

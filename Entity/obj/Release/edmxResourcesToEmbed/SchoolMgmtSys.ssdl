@@ -112,6 +112,20 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="LostQty" Type="int" />
     <Property Name="TotalBook" Type="int" />
     <Property Name="ReturnQty" Type="int" />
+    <Property Name="NotReturn" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="BookName" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="nvarchar" MaxLength="100" />
+    <Property Name="SerialNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Authorid" Type="int" />
+    <Property Name="Authorname" Type="varchar" MaxLength="100" />
+    <Property Name="Publisherid" Type="int" />
+    <Property Name="PublisherName" Type="varchar" MaxLength="100" />
+    <Property Name="Edition" Type="varchar" MaxLength="100" />
+    <Property Name="Vendorid" Type="int" />
+    <Property Name="Vendorname" Type="varchar" MaxLength="100" />
+    <Property Name="Dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="BillNo" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="money" />
   </EntityType>
   <EntityType Name="tbl_caste">
     <Key>
@@ -642,6 +656,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Return_CreatedBy" Type="int" />
     <Property Name="AllotedBy" Type="int" />
     <Property Name="CallNumber" Type="varchar" MaxLength="100" />
+    <Property Name="flag" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_JournalType">
     <Key>
@@ -1692,7 +1707,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="department" Type="int" Mode="In" />
     <Parameter Name="booktitle" Type="varchar" Mode="In" />
     <Parameter Name="authorname" Type="varchar" Mode="In" />
-    <Parameter Name="purchasedate" Type="datetime2" Mode="In" />
   </Function>
   <Function Name="sp_GetSearchJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="option" Type="int" Mode="In" />

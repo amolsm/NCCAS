@@ -1351,6 +1351,12 @@ namespace SchoolManagementSystems.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
            
         }
+        public JsonResult check_duplicate_CourseYear(int deptid, int courseid, int accadmicyear)
+        {
+            var data = db.tbl_CourseYearMaster.Where(m => (m.dept_id == deptid) && (m.courseid == courseid) && (m.academicyear == accadmicyear)).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+        }
         public ActionResult DMLCourseYear(CourseYearviewmodel _cym, string evt, int id)
         {
           

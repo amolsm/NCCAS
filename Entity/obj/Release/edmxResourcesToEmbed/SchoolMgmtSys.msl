@@ -1828,17 +1828,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_AddLibraryJournal" FunctionName="SchoolMgmtSysModel.Store.sp_AddLibraryJournal" />
-    <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
-          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
-          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
-          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_GetSearchJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchJournal">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchJournal_Result">
@@ -1914,20 +1903,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_divisionDML" FunctionName="SchoolMgmtSysModel.Store.sp_divisionDML" />
-    <EntitySetMapping Name="tbl_BookStock">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_BookStock">
-        <MappingFragment StoreEntitySet="tbl_BookStock">
-          <ScalarProperty Name="ReturnQty" ColumnName="ReturnQty" />
-          <ScalarProperty Name="TotalBook" ColumnName="TotalBook" />
-          <ScalarProperty Name="LostQty" ColumnName="LostQty" />
-          <ScalarProperty Name="AvailQty" ColumnName="AvailQty" />
-          <ScalarProperty Name="AllocateQty" ColumnName="AllocateQty" />
-          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
-          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
-          <ScalarProperty Name="BStockid" ColumnName="BStockid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_GetBookDetailsbyBookid" FunctionName="SchoolMgmtSysModel.Store.sp_GetBookDetailsbyBookid">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetBookDetailsbyBookid_Result">
@@ -2014,9 +1989,12 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddBookAllotment" FunctionName="SchoolMgmtSysModel.Store.AddBookAllotment" />
+    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
     <EntitySetMapping Name="tbl_lib_BookIssue">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_BookIssue">
         <MappingFragment StoreEntitySet="tbl_lib_BookIssue">
+          <ScalarProperty Name="flag" ColumnName="flag" />
           <ScalarProperty Name="CallNumber" ColumnName="CallNumber" />
           <ScalarProperty Name="AllotedBy" ColumnName="AllotedBy" />
           <ScalarProperty Name="Return_CreatedBy" ColumnName="Return_CreatedBy" />
@@ -2031,7 +2009,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="AddBookAllotment" FunctionName="SchoolMgmtSysModel.Store.AddBookAllotment" />
-    <FunctionImportMapping FunctionImportName="sp_updatereturnbook" FunctionName="SchoolMgmtSysModel.Store.sp_updatereturnbook" />
+    <EntitySetMapping Name="tbl_BookStock">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_BookStock">
+        <MappingFragment StoreEntitySet="tbl_BookStock">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="Dateofpurchase" ColumnName="Dateofpurchase" />
+          <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+          <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
+          <ScalarProperty Name="Publisherid" ColumnName="Publisherid" />
+          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+          <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="NotReturn" ColumnName="NotReturn" />
+          <ScalarProperty Name="ReturnQty" ColumnName="ReturnQty" />
+          <ScalarProperty Name="TotalBook" ColumnName="TotalBook" />
+          <ScalarProperty Name="LostQty" ColumnName="LostQty" />
+          <ScalarProperty Name="AvailQty" ColumnName="AvailQty" />
+          <ScalarProperty Name="AllocateQty" ColumnName="AllocateQty" />
+          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+          <ScalarProperty Name="BStockid" ColumnName="BStockid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSearchBookAndJournal" FunctionName="SchoolMgmtSysModel.Store.sp_GetSearchBookAndJournal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CallNo" ColumnName="CallNo" />
+          <ScalarProperty Name="AccessorNo" ColumnName="AccessorNo" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,0 +1,98 @@
+﻿@model Entity.BookAllocation
+@{
+    ViewBag.Title = "BookCallStock";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<div class="container-fluid-full">
+
+    <div class="row-fluid">
+        @Html.Partial("_LibrarymanagementList")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Library Management", "Index", "Library", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">Book Stock</li>
+                </ul>
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Book Stock</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div id="result" class="table-responsive">
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                                    <thead>
+                                        <tr>
+                                         
+                                            <th>
+                                                CallNo
+                                            </th>
+                                          
+                                            <th>
+                                               BookName
+                                            </th>
+                                            <th>
+                                                BookQty
+                                            </th>
+                                            <th>
+                                                AllocateQty
+                                            </th>
+                                            <th>
+                                                AvailableQty
+                                            </th>
+                                            <th>
+                                                ReturnQty
+                                            </th>
+                                            <th>
+                                                LostQty
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model._BookStockList)
+            {
+                                            <tr>
+                                             
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CallNo)
+                                                </td>
+                                               
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.BookName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.BookQty)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.AllocateQty)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.AvailQty)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ReturnQty)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.LostQty)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

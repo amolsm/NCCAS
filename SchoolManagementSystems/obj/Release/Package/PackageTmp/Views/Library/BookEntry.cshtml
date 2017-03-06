@@ -4,6 +4,26 @@
     ViewBag.Title = "BookEntry";
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }
+<div id="confirm" class="modal hide fade">
+    <div class="modal-body">
+       Book with Same Call No. exist.Do you want to add Copy?
+    </div>
+    <div class="modal-footer">
+        <button type="submit" data-dismiss="modal" class="btn btn-primary" id="addCopy">AddCopy</button>
+        <button type="button" data-dismiss="modal" class="btn" id="btncancel">Cancel</button>
+    </div>
+</div>
+
+<div id="saveconfirm" class="modal hide fade">
+    <div class="modal-body">
+    Copies of Same Book details are exist Changes will be updated to all copies.
+   <br/> 
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary" id="editCopy">SaveCopy</button>
+       <button type="button" data-dismiss="modal" class="btn" id="btnCancel">Cancel</button>
+    </div>
+</div>
 <script type="text/javascript">
     $(function () {
         $("#tabs").tabs();
@@ -43,6 +63,7 @@
                     $("#Cost").val(data.Cost);
                     $("#AccessorNo").val(data.AccessorNo);
                     $("#ShelfNo").val(data.SelfNo);
+                    $("#callnumbers").val(data.CallNo);
                   
                 }
             });
@@ -87,8 +108,14 @@
 
         $("#BookInsert").click(function (e) {
             Validations1(e);
+           
+           
+           
 
         });
+
+      
+
         function Validations1(e) {
             var cnt = 0;
             if ($("#booktitle").val() == '') {
@@ -286,12 +313,49 @@
                     "background": ""
                 });
             }
-            
+
             if (cnt != 0) {
                 e.preventDefault();
+            } else {
+                var c = $('#callnumbers').val();
+                debugger;
+                if (c != 0) {
+                  
+                    $('#saveconfirm').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    })
+
+                    .one('click', '#editCopy', function (e) {
+                        document.forms[0].method = "Post";
+                        document.forms[0].action = "BookEntry?command=BookSubmit";
+                        document.forms[0].submit();
+                      
+                    
+                    })
+                      .one('click', '#btncancel', function (e) {
+
+                          e.preventDefault();
+                    
+                      }
+                    );
+                    e.preventDefault();
+                 
+
+                }
             }
         }
 
+                        
+                        
+
+                  
+
+           
+       
+
+     
+           
 
         $("#JournalInsert").click(function (e) {
             Validations2(e);
@@ -437,7 +501,67 @@
             }
         }
 
+       
+        $('#CallNo').blur(function () {
+            var Call_number = $('#CallNo').val();
+            clear();
+          
+           // BookDetailShow();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_CallNo")',
+                dataType: 'JSON',
+                data: { Call_number: Call_number },
+                success: function (data) {
+                 if (data != null) {
+                        $('#confirm').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        })
+                        .one('click', '#addCopy', function (e) {
 
+                            $("#booktitle").val(data.BookName);
+
+                            $("#CallNo").val(data.CallNo);
+
+                            $("#Volume").val(data.Volume);
+
+                            $("#SerielNumber").val(data.SerialNo);
+
+                            $("#Authorid").val(data.Authorid);
+
+                            $("#Authorname").val(data.Authorname);
+
+                            $("#PublishedByid").val(data.Publisherid);
+
+                            $("#PublishedByName").val(data.PublisherName);
+
+                            $("#Edition").val(data.Edition);
+
+                            $("#Vendorid").val(data.Vendorid);
+
+                            $("#Vendorname").val(data.Vendorname);
+                            var date1 = new Date(parseInt(data.Dateofpurchase.substr(6)));
+                            $('#datepicker1').datepicker('setDate', date1);
+
+
+                            $("#BillNo").val(data.BillNo);
+
+                            $("#Cost").val(data.Cost);
+                            $("#callnumbers").val(0);
+                            BookDetailshide();
+                       
+                        
+                        });
+                        debugger;
+                        clear();
+                     
+                      
+                       return false;
+                    } 
+                }
+            });
+        });
         $("#Authorid").change(function () {
 
             if ($("#Authorid option:selected").text() == "Others") {
@@ -466,6 +590,38 @@
 
 
         })
+
+        function BookDetailshide()
+        {
+            $('#booktitle').attr("readonly", true);
+            $('#Volume').attr("readonly", true);
+            $('#SerielNumber').attr("readonly", true);
+            $('#Authorid').attr("readonly", true);
+            $('#Authorname').attr("readonly", true);
+            $('#PublishedByid').attr("readonly", true);
+            $('#PublishedByName').attr("readonly", true);
+            $('#Edition').attr("readonly", true);
+            $('#Vendorid').attr("readonly", true);
+            $('#Vendorname').attr("readonly", true);
+            $('#datepicker1').attr("readonly", true);
+            $('#BillNo').attr("readonly", true);
+            $('#Cost').attr("readonly", true);
+        }
+        function BookDetailShow() {
+            $('#booktitle').attr("readonly", false);
+            $('#Volume').attr("readonly", false);
+            $('#SerielNumber').attr("readonly", false);
+            $('#Authorid').attr("readonly", false);
+            $('#Authorname').attr("readonly", false);
+            $('#PublishedByid').attr("readonly", false);
+            $('#PublishedByName').attr("readonly", false);
+            $('#Edition').attr("readonly", false);
+            $('#Vendorid').attr("readonly", false);
+            $('#Vendorname').attr("readonly", false);
+            $('#datepicker1').attr("readonly", false);
+            $('#BillNo').attr("readonly", false);
+            $('#Cost').attr("readonly", false);
+        }
         $("#Vendorid").change(function () {
 
             if ($("#Vendorid option:selected").text() == "Others") {
@@ -532,14 +688,16 @@
         $('#datepicker3').val("");
      
         function clear() {
-            $("#Bookid").hide();
-            $('#Bookid input').val('0');
+         
             $("#booktitle").val('');
-            $("#CallNo").val('');
+          
             $("#Volume").val('');
             $("#SerielNumber").val('');
             $("#Authorid").val('0');
             $("#PublishedByid").val('0');
+            $("#Authorname").val('');
+            $("#PublishedByName").val('');
+            $("#Vendorname").val('');
             $("#Edition").val('');
             $("#Vendorid").val('');
             $("#datepicker1").val('');
@@ -557,6 +715,7 @@
             $("#JVendorId").val('0');
             $("#datepicker3").val('');
             $("#JBillNo").val('');
+            $("#callnumbers").val('0');
 
         }
        
@@ -713,15 +872,7 @@
 
                     </div>
                 </div>
-                <div class="control-group span5 required">
-
-                    @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
-
-                    <div class="controls">
-                        @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter Book Title Name", @class = "input" })
-
-                    </div>
-                </div>
+               
 
                 <div class="control-group span5 required">
 
@@ -729,6 +880,16 @@
 
                     <div class="controls">
                         @Html.TextBoxFor(model => model.CallNo, new { placeholder = "Enter Call No.", @class = "input" })
+
+                    </div>
+                </div>
+
+                <div class="control-group span5 required">
+
+                    @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter Book Title Name", @class = "input" })
 
                     </div>
                 </div>
@@ -965,7 +1126,7 @@
 
                     </div>
                 </div>
-              
+                <input type="hidden" name="callnumbers" id="callnumbers" /><br />
             </fieldset>
             <div class="form-actions">
                 <div class="control-group span8 pull-right">
