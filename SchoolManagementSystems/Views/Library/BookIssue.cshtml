@@ -127,7 +127,7 @@
                                 + "<td class='prtoducttd'>" + item.Studnm + "</td>"
                                 + "<td class='prtoducttd'>" + item.CallNo + "</td>"
                                 + "<td class='prtoducttd'>" + item.AccessorNo + "</td>"
-                                + "<td class='prtoducttd'>" + item.booktitle + "</td>"
+                                + "<td class='prtoducttd'>" + item.BookName + "</td>"
                                 + "<td class='prtoducttd'>" + (new Date(parseInt(item.Issuedatetime.substr(6)))).toDateString() + "</td>"
                                 + "<td class='prtoducttd'>" + item.NoOfDaysTill + "</td>"
                              
@@ -168,14 +168,15 @@
                 clearmsg();
                 var bookname = $('#booktitle').val();
                 var callno = $('#CallNo').val();
-                var hcallid = $('#hfcallno').val()
+                var accessonno = $('#AccessorNo').val();
+                var authorname = $('#Authorname').val();
              
                 $("#tblBooks tbody tr").remove();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetBookDetails")',
                     dataType: 'JSON',
-                    data: { BookName: bookname, callno: callno },
+                    data: { BookName: bookname, callno: callno, accessonno: accessonno, authorname: authorname },
                     success: function (data) {
                         if (data != "") {
                             var items = '';
@@ -515,6 +516,21 @@
                                             <br /><br />
                                         </div>
                                     </div>
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.AccessorNo, new { placeholder = "Enter Accesson Number", @class = "input" })
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group span5 ">
+                                            @Html.LabelFor(model => model.Authorname, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Enter Author Name", @class = "input" })
+                                            </div>
+                                        </div>
 
                                         <div class="control-group span5 required">
                                             @Html.LabelFor(model => model.NoDays, new { @class = "control-label", @for = "focusedInput" })

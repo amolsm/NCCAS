@@ -29,10 +29,12 @@
         $("#tabs").tabs();
     });
     $(document).ready(function () {
+        
         $('#Bookid input').attr("readonly", true);
         $('#AccessorNo').attr("readonly", true);
         if ($("#Bookid input").val() == "0") {
             $("#Bookid").hide();
+
         } else {
           
             act = '@Url.Action("FillBookDetails")';
@@ -45,14 +47,14 @@
                 success: function (data) {
                    
                     $("#Bookid input").val(data.bookid);
-                    $("#booktitle").val(data.booktitle);
+                    $("#booktitle").val(data.BookName);
                     $("#CallNo").val(data.CallNo);
                     $("#Volume").val(data.Volume);
-                    $("#SerielNumber").val(data.SerielNumber);
+                    $("#SerielNumber").val(data.SerialNo);
                     $("#Authorid").val(data.Authorid);
                     $("#Authorname").val(data.Authorname);
-                    $("#PublishedByid").val(data.PublishedByid);
-                    $("#PublishedByName").val(data.PublishedByName);
+                    $("#PublishedByid").val(data.Publisherid);
+                    $("#PublishedByName").val(data.PublisherName);
                     $("#Edition").val(data.Edition);
                     $("#Vendorid").val(data.Vendorid);
                     $("#Vendorname").val(data.Vendorname);
@@ -64,11 +66,116 @@
                     $("#AccessorNo").val(data.AccessorNo);
                     $("#ShelfNo").val(data.SelfNo);
                     $("#callnumbers").val(data.CallNo);
+                    $("#CourseId").val(data.CourseId);
+                    $("#DeptId").val(data.DeptId);
+                    $("#BookCategoryid").val(data.CategoryId);
+                   
+                  
+
                   
                 }
             });
         }
        
+        $("#CourseId").change(function () {
+
+            ReloadCourse();
+        })
+
+      
+
+
+
+
+        function ReloadDepartment() {
+            $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
+        }
+
+        function ReloadCourse() {
+            if ($("#CourseId").val() == "") {
+                ReloadDepartment();
+            }
+            else {
+
+                $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#LibType").change(function () {
+
+            ReloadCourse1();
+        })
+
+
+
+
+
+        function ReloadDepartment1() {
+            $("#Department").empty();
+            var item = '<option value="">select Department</option>';
+            $("#Department").append(item);
+        }
+
+        function ReloadCourse1() {
+            if ($("#LibType").val() == "") {
+                ReloadDepartment1();
+            }
+            else {
+
+                $("#Department").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#LibType").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#Department").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#Department").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
         $('#journalid input').attr("readonly", true);
         if ($("#journalid input").val() == "0") {
             $("#journalid").hide();
@@ -84,6 +191,7 @@
                    
                     $("#journalid input").val(data.lib_Jid);
                     $("#LibType").val(data.LibType);
+                  
                     $("#Department").val(data.Department);
                     $("#JournalTitle").val(data.JournalTitle);
                     $("#LibJVolume").val(data.Volume);
@@ -97,6 +205,11 @@
 
                
                     $("#JBillNo").val(data.JBillNo);
+                    $("#IssueType").val(data.IssueType);
+                    $("#JPublisher").val(data.Publisher);
+                    $("#JShelfNo").val(data.shelfno);
+                    $("#JShelfNo").val(data.shelfno);
+                    $("#JCost").val(data.jcost);
                     if (data.lib_Jid != 0) {
 
                         $('.navbar-nav > .active').next('li').find('a').trigger('click');
@@ -288,7 +401,7 @@
                 $("#AccessorNo").css({
                     "border": "1px solid red"
                 });
-                alert("AccessorNo  is Mandatory!");
+                alert("Accesson No.  is Mandatory!");
                 e.preventDefault();
                 return false;
             }
@@ -313,7 +426,51 @@
                     "background": ""
                 });
             }
-
+            if ($("#CourseId").val() == '') {
+                cnt++;
+                $("#CourseId").css({
+                    "border": "1px solid red"
+                });
+                alert("Course  is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#CourseId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#DeptId").val() == '') {
+                cnt++;
+                $("#DeptId").css({
+                    "border": "1px solid red"
+                });
+                alert("Department  is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#DeptId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#BookCategoryid").val() == '') {
+                cnt++;
+                $("#BookCategoryid").css({
+                    "border": "1px solid red"
+                });
+                alert("Category  is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#BookCategoryid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if (cnt != 0) {
                 e.preventDefault();
             } else {
@@ -496,6 +653,36 @@
                     "background": ""
                 });
             }
+            if ($("#IssueType").val() == '') {
+                cnt++;
+                $("#IssueType").css({
+                    "border": "solid 2px #004a80"
+                });
+
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#IssueType").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#JPublisher").val() == '') {
+                cnt++;
+                $("#JPublisher").css({
+                    "border": "solid 2px #004a80"
+                });
+
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#JPublisher").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if (cnt != 0) {
                 e.preventDefault();
             }
@@ -548,6 +735,9 @@
                             $("#BillNo").val(data.BillNo);
 
                             $("#Cost").val(data.Cost);
+                            $("#CourseId").val(data.CourseId);
+                            $("#DeptId").val(data.DeptId);
+                            $("#BookCategoryid").val(data.CategoryId);
                             $("#callnumbers").val(0);
                             BookDetailshide();
                        
@@ -703,6 +893,9 @@
             $("#datepicker1").val('');
             $("#BillNo").val('');
             $("#Cost").val('');
+            $("#CourseId").val('0');
+            $("#DeptId").val('0');
+            $("#BookCategoryid").val('0');
             $("#journalid").hide();
             $('#journalid input').val('0');
             $("#LibType").val('0');
@@ -715,6 +908,10 @@
             $("#JVendorId").val('0');
             $("#datepicker3").val('');
             $("#JBillNo").val('');
+            $("#IssueType").val('0');
+            $("#JPublisher").val('');
+            $("#JShelfNo").val('');
+            $("#JCost").val('');
             $("#callnumbers").val('0');
 
         }
@@ -725,8 +922,9 @@
     });
     </script>
 <script type="text/javascript">
+  
     $(document).ready(function () {
-
+   
         $('#Bookid input').attr("readonly", true);
         $("#Bookid input").val() == "0";
         $('#author input').attr("readonly", true);
@@ -873,7 +1071,15 @@
                     </div>
                 </div>
                
+                <div class="control-group span5 required">
 
+                    @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.AccessorNo, new { placeholder = "Enter AccessorNo", @class = "input" })
+
+                    </div>
+                </div>
                 <div class="control-group span5 required">
 
                     @Html.LabelFor(model => model.CallNo, new { @class = "control-label", @for = "focusedInput" })
@@ -903,6 +1109,40 @@
 
                     </div>
                 </div>
+                <div class="control-group span5 required">
+
+                    @Html.LabelFor(model => model.Edition, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Edition, new { placeholder = "Enter Edition", @class = "input" })
+
+                    </div>
+                </div>
+
+                <div class="control-group span5">
+                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label", @for = "focusedInput" })
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+
+                        @Html.ValidationMessageFor(model => model.CourseId)
+                    </div>
+                </div>
+
+                <div class="control-group span5">
+                    @Html.LabelFor(model => model.DeptId, new { @class = "control-label", @for = "select" })
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._departmentlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                        @Html.ValidationMessageFor(model => model.DeptId)
+                    </div>
+                </div>
+
+                <div class="control-group span5">
+                    @Html.LabelFor(model => model.BookCategoryid, new { @class = "control-label", @for = "select" })
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.BookCategoryid, new SelectList(Model._bookcategorylist, "BookCategoryId", "CategoryName", "Select Category"), "Select Category", new { @for = "select" })
+                        @Html.ValidationMessageFor(model => model.BookCategoryid)
+                    </div>
+                </div>
 
                 <div class="control-group span5 required">
 
@@ -918,33 +1158,8 @@
                     @Html.LabelFor(model => model.Authorid, new { @class = "control-label", @for = "focusedInput" })
 
                     <div class="controls">
-                        @{
-                            List<SelectListItem> listItems = new List<SelectListItem>();
-                            listItems.Add(new SelectListItem
-                            {
-                                Text = "Mahatma M.K.Gandhi",
-                                Value = "1"
-                            });
-                            listItems.Add(new SelectListItem
-                            {
-                                Text = "Thomas Hardy",
-                                Value = "2",
-
-                            });
-                            listItems.Add(new SelectListItem
-                            {
-                                Text = "Rabindra Nath Tagore",
-                                Value = "3",
-
-                            });
-                            listItems.Add(new SelectListItem
-                            {
-                                Text = "Others",
-                                Value = "4",
-
-                            });}
-                        @Html.DropDownListFor(model => model.Authorid, listItems, "Select Author")
-
+                       @Html.DropDownListFor(model => model.Authorid, new SelectList(Model._authorlist, "Authorid", "Authorname", "Select Author"), "Select Author", new { @for = "select" })
+                       
                     </div>
                 </div>
                 <div id="author">
@@ -966,38 +1181,8 @@
                     @Html.LabelFor(model => model.PublishedByid, new { @class = "control-label", @for = "focusedInput" })
 
                     <div class="controls">
-                        @{
-                            List<SelectListItem> plistItems = new List<SelectListItem>();
-                            plistItems.Add(new SelectListItem
-                            {
-                                Text = "Random House India",
-                                Value = "1"
-                            });
-                            plistItems.Add(new SelectListItem
-                            {
-                                Text = "Wiley India",
-                                Value = "2",
-
-                            });
-                            plistItems.Add(new SelectListItem
-                            {
-                                Text = "Harper Collins Publishers India",
-                                Value = "3",
-
-                            });
-                            plistItems.Add(new SelectListItem
-                            {
-                                Text = "MacMillan Publishers India",
-                                Value = "4",
-
-                            });
-                            plistItems.Add(new SelectListItem
-                            {
-                                Text = "Others",
-                                Value = "5",
-
-                            });}
-                        @Html.DropDownListFor(model => model.PublishedByid, plistItems, "Select Publisher")
+                      @Html.DropDownListFor(model => model.PublishedByid, new SelectList(Model._publisherlist, "PublisherId", "Publishername", "Select Publisher"), "Select Publisher", new { @for = "select" })
+                       
 
                     </div>
                 </div>
@@ -1014,53 +1199,14 @@
                 </div>
 
                 </div>
-                <div class="control-group span5 required">
-
-                    @Html.LabelFor(model => model.Edition, new { @class = "control-label", @for = "focusedInput" })
-
-                    <div class="controls">
-                        @Html.TextBoxFor(model => model.Edition, new { placeholder = "Enter Edition", @class = "input" })
-
-                    </div>
-                </div>
-
+               
                 <div class="control-group span5 required">
 
                     @Html.LabelFor(model => model.Vendorid, new { @class = "control-label", @for = "focusedInput" })
 
                     <div class="controls">
-                        @{
-                            List<SelectListItem> vlistItems = new List<SelectListItem>();
-                            vlistItems.Add(new SelectListItem
-                            {
-                                Text = "Capstone Press",
-                                Value = "1"
-                            });
-                            vlistItems.Add(new SelectListItem
-                            {
-                                Text = "Amazon",
-                                Value = "2",
-
-                            });
-                            vlistItems.Add(new SelectListItem
-                            {
-                                Text = "Baker & Taylor",
-                                Value = "3",
-
-                            });
-                            vlistItems.Add(new SelectListItem
-                            {
-                                Text = "Barnes and Noble",
-                                Value = "4",
-
-                            });
-                            vlistItems.Add(new SelectListItem
-                            {
-                                Text = "Others",
-                                Value = "5",
-
-                            });}
-                        @Html.DropDownListFor(model => model.Vendorid,  vlistItems, "Select Vendor")
+                        @Html.DropDownListFor(model => model.Vendorid, new SelectList(Model._vendorlist, "Vendorid", "Vendorname", "Select Vendor"), "Select Vendor", new { @for = "select" })
+                      
 
                     </div>
                 </div>
@@ -1107,15 +1253,8 @@
                     </div>
                 </div>
 
-                <div class="control-group span5 required">
 
-                    @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
-
-                    <div class="controls">
-                        @Html.TextBoxFor(model => model.AccessorNo, new { placeholder = "Enter AccessorNo", @class = "input" })
-
-                    </div>
-                </div>
+              
 
                 <div class="control-group span5 required">
 
@@ -1126,6 +1265,7 @@
 
                     </div>
                 </div>
+               
                 <input type="hidden" name="callnumbers" id="callnumbers" /><br />
             </fieldset>
             <div class="form-actions">
@@ -1150,33 +1290,29 @@
                                                 </div>
                                                 <div class="control-group span5 required">
 
+                                                    @Html.LabelFor(model => model.Number, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.Number, new { placeholder = "Accesson Number", @readonly = "true", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5 required">
+
+                                                    @Html.LabelFor(model => model.JournalTitle, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JournalTitle, new { placeholder = "Enter Journal Title", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5 required">
+
                                                     @Html.LabelFor(model => model.LibType, new { @class = "control-label", @for = "focusedInput" })
 
                                                     <div class="controls">
-                                                        @{
-                                                            List<SelectListItem> jtypelistItems = new List<SelectListItem>();
-                                                            jtypelistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Physics",
-                                                                Value = "1"
-                                                            });
-                                                            jtypelistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Chemestry",
-                                                                Value = "2",
-
-                                                            });
-                                                            jtypelistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Biology",
-                                                                Value = "3",
-
-                                                            });
-
-                                                          }
-                                                        @Html.DropDownListFor(model => model.LibType, jtypelistItems,"Select Journal Type")
-
-                                                    </div>
+                                                        @Html.DropDownListFor(model => model.LibType, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                                       </div>
                                                 </div>
                                                 <div class="control-group span5 required">
 
@@ -1188,15 +1324,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="control-group span5 required">
-
-                                                    @Html.LabelFor(model => model.JournalTitle, new { @class = "control-label", @for = "focusedInput" })
-
-                                                    <div class="controls">
-                                                        @Html.TextBoxFor(model => model.JournalTitle, new { placeholder = "Enter Journal Title", @class = "input" })
-
-                                                    </div>
-                                                </div>
+                                               
 
                                                 <div class="control-group span5 required">
 
@@ -1207,15 +1335,73 @@
 
                                                     </div>
                                                 </div>
+
                                                 <div class="control-group span5 required">
 
-                                                    @Html.LabelFor(model => model.Number, new { @class = "control-label", @for = "focusedInput" })
+                                                    @Html.LabelFor(model => model.IssueType, new { @class = "control-label", @for = "focusedInput" })
 
                                                     <div class="controls">
-                                                        @Html.TextBoxFor(model => model.Number, new { placeholder = "Enter Number", @class = "input" })
+                                                        @{
+                                                            List<SelectListItem> listItems = new List<SelectListItem>();
+                                                            listItems.Add(new SelectListItem
+                                                            {
+                                                                Text = "Monthly",
+                                                                Value = "1"
+                                                            });
+                                                            listItems.Add(new SelectListItem
+                                                            {
+                                                                Text = "Quarterly",
+                                                                Value = "2",
+
+                                                            });
+                                                            listItems.Add(new SelectListItem
+                                                            {
+                                                                Text = "Half Yearly",
+                                                                Value = "3",
+                                                                Selected = true
+                                                            });
+                                                            listItems.Add(new SelectListItem
+                                                            {
+                                                                Text = "yearly",
+                                                                Value = "4",
+                                                                Selected = true
+                                                            });}
+                                                        @Html.DropDownListFor(model => model.IssueType, listItems, new { @for = "select" })
 
                                                     </div>
                                                 </div>
+                                               
+                                              
+
+                                                <div class="control-group span5 required">
+
+                                                    @Html.LabelFor(model => model.JPublisher, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JPublisher, new { placeholder = "Enter Publisher", @class = "input" })
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group span5 required">
+
+                                                    @Html.LabelFor(model => model.JShelfNo, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JShelfNo, new { placeholder = "Enter Shelf No.", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5 required">
+
+                                                    @Html.LabelFor(model => model.JCost, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JCost, new { placeholder = "Enter Cost", @class = "input" })
+
+                                                    </div>
+                                                </div>
+
                                                 <div class="control-group span5 required">
 
                                                     @Html.LabelFor(model => model.IssueDate, new { @class = "control-label", @for = "focusedInput" })
@@ -1231,39 +1417,8 @@
                                                     @Html.LabelFor(model => model.JVendorId, new { @class = "control-label", @for = "focusedInput" })
 
                                                     <div class="controls">
-                                                        @{
-                                                            List<SelectListItem> vjlistItems = new List<SelectListItem>();
-                                                            vjlistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Capstone Press",
-                                                                Value = "1"
-                                                            });
-                                                            vjlistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Amazon",
-                                                                Value = "2",
-
-                                                            });
-                                                            vjlistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Baker & Taylor",
-                                                                Value = "3",
-
-                                                            });
-                                                            vjlistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Barnes and Noble",
-                                                                Value = "4",
-
-                                                            });
-                                                            vjlistItems.Add(new SelectListItem
-                                                            {
-                                                                Text = "Others",
-                                                                Value = "5",
-
-                                                            });}
-                                                        @Html.DropDownListFor(model => model.JVendorId, vjlistItems, "Select Vendor")
-
+                                                        @Html.DropDownListFor(model => model.JVendorId, new SelectList(Model._vendorlist, "Vendorid", "Vendorname", "Select Vendor"), "Select Vendor", new { @for = "select" })
+                                                       
                                                     </div>
                                                 </div>
 

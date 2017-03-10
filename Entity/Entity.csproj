@@ -58,6 +58,7 @@
     <Compile Include="assigndivisionviewmodel.cs" />
     <Compile Include="Attendanceviewmodel.cs" />
     <Compile Include="BookAllocation.cs" />
+    <Compile Include="bookCategoryviewmodel.cs" />
     <Compile Include="Chaptercompleteviewmodel.cs" />
     <Compile Include="chapterviewmodel.cs" />
     <Compile Include="classviewmodel.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="casteviewmodel.cs" />
     <Compile Include="bloodgroupviewmodel.cs" />
     <Compile Include="Categoryviewmodel.cs" />
+    <Compile Include="Configurationtblmodelview.cs" />
     <Compile Include="contentviewmodel.cs" />
     <Compile Include="courseassigndeptmodel.cs" />
     <Compile Include="coursemasterviewmodel.cs" />
@@ -73,6 +75,9 @@
     <Compile Include="divisionmodel.cs" />
     <Compile Include="divisionviewmodel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
+    <Compile Include="lib_authormodel.cs" />
+    <Compile Include="lib_JTypemodule.cs" />
+    <Compile Include="lib_publishermodel.cs" />
     <Compile Include="lib_vendormodel.cs" />
     <Compile Include="sessionviewmodel.cs" />
     <Compile Include="libBookentry.cs" />

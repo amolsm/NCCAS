@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2017 17:16:57</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>03/03/2017 20:01:47</publishTime>
+      <publishTime>03/10/2017 19:12:12</publishTime>
     </File>
     <File Include="bin/Entity.dll">
-      <publishTime>03/03/2017 20:01:46</publishTime>
+      <publishTime>03/10/2017 19:12:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/27/2017 20:04:26</publishTime>
@@ -37,7 +37,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:26</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.dll">
-      <publishTime>03/04/2017 15:19:02</publishTime>
+      <publishTime>03/10/2017 19:12:13</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>01/27/2017 20:04:26</publishTime>
@@ -484,7 +484,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Scripts/dash/css/style-forms.css">
-      <publishTime>01/27/2017 20:04:23</publishTime>
+      <publishTime>03/10/2017 19:31:43</publishTime>
     </File>
     <File Include="Scripts/dash/css/style-responsive.css">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1030,19 +1030,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Library/BookCallStock.cshtml">
-      <publishTime>03/02/2017 19:00:42</publishTime>
+      <publishTime>03/06/2017 16:00:47</publishTime>
     </File>
     <File Include="Views/Library/BookEntry.cshtml">
-      <publishTime>03/04/2017 15:16:04</publishTime>
+      <publishTime>03/10/2017 19:22:37</publishTime>
     </File>
     <File Include="Views/Library/BookIssue.cshtml">
-      <publishTime>02/28/2017 16:37:16</publishTime>
+      <publishTime>03/10/2017 12:55:17</publishTime>
     </File>
     <File Include="Views/Library/BookReturn.cshtml">
-      <publishTime>03/02/2017 17:33:58</publishTime>
+      <publishTime>03/07/2017 15:16:07</publishTime>
     </File>
     <File Include="Views/Library/Index.cshtml">
-      <publishTime>03/03/2017 19:47:40</publishTime>
+      <publishTime>03/10/2017 17:25:32</publishTime>
     </File>
     <File Include="Views/Library/_BookIssueList.cshtml">
       <publishTime>02/22/2017 17:38:51</publishTime>
@@ -1065,8 +1065,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Masters/AssignedDivisionMaster.cshtml">
       <publishTime>02/24/2017 19:24:10</publishTime>
     </File>
+    <File Include="Views/Masters/AuthorMaster.cshtml">
+      <publishTime>03/08/2017 13:36:45</publishTime>
+    </File>
     <File Include="Views/Masters/Bloodgroup.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
+    </File>
+    <File Include="Views/Masters/BookCategoryMaster.cshtml">
+      <publishTime>03/09/2017 12:12:44</publishTime>
     </File>
     <File Include="Views/Masters/Caste.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1082,6 +1088,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Masters/Class.cshtml">
       <publishTime>02/04/2017 19:35:08</publishTime>
+    </File>
+    <File Include="Views/Masters/ConfigMaster.cshtml">
+      <publishTime>03/10/2017 18:00:00</publishTime>
     </File>
     <File Include="Views/Masters/Contents.cshtml">
       <publishTime>02/15/2017 20:39:11</publishTime>
@@ -1110,6 +1119,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Masters/FeesLabels.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
+    <File Include="Views/Masters/JournalTypeMaster.cshtml">
+      <publishTime>03/08/2017 15:12:57</publishTime>
+    </File>
     <File Include="Views/Masters/Leave.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
@@ -1124,6 +1136,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Masters/Position.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
+    </File>
+    <File Include="Views/Masters/PublisherMaster.cshtml">
+      <publishTime>03/08/2017 13:34:13</publishTime>
     </File>
     <File Include="Views/Masters/Qualification.cshtml">
       <publishTime>01/27/2017 20:04:23</publishTime>
@@ -1141,16 +1156,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2017 21:18:19</publishTime>
     </File>
     <File Include="Views/Masters/Subject.cshtml">
-      <publishTime>02/20/2017 13:58:29</publishTime>
+      <publishTime>03/10/2017 18:40:56</publishTime>
     </File>
     <File Include="Views/Masters/User.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Views/Masters/VendorMaster.cshtml">
-      <publishTime>02/25/2017 17:01:05</publishTime>
+      <publishTime>03/08/2017 12:38:33</publishTime>
+    </File>
+    <File Include="Views/Masters/_AuthorList.cshtml">
+      <publishTime>03/08/2017 13:20:06</publishTime>
     </File>
     <File Include="Views/Masters/_BloodgroupList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
+    </File>
+    <File Include="Views/Masters/_BookCategoryList.cshtml">
+      <publishTime>03/09/2017 12:06:14</publishTime>
     </File>
     <File Include="Views/Masters/_CasteList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1166,6 +1187,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Masters/_ClassList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
+    </File>
+    <File Include="Views/Masters/_ConfigurationtblList.cshtml">
+      <publishTime>03/10/2017 18:33:40</publishTime>
     </File>
     <File Include="Views/Masters/_ContentList.cshtml">
       <publishTime>02/01/2017 21:18:19</publishTime>
@@ -1194,6 +1218,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Masters/_FeesLabelsList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
+    <File Include="Views/Masters/_JTypeList.cshtml">
+      <publishTime>03/08/2017 15:06:21</publishTime>
+    </File>
     <File Include="Views/Masters/_leaveList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
@@ -1205,6 +1232,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Masters/_positionList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
+    </File>
+    <File Include="Views/Masters/_PublisherList.cshtml">
+      <publishTime>03/08/2017 13:18:33</publishTime>
     </File>
     <File Include="Views/Masters/_QualificationList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1264,7 +1294,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/01/2017 16:32:31</publishTime>
     </File>
     <File Include="Views/shared/_MasterSubMenu.cshtml">
-      <publishTime>02/25/2017 17:01:05</publishTime>
+      <publishTime>03/09/2017 12:14:04</publishTime>
     </File>
     <File Include="Views/shared/_MenuItems.cshtml">
       <publishTime>03/02/2017 19:23:37</publishTime>
@@ -1276,7 +1306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:24</publishTime>
     </File>
     <File Include="Views/shared/_SharedLayout.cshtml">
-      <publishTime>02/17/2017 12:49:31</publishTime>
+      <publishTime>03/10/2017 19:11:49</publishTime>
     </File>
     <File Include="Views/shared/_SMSList.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1303,7 +1333,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 19:24:10</publishTime>
     </File>
     <File Include="Views/Student/Admission.cshtml">
-      <publishTime>02/14/2017 13:19:12</publishTime>
+      <publishTime>03/10/2017 19:39:52</publishTime>
     </File>
     <File Include="Views/Student/GuardianList.cshtml">
       <publishTime>02/11/2017 21:32:19</publishTime>
@@ -1312,7 +1342,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2017 21:18:15</publishTime>
     </File>
     <File Include="Views/Student/Online_Admission.cshtml">
-      <publishTime>01/27/2017 20:04:24</publishTime>
+      <publishTime>03/08/2017 16:45:12</publishTime>
     </File>
     <File Include="Views/Student/Online_student_Mgmt.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -1327,7 +1357,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 19:20:48</publishTime>
     </File>
     <File Include="Views/Timetable/NewTimetableInfo.cshtml">
-      <publishTime>02/24/2017 19:24:10</publishTime>
+      <publishTime>03/10/2017 18:41:19</publishTime>
     </File>
     <File Include="Views/Timetable/publish.cshtml">
       <publishTime>02/24/2017 19:20:48</publishTime>

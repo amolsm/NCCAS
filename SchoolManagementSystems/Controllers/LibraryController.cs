@@ -15,67 +15,93 @@ namespace SchoolManagementSystems.Controllers
         // GET: /Library/
             SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
 
-    
 
-        public ActionResult Index()
-        {
-            libBookentry lb = new libBookentry();
-            //FillPermission(47);
-          
-            lb._bookentrylist = db.sp_getBookentry().ToList();
-            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
-            lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList();
-            lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3,0,null, null).ToList();
-            return View(lb);
-          
-        }
-        [HttpPost]
+       
         public ActionResult Index(libBookentry lb)
         {
-           
             //FillPermission(47);
-
+            lb._authorlist = db.tbl_lib_Author.Where(m => m.status == true).ToList();
             lb._bookentrylist = db.sp_getBookentry().ToList();
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            lb._vendorlist = db.tbl_lib_Vendor.Where(m => m.status == true).ToList();
+            lb.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+           if (lb.Option == 2)
+            {
+                int? deptid;
+                int? courseid;
+                int? vendor;
+                if (lb.DeptId == 0) { deptid = null; } else { deptid = lb.DeptId; }
+                if (lb.LibType == 0) { courseid = null; } else { courseid = lb.LibType; }
+                if (lb.JVendorId == 0) { vendor = null; } else { vendor = lb.JVendorId; }
+                string jtitle = (lb.JournalTitle == string.Empty) ? null : lb.JournalTitle;
+                string jpublisher= (lb.JPublisher == string.Empty) ? null : lb.JPublisher;
+                string accessonno = (lb.Number == string.Empty) ? null : lb.Number;
+                string jshelfno = (lb.JShelfNo == string.Empty) ? null : lb.JShelfNo;
+                lb._journalList = db.sp_GetSearchJournal(lb.Option, deptid, jtitle, courseid, jpublisher, accessonno, vendor, jshelfno).ToList();
+                lb.Option = 2;
+            }
 
-            if (lb.Option == 2)
+            else { lb._journalList = db.sp_GetSearchJournal(2, null, null, null, null, null, null, null).ToList(); }
+            if (lb.Option == 1)
             {
-                lb._journalList = db.sp_GetSearchJournal(lb.Option, lb.Department, lb.booktitle, lb.Dateofpurchase).ToList();
+                int? bdeptid;
+                int? bcourseid;
+              
+                if (lb.Department == 0) { bdeptid = null; } else { bdeptid = lb.Department; }
+                if (lb.CourseId == 0) { bcourseid = null; } else { bcourseid = lb.CourseId; }
+                string btitle = (lb.booktitle == string.Empty) ? null : lb.booktitle;
+                string bpublisher = (lb.PublishedByName == string.Empty) ? null : lb.PublishedByName;
+                string baccessonno = (lb.AccessorNo == string.Empty) ? null : lb.AccessorNo;
+                string bcallno = (lb.CallNo == string.Empty) ? null : lb.CallNo;
+                string authorname = (lb.Authorname == string.Empty) ? null : lb.Authorname;
+                string vendorname = (lb.Vendorname == string.Empty) ? null : lb.Vendorname;
+                lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, btitle, authorname, bcallno, baccessonno, bpublisher, vendorname, bdeptid, bcourseid).ToList();
+                lb.Option = 1;
             }
-            else { lb._journalList = db.sp_GetSearchJournal(2, 0, null, DateTime.Now).ToList(); }
-            if (lb.Option == 1 || lb.Option == 3)
-            {
-                lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, lb.Department, lb.booktitle,lb.Authorname).ToList();
-            }
-            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, "", "").ToList(); }
+            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(1, null, null, null, null, null, null,null,null).ToList(); }
             return View(lb);
-
+          
         }
+       
+   
 
         public ActionResult BookEntry()
          {
             libBookentry lb = new libBookentry();
            
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            lb._authorlist = db.tbl_lib_Author.Where(m => m.status == true).ToList();
+            lb._jtypelist = db.tbl_lib_JournalType.Where(m => m.status == true).ToList();
+            lb._publisherlist = db.tbl_lib_Publisher.Where(m => m.status == true).ToList();
+            lb._vendorlist = db.tbl_lib_Vendor.Where(m => m.status == true).ToList();
+            lb.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            lb._bookcategorylist = db.tbl_lib_BookCategory.Where(m => m.status == true).ToList();
             int count = (from p in db.lib_Bookentry
                          select p).Count();
             count=count + 1;
             lb.AccessorNo = count.ToString();
+            int count1 = (from q in db.lib_Journal
+                         select q).Count();
+            count1 = count1 + 1;
+           
+            lb.Number = count1.ToString();
             return View(lb);
 
         }
+      
         [HttpPost]
         public ActionResult BookEntry(libBookentry _lb,string command)
         {
-          
+            
             if (command.Equals("BookSubmit"))
             {
-               
-                try { 
-                db.sp_AddBookEntry(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
+                
+                try {
+                    int subid = Convert.ToInt32(Session["Userid"].ToString());
+                    db.sp_AddBookEntry(_lb.bookid,_lb.booktitle,_lb.CallNo, _lb.Volume, _lb.SerielNumber, _lb.Authorid,
                     _lb.Authorname, _lb.PublishedByid, _lb.PublishedByName, _lb.Edition, _lb.Vendorid, _lb.Vendorname,
 
-                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo,1).ToString();
+                     _lb.Dateofpurchase, _lb.BillNo, _lb.Cost,_lb.AccessorNo,_lb.ShelfNo, true, subid,_lb.CourseId,_lb.DeptId,_lb.BookCategoryid).ToString();
 
 
 
@@ -89,7 +115,7 @@ namespace SchoolManagementSystems.Controllers
                 try
                 {
                     db.sp_AddLibraryJournal(_lb.lib_Jid,_lb.LibType,_lb.Department,_lb.JournalTitle,_lb.LibJVolume,
-                        _lb.Number,_lb.IssueDate,_lb.Vendorid,_lb.PurchaseDate,_lb.JBillNo).ToString();
+                        _lb.Number,_lb.IssueDate, _lb.JVendorId, _lb.PurchaseDate,_lb.JBillNo,_lb.IssueType,_lb.JPublisher,_lb.JShelfNo,_lb.JCost).ToString();
                     TempData["Error"] = "Success";
 
                 }
@@ -113,6 +139,12 @@ namespace SchoolManagementSystems.Controllers
             libBookentry lb = new libBookentry();
             TempData["Error"] = "";
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            lb._authorlist = db.tbl_lib_Author.Where(m => m.status == true).ToList();
+            lb._jtypelist = db.tbl_lib_JournalType.Where(m => m.status == true).ToList();
+            lb._publisherlist = db.tbl_lib_Publisher.Where(m => m.status == true).ToList();
+            lb._vendorlist = db.tbl_lib_Vendor.Where(m => m.status == true).ToList();
+            lb.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            lb._bookcategorylist = db.tbl_lib_BookCategory.Where(m => m.status == true).ToList();
             return View("BookEntry", lb);
         }
 
@@ -121,11 +153,18 @@ namespace SchoolManagementSystems.Controllers
             libBookentry lb = new libBookentry();
             TempData["Error"] = "";
             lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+            lb._authorlist = db.tbl_lib_Author.Where(m => m.status == true).ToList();
+            lb._jtypelist = db.tbl_lib_JournalType.Where(m => m.status == true).ToList();
+            lb._publisherlist = db.tbl_lib_Publisher.Where(m => m.status == true).ToList();
+            lb._vendorlist = db.tbl_lib_Vendor.Where(m => m.status == true).ToList();
+            lb.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            lb._bookcategorylist = db.tbl_lib_BookCategory.Where(m => m.status == true).ToList();
             return View("BookEntry", lb);
         }
         public JsonResult FillBookDetails(int bookid)
         {
-            var data = db.lib_Bookentry.Where(m => m.bookid == bookid).FirstOrDefault();
+            var data = db.Sp_GetLibBookDetailsbyId(bookid).FirstOrDefault();
+                      
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
@@ -142,7 +181,7 @@ namespace SchoolManagementSystems.Controllers
             BookAllocation b = new BookAllocation();
 
             b._BookIssueList = db.tbl_lib_BookIssue.ToList();
-            b._bookandJournallist = db.sp_GetSearchBookAndJournal(3, 0, null, null).ToList();
+            b._bookandJournallist = db.sp_GetSearchBookAndJournal(1, null, null, null, null, null, null,null,null).ToList();
             return View(b);
         }
         [HttpPost]
@@ -157,7 +196,7 @@ namespace SchoolManagementSystems.Controllers
         [HttpPost]
         public JsonResult BookAutoComplete(string prefix)
         {
-            var BookName = (from bi in db.tbl_BookStock
+            var BookName = (from bi in db.tbl_BookDetails
                                where bi.BookName.StartsWith(prefix)
                                select new
                                {
@@ -197,11 +236,19 @@ namespace SchoolManagementSystems.Controllers
         }
 
 
-        public JsonResult GetBookDetails(string BookName, string callno)
+        public JsonResult GetBookDetails(string BookName, string callno,string accessonno,string authorname)
         {
+             string bookn;
+             bookn=(BookName == string.Empty)?null: BookName;
+             string cno;
+             cno = (callno == string.Empty) ? null : callno;
+             string asno;
+             asno = (accessonno == string.Empty) ? null : accessonno;
+             string authname;
+             authname = (authorname == string.Empty) ? null : authorname;
 
 
-            var data = db.sp_GetBookDetailsbyBookidorBookname(BookName, callno).ToList();
+            var data = db.sp_GetBookDetailsbyBookidorBookname(bookn, cno, asno, authname).ToList();
              return Json(data);
            
         }
@@ -254,9 +301,11 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult GetBookreturn(int studid)
         {
-            int flag = 0;
+         
             var bookreturn = db.sp_getbookissue(studid).ToList();
-            return Json(bookreturn,JsonRequestBehavior.AllowGet);
+            var bookstatus = db.tbl_libBookReturnStatus.Select(m => new { m.BookStatusId, m.StatusName }).ToList();
+            return Json(new { bookreturn = bookreturn, bookstatus = bookstatus }, JsonRequestBehavior.AllowGet);
+           
         }
 
         public ActionResult BookUpdate(string[] presentdetails)
@@ -270,9 +319,9 @@ namespace SchoolManagementSystems.Controllers
                 s = presentdetails[i].ToString();
                 string[] s1 = s.ToString().Split(',');
                 sa.BookIssueId = Convert.ToInt32(s1[0].ToString());
-
+                sa.BookStatus = Convert.ToInt32(s1[1].ToString());
                 sa.Return_CreatedBy = createdby;
-                db.sp_updatereturnbook(sa.BookIssueId, createdby);
+                db.sp_updatereturnbook(sa.BookIssueId, sa.Return_CreatedBy, sa.BookStatus);
 
   
 
@@ -286,7 +335,7 @@ namespace SchoolManagementSystems.Controllers
 
         public ActionResult BookCallStock(BookAllocation b)
         {
-            b._BookStockList = db.tbl_BookStock.ToList();
+            b._BookStockList = db.Sp_GetBookStockList().ToList();
             
             return View(b);
         }
@@ -295,8 +344,23 @@ namespace SchoolManagementSystems.Controllers
         
        public JsonResult check_duplicate_CallNo(string Call_number)
         {
-            var data = db.tbl_BookStock.Where(m => m.CallNo == Call_number).FirstOrDefault();
+            var data = db.tbl_BookDetails.Where(m => m.CallNo == Call_number).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GetCourse(string id)
+        {
+            int coureid = 0;
+            if (id != null && id != "")
+            {
+                coureid = Convert.ToInt32(id);
+            }
+            var course = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == coureid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
+            return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
 
     }

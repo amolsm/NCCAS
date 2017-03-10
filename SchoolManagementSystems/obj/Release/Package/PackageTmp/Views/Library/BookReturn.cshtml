@@ -29,6 +29,11 @@
     .show {
         display: block;
     }
+    select {
+    width: 100px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
 </style>
 
 
@@ -66,6 +71,7 @@
     });
     $(document).ready(function () {
 
+      
 
         $("#insert").click(function () {
             $("#msg").hide();
@@ -76,7 +82,8 @@
 
                 if ($(this).prop('checked')) {
                     var BookIssueId = ($(this).val());
-                    presentdetails.push(BookIssueId);
+                    var selectStatus = ($("#dpStatus" + BookIssueId).val());
+                    presentdetails.push(BookIssueId + "," + selectStatus);
                 }
                 else {
                     var BookIssueId = null;
@@ -130,21 +137,26 @@
                         var head = $('#header');
                         var table; var header
                         var Bookids;// = $("#bookids").val(data.length);
+                     
                         result.html('');
-                        if (data != "") {
-                            header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='12%;' style='text-align:center'>Book Issue ID</th><th width='13%;' style='text-align:center'>Student ID</th><th  width='13%;'  style='text-align:center'>Issue Date</th><th  width='12%;'  style='text-align:center'>Call No</th><th  width='13%;'  style='text-align:center'>Accessor No</th><th  width='12%;'  style='text-align:center'>NoOfDays</th><th width='12%;'><input  type='checkbox' id='Add_header' />Return Book</th></thead></table>";
+                        if (data.bookreturn != "") {
+                            header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='5%;'><input  type='checkbox' id='Add_header' /></th><th width='12%;' style='text-align:center'>Book Issue ID</th><th width='13%;' style='text-align:center'>Student ID</th><th  width='13%;'  style='text-align:center'>Issue Date</th><th  width='12%;'  style='text-align:center'>Call No</th><th  width='13%;'  style='text-align:center'>Accessor No</th><th  width='12%;'  style='text-align:center'>NoOfDays</th><th  style='text-align:center'>Book Status</th></thead></table>";
                             head.html(header);
                             table = "<table class='table tb-parshav tablesorter'><tbody>";
-                            for (var i = 0; i < data.length; i++) {
-                                Bookids = data[i].BookIssueId;                                                                                                                                                                                                                     //onchange='valueChanged()'
-                                table += "<tr id=" + Bookids + "><td width='12%;' style='text-align:center'>" + data[i].BookIssueId.toString() + "</td><td  style='text-align:center' width='13%;'>" + data[i].StudentId.toString() + "</td><td  style='text-align:center' width='13%;'>" + (new Date(parseInt(data[i].Issuedatetime.substr(6)))).toDateString() + "</td><td  style='text-align:center' width='12%;'>" + data[i].CallNo.toString() + "</td><td  style='text-align:center' width='12%;'>" + data[i].AccessorNo.toString() + "</td><td  style='text-align:center' width='13%;'>" + data[i].NoOfDaysTillt.toString() + "</td><td width='12%;'><input class='addcls' type='checkbox' id='Present_" + data[i].BookIssueId.toString() + "'  value='" + data[i].BookIssueId.toString() + "'></td></tr>";
-
+                            for (var i = 0; i < data.bookreturn.length; i++) {
+                                Bookids = data.bookreturn[i].BookIssueId;                                                                                                                                                                                                                     //onchange='valueChanged()'
+                                table += "<tr id=" + Bookids + "><td width='5%;'><input class='addcls' type='checkbox' id='Present_" + data.bookreturn[i].BookIssueId.toString() + "'  value='" + data.bookreturn[i].BookIssueId.toString() + "'></td><td width='12%;' style='text-align:center'>" + data.bookreturn[i].BookIssueId.toString() + "</td><td  style='text-align:center' width='13%;'>" + data.bookreturn[i].StudentId.toString() + "</td><td  style='text-align:center' width='13%;'>" + (new Date(parseInt(data.bookreturn[i].Issuedatetime.substr(6)))).toDateString() + "</td><td  style='text-align:center' width='12%;'>" + data.bookreturn[i].CallNo.toString() + "</td><td  style='text-align:center' width='12%;'>" + data.bookreturn[i].AccessorNo.toString() + "</td><td  style='text-align:center' width='13%;'>" + data.bookreturn[i].NoOfDaysTillt.toString() + "</td><td class='hchk' style='text-align:center'><select class='show1' style='text-align:center'  id='dpStatus" + data.bookreturn[i].BookIssueId.toString() + "'>";
+                                for (var n = 0; n < data.bookstatus.length; n++) {
+                                    table += "<option id='bookStatus" + data.bookstatus[n].BookStatusId + "' value=" + data.bookstatus[n].BookStatusId + ">"
+                                    + data.bookstatus[n].StatusName + "</option>";
+                                }
+                                table += "</select></td></tr>";
                             }
                             table += "</tbody><table>";
                             result.html(table);
                         }
                         else {
-                            header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='15%;' style='text-align:center'>Book Issue ID</th><th  width='15%;'  style='text-align:center'>Student ID</th><th  width='10%;'  style='text-align:center'>Book ID</th><th  width='15%;'  style='text-align:center'>Issue Date</th><th  width='15%;'  style='text-align:center'>No. of Days</th><th  width='12%;'  style='text-align:center'>Panalty Status</th><th width='18%;'><input  type='checkbox' id='Add_header' />Return Book</th></thead></table>";
+                            header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='5%;'><input  type='checkbox' hidden id='Add_header' /></th><th width='15%;' style='text-align:center'>Book Issue ID</th><th  width='15%;'  style='text-align:center'>Student ID</th><th  width='10%;'  style='text-align:center'>Book ID</th><th  width='15%;'  style='text-align:center'>Issue Date</th><th  width='15%;'  style='text-align:center'>No. of Days</th><th style='text-align:center'>Book Status</th></thead></table>";
                             head.html(header);
                             table = "<table class='table tb-parshav tablesorter'><tbody>";                                                                                                                                                                                                                //onchange='valueChanged()'
                             table += "<tr><td width='15%;' style='text-align:center'>No data found...</td></tr>";

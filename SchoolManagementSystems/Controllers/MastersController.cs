@@ -474,32 +474,23 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_subject.Where(m => m.SubjectNm == (SubjectNm).Trim() && m.Courseid == Courseid &&   m.DeptId == Dept_id &&   m.yearid == academicyear).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult DMLSubject(Subjectviewmodel _svm, string evt, int id)
+        public ActionResult DMLSubject(Subjectviewmodel svm, string evt, int id)
         {
-            string yr = _svm.academicyear[0].ToString();
+            svm.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
+            string yr = svm.academicyear[0].ToString();
             if (evt == "submit")
             {
-                db.sp_Subject_DML(_svm.Subjectid, _svm.Courseid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "",_svm.Dept_Id).ToString();
+                db.sp_Subject_DML(svm.Subjectid, svm.Courseid, svm.SubjectNm, svm.Marks, svm.Pass_Marks, svm.status, yr, "", svm.Dept_Id, svm.CreatedBy, svm.subjectcode).ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_Subject_DML(id, _svm.Courseid, _svm.SubjectNm, _svm.Marks, _svm.Pass_Marks, _svm.status, yr, "del", _svm.Dept_Id).ToString();
+                db.sp_Subject_DML(id, svm.Courseid, svm.SubjectNm, svm.Marks, svm.Pass_Marks, svm.status, yr, "del", svm.Dept_Id, svm.CreatedBy, svm.subjectcode).ToString();
             }
-            _svm._Subjectlist = db.sp_getSubject().ToList();
-            return PartialView("_SubjectList", _svm);
+            svm._Subjectlist = db.sp_getSubject().ToList();
+            return PartialView("_SubjectList", svm);
         }
 
-        //public JsonResult GetCourse(string id)
-        //{
-        //    int depid = 0;
-        //    if (id != null && id != "")
-        //    {
-        //        depid = Convert.ToInt32(id);
-        //    }
-
-        //    var course = db.tbl_CourseYearMaster.Where(m => m.id == depid).ToList();
-        //    return Json(new SelectList(course, "id", "Course"));
-        //}
+       
         #endregion
 
         #region User master
@@ -1384,26 +1375,11 @@ namespace SchoolManagementSystems.Controllers
                          where post.Course_id == coureid && post.status==true 
                          select new { meta.Dept_id,meta.Dept_name};
 
-            //var course =  db.tbl_class.Where(m => m.Dept_id == depid && m.status == true).ToList();
+         
             return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
 
-        //public JsonResult GetYearClass(string depid, string cid)
-        //{
-        //    int coureid = 0;
-        //    int detid = 0;
-        //    if (depid != null && depid != "" && cid != null && cid != "")
-        //    {
-        //        coureid = Convert.ToInt32(cid);
-        //        detid = Convert.ToInt32(depid);
-        //    }
-        //    var year = from post in db.tbl_CourseYearMaster
-        //                   join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
-        //                   where post.courseid == coureid && post.dept_id == detid && post.status == true
-        //                   select new { meta.yearid, meta.YearName };
-
-        //    return Json(new SelectList(year, "yearid", "YearName"));
-        //}
+    
         #endregion
 
         #region CourseMaster master
@@ -1600,7 +1576,7 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult VendorMaster()
         {
             lib_vendormodel _cvm = new lib_vendormodel();
-            FillPermission(35);
+            FillPermission(56);
             _cvm._Vendorlist = db.sp_getVendor().ToList();
             return View(_cvm);
         }
@@ -1622,6 +1598,150 @@ namespace SchoolManagementSystems.Controllers
 
             _lvm._Vendorlist = db.sp_getVendor().ToList();
             return PartialView("_VenderList", _lvm);
+        }
+        #endregion
+
+        #region Lib_PublisherMaster
+        public ActionResult PublisherMaster()
+        {
+            lib_publishermodel _cvm = new lib_publishermodel();
+            FillPermission(57);
+            _cvm._Publisherlist = db.sp_getPublisher().ToList();
+            return View(_cvm);
+        }
+        public JsonResult check_duplicate_publisher(string Publishername)
+        {
+            var data = db.tbl_lib_Publisher.Where(m => m.Publishername == Publishername).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Fillpublisher(int id)
+        {
+            var data = db.tbl_lib_Publisher.Where(m => m.PublisherId == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLpublisher(lib_publishermodel _lvm)
+        {
+
+            db.sp_Publisher(_lvm.publisherid, _lvm.PublisherName, _lvm.status).ToString();
+
+            _lvm._Publisherlist = db.sp_getPublisher().ToList();
+            return PartialView("_PublisherList", _lvm);
+        }
+        #endregion
+
+        #region Lib_AuthorMaster
+        public ActionResult AuthorMaster()
+        {
+            lib_authormodel _cvm = new lib_authormodel();
+            FillPermission(58);
+            _cvm._Authorlist = db.sp_getAuthor().ToList();
+            return View(_cvm);
+        }
+        public JsonResult check_duplicate_author(string Authorname)
+        {
+            var data = db.tbl_lib_Author.Where(m => m.Authorname == Authorname).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Fillauthor(int id)
+        {
+            var data = db.tbl_lib_Author.Where(m => m.Authorid == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLauthor(lib_authormodel _lvm)
+        {
+
+            db.sp_Author(_lvm.authorid, _lvm.AuthorName, _lvm.status).ToString();
+
+            _lvm._Authorlist = db.sp_getAuthor().ToList();
+            return PartialView("_AuthorList", _lvm);
+        }
+        #endregion
+
+
+        #region Lib_JournalTypeMaster
+        public ActionResult JournalTypeMaster()
+        {
+            lib_JTypemodule _cvm = new lib_JTypemodule();
+            FillPermission(59);
+            _cvm._JTypelist = db.sp_getJType().ToList();
+            return View(_cvm);
+        }
+        public JsonResult check_duplicate_journaltype(string JTypeName)
+        {
+            var data = db.tbl_lib_JournalType.Where(m => m.JTypeName == JTypeName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult FillJType(int id)
+        {
+            var data = db.tbl_lib_JournalType.Where(m => m.JTypeid == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLJType(lib_JTypemodule _lvm)
+        {
+
+            db.sp_JType(_lvm.jTypeId, _lvm.JTypeName, _lvm.status).ToString();
+
+            _lvm._JTypelist = db.sp_getJType().ToList();
+            return PartialView("_JTypeList", _lvm);
+        }
+        #endregion
+
+        #region Lib_BookCategoryMaster
+        public ActionResult BookCategoryMaster()
+        {
+            bookCategoryviewmodel _cvm = new bookCategoryviewmodel();
+            FillPermission(59);
+            _cvm._bookcategorylist = db.sp_getBookCategory().ToList();
+            return View(_cvm);
+        }
+        public JsonResult check_duplicate_bookcategory(string CategoryName)
+        {
+            var data = db.tbl_lib_BookCategory.Where(m => m.CategoryName == CategoryName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult FillBookCategory(int id)
+        {
+            var data = db.tbl_lib_BookCategory.Where(m => m.BookCategoryId == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLBookCategory(bookCategoryviewmodel _lvm)
+        {
+
+            db.sp_BookCategory(_lvm.BookCategoryId, _lvm.CategoryName, _lvm.status).ToString();
+
+            _lvm._bookcategorylist = db.sp_getBookCategory().ToList();
+            return PartialView("_BookCategoryList", _lvm);
+        }
+        #endregion
+
+        #region CONFIGMASTER
+        public ActionResult ConfigMaster()
+        {
+
+            return View();
+        }
+        public JsonResult check_duplicate_configuration(string configName,string configkey,string configvalue)
+        {
+            var data = db.tbl_lib_JournalType.Where(m => m.JTypeName == configName).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult FillConfig(int id)
+        {
+            var data = db.tbl_lib_JournalType.Where(m => m.JTypeid == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLConfiguration(Configurationtblmodelview _lvm)
+        {
+
+            //db.sp_JType(_lvm.jTypeId, _lvm.JTypeName, _lvm.status).ToString();
+
+            //_lvm._JTypelist = db.sp_getJType().ToList();
+            return PartialView("_ConfigurationtblList", _lvm);
         }
         #endregion
 

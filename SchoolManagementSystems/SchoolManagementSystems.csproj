@@ -708,6 +708,16 @@
     <Content Include="Views\Masters\AssignedDivisionMaster.cshtml" />
     <Content Include="Views\Library\BookReturn.cshtml" />
     <Content Include="Views\Library\BookCallStock.cshtml" />
+    <Content Include="Views\Masters\_AuthorList.cshtml" />
+    <Content Include="Views\Masters\_PublisherList.cshtml" />
+    <Content Include="Views\Masters\PublisherMaster.cshtml" />
+    <Content Include="Views\Masters\AuthorMaster.cshtml" />
+    <Content Include="Views\Masters\_JTypeList.cshtml" />
+    <Content Include="Views\Masters\JournalTypeMaster.cshtml" />
+    <Content Include="Views\Masters\BookCategoryMaster.cshtml" />
+    <Content Include="Views\Masters\_BookCategoryList.cshtml" />
+    <Content Include="Views\Masters\ConfigMaster.cshtml" />
+    <Content Include="Views\Masters\_ConfigurationtblList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,47 @@
+﻿@model Entity.Configurationtblmodelview
+<div id="result" class="table-responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CONFIGKEY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CONFIGNAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CONFIGVALUE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISACTIVE)
+                </th>
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._configlist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CONFIGNAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CONFIGKEY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CONFIGVALUE)
+                    </td>
+                    <td>
+                        <input type="button" id="@item.ID" class="btn btn-default btn_edit edit" value="Edit" />
+                        @*<input type="button" id="@item.Countryid" class="btn btn-default btn_delete delete" value="Delete" />*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

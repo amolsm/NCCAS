@@ -23,41 +23,41 @@ namespace Entity
         [DisplayName("Mother's Name : ")]
         public string Studmothernm { get; set; }
 
-        [DisplayName("Enter Date Of Birth : ")]
-       
+        [DisplayName("Date Of Birth : ")]
+
         public DateTime DOB { get; set; }
 
-        [DisplayName("Enter Weight in KG : ")]
+        [DisplayName("Weight in KG : ")]
         public int Weight { get; set; }
 
-        [DisplayName("Enter Height in Centimeter : ")]
+        [DisplayName("Height in Centimeter : ")]
         public int Height { get; set; }
 
-        [DisplayName("Student Blood Group : ")]
+        [DisplayName("Blood Group : ")]
         public int StudBldGrp { get; set; }
 
-        [DisplayName("Student Email Address : ")]
+        [DisplayName("Email Address : ")]
         public string StudEmail { get; set; }
 
         [DisplayName("Medical Info : ")]
         public string Disease { get; set; }
 
-        [DisplayName("Student Religion : ")]
+        [DisplayName("Religion : ")]
         public int Religionid { get; set; }
 
         [DisplayName("Sub Category : ")]
         public int Casteid { get; set; }
 
-        [DisplayName("Select Course : ")]
+        [DisplayName("Course : ")]
         public int Classid { get; set; }
 
-        [DisplayName("Enter RollNo : ")]
+        [DisplayName("RollNo : ")]
         public int RollNo { get; set; }
 
-        [DisplayName("Select Gender : ")]
+        [DisplayName("Gender : ")]
         public int Gender { get; set; }
 
-        [DisplayName("Enter MotherTongue : ")]
+        [DisplayName("MotherTongue : ")]
         public string MotherTongue { get; set; }
 
         [DisplayName("Previous School : ")]
@@ -78,8 +78,9 @@ namespace Entity
         [DisplayName("Obtain Marks : ")]
         public int PrScObtainMark { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         [DisplayName("Percentage : ")]
-        public float PrScPercentage { get; set; }
+        public double PrScPercentage { get; set; }
 
         [DisplayName("Grade while leaving : ")]
         public string Grade { get; set; }
@@ -93,10 +94,10 @@ namespace Entity
         [DisplayName("Principal Name : ")]
         public string PrincipalNm { get; set; }
 
-        [DisplayName("Reference Contact Name : ")]
+        [DisplayName("Reference Name : ")]
         public string ReferenceNm { get; set; }
 
-        [DisplayName("Reference Contact Number : ")]
+        [DisplayName("Reference Number : ")]
         public string ReferenceContact { get; set; }
 
         [DisplayName("Bus Facility? Yes/No : ")]
@@ -123,13 +124,13 @@ namespace Entity
         [DisplayName("Father's Occupation: ")]
         public int FatherOccpationid { get; set; }
 
-        [DisplayName("Enter Father's Occupation: ")]
+        [DisplayName("Father's Occupation: ")]
         public string FatherOccumationName { get; set; }
 
         [DisplayName("Father's Qualification : ")]
         public int FatherQualificationid { get; set; }
 
-        [DisplayName("Enter Father's Qualification : ")]
+        [DisplayName("Father's Qualification : ")]
         public string FatherQualificationName { get; set; }
 
         [DisplayName("Father's Email Address : ")]
@@ -150,13 +151,13 @@ namespace Entity
         [DisplayName("Guardian's Occupation: ")]
         public int GuardianOccpationid { get; set; }
 
-        [DisplayName("Enter Guardian's Occupation: ")]
+        [DisplayName("Guardian's Occupation: ")]
         public string GuardianOccpationName { get; set; }
 
         [DisplayName("Guardian's Qualification : ")]
         public int GuardianQualificationid { get; set; }
 
-        [DisplayName("Enter Guardian's Qualification: ")]
+        [DisplayName("Guardian's Qualification: ")]
         public string GuardianQualificationName { get; set; }
 
         [DisplayName("Guardian's Email Address : ")]
@@ -174,14 +175,14 @@ namespace Entity
         [DisplayName("Mother's Occupation: ")]
         public int MotherOccpationid { get; set; }
 
-        [DisplayName("Enter Mother's Occupation: ")]
-        public string MotherOccpationName{ get; set; }
+        [DisplayName("Mother's Occupation: ")]
+        public string MotherOccpationName { get; set; }
 
 
         [DisplayName("Mother's Qualification : ")]
         public int MotherQualificationid { get; set; }
 
-        [DisplayName("Enter Mother's Qualification : ")]
+        [DisplayName("Mother's Qualification : ")]
         public string MotherQualificationName { get; set; }
 
         [DisplayName("Mother's Email Address : ")]
@@ -199,13 +200,13 @@ namespace Entity
         [DisplayName("Mother's Pic : ")]
         public byte[] MPic { get; set; }
 
-        [DisplayName("Select Country : ")]
+        [DisplayName("Country : ")]
         public int Countryid { get; set; }
 
-        [DisplayName("Select State : ")]
+        [DisplayName("State : ")]
         public int Stateid { get; set; }
 
-        [DisplayName("Select City : ")]
+        [DisplayName("City : ")]
         public int Cityid { get; set; }
 
         [DisplayName("Current Address : ")]
@@ -217,13 +218,13 @@ namespace Entity
         [DisplayName("Academic Year : ")]
         public List<string> academicyear { get; set; }
 
-        [DisplayName("Select Bus No. : ")]
+        [DisplayName("Bus No. : ")]
         public int busid { get; set; }
 
-        [DisplayName("Select Category. : ")]
+        [DisplayName("Category. : ")]
         public string cats { get; set; }
 
-        [DisplayName("Select Products. : ")]
+        [DisplayName("Products. : ")]
         public string prds { get; set; }
 
         [DisplayName("From Class ")]
@@ -235,10 +236,10 @@ namespace Entity
         [DisplayName("Upload Multiple Documents ")]
         public string Docs { get; set; }
 
-        [DisplayName("Select SubCategories. : ")]
+        [DisplayName("SubCategories. : ")]
         public string subcats { get; set; }
 
-        [DisplayName("Select Category ")]
+        [DisplayName("Category ")]
         public int StudCategoryid { get; set; }
 
         [DisplayName("Father Code")]
@@ -262,7 +263,7 @@ namespace Entity
 
         public int SelectGender { get; set; }
 
-        [DisplayName("Select Department : ")]
+        [DisplayName("Department : ")]
         public int DepartmentId { get; set; }
 
         [DisplayName("Application ID : ")]
@@ -279,94 +280,94 @@ namespace Entity
         public string Pincode { get; set; }
 
 
-        [DisplayName("Registered Number")]
+        [DisplayName("Registered Number:")]
         public string PrScRegisterNumber { get; set; }
 
-        [DisplayName("TC Number")]
+        [DisplayName("TC No.")]
         public string PrScTCNumber { get; set; }
 
-        [DisplayName("Reference Letter")]
+        [DisplayName("Reference Letter:")]
         public byte[] PrScReferenceLetter { get; set; }
 
-        [DisplayName("Previous College Name")]
+        [DisplayName("Previous College Name:")]
         public string PrUgCollegeName { get; set; }
 
-        [DisplayName("College Address")]
+        [DisplayName("College Address:")]
         public string PrUgCollegeAddress { get; set; }
 
-        [DisplayName("University - Affliated University")]
+        [DisplayName("University - Affliated University:")]
         public string PrUgAffilatedUniversity { get; set; }
 
-        [DisplayName("Grade while leaving")]
+        [DisplayName("Grade while leaving:")]
         public string PrUgGradeLeaving { get; set; }
 
-        [DisplayName("Total Marks")]
+        [DisplayName("Total Marks:")]
         public int PrUgTotalMark { get; set; }
 
-        [DisplayName("Obtain Marks")]
+        [DisplayName("Obtain Marks:")]
         public int PrUgObtainMark { get; set; }
 
-        [DisplayName("Year of leaving")]
+        [DisplayName("Year of leaving:")]
         public string PrUgYearLeaving { get; set; }
 
-        [DisplayName("Registered Number")]
+        [DisplayName("Registered Number:")]
         public string PrUgRegisterNumber { get; set; }
 
-        [DisplayName("Reason for Leaving")]
+        [DisplayName("Reason for Leaving:")]
         public string PrUgReasonofLeaving { get; set; }
 
-        [DisplayName("Principal Name")]
+        [DisplayName("Principal Name:")]
         public string PrUgPrincipalName { get; set; }
 
-        [DisplayName("Reference Contact Name")]
+        [DisplayName("Reference Name:")]
         public string PrUgRefContactName { get; set; }
 
-        [DisplayName("Reference Contact Number")]
+        [DisplayName("Reference Number:")]
         public string PrUgRefContactNo { get; set; }
 
-        [DisplayName("Percentage")]
+        [DisplayName("Percentage:")]
         public float PrUgPercentage { get; set; }
 
-        [DisplayName("College Name")]
+        [DisplayName("College Name:")]
         public string PrPgCollegeName { get; set; }
 
-        [DisplayName("Previous College Address")]
+        [DisplayName("Previous College Address:")]
         public string PrPgCollegeAddress { get; set; }
 
-        [DisplayName("University - Affliated University")]
+        [DisplayName("University - Affliated University:")]
         public string PrPgAffilatedUniversity { get; set; }
 
-        [DisplayName("Grade while leaving")]
+        [DisplayName("Grade while leaving:")]
         public string PrPgGradeLeaving { get; set; }
 
-        [DisplayName("Total Marks")]
+        [DisplayName("Total Marks:")]
         public int PrPgTotalMark { get; set; }
 
-        [DisplayName("Obtain Marks")]
+        [DisplayName("Obtain Marks:")]
         public int PrPgObtainMark { get; set; }
 
-        [DisplayName("Year of leaving")]
+        [DisplayName("Year of leaving:")]
         public string PrPgYearLeaving { get; set; }
 
-        [DisplayName("Registered Number")]
+        [DisplayName("Registered Number:")]
         public string PrPgRegisterNumber { get; set; }
 
-        [DisplayName("Reason for Leaving")]
+        [DisplayName("Reason for Leaving:")]
         public string PrPgReasonofLeaving { get; set; }
 
-        [DisplayName("Principal Name")]
+        [DisplayName("Principal Name:")]
         public string PrPgPrincipalName { get; set; }
 
-        [DisplayName("Reference Contact Name")]
+        [DisplayName("Reference Name:")]
         public string PrPgRefContactName { get; set; }
 
-        [DisplayName("Reference Contact Number")]
+        [DisplayName("Reference Number:")]
         public string PrPgRefContactNo { get; set; }
 
-        [DisplayName("Percentage")]
+        [DisplayName("Percentage:")]
         public float PrPgPercentage { get; set; }
 
-        
+
 
         public string Sibling1Name { get; set; }
 
@@ -385,13 +386,13 @@ namespace Entity
         public string Sibling3Rel { get; set; }
 
         public string Sibling4Rel { get; set; }
-       
+
         public DateTime Sibling1DOB { get; set; }
-       
+
         public DateTime Sibling2DOB { get; set; }
-       
+
         public DateTime Sibling3DOB { get; set; }
-       
+
         public DateTime Sibling4DOB { get; set; }
         public string Sibling1Ql { get; set; }
 
@@ -417,7 +418,7 @@ namespace Entity
         public byte[] SCTCPic { get; set; }
 
         [DisplayName("ID Type : ")]
-        public string DocumentType{ get; set; }
+        public string DocumentType { get; set; }
 
         [DisplayName("ID Number : ")]
         public string DocumentIDNo { get; set; }
@@ -425,7 +426,7 @@ namespace Entity
         [DisplayName("Parish name : ")]
         public string ParishName { get; set; }
 
-       
+
         [DisplayName("Diocese name : ")]
         public string DioceseName { get; set; }
 
@@ -441,8 +442,183 @@ namespace Entity
         [DisplayName("Register Mobile No.: ")]
         public string StdRegMob { get; set; }
 
-        [DisplayName("Enter  RelationShip ")]
+        [DisplayName("RelationShip:")]
         public string emcontactrel { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject1 { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject2 { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject3 { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject4 { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject5 { get; set; }
+
+        [DisplayName("Subject")]
+        public string subject6 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks1 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks2 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks3 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks4 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks5 { get; set; }
+
+        [DisplayName("Marks")]
+        public int marks6 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum1 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum2 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum3 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum4 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum5 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int maximum6 { get; set; }
+
+        public bool d1 { get; set; }
+
+        [DisplayName("Are You Son/Daughter Of Ex-Serviceman Of Tamilnadu Origin:")]
+        public string c1 { get; set; }
+
+        [DisplayName("Are You Of Tamilnadu Origin From Andaman Nicobar Islands ?:")]
+        public string c2 { get; set; }
+
+        [DisplayName("Distinction In Sports & Games/NCC/NSS:")]
+        public string c3 { get; set; }
+
+        [DisplayName("Proficiency In Extra-Curricular Activities:")]
+        public string c4 { get; set; }
+
+        [DisplayName("If Physically Challenged Specify:")]
+        public string c5 { get; set; }
+
+        [DisplayName("Name & Location (District) Of School Last Studied:")]
+        public string namelocation { get; set; }
+
+        [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
+        public string examinationpassed { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime pyear1 { get; set; }
+
+        [DisplayName("Register No:")]
+        public string rnumber1 { get; set; }
+
+        [DisplayName("No. Of Attempts:")]
+        public int attempts1 { get; set; }
+
+
+        [DisplayName("Subject")]
+        public string psubject1 { get; set; }
+
+        [DisplayName("Subject")]
+        public string psubject2 { get; set; }
+
+        [DisplayName("Subject")]
+        public string psubject3 { get; set; }
+
+        [DisplayName("Subject")]
+        public string psubject4 { get; set; }
+
+        [DisplayName("Subject")]
+        public string psubject5 { get; set; }
+
+        [DisplayName("Subject")]
+        public string psubject6 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks1 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks2 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks3 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks4 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks5 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pmarks6 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum1 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum2 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum3 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum4 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum5 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pmaximum6 { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime ppyear1 { get; set; }
+
+        [DisplayName("Register No:")]
+        public string prnumber1 { get; set; }
+
+        [DisplayName("No. Of Attempts:")]
+        public int pattempts1 { get; set; }
+
+
+
+        [DisplayName("Are You Son/Daughter Of Ex-Serviceman Of Tamilnadu Origin:")]
+        public string pc1 { get; set; }
+
+        [DisplayName("Are You Of Tamilnadu Origin From Andaman Nicobar Islands ?:")]
+        public string pc2 { get; set; }
+
+        [DisplayName("Distinction In Sports & Games/NCC/NSS:")]
+        public string pc3 { get; set; }
+
+        [DisplayName("Proficiency In Extra-Curricular Activities:")]
+        public string pc4 { get; set; }
+
+        [DisplayName("If Physically Challenged Specify:")]
+        public string pc5 { get; set; }
+
+
+
+        [DisplayName("Name & Location (District) Of School Last Studied:")]
+        public string pnamelocation { get; set; }
+
+        [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
+        public string pexaminationpassed { get; set; }
 
         public List<tbl_YearMaster> yearlist { get; set; }
 
@@ -460,6 +636,8 @@ namespace Entity
         public List<tbl_StudentCategory> categorylist { get; set; }
         public List<tbl_country> countrylist { get; set; }
         public List<tbl_state> statelist { get; set; }
+        public List<tbl_collageeducationdetails> collage { get; set; }
+        public List<secondaryeducationdetail> secondry { get; set; }
         public List<tbl_city> citylist { get; set; }
 
         public List<tbl_CourseMaster> courselist { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -36,66 +37,95 @@ namespace SchoolManagementSystems.Controllers
             return View(svm);
         }
 
-       
+
         public ActionResult Admission(int? Studid)
         {
-            Studentviewmodel svm = new Studentviewmodel();            
-            FillPermission(3);            
+            Studentviewmodel svm = new Studentviewmodel();
+            FillPermission(3);
             svm.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
             svm.Translist = db.tbl_transport.Where(m => m.status == true).ToList();
             svm.catlist = db.tbl_category.Where(m => m.status == true).ToList();
             svm.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
             svm.academicyear = GetYear();
-            svm.yearlist=db.tbl_YearMaster.Where(m => m.Status == true).ToList();
-            List<SelectListItem> test = new List<SelectListItem>();
+            svm.yearlist = db.tbl_YearMaster.Where(m => m.Status == true).ToList();
+            List<SelectListItem>
+    test = new List<SelectListItem>
+        ();
             foreach (var r in svm.catlist)
             {
                 test.Add(new SelectListItem { Text = r.catname, Value = r.catid.ToString() });
             }
             ViewData["appList"] = test;
-            List<SelectListItem> subcat = new List<SelectListItem>();
+            List<SelectListItem>
+                subcat = new List<SelectListItem>
+                    ();
             ViewData["subcatList"] = subcat;
-            List<SelectListItem> prd = new List<SelectListItem>();
+            List<SelectListItem>
+                prd = new List<SelectListItem>
+                    ();
             ViewData["prdList"] = prd;
             svm.countrylist = db.tbl_country.Where(m => m.status == true).ToList();
             svm.bloodgrouplist = db.tbl_bloodgroup.Where(m => m.status == true).ToList();
-            svm.castelist = new List<tbl_caste>();
+            svm.castelist = new List<tbl_caste>
+                ();
             svm.religionlist = db.tbl_religion.Where(m => m.status == true).ToList();
             svm.categorylist = db.tbl_StudentCategory.Where(m => m.status == true).ToList();
             svm.occupationlist = db.tbl_occupation.Where(m => m.status == true).ToList();
             svm.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
-            svm.statelist = new List<tbl_state>();
-            svm.citylist = new List<tbl_city>();
+            svm.statelist = new List<tbl_state>
+                ();
+            svm.citylist = new List<tbl_city>
+                ();
             return View("Admission", svm);
         }
-   
+
         public JsonResult FillStudentDetails(int studid)
         {
             var data = db.tbl_student.Where(m => m.Studid == studid).FirstOrDefault();
             TempData["Docs"] = data.Docs;
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        
-    
+
+
         public JsonResult FillOnlineStudentDetails(int studid)
         {
             var data = db.tbl_online_student.Where(m => m.Studid == studid).FirstOrDefault();
             TempData["Docs"] = data.Docs;
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        
+
         public JsonResult CheckStudEmail(string Email)
         {
             var data = db.tbl_student.Where(m => m.StudEmail == Email).Select(m => m.StudEmail).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-
-     
+        public JsonResult Getcducation(string Studid)
+        {
+            int studentid = 0;
+            if (Studid != null && Studid != "")
+            {
+                studentid = Convert.ToInt32(Studid);
+            }
+            var collage = db.tbl_collageeducationdetails.Where(m => m.Studid == studentid).FirstOrDefault();
+            return Json(collage, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Getseducation(string Studid)
+        {
+            int studentid = 0;
+            if (Studid != null && Studid != "")
+            {
+                studentid = Convert.ToInt32(Studid);
+            }
+            var school = db.secondaryeducationdetails.Where(m => m.Studid == studentid).FirstOrDefault();
+            return Json(school, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetProductsexclude(string subcats)
         {
             string[] s = subcats.Split(',');
-            List<SelectListItem> prd = new List<SelectListItem>();
+            List<SelectListItem>
+                prd = new List<SelectListItem>
+                    ();
             for (int i = 0; i < s.Count(); i++)
             {
                 var data = db.sp_getproductsbycatexclude(s[i].ToString()).ToList();
@@ -108,11 +138,13 @@ namespace SchoolManagementSystems.Controllers
             return Json(prds, JsonRequestBehavior.AllowGet);
         }
 
-    
+
         public JsonResult GetProducts(string subcats)
         {
             string[] s = subcats.Split(',');
-            List<SelectListItem> prd = new List<SelectListItem>();
+            List<SelectListItem>
+                prd = new List<SelectListItem>
+                    ();
             for (int i = 0; i < s.Count(); i++)
             {
                 if (s[i] != "")
@@ -128,12 +160,14 @@ namespace SchoolManagementSystems.Controllers
             return Json(prds, JsonRequestBehavior.AllowGet);
         }
 
-   
+
         public JsonResult GetSubcats(string cats)
         {
             string[] s = cats.Split(',');
             StringBuilder exclude = new StringBuilder();
-            List<SelectListItem> subcat = new List<SelectListItem>();
+            List<SelectListItem>
+                subcat = new List<SelectListItem>
+                    ();
             for (int i = 0; i < s.Count(); i++)
             {
                 var data = db.sp_getsubcatbycat(s[i].ToString()).ToList();
@@ -153,7 +187,7 @@ namespace SchoolManagementSystems.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-      
+
         public JsonResult GetTransportDetails(int busid)
         {
             var data = db.tbl_transport.Where(m => m.busid == busid).FirstOrDefault();
@@ -181,7 +215,7 @@ namespace SchoolManagementSystems.Controllers
             var castes = db.tbl_caste.Where(m => m.Religionid == Religionid).ToList();
             return Json(new SelectList(castes, "Casteid", "CasteName"));
         }
-    //    [SchoolManagementSystems.MvcApplication.SessionExpire]
+        //    [SchoolManagementSystems.MvcApplication.SessionExpire]
         public JsonResult GetBusInfo(string busid)
         {
             var data = db.tbl_transport.Where(m => m.busid == Convert.ToInt32(busid)).FirstOrDefault();
@@ -210,8 +244,6 @@ namespace SchoolManagementSystems.Controllers
             byte[] byteArray = db.tbl_student.Where(m => m.Studid == id).Select(m => m.FatherPic).FirstOrDefault();
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
-
-      
 
         public FileContentResult getImg3(int id)
         {
@@ -256,7 +288,7 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult Admission_DML(Studentviewmodel svm, string action, HttpPostedFileBase files1, HttpPostedFileBase files2, HttpPostedFileBase files3, HttpPostedFileBase filemotherpic, HttpPostedFileBase files5, HttpPostedFileBase files6, HttpPostedFileBase files7, HttpPostedFileBase files8, HttpPostedFileBase files9, int? id, HttpPostedFileBase FileUpload1, string group1)
         {
             string yr = svm.academicyear[0].ToString();
-           
+
             if (files1 != null)
             {
                 if (System.IO.File.Exists(files1.ToString()))
@@ -373,7 +405,7 @@ namespace SchoolManagementSystems.Controllers
                     svm.GuardianPic = db.tbl_student.Where(m => m.Studid == svm.Studid).Select(m => m.GuardianPic).FirstOrDefault();
                 }
             }
-           // mother pic
+            // mother pic
 
             if (filemotherpic != null)
             {
@@ -667,43 +699,54 @@ namespace SchoolManagementSystems.Controllers
                 }
                 if (svm.FormType == "O_type")
                 {
-                   // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "").ToString();
+                    // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "").ToString();
                 }
                 else
                 {
                     //====If Approve=======//
-                    if (group1 != "0" && group1!=null)
+                    if (group1 != "0" && group1 != null)
                     {
                         //db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
                         try
                         {
                             db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                         svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                         svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
-                         svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                         svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                         svm.FatherOccumationName,svm.FatherQualificationName,svm.GuardianOccpationName,svm.GuardianQualificationName,svm.MotherOccpationName,svm.MotherQualificationName,svm.StdRegMob, svm.StdRegNo, svm.emcontactrel).ToString();
-                            
+                            svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
+                            svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
+                            svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
+                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
+                            svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
+                            svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
+                            svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
+                            svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
+                            svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
+                            svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
+                            svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
+                            svm.PrUgObtainMark, svm.PrUgTotalMark,
+                            svm.ppyear1, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed).ToString();
+
+
                         }
-                        catch(Exception ex) { string msg = ex.ToString();
-                          //  TempData["StudentError"] = msg;
+                        catch (Exception ex)
+                        {
+                            string msg = ex.ToString();
+                            //  TempData["StudentError"] = msg;
                         }
 
                         try
                         {
-                            int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
-                            CreateUsers(svm.StudEmail, 1, studid, yr);
-                            SendSMS(studid);
-                            CreateUsers(svm.FatherEmail, 2, studid, yr);
-                            
+                            //int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
+                            //CreateUsers(svm.StudEmail, 1, studid, yr);
+                            //SendSMS(studid);
+                            //CreateUsers(svm.FatherEmail, 2, studid, yr);
+
                         }
                         catch (Exception ex) { string msg = ex.ToString(); }
                     }
-                    else if (group1 == "0" && group1!=null)
+                    else if (group1 == "0" && group1 != null)
                     {
                         try
                         {
-                           // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
+                            // db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
                         }
                         catch (Exception ex) { string msg = ex.ToString(); }
                     }
@@ -712,14 +755,27 @@ namespace SchoolManagementSystems.Controllers
                         try
                         {
                             db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                          svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                          svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
-                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                          svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                          svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel).ToString();
+                            svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
+                            svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
+                            svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
+                            svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
+                            svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
+                            svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6,
+                            svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
+                            svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6,
+                            svm.PrScObtainMark, svm.PrScTotalMarks,
+                            svm.pyear1, svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
+                            svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
+                            svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
+                            svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
+                            svm.PrUgObtainMark, svm.PrUgTotalMark,
+                            svm.ppyear1, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed).ToString();
+
 
                         }
-                        catch (Exception ex) { string msg = ex.ToString();
+                        catch (Exception ex)
+                        {
+                            string msg = ex.ToString();
                             //TempData["StudentError"] = msg;
                         }
                         try
@@ -733,7 +789,7 @@ namespace SchoolManagementSystems.Controllers
                         }
 
 
-                        }
+                    }
                 }
             }
             else
@@ -741,19 +797,31 @@ namespace SchoolManagementSystems.Controllers
                 try
                 {
                     db.sp_student_admission(id, "", "", "", Convert.ToDateTime("01/01/1753"), 0, 0, 0, "", "", 0, 0, 0, 0, 0, "", "", "", "", "", "", "", "", "", "", false, "", "", "", "", "", null, 0, 0, "", "", "", 0, null, 0, 0, "", "", "", 0, null, 0, 0, 0, "", "", "", 0, "", "", "", "", 0, 0, 0, "", "", "", "", svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del",
-                     svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                           svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                           svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
-                           svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                           svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql,svm.ParishName,svm.DioceseName,svm.DocumentType,svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename,svm.courseyear,
-                         svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName,svm.StdRegMob,svm.StdRegNo,svm.emcontactrel).ToString();
+                    svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
+                    svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
+                    svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, svm.PrPgYearLeaving, svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
+                    svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
+                    svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
+                    svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
+                    svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6,
+                    svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
+                    svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6,
+                    svm.PrScObtainMark, svm.PrScTotalMarks,
+                    svm.pyear1, svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
+                    svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
+                    svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
+                    svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
+                    svm.PrUgObtainMark, svm.PrUgTotalMark,
+                    svm.ppyear1, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed).ToString();
                 }
-                catch (Exception ex) { string msg = ex.ToString();
+                catch (Exception ex)
+                {
+                    string msg = ex.ToString();
                     //TempData["StudentError"] = msg;
 
                 }
             }
-            if (Convert.ToString(Session["online_Admmission"])!= "Yes")
+            if (Convert.ToString(Session["online_Admmission"]) != "Yes")
             {
                 return RedirectToAction("Index");
             }
@@ -790,10 +858,10 @@ namespace SchoolManagementSystems.Controllers
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
             string pass = db.tbl_user.Where(m => m.UserName == Email).Select(m => m.Password).FirstOrDefault();
-            string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br/><br/>";
-            msg = msg + "Your UserName : " + Email + ".<br/>";
-            msg = msg + "Your Password : " + pass + ".<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
+            string msg = "<b>“Welcome to Nanjil Catholic College of Arts & Science”</b><br /><br />";
+            msg = msg + "Your UserName : " + Email + ".<br />";
+            msg = msg + "Your Password : " + pass + ".<br />";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br /><br />Best Regards<br />NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
@@ -806,19 +874,18 @@ namespace SchoolManagementSystems.Controllers
             MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
             message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
-           
+
             message.Subject = "Nanjil Catholic College of Arts & Science";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
 
-            string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br/><br/>";
-            msg = msg + "Dear Student: "  + db.tbl_student.OrderByDescending(m => m.Studid).Select(m => m.Studnm).FirstOrDefault() + " .<br/>";
-            msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br/>";
-            msg = msg + "Hope we would be going long term relationship with feature with good Support<br/><br/>Best Regards<br/>NACCAS Management";
+            string msg = "<b>“Nanjil Catholic College of Arts & Science”</b><br /><br />";
+            msg = msg + "Dear Student: " + db.tbl_student.OrderByDescending(m => m.Studid).Select(m => m.Studnm).FirstOrDefault() + " .<br />";
+            msg = msg + "Here We would like to inform you that Your Profile is Updated Successfully.<br />";
+            msg = msg + "Hope we would be going long term relationship with feature with good Support<br /><br />Best Regards<br />NACCAS Management";
             message.Body = msg;
             smtpClient.Send(message);
         }
-    
         public ActionResult GuardianList(string Search_Data)
         {
             Studentviewmodel svm = new Studentviewmodel();
@@ -827,38 +894,46 @@ namespace SchoolManagementSystems.Controllers
                 svm.StudentDataCollection = db.tbl_student.OrderBy(m => m.Studid).ToList();
             else
                 svm.StudentDataCollection = db.tbl_student.OrderBy(m => m.Studid).Where(x => x.GuardianName.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.GuardianEmail.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.GuardianContact.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+                || x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
+                || x.GuardianEmail.ToUpper().Contains(Search_Data.ToUpper())
+                || x.GuardianContact.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             return View(svm);
         }
-
         public ActionResult Online_Admission(int? Studid, HttpPostedFileBase FileUpload1)
-        {            
+        {
             Session["online_Admmission"] = "Yes";
             Studentviewmodel svm = new Studentviewmodel();
             svm.classlist = db.tbl_class.Where(m => m.status == true).ToList();
             svm.Translist = db.tbl_transport.Where(m => m.status == true).ToList();
             svm.catlist = db.tbl_category.Where(m => m.status == true).ToList();
-            List<SelectListItem> test = new List<SelectListItem>();
+            List<SelectListItem>
+                test = new List<SelectListItem>
+                    ();
             foreach (var r in svm.catlist)
             {
                 test.Add(new SelectListItem { Text = r.catname, Value = r.catid.ToString() });
             }
             ViewData["appList"] = test;
-            List<SelectListItem> subcat = new List<SelectListItem>();
+            List<SelectListItem>
+                subcat = new List<SelectListItem>
+                    ();
             ViewData["subcatList"] = subcat;
-            List<SelectListItem> prd = new List<SelectListItem>();
+            List<SelectListItem>
+                prd = new List<SelectListItem>
+                    ();
             ViewData["prdList"] = prd;
             svm.countrylist = db.tbl_country.Where(m => m.status == true).ToList();
             svm.bloodgrouplist = db.tbl_bloodgroup.Where(m => m.status == true).ToList();
-            svm.castelist = new List<tbl_caste>();
+            svm.castelist = new List<tbl_caste>
+                ();
             svm.religionlist = db.tbl_religion.Where(m => m.status == true).ToList();
             svm.categorylist = db.tbl_StudentCategory.Where(m => m.status == true).ToList();
             svm.occupationlist = db.tbl_occupation.Where(m => m.status == true).ToList();
             svm.qualificationlist = db.tbl_qualification.Where(m => m.status == true).ToList();
-            svm.statelist = new List<tbl_state>();
-            svm.citylist = new List<tbl_city>();
+            svm.statelist = new List<tbl_state>
+                ();
+            svm.citylist = new List<tbl_city>
+                ();
             if (FileUpload1 != null)
             {
                 DeleteAttachment();
@@ -882,7 +957,6 @@ namespace SchoolManagementSystems.Controllers
             var stud_details = db.tbl_online_student.Where(m => m.Studid == Studid).FirstOrDefault();
             return View("Online_Admission", svm);
         }
-
         public ActionResult PromoteStudent()
         {
             Studentviewmodel svm = new Studentviewmodel();
@@ -890,13 +964,11 @@ namespace SchoolManagementSystems.Controllers
             svm.classlist = db.tbl_class.Where(m => m.status == true).ToList();
             return View(svm);
         }
-
         public JsonResult ClassStudent(int Class)
         {
             var data = db.tbl_student.Where(m => m.Classid == Class).Select(x => new { x.Studid, x.Studnm });
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult MoveStudent(int Studentid, int ToClass, int FromClassid, int act)
         {
             tbl_student st = db.tbl_student.Where(x => x.Studid == Studentid).FirstOrDefault();
@@ -911,7 +983,6 @@ namespace SchoolManagementSystems.Controllers
             db.SaveChanges();
             return View();
         }
-
         public void DownloadAttachment()
         {
             if (TempData["Docs"] != null)
@@ -928,7 +999,6 @@ namespace SchoolManagementSystems.Controllers
                 multipleFiles.Save(Response.OutputStream);
             }
         }
-
         public void DeleteAttachment()
         {
             if (TempData["Docs"] != null)
@@ -947,8 +1017,8 @@ namespace SchoolManagementSystems.Controllers
                 TempData["Docs"] = null;
             }
         }
-
-        public List<string> GetYear()
+        public List<string>
+            GetYear()
         {
             string[] Years = new string[10];
             int curYear = DateTime.Now.Year;
@@ -965,7 +1035,6 @@ namespace SchoolManagementSystems.Controllers
             }
             return Years.ToList();
         }
-
         public void FillPermission(int modid)
         {
             var per = db.sp_get_permission(Convert.ToInt32(Session["Role"]), modid).ToList();
@@ -986,11 +1055,10 @@ namespace SchoolManagementSystems.Controllers
                 svm.online_StudentDataCollection = db.tbl_online_student.OrderBy(m => m.Studid).ToList();
             else
                 svm.online_StudentDataCollection = db.tbl_online_student.Where(x => x.Studnm.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.StudEmail.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.FatherContact.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Studid).ToList();
+                x.StudEmail.ToUpper().Contains(Search_Data.ToUpper()) ||
+                x.FatherContact.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Studid).ToList();
             return View(svm);
         }
-
         public JsonResult GetCourse(string id)
         {
             int coureid = 0;
@@ -1004,63 +1072,58 @@ namespace SchoolManagementSystems.Controllers
                          select new { meta.Dept_id, meta.Dept_name };
             return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
-
-        public JsonResult GetCourseYear(string courseid,string deptid)
+        public JsonResult GetCourseYear(string courseid, string deptid)
         {
             int coureid = 0;
             int detid = 0;
-            if (courseid != null && courseid != "" && deptid!=null && deptid!="")
+            if (courseid != null && courseid != "" && deptid != null && deptid != "")
             {
                 coureid = Convert.ToInt32(courseid);
                 detid = Convert.ToInt32(deptid);
             }
             var yeardata = from post in db.tbl_CourseYearMaster
-                         join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
-                         where post.courseid == coureid && post.dept_id==detid && post.status == true
-                         select new { meta.yearid, meta.YearName };
+                           join meta in db.tbl_YearMaster on post.academicyear equals meta.yearid
+                           where post.courseid == coureid && post.dept_id == detid && post.status == true
+                           select new { meta.yearid, meta.YearName };
 
             return Json(new SelectList(yeardata, "yearid", "YearName"));
         }
-
-
         private string SendSMS(int studentid)
         {
             string stemailid;
             string mobileno;
-          
+
             tbl_student st = db.tbl_student.Where(x => x.Studid == studentid).FirstOrDefault();
             stemailid = st.StudEmail;
             mobileno = st.StdMobNo;
-         
+
             string pass = db.tbl_user.Where(m => m.UserName == stemailid).Select(m => m.Password).FirstOrDefault();
-            string msg = "Welcome to Nanjil Catholic College of Arts & Science"+ Environment.NewLine;
+            string msg = "Welcome to Nanjil Catholic College of Arts & Science" + Environment.NewLine;
             msg = msg + "USER NAME: " + stemailid + Environment.NewLine;
             msg = msg + "PASSWORD: " + pass + Environment.NewLine;
-           
+
             String message = HttpUtility.UrlEncode(msg);
             using (var wb = new WebClient())
             {
                 byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
-                {
-                {"username" , "ranjithkumar01@gmail.com"},
-                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
-                {"numbers" , mobileno},
-                {"message" , message},
-                {"sender" , "24HDS"}
-                });
+                                                                                                    {
+                                                                                                    {"username" , "ranjithkumar01@gmail.com"},
+                                                                                                    {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                                                                                                    {"numbers" , mobileno},
+                                                                                                    {"message" , message},
+                                                                                                    {"sender" , "24HDS"}
+                                                                                                    });
                 string result = System.Text.Encoding.UTF8.GetString(response);
                 return result;
             }
         }
-
         public JsonResult GetRegisterationNo(string acadmicyear, string deptname)
         {
             string acyear = acadmicyear.Substring(0, 4);
             var data = db.sp_GetStdCount();
-          
+
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-
         private string SendUpdateSMS(int studentId)
         {
             string stemailid;
@@ -1078,15 +1141,15 @@ namespace SchoolManagementSystems.Controllers
             String message = HttpUtility.UrlEncode(msg);
             using (var wb = new WebClient())
             {
-                
+
                 byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
-                {
-                {"username" , "ranjithkumar01@gmail.com"},
-                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
-                {"numbers" , mobileno},
-                {"message" , message},
-                {"sender" , "24HDS"}
-                });
+                                                                                                    {
+                                                                                                    {"username" , "ranjithkumar01@gmail.com"},
+                                                                                                    {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                                                                                                    {"numbers" , mobileno},
+                                                                                                    {"message" , message},
+                                                                                                    {"sender" , "24HDS"}
+                                                                                                    });
                 string result = System.Text.Encoding.UTF8.GetString(response);
                 return result;
             }
@@ -1094,3 +1157,13 @@ namespace SchoolManagementSystems.Controllers
 
     }
 }
+
+
+
+
+
+
+
+
+
+

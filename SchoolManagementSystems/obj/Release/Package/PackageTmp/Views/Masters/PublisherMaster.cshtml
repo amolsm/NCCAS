@@ -1,0 +1,204 @@
+﻿@model Entity.lib_publishermodel
+
+@{
+    ViewBag.Title = "PublisherMaster";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#status").prop('checked', true);
+        $("#M_cou td").css({ "background-color": "orange" });
+        $("#lblmsg").text('');
+        $('#PublisherID input').attr("readonly", true);
+        if ($("#PublisherID input").val() == "0") {
+            $("#PublisherID").hide();
+        }
+
+        $("#result").on("click", ".edit", function (evt) {
+            var ID = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("Fillpublisher")',
+                dataType: 'JSON',
+                data: { id: ID },
+                success: function (data) {
+                    clearmsg();
+                    $("#PublisherID").show();
+                    $("#PublisherID input").val(data.PublisherId);
+                    $("#PublisherName").val(data.Publishername);
+                    $("#status").prop('checked', data.status);
+                }
+            });
+        });
+
+        function clear() {
+            $("#PublisherID").hide();
+            $('#PublisherID input').val('0');
+            $("#PublisherName").val('');
+        }
+
+        $('#PublisherName').blur(function () {
+            var PublisherName = $('#PublisherName').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_publisher")',
+                dataType: 'JSON',
+                data: { PublisherName: PublisherName },
+                success: function (data) {
+                    if (data.PublisherName != null) {
+                        $("#msg").show();
+                        $("#lblmsg").text("Publisher Name Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "15px" });
+                        $('#PublisherName').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            debugger;
+            var name = $("#PublisherName").val();
+            if(name !=''){
+                setTimeout(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("DMLpublisher")',
+                        data: $('#frm').serialize() + "&evt=submit&id=0",
+                        success: function (result) {
+                            $("#msgs").show();
+                            $("#lblmsgs").text("Publisher details updated successfully!..");
+                            $("#lblmsgs").css({ "color": "green" });
+                            $("#lblmsgs").css({ "font-size": "15px" });
+                            $("#result").html(result);
+                            clear();
+                            ReloadPaging();
+                        }
+                    });
+                }, 1000);
+        }
+        else
+    {
+                $("#msg").show();
+                $("#lblmsg").text("Publisher Name Empty!..");
+                $("#lblmsg").css({ "color": "orange" });
+                $("#lblmsg").css({ "font-size": "15px" });
+                $("#result").html(result);
+    }
+        });
+
+        $("#reset").click(function () {
+            clear();
+            clearmsg();
+        });
+
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
+        }
+        ReloadPaging();
+    });
+</script>
+
+@Html.HiddenFor(m => m.publisherid)@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+
+    <div class="row-fluid">
+        @Html.Partial("_MasterSubMenu")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Masters", "Lib_AuthorMaster", "Masters", "")<i class="icon-angle-right"></i>
+                    <li class="active">Author Master</li>
+                </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal">
+
+
+                                <fieldset>
+                                    @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                                    {
+                                        @Html.ValidationSummary(true)
+
+                                        <div id="PublisherID" class="control-group">
+                                            @Html.LabelFor(model => model.publisherid, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.publisherid, new { @class = "input-xlarge focused", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.publisherid)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.PublisherName, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.PublisherName, new { @class = "input-xlarge focused", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.PublisherName)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.status, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.CheckBoxFor(model => model.status, new { @type = "checkbox", @id = "status" })
+                                                @Html.ValidationMessageFor(model => model.status)
+                                            </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                            <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                        </div>
+                                    }
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!--/span-->
+
+                </div><!--/row-->
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+
+                            @Html.Partial("_PublisherList")
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

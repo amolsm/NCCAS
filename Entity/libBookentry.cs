@@ -14,23 +14,26 @@ namespace Entity
         [DisplayName("Book Title")]
         public string booktitle { get; set; }
 
+        [DisplayName("Book/Journal Title")]
+        public string Title { get; set; }
+
         [DisplayName("Call No.")]
         public string CallNo { get; set; }
 
         [DisplayName("Volume")]
         public string Volume { get; set; }
 
-        [DisplayName("Seriel Number")]
+        [DisplayName("Serial Number")]
         public string SerielNumber { get; set; }
 
-        [DisplayName("Select Author")]
+        [DisplayName("Author")]
         public int Authorid { get; set; }
 
 
         [DisplayName("Author Name")]
         public string Authorname { get; set; }
 
-        [DisplayName("Select Publisher")]
+        [DisplayName("Publisher")]
         public int PublishedByid { get; set; }
 
         [DisplayName("Publisher Name")]
@@ -39,7 +42,7 @@ namespace Entity
         [DisplayName("Edition")]
         public string Edition { get; set; }
 
-        [DisplayName("Select Vendor")]
+        [DisplayName("Vendor")]
         public int Vendorid { get; set; }
 
         [DisplayName("Vendor Name")]
@@ -57,25 +60,28 @@ namespace Entity
         [DisplayName("Journal Id.")]
         public int lib_Jid { get; set; }
 
-        [DisplayName("Journal Type")]
+        [DisplayName("Course")]
         public int LibType { get; set; }
 
-        [DisplayName("Select Department")]
+        [DisplayName("Department")]
         public int Department { get; set; }
 
         [DisplayName("Journal Title")]
         public string JournalTitle { get; set; }
 
-        [DisplayName("Journal Volume")]
+        [DisplayName("Volume")]
         public string LibJVolume { get; set; }
 
-        [DisplayName("Serial Number")]
+        [DisplayName("Accesson No.")]
         public string Number { get; set; }
 
         [DisplayName("Issue Date")]
         public DateTime IssueDate { get; set; }
 
-        [DisplayName("Select Vendor")]
+        [DisplayName("Issue")]
+        public int IssueType { get; set; }
+
+        [DisplayName("Vendor")]
         public int JVendorId { get; set; }
 
         [DisplayName("Purchase Date")]
@@ -87,6 +93,8 @@ namespace Entity
         [DisplayName("Select Option")]
         public int Option { get; set; }
 
+        [DisplayName("Cost Amt.")]
+        public decimal JCost { get; set; }
 
 
 
@@ -95,7 +103,7 @@ namespace Entity
         public int NoDays { get; set; }
 
 
-        [DisplayName("Accessor No")]
+        [DisplayName("Accesson No.")]
         public string AccessorNo { get; set; }
 
         [DisplayName("Shelf No")]
@@ -110,10 +118,38 @@ namespace Entity
         [DisplayName("Student ID")]
         public int StudentId { get; set; }
 
+        [DisplayName("Book Status")]
+        public int IsActive { get; set; }
+
+
+        [DisplayName("Department")]
+        public int DeptId { get; set; }
+
+
+
+        [DisplayName("Course")]
+        public int CourseId { get; set; }
+
+        [DisplayName("Category")]
+        public int BookCategoryid { get; set; }
+
+        [DisplayName("Publisher")]
+        public string JPublisher { get; set; }
+
+        [DisplayName("Shelf No")]
+        public string JShelfNo { get; set; }
 
         public List<lib_Bookentry> Bookentrycollection { get; set; }
 
         public List<tblDepartment> _departmentlist { get; set; }
+        public List<tbl_lib_Author> _authorlist { get; set; }
+
+        public List<tbl_lib_Publisher> _publisherlist { get; set; }
+
+
+        public List<tbl_lib_Vendor> _vendorlist { get; set; }
+
+        public List<tbl_lib_JournalType> _jtypelist { get; set; }
 
         public List<tbl_lib_BookIssue> _bookissuelist { get; set; }
 
@@ -122,6 +158,9 @@ namespace Entity
         public List<sp_GetSearchBookAndJournal_Result> _bookandJournallist { get; set; }
 
         public List<sp_GetSearchJournal_Result> _journalList { get; set; }
+        public List<tbl_CourseMaster> courselist { get; set; }
+
+        public List<tbl_lib_BookCategory> _bookcategorylist { get; set; }
     }
 }
 

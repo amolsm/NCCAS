@@ -1,0 +1,203 @@
+﻿@model Entity.bookCategoryviewmodel
+@{
+    ViewBag.Title = "BookCategoryMaster";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        FillPermission();
+        $("#status").prop('checked', true);
+        $("#M_cou td").css({ "background-color": "orange" });
+        $("#lblmsg").text('');
+        $('#BookCategoryID input').attr("readonly", true);
+        if ($("#BookCategoryID input").val() == "0") {
+            $("#BookCategoryID").hide();
+        }
+
+        $("#result").on("click", ".edit", function (evt) {
+            var ID = this.id;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FillBookCategory")',
+                dataType: 'JSON',
+                data: { id: ID },
+                success: function (data) {
+                    clearmsg();
+                    $("#BookCategoryID").show();
+                    $("#BookCategoryID input").val(data.BookCategoryId);
+                    $("#CategoryName").val(data.CategoryName);
+                    $("#status").prop('checked', data.status);
+                }
+            });
+        });
+
+        function clear() {
+            $("#BookCategoryID").hide();
+            $('#BookCategoryID input').val('0');
+            $("#CategoryName").val('');
+        }
+
+        $('#CategoryName').blur(function () {
+            var CategoryName = $('#CategoryName').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("check_duplicate_bookcategory")',
+                dataType: 'JSON',
+                data: { CategoryName: CategoryName },
+                success: function (data) {
+                    if (data.CategoryName != null) {
+                        $("#msg").show();
+                        $("#lblmsg").text("Category Name Already Exists!..");
+                        $("#lblmsg").css({ "color": "orange" });
+                        $("#lblmsg").css({ "font-size": "15px" });
+                        $('#CategoryName').val('');
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#insert").click(function () {
+            debugger;
+            var name = $("#CategoryName").val();
+            if(name !=''){
+                setTimeout(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("DMLBookCategory")',
+                        data: $('#frm').serialize() + "&evt=submit&id=0",
+                        success: function (result) {
+                            $("#msgs").show();
+                            $("#lblmsgs").text("Author details updated successfully!..");
+                            $("#lblmsgs").css({ "color": "green" });
+                            $("#lblmsgs").css({ "font-size": "15px" });
+                            $("#result").html(result);
+                            clear();
+                            ReloadPaging();
+                        }
+                    });
+                }, 1000);
+        }
+        else
+    {
+                $("#msg").show();
+                $("#lblmsg").text("Journal Type Name Empty!..");
+                $("#lblmsg").css({ "color": "orange" });
+                $("#lblmsg").css({ "font-size": "15px" });
+                $("#result").html(result);
+    }
+        });
+
+        $("#reset").click(function () {
+            clear();
+            clearmsg();
+        });
+
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
+        }
+        ReloadPaging();
+    });
+</script>
+
+@Html.HiddenFor(m => m.BookCategoryId)@Html.Partial("_PermissionHiddenFlds")
+<div class="container-fluid-full">
+
+    <div class="row-fluid">
+        @Html.Partial("_MasterSubMenu")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Masters", "Lib_BookCategoryMaster", "Masters", "")<i class="icon-angle-right"></i>
+                    <li class="active">Book Category Master</li>
+                </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal">
+
+
+                                <fieldset>
+                                    @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                                    {
+                                        @Html.ValidationSummary(true)
+
+                                        <div id="BookCategoryID" class="control-group">
+                                            @Html.LabelFor(model => model.BookCategoryId, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BookCategoryId, new { @class = "input-xlarge focused", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.BookCategoryId)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.CategoryName, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.CategoryName, new { @class = "input-xlarge focused", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.CategoryName)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.status, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.CheckBoxFor(model => model.status, new { @type = "checkbox", @id = "status" })
+                                                @Html.ValidationMessageFor(model => model.status)
+                                            </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <input type="button" class="btn btn-primary" id="insert" value="Submit" />
+                                            <input type="button" class="btn btn-primary" id="reset" value="Reset" />
+                                        </div>
+                                    }
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!--/span-->
+
+                </div><!--/row-->
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+
+                            @Html.Partial("_BookCategoryList")
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -5,6 +5,36 @@
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }<script type="text/javascript">
     $(document).ready(function () {
+
+        $("#booklistdetails").show();
+        $("#bookdetailsforhideshow").show();
+        if ($("#Option").val() == "2") {
+            $("#journallistdetails").show();
+            $("#booklistdetails").hide();
+            $("#bookdetailsforhideshow").hide();
+            $("#journaldetailsforhideshow").show();
+          
+        } else {
+          
+            $("#booklistdetails").show();
+            $("#journallistdetails").hide();
+            $("#bookdetailsforhideshow").show();
+            $("#journaldetailsforhideshow").hide();
+        }
+        $("#Option").change(function () {
+            if ($("#Option").val() == "1")
+            {
+                $("#booklistdetails").show();
+                $("#journallistdetails").hide();
+                $("#bookdetailsforhideshow").show();
+                $("#journaldetailsforhideshow").hide();
+            } else {
+                $("#journallistdetails").show();
+                $("#booklistdetails").hide();
+                $("#bookdetailsforhideshow").hide();
+                $("#journaldetailsforhideshow").show();
+            }
+        });
         $('#datepicker1').attr("readonly", true);
 
         $('#datepicker1').datepicker({
@@ -148,6 +178,8 @@
                                             </div>
 
                                         </div>
+                                        <div id="bookdetailsforhideshow" hidden>
+                                           <br/><br/>
                                         <div class="control-group span5">
 
                                             @Html.LabelFor(model => model.Department, new { @class = "control-label", @for = "focusedInput" })
@@ -156,12 +188,20 @@
 
                                             </div>
                                         </div>
+                                            <div class="control-group span5">
+
+                                                @Html.LabelFor(model => model.CourseId, new { @class = "control-label", @for = "focusedInput" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+
+                                                </div>
+                                            </div>
                                         <div class="control-group span5">
 
                                             @Html.LabelFor(model => model.booktitle, new { @class = "control-label", @for = "focusedInput" })
 
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Enter  Book Title Name", @class = "input" })
+                                                @Html.TextBoxFor(model => model.booktitle, new { placeholder = "Book Title Name", @class = "input" })
 
                                             </div>
                                         </div>
@@ -170,19 +210,118 @@
                                             @Html.LabelFor(model => model.Authorname, new { @class = "control-label", @for = "focusedInput" })
 
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Enter  Author Name", @class = "input" })
+                                                @Html.TextBoxFor(model => model.Authorname, new { placeholder = "Author Name", @class = "input" })
 
                                             </div>
                                         </div>
-                                        @*<div class="control-group span5">
+                                        <div class="control-group span5">
 
-                                            @Html.LabelFor(model => model.Dateofpurchase, new { @class = "control-label", @for = "focusedInput" })
+                                            @Html.LabelFor(model => model.CallNo, new { @class = "control-label", @for = "focusedInput" })
 
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.Dateofpurchase, new { id = "datepicker1", @readonly = "readonly", placeholder = "Select Date of Purchase" })
+                                                @Html.TextBoxFor(model => model.CallNo, new { placeholder = "Call No.", @class = "input" })
 
                                             </div>
-                                        </div>*@
+                                        </div>
+
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.AccessorNo, new { placeholder = "Accessor No.", @class = "input" })
+
+                                            </div>
+                                        </div>
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.PublishedByName, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.PublishedByName, new { placeholder = "Publisher Name", @class = "input" })
+
+                                            </div>
+                                        </div>
+                                        <div class="control-group span5">
+
+                                            @Html.LabelFor(model => model.Vendorname, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.Vendorname, new { placeholder = "Vendor Name", @class = "input" })
+
+                                            </div>
+                                        </div>
+                                              
+                                            </div>
+                                        <div id="journaldetailsforhideshow" hidden>
+                                            <br /><br />
+                                          
+                                             
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.DeptId, new { @class = "control-label", @for = "focusedInput" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._departmentlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.LibType, new { @class = "control-label", @for = "focusedInput" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.LibType, new SelectList(Model.courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.JournalTitle, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JournalTitle, new { placeholder = "Book Title Name", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.JPublisher, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JPublisher, new { placeholder = "Publisher Name", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.Number, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.Number, new { placeholder = "Accesson No.", @class = "input" })
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.JVendorId, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.JVendorId, new SelectList(Model._vendorlist, "Vendorid", "Vendorname", "Select Vendor"), "Select Vendor", new { @for = "select" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+
+                                                    @Html.LabelFor(model => model.JShelfNo, new { @class = "control-label", @for = "focusedInput" })
+
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.JShelfNo, new { placeholder = "ShelfNo", @class = "input" })
+
+                                                    </div>
+                                                </div>
+                                           
+
+                                        </div>
                                         <div class="control-group span4 pull-right">
                                             &nbsp; &nbsp;<input type="submit" class="btn btn-primary" id="insert" value="Search" />
                                         </div>
@@ -197,105 +336,180 @@
 
 
                                 <div id="result" class="table-responsive">
-@if (Model._bookandJournallist.Count != 0)
-{
-                                    <table class="table tb-parshav tablesorter">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.CallNo)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.AccessorNo)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.booktitle)
-                                                </th>
 
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Authorname)
-                                                </th>
+    <div id="booklistdetails" hidden>
+        <table class="table tb-parshav tablesorter">
+            <thead>
+                <tr>
+                    <th>
+                      CallNo
+                    </th>
+                    <th>
+                       AccessonNo
+                    </th>
+                    <th>
+                      Book Title
+                    </th>
+                    <th>
+                      Course
+                    </th>
+                    <th>
+                     Department
+                    </th>
 
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.PublishedByName)
-                                                </th>
+                    <th>
+                       Author
+                    </th>
 
-                                                <th class="edt">
-                                                    @Html.DisplayName("Action")
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model._bookandJournallist)
+                    <th>
+                       Publisher
+                    </th>
+                    <th>
+                        Vendor
+                    </th>
+                    <th>
+                        SelfNo
+                    </th>
+                    <th>
+                        Status
+                    </th>
+
+                    <th class="edt">
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._bookandJournallist)
                                             {
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.CallNo)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.AccessorNo)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.TitleName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Authorname)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Publisher)
-                                                    </td>
-
-
-                                                    <td>
-                                                        <input type="button" id="@item.Id" class="btn btn-default btn_edit" value="Edit" />
-
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-}
-                                    @if (Model._journalList.Count != 0)
-                                    {
-                                    <table class="table tb-parshav tablesorter">
-                                        <thead>
                                             <tr>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.bookid)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.booktitle)
-                                                </th>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CallNo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.AccessorNo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TitleName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CourseName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Department)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Authorname)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Publisher)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Vendor)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.SelfNo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.BookStatus)
+                                                </td>
 
+                                                <td>
+                                                    <input type="button" id="@item.Id" class="btn btn-default btn_edit" value="Edit" />
+
+                                                </td>
+                                            </tr>
+                                            }
+            </tbody>
+        </table>
+    </div>
+
+                                    
+                                        <div id="journallistdetails" hidden>
+                                            <table class="table tb-parshav tablesorter">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           Accesson No.
+                                                        </th>
+                                                        <th>
+                                                          Journal Title 
+                                                        </th>
+                                                        <th>
+                                                        Course
+                                                        </th>
+                                                        <th>
+                                                        Department
+                                                        </th>
+                                                        <th>
+                                                         Publisher
+                                                        </th>
+                                                      
+                                                        <th>
+                                                       Vendor
+                                                        </th>
+                                                        <th>
+                                                            Volume
+                                                        </th>
+                                                        <th>
+                                                           Bill No.
+                                                        </th>
+                                                        <th>
+                                                           Shelf No.
+                                                        </th>
+
+
+                                                        <th class="edt">
+                                                            @Html.DisplayName("Action")
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model._journalList)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Number)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.JTitleName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.CourseName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Department)
+                                                            </td>
+                                                         
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Publisher)
+                                                            </td>
+                                                         
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Vendor)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Volume)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.JBillNo)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.shelfno)
+                                                            </td>
+
+
+                                                            <td>
+                                                                <input type="button" id="@item.JId" class="btn btn-default btn_Jedit" value="Edit" />
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            </div>
                                            
-                                                <th class="edt">
-                                                    @Html.DisplayName("Action")
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model._journalList)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.JId)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.JTitleName)
-                                                    </td>
-                                                 
-
-
-                                                    <td>
-                                                        <input type="button" id="@item.JId" class="btn btn-default btn_Jedit" value="Edit" />
-
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                    }
-                                </div>
+                                        </div>
                         </div>
                             </div>
                         </div>

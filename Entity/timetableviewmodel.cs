@@ -44,6 +44,9 @@ namespace Entity
         [DisplayName("Teacher Name ")]
         public int Empid { get; set; }
 
+        [DisplayName("Semester")]
+        public string semester { get; set; }
+
         public List<sp_gettimetable_Result> _Timetablelist { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }

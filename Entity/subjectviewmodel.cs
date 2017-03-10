@@ -13,9 +13,14 @@ namespace Entity
 
         [DisplayName("Department Name ")]
         public int Dept_Id { get; set; }
-
+        [DisplayName("subjectcode")]
+        public string subjectcode { get; set; }
+        
         [DisplayName("Course Name")]
         public int Courseid { get; set; }
+
+        [DisplayName("CreatedBy")]
+        public int CreatedBy { get; set; }
 
         [DisplayName("Subject Name ")]
         public string SubjectNm { get; set; }

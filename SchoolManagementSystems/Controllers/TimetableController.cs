@@ -121,8 +121,8 @@ namespace SchoolManagementSystems.Controllers
                 yearid = Convert.ToInt32(year);
                 department = Convert.ToInt32(dept);
             }
-            var subjects = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid && m.DeptId == department).ToList();
-            return Json(new SelectList(subjects, "Subjectid", "SubjectNm"));
+            var subjects = db.sp_getsubjectcode(Courseid, yearid, department).ToList();
+            return Json(new SelectList(subjects, "Subjectid", "SubjectNms"));
         }
         public JsonResult GetSubjectsc(string id)
         {
