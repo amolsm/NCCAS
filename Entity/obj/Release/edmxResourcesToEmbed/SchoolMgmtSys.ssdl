@@ -86,6 +86,7 @@
     <Property Name="radio5" Type="varchar" MaxLength="10" />
     <Property Name="namelocation" Type="varchar" MaxLength="200" />
     <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
+    <Property Name="test" Type="int" />
   </EntityType>
   <EntityType Name="sys_Module">
     <Key>
@@ -303,6 +304,20 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="yearid" Type="int" />
     <Property Name="createdby" Type="int" />
     <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_ContentComplete">
+    <Key>
+      <PropertyRef Name="CCId" />
+    </Key>
+    <Property Name="CCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content_id" Type="int" />
+    <Property Name="ChapterCompleteId" Type="int" />
+    <Property Name="TeacherId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CompleteDate" Type="datetime2" Precision="7" />
+    <Property Name="IsCompleted" Type="bit" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="createdon" Type="datetime2" Precision="7" />
   </EntityType>
   <EntityType Name="tbl_country">
     <Key>
@@ -1416,6 +1431,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Yearid" Type="int" Mode="In" />
     <Parameter Name="Courseid" Type="int" Mode="In" />
     <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="contentid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
@@ -1498,6 +1514,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="DivisionId" Type="varchar" Mode="In" />
     <Parameter Name="department" Type="int" Mode="In" />
     <Parameter Name="year" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DMLConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CId" Type="int" Mode="In" />
+    <Parameter Name="ConfigName" Type="varchar" Mode="In" />
+    <Parameter Name="ConfigKey" Type="varchar" Mode="In" />
+    <Parameter Name="ConfigValue" Type="varchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
   </Function>
   <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="leaveid" Type="int" Mode="In" />
@@ -1790,6 +1814,16 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetChapterContentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="int" Mode="In" />
+    <Parameter Name="Deptid" Type="int" Mode="In" />
+    <Parameter Name="Yearid" Type="int" Mode="In" />
+    <Parameter Name="SubjectId" Type="int" Mode="In" />
+    <Parameter Name="ChapterId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_GetChapterDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Subjectid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getchaptersubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="teacherid" Type="int" Mode="In" />
     <Parameter Name="course" Type="int" Mode="In" />
@@ -1798,6 +1832,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getConfigInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getcontent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getCourseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2407,6 +2442,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_collageeducationdetails" EntityType="Self.tbl_collageeducationdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ContentComplete" EntityType="Self.tbl_ContentComplete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Course" EntityType="Self.tbl_Course" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_CourseMaster" EntityType="Self.tbl_CourseMaster" Schema="dbo" store:Type="Tables" />

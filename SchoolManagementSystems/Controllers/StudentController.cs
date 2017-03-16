@@ -42,6 +42,7 @@ namespace SchoolManagementSystems.Controllers
         {
             Studentviewmodel svm = new Studentviewmodel();
             FillPermission(3);
+            svm.select = db.CONFIGMASTERs.Where(m => (m.CONFIGNAME == "SelectOption" && m.CONFIGKEY == "SelectValue")).ToList();
             svm.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
             svm.Translist = db.tbl_transport.Where(m => m.status == true).ToList();
             svm.catlist = db.tbl_category.Where(m => m.status == true).ToList();

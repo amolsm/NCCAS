@@ -1721,26 +1721,27 @@ namespace SchoolManagementSystems.Controllers
         #region CONFIGMASTER
         public ActionResult ConfigMaster()
         {
-
-            return View();
+            Configurationtblmodelview cmv = new Configurationtblmodelview();
+            cmv._configlist = db.sp_getConfigInfo().ToList();
+            return View(cmv);
         }
-        public JsonResult check_duplicate_configuration(string configName,string configkey,string configvalue)
+        public JsonResult check_duplicate_configuration(string ConfigName, string ConfigKey, string configvalue)
         {
-            var data = db.tbl_lib_JournalType.Where(m => m.JTypeName == configName).FirstOrDefault();
+            var data = db.CONFIGMASTERs.Where(m => m.CONFIGNAME == ConfigName.Trim() && m.CONFIGKEY==ConfigKey.Trim() && m.CONFIGVALUE==configvalue.Trim()).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public JsonResult FillConfig(int id)
         {
-            var data = db.tbl_lib_JournalType.Where(m => m.JTypeid == id).FirstOrDefault();
+            var data = db.CONFIGMASTERs.Where(m => m.ID == id).FirstOrDefault();
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLConfiguration(Configurationtblmodelview _lvm)
         {
 
-            //db.sp_JType(_lvm.jTypeId, _lvm.JTypeName, _lvm.status).ToString();
+            db.sp_DMLConfig(_lvm.CID, _lvm.CONFIGNAME.Trim(), _lvm.CONFIGKEY.Trim(), _lvm.CONFIGVALUE.Trim(), _lvm.CREATEDBY,_lvm.ISACTIVE).ToString();
 
-            //_lvm._JTypelist = db.sp_getJType().ToList();
+            _lvm._configlist = db.sp_getConfigInfo().ToList();
             return PartialView("_ConfigurationtblList", _lvm);
         }
         #endregion

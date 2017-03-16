@@ -689,18 +689,6 @@
       <Parameter Name="createdby" Mode="In" Type="Int32" />
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_ChapterComplete_DML">
-      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="complete" Mode="In" Type="Boolean" />
-      <Parameter Name="Remark" Mode="In" Type="String" />
-      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
-      <Parameter Name="Yearid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_chapter_DML">
       <Parameter Name="chapterid" Mode="In" Type="Int32" />
       <Parameter Name="chaptername" Mode="In" Type="String" />
@@ -1168,6 +1156,39 @@
       <Parameter Name="pradio5" Mode="In" Type="String" />
       <Parameter Name="pnamelocation" Mode="In" Type="String" />
       <Parameter Name="pqualifyingexamination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getConfigInfo" ReturnType="Collection(SchoolMgmtSysModel.sp_getConfigInfo_Result)" />
+    <FunctionImport Name="sp_DMLConfig">
+      <Parameter Name="CId" Mode="In" Type="Int32" />
+      <Parameter Name="ConfigName" Mode="In" Type="String" />
+      <Parameter Name="ConfigKey" Mode="In" Type="String" />
+      <Parameter Name="ConfigValue" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="tbl_ContentComplete" EntityType="SchoolMgmtSysModel.tbl_ContentComplete" />
+    <FunctionImport Name="sp_ChapterComplete_DML">
+      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="complete" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="contentid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetChapterContentDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_GetChapterContentDetails_Result)">
+      <Parameter Name="CourseId" Mode="In" Type="Int32" />
+      <Parameter Name="Deptid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+      <Parameter Name="ChapterId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GetChapterDetails" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetChapterDetails_Result)">
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -2782,6 +2803,7 @@
     <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="test" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_collageeducationdetails">
     <Key>
@@ -2988,4 +3010,39 @@
     <Property Name="createdby" Type="Int32" />
     <Property Name="subjectcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <ComplexType Name="sp_getConfigInfo_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="CONFIGNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CONFIGKEY" Nullable="true" />
+    <Property Type="String" Name="CONFIGVALUE" Nullable="true" />
+    <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <EntityType Name="tbl_ContentComplete">
+    <Key>
+      <PropertyRef Name="CCId" />
+    </Key>
+    <Property Name="CCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content_id" Type="Int32" />
+    <Property Name="ChapterCompleteId" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CompleteDate" Type="DateTime" Precision="7" />
+    <Property Name="IsCompleted" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="7" />
+  </EntityType>
+  <ComplexType Name="sp_GetChapterContentDetails_Result">
+    <Property Type="Int32" Name="Content_id" Nullable="false" />
+    <Property Type="String" Name="Chapter_id" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Content_Name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="teacherid" Nullable="true" />
+    <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+    <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
+    <Property Type="String" Name="Remark" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Sp_GetChapterDetails_Result">
+    <Property Type="Int32" Name="Chapter_id" Nullable="false" />
+    <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="complete" Nullable="false" MaxLength="8" />
+  </ComplexType>
 </Schema>

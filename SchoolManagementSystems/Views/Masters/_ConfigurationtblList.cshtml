@@ -4,6 +4,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.CID)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.CONFIGKEY)
                 </th>
                 <th>
@@ -35,6 +38,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CONFIGVALUE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISACTIVE)
                     </td>
                     <td>
                         <input type="button" id="@item.ID" class="btn btn-default btn_edit edit" value="Edit" />

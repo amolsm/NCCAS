@@ -1587,7 +1587,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
-    <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
     <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
     <EntitySetMapping Name="tbl_lib_Author">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
@@ -2003,6 +2002,7 @@
     <EntitySetMapping Name="secondaryeducationdetails">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.secondaryeducationdetail">
         <MappingFragment StoreEntitySet="secondaryeducationdetails">
+          <ScalarProperty Name="test" ColumnName="test" />
           <ScalarProperty Name="qualifyingexamination" ColumnName="qualifyingexamination" />
           <ScalarProperty Name="namelocation" ColumnName="namelocation" />
           <ScalarProperty Name="radio5" ColumnName="radio5" />
@@ -2253,5 +2253,55 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+    <FunctionImportMapping FunctionImportName="sp_getConfigInfo" FunctionName="SchoolMgmtSysModel.Store.sp_getConfigInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getConfigInfo_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CONFIGNAME" ColumnName="CONFIGNAME" />
+          <ScalarProperty Name="CONFIGKEY" ColumnName="CONFIGKEY" />
+          <ScalarProperty Name="CONFIGVALUE" ColumnName="CONFIGVALUE" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DMLConfig" FunctionName="SchoolMgmtSysModel.Store.sp_DMLConfig" />
+    <EntitySetMapping Name="tbl_ContentComplete">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ContentComplete">
+        <MappingFragment StoreEntitySet="tbl_ContentComplete">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="ChapterCompleteId" ColumnName="ChapterCompleteId" />
+          <ScalarProperty Name="Content_id" ColumnName="Content_id" />
+          <ScalarProperty Name="CCId" ColumnName="CCId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
+    <FunctionImportMapping FunctionImportName="sp_GetChapterContentDetails" FunctionName="SchoolMgmtSysModel.Store.sp_GetChapterContentDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetChapterContentDetails_Result">
+          <ScalarProperty Name="Content_id" ColumnName="Content_id" />
+          <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+          <ScalarProperty Name="Content_Name" ColumnName="Content_Name" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_GetChapterDetails" FunctionName="SchoolMgmtSysModel.Store.Sp_GetChapterDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetChapterDetails_Result">
+          <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+          <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+          <ScalarProperty Name="complete" ColumnName="complete" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

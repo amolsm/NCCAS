@@ -91,6 +91,7 @@
           <Property Name="radio5" Type="varchar" MaxLength="10" />
           <Property Name="namelocation" Type="varchar" MaxLength="200" />
           <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
+          <Property Name="test" Type="int" />
         </EntityType>
         <EntityType Name="sys_Module">
           <Key>
@@ -308,6 +309,20 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
           <Property Name="yearid" Type="int" />
           <Property Name="createdby" Type="int" />
           <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ContentComplete">
+          <Key>
+            <PropertyRef Name="CCId" />
+          </Key>
+          <Property Name="CCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content_id" Type="int" />
+          <Property Name="ChapterCompleteId" Type="int" />
+          <Property Name="TeacherId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CompleteDate" Type="datetime2" Precision="7" />
+          <Property Name="IsCompleted" Type="bit" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="createdon" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="tbl_country">
           <Key>
@@ -1421,6 +1436,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="Yearid" Type="int" Mode="In" />
           <Parameter Name="Courseid" Type="int" Mode="In" />
           <Parameter Name="createdby" Type="int" Mode="In" />
+          <Parameter Name="contentid" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
@@ -1503,6 +1519,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="DivisionId" Type="varchar" Mode="In" />
           <Parameter Name="department" Type="int" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DMLConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CId" Type="int" Mode="In" />
+          <Parameter Name="ConfigName" Type="varchar" Mode="In" />
+          <Parameter Name="ConfigKey" Type="varchar" Mode="In" />
+          <Parameter Name="ConfigValue" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
         </Function>
         <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="leaveid" Type="int" Mode="In" />
@@ -1795,6 +1819,16 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         <Function Name="sp_getCaste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getchapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetChapterContentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+          <Parameter Name="Deptid" Type="int" Mode="In" />
+          <Parameter Name="Yearid" Type="int" Mode="In" />
+          <Parameter Name="SubjectId" Type="int" Mode="In" />
+          <Parameter Name="ChapterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetChapterDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Subjectid" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_getchaptersubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="teacherid" Type="int" Mode="In" />
           <Parameter Name="course" Type="int" Mode="In" />
@@ -1803,6 +1837,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
         </Function>
         <Function Name="sp_getCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getConfigInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getcontent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_getCourseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2412,6 +2447,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_class" EntityType="Self.tbl_class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_collageeducationdetails" EntityType="Self.tbl_collageeducationdetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Content" EntityType="Self.tbl_Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ContentComplete" EntityType="Self.tbl_ContentComplete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Course" EntityType="Self.tbl_Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CourseMaster" EntityType="Self.tbl_CourseMaster" Schema="dbo" store:Type="Tables" />
@@ -3183,18 +3219,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="createdby" Mode="In" Type="Int32" />
             <Parameter Name="subjectid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_ChapterComplete_DML">
-            <Parameter Name="Teacherid" Mode="In" Type="Int32" />
-            <Parameter Name="complete" Mode="In" Type="Boolean" />
-            <Parameter Name="Remark" Mode="In" Type="String" />
-            <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
-            <Parameter Name="subjectid" Mode="In" Type="Int32" />
-            <Parameter Name="Chapterid" Mode="In" Type="Int32" />
-            <Parameter Name="Departmentid" Mode="In" Type="Int32" />
-            <Parameter Name="Yearid" Mode="In" Type="Int32" />
-            <Parameter Name="Courseid" Mode="In" Type="Int32" />
-            <Parameter Name="createdby" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_chapter_DML">
             <Parameter Name="chapterid" Mode="In" Type="Int32" />
             <Parameter Name="chaptername" Mode="In" Type="String" />
@@ -3662,6 +3686,39 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="pradio5" Mode="In" Type="String" />
             <Parameter Name="pnamelocation" Mode="In" Type="String" />
             <Parameter Name="pqualifyingexamination" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getConfigInfo" ReturnType="Collection(SchoolMgmtSysModel.sp_getConfigInfo_Result)" />
+          <FunctionImport Name="sp_DMLConfig">
+            <Parameter Name="CId" Mode="In" Type="Int32" />
+            <Parameter Name="ConfigName" Mode="In" Type="String" />
+            <Parameter Name="ConfigKey" Mode="In" Type="String" />
+            <Parameter Name="ConfigValue" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="tbl_ContentComplete" EntityType="SchoolMgmtSysModel.tbl_ContentComplete" />
+          <FunctionImport Name="sp_ChapterComplete_DML">
+            <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+            <Parameter Name="complete" Mode="In" Type="Boolean" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+            <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+            <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+            <Parameter Name="Yearid" Mode="In" Type="Int32" />
+            <Parameter Name="Courseid" Mode="In" Type="Int32" />
+            <Parameter Name="createdby" Mode="In" Type="Int32" />
+            <Parameter Name="contentid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetChapterContentDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_GetChapterContentDetails_Result)">
+            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+            <Parameter Name="Deptid" Mode="In" Type="Int32" />
+            <Parameter Name="Yearid" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+            <Parameter Name="ChapterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetChapterDetails" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetChapterDetails_Result)">
+            <Parameter Name="Subjectid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
@@ -5276,6 +5333,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="test" Type="Int32" />
         </EntityType>
         <EntityType Name="tbl_collageeducationdetails">
           <Key>
@@ -5482,6 +5540,41 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="createdby" Type="Int32" />
           <Property Name="subjectcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="sp_getConfigInfo_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CONFIGNAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CONFIGKEY" Nullable="true" />
+          <Property Type="String" Name="CONFIGVALUE" Nullable="true" />
+          <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <EntityType Name="tbl_ContentComplete">
+          <Key>
+            <PropertyRef Name="CCId" />
+          </Key>
+          <Property Name="CCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content_id" Type="Int32" />
+          <Property Name="ChapterCompleteId" Type="Int32" />
+          <Property Name="TeacherId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CompleteDate" Type="DateTime" Precision="7" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="7" />
+        </EntityType>
+        <ComplexType Name="sp_GetChapterContentDetails_Result">
+          <Property Type="Int32" Name="Content_id" Nullable="false" />
+          <Property Type="String" Name="Chapter_id" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Content_Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="teacherid" Nullable="true" />
+          <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetChapterDetails_Result">
+          <Property Type="Int32" Name="Chapter_id" Nullable="false" />
+          <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="complete" Nullable="false" MaxLength="8" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7074,7 +7167,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
-          <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
           <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
           <EntitySetMapping Name="tbl_lib_Author">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_lib_Author">
@@ -7490,6 +7582,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <EntitySetMapping Name="secondaryeducationdetails">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.secondaryeducationdetail">
               <MappingFragment StoreEntitySet="secondaryeducationdetails">
+                <ScalarProperty Name="test" ColumnName="test" />
                 <ScalarProperty Name="qualifyingexamination" ColumnName="qualifyingexamination" />
                 <ScalarProperty Name="namelocation" ColumnName="namelocation" />
                 <ScalarProperty Name="radio5" ColumnName="radio5" />
@@ -7740,6 +7833,56 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+          <FunctionImportMapping FunctionImportName="sp_getConfigInfo" FunctionName="SchoolMgmtSysModel.Store.sp_getConfigInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getConfigInfo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGNAME" ColumnName="CONFIGNAME" />
+                <ScalarProperty Name="CONFIGKEY" ColumnName="CONFIGKEY" />
+                <ScalarProperty Name="CONFIGVALUE" ColumnName="CONFIGVALUE" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_DMLConfig" FunctionName="SchoolMgmtSysModel.Store.sp_DMLConfig" />
+          <EntitySetMapping Name="tbl_ContentComplete">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ContentComplete">
+              <MappingFragment StoreEntitySet="tbl_ContentComplete">
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="ChapterCompleteId" ColumnName="ChapterCompleteId" />
+                <ScalarProperty Name="Content_id" ColumnName="Content_id" />
+                <ScalarProperty Name="CCId" ColumnName="CCId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
+          <FunctionImportMapping FunctionImportName="sp_GetChapterContentDetails" FunctionName="SchoolMgmtSysModel.Store.sp_GetChapterContentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetChapterContentDetails_Result">
+                <ScalarProperty Name="Content_id" ColumnName="Content_id" />
+                <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+                <ScalarProperty Name="Content_Name" ColumnName="Content_Name" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetChapterDetails" FunctionName="SchoolMgmtSysModel.Store.Sp_GetChapterDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetChapterDetails_Result">
+                <ScalarProperty Name="Chapter_id" ColumnName="Chapter_id" />
+                <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+                <ScalarProperty Name="complete" ColumnName="complete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -7836,6 +7979,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_collageeducationdetails" Width="1.5" PointX="26.375" PointY="21.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="28.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_subject" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_ContentComplete" Width="1.5" PointX="23.375" PointY="0.75" />
       </Diagram>
     </Diagrams>
   </Designer>

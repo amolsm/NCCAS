@@ -500,7 +500,9 @@ namespace Entity
         public int maximum6 { get; set; }
 
         public bool d1 { get; set; }
+        public int d2 { get; set; }
 
+        public int test { get; set; }
         [DisplayName("Are You Son/Daughter Of Ex-Serviceman Of Tamilnadu Origin:")]
         public string c1 { get; set; }
 
@@ -589,6 +591,15 @@ namespace Entity
         [DisplayName("Year Of Passing:")]
         public DateTime ppyear1 { get; set; }
 
+        [DisplayName("Year Of Passing:")]
+        public DateTime pyear2 { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime pyear3 { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime pyear4 { get; set; }
+
         [DisplayName("Register No:")]
         public string prnumber1 { get; set; }
 
@@ -612,13 +623,259 @@ namespace Entity
         [DisplayName("If Physically Challenged Specify:")]
         public string pc5 { get; set; }
 
-
-
         [DisplayName("Name & Location (District) Of School Last Studied:")]
         public string pnamelocation { get; set; }
 
         [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
         public string pexaminationpassed { get; set; }
+
+
+        [DisplayName("Subject")]
+        public string hsubject1 { get; set; }
+
+        [DisplayName("Subject")]
+        public string hsubject2 { get; set; }
+
+        [DisplayName("Subject")]
+        public string hsubject3 { get; set; }
+
+        [DisplayName("Subject")]
+        public string hsubject4 { get; set; }
+
+        [DisplayName("Subject")]
+        public string hsubject5 { get; set; }
+
+        [DisplayName("Subject")]
+        public string hsubject6 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks1 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks2 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks3 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks4 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks5 { get; set; }
+
+        [DisplayName("Marks")]
+        public int hmarks6 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum1 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum2 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum3 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum4 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum5 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int hmaximum6 { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime hpyear { get; set; }
+
+        [DisplayName("Register No:")]
+        public string hrnumber1 { get; set; }
+
+        [DisplayName("No. Of Attempts:")]
+        public int hattempts1 { get; set; }
+
+        [DisplayName("Obtain Mark")]
+        public int hobtain { get; set; }
+
+        [DisplayName("Total Mark")]
+        public int htotalmark { get; set; }
+
+        [DisplayName("Percentage")]
+        public int hpercentage { get; set; }
+
+        [DisplayName("Grade")]
+        public int hgrade { get; set; }
+
+        [DisplayName("School Name")]
+        public string hschool { get; set; }
+
+        [DisplayName("Are You Son/Daughter Of Ex-Serviceman Of Tamilnadu Origin:")]
+        public string hc1 { get; set; }
+
+        [DisplayName("Are You Of Tamilnadu Origin From Andaman Nicobar Islands ?:")]
+        public string hc2 { get; set; }
+
+        [DisplayName("Distinction In Sports & Games/NCC/NSS:")]
+        public string hc3 { get; set; }
+
+        [DisplayName("Proficiency In Extra-Curricular Activities:")]
+        public string hc4 { get; set; }
+
+        [DisplayName("If Physically Challenged Specify:")]
+        public string hc5 { get; set; }
+
+        [DisplayName("Name & Location (District) Of School Last Studied:")]
+        public string hnamelocation { get; set; }
+
+        [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
+        public string hexaminationpassed { get; set; }
+
+        [DisplayName("Reference Name")]
+        public string hrefname { get; set; }
+
+        [DisplayName("Reference Number")]
+        public string hrefno { get; set; }
+
+        [DisplayName("Code")]
+        public string hrefcode { get; set; }
+
+        [DisplayName("TC No.")]
+        public string htcno { get; set; }
+
+        [DisplayName("Reference Letter")]
+        public byte[] hrefscan { get; set; }
+
+        [DisplayName("TC Scan Copy")]
+        public byte[] htcscan { get; set; }
+
+        [DisplayName("MarksSheet Scan Copy")]
+        public byte[] hmarksheetscan { get; set; }
+
+
+
+
+
+
+
+
+
+        [DisplayName("Subject")]
+        public string pgsubject1 { get; set; }
+
+        [DisplayName("Subject")]
+        public string pgsubject2 { get; set; }
+
+        [DisplayName("Subject")]
+        public string pgsubject3 { get; set; }
+
+        [DisplayName("Subject")]
+        public string pgsubject4 { get; set; }
+
+        [DisplayName("Subject")]
+        public string pgsubject5 { get; set; }
+
+        [DisplayName("Subject")]
+        public string pgsubject6 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks1 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks2 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks3 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks4 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks5 { get; set; }
+
+        [DisplayName("Marks")]
+        public int pgmarks6 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum1 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum2 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum3 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum4 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum5 { get; set; }
+
+        [DisplayName("Maximum")]
+        public int pgmaximum6 { get; set; }
+
+        [DisplayName("Year Of Passing:")]
+        public DateTime pgpyear { get; set; }
+
+        [DisplayName("No. Of Attempts:")]
+        public int pgattempts1 { get; set; }
+
+        [DisplayName("Are You Son/Daughter Of Ex-Serviceman Of Tamilnadu Origin:")]
+        public string pgc1 { get; set; }
+
+        [DisplayName("Are You Of Tamilnadu Origin From Andaman Nicobar Islands ?:")]
+        public string pgc2 { get; set; }
+
+        [DisplayName("Distinction In Sports & Games/NCC/NSS:")]
+        public string pgc3 { get; set; }
+
+        [DisplayName("Proficiency In Extra-Curricular Activities:")]
+        public string pgc4 { get; set; }
+
+        [DisplayName("If Physically Challenged Specify:")]
+        public string pgc5 { get; set; }
+
+        [DisplayName("Name & Location (District) Of School Last Studied:")]
+        public string pgnamelocation { get; set; }
+
+        [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
+        public string pgexaminationpassed { get; set; }
+
+        [DisplayName("Reference Name")]
+
+        //[DisplayName("Total")]
+        //public int ssctotal { get; set; }
+
+        //[DisplayName("Precentage")]
+        //public int sscprecentage { get; set; }
+
+        //[DisplayName("Passing")]
+        //public int sscpassing { get; set; }
+
+        //[DisplayName("Total")]
+        //public int hsctotal { get; set; }
+
+        //[DisplayName("Precentage")]
+        //public int hscprecentage { get; set; }
+
+        //[DisplayName("Passing")]
+        //public int hscpassing { get; set; }
+
+        //[DisplayName("Total")]
+        //public int ugtotal { get; set; }
+
+        //[DisplayName("Precentage")]
+        //public int ugprecentage { get; set; }
+
+        //[DisplayName("Passing")]
+        //public int ugpassing { get; set; }
+
+        //[DisplayName("Total")]
+        //public int pgtotal { get; set; }
+
+        //[DisplayName("Precentage")]
+        //public int pgprecentage { get; set; }
+
+        //[DisplayName("Passing")]
+        //public int pgpassing { get; set; }
 
         public List<tbl_YearMaster> yearlist { get; set; }
 
@@ -639,6 +896,8 @@ namespace Entity
         public List<tbl_collageeducationdetails> collage { get; set; }
         public List<secondaryeducationdetail> secondry { get; set; }
         public List<tbl_city> citylist { get; set; }
+        public List<CONFIGMASTER> select { get; set; }
+
 
         public List<tbl_CourseMaster> courselist { get; set; }
         public string[] categories { get; set; }

@@ -37,7 +37,8 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult GetSubjects(string id, string year, string department)
         {
-            int subid = Convert.ToInt32(Session["Userid"].ToString());
+            int subid = Convert.ToInt32(Session["Genid"].ToString());
+            //int subid = 3018;
             int yearid = 0;
             int Courseid = 0;
             int dept = 0;
@@ -84,7 +85,7 @@ namespace SchoolManagementSystems.Controllers
                 //chapid = Convert.ToInt32(id1);
                 subid = Convert.ToInt32(id);
             }
-            var chaplist = db.tbl_Chapter.Where(m => ( m.Subjectid == subid)).Select(m => new { m.Chapter_id, m.ChapterName }).ToList();
+            var chaplist = db.Sp_GetChapterDetails(subid).ToList();
             return Json(chaplist, JsonRequestBehavior.AllowGet);
         }
 
@@ -106,7 +107,7 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult DMLCompletion(string[] completiondetails)
         {
-            tbl_Chaptercomplete cc = new tbl_Chaptercomplete();
+           
 
             string s;
             int createdby = Convert.ToInt32(Session["Genid"].ToString());
@@ -115,19 +116,20 @@ namespace SchoolManagementSystems.Controllers
                 //sa.CreatedBy = Convert.ToInt32(Session["Userid"].ToString());
                 s = completiondetails[i].ToString();
                 string[] s1 = s.ToString().Split(',');
-                cc.Teacherid = Convert.ToInt32(s1[0].ToString());
-                cc.complete = Convert.ToBoolean(s1[2].ToString());
-                cc.Remark = s1[3].ToString();
-                cc.CompleteDate = Convert.ToDateTime(s1[1].ToString());
-                cc.Subjectid = Convert.ToInt32(s1[6].ToString());
-                cc.Chapterid = Convert.ToInt32(s1[5].ToString());
-                cc.Departmentid = Convert.ToInt32(s1[4].ToString());
-                cc.Yearid = Convert.ToInt32(s1[8].ToString());
-                cc.Courseid = Convert.ToInt32(s1[7].ToString());
-                cc.createdby = createdby;
+                int Teacherid = Convert.ToInt32(s1[0].ToString());
+                bool complete = Convert.ToBoolean(s1[2].ToString());
+                string Remark = s1[3].ToString();
+                DateTime CompleteDate = Convert.ToDateTime(s1[1].ToString());
+                int Subjectid = Convert.ToInt32(s1[6].ToString());
+                int Chapterid = Convert.ToInt32(s1[5].ToString());
+                int Departmentid = Convert.ToInt32(s1[4].ToString());
+                int Yearid = Convert.ToInt32(s1[8].ToString());
+                int Courseid = Convert.ToInt32(s1[7].ToString());
+                int createdsby = createdby;
+                int contentid = Convert.ToInt32(s1[9].ToString());
                 try
                 {
-                    db.sp_ChapterComplete_DML(cc.Teacherid, cc.complete, cc.Remark, cc.CompleteDate, cc.Subjectid, cc.Chapterid, cc.Departmentid, cc.Yearid, cc.Courseid,cc.createdby);
+                    db.sp_ChapterComplete_DML(Teacherid, complete, Remark, CompleteDate, Subjectid, Chapterid, Departmentid, Yearid, Courseid,createdsby,contentid);
                 }
                 catch (Exception ex)
                 { string msg = ex.ToString(); }
@@ -142,6 +144,12 @@ namespace SchoolManagementSystems.Controllers
         {
 
             return View();
+        }
+
+        public JsonResult FillChapterContentDetails(int courseid, int deptid,int yearid,int subjectid,int ChapterId)
+        {
+            var data = db.sp_GetChapterContentDetails(courseid, deptid, yearid, subjectid, ChapterId).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -27,7 +27,7 @@ namespace Entity
         [DisplayName("Created By")]
         public int CREATEDBY { get; set; }
 
-        public List<CONFIGMASTER> _configlist { get; set; }
+        public List<sp_getConfigInfo_Result> _configlist { get; set; }
 
 
     }
