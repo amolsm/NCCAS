@@ -25,11 +25,11 @@
                     $("#feesid input").val(data.Feesid);
                     $("#Classid").val(data.Classid);
                     $("#PTypeid").val(data.PTypeid);
-                    //                    $("#LFees").val(data.LFees);
-                    //                    $("#TFees").val(data.TFees);
-                    //                    $("#UFees").val(data.UFees);
-                    //                    $("#HFees").val(data.HFees);
-                    //                    $("#OFees").val(data.OFees);
+                                        //$("#LFees").val(data.LFees);
+                                        //$("#TFees").val(data.TFees);
+                                        //$("#UFees").val(data.UFees);
+                                        //$("#HFees").val(data.HFees);
+                                        //$("#OFees").val(data.OFees);
                     $("#TotalFees").val(data.TotalFees);
                     $.ajax({
                         type: 'GET',
@@ -67,11 +67,11 @@
             $("#feesid").hide();
             $('#feesid input').val('0');
             $("#Classid").val('');
-            //            $("#LFees").val('0');
-            //            $("#TFees").val('0');
-            //            $("#UFees").val('0');
-            //            $("#HFees").val('0');
-            //            $("#OFees").val('0');
+                        //$("#LFees").val('0');
+                        //$("#TFees").val('0');
+                        //$("#UFees").val('0');
+                        //$("#HFees").val('0');
+                        //$("#OFees").val('0');
             $("#TotalFees").val('0');
         }
 
@@ -84,11 +84,11 @@
                 dataType: 'JSON',
                 data: { Classid: 0 },
                 success: function (data) {
-                    $("#ctrlcnt").val(data.length);
+                    $("#ctrlcnt").val(data.feeslabels.length);
                     var table = $('#dynamiclbl');
                     table.html('');
                     $.each(data, function (i, dt) {
-                        table.append('<div class="control-group"><label class="col-md-6 form_out">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
+                        table.append('<div class="control-group"><label class="control-label">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
                     });
                 }
             });
@@ -97,14 +97,17 @@
 
         $('#Classid').change(function () {
             $("#lblmsg").text("");
+
             var Classid = $('#Classid').val();
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("check_duplicate_Class")',
+                url: '@Url.Action("FillFeesLabels")',
                 dataType: 'JSON',
                 data: { Classid: Classid },
                 success: function (data) {
-                    if (data != null) {
+                  
+                    if (data.duplicateclass != null) {
+                      
                         $("#lblmsg").text("Fees Setup Already Exists for this class!..");
                         $("#lblmsg").css({ "color": "orange" });
                         $("#lblmsg").css({ "font-size": "25px" });
@@ -112,21 +115,16 @@
                         return false;
                     }
                     else {
-                        //                        $.ajax({
-                        //                            type: 'GET',
-                        //                            url: '@Url.Action("FillFeesLabels")',
-                        //                            dataType: 'JSON',
-                        //                            data: { Classid: Classid },
-                        //                            success: function (data) {
-                        //                                $("#ctrlcnt").val(data.length);
-                        //                                var table = $('#dynamiclbl');
-                        //                                table.html('');
-                        //                                $.each(data, function (i, dt) {
-                        //                                    table.append('<div class="control-group"><label class="col-md-6 form_out">' + dt + '</label><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div>');
-                        //                                });
-                        //                            }
-                        //                        });
-                    }
+                       
+                                                      
+                        $("#ctrlcnt").val(data.feeslabels.length);
+                                                        var table = $('#dynamiclbl');
+                                                        table.html('<br />');
+                                                        $.each(data.feeslabels, function (i, dt) {
+                                                            table.append('<div class="control-group span5"><label class="control-label">' + dt + '</label><div class="controls"><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div></div>');
+                                                        });
+                                                    }
+                                             
                 }
             });
         });
@@ -467,6 +465,7 @@
                                 @Html.ValidationMessageFor(model => model.Classid)
                                      </div>
                             </div>
+                            <br/>
 @*<div class="control-group">
                                     @Html.LabelFor(model => model.LFees, new { @class = "control-label" })
                                     @Html.EditorFor(model => model.LFees, new { @class = "col-md-5 form-control form_in" })
@@ -493,7 +492,8 @@
                                     @Html.ValidationMessageFor(model => model.OFees)
                                 </div>*@
                             <div id="dynamiclbl">
-                            </div>
+                             </div>
+                            <br />
                             <div id="totalFees" class="control-group">
                                 @Html.LabelFor(model => model.TotalFees, new { @class = "control-label" })
                                  <div class="controls"> 

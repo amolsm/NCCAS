@@ -113,6 +113,8 @@
         $("#result").on("click", ".edit", function (evt) {
             debugger;
             var ChapterId = this.id;
+            var ChapterName=($("#ChapId_"+ChapterId).val());
+            $('#ChapterNm').text("Add Completed Content For  "+ChapterName); 
             var courseid = $('#CourseId').val();
             var deptid=$('#Departmentid').val();
             var yearid=$('#YearId').val();
@@ -290,12 +292,12 @@
                     var ChapterIds;
                     result.html('');
                     $("#chaplist").val(data.length);
-                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='100px;'>Chapter ID</th><th  width='200px;'>Chapter Name</th><th  width='200px;'>Status</th><th  width='200px;'>Complete Content</th></thead></table>";
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th width='100px;'>Chapter ID</th><th  width='200px;'>Chapter Name</th><th  width='200px;'>No Of Content</th><th  width='200px;'>Completed Content</th><th  width='200px;'>Status</th><th  width='200px;'>Complete Content</th></thead></table>";
                     head.html(header);
                     table = "<table class='table tb-parshav tablesorter'><tbody>";
                     for (var i = 0; i < data.length; i++) {
                         ChapterIds = data[i].Chapter_id;
-                        table += "<tr id=" + ChapterIds + "><td width='100px;'>" + data[i].Chapter_id.toString() + "</td><td  width='200px;'>" + data[i].ChapterName.toString() + "</td><td width='200px;'>" + data[i].complete.toString() + "</td><td  width='200px;'><button type='button' class='btn btn-default btn_edit edit' id='" + data[i].Chapter_id.toString() + "'  value='" + data[i].Chapter_id.toString() + "'>Add Complete Content</button></td></tr>";
+                        table += "<tr id=" + ChapterIds + "><td width='100px;'>" + data[i].Chapter_id.toString() + "</td><td  width='200px;'>" + data[i].ChapterName.toString() + "</td>"+"<input type=hidden  class='addcls' id=ChapId_" + data[i].Chapter_id + " value='" + data[i].ChapterName.toString() + "'>"+"<td  width='200px;'>" + data[i].NoOfContent.toString() + "</td><td  width='200px;'>" + data[i].CompletedContent.toString() + "</td><td width='200px;'>" + data[i].complete.toString() + "</td><td  width='200px;'><button type='button' class='btn btn-default btn_edit edit' id='" + data[i].Chapter_id.toString() + "'  value='" + data[i].Chapter_id.toString() + "'>Add Complete Content</button></td></tr>";
                     }
                     table += "</tbody><table>";
                     result.html(table);
@@ -381,7 +383,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Add Completed Content For Chapter</h4>
+                <h1 class="modal-title"><label id="ChapterNm"></label></h1>
             </div>
             <div class="modal-body">
                 <p>

@@ -13,11 +13,11 @@ D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\NCCProject\NCCAS\DAL\bin\Debug\Entity.pdb
 D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.xml
 D:\NCCProject\NCCAS\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.dll
+D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.pdb
 D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.Mvc.xml
 D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.Razor.xml
 D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.dll
-D:\NCCProject\NCCAS\DAL\obj\Debug\DAL.pdb

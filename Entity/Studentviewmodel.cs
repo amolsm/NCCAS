@@ -86,7 +86,7 @@ namespace Entity
         public string Grade { get; set; }
 
         [DisplayName("Year of leaving : ")]
-        public string LeaveYear { get; set; }
+        public DateTime LeaveYear { get; set; }
 
         [DisplayName("Reason for Leaving : ")]
         public string LeaveReason { get; set; }
@@ -347,7 +347,7 @@ namespace Entity
         public int PrPgObtainMark { get; set; }
 
         [DisplayName("Year of leaving:")]
-        public string PrPgYearLeaving { get; set; }
+        public DateTime PrPgYearLeaving { get; set; }
 
         [DisplayName("Registered Number:")]
         public string PrPgRegisterNumber { get; set; }
@@ -589,7 +589,7 @@ namespace Entity
         public int pmaximum6 { get; set; }
 
         [DisplayName("Year Of Passing:")]
-        public DateTime ppyear1 { get; set; }
+        public DateTime ppyear { get; set; }
 
         [DisplayName("Year Of Passing:")]
         public DateTime pyear2 { get; set; }
@@ -703,7 +703,7 @@ namespace Entity
         public int hpercentage { get; set; }
 
         [DisplayName("Grade")]
-        public int hgrade { get; set; }
+        public string hgrade { get; set; }
 
         [DisplayName("School Name")]
         public string hschool { get; set; }
@@ -736,7 +736,7 @@ namespace Entity
         public string hrefno { get; set; }
 
         [DisplayName("Code")]
-        public string hrefcode { get; set; }
+        public int hrefcode { get; set; }
 
         [DisplayName("TC No.")]
         public string htcno { get; set; }
@@ -833,14 +833,56 @@ namespace Entity
         [DisplayName("If Physically Challenged Specify:")]
         public string pgc5 { get; set; }
 
+        [DisplayName("Answer")]
+        public string answer1 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer2 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer3 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer4 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer5 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer6 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer7 { get; set; }
+
+        [DisplayName("Answer")]
+        public string answer8 { get; set; }
+
+        [DisplayName("Course : ")]
+        public int deptpg { get; set; }
+
+        [DisplayName("Course : ")]
+        public int coursepg { get; set; }
+
+        [DisplayName("Course : ")]
+        public int deptug { get; set; }
+
+        [DisplayName("Course : ")]
+        public int courseug { get; set; }
+
         [DisplayName("Name & Location (District) Of School Last Studied:")]
         public string pgnamelocation { get; set; }
 
         [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
         public string pgexaminationpassed { get; set; }
 
-        [DisplayName("Reference Name")]
+        [DisplayName("Year Of Leaving:")]
+        public DateTime uglyear { get; set; }
 
+        [DisplayName("Code")]
+        public int prefcode { get; set; }
+
+        [DisplayName("Code")]
+        public int urefcode { get; set; }
         //[DisplayName("Total")]
         //public int ssctotal { get; set; }
 

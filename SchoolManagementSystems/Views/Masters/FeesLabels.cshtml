@@ -261,11 +261,13 @@
                                         @Html.ValidationMessageFor(model => model.feeslblid)
                                               </div>
                                     </div>
-                                    @*<div class="form-group col-md-10">
-                                        @Html.LabelFor(model => model.classid, new { @class = "col-md-5 form_out" })
-                                        @Html.DropDownListFor(model => model.classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
-                                        @Html.ValidationMessageFor(model => model.classid)
-                                    </div>*@
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.classid, new { @class = "control-label" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(model => model.classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "select" })
+                                            @Html.ValidationMessageFor(model => model.classid)
+                                            </div>
+                                        </div>
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.ctrlcnt, new { @class="control-label"})
                                           <div class="controls">

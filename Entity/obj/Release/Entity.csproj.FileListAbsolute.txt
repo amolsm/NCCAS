@@ -16,6 +16,5 @@ D:\NCCProject\NCCAS\Entity\bin\Release\System.Web.Razor.xml
 D:\NCCProject\NCCAS\Entity\bin\Release\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\Entity\bin\Release\System.Web.WebPages.xml
 D:\NCCProject\NCCAS\Entity\bin\Release\System.Web.WebPages.Deployment.xml
-D:\NCCProject\NCCAS\Entity\obj\Release\Entity.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\Entity\obj\Release\Entity.dll
 D:\NCCProject\NCCAS\Entity\obj\Release\Entity.pdb

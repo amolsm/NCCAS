@@ -164,7 +164,6 @@ namespace SchoolManagementSystems.Controllers
         public JsonResult FillBookDetails(int bookid)
         {
             var data = db.Sp_GetLibBookDetailsbyId(bookid).FirstOrDefault();
-                      
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 

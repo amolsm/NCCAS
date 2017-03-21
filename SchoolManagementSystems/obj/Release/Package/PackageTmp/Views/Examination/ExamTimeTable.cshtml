@@ -22,25 +22,10 @@
 
     $(document).ready(function () {
         FillPermission();
+      
         $("#insert").click(function (e) {
             Validations(e);
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("SubmitExam")',
-                data: $('#frm').serialize() + "&evt=submit",
-                success: function (result) {
-                    $("#msgs").show();
-                    $("#lblmsgs").text("Exam Time table  updated successfully!..");
-                    $("#lblmsgs").css({ "color": "green" });
-                    $("#lblmsgs").css({ "font-size": "15px" });
-                    $("#result").html(result);
-                    clear();
-
-                    ReloadPaging();
-                }
-                });
         });
-
 
         $('#datepicker').attr("readonly", true);
 
@@ -71,14 +56,18 @@
         });
 
 
-
         function Validations(e) {
             var cnt = 0;
+            debugger;
             if ($("#ExaminationName").val() == '') {
                 cnt++;
                 $("#ExaminationName").css({
-                    "border": "1px solid red"
+                    "border": "2px solid red"
                 });
+                alert("Examination Name Mandatory!");
+                e.preventDefault();
+                $("#ExaminationName").focus();
+                return false;
             }
             else {
                 $("#ExaminationName").css({
@@ -87,135 +76,254 @@
                 });
             }
 
-            if ($("#ExamDate").val() == '') {
+            if ($("#CourseId").val() == '' || $("#CourseId").val() == '0') {
                 cnt++;
-                $("#ExamDate").css({
-                    "border": "1px solid red"
+                $("#CourseId").css({
+                    "border": "2px solid red"
                 });
-            }
-            else {
-                $("#ExamDate").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ExamStartTime").val() == '') {
-                cnt++;
-                $("#ExamStartTime").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#ExamStartTime").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ExamEndTime").val() == '') {
-                cnt++;
-                $("#ExamEndTime").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#ExamEndTime").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Classid").val() == '' || $("#Classid").val() == '0') {
-                cnt++;
-                $("#Classid").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#Classid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Subjectid").val() == '' || $("#Subjectid").val() == '0') {
-                cnt++;
-                $("#Subjectid").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#Subjectid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ExaminationTypeid").val() == '' || $("#ExaminationTypeid").val() == '0') {
-                cnt++;
-                $("#ExaminationTypeid").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#ExaminationTypeid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#ExamYear").val() == '') {
-                cnt++;
-                $("#ExamYear").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#ExamYear").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if (cnt != 0) {
+                alert("Course is Mandatory!");
                 e.preventDefault();
+                $("#CourseId").focus();
+                return false;
+            }
+            else {
+                $("#CourseId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+            var ctrlcnt = $('#ctrlcnt').val();
+            if (ctrlcnt > 0) {
+                for (var i = 0; i < ctrlcnt; i++) {
+                    var subjectids = ($("#hsubjectid_" + i).val());
+
+                    if ($("#date_" + subjectids).val() == '') {
+                        cnt++;
+                        $("#date_" + subjectids).css({
+                            "border": "2px solid red"
+                        });
+                        alert("Date  is Mandatory!");
+                        e.preventDefault();
+                        $("#date_" + subjectids).focus();
+                        return false;
+                    } else {
+                        $("#date_" + subjectids).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                    if ($("#starttime_" + subjectids).val() == '') {
+                        cnt++;
+                        $("#starttime_" + subjectids).css({
+                            "border": "2px solid red"
+                        });
+                        alert("Start time  is Mandatory!");
+                        e.preventDefault();
+                        $("#starttime_" + subjectids).focus();
+                        return false;
+                    } else {
+                        $("#starttime_" + subjectids).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                    if ($("#endtime_" + subjectids).val() == '') {
+                        cnt++;
+                        $("#endtime_" + subjectids).css({
+                            "border": "2px solid red"
+                        });
+                        alert("End time  is Mandatory!");
+                        e.preventDefault();
+                        $("#endtime_" + subjectids).focus();
+                        return false;
+                    } else {
+                        $("#endtime_" + subjectids).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+
+                }
+            }
+
+
+
+
+            if (cnt != 0)
+            { e.preventDefault(); } else
+            {
+                var ctrlcnt = $('#ctrlcnt').val();
+                if (ctrlcnt > 0) {
+                    var subjectdata = [];
+                    for (var i = 1; i < ctrlcnt; i++) {
+                        var subjectids = ($("#hsubjectid_" + i).val());
+                        var examdate = ($("#date_" + subjectids).val());
+                        var starttime = ($("#starttime_" + subjectids).val());
+                        var endtime = ($("#endtime_" + subjectids).val());
+                        subjectdata.push(subjectids + "|" + examdate + "|" + starttime + "|" + endtime);
+                    }
+                    debugger;
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SubmitExam")',
+                        data: $('#frm').serialize() + "&evt=submit&id=0&subjectdata=" + subjectdata,
+                        success: function (result) {
+                            $("#msgs").show();
+                            $("#lblmsgs").text("Exam Time table  updated successfully!..");
+                            $("#lblmsgs").css({ "color": "green" });
+                            $("#lblmsgs").css({ "font-size": "15px" });
+                            $("#result").html(result);
+                            clear();
+                            ReloadPaging();
+                        }
+                    });
+                }
             }
         }
+               
+        
+    
+      
+       function ReloadState() {
+           $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
+        }
 
+  function ReloadCountry() {
+      if ($("#CourseId").val() == "") {
+                ReloadState();
+            }
+            else {
 
-        $("#Classid").change(function () {
-            $("#Subjectid").empty();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetSubject")',
-                dataType: 'json',
-                data: { id: $("#Classid").val() },
-                success: function (Subjects) {
-                    if (Subjects != "") {
-                        var item = '<option value="0">Select Subject</option>';
-                        $.each(Subjects, function (i, subject) {
-                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
-                        });
-                        $("#Subjectid").append(item);
+          $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
                     }
-                    else {
-                        var item = '<option value="0">select Subject</option>';
-                        $("#Subjectid").append(item);
-                    }
-                },
-                error: function (ex) {
-                    alert('Failed to retrieve subjects.' + ex);
-                }
-            });
+                });
+            }
             return false;
+        }
+
+        $("#CourseId").change(function () {
+
+            ReloadCountry();
         })
 
-        if ($("#hdyear").val() != "") {
-            $("#ExamYear").val($("#hdyear").val());
+
+        function ReloadYear() {
+            $("#yearid").empty();
+            var item = '<option value="">select Year</option>';
+            $("#yearid").append(item);
         }
+
+        function ReloadCourseYear() {
+            if ($("#DeptId").val() == "") {
+                ReloadYear();
+            }
+            else {
+
+                $("#yearid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourseYear")',
+                    dataType: 'json',
+                    data: {
+                        courseid: $("#CourseId").val(),
+                        deptid: $("#DeptId").val()
+                    },
+                    success: function (yeardata) {
+                        if (yeardata != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(yeardata, function (i, yeardata) {
+                                item += '<option value="' + yeardata.Value + '">' + yeardata.Text + '</option>';
+                            });
+                            $("#yearid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#yearid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+        $("#DeptId").change(function () {
+
+            ReloadCourseYear();
+        })
+        $('#yearid').change(function () {
+           var CourseId = $('#CourseId').val();
+           var deptid = $('#DeptId').val();
+           var yearid = $('#yearid').val();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSubjectForExamtimetable")',
+                dataType: 'json',
+                data: { CourseId: CourseId, deptid: deptid, yearid: yearid },
+                success: function (data) {
+
+                    var result = $('#result');
+                    var head = $('#header');
+                    var table; var header;
+                    var subjectids;
+                    result.html('');
+                    //$("#students").val(data.length);
+                    header = "<table  class='table tb-parshav tablesorter'><thead><tr><th  width='10%;'>SubjectId</th><th  width='30%;'>Subject Name</th><th  width='20%;'>Exam Date</th><th  width='20%;'>Start Time</th><th  width='20%;'>End Time</th></thead><table>";
+                    head.html(header);
+                    table = "<table class='table tb-parshav tablesorter' id='tbl'><tbody>";
+                    $("#ctrlcnt").val(data.length);
+                    for (var i = 1; i < data.length; i++) {
+                       subjectids = data[i].Subjectid;
+                        table += "<tr id=" + subjectids + "><td width='10%;' id='subid_" + i + "'>" + data[i].Subjectid.toString()
+                            + "</td><input class='addcls' type='hidden' id='hsubjectid_" + i + "' value=" + data[i].Subjectid.toString() + "><td width='30%;'>"
+                            + data[i].SubjectName.toString()
+                            + "</td><td width='20%;'><input class='addcls' type='date' id='date_" + data[i].Subjectid.toString() + "'>"
+                            + "</td><td width='20%;'><input class='addcls' type='time' id='starttime_" + data[i].Subjectid.toString() + "'>"
+                            + "</td><td width='20%;'><input class='addcls' type='time' id='endtime_" + data[i].Subjectid.toString() + "'>"
+
+
+                        table += "</td></tr>";
+
+                    }
+                    table += "</tbody><table>";
+                    result.html(table);
+
+
+
+                }
+
+            });
+        });
+
     });
 </script>@Html.Partial("_PermissionHiddenFlds")
+@Html.Hidden("ctrlcnt")
 <div class="container-fluid-full">
              
 		<div class="row-fluid">
@@ -252,11 +360,11 @@
 						</div>
 					</div>
                                		<div class="box-content">
-						<form id="frm" class="form-horizontal">
+						<div id="frm" class="form-horizontal">
                               
 						
                                   <fieldset>
-                                            @using (Html.BeginForm("SubmitExam", "Examination", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",  @class="form-horizontal" }))
+                                            @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",  @class="form-horizontal" }))
                                             {
                                                 @Html.ValidationSummary(true)
                                                 <div class="control-group">
@@ -270,76 +378,67 @@
                                                            </div>
                                                 </div>
                                                 <div class="control-group">
+                                                    @Html.LabelFor(model => model.ExaminationTypeid, new { @class = "control-label", @for = "select" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.ExaminationTypeid)
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
                                                     @Html.LabelFor(model => model.ExaminationName, new { @class="control-label"  })
                                                        <div class="controls">
                                                     @Html.TextBoxFor(model => model.ExaminationName, new { id = "ExaminationName", @class = "input" })
                                                     @Html.ValidationMessageFor(model => model.ExaminationName)
                                                            </div>
                                                 </div>
+                                             
+                                              
                                                 <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExamDate, new { @class="control-label"  })
+                                                    @Html.LabelFor(model => model.CourseId, new {@class="control-label"  })
                                                        <div class="controls">
-                                                    @Html.TextBoxFor(model => model.ExamDate, new { id = "datepicker", placeholder = "Select Date of Exam",@class="input" })
-                                                    @Html.ValidationMessageFor(model => model.ExamDate)
+                                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for="select" })
+                                                    @Html.ValidationMessageFor(model => model.CourseId)
                                                            </div>
                                                 </div>
+
                                                 <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExamStartTime, new { @class="control-label"  })
-                                                       <div class="controls">
-                                                    @Html.TextBoxFor(model => model.ExamStartTime, new { id = "ExamStartTime", @class="input" })
-                                                    @Html.ValidationMessageFor(model => model.ExamStartTime)
-                                                           </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExamEndTime, new { @class="control-label"  })
-                                                       <div class="controls">
-                                                    @Html.TextBoxFor(model => model.ExamEndTime, new { id = "ExamEndTime", @class="input" })
-                                                    @Html.ValidationMessageFor(model => model.ExamEndTime)
-                                                           </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExaminationTypeid, new { @class="control-label",@for="select"  })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @for="select" })
-                                                    @Html.ValidationMessageFor(model => model.Classid)
-                                                           </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    @Html.LabelFor(model => model.Classid, new {@class="control-label"  })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @for="select" })
-                                                    @Html.ValidationMessageFor(model => model.Classid)
-                                                           </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    @Html.LabelFor(model => model.Subjectid, new { @class="control-label",@for="select"  })
-                                                       <div class="controls">
-                                                    @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.SubjectList, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject", new { @for="select" })
-                                                    @Html.ValidationMessageFor(model => model.Classid)
-                                                           </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExamYear, new { @class="control-label",@for="select"  })
-                                                     <div class="controls">
-                                                    @*@Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", @class = "col-md-5 form-control form_in" })*@
-                                                    @Html.Hidden("hdyear",ViewData["yr"])
-                                                    @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @for="select" })
-                                                    @Html.ValidationMessageFor(model => model.ExamYear)
-                                                </div>
+                                                    @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._Deptlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.DeptId)
                                                     </div>
-                                                <div class="form-actions">
-                                                    <input type="submit" action="insert" class="btn btn-primary" id="insert" value="Submit" />
                                                 </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.yearid, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.yearid, new SelectList(Model._yearlist, "yearid", "YearName", "Select Year"), "Select Year", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.yearid)
+                                                    </div>
+                                                </div>
+
+                                                
+                                            
                                                 <div class="control-group">
                                                     &nbsp;
                                                 </div>
+                                                <div class="box-content">
+                                                    <div id="header" class="table-responsive">
+                                                    </div>
+                                                    <div id="result" class="table-responsive">
+                                                    </div>
+                                                    <div class="form-actions span12" style="margin-bottom:20px; margin-left:0px; padding-left:40%">
+                                                        <input type="submit" class="btn btn-primary" id="insert" value="Submit" />
+                                                    </div>
+
+                                                </div>
                                             }  </fieldset>
-                                </form>
+                                </div>
 					
 					</div>
 				</div><!--/span-->
-			
-			</div><!--/row-->
+                           
+                </div><!--/row-->
                 </div>
         </div>
             </div>

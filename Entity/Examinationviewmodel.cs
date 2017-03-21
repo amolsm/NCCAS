@@ -14,6 +14,15 @@ namespace Entity
         [DisplayName("Class Name ")]
         public int Classid { get; set; }
 
+        [DisplayName("Course Name ")]
+        public int CourseId { get; set; }
+
+        [DisplayName("Department Name ")]
+        public int DeptId { get; set; }
+
+        [DisplayName("Year")]
+        public int yearid { get; set; }
+
         [DisplayName("Subject Name ")]
         public int Subjectid { get; set; }
 
@@ -33,11 +42,16 @@ namespace Entity
         [DisplayName("Exam End Time ")]
         public string ExamEndTime { get; set; }
 
-        [DisplayName("Exam Year ")]
-        public List<string> ExamYear { get; set; }
+        [DisplayName("Accadmic Year ")]
+        public List<string> AccadmicYear { get; set; }
 
         public List<tbl_class> Classlist { get; set; }
 
+        public List<tbl_CourseMaster> _Courselist { get; set; }
+
+        public List<tblDepartment> _Deptlist { get; set; }
+
+        public List<tbl_YearMaster> _yearlist { get; set; }
         public List<tbl_ExaminationType> ExaminationTypeList { get; set; }
 
         public List<tbl_subject> SubjectList { get; set; }

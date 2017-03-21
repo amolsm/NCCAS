@@ -16,6 +16,55 @@
     <Property Name="CUSTOM1" Type="nvarchar(max)" />
     <Property Name="CUSTOM2" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="hsceducationdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studid" Type="int" />
+    <Property Name="subject1" Type="varchar" MaxLength="100" />
+    <Property Name="subject2" Type="varchar" MaxLength="100" />
+    <Property Name="subject3" Type="varchar" MaxLength="100" />
+    <Property Name="subject4" Type="varchar" MaxLength="100" />
+    <Property Name="subject5" Type="varchar" MaxLength="100" />
+    <Property Name="subject6" Type="varchar" MaxLength="100" />
+    <Property Name="marks1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks6" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max6" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="obtainmarks" Type="int" />
+    <Property Name="totalmarks" Type="int" />
+    <Property Name="gradee" Type="varchar" MaxLength="10" />
+    <Property Name="precentage" Type="float" />
+    <Property Name="yearpassing1" Type="datetime" />
+    <Property Name="registerno1" Type="varchar" MaxLength="100" />
+    <Property Name="attempts1" Type="int" />
+    <Property Name="radio1" Type="varchar" MaxLength="10" />
+    <Property Name="radio2" Type="varchar" MaxLength="10" />
+    <Property Name="radio3" Type="varchar" MaxLength="10" />
+    <Property Name="radio4" Type="varchar" MaxLength="10" />
+    <Property Name="radio5" Type="varchar" MaxLength="10" />
+    <Property Name="namelocation" Type="varchar" MaxLength="200" />
+    <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
+    <Property Name="prschool" Type="varchar" MaxLength="200" />
+    <Property Name="refname" Type="varchar" MaxLength="100" />
+    <Property Name="refno" Type="varchar" MaxLength="20" />
+    <Property Name="refcode" Type="varchar" MaxLength="5" />
+    <Property Name="tcno" Type="varchar" MaxLength="100" />
+    <Property Name="tcscan" Type="image" />
+    <Property Name="reflatte" Type="image" />
+    <Property Name="marksheet" Type="image" />
+    <Property Name="answer1" Type="varchar" MaxLength="100" />
+    <Property Name="answer2" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="lib_Bookentry">
     <Key>
       <PropertyRef Name="bookid" />
@@ -47,6 +96,58 @@
     <Property Name="Publisher" Type="varchar" MaxLength="100" />
     <Property Name="jcost" Type="money" />
     <Property Name="shelfno" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.pgeducationdetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="pgeducationdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studid" Type="int" />
+    <Property Name="subject1" Type="varchar" MaxLength="100" />
+    <Property Name="subject2" Type="varchar" MaxLength="100" />
+    <Property Name="subject3" Type="varchar" MaxLength="100" />
+    <Property Name="subject4" Type="varchar" MaxLength="100" />
+    <Property Name="subject5" Type="varchar" MaxLength="100" />
+    <Property Name="subject6" Type="varchar" MaxLength="100" />
+    <Property Name="marks1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="marks6" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="max6" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="obtainmarks" Type="int" />
+    <Property Name="totalmarks" Type="int" />
+    <Property Name="gradee" Type="varchar" MaxLength="10" />
+    <Property Name="precentage" Type="float" />
+    <Property Name="yearpassing1" Type="datetime" />
+    <Property Name="registerno1" Type="varchar" MaxLength="100" />
+    <Property Name="attempts1" Type="int" />
+    <Property Name="radio1" Type="varchar" MaxLength="10" />
+    <Property Name="radio2" Type="varchar" MaxLength="10" />
+    <Property Name="radio3" Type="varchar" MaxLength="10" />
+    <Property Name="radio4" Type="varchar" MaxLength="10" />
+    <Property Name="radio5" Type="varchar" MaxLength="10" />
+    <Property Name="namelocation" Type="varchar" MaxLength="200" />
+    <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="departmetid" Type="int" />
+    <Property Name="answer1" Type="varchar" MaxLength="100" />
+    <Property Name="answer2" Type="varchar" MaxLength="100" />
+    <Property Name="previoucollage" Type="varchar" MaxLength="200" />
+    <Property Name="affliateduniversity" Type="varchar" MaxLength="200" />
+    <Property Name="yearofleaving" Type="datetime" />
+    <Property Name="refname" Type="varchar" MaxLength="100" />
+    <Property Name="referencenumber" Type="varchar" MaxLength="100" />
+    <Property Name="code" Type="int" />
+    <Property Name="collagepgscan" Type="image" />
   </EntityType>
   <EntityType Name="secondaryeducationdetails">
     <Key>
@@ -87,6 +188,15 @@
     <Property Name="namelocation" Type="varchar" MaxLength="200" />
     <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
     <Property Name="test" Type="int" />
+    <Property Name="answer1" Type="varchar" MaxLength="100" />
+    <Property Name="answer2" Type="varchar" MaxLength="100" />
+    <Property Name="previouschool" Type="varchar" MaxLength="200" />
+    <Property Name="refname" Type="varchar" MaxLength="100" />
+    <Property Name="referencenumber" Type="varchar" MaxLength="100" />
+    <Property Name="code" Type="varchar" MaxLength="10" />
+    <Property Name="referenceletter" Type="image" />
+    <Property Name="tcscan" Type="image" />
+    <Property Name="marksSheet" Type="image" />
   </EntityType>
   <EntityType Name="sys_Module">
     <Key>
@@ -223,11 +333,13 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="Courseid" Type="int" />
     <Property Name="Yearid" Type="int" />
     <Property Name="Chapterid" Type="int" />
-    <Property Name="complete" Type="bit" />
     <Property Name="CompleteDate" Type="datetime" />
     <Property Name="Remark" Type="varchar" MaxLength="500" />
     <Property Name="createdby" Type="int" />
     <Property Name="Date" Type="datetime" />
+    <Property Name="NoOfContent" Type="int" />
+    <Property Name="NoOfCompletedContent" Type="int" />
+    <Property Name="complete" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_city">
     <Key>
@@ -287,6 +399,17 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
     <Property Name="Studid" Type="int" />
     <Property Name="grade" Type="varchar" MaxLength="10" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="departmetid" Type="int" />
+    <Property Name="answer1" Type="varchar" MaxLength="100" />
+    <Property Name="answer2" Type="varchar" MaxLength="100" />
+    <Property Name="previoucollage" Type="varchar" MaxLength="200" />
+    <Property Name="affliateduniversity" Type="varchar" MaxLength="200" />
+    <Property Name="yearofleaving" Type="datetime" />
+    <Property Name="refname" Type="varchar" MaxLength="100" />
+    <Property Name="referencenumber" Type="varchar" MaxLength="100" />
+    <Property Name="code" Type="int" />
+    <Property Name="collageugscan" Type="image" />
   </EntityType>
   <EntityType Name="tbl_Content">
     <Key>
@@ -1919,6 +2042,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="yearid" Type="int" Mode="In" />
     <Parameter Name="dept" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetSubjectForExamtimetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getteacheremail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
   </Function>
@@ -2230,6 +2358,15 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="radio5" Type="varchar" Mode="In" />
     <Parameter Name="namelocation" Type="varchar" Mode="In" />
     <Parameter Name="qualifyingexamination" Type="varchar" Mode="In" />
+    <Parameter Name="sanswer1" Type="varchar" Mode="In" />
+    <Parameter Name="sanswer2" Type="varchar" Mode="In" />
+    <Parameter Name="spreviouschool" Type="varchar" Mode="In" />
+    <Parameter Name="srefname" Type="varchar" Mode="In" />
+    <Parameter Name="sreferencenumber" Type="varchar" Mode="In" />
+    <Parameter Name="scode" Type="varchar" Mode="In" />
+    <Parameter Name="sreferenceletter" Type="image" Mode="In" />
+    <Parameter Name="stcscan" Type="image" Mode="In" />
+    <Parameter Name="smarksSheet" Type="image" Mode="In" />
     <Parameter Name="psubject1" Type="varchar" Mode="In" />
     <Parameter Name="psubject2" Type="varchar" Mode="In" />
     <Parameter Name="psubject3" Type="varchar" Mode="In" />
@@ -2262,6 +2399,156 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="pradio5" Type="varchar" Mode="In" />
     <Parameter Name="pnamelocation" Type="varchar" Mode="In" />
     <Parameter Name="pqualifyingexamination" Type="varchar" Mode="In" />
+    <Parameter Name="ucourseid" Type="int" Mode="In" />
+    <Parameter Name="udepartmetid" Type="int" Mode="In" />
+    <Parameter Name="uanswer1" Type="varchar" Mode="In" />
+    <Parameter Name="uanswer2" Type="varchar" Mode="In" />
+    <Parameter Name="uprevioucollage" Type="varchar" Mode="In" />
+    <Parameter Name="uaffliateduniversity" Type="varchar" Mode="In" />
+    <Parameter Name="uyearofleaving" Type="datetime" Mode="In" />
+    <Parameter Name="urefname" Type="varchar" Mode="In" />
+    <Parameter Name="ureferencenumber" Type="varchar" Mode="In" />
+    <Parameter Name="ucode" Type="int" Mode="In" />
+    <Parameter Name="ucollageugscan" Type="image" Mode="In" />
+    <Parameter Name="hsubject1" Type="varchar" Mode="In" />
+    <Parameter Name="hsubject2" Type="varchar" Mode="In" />
+    <Parameter Name="hsubject3" Type="varchar" Mode="In" />
+    <Parameter Name="hsubject4" Type="varchar" Mode="In" />
+    <Parameter Name="hsubject5" Type="varchar" Mode="In" />
+    <Parameter Name="hsubject6" Type="varchar" Mode="In" />
+    <Parameter Name="hmarks1" Type="decimal" Mode="In" />
+    <Parameter Name="hmarks2" Type="decimal" Mode="In" />
+    <Parameter Name="hmarks3" Type="decimal" Mode="In" />
+    <Parameter Name="hmarks4" Type="decimal" Mode="In" />
+    <Parameter Name="hmarks5" Type="decimal" Mode="In" />
+    <Parameter Name="hmarks6" Type="decimal" Mode="In" />
+    <Parameter Name="hmax1" Type="decimal" Mode="In" />
+    <Parameter Name="hmax2" Type="decimal" Mode="In" />
+    <Parameter Name="hmax3" Type="decimal" Mode="In" />
+    <Parameter Name="hmax4" Type="decimal" Mode="In" />
+    <Parameter Name="hmax5" Type="decimal" Mode="In" />
+    <Parameter Name="hmax6" Type="decimal" Mode="In" />
+    <Parameter Name="hobtainmarks" Type="int" Mode="In" />
+    <Parameter Name="htotalmarks" Type="int" Mode="In" />
+    <Parameter Name="hgradee" Type="varchar" Mode="In" />
+    <Parameter Name="hprecentage" Type="float" Mode="In" />
+    <Parameter Name="hyearpassing1" Type="datetime2" Mode="In" />
+    <Parameter Name="hregisterno1" Type="varchar" Mode="In" />
+    <Parameter Name="hattempts1" Type="int" Mode="In" />
+    <Parameter Name="hradio1" Type="varchar" Mode="In" />
+    <Parameter Name="hradio2" Type="varchar" Mode="In" />
+    <Parameter Name="hradio3" Type="varchar" Mode="In" />
+    <Parameter Name="hradio4" Type="varchar" Mode="In" />
+    <Parameter Name="hradio5" Type="varchar" Mode="In" />
+    <Parameter Name="hnamelocation" Type="varchar" Mode="In" />
+    <Parameter Name="hqexam" Type="varchar" Mode="In" />
+    <Parameter Name="hprschool" Type="varchar" Mode="In" />
+    <Parameter Name="hrefname" Type="varchar" Mode="In" />
+    <Parameter Name="hrefno" Type="varchar" Mode="In" />
+    <Parameter Name="hrefcode" Type="int" Mode="In" />
+    <Parameter Name="htcno" Type="varchar" Mode="In" />
+    <Parameter Name="htcscan" Type="image" Mode="In" />
+    <Parameter Name="hreflatter" Type="image" Mode="In" />
+    <Parameter Name="hmarksheet" Type="image" Mode="In" />
+    <Parameter Name="hanswer1" Type="varchar" Mode="In" />
+    <Parameter Name="hanswer2" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject1" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject2" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject3" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject4" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject5" Type="varchar" Mode="In" />
+    <Parameter Name="pgsubject6" Type="varchar" Mode="In" />
+    <Parameter Name="pgmarks1" Type="decimal" Mode="In" />
+    <Parameter Name="pgmarks2" Type="decimal" Mode="In" />
+    <Parameter Name="pgmarks3" Type="decimal" Mode="In" />
+    <Parameter Name="pgmarks4" Type="decimal" Mode="In" />
+    <Parameter Name="pgmarks5" Type="decimal" Mode="In" />
+    <Parameter Name="pgmarks6" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax1" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax2" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax3" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax4" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax5" Type="decimal" Mode="In" />
+    <Parameter Name="pgmax6" Type="decimal" Mode="In" />
+    <Parameter Name="pgobtainmarks" Type="int" Mode="In" />
+    <Parameter Name="pgtotalmarks" Type="int" Mode="In" />
+    <Parameter Name="pggradee" Type="varchar" Mode="In" />
+    <Parameter Name="pgprecentage" Type="float" Mode="In" />
+    <Parameter Name="pgyearpassing1" Type="datetime2" Mode="In" />
+    <Parameter Name="pgregisterno1" Type="varchar" Mode="In" />
+    <Parameter Name="pgattempts1" Type="int" Mode="In" />
+    <Parameter Name="pgradio1" Type="varchar" Mode="In" />
+    <Parameter Name="pgradio2" Type="varchar" Mode="In" />
+    <Parameter Name="pgradio3" Type="varchar" Mode="In" />
+    <Parameter Name="pgradio4" Type="varchar" Mode="In" />
+    <Parameter Name="pgradio5" Type="varchar" Mode="In" />
+    <Parameter Name="pgnamelocation" Type="varchar" Mode="In" />
+    <Parameter Name="pgqexam" Type="varchar" Mode="In" />
+    <Parameter Name="pcourseid" Type="int" Mode="In" />
+    <Parameter Name="pdepartmetid" Type="int" Mode="In" />
+    <Parameter Name="panswer1" Type="varchar" Mode="In" />
+    <Parameter Name="panswer2" Type="varchar" Mode="In" />
+    <Parameter Name="pprevioucollage" Type="varchar" Mode="In" />
+    <Parameter Name="paffliateduniversity" Type="varchar" Mode="In" />
+    <Parameter Name="pyearofleaving" Type="datetime" Mode="In" />
+    <Parameter Name="prefname" Type="varchar" Mode="In" />
+    <Parameter Name="preferencenumber" Type="varchar" Mode="In" />
+    <Parameter Name="pcode" Type="int" Mode="In" />
+    <Parameter Name="pcollagepgscan" Type="image" Mode="In" />
+  </Function>
+  <Function Name="sp_student_marks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="subject1" Type="varchar" Mode="In" />
+    <Parameter Name="subject2" Type="varchar" Mode="In" />
+    <Parameter Name="subject3" Type="varchar" Mode="In" />
+    <Parameter Name="subject4" Type="varchar" Mode="In" />
+    <Parameter Name="subject5" Type="varchar" Mode="In" />
+    <Parameter Name="subject6" Type="varchar" Mode="In" />
+    <Parameter Name="marks1" Type="decimal" Mode="In" />
+    <Parameter Name="marks2" Type="decimal" Mode="In" />
+    <Parameter Name="marks3" Type="decimal" Mode="In" />
+    <Parameter Name="marks4" Type="decimal" Mode="In" />
+    <Parameter Name="marks5" Type="decimal" Mode="In" />
+    <Parameter Name="marks6" Type="decimal" Mode="In" />
+    <Parameter Name="max1" Type="decimal" Mode="In" />
+    <Parameter Name="max2" Type="decimal" Mode="In" />
+    <Parameter Name="max3" Type="decimal" Mode="In" />
+    <Parameter Name="max4" Type="decimal" Mode="In" />
+    <Parameter Name="max5" Type="decimal" Mode="In" />
+    <Parameter Name="max6" Type="decimal" Mode="In" />
+    <Parameter Name="obtainmarks" Type="int" Mode="In" />
+    <Parameter Name="totalmarks" Type="int" Mode="In" />
+    <Parameter Name="precentage" Type="float" Mode="In" />
+    <Parameter Name="radio1" Type="varchar" Mode="In" />
+    <Parameter Name="radio2" Type="varchar" Mode="In" />
+    <Parameter Name="radio3" Type="varchar" Mode="In" />
+    <Parameter Name="radio4" Type="varchar" Mode="In" />
+    <Parameter Name="radio5" Type="varchar" Mode="In" />
+    <Parameter Name="psubject1" Type="varchar" Mode="In" />
+    <Parameter Name="psubject2" Type="varchar" Mode="In" />
+    <Parameter Name="psubject3" Type="varchar" Mode="In" />
+    <Parameter Name="psubject4" Type="varchar" Mode="In" />
+    <Parameter Name="psubject5" Type="varchar" Mode="In" />
+    <Parameter Name="psubject6" Type="varchar" Mode="In" />
+    <Parameter Name="pmarks1" Type="decimal" Mode="In" />
+    <Parameter Name="pmarks2" Type="decimal" Mode="In" />
+    <Parameter Name="pmarks3" Type="decimal" Mode="In" />
+    <Parameter Name="pmarks4" Type="decimal" Mode="In" />
+    <Parameter Name="pmarks5" Type="decimal" Mode="In" />
+    <Parameter Name="pmarks6" Type="decimal" Mode="In" />
+    <Parameter Name="pmax1" Type="decimal" Mode="In" />
+    <Parameter Name="pmax2" Type="decimal" Mode="In" />
+    <Parameter Name="pmax3" Type="decimal" Mode="In" />
+    <Parameter Name="pmax4" Type="decimal" Mode="In" />
+    <Parameter Name="pmax5" Type="decimal" Mode="In" />
+    <Parameter Name="pmax6" Type="decimal" Mode="In" />
+    <Parameter Name="pobtainmarks" Type="int" Mode="In" />
+    <Parameter Name="ptotalmarks" Type="int" Mode="In" />
+    <Parameter Name="pprecentage" Type="float" Mode="In" />
+    <Parameter Name="pradio1" Type="varchar" Mode="In" />
+    <Parameter Name="pradio2" Type="varchar" Mode="In" />
+    <Parameter Name="pradio3" Type="varchar" Mode="In" />
+    <Parameter Name="pradio4" Type="varchar" Mode="In" />
+    <Parameter Name="pradio5" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_student_online_admission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Studid" Type="int" Mode="In" />
@@ -2424,6 +2711,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <EntityContainer Name="SchoolMgmtSysModelStoreContainer">
     <EntitySet Name="CONFIGMASTER" EntityType="Self.CONFIGMASTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hsceducationdetails" EntityType="Self.hsceducationdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lib_Bookentry" EntityType="Self.lib_Bookentry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lib_Journal" EntityType="Self.lib_Journal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="secondaryeducationdetails" EntityType="Self.secondaryeducationdetails" Schema="dbo" store:Type="Tables" />
@@ -2494,6 +2782,55 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pgeducationdetails" EntityType="Self.pgeducationdetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[pgeducationdetails].[id] AS [id], 
+[pgeducationdetails].[Studid] AS [Studid], 
+[pgeducationdetails].[subject1] AS [subject1], 
+[pgeducationdetails].[subject2] AS [subject2], 
+[pgeducationdetails].[subject3] AS [subject3], 
+[pgeducationdetails].[subject4] AS [subject4], 
+[pgeducationdetails].[subject5] AS [subject5], 
+[pgeducationdetails].[subject6] AS [subject6], 
+[pgeducationdetails].[marks1] AS [marks1], 
+[pgeducationdetails].[marks2] AS [marks2], 
+[pgeducationdetails].[marks3] AS [marks3], 
+[pgeducationdetails].[marks4] AS [marks4], 
+[pgeducationdetails].[marks5] AS [marks5], 
+[pgeducationdetails].[marks6] AS [marks6], 
+[pgeducationdetails].[max1] AS [max1], 
+[pgeducationdetails].[max2] AS [max2], 
+[pgeducationdetails].[max3] AS [max3], 
+[pgeducationdetails].[max4] AS [max4], 
+[pgeducationdetails].[max5] AS [max5], 
+[pgeducationdetails].[max6] AS [max6], 
+[pgeducationdetails].[obtainmarks] AS [obtainmarks], 
+[pgeducationdetails].[totalmarks] AS [totalmarks], 
+[pgeducationdetails].[gradee] AS [gradee], 
+[pgeducationdetails].[precentage] AS [precentage], 
+[pgeducationdetails].[yearpassing1] AS [yearpassing1], 
+[pgeducationdetails].[registerno1] AS [registerno1], 
+[pgeducationdetails].[attempts1] AS [attempts1], 
+[pgeducationdetails].[radio1] AS [radio1], 
+[pgeducationdetails].[radio2] AS [radio2], 
+[pgeducationdetails].[radio3] AS [radio3], 
+[pgeducationdetails].[radio4] AS [radio4], 
+[pgeducationdetails].[radio5] AS [radio5], 
+[pgeducationdetails].[namelocation] AS [namelocation], 
+[pgeducationdetails].[qualifyingexamination] AS [qualifyingexamination], 
+[pgeducationdetails].[courseid] AS [courseid], 
+[pgeducationdetails].[departmetid] AS [departmetid], 
+[pgeducationdetails].[answer1] AS [answer1], 
+[pgeducationdetails].[answer2] AS [answer2], 
+[pgeducationdetails].[previoucollage] AS [previoucollage], 
+[pgeducationdetails].[affliateduniversity] AS [affliateduniversity], 
+[pgeducationdetails].[yearofleaving] AS [yearofleaving], 
+[pgeducationdetails].[refname] AS [refname], 
+[pgeducationdetails].[referencenumber] AS [referencenumber], 
+[pgeducationdetails].[code] AS [code], 
+[pgeducationdetails].[collagepgscan] AS [collagepgscan]
+FROM [dbo].[pgeducationdetails] AS [pgeducationdetails]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [sys_UserPermission].[moduleid] AS [moduleid], 

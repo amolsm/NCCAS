@@ -17,7 +17,7 @@ namespace Entity
         [DisplayName("Day Order")]
         public int Day { get; set; }
 
-        [DisplayName("Lecture No ")]
+        [DisplayName("Hour")]
         public int LecNo { get; set; }
 
         [DisplayName("year")]

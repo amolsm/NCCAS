@@ -79,6 +79,11 @@
     <Compile Include="lib_JTypemodule.cs" />
     <Compile Include="lib_publishermodel.cs" />
     <Compile Include="lib_vendormodel.cs" />
+    <Compile Include="SchoolMgmtSys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgmtSys.edmx</DependentUpon>
+    </Compile>
     <Compile Include="sessionviewmodel.cs" />
     <Compile Include="libBookentry.cs" />
     <Compile Include="smsviewmodel.cs" />
@@ -94,11 +99,6 @@
     <Compile Include="timetableviewmodel.cs" />
     <Compile Include="paymentviewmodel.cs" />
     <Compile Include="feesviewmodel.cs" />
-    <Compile Include="SchoolMgmtSys.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolMgmtSys.edmx</DependentUpon>
-    </Compile>
     <Compile Include="trasportviewmodel.cs" />
     <Compile Include="occupationviewmodel.cs" />
     <Compile Include="subjectviewmodel.cs" />

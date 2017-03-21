@@ -63,10 +63,10 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult FillFeesLabels(int Classid)
         {
-            //var lblid = db.tbl_feeslabel.Where(m => m.classid == Classid).FirstOrDefault();
-            var lblid = db.tbl_feeslabel.Where(m => m.classid == 0).FirstOrDefault();
-            var data = db.tbl_feeslabelchild.Where(m => m.feeslblid == lblid.feeslblid).Select(m => m.ctrlnm).ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
+            var duplicateclass = db.tbl_fees.Where(m => m.Classid == Classid).FirstOrDefault();
+            var lblid = db.tbl_feeslabel.Where(m => m.classid == Classid).FirstOrDefault();
+            var feeslabels = db.tbl_feeslabelchild.Where(m => m.feeslblid == lblid.feeslblid).Select(m => m.ctrlnm).ToList();
+            return Json(new { duplicateclass = duplicateclass, feeslabels = feeslabels }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLFeessetup(feesviewmodel _fvm, string evt, int id, string FeesLabels)
         {

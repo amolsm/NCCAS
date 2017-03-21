@@ -167,9 +167,6 @@
       <Parameter Name="ExamClassid" Mode="In" Type="Int32" />
       <Parameter Name="ExamYear" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_StudentMarks" ReturnType="Collection(SchoolMgmtSysModel.sp_StudentMarks_Result)">
-      <Parameter Name="Examid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_PublishExamination">
       <Parameter Name="ExamTypeid" Mode="In" Type="Int32" />
       <Parameter Name="ExamClassid" Mode="In" Type="Int32" />
@@ -344,6 +341,78 @@
     <FunctionImport Name="sp_GetAvailableEmpLeave" ReturnType="Collection(SchoolMgmtSysModel.sp_GetAvailableEmpLeave_Result)">
       <Parameter Name="Empid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_student_online_admission">
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="Studnm" Mode="In" Type="String" />
+      <Parameter Name="Studfathernm" Mode="In" Type="String" />
+      <Parameter Name="Studmothernm" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Weight" Mode="In" Type="Int32" />
+      <Parameter Name="Height" Mode="In" Type="Int32" />
+      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
+      <Parameter Name="StudEmail" Mode="In" Type="String" />
+      <Parameter Name="Disease" Mode="In" Type="String" />
+      <Parameter Name="Religionid" Mode="In" Type="Int32" />
+      <Parameter Name="Casteid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="RollNo" Mode="In" Type="Int32" />
+      <Parameter Name="Gender" Mode="In" Type="Int32" />
+      <Parameter Name="MotherTongue" Mode="In" Type="String" />
+      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
+      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
+      <Parameter Name="LastClass" Mode="In" Type="String" />
+      <Parameter Name="Grade" Mode="In" Type="String" />
+      <Parameter Name="LeaveYear" Mode="In" Type="String" />
+      <Parameter Name="LeaveReason" Mode="In" Type="String" />
+      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
+      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
+      <Parameter Name="BusNo" Mode="In" Type="String" />
+      <Parameter Name="BusRTONo" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
+      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
+      <Parameter Name="StudPic" Mode="In" Type="Binary" />
+      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherEmail" Mode="In" Type="String" />
+      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="FatherContact" Mode="In" Type="String" />
+      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
+      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherEmail" Mode="In" Type="String" />
+      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="MotherContact" Mode="In" Type="String" />
+      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
+      <Parameter Name="Countryid" Mode="In" Type="Int32" />
+      <Parameter Name="Stateid" Mode="In" Type="Int32" />
+      <Parameter Name="Cityid" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
+      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
+      <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="busid" Mode="In" Type="Int32" />
+      <Parameter Name="cats" Mode="In" Type="String" />
+      <Parameter Name="prds" Mode="In" Type="String" />
+      <Parameter Name="Docs" Mode="In" Type="String" />
+      <Parameter Name="subcats" Mode="In" Type="String" />
+      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
+      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="GuardianContact" Mode="In" Type="String" />
+      <Parameter Name="GuardianName" Mode="In" Type="String" />
+      <Parameter Name="FCode" Mode="In" Type="String" />
+      <Parameter Name="MCode" Mode="In" Type="String" />
+      <Parameter Name="GCode" Mode="In" Type="String" />
+      <Parameter Name="ECode" Mode="In" Type="String" />
+      <Parameter Name="RCode" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="sp_news_DML">
       <Parameter Name="Newsid" Mode="In" Type="Int32" />
       <Parameter Name="NewsDate" Mode="In" Type="DateTime" />
@@ -357,6 +426,78 @@
     <EntitySet Name="tbl_division" EntityType="SchoolMgmtSysModel.tbl_division" />
     <FunctionImport Name="sp_getDivision" ReturnType="Collection(SchoolMgmtSysModel.sp_getDivision_Result)" />
     <EntitySet Name="tbl_online_student" EntityType="SchoolMgmtSysModel.tbl_online_student" />
+    <FunctionImport Name="sp_student_online_admission1">
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="Studnm" Mode="In" Type="String" />
+      <Parameter Name="Studfathernm" Mode="In" Type="String" />
+      <Parameter Name="Studmothernm" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Weight" Mode="In" Type="Int32" />
+      <Parameter Name="Height" Mode="In" Type="Int32" />
+      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
+      <Parameter Name="StudEmail" Mode="In" Type="String" />
+      <Parameter Name="Disease" Mode="In" Type="String" />
+      <Parameter Name="Religionid" Mode="In" Type="Int32" />
+      <Parameter Name="Casteid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="RollNo" Mode="In" Type="Int32" />
+      <Parameter Name="Gender" Mode="In" Type="Int32" />
+      <Parameter Name="MotherTongue" Mode="In" Type="String" />
+      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
+      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
+      <Parameter Name="LastClass" Mode="In" Type="String" />
+      <Parameter Name="Grade" Mode="In" Type="String" />
+      <Parameter Name="LeaveYear" Mode="In" Type="String" />
+      <Parameter Name="LeaveReason" Mode="In" Type="String" />
+      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
+      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
+      <Parameter Name="BusNo" Mode="In" Type="String" />
+      <Parameter Name="BusRTONo" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
+      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
+      <Parameter Name="StudPic" Mode="In" Type="Binary" />
+      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherEmail" Mode="In" Type="String" />
+      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="FatherContact" Mode="In" Type="String" />
+      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
+      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherEmail" Mode="In" Type="String" />
+      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="MotherContact" Mode="In" Type="String" />
+      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
+      <Parameter Name="Countryid" Mode="In" Type="Int32" />
+      <Parameter Name="Stateid" Mode="In" Type="Int32" />
+      <Parameter Name="Cityid" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
+      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
+      <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="busid" Mode="In" Type="Int32" />
+      <Parameter Name="cats" Mode="In" Type="String" />
+      <Parameter Name="prds" Mode="In" Type="String" />
+      <Parameter Name="Docs" Mode="In" Type="String" />
+      <Parameter Name="subcats" Mode="In" Type="String" />
+      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
+      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="GuardianContact" Mode="In" Type="String" />
+      <Parameter Name="GuardianName" Mode="In" Type="String" />
+      <Parameter Name="FCode" Mode="In" Type="String" />
+      <Parameter Name="MCode" Mode="In" Type="String" />
+      <Parameter Name="GCode" Mode="In" Type="String" />
+      <Parameter Name="ECode" Mode="In" Type="String" />
+      <Parameter Name="RCode" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="sp_department_DML">
       <Parameter Name="DeptId" Mode="In" Type="Int32" />
       <Parameter Name="Deptname" Mode="In" Type="String" />
@@ -393,19 +534,6 @@
       <Parameter Name="courseid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
-    <FunctionImport Name="sp_Subject_DML">
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-      <Parameter Name="SubjectNm" Mode="In" Type="String" />
-      <Parameter Name="Marks" Mode="In" Type="Double" />
-      <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="yearid" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
-      <Parameter Name="deptid" Mode="In" Type="Int32" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="subjectcode" Mode="In" Type="String" />
-    </FunctionImport>
     <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
     <FunctionImport Name="sp_coursemaster_DML">
       <Parameter Name="courseid" Mode="In" Type="Int32" />
@@ -638,6 +766,7 @@
       <Parameter Name="reason" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" />
+    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
     <FunctionImport Name="sp_GetStdCount" ReturnType="Collection(Int32)" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" />
     <FunctionImport Name="sp_Attandance_DML">
@@ -649,6 +778,7 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
       <Parameter Name="session" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
     <EntitySet Name="tbl_SessionMaster" EntityType="SchoolMgmtSysModel.tbl_SessionMaster" />
     <FunctionImport Name="sp_getSession" ReturnType="Collection(SchoolMgmtSysModel.sp_getSession_Result)" />
     <FunctionImport Name="sp_Session">
@@ -657,7 +787,6 @@
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
     <EntitySet Name="tbl_Chapter" EntityType="SchoolMgmtSysModel.tbl_Chapter" />
-    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
     <EntitySet Name="tbl_Content" EntityType="SchoolMgmtSysModel.tbl_Content" />
     <EntitySet Name="tbl_teachersubject" EntityType="SchoolMgmtSysModel.tbl_teachersubject" />
     <FunctionImport Name="sp_Content_DML">
@@ -688,6 +817,19 @@
       <Parameter Name="yearid" Mode="In" Type="Int32" />
       <Parameter Name="createdby" Mode="In" Type="Int32" />
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ChapterComplete_DML">
+      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="complete" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
+      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
+      <Parameter Name="Yearid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="contentid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_chapter_DML">
       <Parameter Name="chapterid" Mode="In" Type="Int32" />
@@ -731,224 +873,92 @@
       <Parameter Name="department" Mode="In" Type="Int32" />
       <Parameter Name="year" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_GetBookDetailsbyBookid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookid_Result)">
-      <Parameter Name="Bookid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_getVendor" ReturnType="Collection(SchoolMgmtSysModel.sp_getVendor_Result)" />
     <FunctionImport Name="sp_Vendor">
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="vendorname" Mode="In" Type="String" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="sp_getbookissue" ReturnType="Collection(SchoolMgmtSysModel.sp_getbookissue_Result)">
-      <Parameter Name="student" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="AddBookAllotment">
-      <Parameter Name="studentid" Mode="In" Type="Int32" />
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-      <Parameter Name="noofdays" Mode="In" Type="Int32" />
-      <Parameter Name="returnflag" Mode="In" Type="Int32" />
-      <Parameter Name="CallNumber" Mode="In" Type="String" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
-    <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
-    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
-      <Parameter Name="Studentid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Sp_GetBookStockList" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetBookStockList_Result)" />
-    <EntitySet Name="tbl_libBookReturnStatus" EntityType="SchoolMgmtSysModel.tbl_libBookReturnStatus" />
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
-    <FunctionImport Name="sp_updatereturnbook">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-      <Parameter Name="cretedby" Mode="In" Type="Int32" />
-      <Parameter Name="BookStatusId" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_Author">
-      <Parameter Name="Authorid" Mode="In" Type="Int32" />
-      <Parameter Name="Authorname" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getAuthor" ReturnType="Collection(SchoolMgmtSysModel.sp_getAuthor_Result)" />
-    <FunctionImport Name="sp_getPublisher" ReturnType="Collection(SchoolMgmtSysModel.sp_getPublisher_Result)" />
-    <FunctionImport Name="sp_Publisher">
-      <Parameter Name="PublisherId" Mode="In" Type="Int32" />
-      <Parameter Name="Publishername" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getJType" ReturnType="Collection(SchoolMgmtSysModel.sp_getJType_Result)" />
-    <FunctionImport Name="sp_JType">
-      <Parameter Name="JTypeid" Mode="In" Type="Int32" />
-      <Parameter Name="JTypeName" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-    </FunctionImport>
-    <EntitySet Name="tbl_lib_BookCategory" EntityType="SchoolMgmtSysModel.tbl_lib_BookCategory" />
-    <FunctionImport Name="sp_BookCategory">
-      <Parameter Name="BookCategoryId" Mode="In" Type="Int32" />
-      <Parameter Name="CategoryName" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getBookCategory" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookCategory_Result)" />
-    <EntitySet Name="lib_Journal" EntityType="SchoolMgmtSysModel.lib_Journal" />
     <EntitySet Name="tbl_BookDetails" EntityType="SchoolMgmtSysModel.tbl_BookDetails" />
-    <FunctionImport Name="sp_AddBookEntry">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="CallNo" Mode="In" Type="String" />
-      <Parameter Name="Volume" Mode="In" Type="String" />
-      <Parameter Name="SerielNumber" Mode="In" Type="String" />
-      <Parameter Name="Authorid" Mode="In" Type="Int32" />
-      <Parameter Name="Authorname" Mode="In" Type="String" />
-      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
-      <Parameter Name="PublishedByName" Mode="In" Type="String" />
-      <Parameter Name="Edition" Mode="In" Type="String" />
-      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
-      <Parameter Name="Vendorname" Mode="In" Type="String" />
-      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
-      <Parameter Name="BillNo" Mode="In" Type="String" />
-      <Parameter Name="Cost" Mode="In" Type="Decimal" />
-      <Parameter Name="AccessorNo" Mode="In" Type="String" />
-      <Parameter Name="SelfNo" Mode="In" Type="String" />
-      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="deptid" Mode="In" Type="Int32" />
-      <Parameter Name="categoryid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_AddLibraryJournal">
-      <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
-      <Parameter Name="LibType" Mode="In" Type="Int32" />
-      <Parameter Name="Department" Mode="In" Type="Int32" />
-      <Parameter Name="JournalTitle" Mode="In" Type="String" />
-      <Parameter Name="Volume" Mode="In" Type="String" />
-      <Parameter Name="Number" Mode="In" Type="String" />
-      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
-      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
-      <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
-      <Parameter Name="JBillNo" Mode="In" Type="String" />
-      <Parameter Name="IssuedType" Mode="In" Type="Int32" />
-      <Parameter Name="Publisher" Mode="In" Type="String" />
-      <Parameter Name="ShelfNo" Mode="In" Type="String" />
-      <Parameter Name="CostAmt" Mode="In" Type="Decimal" />
-    </FunctionImport>
-    <FunctionImport Name="Sp_GetLibBookDetailsbyId" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetLibBookDetailsbyId_Result)">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="callno" Mode="In" Type="String" />
-      <Parameter Name="accessonno" Mode="In" Type="String" />
-      <Parameter Name="authorname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
-      <Parameter Name="option" Mode="In" Type="Int32" />
-      <Parameter Name="department" Mode="In" Type="Int32" />
-      <Parameter Name="journaltitle" Mode="In" Type="String" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="publisher" Mode="In" Type="String" />
-      <Parameter Name="accessonno" Mode="In" Type="String" />
-      <Parameter Name="vendorid" Mode="In" Type="Int32" />
-      <Parameter Name="shelfno" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
-      <Parameter Name="option" Mode="In" Type="Int32" />
-      <Parameter Name="booktitle" Mode="In" Type="String" />
-      <Parameter Name="authorname" Mode="In" Type="String" />
-      <Parameter Name="callno" Mode="In" Type="String" />
-      <Parameter Name="accessorid" Mode="In" Type="String" />
-      <Parameter Name="publishername" Mode="In" Type="String" />
-      <Parameter Name="vendorname" Mode="In" Type="String" />
-      <Parameter Name="department" Mode="In" Type="Int32" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_student_online_admission">
-      <Parameter Name="Studid" Mode="In" Type="Int32" />
-      <Parameter Name="Studnm" Mode="In" Type="String" />
-      <Parameter Name="Studfathernm" Mode="In" Type="String" />
-      <Parameter Name="Studmothernm" Mode="In" Type="String" />
-      <Parameter Name="DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Weight" Mode="In" Type="Int32" />
-      <Parameter Name="Height" Mode="In" Type="Int32" />
-      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
-      <Parameter Name="StudEmail" Mode="In" Type="String" />
-      <Parameter Name="Disease" Mode="In" Type="String" />
-      <Parameter Name="Religionid" Mode="In" Type="Int32" />
-      <Parameter Name="Casteid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="RollNo" Mode="In" Type="Int32" />
-      <Parameter Name="Gender" Mode="In" Type="Int32" />
-      <Parameter Name="MotherTongue" Mode="In" Type="String" />
-      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
-      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
-      <Parameter Name="LastClass" Mode="In" Type="String" />
-      <Parameter Name="Grade" Mode="In" Type="String" />
-      <Parameter Name="LeaveYear" Mode="In" Type="String" />
-      <Parameter Name="LeaveReason" Mode="In" Type="String" />
-      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
-      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
-      <Parameter Name="BusNo" Mode="In" Type="String" />
-      <Parameter Name="BusRTONo" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
-      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
-      <Parameter Name="StudPic" Mode="In" Type="Binary" />
-      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherEmail" Mode="In" Type="String" />
-      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="FatherContact" Mode="In" Type="String" />
-      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
-      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherEmail" Mode="In" Type="String" />
-      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="MotherContact" Mode="In" Type="String" />
-      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
-      <Parameter Name="Countryid" Mode="In" Type="Int32" />
-      <Parameter Name="Stateid" Mode="In" Type="Int32" />
-      <Parameter Name="Cityid" Mode="In" Type="Int32" />
-      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
-      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
-      <Parameter Name="academicyear" Mode="In" Type="String" />
-      <Parameter Name="busid" Mode="In" Type="Int32" />
-      <Parameter Name="cats" Mode="In" Type="String" />
-      <Parameter Name="prds" Mode="In" Type="String" />
-      <Parameter Name="Docs" Mode="In" Type="String" />
-      <Parameter Name="subcats" Mode="In" Type="String" />
-      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
-      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="GuardianContact" Mode="In" Type="String" />
-      <Parameter Name="GuardianName" Mode="In" Type="String" />
-      <Parameter Name="FCode" Mode="In" Type="String" />
-      <Parameter Name="MCode" Mode="In" Type="String" />
-      <Parameter Name="GCode" Mode="In" Type="String" />
-      <Parameter Name="ECode" Mode="In" Type="String" />
-      <Parameter Name="RCode" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <EntitySet Name="CONFIGMASTERs" EntityType="SchoolMgmtSysModel.CONFIGMASTER" />
-    <FunctionImport Name="GetDropDownValues">
-      <Parameter Name="ValueID" Mode="In" Type="String" />
-      <Parameter Name="TextFiled" Mode="In" Type="String" />
-      <Parameter Name="TableName" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="String" />
-    </FunctionImport>
-    <EntitySet Name="secondaryeducationdetails" EntityType="SchoolMgmtSysModel.secondaryeducationdetail" />
+    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
     <EntitySet Name="tbl_collageeducationdetails" EntityType="SchoolMgmtSysModel.tbl_collageeducationdetails" />
+    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
     <FunctionImport Name="sp_getsubjectcode" ReturnType="Collection(SchoolMgmtSysModel.sp_getsubjectcode_Result)">
       <Parameter Name="course" Mode="In" Type="Int32" />
       <Parameter Name="yearid" Mode="In" Type="Int32" />
       <Parameter Name="dept" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
-    <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
+    <FunctionImport Name="sp_Subject_DML">
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Courseid" Mode="In" Type="Int32" />
+      <Parameter Name="SubjectNm" Mode="In" Type="String" />
+      <Parameter Name="Marks" Mode="In" Type="Double" />
+      <Parameter Name="Pass_Marks" Mode="In" Type="Double" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="yearid" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="subjectcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CONFIGMASTERs" EntityType="SchoolMgmtSysModel.CONFIGMASTER" />
+    <FunctionImport Name="sp_student_marks">
+      <Parameter Name="subject1" Mode="In" Type="String" />
+      <Parameter Name="subject2" Mode="In" Type="String" />
+      <Parameter Name="subject3" Mode="In" Type="String" />
+      <Parameter Name="subject4" Mode="In" Type="String" />
+      <Parameter Name="subject5" Mode="In" Type="String" />
+      <Parameter Name="subject6" Mode="In" Type="String" />
+      <Parameter Name="marks1" Mode="In" Type="Decimal" />
+      <Parameter Name="marks2" Mode="In" Type="Decimal" />
+      <Parameter Name="marks3" Mode="In" Type="Decimal" />
+      <Parameter Name="marks4" Mode="In" Type="Decimal" />
+      <Parameter Name="marks5" Mode="In" Type="Decimal" />
+      <Parameter Name="marks6" Mode="In" Type="Decimal" />
+      <Parameter Name="max1" Mode="In" Type="Decimal" />
+      <Parameter Name="max2" Mode="In" Type="Decimal" />
+      <Parameter Name="max3" Mode="In" Type="Decimal" />
+      <Parameter Name="max4" Mode="In" Type="Decimal" />
+      <Parameter Name="max5" Mode="In" Type="Decimal" />
+      <Parameter Name="max6" Mode="In" Type="Decimal" />
+      <Parameter Name="obtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="totalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="precentage" Mode="In" Type="Double" />
+      <Parameter Name="radio1" Mode="In" Type="String" />
+      <Parameter Name="radio2" Mode="In" Type="String" />
+      <Parameter Name="radio3" Mode="In" Type="String" />
+      <Parameter Name="radio4" Mode="In" Type="String" />
+      <Parameter Name="radio5" Mode="In" Type="String" />
+      <Parameter Name="psubject1" Mode="In" Type="String" />
+      <Parameter Name="psubject2" Mode="In" Type="String" />
+      <Parameter Name="psubject3" Mode="In" Type="String" />
+      <Parameter Name="psubject4" Mode="In" Type="String" />
+      <Parameter Name="psubject5" Mode="In" Type="String" />
+      <Parameter Name="psubject6" Mode="In" Type="String" />
+      <Parameter Name="pmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="pobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="ptotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pprecentage" Mode="In" Type="Double" />
+      <Parameter Name="pradio1" Mode="In" Type="String" />
+      <Parameter Name="pradio2" Mode="In" Type="String" />
+      <Parameter Name="pradio3" Mode="In" Type="String" />
+      <Parameter Name="pradio4" Mode="In" Type="String" />
+      <Parameter Name="pradio5" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="hsceducationdetails" EntityType="SchoolMgmtSysModel.hsceducationdetail" />
+    <EntitySet Name="pgeducationdetails" EntityType="SchoolMgmtSysModel.pgeducationdetail" />
     <FunctionImport Name="sp_student_admission">
       <Parameter Name="Studid" Mode="In" Type="Int32" />
       <Parameter Name="Studnm" Mode="In" Type="String" />
@@ -1124,6 +1134,15 @@
       <Parameter Name="radio5" Mode="In" Type="String" />
       <Parameter Name="namelocation" Mode="In" Type="String" />
       <Parameter Name="qualifyingexamination" Mode="In" Type="String" />
+      <Parameter Name="sanswer1" Mode="In" Type="String" />
+      <Parameter Name="sanswer2" Mode="In" Type="String" />
+      <Parameter Name="spreviouschool" Mode="In" Type="String" />
+      <Parameter Name="srefname" Mode="In" Type="String" />
+      <Parameter Name="sreferencenumber" Mode="In" Type="String" />
+      <Parameter Name="scode" Mode="In" Type="String" />
+      <Parameter Name="sreferenceletter" Mode="In" Type="Binary" />
+      <Parameter Name="stcscan" Mode="In" Type="Binary" />
+      <Parameter Name="smarksSheet" Mode="In" Type="Binary" />
       <Parameter Name="psubject1" Mode="In" Type="String" />
       <Parameter Name="psubject2" Mode="In" Type="String" />
       <Parameter Name="psubject3" Mode="In" Type="String" />
@@ -1156,8 +1175,118 @@
       <Parameter Name="pradio5" Mode="In" Type="String" />
       <Parameter Name="pnamelocation" Mode="In" Type="String" />
       <Parameter Name="pqualifyingexamination" Mode="In" Type="String" />
+      <Parameter Name="ucourseid" Mode="In" Type="Int32" />
+      <Parameter Name="udepartmetid" Mode="In" Type="Int32" />
+      <Parameter Name="uanswer1" Mode="In" Type="String" />
+      <Parameter Name="uanswer2" Mode="In" Type="String" />
+      <Parameter Name="uprevioucollage" Mode="In" Type="String" />
+      <Parameter Name="uaffliateduniversity" Mode="In" Type="String" />
+      <Parameter Name="uyearofleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="urefname" Mode="In" Type="String" />
+      <Parameter Name="ureferencenumber" Mode="In" Type="String" />
+      <Parameter Name="ucode" Mode="In" Type="Int32" />
+      <Parameter Name="ucollageugscan" Mode="In" Type="Binary" />
+      <Parameter Name="hsubject1" Mode="In" Type="String" />
+      <Parameter Name="hsubject2" Mode="In" Type="String" />
+      <Parameter Name="hsubject3" Mode="In" Type="String" />
+      <Parameter Name="hsubject4" Mode="In" Type="String" />
+      <Parameter Name="hsubject5" Mode="In" Type="String" />
+      <Parameter Name="hsubject6" Mode="In" Type="String" />
+      <Parameter Name="hmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="hobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="htotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="hgradee" Mode="In" Type="String" />
+      <Parameter Name="hprecentage" Mode="In" Type="Double" />
+      <Parameter Name="hyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="hregisterno1" Mode="In" Type="String" />
+      <Parameter Name="hattempts1" Mode="In" Type="Int32" />
+      <Parameter Name="hradio1" Mode="In" Type="String" />
+      <Parameter Name="hradio2" Mode="In" Type="String" />
+      <Parameter Name="hradio3" Mode="In" Type="String" />
+      <Parameter Name="hradio4" Mode="In" Type="String" />
+      <Parameter Name="hradio5" Mode="In" Type="String" />
+      <Parameter Name="hnamelocation" Mode="In" Type="String" />
+      <Parameter Name="hqexam" Mode="In" Type="String" />
+      <Parameter Name="hprschool" Mode="In" Type="String" />
+      <Parameter Name="hrefname" Mode="In" Type="String" />
+      <Parameter Name="hrefno" Mode="In" Type="String" />
+      <Parameter Name="hrefcode" Mode="In" Type="Int32" />
+      <Parameter Name="htcno" Mode="In" Type="String" />
+      <Parameter Name="htcscan" Mode="In" Type="Binary" />
+      <Parameter Name="hreflatter" Mode="In" Type="Binary" />
+      <Parameter Name="hmarksheet" Mode="In" Type="Binary" />
+      <Parameter Name="hanswer1" Mode="In" Type="String" />
+      <Parameter Name="hanswer2" Mode="In" Type="String" />
+      <Parameter Name="pgsubject1" Mode="In" Type="String" />
+      <Parameter Name="pgsubject2" Mode="In" Type="String" />
+      <Parameter Name="pgsubject3" Mode="In" Type="String" />
+      <Parameter Name="pgsubject4" Mode="In" Type="String" />
+      <Parameter Name="pgsubject5" Mode="In" Type="String" />
+      <Parameter Name="pgsubject6" Mode="In" Type="String" />
+      <Parameter Name="pgmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="pgobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pgtotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pggradee" Mode="In" Type="String" />
+      <Parameter Name="pgprecentage" Mode="In" Type="Double" />
+      <Parameter Name="pgyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="pgregisterno1" Mode="In" Type="String" />
+      <Parameter Name="pgattempts1" Mode="In" Type="Int32" />
+      <Parameter Name="pgradio1" Mode="In" Type="String" />
+      <Parameter Name="pgradio2" Mode="In" Type="String" />
+      <Parameter Name="pgradio3" Mode="In" Type="String" />
+      <Parameter Name="pgradio4" Mode="In" Type="String" />
+      <Parameter Name="pgradio5" Mode="In" Type="String" />
+      <Parameter Name="pgnamelocation" Mode="In" Type="String" />
+      <Parameter Name="pgqexam" Mode="In" Type="String" />
+      <Parameter Name="pcourseid" Mode="In" Type="Int32" />
+      <Parameter Name="pdepartmetid" Mode="In" Type="Int32" />
+      <Parameter Name="panswer1" Mode="In" Type="String" />
+      <Parameter Name="panswer2" Mode="In" Type="String" />
+      <Parameter Name="pprevioucollage" Mode="In" Type="String" />
+      <Parameter Name="paffliateduniversity" Mode="In" Type="String" />
+      <Parameter Name="pyearofleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="prefname" Mode="In" Type="String" />
+      <Parameter Name="preferencenumber" Mode="In" Type="String" />
+      <Parameter Name="pcode" Mode="In" Type="Int32" />
+      <Parameter Name="pcollagepgscan" Mode="In" Type="Binary" />
     </FunctionImport>
-    <FunctionImport Name="sp_getConfigInfo" ReturnType="Collection(SchoolMgmtSysModel.sp_getConfigInfo_Result)" />
+    <EntitySet Name="tbl_ContentComplete" EntityType="SchoolMgmtSysModel.tbl_ContentComplete" />
+    <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
+    <EntitySet Name="tbl_lib_BookCategory" EntityType="SchoolMgmtSysModel.tbl_lib_BookCategory" />
+    <EntitySet Name="tbl_libBookReturnStatus" EntityType="SchoolMgmtSysModel.tbl_libBookReturnStatus" />
+    <FunctionImport Name="GetDropDownValues">
+      <Parameter Name="ValueID" Mode="In" Type="String" />
+      <Parameter Name="TextFiled" Mode="In" Type="String" />
+      <Parameter Name="TableName" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Author">
+      <Parameter Name="Authorid" Mode="In" Type="Int32" />
+      <Parameter Name="Authorname" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
     <FunctionImport Name="sp_DMLConfig">
       <Parameter Name="CId" Mode="In" Type="Int32" />
       <Parameter Name="ConfigName" Mode="In" Type="String" />
@@ -1166,20 +1295,7 @@
       <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="Boolean" />
     </FunctionImport>
-    <EntitySet Name="tbl_ContentComplete" EntityType="SchoolMgmtSysModel.tbl_ContentComplete" />
-    <FunctionImport Name="sp_ChapterComplete_DML">
-      <Parameter Name="Teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="complete" Mode="In" Type="Boolean" />
-      <Parameter Name="Remark" Mode="In" Type="String" />
-      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Chapterid" Mode="In" Type="Int32" />
-      <Parameter Name="Departmentid" Mode="In" Type="Int32" />
-      <Parameter Name="Yearid" Mode="In" Type="Int32" />
-      <Parameter Name="Courseid" Mode="In" Type="Int32" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="contentid" Mode="In" Type="Int32" />
-    </FunctionImport>
+    <FunctionImport Name="sp_getAuthor" ReturnType="Collection(SchoolMgmtSysModel.sp_getAuthor_Result)" />
     <FunctionImport Name="sp_GetChapterContentDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_GetChapterContentDetails_Result)">
       <Parameter Name="CourseId" Mode="In" Type="Int32" />
       <Parameter Name="Deptid" Mode="In" Type="Int32" />
@@ -1190,6 +1306,128 @@
     <FunctionImport Name="Sp_GetChapterDetails" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetChapterDetails_Result)">
       <Parameter Name="Subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_getConfigInfo" ReturnType="Collection(SchoolMgmtSysModel.sp_getConfigInfo_Result)" />
+    <FunctionImport Name="sp_getJType" ReturnType="Collection(SchoolMgmtSysModel.sp_getJType_Result)" />
+    <FunctionImport Name="sp_getPublisher" ReturnType="Collection(SchoolMgmtSysModel.sp_getPublisher_Result)" />
+    <FunctionImport Name="sp_JType">
+      <Parameter Name="JTypeid" Mode="In" Type="Int32" />
+      <Parameter Name="JTypeName" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Publisher">
+      <Parameter Name="PublisherId" Mode="In" Type="Int32" />
+      <Parameter Name="Publishername" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="AddBookAllotment">
+      <Parameter Name="studentid" Mode="In" Type="Int32" />
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="noofdays" Mode="In" Type="Int32" />
+      <Parameter Name="returnflag" Mode="In" Type="Int32" />
+      <Parameter Name="CallNumber" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_AddBookEntry">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="CallNo" Mode="In" Type="String" />
+      <Parameter Name="Volume" Mode="In" Type="String" />
+      <Parameter Name="SerielNumber" Mode="In" Type="String" />
+      <Parameter Name="Authorid" Mode="In" Type="Int32" />
+      <Parameter Name="Authorname" Mode="In" Type="String" />
+      <Parameter Name="PublishedByid" Mode="In" Type="Int32" />
+      <Parameter Name="PublishedByName" Mode="In" Type="String" />
+      <Parameter Name="Edition" Mode="In" Type="String" />
+      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="Vendorname" Mode="In" Type="String" />
+      <Parameter Name="Dateofpurchase" Mode="In" Type="DateTime" />
+      <Parameter Name="BillNo" Mode="In" Type="String" />
+      <Parameter Name="Cost" Mode="In" Type="Decimal" />
+      <Parameter Name="AccessorNo" Mode="In" Type="String" />
+      <Parameter Name="SelfNo" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="categoryid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_AddLibraryJournal">
+      <Parameter Name="lib_Jid" Mode="In" Type="Int32" />
+      <Parameter Name="LibType" Mode="In" Type="Int32" />
+      <Parameter Name="Department" Mode="In" Type="Int32" />
+      <Parameter Name="JournalTitle" Mode="In" Type="String" />
+      <Parameter Name="Volume" Mode="In" Type="String" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="JBillNo" Mode="In" Type="String" />
+      <Parameter Name="IssuedType" Mode="In" Type="Int32" />
+      <Parameter Name="Publisher" Mode="In" Type="String" />
+      <Parameter Name="ShelfNo" Mode="In" Type="String" />
+      <Parameter Name="CostAmt" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BookCategory">
+      <Parameter Name="BookCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="CategoryName" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getBookCategory" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookCategory_Result)" />
+    <FunctionImport Name="sp_GetBookDetailsbyBookid">
+      <Parameter Name="Bookid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetBookDetailsbyBookidorBookname" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookDetailsbyBookidorBookname_Result)">
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="callno" Mode="In" Type="String" />
+      <Parameter Name="accessonno" Mode="In" Type="String" />
+      <Parameter Name="authorname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getBookentry" ReturnType="Collection(SchoolMgmtSysModel.sp_getBookentry_Result)" />
+    <FunctionImport Name="sp_getbookissue" ReturnType="Collection(SchoolMgmtSysModel.sp_getbookissue_Result)">
+      <Parameter Name="student" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetBookIssueDetailsbyStudentid" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBookIssueDetailsbyStudentid_Result)">
+      <Parameter Name="Studentid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GetBookStockList" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetBookStockList_Result)" />
+    <FunctionImport Name="sp_GetSearchBookAndJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchBookAndJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="booktitle" Mode="In" Type="String" />
+      <Parameter Name="authorname" Mode="In" Type="String" />
+      <Parameter Name="callno" Mode="In" Type="String" />
+      <Parameter Name="accessorid" Mode="In" Type="String" />
+      <Parameter Name="publishername" Mode="In" Type="String" />
+      <Parameter Name="vendorname" Mode="In" Type="String" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetSearchJournal" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSearchJournal_Result)">
+      <Parameter Name="option" Mode="In" Type="Int32" />
+      <Parameter Name="department" Mode="In" Type="Int32" />
+      <Parameter Name="journaltitle" Mode="In" Type="String" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="publisher" Mode="In" Type="String" />
+      <Parameter Name="accessonno" Mode="In" Type="String" />
+      <Parameter Name="vendorid" Mode="In" Type="Int32" />
+      <Parameter Name="shelfno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_updatereturnbook">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+      <Parameter Name="cretedby" Mode="In" Type="Int32" />
+      <Parameter Name="BookStatusId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GetLibBookDetailsbyId" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetLibBookDetailsbyId_Result)">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_StudentMarks" ReturnType="Collection(SchoolMgmtSysModel.sp_StudentMarks_Result)">
+      <Parameter Name="Examid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetSubjectForExamtimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSubjectForExamtimetable_Result)">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="secondaryeducationdetails" EntityType="SchoolMgmtSysModel.secondaryeducationdetail" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1543,16 +1781,6 @@
     <Property Type="String" Name="ExamSubject" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="ExamClass" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ExamYear" Nullable="false" MaxLength="255" />
-  </ComplexType>
-  <ComplexType Name="sp_StudentMarks_Result">
-    <Property Type="Int32" Name="Studid" Nullable="false" />
-    <Property Type="String" Name="studentname" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
-    <Property Type="Int32" Name="RollNo" Nullable="false" />
-    <Property Type="String" Name="Sub" Nullable="false" MaxLength="50" />
-    <Property Type="Decimal" Name="Marks" Nullable="true" Precision="18" Scale="0" />
-    <Property Type="Decimal" Name="TotalMarks" Nullable="true" Precision="18" Scale="0" />
-    <Property Type="Boolean" Name="Remark" Nullable="true" />
   </ComplexType>
   <ComplexType Name="sp_GetStudentMarks_Result">
     <Property Type="Int32" Name="Studid" Nullable="false" />
@@ -2358,496 +2586,6 @@
     <Property Name="IsApprove" Type="Boolean" />
     <Property Name="LeaveType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tbl_StudentAttendance">
-    <Key>
-      <PropertyRef Name="AttendanceID" />
-    </Key>
-    <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
-    <Property Name="Present" Type="Boolean" />
-    <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="Session" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_SessionMaster">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SessionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-  </EntityType>
-  <ComplexType Name="sp_getSession_Result">
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <EntityType Name="tbl_Chapter">
-    <Key>
-      <PropertyRef Name="Chapter_id" />
-    </Key>
-    <Property Name="Chapter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ChapterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="dept_id" Type="Int32" />
-    <Property Name="teacherid" Type="Int32" />
-    <Property Name="Courseid" Type="Int32" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="tbl_Chaptercomplete">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Teacherid" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="Departmentid" Type="Int32" />
-    <Property Name="Courseid" Type="Int32" />
-    <Property Name="Yearid" Type="Int32" />
-    <Property Name="Chapterid" Type="Int32" />
-    <Property Name="complete" Type="Boolean" />
-    <Property Name="CompleteDate" Type="DateTime" Precision="3" />
-    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="tbl_Content">
-    <Key>
-      <PropertyRef Name="Content_id" />
-    </Key>
-    <Property Name="Content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Chapter_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Content_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="Content_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="teacherid" Type="Int32" />
-    <Property Name="Courseid" Type="Int32" />
-    <Property Name="dept_id" Type="Int32" />
-    <Property Name="Subjectid" Type="Int32" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="tbl_teachersubject">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="teacherid" Type="Int32" />
-    <Property Name="courseid" Type="Int32" />
-    <Property Name="departmentid" Type="Int32" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="subjectid" Type="Int32" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-  </EntityType>
-  <ComplexType Name="sp_getchaptersubject_Result">
-    <Property Type="Int32" Name="Subjectid" Nullable="false" />
-    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
-  </ComplexType>
-  <EntityType Name="tbl_lib_Author">
-    <Key>
-      <PropertyRef Name="Authorid" />
-    </Key>
-    <Property Type="Int32" Name="Authorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Authorname" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="status" />
-  </EntityType>
-  <EntityType Name="tbl_lib_JournalType">
-    <Key>
-      <PropertyRef Name="JTypeid" />
-    </Key>
-    <Property Type="Int32" Name="JTypeid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="JTypeName" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="status" />
-  </EntityType>
-  <EntityType Name="tbl_lib_Publisher">
-    <Key>
-      <PropertyRef Name="PublisherId" />
-    </Key>
-    <Property Type="Int32" Name="PublisherId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Publishername" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="status" />
-  </EntityType>
-  <EntityType Name="tbl_lib_Vendor">
-    <Key>
-      <PropertyRef Name="Vendorid" />
-    </Key>
-    <Property Type="Int32" Name="Vendorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Vendorname" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="status" />
-  </EntityType>
-  <ComplexType Name="sp_getteachers_Result">
-    <Property Type="Int32" Name="Empid" Nullable="false" />
-    <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetable_pivot_Result">
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetable_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetableclass_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-  </ComplexType>
-  <EntityType Name="tbl_AssignDivision">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Studid" />
-    <Property Type="Int32" Name="Classid" />
-    <Property Type="Int32" Name="department" />
-    <Property Type="Int32" Name="year" />
-    <Property Type="String" Name="divisionId" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <ComplexType Name="sp_GetBookDetailsbyBookid_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-  </ComplexType>
-  <ComplexType Name="sp_getVendor_Result">
-    <Property Type="Int32" Name="Vendorid" Nullable="false" />
-    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <ComplexType Name="sp_getbookissue_Result">
-    <Property Type="Int32" Name="BookIssueId" Nullable="false" />
-    <Property Type="Int32" Name="StudentId" Nullable="true" />
-    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="NoOfDaysTillt" Nullable="true" />
-  </ComplexType>
-  <EntityType Name="lib_Bookentry">
-    <Key>
-      <PropertyRef Name="bookid" />
-    </Key>
-    <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="AccessorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SelfNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Boolean" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="createdby" Type="Int32" />
-  </EntityType>
-  <ComplexType Name="sp_getBookentry_Result">
-    <Property Type="Int32" Name="bookid" Nullable="false" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Status" Nullable="true" />
-    <Property Type="Boolean" Name="IsActive" Nullable="true" />
-    <Property Type="Int32" Name="createdby" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
-    <Property Type="Int32" Name="StudentId" Nullable="true" />
-    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
-    <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Sp_GetBookStockList_Result">
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="BookQty" Nullable="true" />
-    <Property Type="Int32" Name="AllocateQty" Nullable="true" />
-    <Property Type="Int32" Name="AvailQty" Nullable="true" />
-    <Property Type="Int32" Name="LostQty" Nullable="true" />
-  </ComplexType>
-  <EntityType Name="tbl_libBookReturnStatus">
-    <Key>
-      <PropertyRef Name="BookStatusId" />
-    </Key>
-    <Property Name="BookStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbl_lib_BookIssue">
-    <Key>
-      <PropertyRef Name="BookIssueId" />
-    </Key>
-    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StudentId" Type="Int32" />
-    <Property Name="BookId" Type="Int32" />
-    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
-    <Property Name="NoOfDays" Type="Int32" />
-    <Property Name="PanaltyStatus" Type="Boolean" />
-    <Property Name="Returnflag" Type="Int32" />
-    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
-    <Property Name="Return_CreatedBy" Type="Int32" />
-    <Property Name="AllotedBy" Type="Int32" />
-    <Property Name="CallNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="flag" Type="Int32" />
-    <Property Name="BookStatus" Type="Int32" />
-  </EntityType>
-  <ComplexType Name="sp_getAuthor_Result">
-    <Property Type="Int32" Name="Authorid" Nullable="false" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <ComplexType Name="sp_getPublisher_Result">
-    <Property Type="Int32" Name="PublisherId" Nullable="false" />
-    <Property Type="String" Name="Publishername" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <ComplexType Name="sp_getJType_Result">
-    <Property Type="Int32" Name="JTypeid" Nullable="false" />
-    <Property Type="String" Name="JTypeName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <EntityType Name="tbl_lib_BookCategory">
-    <Key>
-      <PropertyRef Name="BookCategoryId" />
-    </Key>
-    <Property Name="BookCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="Boolean" />
-  </EntityType>
-  <ComplexType Name="sp_getBookCategory_Result">
-    <Property Type="Int32" Name="BookCategoryId" Nullable="false" />
-    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <EntityType Name="lib_Journal">
-    <Key>
-      <PropertyRef Name="lib_Jid" />
-    </Key>
-    <Property Name="lib_Jid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LibType" Type="Int32" />
-    <Property Name="Department" Type="Int32" />
-    <Property Name="JournalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="IssueDate" Type="DateTime" Precision="7" />
-    <Property Name="Vendorid" Type="Int32" />
-    <Property Name="PurchaseDate" Type="DateTime" Precision="7" />
-    <Property Name="JBillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="JCourseId" Type="Int32" />
-    <Property Name="IssueType" Type="Int32" />
-    <Property Name="Publisher" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="jcost" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="shelfno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_BookDetails">
-    <Key>
-      <PropertyRef Name="BookDetailsId" />
-    </Key>
-    <Property Name="BookDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="BookName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SerialNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Authorid" Type="Int32" />
-    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Publisherid" Type="Int32" />
-    <Property Name="PublisherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Vendorid" Type="Int32" />
-    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
-    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Active" Type="Boolean" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="BookQty" Type="Int32" />
-    <Property Name="AllocateQty" Type="Int32" />
-    <Property Name="AvailQty" Type="Int32" />
-    <Property Name="LostQty" Type="Int32" />
-    <Property Name="CourseId" Type="Int32" />
-    <Property Name="DeptId" Type="Int32" />
-    <Property Name="CategoryId" Type="Int32" />
-  </EntityType>
-  <ComplexType Name="Sp_GetLibBookDetailsbyId_Result">
-    <Property Type="Int32" Name="bookid" Nullable="false" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="IsActive" Nullable="true" />
-    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Authorid" Nullable="true" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Publisherid" Nullable="true" />
-    <Property Type="String" Name="PublisherName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Vendorid" Nullable="true" />
-    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
-    <Property Type="String" Name="BillNo" Nullable="true" />
-    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
-    <Property Type="Int32" Name="CourseId" Nullable="true" />
-    <Property Type="Int32" Name="DeptId" Nullable="true" />
-    <Property Type="Int32" Name="CategoryId" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="13" />
-  </ComplexType>
-  <ComplexType Name="sp_GetSearchJournal_Result">
-    <Property Type="Int32" Name="JId" Nullable="false" />
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Department" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Number" Nullable="true" />
-    <Property Type="String" Name="JBillNo" Nullable="true" />
-    <Property Type="String" Name="shelfno" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_GetSearchBookAndJournal_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Department" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="BookStatus" Nullable="false" MaxLength="9" />
-  </ComplexType>
-  <EntityType Name="CONFIGMASTER">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CONFIGNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CONFIGKEY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CONFIGVALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ISACTIVE" Type="Boolean" />
-    <Property Name="CREATEDBY" Type="Int32" />
-    <Property Name="CREATEDDATE" Type="DateTime" Precision="7" />
-    <Property Name="MODIFIEDBY" Type="Int32" />
-    <Property Name="MODIFIEDDATE" Type="DateTime" Precision="7" />
-    <Property Name="CUSTOM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CUSTOM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="secondaryeducationdetail">
-    <Key>
-      <PropertyRef Name="educationid" />
-    </Key>
-    <Property Name="educationid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="subject1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="marks1" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks2" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks3" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks4" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks5" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks6" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max1" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max2" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max3" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max4" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max5" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max6" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="obtainmarks" Type="Int32" />
-    <Property Name="totalmarks" Type="Int32" />
-    <Property Name="yearpassing1" Type="DateTime" Precision="3" />
-    <Property Name="registerno1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="attempts1" Type="Int32" />
-    <Property Name="Studid" Type="Int32" />
-    <Property Name="grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="precentage" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="radio1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="test" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_collageeducationdetails">
-    <Key>
-      <PropertyRef Name="collageid" />
-    </Key>
-    <Property Name="collageid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="subject1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="subject6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="marks1" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks2" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks3" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks4" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks5" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="marks6" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max1" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max2" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max3" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max4" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max5" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="max6" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="obtainmarks" Type="Int32" />
-    <Property Name="totalmarks" Type="Int32" />
-    <Property Name="yearpassing1" Type="DateTime" Precision="3" />
-    <Property Name="registerno1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="attempts1" Type="Int32" />
-    <Property Name="precentage" Type="Double" />
-    <Property Name="radio1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Studid" Type="Int32" />
-    <Property Name="grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <ComplexType Name="sp_getsubjectcode_Result">
-    <Property Type="Int32" Name="Subjectid" Nullable="false" />
-    <Property Type="String" Name="SubjectNms" Nullable="true" MaxLength="101" />
-  </ComplexType>
   <EntityType Name="tbl_student">
     <Key>
       <PropertyRef Name="Studid" />
@@ -2995,42 +2733,483 @@
     <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="tbl_StudentAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+    </Key>
+    <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="Present" Type="Boolean" />
+    <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Session" Type="Int32" />
+  </EntityType>
+  <EntityType Name="lib_Journal">
+    <Key>
+      <PropertyRef Name="lib_Jid" />
+    </Key>
+    <Property Name="lib_Jid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LibType" Type="Int32" />
+    <Property Name="Department" Type="Int32" />
+    <Property Name="JournalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IssueDate" Type="DateTime" Precision="7" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="7" />
+    <Property Name="JBillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="JCourseId" />
+    <Property Type="Int32" Name="IssueType" />
+    <Property Type="String" Name="Publisher" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="jcost" Precision="19" Scale="4" />
+    <Property Type="String" Name="shelfno" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_SessionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getSession_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SessionName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <EntityType Name="tbl_Chapter">
+    <Key>
+      <PropertyRef Name="Chapter_id" />
+    </Key>
+    <Property Name="Chapter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChapterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Content">
+    <Key>
+      <PropertyRef Name="Content_id" />
+    </Key>
+    <Property Name="Content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Chapter_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Content_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Content_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="Courseid" Type="Int32" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_teachersubject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="teacherid" Type="Int32" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="departmentid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="subjectid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_getchaptersubject_Result">
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tbl_lib_Author">
+    <Key>
+      <PropertyRef Name="Authorid" />
+    </Key>
+    <Property Type="Int32" Name="Authorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Authorname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
+  </EntityType>
+  <EntityType Name="tbl_lib_JournalType">
+    <Key>
+      <PropertyRef Name="JTypeid" />
+    </Key>
+    <Property Type="Int32" Name="JTypeid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="JTypeName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Publisher">
+    <Key>
+      <PropertyRef Name="PublisherId" />
+    </Key>
+    <Property Type="Int32" Name="PublisherId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Publishername" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
+  </EntityType>
+  <EntityType Name="tbl_lib_Vendor">
+    <Key>
+      <PropertyRef Name="Vendorid" />
+    </Key>
+    <Property Type="Int32" Name="Vendorid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Vendorname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="status" />
+  </EntityType>
+  <ComplexType Name="sp_getteachers_Result">
+    <Property Type="Int32" Name="Empid" Nullable="false" />
+    <Property Type="String" Name="fullnm" Nullable="true" MaxLength="152" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetable_pivot_Result">
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetable_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetableclass_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LecETime" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <EntityType Name="tbl_AssignDivision">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Studid" />
+    <Property Type="Int32" Name="Classid" />
+    <Property Type="Int32" Name="department" />
+    <Property Type="Int32" Name="year" />
+    <Property Type="String" Name="divisionId" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_getVendor_Result">
+    <Property Type="Int32" Name="Vendorid" Nullable="false" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <EntityType Name="tbl_lib_BookIssue">
+    <Key>
+      <PropertyRef Name="BookIssueId" />
+    </Key>
+    <Property Name="BookIssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="Issuedatetime" Type="DateTime" Precision="7" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="PanaltyStatus" Type="Boolean" />
+    <Property Name="Returnflag" Type="Int32" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="Return_CreatedBy" Type="Int32" />
+    <Property Name="AllotedBy" Type="Int32" />
+    <Property Name="CallNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="flag" Type="Int32" />
+    <Property Type="Int32" Name="BookStatus" />
+  </EntityType>
+  <EntityType Name="tbl_BookDetails">
+    <Key>
+      <PropertyRef Name="BookDetailsId" />
+    </Key>
+    <Property Name="BookDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BookName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Authorid" Type="Int32" />
+    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Publisherid" Type="Int32" />
+    <Property Name="PublisherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Type="Int32" Name="createdby" />
+    <Property Type="Int32" Name="BookQty" />
+    <Property Type="Int32" Name="AllocateQty" />
+    <Property Type="Int32" Name="AvailQty" />
+    <Property Type="Int32" Name="LostQty" />
+    <Property Type="Int32" Name="CourseId" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="CategoryId" />
+  </EntityType>
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Type="Int32" Name="bookid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CallNo" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Status" />
+    <Property Type="Boolean" Name="IsActive" />
+    <Property Type="Int32" Name="createdby" />
+  </EntityType>
+  <EntityType Name="tbl_collageeducationdetails">
+    <Key>
+      <PropertyRef Name="collageid" />
+    </Key>
+    <Property Type="Int32" Name="collageid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="subject1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject3" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject4" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject5" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject6" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="marks1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks6" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max6" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="obtainmarks" />
+    <Property Type="Int32" Name="totalmarks" />
+    <Property Type="DateTime" Name="yearpassing1" Precision="3" />
+    <Property Type="String" Name="registerno1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="attempts1" />
+    <Property Type="Double" Name="precentage" />
+    <Property Type="String" Name="radio1" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio2" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio3" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio4" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio5" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="namelocation" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="qualifyingexamination" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Studid" />
+    <Property Type="String" Name="grade" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="courseid" />
+    <Property Type="Int32" Name="departmetid" />
+    <Property Type="String" Name="answer1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="answer2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="previoucollage" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="affliateduniversity" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="yearofleaving" Precision="3" />
+    <Property Type="String" Name="refname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="referencenumber" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="code" />
+    <Property Type="Binary" Name="collageugscan" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="tbl_subject">
     <Key>
       <PropertyRef Name="Subjectid" />
     </Key>
-    <Property Name="Subjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Courseid" Type="Int32" Nullable="false" />
-    <Property Name="SubjectNm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Marks" Type="Double" Nullable="false" />
-    <Property Name="Pass_Marks" Type="Double" Nullable="false" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="DeptId" Type="Int32" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="subjectcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Subjectid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Courseid" Nullable="false" />
+    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="Marks" Nullable="false" />
+    <Property Type="Double" Name="Pass_Marks" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Int32" Name="yearid" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="createdby" />
+    <Property Type="String" Name="subjectcode" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <ComplexType Name="sp_getConfigInfo_Result">
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="CONFIGNAME" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CONFIGKEY" Nullable="true" />
-    <Property Type="String" Name="CONFIGVALUE" Nullable="true" />
-    <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="8" />
+  <ComplexType Name="sp_getsubjectcode_Result">
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="SubjectNms" Nullable="true" MaxLength="101" />
   </ComplexType>
+  <EntityType Name="CONFIGMASTER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CONFIGNAME" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CONFIGKEY" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CONFIGVALUE" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ISACTIVE" />
+    <Property Type="Int32" Name="CREATEDBY" />
+    <Property Type="DateTime" Name="CREATEDDATE" Precision="7" />
+    <Property Type="Int32" Name="MODIFIEDBY" />
+    <Property Type="DateTime" Name="MODIFIEDDATE" Precision="7" />
+    <Property Type="String" Name="CUSTOM1" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CUSTOM2" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hsceducationdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Studid" />
+    <Property Type="String" Name="subject1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject3" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject4" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject5" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject6" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="marks1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks6" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max6" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="obtainmarks" />
+    <Property Type="Int32" Name="totalmarks" />
+    <Property Type="String" Name="gradee" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="precentage" />
+    <Property Type="DateTime" Name="yearpassing1" Precision="3" />
+    <Property Type="String" Name="registerno1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="attempts1" />
+    <Property Type="String" Name="radio1" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio2" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio3" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio4" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio5" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="namelocation" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="qualifyingexamination" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="prschool" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="refname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="refno" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="refcode" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="tcno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="tcscan" MaxLength="Max" FixedLength="false" />
+    <Property Type="Binary" Name="reflatte" MaxLength="Max" FixedLength="false" />
+    <Property Type="Binary" Name="marksheet" MaxLength="Max" FixedLength="false" />
+    <Property Type="String" Name="answer1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="answer2" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="pgeducationdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Studid" />
+    <Property Type="String" Name="subject1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject3" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject4" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject5" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subject6" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="marks1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marks6" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max4" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max5" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="max6" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="obtainmarks" />
+    <Property Type="Int32" Name="totalmarks" />
+    <Property Type="String" Name="gradee" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="precentage" />
+    <Property Type="DateTime" Name="yearpassing1" Precision="3" />
+    <Property Type="String" Name="registerno1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="attempts1" />
+    <Property Type="String" Name="radio1" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio2" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio3" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio4" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="radio5" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="namelocation" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="qualifyingexamination" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="courseid" />
+    <Property Type="Int32" Name="departmetid" />
+    <Property Type="String" Name="answer1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="answer2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="previoucollage" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="affliateduniversity" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="yearofleaving" Precision="3" />
+    <Property Type="String" Name="refname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="referencenumber" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="code" />
+    <Property Type="Binary" Name="collagepgscan" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="tbl_ContentComplete">
     <Key>
       <PropertyRef Name="CCId" />
     </Key>
-    <Property Name="CCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Content_id" Type="Int32" />
-    <Property Name="ChapterCompleteId" Type="Int32" />
-    <Property Name="TeacherId" Type="Int32" />
-    <Property Name="UserId" Type="Int32" />
-    <Property Name="CompleteDate" Type="DateTime" Precision="7" />
-    <Property Name="IsCompleted" Type="Boolean" />
-    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="createdon" Type="DateTime" Precision="7" />
+    <Property Type="Int32" Name="CCId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Content_id" />
+    <Property Type="Int32" Name="ChapterCompleteId" />
+    <Property Type="Int32" Name="TeacherId" />
+    <Property Type="Int32" Name="UserId" />
+    <Property Type="DateTime" Name="CompleteDate" Precision="7" />
+    <Property Type="Boolean" Name="IsCompleted" />
+    <Property Type="String" Name="Remark" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="createdon" Precision="7" />
   </EntityType>
+  <EntityType Name="tbl_Chaptercomplete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Teacherid" />
+    <Property Type="Int32" Name="Subjectid" />
+    <Property Type="Int32" Name="Departmentid" />
+    <Property Type="Int32" Name="Courseid" />
+    <Property Type="Int32" Name="Yearid" />
+    <Property Type="Int32" Name="Chapterid" />
+    <Property Type="DateTime" Name="CompleteDate" Precision="3" />
+    <Property Type="String" Name="Remark" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="createdby" />
+    <Property Type="DateTime" Name="Date" Precision="3" />
+    <Property Type="Int32" Name="NoOfContent" />
+    <Property Type="Int32" Name="NoOfCompletedContent" />
+    <Property Type="Int32" Name="complete" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tbl_lib_BookCategory">
+    <Key>
+      <PropertyRef Name="BookCategoryId" />
+    </Key>
+    <Property Name="BookCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_libBookReturnStatus">
+    <Key>
+      <PropertyRef Name="BookStatusId" />
+    </Key>
+    <Property Name="BookStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_getAuthor_Result">
+    <Property Type="Int32" Name="Authorid" Nullable="false" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
   <ComplexType Name="sp_GetChapterContentDetails_Result">
     <Property Type="Int32" Name="Content_id" Nullable="false" />
     <Property Type="String" Name="Chapter_id" Nullable="true" MaxLength="100" />
@@ -3038,11 +3217,191 @@
     <Property Type="Int32" Name="teacherid" Nullable="true" />
     <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
     <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
-    <Property Type="String" Name="Remark" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Remark" Nullable="false" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="Sp_GetChapterDetails_Result">
     <Property Type="Int32" Name="Chapter_id" Nullable="false" />
     <Property Type="String" Name="ChapterName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="NoOfContent" Nullable="true" />
+    <Property Type="Int32" Name="CompletedContent" Nullable="false" />
     <Property Type="String" Name="complete" Nullable="false" MaxLength="8" />
   </ComplexType>
+  <ComplexType Name="sp_getConfigInfo_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="CONFIGNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CONFIGKEY" Nullable="true" />
+    <Property Type="String" Name="CONFIGVALUE" Nullable="true" />
+    <Property Type="String" Name="ISACTIVE" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_getJType_Result">
+    <Property Type="Int32" Name="JTypeid" Nullable="false" />
+    <Property Type="String" Name="JTypeName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_getPublisher_Result">
+    <Property Type="Int32" Name="PublisherId" Nullable="false" />
+    <Property Type="String" Name="Publishername" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_getBookCategory_Result">
+    <Property Type="Int32" Name="BookCategoryId" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_GetBookDetailsbyBookidorBookname_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="13" />
+  </ComplexType>
+  <ComplexType Name="sp_getBookentry_Result">
+    <Property Type="Int32" Name="bookid" Nullable="false" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Int32" Name="createdby" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_getbookissue_Result">
+    <Property Type="Int32" Name="BookIssueId" Nullable="false" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NoOfDaysTillt" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetBookIssueDetailsbyStudentid_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Issuedatetime" Nullable="true" />
+    <Property Type="Int32" Name="NoOfDaysTill" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_GetBookStockList_Result">
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="BookQty" Nullable="true" />
+    <Property Type="Int32" Name="AllocateQty" Nullable="true" />
+    <Property Type="Int32" Name="AvailQty" Nullable="true" />
+    <Property Type="Int32" Name="LostQty" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetSearchBookAndJournal_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookStatus" Nullable="false" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="sp_GetSearchJournal_Result">
+    <Property Type="Int32" Name="JId" Nullable="false" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="JTitleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Vendor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Number" Nullable="true" />
+    <Property Type="String" Name="JBillNo" Nullable="true" />
+    <Property Type="String" Name="shelfno" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sp_GetLibBookDetailsbyId_Result">
+    <Property Type="Int32" Name="bookid" Nullable="false" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Authorid" Nullable="true" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Publisherid" Nullable="true" />
+    <Property Type="String" Name="PublisherName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Vendorid" Nullable="true" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
+    <Property Type="String" Name="BillNo" Nullable="true" />
+    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="CourseId" Nullable="true" />
+    <Property Type="Int32" Name="DeptId" Nullable="true" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_StudentMarks_Result">
+    <Property Type="Int32" Name="Studid" Nullable="false" />
+    <Property Type="String" Name="studentname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RollNo" Nullable="false" />
+    <Property Type="String" Name="Sub" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Marks" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="TotalMarks" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="Remark" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetSubjectForExamtimetable_Result">
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="SubjectCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="secondaryeducationdetail">
+    <Key>
+      <PropertyRef Name="educationid" />
+    </Key>
+    <Property Name="educationid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subject1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="subject2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="subject3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="subject4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="subject5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="subject6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="marks1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="marks2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="marks3" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="marks4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="marks5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="marks6" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max3" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="max6" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="obtainmarks" Type="Int32" />
+    <Property Name="totalmarks" Type="Int32" />
+    <Property Name="yearpassing1" Type="DateTime" Precision="3" />
+    <Property Name="registerno1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="attempts1" Type="Int32" />
+    <Property Name="Studid" Type="Int32" />
+    <Property Name="grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="precentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="radio1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="radio2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="radio3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="radio4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="test" Type="Int32" />
+    <Property Name="answer1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="answer2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="previouschool" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="refname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="referencenumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="referenceletter" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="tcscan" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="marksSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>
