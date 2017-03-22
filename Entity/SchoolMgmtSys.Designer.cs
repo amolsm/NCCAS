@@ -356,22 +356,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_ExamTImeTable> tbl_ExamTImeTable
-        {
-            get
-            {
-                if ((_tbl_ExamTImeTable == null))
-                {
-                    _tbl_ExamTImeTable = base.CreateObjectSet<tbl_ExamTImeTable>("tbl_ExamTImeTable");
-                }
-                return _tbl_ExamTImeTable;
-            }
-        }
-        private ObjectSet<tbl_ExamTImeTable> _tbl_ExamTImeTable;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_StudentMark> tbl_StudentMark
         {
             get
@@ -1296,6 +1280,38 @@ namespace Entity
             }
         }
         private ObjectSet<secondaryeducationdetail> _secondaryeducationdetails;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_ExamTimetableSubject> tbl_ExamTimetableSubject
+        {
+            get
+            {
+                if ((_tbl_ExamTimetableSubject == null))
+                {
+                    _tbl_ExamTimetableSubject = base.CreateObjectSet<tbl_ExamTimetableSubject>("tbl_ExamTimetableSubject");
+                }
+                return _tbl_ExamTimetableSubject;
+            }
+        }
+        private ObjectSet<tbl_ExamTimetableSubject> _tbl_ExamTimetableSubject;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_ExamTImeTable> tbl_ExamTImeTable
+        {
+            get
+            {
+                if ((_tbl_ExamTImeTable == null))
+                {
+                    _tbl_ExamTImeTable = base.CreateObjectSet<tbl_ExamTImeTable>("tbl_ExamTImeTable");
+                }
+                return _tbl_ExamTImeTable;
+            }
+        }
+        private ObjectSet<tbl_ExamTImeTable> _tbl_ExamTImeTable;
 
         #endregion
 
@@ -1443,14 +1459,6 @@ namespace Entity
         public void AddTotbl_ExaminationType(tbl_ExaminationType tbl_ExaminationType)
         {
             base.AddObject("tbl_ExaminationType", tbl_ExaminationType);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_ExamTImeTable EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_ExamTImeTable(tbl_ExamTImeTable tbl_ExamTImeTable)
-        {
-            base.AddObject("tbl_ExamTImeTable", tbl_ExamTImeTable);
         }
     
         /// <summary>
@@ -1915,6 +1923,22 @@ namespace Entity
         public void AddTosecondaryeducationdetails(secondaryeducationdetail secondaryeducationdetail)
         {
             base.AddObject("secondaryeducationdetails", secondaryeducationdetail);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_ExamTimetableSubject EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_ExamTimetableSubject(tbl_ExamTimetableSubject tbl_ExamTimetableSubject)
+        {
+            base.AddObject("tbl_ExamTimetableSubject", tbl_ExamTimetableSubject);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_ExamTImeTable EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_ExamTImeTable(tbl_ExamTImeTable tbl_ExamTImeTable)
+        {
+            base.AddObject("tbl_ExamTImeTable", tbl_ExamTImeTable);
         }
 
         #endregion
@@ -4315,8 +4339,9 @@ namespace Entity
         /// <param name="busDateTime">No Metadata Documentation available.</param>
         /// <param name="status">No Metadata Documentation available.</param>
         /// <param name="academicyear">No Metadata Documentation available.</param>
+        /// <param name="bustime">No Metadata Documentation available.</param>
         /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_transport_DML(Nullable<global::System.Int32> busid, global::System.String busNo, Nullable<global::System.Int32> busRoute, global::System.String busDriverNm, global::System.String busDrivercontact, global::System.String busRTONo, Nullable<global::System.DateTime> busDateTime, Nullable<global::System.Boolean> status, global::System.String academicyear, global::System.String act)
+        public int sp_transport_DML(Nullable<global::System.Int32> busid, global::System.String busNo, Nullable<global::System.Int32> busRoute, global::System.String busDriverNm, global::System.String busDrivercontact, global::System.String busRTONo, Nullable<global::System.DateTime> busDateTime, Nullable<global::System.Boolean> status, global::System.String academicyear, global::System.String bustime, global::System.String act)
         {
             ObjectParameter busidParameter;
             if (busid.HasValue)
@@ -4408,6 +4433,16 @@ namespace Entity
                 academicyearParameter = new ObjectParameter("academicyear", typeof(global::System.String));
             }
     
+            ObjectParameter bustimeParameter;
+            if (bustime != null)
+            {
+                bustimeParameter = new ObjectParameter("bustime", bustime);
+            }
+            else
+            {
+                bustimeParameter = new ObjectParameter("bustime", typeof(global::System.String));
+            }
+    
             ObjectParameter actParameter;
             if (act != null)
             {
@@ -4418,7 +4453,7 @@ namespace Entity
                 actParameter = new ObjectParameter("act", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("sp_transport_DML", busidParameter, busNoParameter, busRouteParameter, busDriverNmParameter, busDrivercontactParameter, busRTONoParameter, busDateTimeParameter, statusParameter, academicyearParameter, actParameter);
+            return base.ExecuteFunction("sp_transport_DML", busidParameter, busNoParameter, busRouteParameter, busDriverNmParameter, busDrivercontactParameter, busRTONoParameter, busDateTimeParameter, statusParameter, academicyearParameter, bustimeParameter, actParameter);
         }
     
         /// <summary>
@@ -30716,23 +30751,13 @@ namespace Entity
         /// </summary>
         /// <param name="examId">Initial value of the ExamId property.</param>
         /// <param name="examName">Initial value of the ExamName property.</param>
-        /// <param name="examStartTime">Initial value of the ExamStartTime property.</param>
-        /// <param name="examEndTime">Initial value of the ExamEndTime property.</param>
         /// <param name="examTypeId">Initial value of the ExamTypeId property.</param>
-        /// <param name="examClassId">Initial value of the ExamClassId property.</param>
-        /// <param name="examSubjectId">Initial value of the ExamSubjectId property.</param>
-        /// <param name="examYear">Initial value of the ExamYear property.</param>
-        public static tbl_ExamTImeTable Createtbl_ExamTImeTable(global::System.Int32 examId, global::System.String examName, global::System.DateTime examStartTime, global::System.DateTime examEndTime, global::System.Int32 examTypeId, global::System.Int32 examClassId, global::System.Int32 examSubjectId, global::System.String examYear)
+        public static tbl_ExamTImeTable Createtbl_ExamTImeTable(global::System.Int32 examId, global::System.String examName, global::System.Int32 examTypeId)
         {
             tbl_ExamTImeTable tbl_ExamTImeTable = new tbl_ExamTImeTable();
             tbl_ExamTImeTable.ExamId = examId;
             tbl_ExamTImeTable.ExamName = examName;
-            tbl_ExamTImeTable.ExamStartTime = examStartTime;
-            tbl_ExamTImeTable.ExamEndTime = examEndTime;
             tbl_ExamTImeTable.ExamTypeId = examTypeId;
-            tbl_ExamTImeTable.ExamClassId = examClassId;
-            tbl_ExamTImeTable.ExamSubjectId = examSubjectId;
-            tbl_ExamTImeTable.ExamYear = examYear;
             return tbl_ExamTImeTable;
         }
 
@@ -30796,54 +30821,6 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.DateTime ExamStartTime
-        {
-            get
-            {
-                return _ExamStartTime;
-            }
-            set
-            {
-                OnExamStartTimeChanging(value);
-                ReportPropertyChanging("ExamStartTime");
-                _ExamStartTime = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ExamStartTime");
-                OnExamStartTimeChanged();
-            }
-        }
-        private global::System.DateTime _ExamStartTime;
-        partial void OnExamStartTimeChanging(global::System.DateTime value);
-        partial void OnExamStartTimeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime ExamEndTime
-        {
-            get
-            {
-                return _ExamEndTime;
-            }
-            set
-            {
-                OnExamEndTimeChanging(value);
-                ReportPropertyChanging("ExamEndTime");
-                _ExamEndTime = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ExamEndTime");
-                OnExamEndTimeChanged();
-            }
-        }
-        private global::System.DateTime _ExamEndTime;
-        partial void OnExamEndTimeChanging(global::System.DateTime value);
-        partial void OnExamEndTimeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 ExamTypeId
         {
             get
@@ -30862,78 +30839,6 @@ namespace Entity
         private global::System.Int32 _ExamTypeId;
         partial void OnExamTypeIdChanging(global::System.Int32 value);
         partial void OnExamTypeIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ExamClassId
-        {
-            get
-            {
-                return _ExamClassId;
-            }
-            set
-            {
-                OnExamClassIdChanging(value);
-                ReportPropertyChanging("ExamClassId");
-                _ExamClassId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ExamClassId");
-                OnExamClassIdChanged();
-            }
-        }
-        private global::System.Int32 _ExamClassId;
-        partial void OnExamClassIdChanging(global::System.Int32 value);
-        partial void OnExamClassIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ExamSubjectId
-        {
-            get
-            {
-                return _ExamSubjectId;
-            }
-            set
-            {
-                OnExamSubjectIdChanging(value);
-                ReportPropertyChanging("ExamSubjectId");
-                _ExamSubjectId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ExamSubjectId");
-                OnExamSubjectIdChanged();
-            }
-        }
-        private global::System.Int32 _ExamSubjectId;
-        partial void OnExamSubjectIdChanging(global::System.Int32 value);
-        partial void OnExamSubjectIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String ExamYear
-        {
-            get
-            {
-                return _ExamYear;
-            }
-            set
-            {
-                OnExamYearChanging(value);
-                ReportPropertyChanging("ExamYear");
-                _ExamYear = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("ExamYear");
-                OnExamYearChanged();
-            }
-        }
-        private global::System.String _ExamYear;
-        partial void OnExamYearChanging(global::System.String value);
-        partial void OnExamYearChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -30958,6 +30863,255 @@ namespace Entity
         private Nullable<global::System.Boolean> _IsPublish;
         partial void OnIsPublishChanging(Nullable<global::System.Boolean> value);
         partial void OnIsPublishChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> courseid
+        {
+            get
+            {
+                return _courseid;
+            }
+            set
+            {
+                OncourseidChanging(value);
+                ReportPropertyChanging("courseid");
+                _courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("courseid");
+                OncourseidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _courseid;
+        partial void OncourseidChanging(Nullable<global::System.Int32> value);
+        partial void OncourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> deptid
+        {
+            get
+            {
+                return _deptid;
+            }
+            set
+            {
+                OndeptidChanging(value);
+                ReportPropertyChanging("deptid");
+                _deptid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("deptid");
+                OndeptidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _deptid;
+        partial void OndeptidChanging(Nullable<global::System.Int32> value);
+        partial void OndeptidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _yearid;
+        partial void OnyearidChanging(Nullable<global::System.Int32> value);
+        partial void OnyearidChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="tbl_ExamTimetableSubject")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_ExamTimetableSubject : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_ExamTimetableSubject object.
+        /// </summary>
+        /// <param name="exSubId">Initial value of the ExSubId property.</param>
+        public static tbl_ExamTimetableSubject Createtbl_ExamTimetableSubject(global::System.Int32 exSubId)
+        {
+            tbl_ExamTimetableSubject tbl_ExamTimetableSubject = new tbl_ExamTimetableSubject();
+            tbl_ExamTimetableSubject.ExSubId = exSubId;
+            return tbl_ExamTimetableSubject;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ExSubId
+        {
+            get
+            {
+                return _ExSubId;
+            }
+            set
+            {
+                if (_ExSubId != value)
+                {
+                    OnExSubIdChanging(value);
+                    ReportPropertyChanging("ExSubId");
+                    _ExSubId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ExSubId");
+                    OnExSubIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ExSubId;
+        partial void OnExSubIdChanging(global::System.Int32 value);
+        partial void OnExSubIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ExamId
+        {
+            get
+            {
+                return _ExamId;
+            }
+            set
+            {
+                OnExamIdChanging(value);
+                ReportPropertyChanging("ExamId");
+                _ExamId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExamId");
+                OnExamIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ExamId;
+        partial void OnExamIdChanging(Nullable<global::System.Int32> value);
+        partial void OnExamIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SubjectId
+        {
+            get
+            {
+                return _SubjectId;
+            }
+            set
+            {
+                OnSubjectIdChanging(value);
+                ReportPropertyChanging("SubjectId");
+                _SubjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SubjectId");
+                OnSubjectIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SubjectId;
+        partial void OnSubjectIdChanging(Nullable<global::System.Int32> value);
+        partial void OnSubjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExamDate
+        {
+            get
+            {
+                return _ExamDate;
+            }
+            set
+            {
+                OnExamDateChanging(value);
+                ReportPropertyChanging("ExamDate");
+                _ExamDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExamDate");
+                OnExamDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExamDate;
+        partial void OnExamDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExamDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.TimeSpan> ExamStartTime
+        {
+            get
+            {
+                return _ExamStartTime;
+            }
+            set
+            {
+                OnExamStartTimeChanging(value);
+                ReportPropertyChanging("ExamStartTime");
+                _ExamStartTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExamStartTime");
+                OnExamStartTimeChanged();
+            }
+        }
+        private Nullable<global::System.TimeSpan> _ExamStartTime;
+        partial void OnExamStartTimeChanging(Nullable<global::System.TimeSpan> value);
+        partial void OnExamStartTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.TimeSpan> ExamEndTime
+        {
+            get
+            {
+                return _ExamEndTime;
+            }
+            set
+            {
+                OnExamEndTimeChanging(value);
+                ReportPropertyChanging("ExamEndTime");
+                _ExamEndTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExamEndTime");
+                OnExamEndTimeChanged();
+            }
+        }
+        private Nullable<global::System.TimeSpan> _ExamEndTime;
+        partial void OnExamEndTimeChanging(Nullable<global::System.TimeSpan> value);
+        partial void OnExamEndTimeChanged();
 
         #endregion
 
@@ -42243,6 +42397,30 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BusTime
+        {
+            get
+            {
+                return _BusTime;
+            }
+            set
+            {
+                OnBusTimeChanging(value);
+                ReportPropertyChanging("BusTime");
+                _BusTime = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BusTime");
+                OnBusTimeChanged();
+            }
+        }
+        private global::System.String _BusTime;
+        partial void OnBusTimeChanging(global::System.String value);
+        partial void OnBusTimeChanged();
 
         #endregion
 

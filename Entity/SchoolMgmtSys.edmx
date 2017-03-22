@@ -779,13 +779,22 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
           </Key>
           <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
-          <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
           <Property Name="ExamTypeId" Type="int" Nullable="false" />
-          <Property Name="ExamClassId" Type="int" Nullable="false" />
-          <Property Name="ExamSubjectId" Type="int" Nullable="false" />
-          <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="IsPublish" Type="bit" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="deptid" Type="int" />
+          <Property Name="yearid" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_ExamTimetableSubject">
+          <Key>
+            <PropertyRef Name="ExSubId" />
+          </Key>
+          <Property Name="ExSubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamId" Type="int" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="ExamDate" Type="datetime2" Precision="7" />
+          <Property Name="ExamStartTime" Type="time" Precision="7" />
+          <Property Name="ExamEndTime" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="tbl_fees">
           <Key>
@@ -1395,6 +1404,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Property Name="busDateTime" Type="datetime" />
           <Property Name="status" Type="bit" Nullable="false" />
           <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BusTime" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="tbl_user">
           <Key>
@@ -2692,6 +2702,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <Parameter Name="busDateTime" Type="datetime" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="academicyear" Type="varchar" Mode="In" />
+          <Parameter Name="bustime" Type="varchar" Mode="In" />
           <Parameter Name="act" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_updatereturnbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2747,6 +2758,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
           <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ExaminationType" EntityType="Self.tbl_ExaminationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ExamTimetableSubject" EntityType="Self.tbl_ExamTimetableSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
@@ -3023,7 +3035,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Parameter Name="Classid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="tbl_ExaminationType" EntityType="SchoolMgmtSysModel.tbl_ExaminationType" />
-          <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
           <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.tbl_StudentMark" />
           <FunctionImport Name="sp_ExaminationDetailbyId" ReturnType="Collection(SchoolMgmtSysModel.sp_ExaminationDetailbyId_Result)">
           <Parameter Name="Examid" Mode="In" Type="Int32" />
@@ -3185,6 +3196,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="busDateTime" Mode="In" Type="DateTime" />
             <Parameter Name="status" Mode="In" Type="Boolean" />
             <Parameter Name="academicyear" Mode="In" Type="String" />
+            <Parameter Name="bustime" Mode="In" Type="String" />
             <Parameter Name="act" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
@@ -4295,6 +4307,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="yearid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="secondaryeducationdetails" EntityType="SchoolMgmtSysModel.secondaryeducationdetail" />
+          <EntitySet Name="tbl_ExamTimetableSubject" EntityType="SchoolMgmtSysModel.tbl_ExamTimetableSubject" />
+          <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -4589,20 +4603,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="ExaminationType" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="Status" />
         </EntityType>
-        <EntityType Name="tbl_ExamTImeTable">
-          <Key>
-            <PropertyRef Name="ExamId" />
-          </Key>
-          <Property Type="Int32" Name="ExamId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ExamName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="ExamStartTime" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="ExamEndTime" Nullable="false" Precision="3" />
-          <Property Type="Int32" Name="ExamTypeId" Nullable="false" />
-          <Property Type="Int32" Name="ExamClassId" Nullable="false" />
-          <Property Type="Int32" Name="ExamSubjectId" Nullable="false" />
-          <Property Type="String" Name="ExamYear" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="IsPublish" />
-        </EntityType>
         <EntityType Name="tbl_StudentMark">
           <Key>
             <PropertyRef Name="Marksid" />
@@ -4877,6 +4877,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="DateTime" Name="busDateTime" Precision="3" />
           <Property Type="Boolean" Name="status" Nullable="false" />
           <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="sp_gettransport_Result">
           <Property Type="Int32" Name="busid" Nullable="false" />
@@ -6271,6 +6272,29 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="tcscan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="marksSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="tbl_ExamTimetableSubject">
+          <Key>
+            <PropertyRef Name="ExSubId" />
+          </Key>
+          <Property Name="ExSubId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamId" Type="Int32" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="ExamDate" Type="DateTime" Precision="7" />
+          <Property Name="ExamStartTime" Type="Time" Precision="7" />
+          <Property Name="ExamEndTime" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tbl_ExamTImeTable">
+          <Key>
+            <PropertyRef Name="ExamId" />
+          </Key>
+          <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExamTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsPublish" Type="Boolean" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="deptid" Type="Int32" />
+          <Property Name="yearid" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6671,21 +6695,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_ExamTImeTable">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
-              <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
-                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
-                <ScalarProperty Name="ExamYear" ColumnName="ExamYear" />
-                <ScalarProperty Name="ExamSubjectId" ColumnName="ExamSubjectId" />
-                <ScalarProperty Name="ExamClassId" ColumnName="ExamClassId" />
-                <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
-                <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
-                <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
-                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
-                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_StudentMark">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentMark">
               <MappingFragment StoreEntitySet="tbl_StudentMark">
@@ -7045,6 +7054,7 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <EntitySetMapping Name="tbl_transport">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_transport">
               <MappingFragment StoreEntitySet="tbl_transport">
+                <ScalarProperty Name="BusTime" ColumnName="BusTime" />
                 <ScalarProperty Name="academicyear" ColumnName="academicyear" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
@@ -8704,6 +8714,31 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExamTimetableSubject">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTimetableSubject">
+              <MappingFragment StoreEntitySet="tbl_ExamTimetableSubject">
+                <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
+                <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="ExSubId" ColumnName="ExSubId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExamTImeTable">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
+              <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
+                <ScalarProperty Name="yearid" ColumnName="yearid" />
+                <ScalarProperty Name="deptid" ColumnName="deptid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -8744,7 +8779,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_StaffAttendance" Width="1.5" PointX="0.75" PointY="13.75" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_days" Width="1.5" PointX="7.125" PointY="11.125" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_ExaminationType" Width="1.5" PointX="7.25" PointY="14.5" Height="1.5956835937500102" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" Width="1.5" PointX="10.625" PointY="2.75" Height="2.7494921875000102" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_StudentMark" Width="1.5" PointX="15.125" PointY="2.375" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Event" Width="1.5" PointX="7.375" PointY="16.625" Height="1.5956835937500102" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_category" Width="1.5" PointX="10.625" PointY="9.375" Height="1.5956835937500102" />
@@ -8803,6 +8837,8 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_lib_BookCategory" Width="1.5" PointX="16.375" PointY="25.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_libBookReturnStatus" Width="1.5" PointX="26.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.secondaryeducationdetail" Width="1.5" PointX="26.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_ExamTimetableSubject" Width="1.5" PointX="26.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" Width="1.5" PointX="11.375" PointY="26.75" />
       </Diagram>
     </Diagrams>
   </Designer>

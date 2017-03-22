@@ -395,21 +395,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_ExamTImeTable">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
-        <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
-          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
-          <ScalarProperty Name="ExamYear" ColumnName="ExamYear" />
-          <ScalarProperty Name="ExamSubjectId" ColumnName="ExamSubjectId" />
-          <ScalarProperty Name="ExamClassId" ColumnName="ExamClassId" />
-          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
-          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
-          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
-          <ScalarProperty Name="ExamName" ColumnName="ExamName" />
-          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_StudentMark">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentMark">
         <MappingFragment StoreEntitySet="tbl_StudentMark">
@@ -769,6 +754,7 @@
     <EntitySetMapping Name="tbl_transport">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_transport">
         <MappingFragment StoreEntitySet="tbl_transport">
+          <ScalarProperty Name="BusTime" ColumnName="BusTime" />
           <ScalarProperty Name="academicyear" ColumnName="academicyear" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
@@ -2425,6 +2411,31 @@
           <ScalarProperty Name="subject2" ColumnName="subject2" />
           <ScalarProperty Name="subject1" ColumnName="subject1" />
           <ScalarProperty Name="educationid" ColumnName="educationid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ExamTimetableSubject">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTimetableSubject">
+        <MappingFragment StoreEntitySet="tbl_ExamTimetableSubject">
+          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
+          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
+          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="ExSubId" ColumnName="ExSubId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ExamTImeTable">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
+        <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
+          <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

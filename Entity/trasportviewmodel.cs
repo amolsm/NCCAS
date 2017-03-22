@@ -14,6 +14,8 @@ namespace Entity
         [DisplayName("Bus Number")]
         public string busNo { get; set; }
 
+        [DisplayName("Bus Time")]
+        public string busTime { get; set; }
         //[DisplayName("Select Bus Route")]
         //public string busRoute { get; set; }
 
@@ -29,7 +31,7 @@ namespace Entity
         [DisplayName("Bus RTO No. ")]
         public string busRTONo { get; set; }
 
-        [DisplayName("Bus Time ")]
+        [DisplayName("Bus Date ")]
         public DateTime busDateTime { get; set; }
 
         [DisplayName("Active ")]

@@ -8,6 +8,99 @@
     $(document).ready(function () {
         FillPermission();
 
+        function ReloadState() {
+            $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
+        }
+
+        function ReloadCountry() {
+            if ($("#CourseId").val() == "") {
+                ReloadState();
+            }
+            else {
+
+                $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#CourseId").change(function () {
+
+            ReloadCountry();
+        })
+
+
+        function ReloadYear() {
+            $("#yearid").empty();
+            var item = '<option value="">select Year</option>';
+            $("#yearid").append(item);
+        }
+
+        function ReloadCourseYear() {
+            if ($("#DeptId").val() == "") {
+                ReloadYear();
+            }
+            else {
+
+                $("#yearid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourseYear")',
+                    dataType: 'json',
+                    data: {
+                        courseid: $("#CourseId").val(),
+                        deptid: $("#DeptId").val()
+                    },
+                    success: function (yeardata) {
+                        if (yeardata != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(yeardata, function (i, yeardata) {
+                                item += '<option value="' + yeardata.Value + '">' + yeardata.Text + '</option>';
+                            });
+                            $("#yearid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#yearid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+        $("#DeptId").change(function () {
+
+            ReloadCourseYear();
+        })
+
         function GetParameterValues(param) {
             var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
             for (var i = 0; i < url.length; i++) {
@@ -257,27 +350,44 @@
                                                 @TempData["ErrorMessage"]
                                             </div>
                                             <div class="control-group">
-                                                @Html.LabelFor(model => model.Classid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.Classid)
-                                                      </div>
+                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class = "control-label", @for = "select" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @for = "select" })
+                                                    @Html.ValidationMessageFor(model => model.ExaminationTypeid)
+                                                </div>
                                             </div>
-                                            <div class="control-group">
-                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.ExaminationTypeid)
-                                                      </div>
-                                            </div>
-                                            <div class="control-group">
-                                                @Html.LabelFor(model => model.ExamYear, new { @class="control-label", @for="select" })
-                                                  <div class="controls">
-                                                @*@Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", @class = "col-md-5 form-control form_in" })*@
-                                                @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @for="select" })
-                                                @Html.ValidationMessageFor(model => model.ExamYear)
-                                                      </div>
-                                            </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.ExaminationName, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.ExaminationName, new { id = "ExaminationName", @class = "input" })
+                                                        @Html.ValidationMessageFor(model => model.ExaminationName)
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.CourseId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._Deptlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.DeptId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.yearid, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.yearid, new SelectList(Model._yearlist, "yearid", "YearName", "Select Year"), "Select Year", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.yearid)
+                                                    </div>
+                                                </div>
                                            <div class="form-actions">
                                                 <input type="submit" action="display" class="btn btn-primary" id="display" value="Display" />
                                                 <input type="submit" action="publish" class="btn btn-primary" id="publish" value="Publish" />
@@ -300,7 +410,7 @@
 						</div>
 					</div> 
                   <div class="box-content">
-                            <div id="result" class="table-responsive" style=" color: #23527c;">
+                            <div id="result" class="table-responsive" style="color: #23527c;">
                                 <table class="table tb-parshav" id="tblExamTimeTable">
                                     <tr>
                                         <td></td>

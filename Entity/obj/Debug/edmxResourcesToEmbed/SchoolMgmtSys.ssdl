@@ -774,13 +774,22 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     </Key>
     <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
-    <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
     <Property Name="ExamTypeId" Type="int" Nullable="false" />
-    <Property Name="ExamClassId" Type="int" Nullable="false" />
-    <Property Name="ExamSubjectId" Type="int" Nullable="false" />
-    <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="IsPublish" Type="bit" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="deptid" Type="int" />
+    <Property Name="yearid" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTimetableSubject">
+    <Key>
+      <PropertyRef Name="ExSubId" />
+    </Key>
+    <Property Name="ExSubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="ExamDate" Type="datetime2" Precision="7" />
+    <Property Name="ExamStartTime" Type="time" Precision="7" />
+    <Property Name="ExamEndTime" Type="time" Precision="7" />
   </EntityType>
   <EntityType Name="tbl_fees">
     <Key>
@@ -1390,6 +1399,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="busDateTime" Type="datetime" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BusTime" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="tbl_user">
     <Key>
@@ -2687,6 +2697,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="busDateTime" Type="datetime" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="bustime" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_updatereturnbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2742,6 +2753,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ExaminationType" EntityType="Self.tbl_ExaminationType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExamTimetableSubject" EntityType="Self.tbl_ExamTimetableSubject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />

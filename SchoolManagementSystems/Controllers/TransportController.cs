@@ -25,9 +25,10 @@ namespace SchoolManagementSystems.Controllers
                                                         x.busDrivercontact.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busRTONo.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busDateTime.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.BusTime.ToString().Contains(Search_Data.ToUpper()) ||
                                                         x.status.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busRoute.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.busid).ToList();
-            
+
             return View(_tvm);
         }
 
@@ -48,6 +49,7 @@ namespace SchoolManagementSystems.Controllers
                     _tvm.busDrivercontact = data.busDrivercontact;
                     _tvm.busRTONo = data.busRTONo;
                     _tvm.busDateTime = Convert.ToDateTime(data.busDateTime);
+                    _tvm.busTime = data.BusTime;
                     _tvm.status = data.status;
                 }
             }
@@ -64,11 +66,11 @@ namespace SchoolManagementSystems.Controllers
             if (evt == "submit")
             {
                 if (_pvm.busid == null) { _pvm.busid = 0; }
-                db.sp_transport_DML(_pvm.busid, _pvm.busNo, _pvm.busRoute, _pvm.busDriverNm, _pvm.busDrivercontact, _pvm.busRTONo, _pvm.busDateTime, _pvm.status, "", "").ToString();
+                db.sp_transport_DML(_pvm.busid, _pvm.busNo, _pvm.busRoute, _pvm.busDriverNm, _pvm.busDrivercontact, _pvm.busRTONo, _pvm.busDateTime, _pvm.status, "", _pvm.busTime, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_transport_DML(id, _pvm.busNo, _pvm.busRoute, _pvm.busDriverNm, _pvm.busDrivercontact, _pvm.busRTONo, Convert.ToDateTime("01/01/1753"), _pvm.status, "", "del").ToString();
+                db.sp_transport_DML(id, _pvm.busNo, _pvm.busRoute, _pvm.busDriverNm, _pvm.busDrivercontact, _pvm.busRTONo, _pvm.busDateTime, _pvm.status, "", _pvm.busTime, "del").ToString();
             }
             return RedirectToAction("Index");
         }

@@ -40,8 +40,7 @@
             changeYear: true
         });
 
-        //        if ($("#datepicker").val() == "01/01/0001 12:00:00 AM")
-        //            $('#datepicker').datepicker('setDate', new Date());
+      
         $('#datepicker').datepicker('setDate', new Date());
 
         $('#ui-datepicker-div').hide();
@@ -58,7 +57,22 @@
 
         function Validations(e) {
             var cnt = 0;
-            debugger;
+            if ($("#ExaminationTypeid").val() == '' || $("#ExaminationTypeid").val() == '0') {
+                cnt++;
+                $("#ExaminationTypeid").css({
+                    "border": "2px solid red"
+                });
+                alert("Examination Type is Mandatory!");
+                e.preventDefault();
+                $("#ExaminationTypeid").focus();
+                return false;
+            }
+            else {
+                $("#ExaminationTypeid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             if ($("#ExaminationName").val() == '') {
                 cnt++;
                 $("#ExaminationName").css({
@@ -92,7 +106,38 @@
                     "background": ""
                 });
             }
-
+            if ($("#DeptId").val() == '' || $("#DeptId").val() == '0') {
+                cnt++;
+                $("#DeptId").css({
+                    "border": "2px solid red"
+                });
+                alert("Department is Mandatory!");
+                e.preventDefault();
+                $("#DeptId").focus();
+                return false;
+            }
+            else {
+                $("#DeptId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#yearid").val() == '' || $("#yearid").val() == '0') {
+                cnt++;
+                $("#yearid").css({
+                    "border": "2px solid red"
+                });
+                alert("Year is Mandatory!");
+                e.preventDefault();
+                $("#yearid").focus();
+                return false;
+            }
+            else {
+                $("#yearid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
             var ctrlcnt = $('#ctrlcnt').val();
             if (ctrlcnt > 0) {
                 for (var i = 0; i < ctrlcnt; i++) {
@@ -156,29 +201,18 @@
                 var ctrlcnt = $('#ctrlcnt').val();
                 if (ctrlcnt > 0) {
                     var subjectdata = [];
-                    for (var i = 1; i < ctrlcnt; i++) {
+                    for (var i = 0; i < ctrlcnt; i++) {
                         var subjectids = ($("#hsubjectid_" + i).val());
                         var examdate = ($("#date_" + subjectids).val());
                         var starttime = ($("#starttime_" + subjectids).val());
                         var endtime = ($("#endtime_" + subjectids).val());
                         subjectdata.push(subjectids + "|" + examdate + "|" + starttime + "|" + endtime);
                     }
-                    debugger;
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("SubmitExam")',
-                        data: $('#frm').serialize() + "&evt=submit&id=0&subjectdata=" + subjectdata,
-                        success: function (result) {
-                            $("#msgs").show();
-                            $("#lblmsgs").text("Exam Time table  updated successfully!..");
-                            $("#lblmsgs").css({ "color": "green" });
-                            $("#lblmsgs").css({ "font-size": "15px" });
-                            $("#result").html(result);
-                            clear();
-                            ReloadPaging();
-                        }
-                    });
-                }
+                    document.forms[0].method = "Post";
+                    document.forms[0].action = "SubmitExam?subjectdata=" + subjectdata;
+                    document.forms[0].submit();
+                } else { e.preventDefault(); }
+               
             }
         }
                
@@ -298,7 +332,7 @@
                     head.html(header);
                     table = "<table class='table tb-parshav tablesorter' id='tbl'><tbody>";
                     $("#ctrlcnt").val(data.length);
-                    for (var i = 1; i < data.length; i++) {
+                    for (var i = 0; i < data.length; i++) {
                        subjectids = data[i].Subjectid;
                         table += "<tr id=" + subjectids + "><td width='10%;' id='subid_" + i + "'>" + data[i].Subjectid.toString()
                             + "</td><input class='addcls' type='hidden' id='hsubjectid_" + i + "' value=" + data[i].Subjectid.toString() + "><td width='30%;'>"
@@ -341,11 +375,35 @@
                         </ul>
 
                  <div class="panel-body"> 
-<div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
-	<strong><label id="lblmsg"></label></strong> 
-	</div>
-  <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
-	<strong><label id="lblmsgs"></label></strong> 
+                     @{string status = "";
+                         try { status = (TempData["ErrorMessage"]).ToString(); } catch { TempData["ErrorMessage"] = ""; }
+
+
+
+                         if (status == "Success")
+                         {
+
+
+
+                             <text><div id="msg" class="alert alert-success" visible="true">
+                                     <strong><label id="lblmsg">Records Added Successfully</label></strong>
+                                 </div>
+
+                             </text>
+                         }
+                         else if (status == "Exists")
+                         {<text> <div id="msgs" class="alert alert-warning" visible="true">
+                             <strong><label id="lblmsgs">Records Already Exists</label></strong>
+                         </div>                </text> }
+                         else if (status == "Update")
+                         {<text> <div id="msgs" class="alert alert-success" visible="true">
+                            <strong><label id="lblmsgs">Records Updated Successfully</label></strong>
+                        </div>                </text> }
+    else
+    { <text></text>
+
+
+                         } }
 </div>
 </div>
 
@@ -364,16 +422,14 @@
                               
 						
                                   <fieldset>
-                                            @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",  @class="form-horizontal" }))
+                                            @using (Html.BeginForm("SubmitExam", "Examination", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",  @class="form-horizontal" }))
                                             {
                                                 @Html.ValidationSummary(true)
-                                                <div class="control-group">
-                                                    @TempData["ErrorMessage"]
-                                                </div>
+                                               
                                                 <div style="display: none;" class="control-group">
                                                     @Html.LabelFor(model => model.Examid, new { @class="control-label" })
                                                        <div class="controls">
-                                                    @Html.TextBoxFor(model => model.Examid, new { id = "ExaminationName", @class = "input" })
+                                                    @Html.TextBoxFor(model => model.Examid, new { id = "Examid", @class = "input" })
                                                     @Html.ValidationMessageFor(model => model.Examid)
                                                            </div>
                                                 </div>

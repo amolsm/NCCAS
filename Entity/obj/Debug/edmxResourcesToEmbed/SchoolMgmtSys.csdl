@@ -156,7 +156,6 @@
       <Parameter Name="Classid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_ExaminationType" EntityType="SchoolMgmtSysModel.tbl_ExaminationType" />
-    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
     <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.tbl_StudentMark" />
     <FunctionImport Name="sp_ExaminationDetailbyId" ReturnType="Collection(SchoolMgmtSysModel.sp_ExaminationDetailbyId_Result)">
       <Parameter Name="Examid" Mode="In" Type="Int32" />
@@ -318,6 +317,7 @@
       <Parameter Name="busDateTime" Mode="In" Type="DateTime" />
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="bustime" Mode="In" Type="String" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
@@ -1428,6 +1428,8 @@
       <Parameter Name="yearid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="secondaryeducationdetails" EntityType="SchoolMgmtSysModel.secondaryeducationdetail" />
+    <EntitySet Name="tbl_ExamTimetableSubject" EntityType="SchoolMgmtSysModel.tbl_ExamTimetableSubject" />
+    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1722,20 +1724,6 @@
     <Property Type="String" Name="ExaminationType" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="Boolean" Name="Status" />
   </EntityType>
-  <EntityType Name="tbl_ExamTImeTable">
-    <Key>
-      <PropertyRef Name="ExamId" />
-    </Key>
-    <Property Type="Int32" Name="ExamId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="ExamName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="ExamStartTime" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="ExamEndTime" Nullable="false" Precision="3" />
-    <Property Type="Int32" Name="ExamTypeId" Nullable="false" />
-    <Property Type="Int32" Name="ExamClassId" Nullable="false" />
-    <Property Type="Int32" Name="ExamSubjectId" Nullable="false" />
-    <Property Type="String" Name="ExamYear" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsPublish" />
-  </EntityType>
   <EntityType Name="tbl_StudentMark">
     <Key>
       <PropertyRef Name="Marksid" />
@@ -2010,6 +1998,7 @@
     <Property Type="DateTime" Name="busDateTime" Precision="3" />
     <Property Type="Boolean" Name="status" Nullable="false" />
     <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BusTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <ComplexType Name="sp_gettransport_Result">
     <Property Type="Int32" Name="busid" Nullable="false" />
@@ -3403,5 +3392,28 @@
     <Property Name="referenceletter" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="tcscan" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="marksSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTimetableSubject">
+    <Key>
+      <PropertyRef Name="ExSubId" />
+    </Key>
+    <Property Name="ExSubId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExamId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="ExamDate" Type="DateTime" Precision="7" />
+    <Property Name="ExamStartTime" Type="Time" Precision="7" />
+    <Property Name="ExamEndTime" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTImeTable">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExamName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExamTypeId" Type="Int32" Nullable="false" />
+    <Property Name="IsPublish" Type="Boolean" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="deptid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
   </EntityType>
 </Schema>

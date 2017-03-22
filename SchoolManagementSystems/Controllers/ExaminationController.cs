@@ -78,54 +78,66 @@ namespace SchoolManagementSystems.Controllers
        [HttpPost]
         public ActionResult SubmitExam(Examinationviewmodel evm, string[] subjectdata)
         {
-            //string yr = evm.AccadmicYear[0].ToString();
-            //if (evm.Examid != null && evm.Examid != 0)
-            //{
-            //    tbl_ExamTImeTable tbl = db.tbl_ExamTImeTable.Where(x => x.ExamId == evm.Examid).FirstOrDefault();
-            //    db.ObjectStateManager.ChangeObjectState(tbl, System.Data.EntityState.Modified);
-            //    //db.Entry(tbl).State = System.Data.Entity.EntityState.Modified;   
-            //    tbl.ExamClassId = evm.Classid;
-            //    string[] date = evm.ExamDate.ToString("MM/dd/yyyy").Replace("-", "/").Split(' ');
-            //    DateTime ExamStartDate = DateTime.ParseExact(date[0].ToString() + " " + evm.ExamStartTime, "MM/dd/yyyy hh:mmtt", CultureInfo.InvariantCulture);
-            //    DateTime ExamEndDate = DateTime.ParseExact(date[0].ToString() + " " + evm.ExamEndTime, "MM/dd/yyyy hh:mmtt", CultureInfo.InvariantCulture);
-            //    tbl.ExamStartTime = ExamStartDate;
-            //    tbl.ExamEndTime = ExamEndDate;
-            //    tbl.ExamName = evm.ExaminationName;
-            //    tbl.ExamTypeId = evm.ExaminationTypeid;
-            //    tbl.ExamYear = yr;
-            //    tbl.ExamSubjectId = evm.Subjectid;
-            //    tbl.ExamId = evm.Examid;
-            //    db.SaveChanges();
-            //    return RedirectToAction("ExamTimeTable");
-            //}
-            //else
-            //{
-            //    var a = db.tbl_ExamTImeTable.Where(x => x.ExamClassId == evm.Classid && x.ExamSubjectId == evm.Subjectid &&
-            //            x.ExamTypeId == evm.ExaminationTypeid && x.ExamYear == yr);
-            //    if (a == null || a.Count() == 0)
-            //    {
-            //        tbl_ExamTImeTable _evm = new tbl_ExamTImeTable();
-            //        _evm.ExamClassId = evm.Classid;
-            //        string[] date = evm.ExamDate.ToString("MM/dd/yyyy").Replace("-", "/").Split(' ');
-            //        DateTime ExamStartDate = DateTime.ParseExact(date[0].ToString() + " " + evm.ExamStartTime, "MM/dd/yyyy hh:mm", CultureInfo.InvariantCulture);
-            //        DateTime ExamEndDate = DateTime.ParseExact(date[0].ToString() + " " + evm.ExamEndTime, "MM/dd/yyyy hh:mm", CultureInfo.InvariantCulture);
-            //        _evm.ExamStartTime = ExamStartDate;
-            //        _evm.ExamEndTime = ExamEndDate;
-            //        _evm.ExamName = evm.ExaminationName;
-            //        _evm.ExamTypeId = evm.ExaminationTypeid;
-            //        _evm.ExamYear = yr;
-            //        _evm.ExamSubjectId = evm.Subjectid;
-            //        db.tbl_ExamTImeTable.AddObject(_evm);
-            //        db.SaveChanges();
-            //        return RedirectToAction("ExamTimeTable");
-            //    }
-            //    else
-            //    {
-            //        TempData["ErrorMessage"] = "Exam is already exists for the Subject, Class and Academic year";
-            //        return RedirectToAction("ExamTimeTable");
-            //    }
-            //}
-            return RedirectToAction("ExamTimeTable");
+
+            if (evm.Examid.ToString() != null && evm.Examid != 0)
+            {
+                tbl_ExamTImeTable tbl = db.tbl_ExamTImeTable.Where(x => x.ExamId == evm.Examid).FirstOrDefault();
+                db.ObjectStateManager.ChangeObjectState(tbl, System.Data.EntityState.Modified);
+                //db.Entry(tbl).State = System.Data.Entity.EntityState.Modified;   
+                tbl.courseid = evm.CourseId;
+                tbl.deptid = evm.DeptId;
+                tbl.yearid = evm.yearid;
+                tbl.ExamName = evm.ExaminationName.Trim();
+                tbl.ExamTypeId = evm.ExaminationTypeid;
+                tbl.ExamId = evm.Examid;
+                db.SaveChanges();
+                TempData["ErrorMessage"] = "Update";
+                return RedirectToAction("ExamTimeTable");
+            }
+            else
+            {
+                var a = db.tbl_ExamTImeTable.Where(x => x.courseid == evm.CourseId && x.deptid == evm.DeptId &&
+                        x.yearid == evm.yearid && x.ExamTypeId == evm.ExaminationTypeid && x.ExamName==evm.ExaminationName.Trim());
+                if (a == null || a.Count() == 0)
+                {
+                    tbl_ExamTImeTable _evm = new tbl_ExamTImeTable();
+                    _evm.courseid = evm.CourseId;
+                    _evm.deptid = evm.DeptId;
+                    _evm.yearid = evm.yearid;
+                    _evm.ExamTypeId = evm.ExaminationTypeid;
+                    _evm.ExamName = evm.ExaminationName;
+                    db.tbl_ExamTImeTable.AddObject(_evm);
+                    db.SaveChanges();
+
+                    int examids=db.tbl_ExamTImeTable.Where(x => x.courseid == evm.CourseId && x.deptid == evm.DeptId &&
+                     x.yearid == evm.yearid && x.ExamTypeId == evm.ExaminationTypeid && x.ExamName == evm.ExaminationName.Trim()).Select(x=>x.ExamId).SingleOrDefault();
+                    string s;
+                    tbl_ExamTimetableSubject _sub = new tbl_ExamTimetableSubject();
+                    for (int i = 0; i < subjectdata.Count(); i++)
+                    {
+                        s = subjectdata[i].ToString();
+                        string[] s1 = s.ToString().Split('|');
+                        _sub.ExamId = examids;
+                        _sub.SubjectId = Convert.ToInt32(s1[0].ToString());
+                        _sub.ExamDate = Convert.ToDateTime(s1[1].ToString());
+                        _sub.ExamStartTime = DateTime.ParseExact(s1[2].ToString(), "HH:mm", CultureInfo.InvariantCulture).TimeOfDay;
+                        _sub.ExamEndTime = DateTime.ParseExact(s1[3].ToString(), "HH:mm", CultureInfo.InvariantCulture).TimeOfDay;
+                        db.tbl_ExamTimetableSubject.AddObject(_sub);
+                        db.SaveChanges();
+                    }
+
+                    TempData["ErrorMessage"] = "Success";
+                    return RedirectToAction("ExamTimeTable");
+
+                  
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Exists";
+                    return RedirectToAction("ExamTimeTable");
+                }
+            }
+         
 
         }
 
@@ -147,19 +159,20 @@ namespace SchoolManagementSystems.Controllers
             {
                 _evm.ExaminationTypeList = db.tbl_ExaminationType.Where(x => x.Status == true).ToList();
                 _evm.SubjectList = db.tbl_subject.Where(x => x.Status == true).ToList();
-                _evm.Classlist = db.tbl_class.Where(x => x.status == true).ToList();
-                _evm.Classid = PClassid;
+                _evm._Courselist = db.tbl_CourseMaster.Where(x => x.Status == true).OrderBy(x=>x.CourseName).ToList();
+                _evm._Deptlist = db.tblDepartment.Where(x => x.Status == true).ToList();
+                _evm._yearlist = db.tbl_YearMaster.Where(x => x.Status == true).ToList();
                 _evm.ExaminationTypeid = PExaminationTypeid;
-                List<string> yr = new List<string>();
-                yr.Add(PExamYear);
-                _evm.AccadmicYear = yr;
+                _evm.yearid = 0;
             }
             else
             {
                 _evm.AccadmicYear = GetYear();
                 _evm.ExaminationTypeList = db.tbl_ExaminationType.Where(x => x.Status == true).ToList();
                 _evm.SubjectList = db.tbl_subject.Where(x => x.Status == true).ToList();
-                _evm.Classlist = db.tbl_class.Where(x => x.status == true).ToList();
+                _evm._Courselist = db.tbl_CourseMaster.Where(x => x.Status == true).OrderBy(x => x.CourseName).ToList();
+                _evm._Deptlist = db.tblDepartment.Where(x => x.Status == true).ToList();
+                _evm._yearlist = db.tbl_YearMaster.Where(x => x.Status == true).ToList();
             }
             return View(_evm);
         }
@@ -200,7 +213,7 @@ namespace SchoolManagementSystems.Controllers
 
         public ActionResult SubmitMark(int Studentid, int Subjectid, int ExaminationTypeid, int Classid, string Marks, string TotalMarks, string ExamYear, string Remark)
         {
-            int PExamid = db.tbl_ExamTImeTable.Where(x => x.ExamYear == ExamYear && x.ExamTypeId == ExaminationTypeid && x.ExamClassId == Classid && x.ExamSubjectId == Subjectid).FirstOrDefault().ExamId;
+            int PExamid = db.tbl_ExamTImeTable.Where(x => x.yearid == 0 && x.ExamTypeId == ExaminationTypeid && x.courseid == Classid && x.deptid == Subjectid).FirstOrDefault().ExamId;
 
             var Markcheck = db.tbl_StudentMark.Where(x => x.Examid == PExamid && x.Studentid == Studentid && x.Subjectid == Subjectid);
             if (Markcheck.Count() == 0 || Markcheck == null)
@@ -253,7 +266,7 @@ namespace SchoolManagementSystems.Controllers
         public ActionResult PublishExam(Examinationviewmodel evm)
         {
             string yr = evm.AccadmicYear[0].ToString();
-            var tb = db.tbl_ExamTImeTable.Where(x => x.ExamClassId == evm.Classid && x.ExamTypeId == evm.ExaminationTypeid && x.ExamYear == yr && (x.IsPublish == false || x.IsPublish == null));
+            var tb = db.tbl_ExamTImeTable.Where(x => x.courseid == evm.Classid && x.ExamTypeId == evm.ExaminationTypeid && x.yearid == 0 && (x.IsPublish == false || x.IsPublish == null));
             if (tb != null && tb.Count() > 0)
             {
                 string host = Request.Url.AbsoluteUri;
@@ -322,7 +335,7 @@ namespace SchoolManagementSystems.Controllers
 
         public JsonResult StudentMarkDetail(int Classid, int ExaminationTypeid, int Subjectid, string ExamYear)
         {
-            int PExamid = db.tbl_ExamTImeTable.Where(x => x.ExamYear == ExamYear && x.ExamTypeId == ExaminationTypeid && x.ExamClassId == Classid && x.ExamSubjectId == Subjectid).Select(m => m.ExamId).FirstOrDefault();
+            int PExamid = db.tbl_ExamTImeTable.Where(x => x.yearid == 0 && x.ExamTypeId == ExaminationTypeid && x.courseid == Classid).Select(m => m.ExamId).FirstOrDefault();
             var ExaminationDetail = db.sp_StudentMarks(PExamid).ToList();
             return Json(ExaminationDetail, JsonRequestBehavior.AllowGet);
         }
