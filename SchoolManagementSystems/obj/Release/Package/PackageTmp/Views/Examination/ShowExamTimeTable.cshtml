@@ -8,7 +8,100 @@
     $(document).ready(function () {
         FillPermission();
 
-        function GetParameterValues(param) {
+        function ReloadState() {
+            $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
+        }
+
+        function ReloadCountry() {
+            if ($("#CourseId").val() == "") {
+                ReloadState();
+            }
+            else {
+
+                $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#CourseId").change(function () {
+
+            ReloadCountry();
+        })
+
+
+        function ReloadYear() {
+            $("#yearid").empty();
+            var item = '<option value="">select Year</option>';
+            $("#yearid").append(item);
+        }
+
+        function ReloadCourseYear() {
+            if ($("#DeptId").val() == "") {
+                ReloadYear();
+            }
+            else {
+
+                $("#yearid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourseYear")',
+                    dataType: 'json',
+                    data: {
+                        courseid: $("#CourseId").val(),
+                        deptid: $("#DeptId").val()
+                    },
+                    success: function (yeardata) {
+                        if (yeardata != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(yeardata, function (i, yeardata) {
+                                item += '<option value="' + yeardata.Value + '">' + yeardata.Text + '</option>';
+                            });
+                            $("#yearid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#yearid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+        $("#DeptId").change(function () {
+
+            ReloadCourseYear();
+        })
+
+        @*function GetParameterValues(param) {
             var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
             for (var i = 0; i < url.length; i++) {
                 var urlparam = url[i].split('=');
@@ -59,7 +152,7 @@
             $("#display").hide();
             $("#publish").hide();
 
-        }
+        }*@
 
         $("#display").click(function (e) {
             if (Validations(e) == false)
@@ -69,22 +162,32 @@
                 type: 'POST',
                 url: '@Url.Action("DisplayExamTimeTable")',
                 dataType: 'json',
-                data: { Classid: $("#Classid").val(), ExamTypeid: $("#ExaminationTypeid").val(), ExamYear: $("#ExamYear").val() },
+                data: { ExamTypeid: $("#ExaminationTypeid").val(), courseid: $("#CourseId").val(), departmentid: $("#DeptId").val(), yearid: $("#yearid").val() },
                 success: function (ExaminationDetail) {
                     if (ExaminationDetail != "") {
-                        var item = '<tr><th>Exam Name</th><th>Exam Date</th><th>Exam Start Time</th><th>Exam End Time</th><th>Exam Type</th><th>Exam Subject</th><th>Exam Class</th><th>Exam Year</th><th colspan="2">Action</th></tr>';
+                        var item = '<tr><th>Exam Id</th><th>Exam Name</th><th>Is Publish</th><th>Status</th><th>View</th><th>Edit</th><th>Publish</th></tr>';
                         $.each(ExaminationDetail, function (i, Exam) {
                             item += '<tr>'
+                            item += '<td>' + Exam.ExamId + '</td>';
                             item += '<td>' + Exam.ExamName + '</td>';
-                            item += '<td>' + Exam.ExamDate + '</td>';
-                            item += '<td>' + Exam.ExamStartDate + '</td>';
-                            item += '<td>' + Exam.ExamEndDate + '</td>';
-                            item += '<td>' + Exam.ExamType + '</td>';
-                            item += '<td>' + Exam.ExamSubject + '</td>';
-                            item += '<td>' + Exam.ExamClass + '</td>';
-                            item += '<td>' + Exam.ExamYear + '</td>';
-                            item += '<td><input type="submit" Class="edit btn btn-default btn_edit" id=' + Exam.ExamId + ' value="Edit" /></td>';
-                            //item += '<td><input type="submit" Class="delete btn btn-default btn_delete" id=' + Exam.ExamId + ' value="Delete" /></td>';
+                            item += '<input type="hidden"  id=Examnm' + Exam.ExamId + ' value=' + Exam.ExamName + ' />';
+                            if (Exam.IsPublish == 1)
+                            { item += '<td>Yes</td>'; }
+                            else { item += '<td>No</td>'; }
+                            if (Exam.IsActive == true)
+                            { item += '<td>Active</td>'; }
+                            else { item += '<td>InActive</td>'; }
+                            item += '<td><input type="submit" Class="_view btn-info" id=' + Exam.ExamId + ' value="View" /></td>';
+                            if (Exam.IsPublish == 1)
+                            { item += '<td><input type="submit" Class="edit btn-link"  id=' + Exam.ExamId + ' value="Edit" /></td>'; }
+                            else { item += '<td><input type="submit" Class="edit btn-link" id=' + Exam.ExamId + ' value="Edit" /></td>'; }
+
+                           
+                            if (Exam.IsPublish == 1)
+                            { item += '<td><input type="submit" Class="publish btn-primary" disabled="disabled" id=' + Exam.ExamId + ' value="Publish" /></td>'; }
+                            else { item += '<td><input type="submit" Class="publish btn-primary" id=' + Exam.ExamId + ' value="Publish" /></td>'; }
+                           
+
                         });
                         $("#tblExamTimeTable").append(item);
                     }
@@ -103,17 +206,27 @@
                 var Examid = this.id;
                 location.href = '/Examination/ExamTimeTable?Examid=' + Examid;
             });
-            $("#tblExamTimeTable").on("click", "input.delete", function () {
-                var busid = this.id;
-                var act = 'Delete';
-                var flag = confirm('Are you sure you want to delete this Information?');
-                if (flag) {
+
+            $("#tblExamTimeTable").on("click", "input.publish", function () {
+                debugger;
+                var Examid = this.id;
+                var act = 'Publish';
+                var flag = confirm('Are you sure you want to publish this Exam Time table?');
+                if (flag==true) {
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("RemoveExamination")',
+                        url: '@Url.Action("PublishExam")',
                         dataType: 'json',
-                        data: { evt: act, id: busid },
-                        success: function () {
+                        data: { Examid: Examid },
+                        success: function (resultcount) {
+                            $("#msgs").show();
+                            $("#lblmsgs").text("Exam Time table  published successfully!..");
+                            $("#lblmsgs").css({ "color": "green" });
+                            $("#lblmsgs").css({ "font-size": "15px" });
+                            $("#result").html(result);
+                            clear();
+
+                            ReloadPaging();
                         }
                     });
                 }
@@ -122,7 +235,62 @@
             return false;
         })
 
+        $("#tblExamTimeTable").on("click", "input._view", function () {
+            debugger;
+            var Examid = this.id;
+            debugger;
+            var ExamName = ($('#Examnm' + Examid).val());
+            var CourseName = ($("#CourseId option:selected").text());
+            var DeptName = ($("#DeptId option:selected").text());
+            var YearNm = ($("#yearid option:selected").text());
+            var labeltext = CourseName +" Department Of "+ DeptName+" " + ExamName +" "+ YearNm+" Examination Time Table"
+            $('#lblheaddata').text(labeltext);
+            $("#tblsubjectlist tbody tr").remove();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetExamSubjectList")',
+                dataType: 'JSON',
+                data: { Examid: Examid },
+                success: function (data) {
+                    if (data != "") {
+                        var items = '';
 
+                        $.each(data, function (i, item) {
+
+                             var id = "<tr id=" + item.ExSubId + ">";
+                             var row = "<td  class='prtoducttd'style='width:10%'>" + item.subjectcode + "</td>"
+                             + "<td class='prtoducttd' style='width:50%'>" + item.SubjectNm + "</td>"
+                             + "<td class='prtoducttd' style='width:20%'>" + item.ExamDate + "</td>"
+                             + "<td class='prtoducttd'style='width:10%'>" + item.ExamStartTime + "</td>"
+                             + "<td class='prtoducttd' style='width:10%'>" + item.ExamEndTime + "</td>"
+                             + "</tr>";
+                            var rows = id + row;
+                            $('#tblsubjectlist tbody').append(rows);
+
+
+                        });
+                    } else {
+                        $("#tblsubjectlist tbody tr").remove();
+                        var rows = "<tr>"
+                            + "<td class='prtoducttd' colspan='5'>" + "No Records Found" + "</td>"
+
+                            + "</tr>";
+                        $('#tblsubjectlist tbody').append(rows);
+                    }
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    alert("Message: " + r.Message);
+                    alert("StackTrace: " + r.StackTrace);
+                    alert("ExceptionType: " + r.ExceptionType);
+                }
+            });
+            $('#myModal').modal('show');
+            $('#tblsubjectlist').show();
+            return false;
+
+
+        });
 
 
         $("#publish").click(function (e) {
@@ -148,19 +316,6 @@
         function Validations(e) {
             var cnt = 0;
 
-            if ($("#Classid").val() == '' || $("#Classid").val() == '0') {
-                cnt++;
-                $("#Classid").css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $("#Classid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
             if ($("#ExaminationTypeid").val() == '' || $("#ExaminationTypeid").val() == '0') {
                 cnt++;
                 $("#ExaminationTypeid").css({
@@ -174,18 +329,44 @@
                 });
             }
 
-            if ($("#ExamYear").val() == '') {
+            if ($("#CourseId").val() == '' || $("#CourseId").val() == '0') {
                 cnt++;
-                $("#ExamYear").css({
+                $("#CourseId").css({
                     "border": "1px solid red"
                 });
             }
             else {
-                $("#ExamYear").css({
+                $("#CourseId").css({
                     "border": "",
                     "background": ""
                 });
             }
+            if ($("#DeptId").val() == '' || $("#DeptId").val() == '0') {
+                cnt++;
+                $("#DeptId").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#DeptId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#yearid").val() == '' || $("#yearid").val() == '0') {
+                cnt++;
+                $("#yearid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#yearid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+
+
 
             if (cnt != 0) {
                 return false;
@@ -193,36 +374,108 @@
         }
 
 
-        $("#Classid").change(function () {
-            $("#Subjectid").empty();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetSubject")',
-                dataType: 'json',
-                data: { id: $("#Classid").val() },
-                success: function (Subjects) {
-                    if (Subjects != "") {
-                        var item = '<option value="0">Select Subject</option>';
-                        $.each(Subjects, function (i, subject) {
-                            item += '<option value="' + subject.Value + '">' + subject.Text + '</option>';
-                        });
-                        $("#Subjectid").append(item);
-                    }
-                    else {
-                        var item = '<option value="0">select Subject</option>';
-                        $("#Subjectid").append(item);
-                    }
-                },
-                error: function (ex) {
-                    alert('Failed to retrieve states.' + ex);
-                }
-            });
-            return false;
-        })
+
 
 
     });
-</script>@Html.Partial("_PermissionHiddenFlds")
+    function PrintPanel(id) {
+        var id;
+        var panel = document.getElementById(id);
+        var printWindow = window.open('', '', 'height=600px,width=800px');
+        printWindow.document.write("<html> <head> <style type='text/css'>.style1{border-collapse:collapse;font-size: 12px; font-family: sans-serif;} .dispnone {display:none;}.tblsubjectlist {font-family: verdana,arial,sans-serif;font-size: 11px;color: #333333;border-width: 1px;border-color: #666666;border-collapse: collapse;}.productth {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #dedede;}.prtoducttd {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #ffffff;}</head></style> ");
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(panel.innerHTML);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        setTimeout(function () {
+            printWindow.print();
+        }, 500);
+        return false;
+    }
+</script>
+<style type="text/css">
+.modal-header {
+    position: relative;
+}
+    .modal {
+    width: 60%;
+    margin-left: -30%;
+    }
+.mynewclassclose {
+   cursor: pointer;
+    position: absolute;
+    right: -13px;
+    text-align: center;
+    top: -13px;
+    width: 35px;
+    opacity: 1;
+}
+.mynewclassclose:hover {
+    opacity: 2;
+}
+.tblsubjectlist {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+    .productth {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+
+    .prtoducttd {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+
+</style>
+@Html.Partial("_PermissionHiddenFlds")
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+               
+                <button type="button" class="close mynewclassclose" data-dismiss="modal" aria-hidden="true" aria-label="Close"><img src="/images/closebtn.png" alt=""></button>
+                <h4 class="modal-title">Time Table</h4>
+            </div>
+            <div id ="printtable"class="modal-body">
+                <p> 
+                    <table id="tblsubjectlist" class="tblsubjectlist">
+                        <thead>
+                            <tr><th align="center" colspan="5" class="productth">
+                                    <label style="font-weight: bold;" id="lbllogo">Nanjil Catholic College Of Arts & Science</label><br />
+                                  <label style="font-weight: bold;" id="lblheaddata"></label><br/></th></tr>
+                            <tr>
+                                <th align="left" class="productth">Sub.Code</th>
+                                <th align="left" class="productth">Subject</th>
+                                <th align="left" class="productth">Date</th>
+                                <th align="left" class="productth">StartTime</th>
+                                <th align="left" class="productth">EndTime</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        
+                    </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  onclick="PrintPanel('printtable');">Print</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <div class="container-fluid-full">
              
 		<div class="row-fluid">
@@ -257,30 +510,41 @@
                                                 @TempData["ErrorMessage"]
                                             </div>
                                             <div class="control-group">
-                                                @Html.LabelFor(model => model.Classid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.Classid)
-                                                      </div>
+                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class = "control-label", @for = "select" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @for = "select" })
+                                                    @Html.ValidationMessageFor(model => model.ExaminationTypeid)
+                                                </div>
                                             </div>
-                                            <div class="control-group">
-                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.ExaminationTypeid)
-                                                      </div>
-                                            </div>
-                                            <div class="control-group">
-                                                @Html.LabelFor(model => model.ExamYear, new { @class="control-label", @for="select" })
-                                                  <div class="controls">
-                                                @*@Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", @class = "col-md-5 form-control form_in" })*@
-                                                @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @for="select" })
-                                                @Html.ValidationMessageFor(model => model.ExamYear)
-                                                      </div>
-                                            </div>
+                                              
+
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.CourseId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._Deptlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.DeptId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.yearid, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.yearid, new SelectList(Model._yearlist, "yearid", "YearName", "Select Year"), "Select Year", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.yearid)
+                                                    </div>
+                                                </div>
                                            <div class="form-actions">
                                                 <input type="submit" action="display" class="btn btn-primary" id="display" value="Display" />
-                                                <input type="submit" action="publish" class="btn btn-primary" id="publish" value="Publish" />
+                                                <input type="submit" action="publish" class="btn btn-primary hidden"  id="publish" value="Publish" />
                                             </div>
                                         }  </fieldset>
                                 </form>
@@ -300,12 +564,14 @@
 						</div>
 					</div> 
                   <div class="box-content">
-                            <div id="result" class="table-responsive" style=" color: #23527c;">
+                            <div id="result" class="table-responsive" style="color: #23527c;">
                                 <table class="table tb-parshav" id="tblExamTimeTable">
                                     <tr>
                                         <td></td>
                                     </tr>
+                                   
                                 </table>
+                               
                             </div>
                             <!-- table end -->
                         </div>

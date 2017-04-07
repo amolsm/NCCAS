@@ -82,7 +82,7 @@ namespace Entity
         [DisplayName("Percentage : ")]
         public double PrScPercentage { get; set; }
 
-        [DisplayName("Grade while leaving : ")]
+        [DisplayName("Grade: ")]
         public string Grade { get; set; }
 
         [DisplayName("Year of leaving : ")]
@@ -405,7 +405,7 @@ namespace Entity
 
         public string Sibling4Ql { get; set; }
 
-        [DisplayName("12MarksSheet Scan Copy : ")]
+        [DisplayName("MarksSheet Scan Copy : ")]
         public byte[] SCMarksheet { get; set; }
 
         [DisplayName("College UG Scan Copy : ")]
@@ -521,7 +521,7 @@ namespace Entity
         [DisplayName("Name & Location (District) Of School Last Studied:")]
         public string namelocation { get; set; }
 
-        [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
+        [DisplayName("Qualifying Examination Passed")]
         public string examinationpassed { get; set; }
 
         [DisplayName("Year Of Passing:")]
@@ -533,6 +533,9 @@ namespace Entity
         [DisplayName("No. Of Attempts:")]
         public int attempts1 { get; set; }
 
+
+        [DisplayName("Year Of Leaving")]
+        public DateTime sleaving { get; set; }
 
         [DisplayName("Subject")]
         public string psubject1 { get; set; }
@@ -629,6 +632,30 @@ namespace Entity
         [DisplayName("Qualifying Examination Passed: HSC (OR) Equivalent:")]
         public string pexaminationpassed { get; set; }
 
+        [DisplayName("Class")]
+        public int uclass1 { get; set; }
+
+        [DisplayName("Class")]
+        public int uclass2 { get; set; }
+
+        [DisplayName("Class")]
+        public int uclass3 { get; set; }
+
+        [DisplayName("Class")]
+        public int uclass4 { get; set; }
+
+        [DisplayName("Class")]
+        public int uclass5 { get; set; }
+
+        [DisplayName("Class")]
+        public int uclass6 { get; set; }
+
+        [DisplayName("Select Option")]
+        public int ugoldm { get; set; }
+
+        [DisplayName("University Rank")]
+        public string uUniversityRank { get; set; }
+
 
         [DisplayName("Subject")]
         public string hsubject1 { get; set; }
@@ -687,6 +714,9 @@ namespace Entity
         [DisplayName("Year Of Passing:")]
         public DateTime hpyear { get; set; }
 
+        [DisplayName("Year Of Leaving")]
+        public DateTime hleaving { get; set; }
+
         [DisplayName("Register No:")]
         public string hrnumber1 { get; set; }
 
@@ -700,7 +730,7 @@ namespace Entity
         public int htotalmark { get; set; }
 
         [DisplayName("Percentage")]
-        public int hpercentage { get; set; }
+        public double hpercentage { get; set; }
 
         [DisplayName("Grade")]
         public string hgrade { get; set; }
@@ -857,13 +887,37 @@ namespace Entity
         [DisplayName("Answer")]
         public string answer8 { get; set; }
 
-        [DisplayName("Course : ")]
+        [DisplayName("Class")]
+        public int pclass1 { get; set; }
+
+        [DisplayName("Class")]
+        public int pclass2 { get; set; }
+
+        [DisplayName("Class")]
+        public int pclass3 { get; set; }
+
+        [DisplayName("Class")]
+        public int pclass4 { get; set; }
+
+        [DisplayName("Class")]
+        public int pclass5 { get; set; }
+
+        [DisplayName("Class")]
+        public int pclass6 { get; set; }
+
+        [DisplayName("Select Option")]
+        public int goldm { get; set; }
+
+        [DisplayName("University Rank")]
+        public string UniversityRank { get; set; }
+
+        [DisplayName("Department : ")]
         public int deptpg { get; set; }
 
         [DisplayName("Course : ")]
         public int coursepg { get; set; }
 
-        [DisplayName("Course : ")]
+        [DisplayName("Department : ")]
         public int deptug { get; set; }
 
         [DisplayName("Course : ")]

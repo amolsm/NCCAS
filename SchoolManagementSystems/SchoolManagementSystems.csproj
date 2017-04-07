@@ -193,6 +193,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\Banner.jpg" />
+    <Content Include="images\closebtn.png" />
     <Content Include="images\Home.png" />
     <Content Include="images\loader.gif" />
     <Content Include="images\loading-x.gif" />

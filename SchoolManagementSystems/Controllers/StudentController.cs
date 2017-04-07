@@ -464,7 +464,7 @@ namespace SchoolManagementSystems.Controllers
                             img.Resize(600, 600);
                         }
                         byte[] array = img.GetBytes();
-                        svm.sc_refletter = array;
+                        svm.PrScReferenceLetter = array;
                     }
                 }
                 else
@@ -709,7 +709,7 @@ namespace SchoolManagementSystems.Controllers
             {
                 if (svm.Studid != 0)
                 {
-                    svm.hrefscan = db.hsceducationdetails.Where(m => m.Studid == svm.Studid).Select(m => m.tcscan).FirstOrDefault();
+                    svm.htcscan = db.hsceducationdetails.Where(m => m.Studid == svm.Studid).Select(m => m.tcscan).FirstOrDefault();
                 }
             }
             //Reference Letter
@@ -821,31 +821,41 @@ namespace SchoolManagementSystems.Controllers
                     if (group1 != "0" && group1 != null)
                     {
                         //db.sp_student_online_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, svm.LeaveYear, svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MotherPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, cats, prds, svm.Docs, subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "del").ToString();
+
                         try
                         {
-                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                         svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                         svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, "", svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
+                            db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid,
+                         svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm,
+                         svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic,
+                         svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic,
+                         svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid,
+                         svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid,
+                         svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode,
+                         svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic,
+
                          svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                         svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
+                         svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName,
+                         svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode,
+                         svm.Documenttypename, svm.courseyear,
                          svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
                          svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
                          svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
                          svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
-                         svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, "", svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet,
+                         svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, svm.RCode, svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet, svm.sleaving, svm.PrScTCNumber,
                          svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
                          svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
                          svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
                          svm.PrUgObtainMark, svm.PrUgTotalMark,
                          svm.ppyear, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed,
-                         svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, 0, svm.UGMarksheet,
+                         svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, svm.urefcode, svm.UGMarksheet, svm.uUniversityRank, svm.ugoldm, svm.uclass1, svm.uclass2, svm.uclass3, svm.uclass4, svm.uclass5, svm.uclass6,
                          svm.hsubject1, svm.hsubject2, svm.hsubject3, svm.hsubject4, svm.hsubject5, svm.hsubject6,
                          svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
                          svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
                          svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
-                         svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8,
+                         svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8, svm.hleaving,
                          svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
-                         svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, 0, svm.PGMarksheet).ToString();
+                         svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, svm.prefcode, svm.PGMarksheet, svm.UniversityRank, svm.goldm, svm.pclass1, svm.pclass2, svm.pclass3, svm.pclass4, svm.pclass5, svm.pclass6).ToString();
+
 
 
                         }
@@ -857,10 +867,10 @@ namespace SchoolManagementSystems.Controllers
 
                         try
                         {
-                            //int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
-                            //CreateUsers(svm.StudEmail, 1, studid, yr);
-                            //SendSMS(studid);
-                            //CreateUsers(svm.FatherEmail, 2, studid, yr);
+                            int studid = db.tbl_student.Where(m => m.StudEmail == svm.StudEmail).Select(m => m.Studid).FirstOrDefault();
+                            CreateUsers(svm.StudEmail, 1, studid, yr);
+                            SendSMS(studid);
+                            CreateUsers(svm.FatherEmail, 2, studid, yr);
 
                         }
                         catch (Exception ex) { string msg = ex.ToString(); }
@@ -877,29 +887,37 @@ namespace SchoolManagementSystems.Controllers
                     {
                         try
                         {
-                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                         svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                         svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, "", svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
-                         svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                         svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                         svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
-                         svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
-                         svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
-                         svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
-                         svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, "", svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet,
-                         svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
-                         svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
-                         svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
-                         svm.PrUgObtainMark, svm.PrUgTotalMark,
-                         svm.ppyear, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed,
-                         svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, 0, svm.UGMarksheet,
-                         svm.hsubject1, svm.hsubject2, svm.hsubject3, svm.hsubject4, svm.hsubject5, svm.hsubject6,
-                         svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
-                         svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
-                         svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
-                         svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8,
-                         svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
-                         svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, 0, svm.PGMarksheet).ToString();
+                            db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid,
+                        svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm,
+                        svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic,
+                        svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic,
+                        svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid,
+                        svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid,
+                        svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode,
+                        svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic,
+
+                        svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
+                        svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName,
+                        svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode,
+                        svm.Documenttypename, svm.courseyear,
+                        svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
+                        svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
+                        svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
+                        svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
+                        svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, svm.RCode, svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet, svm.sleaving, svm.PrScTCNumber,
+                        svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
+                        svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
+                        svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
+                        svm.PrUgObtainMark, svm.PrUgTotalMark,
+                        svm.ppyear, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed,
+                        svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, svm.urefcode, svm.UGMarksheet, svm.uUniversityRank, svm.ugoldm, svm.uclass1, svm.uclass2, svm.uclass3, svm.uclass4, svm.uclass5, svm.uclass6,
+                        svm.hsubject1, svm.hsubject2, svm.hsubject3, svm.hsubject4, svm.hsubject5, svm.hsubject6,
+                        svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
+                        svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
+                        svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
+                        svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8, svm.hleaving,
+                        svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
+                        svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, svm.prefcode, svm.PGMarksheet, svm.UniversityRank, svm.goldm, svm.pclass1, svm.pclass2, svm.pclass3, svm.pclass4, svm.pclass5, svm.pclass6).ToString();
 
 
 
@@ -909,15 +927,15 @@ namespace SchoolManagementSystems.Controllers
                             string msg = ex.ToString();
                             //TempData["StudentError"] = msg;
                         }
-                        //try
-                        //{
-                        //    SendEmails(svm.StudEmail);
-                        //    SendUpdateSMS(svm.Studid);
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    string msg = ex.ToString();
-                        //}
+                        try
+                        {
+                            SendEmails(svm.StudEmail);
+                            SendUpdateSMS(svm.Studid);
+                        }
+                        catch (Exception ex)
+                        {
+                            string msg = ex.ToString();
+                        }
 
 
                     }
@@ -927,29 +945,38 @@ namespace SchoolManagementSystems.Controllers
             {
                 try
                 {
-                    db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid, svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm, svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic, svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic, svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid, svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid, svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode, svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic, svm.PrScTotalMarks, svm.PrScObtainMark, svm.PrScPercentage, svm.SCTCPic, svm.SCMarksheet, svm.PrUgCollegeName, svm.PrUgCollegeAddress,
-                         svm.PrUgAffilatedUniversity, svm.PrUgRefContactNo, svm.PrUgTotalMark, svm.PrUgObtainMark, svm.PrUgPercentage, svm.PrUgGradeLeaving, svm.PrUgYearLeaving, svm.PrUgReasonofLeaving, svm.PrUgPrincipalName, svm.PrUgRefContactName, svm.UGMarksheet,
-                         svm.PrPgCollegeName, svm.PrPgCollegeAddress, svm.PrPgAffilatedUniversity, svm.PrPgRefContactNo, svm.PrPgTotalMark, svm.PrPgObtainMark, svm.PrPgPercentage, svm.PrPgGradeLeaving, "", svm.PrPgReasonofLeaving, svm.PrPgPrincipalName, svm.PrPgRefContactName, svm.PGMarksheet,
-                         svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
-                         svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName, svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode, svm.PrScRegisterNumber, svm.sc_refletter, svm.PrScTCNumber, svm.PrUgRegisterNumber, svm.PrPgRegisterNumber, svm.Documenttypename, svm.courseyear,
-                         svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
-                         svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
-                         svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
-                         svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
-                         svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, "", svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet,
-                         svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
-                         svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
-                         svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
-                         svm.PrUgObtainMark, svm.PrUgTotalMark,
-                         svm.ppyear, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed,
-                         svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, 0, svm.UGMarksheet,
-                         svm.hsubject1, svm.hsubject2, svm.hsubject3, svm.hsubject4, svm.hsubject5, svm.hsubject6,
-                         svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
-                         svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
-                         svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
-                         svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8,
-                         svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
-                         svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, 0, svm.PGMarksheet).ToString();
+                    db.sp_student_admission(0, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid,
+                svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm,
+                svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic,
+                svm.FatherOccpationid, svm.FatherQualificationid, svm.FatherEmail, svm.FatherOfficeAddress, svm.FatherContact, svm.FatherBldGrpid, svm.FatherPic,
+                svm.MotherOccpationid, svm.MotherQualificationid, svm.MotherEmail, svm.MotherOfficeAddress, svm.MotherContact, svm.MotherBldGrpid, svm.MPic, svm.Countryid,
+                svm.Stateid, svm.Cityid, svm.CurrentAddress, svm.PermanentAddress, yr, svm.busid, svm.cats, svm.prds, svm.Docs, svm.subcats, svm.StudCategoryid,
+                svm.GuardianOccpationid, svm.GuardianQualificationid, svm.GuardianEmail, svm.GuardianOfficeAddress, svm.GuardianContact, svm.GuardianName, svm.FCode,
+                svm.MCode, svm.GCode, svm.ECode, svm.RCode, "", svm.GuardianPic,
+
+                svm.Sibling1Name, svm.Sibling1Rel, svm.Sibling1DOB, svm.Sibling1Ql, svm.Sibling2Name, svm.Sibling2Rel, svm.Sibling2DOB, svm.Sibling2Ql,
+                svm.Sibling3Name, svm.Sibling3Rel, svm.Sibling3DOB, svm.Sibling3Ql, svm.Sibling4Name, svm.Sibling4Rel, svm.Sibling4DOB, svm.Sibling4Ql, svm.ParishName,
+                svm.DioceseName, svm.DocumentType, svm.DocumentIDNo, svm.DepartmentId, svm.ApplicationID, svm.UniversityRegId, svm.Pincode,
+                svm.Documenttypename, svm.courseyear,
+                svm.FatherOccumationName, svm.FatherQualificationName, svm.GuardianOccpationName, svm.GuardianQualificationName, svm.MotherOccpationName, svm.MotherQualificationName, svm.StdRegMob, svm.StdRegNo, svm.emcontactrel,
+                svm.subject1, svm.subject2, svm.subject3, svm.subject4, svm.subject5, svm.subject6, svm.marks1, svm.marks2, svm.marks3, svm.marks4, svm.marks5, svm.marks6,
+                svm.maximum1, svm.maximum2, svm.maximum3, svm.maximum4, svm.maximum5, svm.maximum6, svm.PrScObtainMark, svm.PrScTotalMarks, svm.pyear1,
+                svm.rnumber1, svm.attempts1, svm.Grade, svm.PrScPercentage, svm.c1, svm.c2, svm.c3, svm.c4, svm.c5, svm.namelocation, svm.examinationpassed,
+                svm.answer1, svm.answer2, svm.PreviousSchool, svm.ReferenceNm, svm.ReferenceContact, svm.RCode, svm.PrScReferenceLetter, svm.SCTCPic, svm.SCMarksheet, svm.sleaving, svm.PrScTCNumber,
+                svm.psubject1, svm.psubject2, svm.psubject3, svm.psubject4, svm.psubject5, svm.psubject6,
+                svm.pmarks1, svm.pmarks2, svm.pmarks3, svm.pmarks4, svm.pmarks5, svm.pmarks6,
+                svm.pmaximum1, svm.pmaximum2, svm.pmaximum3, svm.pmaximum4, svm.pmaximum5, svm.pmaximum6,
+                svm.PrUgObtainMark, svm.PrUgTotalMark,
+                svm.ppyear, svm.prnumber1, svm.pattempts1, svm.PrUgGradeLeaving, svm.PrUgPercentage, svm.pc1, svm.pc2, svm.pc3, svm.pc4, svm.pc5, svm.pnamelocation, svm.pexaminationpassed,
+                svm.courseug, svm.deptug, svm.answer5, svm.answer6, svm.PrUgCollegeName, svm.PrUgAffilatedUniversity, svm.LeaveYear, svm.PrUgRefContactName, svm.PrUgRefContactNo, svm.urefcode, svm.UGMarksheet, svm.uUniversityRank, svm.ugoldm, svm.uclass1, svm.uclass2, svm.uclass3, svm.uclass4, svm.uclass5, svm.uclass6,
+                svm.hsubject1, svm.hsubject2, svm.hsubject3, svm.hsubject4, svm.hsubject5, svm.hsubject6,
+                svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
+                svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
+                svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
+                svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8, svm.hleaving,
+                svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
+                svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, svm.prefcode, svm.PGMarksheet, svm.UniversityRank, svm.goldm, svm.pclass1, svm.pclass2, svm.pclass3, svm.pclass4, svm.pclass5, svm.pclass6).ToString();
+
 
 
                 }
@@ -991,8 +1018,8 @@ namespace SchoolManagementSystems.Controllers
             MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
             message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
-            //message.From = fromAddress;
-            //message.To.Add(Email);
+            message.From = fromAddress;
+            message.To.Add(Email);
             message.Subject = "Nanjil Catholic College of Arts & Science";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
@@ -1199,7 +1226,9 @@ namespace SchoolManagementSystems.Controllers
                          join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
                          where post.Course_id == coureid && post.status == true
                          select new { meta.Dept_id, meta.Dept_name };
-            return Json(new SelectList(course, "Dept_id", "Dept_name"));
+            var courselist = new SelectList(course, "Dept_id", "Dept_name");
+            var coursetypelist = db.tbl_CourseMaster.Where(x => x.Courseid == coureid).FirstOrDefault().CourseType;
+            return Json(new { courselist = courselist, coursetypelist = coursetypelist }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCourseYear(string courseid, string deptid)
         {

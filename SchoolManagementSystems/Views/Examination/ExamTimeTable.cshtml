@@ -26,7 +26,39 @@
         $("#insert").click(function (e) {
             Validations(e);
         });
+        $('#examid input').attr("readonly", true);
+        if ($("#examid input").val() == "0") {
+            $("#examid").hide();
+        } else {
+            $("#examid").show();
+            debugger;
+            var data = JSON.parse('@Html.Raw(Json.Encode(ViewData["subjectlist"]))');
+            var result = $('#result');
+            var head = $('#header');
+            var table; var header;
+            var subjectids;
+            result.html('');
+            //$("#students").val(data.length);
+            header = "<table  class='table tb-parshav tablesorter'><thead><tr><th  width='10%;'>SubjectId</th><th  width='30%;'>Subject Name</th><th  width='20%;'>Exam Date</th><th  width='20%;'>Start Time</th><th  width='20%;'>End Time</th></thead><table>";
+            head.html(header);
+            table = "<table class='table tb-parshav tablesorter' id='tbl'><tbody>";
+            $("#ctrlcnt").val(data.length);
+            for (var i = 0; i < data.length; i++) {
+                subjectids = data[i].SubjectId;
+                table += "<tr id=" + subjectids + "><td width='10%;' id='subid_" + i + "'>" + data[i].SubjectId.toString()
+                    + "</td><input class='addcls' type='hidden' id='hsubjectid_" + i + "' value=" + data[i].SubjectId.toString() + "><td width='30%;'>"
+                    + data[i].SubjectNm.toString()
+                    + "</td><td width='20%;'><input class='addcls' type='date' id='date_" + data[i].SubjectId.toString() + "' value='" + data[i].ExamDate.split("-").reverse().join("-")+ "'>"
+                    + "</td><td width='20%;'><input class='addcls'  type='time' id='starttime_" + data[i].SubjectId.toString() + "' value='" + data[i].ExamStartTime + "'>"
+                    + "</td><td width='20%;'><input class='addcls'  type='time' id='endtime_" + data[i].SubjectId.toString() + "' value='" + data[i].ExamEndTime + "'>"
 
+
+                table += "</td></tr>";
+
+            }
+            table += "</tbody><table>";
+            result.html(table);
+        }
         $('#datepicker').attr("readonly", true);
 
         $('#datepicker').datepicker({
@@ -40,7 +72,7 @@
             changeYear: true
         });
 
-      
+
         $('#datepicker').datepicker('setDate', new Date());
 
         $('#ui-datepicker-div').hide();
@@ -199,6 +231,7 @@
             { e.preventDefault(); } else
             {
                 var ctrlcnt = $('#ctrlcnt').val();
+                debugger;
                 if (ctrlcnt > 0) {
                     var subjectdata = [];
                     for (var i = 0; i < ctrlcnt; i++) {
@@ -207,18 +240,19 @@
                         var starttime = ($("#starttime_" + subjectids).val());
                         var endtime = ($("#endtime_" + subjectids).val());
                         subjectdata.push(subjectids + "|" + examdate + "|" + starttime + "|" + endtime);
+
                     }
                     document.forms[0].method = "Post";
                     document.forms[0].action = "SubmitExam?subjectdata=" + subjectdata;
                     document.forms[0].submit();
                 } else { e.preventDefault(); }
-               
+
             }
         }
-               
-        
-    
-      
+
+
+
+
        function ReloadState() {
            $("#DeptId").empty();
             var item = '<option value="">select Department</option>';
@@ -422,12 +456,12 @@
                               
 						
                                   <fieldset>
-                                            @using (Html.BeginForm("SubmitExam", "Examination", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm",  @class="form-horizontal" }))
+                                            @using (Html.BeginForm("SubmitExam", "Examination", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm", @class = "form-horizontal" }))
                                             {
                                                 @Html.ValidationSummary(true)
-                                               
-                                                <div style="display: none;" class="control-group">
-                                                    @Html.LabelFor(model => model.Examid, new { @class="control-label" })
+
+                                                <div id="examid" class="control-group">
+                                                    @Html.LabelFor(model => model.Examid, new { @class = "control-label" })
                                                        <div class="controls">
                                                     @Html.TextBoxFor(model => model.Examid, new { id = "Examid", @class = "input" })
                                                     @Html.ValidationMessageFor(model => model.Examid)
@@ -441,18 +475,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
-                                                    @Html.LabelFor(model => model.ExaminationName, new { @class="control-label"  })
+                                                    @Html.LabelFor(model => model.ExaminationName, new { @class = "control-label" })
                                                        <div class="controls">
                                                     @Html.TextBoxFor(model => model.ExaminationName, new { id = "ExaminationName", @class = "input" })
                                                     @Html.ValidationMessageFor(model => model.ExaminationName)
                                                            </div>
                                                 </div>
-                                             
-                                              
+
+
                                                 <div class="control-group">
-                                                    @Html.LabelFor(model => model.CourseId, new {@class="control-label"  })
+                                                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
                                                        <div class="controls">
-                                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for="select" })
+                                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
                                                     @Html.ValidationMessageFor(model => model.CourseId)
                                                            </div>
                                                 </div>
@@ -472,9 +506,31 @@
                                                         @Html.ValidationMessageFor(model => model.yearid)
                                                     </div>
                                                 </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                                                    @{
+                                                        List<SelectListItem> _statuslist = new List<SelectListItem>();
+                                                        _statuslist.Add(new SelectListItem
+                                                        {
+                                                            Text = "InActive",
+                                                            Value = "false",
+                                                        });
+                                                        _statuslist.Add(new SelectListItem
+                                                        {
+                                                            Text = "Active",
+                                                            Value = "true",
 
-                                                
-                                            
+                                                        });
+                                                        }
+                                                    
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.IsActive, _statuslist)
+                                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                                    </div>
+                                                </div>
+
+
+
                                                 <div class="control-group">
                                                     &nbsp;
                                                 </div>
@@ -498,4 +554,4 @@
                 </div>
         </div>
             </div>
-    </div>
+ 

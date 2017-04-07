@@ -25,7 +25,7 @@ namespace SchoolManagementSystems.Controllers
                                                         x.busDrivercontact.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busRTONo.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busDateTime.ToString().Contains(Search_Data.ToUpper()) ||
-                                                        x.BusTime.ToString().Contains(Search_Data.ToUpper()) ||
+                                                        x.busDateTime.ToString().Contains(Search_Data.ToUpper()) ||
                                                         x.status.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.busRoute.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.busid).ToList();
 

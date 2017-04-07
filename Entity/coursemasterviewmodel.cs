@@ -13,6 +13,10 @@ namespace Entity
 
         [DisplayName("Course Name ")]
         public string CourseName { get; set; }
+
+        [DisplayName("Course Type ")]
+        public int CourseType { get; set; }
+
         [DisplayName("Active ")]
         public bool Status { get; set; }
 

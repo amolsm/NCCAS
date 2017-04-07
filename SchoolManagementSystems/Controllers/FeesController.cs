@@ -73,7 +73,7 @@ namespace SchoolManagementSystems.Controllers
             int Lastfeeslblid = 0;
             if (evt == "submit")
             {
-                db.sp_feessetup_DML(_fvm.Feesid, _fvm.Classid, Convert.ToDecimal(_fvm.LFees), Convert.ToDecimal(_fvm.TFees), Convert.ToDecimal(_fvm.UFees), Convert.ToDecimal(_fvm.HFees), Convert.ToDecimal(_fvm.OFees), Convert.ToDecimal(_fvm.TotalFees),_fvm.PTypeid, "").ToString();
+                db.sp_feessetup_DML(_fvm.Feesid, _fvm.CourseId, Convert.ToDecimal(_fvm.LFees), Convert.ToDecimal(_fvm.TFees), Convert.ToDecimal(_fvm.UFees), Convert.ToDecimal(_fvm.HFees), Convert.ToDecimal(_fvm.OFees), Convert.ToDecimal(_fvm.TotalFees),_fvm.PTypeid, "").ToString();
             }
             //else if (evt == "Delete")
             //{

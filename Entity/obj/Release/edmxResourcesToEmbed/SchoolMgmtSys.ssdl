@@ -64,6 +64,7 @@
     <Property Name="marksheet" Type="image" />
     <Property Name="answer1" Type="varchar" MaxLength="100" />
     <Property Name="answer2" Type="varchar" MaxLength="100" />
+    <Property Name="yearleaving" Type="datetime" />
   </EntityType>
   <EntityType Name="lib_Bookentry">
     <Key>
@@ -148,6 +149,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.pgeducationdetails' does not have
     <Property Name="referencenumber" Type="varchar" MaxLength="100" />
     <Property Name="code" Type="int" />
     <Property Name="collagepgscan" Type="image" />
+    <Property Name="universityrank" Type="varchar" MaxLength="50" />
+    <Property Name="options" Type="int" />
+    <Property Name="class1" Type="int" />
+    <Property Name="class2" Type="int" />
+    <Property Name="class3" Type="int" />
+    <Property Name="class4" Type="int" />
+    <Property Name="class5" Type="int" />
+    <Property Name="class6" Type="int" />
   </EntityType>
   <EntityType Name="secondaryeducationdetails">
     <Key>
@@ -187,7 +196,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.pgeducationdetails' does not have
     <Property Name="radio5" Type="varchar" MaxLength="10" />
     <Property Name="namelocation" Type="varchar" MaxLength="200" />
     <Property Name="qualifyingexamination" Type="varchar" MaxLength="200" />
-    <Property Name="test" Type="int" />
     <Property Name="answer1" Type="varchar" MaxLength="100" />
     <Property Name="answer2" Type="varchar" MaxLength="100" />
     <Property Name="previouschool" Type="varchar" MaxLength="200" />
@@ -197,6 +205,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.pgeducationdetails' does not have
     <Property Name="referenceletter" Type="image" />
     <Property Name="tcscan" Type="image" />
     <Property Name="marksSheet" Type="image" />
+    <Property Name="yearleaving" Type="datetime" />
+    <Property Name="tcno" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sys_Module">
     <Key>
@@ -410,6 +420,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="referencenumber" Type="varchar" MaxLength="100" />
     <Property Name="code" Type="int" />
     <Property Name="collageugscan" Type="image" />
+    <Property Name="universityrank" Type="varchar" MaxLength="50" />
+    <Property Name="options" Type="int" />
+    <Property Name="class1" Type="int" />
+    <Property Name="class2" Type="int" />
+    <Property Name="class3" Type="int" />
+    <Property Name="class4" Type="int" />
+    <Property Name="class5" Type="int" />
+    <Property Name="class6" Type="int" />
   </EntityType>
   <EntityType Name="tbl_Content">
     <Key>
@@ -466,6 +484,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="Courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CourseName" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
+    <Property Name="CourseType" Type="int" />
   </EntityType>
   <EntityType Name="tbl_CourseYearMaster">
     <Key>
@@ -774,13 +793,24 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     </Key>
     <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExamName" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="ExamStartTime" Type="datetime" Nullable="false" />
-    <Property Name="ExamEndTime" Type="datetime" Nullable="false" />
     <Property Name="ExamTypeId" Type="int" Nullable="false" />
-    <Property Name="ExamClassId" Type="int" Nullable="false" />
-    <Property Name="ExamSubjectId" Type="int" Nullable="false" />
-    <Property Name="ExamYear" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="IsPublish" Type="bit" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="deptid" Type="int" />
+    <Property Name="yearid" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Createdby" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTimetableSubject">
+    <Key>
+      <PropertyRef Name="ExSubId" />
+    </Key>
+    <Property Name="ExSubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="ExamDate" Type="datetime2" Precision="7" />
+    <Property Name="ExamStartTime" Type="time" Precision="7" />
+    <Property Name="ExamEndTime" Type="time" Precision="7" />
   </EntityType>
   <EntityType Name="tbl_fees">
     <Key>
@@ -1196,37 +1226,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="RCode" Type="int" />
     <Property Name="ECode" Type="int" />
     <Property Name="GuardianPic" Type="image" />
-    <Property Name="SecondaryTotalMarks" Type="int" />
-    <Property Name="SecondaryObtainMarks" Type="int" />
-    <Property Name="SecondaryPercetage" Type="float" />
-    <Property Name="SecondaryTCScanCopy" Type="image" />
-    <Property Name="SecondaryMarksheetCopy" Type="image" />
-    <Property Name="PrUgCollegeName" Type="varchar" MaxLength="100" />
-    <Property Name="PrUgCollegeAddress" Type="varchar" MaxLength="100" />
-    <Property Name="PrUgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
-    <Property Name="PrUgRefContactNo" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgTotalMark" Type="int" />
-    <Property Name="PrUgObtainMark" Type="int" />
-    <Property Name="PrUgPercentage" Type="float" />
-    <Property Name="PrUgGradeLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgYearLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgReasonofLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgPrincipalName" Type="varchar" MaxLength="20" />
-    <Property Name="PrUgRefContactName" Type="varchar" MaxLength="20" />
-    <Property Name="UGMarksheet" Type="image" />
-    <Property Name="PrPgCollegeName" Type="varchar" MaxLength="100" />
-    <Property Name="PrPgCollegeAddress" Type="varchar" MaxLength="100" />
-    <Property Name="PrPgAffilatedUniversity" Type="nvarchar" MaxLength="250" />
-    <Property Name="PrPgRefContactNo" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgTotalMark" Type="int" />
-    <Property Name="PrPgObtainMark" Type="int" />
-    <Property Name="PrPgPercentage" Type="float" />
-    <Property Name="PrPgGradeLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgYearLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgReasonofLeaving" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgPrincipalName" Type="varchar" MaxLength="20" />
-    <Property Name="PrPgRefContactName" Type="varchar" MaxLength="20" />
-    <Property Name="PGMarksheet" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
@@ -1252,10 +1251,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="ug_id" Type="nvarchar" MaxLength="100" />
     <Property Name="pincode" Type="varchar" MaxLength="10" />
     <Property Name="sc_regno" Type="nvarchar" MaxLength="50" />
-    <Property Name="sc_refletter" Type="image" />
-    <Property Name="sc_tcno" Type="nvarchar" MaxLength="50" />
-    <Property Name="prug_regno" Type="nvarchar" MaxLength="50" />
-    <Property Name="prpg_regno" Type="nvarchar" MaxLength="50" />
     <Property Name="doc_typename" Type="varchar" MaxLength="100" />
     <Property Name="courseyearid" Type="int" />
     <Property Name="FatherOtherOccName" Type="varchar" MaxLength="100" />
@@ -1314,6 +1309,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="0" />
     <Property Name="AcadamicYear" Type="varchar" MaxLength="50" />
     <Property Name="Remark" Type="bit" />
+    <Property Name="Createdby" Type="int" />
   </EntityType>
   <EntityType Name="tbl_SubCategory">
     <Key>
@@ -1390,6 +1386,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="busDateTime" Type="datetime" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BusTime" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="tbl_user">
     <Key>
@@ -1606,6 +1603,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_coursemaster_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="courseid" Type="int" Mode="In" />
     <Parameter Name="CourseName" Type="varchar" Mode="In" />
+    <Parameter Name="coursetype" Type="int" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
@@ -1861,6 +1859,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_ExaminationDetailbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Examid" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_ExamMarksAllotment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+    <Parameter Name="examid" Type="int" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="accadmicyear" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_feeschild_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Feesid" Type="int" Mode="In" />
     <Parameter Name="FeesNm" Type="varchar" Mode="In" />
@@ -1973,6 +1979,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_GetEmployeeLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetExamDetailsByExamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExamId" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getfeeslabels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getFeespaymentlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getFeessetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2046,6 +2055,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="courseid" Type="int" Mode="In" />
     <Parameter Name="deptid" Type="int" Mode="In" />
     <Parameter Name="yearid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSubjectlistbyExamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Examid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSubjectlistEditbyExamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Examid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getteacheremail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
@@ -2255,37 +2270,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="RCode" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
     <Parameter Name="GuardianPic" Type="image" Mode="In" />
-    <Parameter Name="SecondaryTotalMarks" Type="int" Mode="In" />
-    <Parameter Name="SecondaryObtainMarks" Type="int" Mode="In" />
-    <Parameter Name="SecondaryPercetage" Type="float" Mode="In" />
-    <Parameter Name="SecondaryTCScanCopy" Type="image" Mode="In" />
-    <Parameter Name="SecondaryMarksheetCopy" Type="image" Mode="In" />
-    <Parameter Name="PrUgCollegeName" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgCollegeAddress" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgAffilatedUniversity" Type="nvarchar" Mode="In" />
-    <Parameter Name="PrUgRefContactNo" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgTotalMark" Type="int" Mode="In" />
-    <Parameter Name="PrUgObtainMark" Type="int" Mode="In" />
-    <Parameter Name="PrUgPercentage" Type="float" Mode="In" />
-    <Parameter Name="PrUgGradeLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgYearLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgReasonofLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgPrincipalName" Type="varchar" Mode="In" />
-    <Parameter Name="PrUgRefContactName" Type="varchar" Mode="In" />
-    <Parameter Name="UGMarksheet" Type="image" Mode="In" />
-    <Parameter Name="PrPgCollegeName" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgCollegeAddress" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgAffilatedUniversity" Type="nvarchar" Mode="In" />
-    <Parameter Name="PrPgRefContactNo" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgTotalMark" Type="int" Mode="In" />
-    <Parameter Name="PrPgObtainMark" Type="int" Mode="In" />
-    <Parameter Name="PrPgPercentage" Type="float" Mode="In" />
-    <Parameter Name="PrPgGradeLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgYearLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgReasonofLeaving" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgPrincipalName" Type="varchar" Mode="In" />
-    <Parameter Name="PrPgRefContactName" Type="varchar" Mode="In" />
-    <Parameter Name="PGMarksheet" Type="image" Mode="In" />
     <Parameter Name="Sibling1Name" Type="varchar" Mode="In" />
     <Parameter Name="Sibling1Rel" Type="varchar" Mode="In" />
     <Parameter Name="Sibling1DOB" Type="datetime2" Mode="In" />
@@ -2310,11 +2294,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="app_id" Type="nvarchar" Mode="In" />
     <Parameter Name="ug_id" Type="nvarchar" Mode="In" />
     <Parameter Name="pincode" Type="varchar" Mode="In" />
-    <Parameter Name="sc_regno" Type="nvarchar" Mode="In" />
-    <Parameter Name="sc_refletter" Type="image" Mode="In" />
-    <Parameter Name="sc_tcno" Type="nvarchar" Mode="In" />
-    <Parameter Name="prug_regno" Type="nvarchar" Mode="In" />
-    <Parameter Name="prpg_regno" Type="nvarchar" Mode="In" />
     <Parameter Name="doc_typename" Type="varchar" Mode="In" />
     <Parameter Name="courseyearid" Type="int" Mode="In" />
     <Parameter Name="FatherOtherOccName" Type="varchar" Mode="In" />
@@ -2367,6 +2346,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="sreferenceletter" Type="image" Mode="In" />
     <Parameter Name="stcscan" Type="image" Mode="In" />
     <Parameter Name="smarksSheet" Type="image" Mode="In" />
+    <Parameter Name="syearleaving" Type="datetime" Mode="In" />
+    <Parameter Name="tcno" Type="varchar" Mode="In" />
     <Parameter Name="psubject1" Type="varchar" Mode="In" />
     <Parameter Name="psubject2" Type="varchar" Mode="In" />
     <Parameter Name="psubject3" Type="varchar" Mode="In" />
@@ -2410,6 +2391,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="ureferencenumber" Type="varchar" Mode="In" />
     <Parameter Name="ucode" Type="int" Mode="In" />
     <Parameter Name="ucollageugscan" Type="image" Mode="In" />
+    <Parameter Name="uuniversityrank" Type="varchar" Mode="In" />
+    <Parameter Name="uoptions" Type="int" Mode="In" />
+    <Parameter Name="uclass1" Type="int" Mode="In" />
+    <Parameter Name="uclass2" Type="int" Mode="In" />
+    <Parameter Name="uclass3" Type="int" Mode="In" />
+    <Parameter Name="uclass4" Type="int" Mode="In" />
+    <Parameter Name="uclass5" Type="int" Mode="In" />
+    <Parameter Name="uclass6" Type="int" Mode="In" />
     <Parameter Name="hsubject1" Type="varchar" Mode="In" />
     <Parameter Name="hsubject2" Type="varchar" Mode="In" />
     <Parameter Name="hsubject3" Type="varchar" Mode="In" />
@@ -2452,6 +2441,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="hmarksheet" Type="image" Mode="In" />
     <Parameter Name="hanswer1" Type="varchar" Mode="In" />
     <Parameter Name="hanswer2" Type="varchar" Mode="In" />
+    <Parameter Name="hyearleaving" Type="datetime" Mode="In" />
     <Parameter Name="pgsubject1" Type="varchar" Mode="In" />
     <Parameter Name="pgsubject2" Type="varchar" Mode="In" />
     <Parameter Name="pgsubject3" Type="varchar" Mode="In" />
@@ -2495,6 +2485,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="preferencenumber" Type="varchar" Mode="In" />
     <Parameter Name="pcode" Type="int" Mode="In" />
     <Parameter Name="pcollagepgscan" Type="image" Mode="In" />
+    <Parameter Name="puniversityrank" Type="varchar" Mode="In" />
+    <Parameter Name="poptions" Type="int" Mode="In" />
+    <Parameter Name="pclass1" Type="int" Mode="In" />
+    <Parameter Name="pclass2" Type="int" Mode="In" />
+    <Parameter Name="pclass3" Type="int" Mode="In" />
+    <Parameter Name="pclass4" Type="int" Mode="In" />
+    <Parameter Name="pclass5" Type="int" Mode="In" />
+    <Parameter Name="pclass6" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_student_marks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="subject1" Type="varchar" Mode="In" />
@@ -2687,6 +2685,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="busDateTime" Type="datetime" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="bustime" Type="varchar" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_updatereturnbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2742,6 +2741,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_Event" EntityType="Self.tbl_Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ExaminationType" EntityType="Self.tbl_ExaminationType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExamTimetableSubject" EntityType="Self.tbl_ExamTimetableSubject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
@@ -2828,7 +2828,15 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
 [pgeducationdetails].[refname] AS [refname], 
 [pgeducationdetails].[referencenumber] AS [referencenumber], 
 [pgeducationdetails].[code] AS [code], 
-[pgeducationdetails].[collagepgscan] AS [collagepgscan]
+[pgeducationdetails].[collagepgscan] AS [collagepgscan], 
+[pgeducationdetails].[universityrank] AS [universityrank], 
+[pgeducationdetails].[options] AS [options], 
+[pgeducationdetails].[class1] AS [class1], 
+[pgeducationdetails].[class2] AS [class2], 
+[pgeducationdetails].[class3] AS [class3], 
+[pgeducationdetails].[class4] AS [class4], 
+[pgeducationdetails].[class5] AS [class5], 
+[pgeducationdetails].[class6] AS [class6]
 FROM [dbo].[pgeducationdetails] AS [pgeducationdetails]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="sys_UserPermission" EntityType="Self.sys_UserPermission" store:Type="Tables" store:Schema="dbo">

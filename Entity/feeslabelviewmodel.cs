@@ -14,14 +14,15 @@ namespace Entity
         [DisplayName("Select Control count ")]
         public int ctrlcnt { get; set; }
 
-        [DisplayName("Select Class : ")]
-        public int classid { get; set; }
+        [DisplayName("Select Course : ")]
+        public int courseyearid { get; set; }
 
         [DisplayName("Control Name ")]  
         public string ctrlnm { get; set; }
 
         public List<tbl_class> Classlist { get; set; }
-        public List<sp_getfeeslabels_Result> _feeslabellist { get; set; }     
-        
+        public List<sp_getfeeslabels_Result> _feeslabellist { get; set; }
+        public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
+
     }
 }

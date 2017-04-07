@@ -60,25 +60,119 @@
 
         }
 
+
+        function ReloadState() {
+            $("#DeptId").empty();
+            var item = '<option value="">select Department</option>';
+            $("#DeptId").append(item);
+        }
+
+        function ReloadCountry() {
+            if ($("#CourseId").val() == "") {
+                ReloadState();
+            }
+            else {
+
+                $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">select Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#CourseId").change(function () {
+
+            ReloadCountry();
+        })
+
+
+        function ReloadYear() {
+            $("#yearid").empty();
+            var item = '<option value="">select Year</option>';
+            $("#yearid").append(item);
+        }
+
+        function ReloadCourseYear() {
+            if ($("#DeptId").val() == "") {
+                ReloadYear();
+            }
+            else {
+
+                $("#yearid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourseYear")',
+                    dataType: 'json',
+                    data: {
+                        courseid: $("#CourseId").val(),
+                        deptid: $("#DeptId").val()
+                    },
+                    success: function (yeardata) {
+                        if (yeardata != "") {
+
+                            var item = '<option value="">select Year</option>';
+                            $.each(yeardata, function (i, yeardata) {
+                                item += '<option value="' + yeardata.Value + '">' + yeardata.Text + '</option>';
+                            });
+                            $("#yearid").append(item);
+                        }
+                        else {
+                            var item = '<option value="">select Year</option>';
+                            $("#yearid").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+        $("#DeptId").change(function () {
+
+            ReloadCourseYear();
+        })
+
         $("#display").click(function (e) {
             if (Validations(e) == false)
                 return false;
             $("#tblExamTimeTable").empty();
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("StudentMarkDetail")',
+                url: '@Url.Action("ShowStudentMarks")',
                 dataType: 'json',
-                data: { Classid: $("#Classid").val(), ExaminationTypeid: $("#ExaminationTypeid").val(), Subjectid: $("#Subjectid").val(), ExamYear: $("#ExamYear").val() },
+                data: { CourseId: $("#CourseId").val(), DeptId: $("#DeptId").val(), yearid: $("#yearid").val(), subjectid: $("#Subjectid").val(), Examid: $("#Examid").val(), ExamYear: $("#ExamYear").val() },
                 success: function (StudentMarkDetail) {
                     if (StudentMarkDetail != "") {
-                        var item = '<tr><th>Student Roll No</th><th>Student Name</th><th>Subject Name</th><th>Marks</th><th>Total Marks</th><th>Remark</th><th colspan="2">Action</th></tr>';
+                        var item = '<tr><th>Student Roll No</th><th>Student Name</th><th>Marks</th><th>Total Marks</th><th>Remark</th><th colspan="2">Action</th></tr>';
                         $.each(StudentMarkDetail, function (i, stud) {
                             item += '<tr>'
                             item += '<td>' + stud.RollNo + '</td>';
+
                             item += '<td>' + stud.studentname + '</td>';
-                            item += '<td>' + stud.Sub + '</td>';
-                            item += '<td><input type="text" style="width:50px; padding:0px 0px 0px 2px;" Class="mark col-md-5 form-control form_in" id=M' + stud.Studid + ' value=' + stud.Marks + ' /></td>';
-                            item += '<td><input type="text" style="width:50px; padding:0px 0px 0px 2px;" Class="Totalmark col-md-5 form-control form_in" id=T' + stud.Studid + ' value=' + stud.TotalMarks + '  /></td>';
+                            item += '<td><input type="text" style="width:25%" Class="mark" id=M' + stud.Studid + ' value=' + stud.Marks + ' /></td>';
+                            item += '<td><input type="text" style="width:25%" Class="Totalmark" id=T' + stud.Studid + ' value=' + stud.TotalMarks + '  /></td>';
                             if (stud.Remark == true) {
                                 item += '<td><input type="checkbox" Class="Remark" id=R' + stud.Studid + ' checked="checked" /></td>';
                             }
@@ -86,7 +180,7 @@
                                 item += '<td><input type="checkbox" Class="Remark" id=R' + stud.Studid + ' /></td>';
                             }
 
-                            item += '<td><input type="button" Class="Submit btn btn-default btn_edit" id=' + stud.Studid + ' value = "Submit" /></td>';
+                            item += '<td><input type="button" Class="Submit btn-primary btn_edit" id=' + stud.Studid + ' value = "Submit" /></td>';
                         });
                         $("#tblExamTimeTable").append(item);
                     }
@@ -111,7 +205,7 @@
         })
 
         $("#tblExamTimeTable").on("click", "input.Submit", function () {
-            var studid = this.id;
+           var studid = this.id;
             if (parseInt($("#M" + studid).val()) >= parseInt($("#T" + studid).val())) {
                 alert("Mark must be less than Total Marks!!");
                 return;
@@ -125,13 +219,13 @@
                 url: '@Url.Action("SubmitMark")',
                 dataType: 'json',
                 data: {
-                    Studentid: this.id, Subjectid: $("#Subjectid").val(), ExaminationTypeid: $("#ExaminationTypeid").val(),
-                    Classid: $("#Classid").val(), Marks: $("#M" + studid).val(), TotalMarks: $("#T" + studid).val(), ExamYear: $("#ExamYear").val(),
+                    Studentid: this.id, Subjectid: $("#Subjectid").val(),
+                    ExamId: $("#Examid").val(), Marks: $("#M" + studid).val(), TotalMarks: $("#T" + studid).val(), ExamYear: $("#ExamYear").val(),
                     Remark: remark
                 },
-                success: function () {
-                },
+                success: function () { },
                 error: function (ex) {
+                    alert("Record Saved Successfully")
                 }
             });
 
@@ -161,14 +255,14 @@
         function Validations(e) {
             var cnt = 0;
 
-            if ($("#Classid").val() == '' || $("#Classid").val() == '0') {
+            if ($("#CourseId").val() == '' || $("#CourseId").val() == '0') {
                 cnt++;
-                $("#Classid").css({
+                $("#CourseId").css({
                     "border": "1px solid red"
                 });
             }
             else {
-                $("#Classid").css({
+                $("#CourseId").css({
                     "border": "",
                     "background": ""
                 });
@@ -212,6 +306,30 @@
                     "background": ""
                 });
             }
+            if ($("#DeptId").val() == '' || $("#DeptId").val() == '0') {
+                cnt++;
+                $("#DeptId").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#DeptId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#yearid").val() == '' || $("#yearid").val() == '0') {
+                cnt++;
+                $("#yearid").css({
+                    "border": "1px solid red"
+                });
+            }
+            else {
+                $("#yearid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
             if (cnt != 0) {
                 return false;
@@ -219,13 +337,13 @@
         }
 
 
-        $("#Classid").change(function () {
+        $("#Examid").change(function () {
             $("#Subjectid").empty();
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GetSubject")',
                 dataType: 'json',
-                data: { id: $("#Classid").val() },
+                data: { id: $("#Examid").val() },
                 success: function (Subjects) {
                     if (Subjects != "") {
                         var item = '<option value="0">Select Subject</option>';
@@ -292,31 +410,53 @@
                                                 @TempData["ErrorMessage"]
                                             </div>
                                             <div class="control-group">
-                                                @Html.LabelFor(model => model.Classid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.Classid)
-                                                      </div>
+                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class = "control-label", @for = "select" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @for = "select" })
+                                                    @Html.ValidationMessageFor(model => model.ExaminationTypeid)
+                                                </div>
                                             </div>
                                             <div class="control-group">
-                                                @Html.LabelFor(model => model.ExaminationTypeid, new { @class="control-label"  })
-                                                  <div class="controls">
-                                                @Html.DropDownListFor(model => model.ExaminationTypeid, new SelectList(Model.ExaminationTypeList, "ExaminationTypeId", "ExaminationType", "Select Examination Type"), "Select Examination Type", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.ExaminationTypeid)
-                                                      </div>
+                                                @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._Courselist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @for = "select" })
+                                                    @Html.ValidationMessageFor(model => model.CourseId)
+                                                </div>
                                             </div>
+                                            <div class="control-group">
+                                                @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._Deptlist, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" })
+                                                    @Html.ValidationMessageFor(model => model.DeptId)
+                                                </div>
+                                            </div>
+
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.yearid, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.yearid, new SelectList(Model._yearlist, "yearid", "YearName", "Select Year"), "Select Year", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.yearid)
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(model => model.Examid, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.Examid, new SelectList(Model.ExamTable, "ExamId", "ExamName", "Select Exam"), "Select Exam", new { @for = "select" })
+                                                        @Html.ValidationMessageFor(model => model.Examid)
+                                                    </div>
+                                                </div>
                                             <div class="control-group">
                                                 @Html.LabelFor(model => model.Subjectid, new { @class="control-label"  })
                                                   <div class="controls">
-                                                @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.SubjectList, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject", new { @class = "col-md-5 form-control form_in" })
-                                                @Html.ValidationMessageFor(model => model.Examid)
+                                                @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.SubjectList, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject", new { @for = "select" })
+                                                @Html.ValidationMessageFor(model => model.Subjectid)
                                                       </div>
                                             </div>
                                             <div class="control-group">
                                                 @Html.LabelFor(model => model.ExamYear, new { @class="control-label"  })
                                                   <div class="controls">
-                                                @*@Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", @class = "col-md-5 form-control form_in" })*@
-                                                @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @class = "col-md-5 form-control form_in" })
+                                                
+                                                @Html.DropDownListFor(m => m.ExamYear, new SelectList(Model.ExamYear), "Select Year", new { @for = "select" })
                                                 @Html.ValidationMessageFor(model => model.ExamYear)
                                                       </div>
                                             </div>
@@ -346,7 +486,7 @@
 						</div>
 					</div> 
                   <div class="box-content">
-                            <div class="table-responsive" style=" color: #23527c;">
+                            <div class="table-responsive" style="color: #23527c;">
                                 <table class="table tb-parshav" id="tblExamTimeTable">
                                     <tr>
                                         <td></td>

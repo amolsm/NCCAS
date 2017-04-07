@@ -161,7 +161,8 @@ namespace SchoolManagementSystems.Controllers
                     {
                         try
                         {
-                            string yr = "2017";
+                            DateTime dt = new DateTime();
+                            string yr = dt.Year.ToString();
                             int empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
                             int typeid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Typeid).FirstOrDefault();
                             CreateUsers(_bgv.Emailid, typeid, empid, yr);
@@ -268,8 +269,8 @@ namespace SchoolManagementSystems.Controllers
             MailMessage message = new System.Net.Mail.MailMessage(fromAddress, to);
             message.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
             message.SubjectEncoding = System.Text.Encoding.GetEncoding("utf-8");
-            //message.From = fromAddress;
-            //message.To.Add(Email);
+            message.From = fromAddress;
+            message.To.Add(Email);
             message.Subject = "Nanjil Catholic College of Arts & Science";
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;

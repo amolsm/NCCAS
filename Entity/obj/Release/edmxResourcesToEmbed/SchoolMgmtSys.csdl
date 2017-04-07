@@ -156,8 +156,6 @@
       <Parameter Name="Classid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_ExaminationType" EntityType="SchoolMgmtSysModel.tbl_ExaminationType" />
-    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
-    <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.tbl_StudentMark" />
     <FunctionImport Name="sp_ExaminationDetailbyId" ReturnType="Collection(SchoolMgmtSysModel.sp_ExaminationDetailbyId_Result)">
       <Parameter Name="Examid" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -318,6 +316,7 @@
       <Parameter Name="busDateTime" Mode="In" Type="DateTime" />
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="bustime" Mode="In" Type="String" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
@@ -534,13 +533,6 @@
       <Parameter Name="courseid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_studentdivision" EntityType="SchoolMgmtSysModel.tbl_studentdivision" />
-    <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
-    <FunctionImport Name="sp_coursemaster_DML">
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="CourseName" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_getCourseMaster" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseMaster_Result)" />
     <EntitySet Name="tbl_Course" EntityType="SchoolMgmtSysModel.tbl_Course" />
     <FunctionImport Name="sp_course_DML">
@@ -766,7 +758,6 @@
       <Parameter Name="reason" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tbl_EmployeeLeave" EntityType="SchoolMgmtSysModel.tbl_EmployeeLeave" />
-    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
     <FunctionImport Name="sp_GetStdCount" ReturnType="Collection(Int32)" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="SchoolMgmtSysModel.tbl_StudentAttendance" />
     <FunctionImport Name="sp_Attandance_DML">
@@ -808,15 +799,6 @@
       <Parameter Name="course" Mode="In" Type="Int32" />
       <Parameter Name="department" Mode="In" Type="Int32" />
       <Parameter Name="year" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_teachersubject_DML">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="teacherid" Mode="In" Type="Int32" />
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="departmenid" Mode="In" Type="Int32" />
-      <Parameter Name="yearid" Mode="In" Type="Int32" />
-      <Parameter Name="createdby" Mode="In" Type="Int32" />
-      <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_ChapterComplete_DML">
       <Parameter Name="Teacherid" Mode="In" Type="Int32" />
@@ -959,319 +941,6 @@
     </FunctionImport>
     <EntitySet Name="hsceducationdetails" EntityType="SchoolMgmtSysModel.hsceducationdetail" />
     <EntitySet Name="pgeducationdetails" EntityType="SchoolMgmtSysModel.pgeducationdetail" />
-    <FunctionImport Name="sp_student_admission">
-      <Parameter Name="Studid" Mode="In" Type="Int32" />
-      <Parameter Name="Studnm" Mode="In" Type="String" />
-      <Parameter Name="Studfathernm" Mode="In" Type="String" />
-      <Parameter Name="Studmothernm" Mode="In" Type="String" />
-      <Parameter Name="DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Weight" Mode="In" Type="Int32" />
-      <Parameter Name="Height" Mode="In" Type="Int32" />
-      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
-      <Parameter Name="StudEmail" Mode="In" Type="String" />
-      <Parameter Name="Disease" Mode="In" Type="String" />
-      <Parameter Name="Religionid" Mode="In" Type="Int32" />
-      <Parameter Name="Casteid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="RollNo" Mode="In" Type="Int32" />
-      <Parameter Name="Gender" Mode="In" Type="Int32" />
-      <Parameter Name="MotherTongue" Mode="In" Type="String" />
-      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
-      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
-      <Parameter Name="LastClass" Mode="In" Type="String" />
-      <Parameter Name="Grade" Mode="In" Type="String" />
-      <Parameter Name="LeaveYear" Mode="In" Type="String" />
-      <Parameter Name="LeaveReason" Mode="In" Type="String" />
-      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
-      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
-      <Parameter Name="BusNo" Mode="In" Type="String" />
-      <Parameter Name="BusRTONo" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
-      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
-      <Parameter Name="StudPic" Mode="In" Type="Binary" />
-      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherEmail" Mode="In" Type="String" />
-      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="FatherContact" Mode="In" Type="String" />
-      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
-      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherEmail" Mode="In" Type="String" />
-      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="MotherContact" Mode="In" Type="String" />
-      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
-      <Parameter Name="Countryid" Mode="In" Type="Int32" />
-      <Parameter Name="Stateid" Mode="In" Type="Int32" />
-      <Parameter Name="Cityid" Mode="In" Type="Int32" />
-      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
-      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
-      <Parameter Name="academicyear" Mode="In" Type="String" />
-      <Parameter Name="busid" Mode="In" Type="Int32" />
-      <Parameter Name="cats" Mode="In" Type="String" />
-      <Parameter Name="prds" Mode="In" Type="String" />
-      <Parameter Name="Docs" Mode="In" Type="String" />
-      <Parameter Name="subcats" Mode="In" Type="String" />
-      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
-      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="GuardianContact" Mode="In" Type="String" />
-      <Parameter Name="GuardianName" Mode="In" Type="String" />
-      <Parameter Name="FCode" Mode="In" Type="String" />
-      <Parameter Name="MCode" Mode="In" Type="String" />
-      <Parameter Name="GCode" Mode="In" Type="String" />
-      <Parameter Name="ECode" Mode="In" Type="String" />
-      <Parameter Name="RCode" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
-      <Parameter Name="GuardianPic" Mode="In" Type="Binary" />
-      <Parameter Name="SecondaryTotalMarks" Mode="In" Type="Int32" />
-      <Parameter Name="SecondaryObtainMarks" Mode="In" Type="Int32" />
-      <Parameter Name="SecondaryPercetage" Mode="In" Type="Double" />
-      <Parameter Name="SecondaryTCScanCopy" Mode="In" Type="Binary" />
-      <Parameter Name="SecondaryMarksheetCopy" Mode="In" Type="Binary" />
-      <Parameter Name="PrUgCollegeName" Mode="In" Type="String" />
-      <Parameter Name="PrUgCollegeAddress" Mode="In" Type="String" />
-      <Parameter Name="PrUgAffilatedUniversity" Mode="In" Type="String" />
-      <Parameter Name="PrUgRefContactNo" Mode="In" Type="String" />
-      <Parameter Name="PrUgTotalMark" Mode="In" Type="Int32" />
-      <Parameter Name="PrUgObtainMark" Mode="In" Type="Int32" />
-      <Parameter Name="PrUgPercentage" Mode="In" Type="Double" />
-      <Parameter Name="PrUgGradeLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrUgYearLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrUgReasonofLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrUgPrincipalName" Mode="In" Type="String" />
-      <Parameter Name="PrUgRefContactName" Mode="In" Type="String" />
-      <Parameter Name="UGMarksheet" Mode="In" Type="Binary" />
-      <Parameter Name="PrPgCollegeName" Mode="In" Type="String" />
-      <Parameter Name="PrPgCollegeAddress" Mode="In" Type="String" />
-      <Parameter Name="PrPgAffilatedUniversity" Mode="In" Type="String" />
-      <Parameter Name="PrPgRefContactNo" Mode="In" Type="String" />
-      <Parameter Name="PrPgTotalMark" Mode="In" Type="Int32" />
-      <Parameter Name="PrPgObtainMark" Mode="In" Type="Int32" />
-      <Parameter Name="PrPgPercentage" Mode="In" Type="Double" />
-      <Parameter Name="PrPgGradeLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrPgYearLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrPgReasonofLeaving" Mode="In" Type="String" />
-      <Parameter Name="PrPgPrincipalName" Mode="In" Type="String" />
-      <Parameter Name="PrPgRefContactName" Mode="In" Type="String" />
-      <Parameter Name="PGMarksheet" Mode="In" Type="Binary" />
-      <Parameter Name="Sibling1Name" Mode="In" Type="String" />
-      <Parameter Name="Sibling1Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling1DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Sibling1Ql" Mode="In" Type="String" />
-      <Parameter Name="Sibling2Name" Mode="In" Type="String" />
-      <Parameter Name="Sibling2Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling2DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Sibling2Ql" Mode="In" Type="String" />
-      <Parameter Name="Sibling3Name" Mode="In" Type="String" />
-      <Parameter Name="Sibling3Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling3DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Sibling3Ql" Mode="In" Type="String" />
-      <Parameter Name="Sibling4Name" Mode="In" Type="String" />
-      <Parameter Name="Sibling4Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling4DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Sibling4Ql" Mode="In" Type="String" />
-      <Parameter Name="ParishName" Mode="In" Type="String" />
-      <Parameter Name="DioceseName" Mode="In" Type="String" />
-      <Parameter Name="DocumentType" Mode="In" Type="String" />
-      <Parameter Name="DocumentIDNo" Mode="In" Type="String" />
-      <Parameter Name="Dept_Id" Mode="In" Type="Int32" />
-      <Parameter Name="app_id" Mode="In" Type="String" />
-      <Parameter Name="ug_id" Mode="In" Type="String" />
-      <Parameter Name="pincode" Mode="In" Type="String" />
-      <Parameter Name="sc_regno" Mode="In" Type="String" />
-      <Parameter Name="sc_refletter" Mode="In" Type="Binary" />
-      <Parameter Name="sc_tcno" Mode="In" Type="String" />
-      <Parameter Name="prug_regno" Mode="In" Type="String" />
-      <Parameter Name="prpg_regno" Mode="In" Type="String" />
-      <Parameter Name="doc_typename" Mode="In" Type="String" />
-      <Parameter Name="courseyearid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherOtherOccName" Mode="In" Type="String" />
-      <Parameter Name="FatherOtherQualName" Mode="In" Type="String" />
-      <Parameter Name="GuardianOtherOccName" Mode="In" Type="String" />
-      <Parameter Name="GuardianOtherQalName" Mode="In" Type="String" />
-      <Parameter Name="MotherOtherOccName" Mode="In" Type="String" />
-      <Parameter Name="MotherOtherQualName" Mode="In" Type="String" />
-      <Parameter Name="StdMobNo" Mode="In" Type="String" />
-      <Parameter Name="StdRegNo" Mode="In" Type="String" />
-      <Parameter Name="empContactRel" Mode="In" Type="String" />
-      <Parameter Name="subject1" Mode="In" Type="String" />
-      <Parameter Name="subject2" Mode="In" Type="String" />
-      <Parameter Name="subject3" Mode="In" Type="String" />
-      <Parameter Name="subject4" Mode="In" Type="String" />
-      <Parameter Name="subject5" Mode="In" Type="String" />
-      <Parameter Name="subject6" Mode="In" Type="String" />
-      <Parameter Name="marks1" Mode="In" Type="Decimal" />
-      <Parameter Name="marks2" Mode="In" Type="Decimal" />
-      <Parameter Name="marks3" Mode="In" Type="Decimal" />
-      <Parameter Name="marks4" Mode="In" Type="Decimal" />
-      <Parameter Name="marks5" Mode="In" Type="Decimal" />
-      <Parameter Name="marks6" Mode="In" Type="Decimal" />
-      <Parameter Name="max1" Mode="In" Type="Decimal" />
-      <Parameter Name="max2" Mode="In" Type="Decimal" />
-      <Parameter Name="max3" Mode="In" Type="Decimal" />
-      <Parameter Name="max4" Mode="In" Type="Decimal" />
-      <Parameter Name="max5" Mode="In" Type="Decimal" />
-      <Parameter Name="max6" Mode="In" Type="Decimal" />
-      <Parameter Name="obtainmarks" Mode="In" Type="Int32" />
-      <Parameter Name="totalmarks" Mode="In" Type="Int32" />
-      <Parameter Name="yearpassing1" Mode="In" Type="DateTime" />
-      <Parameter Name="registerno1" Mode="In" Type="String" />
-      <Parameter Name="attempts1" Mode="In" Type="Int32" />
-      <Parameter Name="gradee" Mode="In" Type="String" />
-      <Parameter Name="precentage" Mode="In" Type="Double" />
-      <Parameter Name="radio1" Mode="In" Type="String" />
-      <Parameter Name="radio2" Mode="In" Type="String" />
-      <Parameter Name="radio3" Mode="In" Type="String" />
-      <Parameter Name="radio4" Mode="In" Type="String" />
-      <Parameter Name="radio5" Mode="In" Type="String" />
-      <Parameter Name="namelocation" Mode="In" Type="String" />
-      <Parameter Name="qualifyingexamination" Mode="In" Type="String" />
-      <Parameter Name="sanswer1" Mode="In" Type="String" />
-      <Parameter Name="sanswer2" Mode="In" Type="String" />
-      <Parameter Name="spreviouschool" Mode="In" Type="String" />
-      <Parameter Name="srefname" Mode="In" Type="String" />
-      <Parameter Name="sreferencenumber" Mode="In" Type="String" />
-      <Parameter Name="scode" Mode="In" Type="String" />
-      <Parameter Name="sreferenceletter" Mode="In" Type="Binary" />
-      <Parameter Name="stcscan" Mode="In" Type="Binary" />
-      <Parameter Name="smarksSheet" Mode="In" Type="Binary" />
-      <Parameter Name="psubject1" Mode="In" Type="String" />
-      <Parameter Name="psubject2" Mode="In" Type="String" />
-      <Parameter Name="psubject3" Mode="In" Type="String" />
-      <Parameter Name="psubject4" Mode="In" Type="String" />
-      <Parameter Name="psubject5" Mode="In" Type="String" />
-      <Parameter Name="psubject6" Mode="In" Type="String" />
-      <Parameter Name="pmarks1" Mode="In" Type="Decimal" />
-      <Parameter Name="pmarks2" Mode="In" Type="Decimal" />
-      <Parameter Name="pmarks3" Mode="In" Type="Decimal" />
-      <Parameter Name="pmarks4" Mode="In" Type="Decimal" />
-      <Parameter Name="pmarks5" Mode="In" Type="Decimal" />
-      <Parameter Name="pmarks6" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax1" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax2" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax3" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax4" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax5" Mode="In" Type="Decimal" />
-      <Parameter Name="pmax6" Mode="In" Type="Decimal" />
-      <Parameter Name="pobtainmarks" Mode="In" Type="Int32" />
-      <Parameter Name="ptotalmarks" Mode="In" Type="Int32" />
-      <Parameter Name="pyearpassing1" Mode="In" Type="DateTime" />
-      <Parameter Name="pregisterno1" Mode="In" Type="String" />
-      <Parameter Name="pattempts1" Mode="In" Type="Int32" />
-      <Parameter Name="pgradee" Mode="In" Type="String" />
-      <Parameter Name="pprecentage" Mode="In" Type="Double" />
-      <Parameter Name="pradio1" Mode="In" Type="String" />
-      <Parameter Name="pradio2" Mode="In" Type="String" />
-      <Parameter Name="pradio3" Mode="In" Type="String" />
-      <Parameter Name="pradio4" Mode="In" Type="String" />
-      <Parameter Name="pradio5" Mode="In" Type="String" />
-      <Parameter Name="pnamelocation" Mode="In" Type="String" />
-      <Parameter Name="pqualifyingexamination" Mode="In" Type="String" />
-      <Parameter Name="ucourseid" Mode="In" Type="Int32" />
-      <Parameter Name="udepartmetid" Mode="In" Type="Int32" />
-      <Parameter Name="uanswer1" Mode="In" Type="String" />
-      <Parameter Name="uanswer2" Mode="In" Type="String" />
-      <Parameter Name="uprevioucollage" Mode="In" Type="String" />
-      <Parameter Name="uaffliateduniversity" Mode="In" Type="String" />
-      <Parameter Name="uyearofleaving" Mode="In" Type="DateTime" />
-      <Parameter Name="urefname" Mode="In" Type="String" />
-      <Parameter Name="ureferencenumber" Mode="In" Type="String" />
-      <Parameter Name="ucode" Mode="In" Type="Int32" />
-      <Parameter Name="ucollageugscan" Mode="In" Type="Binary" />
-      <Parameter Name="hsubject1" Mode="In" Type="String" />
-      <Parameter Name="hsubject2" Mode="In" Type="String" />
-      <Parameter Name="hsubject3" Mode="In" Type="String" />
-      <Parameter Name="hsubject4" Mode="In" Type="String" />
-      <Parameter Name="hsubject5" Mode="In" Type="String" />
-      <Parameter Name="hsubject6" Mode="In" Type="String" />
-      <Parameter Name="hmarks1" Mode="In" Type="Decimal" />
-      <Parameter Name="hmarks2" Mode="In" Type="Decimal" />
-      <Parameter Name="hmarks3" Mode="In" Type="Decimal" />
-      <Parameter Name="hmarks4" Mode="In" Type="Decimal" />
-      <Parameter Name="hmarks5" Mode="In" Type="Decimal" />
-      <Parameter Name="hmarks6" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax1" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax2" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax3" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax4" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax5" Mode="In" Type="Decimal" />
-      <Parameter Name="hmax6" Mode="In" Type="Decimal" />
-      <Parameter Name="hobtainmarks" Mode="In" Type="Int32" />
-      <Parameter Name="htotalmarks" Mode="In" Type="Int32" />
-      <Parameter Name="hgradee" Mode="In" Type="String" />
-      <Parameter Name="hprecentage" Mode="In" Type="Double" />
-      <Parameter Name="hyearpassing1" Mode="In" Type="DateTime" />
-      <Parameter Name="hregisterno1" Mode="In" Type="String" />
-      <Parameter Name="hattempts1" Mode="In" Type="Int32" />
-      <Parameter Name="hradio1" Mode="In" Type="String" />
-      <Parameter Name="hradio2" Mode="In" Type="String" />
-      <Parameter Name="hradio3" Mode="In" Type="String" />
-      <Parameter Name="hradio4" Mode="In" Type="String" />
-      <Parameter Name="hradio5" Mode="In" Type="String" />
-      <Parameter Name="hnamelocation" Mode="In" Type="String" />
-      <Parameter Name="hqexam" Mode="In" Type="String" />
-      <Parameter Name="hprschool" Mode="In" Type="String" />
-      <Parameter Name="hrefname" Mode="In" Type="String" />
-      <Parameter Name="hrefno" Mode="In" Type="String" />
-      <Parameter Name="hrefcode" Mode="In" Type="Int32" />
-      <Parameter Name="htcno" Mode="In" Type="String" />
-      <Parameter Name="htcscan" Mode="In" Type="Binary" />
-      <Parameter Name="hreflatter" Mode="In" Type="Binary" />
-      <Parameter Name="hmarksheet" Mode="In" Type="Binary" />
-      <Parameter Name="hanswer1" Mode="In" Type="String" />
-      <Parameter Name="hanswer2" Mode="In" Type="String" />
-      <Parameter Name="pgsubject1" Mode="In" Type="String" />
-      <Parameter Name="pgsubject2" Mode="In" Type="String" />
-      <Parameter Name="pgsubject3" Mode="In" Type="String" />
-      <Parameter Name="pgsubject4" Mode="In" Type="String" />
-      <Parameter Name="pgsubject5" Mode="In" Type="String" />
-      <Parameter Name="pgsubject6" Mode="In" Type="String" />
-      <Parameter Name="pgmarks1" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmarks2" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmarks3" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmarks4" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmarks5" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmarks6" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax1" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax2" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax3" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax4" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax5" Mode="In" Type="Decimal" />
-      <Parameter Name="pgmax6" Mode="In" Type="Decimal" />
-      <Parameter Name="pgobtainmarks" Mode="In" Type="Int32" />
-      <Parameter Name="pgtotalmarks" Mode="In" Type="Int32" />
-      <Parameter Name="pggradee" Mode="In" Type="String" />
-      <Parameter Name="pgprecentage" Mode="In" Type="Double" />
-      <Parameter Name="pgyearpassing1" Mode="In" Type="DateTime" />
-      <Parameter Name="pgregisterno1" Mode="In" Type="String" />
-      <Parameter Name="pgattempts1" Mode="In" Type="Int32" />
-      <Parameter Name="pgradio1" Mode="In" Type="String" />
-      <Parameter Name="pgradio2" Mode="In" Type="String" />
-      <Parameter Name="pgradio3" Mode="In" Type="String" />
-      <Parameter Name="pgradio4" Mode="In" Type="String" />
-      <Parameter Name="pgradio5" Mode="In" Type="String" />
-      <Parameter Name="pgnamelocation" Mode="In" Type="String" />
-      <Parameter Name="pgqexam" Mode="In" Type="String" />
-      <Parameter Name="pcourseid" Mode="In" Type="Int32" />
-      <Parameter Name="pdepartmetid" Mode="In" Type="Int32" />
-      <Parameter Name="panswer1" Mode="In" Type="String" />
-      <Parameter Name="panswer2" Mode="In" Type="String" />
-      <Parameter Name="pprevioucollage" Mode="In" Type="String" />
-      <Parameter Name="paffliateduniversity" Mode="In" Type="String" />
-      <Parameter Name="pyearofleaving" Mode="In" Type="DateTime" />
-      <Parameter Name="prefname" Mode="In" Type="String" />
-      <Parameter Name="preferencenumber" Mode="In" Type="String" />
-      <Parameter Name="pcode" Mode="In" Type="Int32" />
-      <Parameter Name="pcollagepgscan" Mode="In" Type="Binary" />
-    </FunctionImport>
     <EntitySet Name="tbl_ContentComplete" EntityType="SchoolMgmtSysModel.tbl_ContentComplete" />
     <EntitySet Name="tbl_Chaptercomplete" EntityType="SchoolMgmtSysModel.tbl_Chaptercomplete" />
     <EntitySet Name="tbl_lib_BookCategory" EntityType="SchoolMgmtSysModel.tbl_lib_BookCategory" />
@@ -1427,7 +1096,341 @@
       <Parameter Name="deptid" Mode="In" Type="Int32" />
       <Parameter Name="yearid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tbl_ExamTimetableSubject" EntityType="SchoolMgmtSysModel.tbl_ExamTimetableSubject" />
+    <FunctionImport Name="sp_GetSubjectlistbyExamId" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSubjectlistbyExamId_Result)">
+      <Parameter Name="Examid" Mode="In" Type="Int32" />
+    </FunctionImport>
     <EntitySet Name="secondaryeducationdetails" EntityType="SchoolMgmtSysModel.secondaryeducationdetail" />
+    <FunctionImport Name="sp_GetSubjectlistEditbyExamId" ReturnType="Collection(SchoolMgmtSysModel.sp_GetSubjectlistEditbyExamId_Result)">
+      <Parameter Name="Examid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetExamDetailsByExamId" ReturnType="Collection(SchoolMgmtSysModel.sp_GetExamDetailsByExamId_Result)">
+      <Parameter Name="ExamId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
+    <FunctionImport Name="sp_student_admission">
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="Studnm" Mode="In" Type="String" />
+      <Parameter Name="Studfathernm" Mode="In" Type="String" />
+      <Parameter Name="Studmothernm" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Weight" Mode="In" Type="Int32" />
+      <Parameter Name="Height" Mode="In" Type="Int32" />
+      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
+      <Parameter Name="StudEmail" Mode="In" Type="String" />
+      <Parameter Name="Disease" Mode="In" Type="String" />
+      <Parameter Name="Religionid" Mode="In" Type="Int32" />
+      <Parameter Name="Casteid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="RollNo" Mode="In" Type="Int32" />
+      <Parameter Name="Gender" Mode="In" Type="Int32" />
+      <Parameter Name="MotherTongue" Mode="In" Type="String" />
+      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
+      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
+      <Parameter Name="LastClass" Mode="In" Type="String" />
+      <Parameter Name="Grade" Mode="In" Type="String" />
+      <Parameter Name="LeaveYear" Mode="In" Type="String" />
+      <Parameter Name="LeaveReason" Mode="In" Type="String" />
+      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
+      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
+      <Parameter Name="BusNo" Mode="In" Type="String" />
+      <Parameter Name="BusRTONo" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
+      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
+      <Parameter Name="StudPic" Mode="In" Type="Binary" />
+      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherEmail" Mode="In" Type="String" />
+      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="FatherContact" Mode="In" Type="String" />
+      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
+      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherEmail" Mode="In" Type="String" />
+      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="MotherContact" Mode="In" Type="String" />
+      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
+      <Parameter Name="Countryid" Mode="In" Type="Int32" />
+      <Parameter Name="Stateid" Mode="In" Type="Int32" />
+      <Parameter Name="Cityid" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
+      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
+      <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="busid" Mode="In" Type="Int32" />
+      <Parameter Name="cats" Mode="In" Type="String" />
+      <Parameter Name="prds" Mode="In" Type="String" />
+      <Parameter Name="Docs" Mode="In" Type="String" />
+      <Parameter Name="subcats" Mode="In" Type="String" />
+      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
+      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="GuardianContact" Mode="In" Type="String" />
+      <Parameter Name="GuardianName" Mode="In" Type="String" />
+      <Parameter Name="FCode" Mode="In" Type="String" />
+      <Parameter Name="MCode" Mode="In" Type="String" />
+      <Parameter Name="GCode" Mode="In" Type="String" />
+      <Parameter Name="ECode" Mode="In" Type="String" />
+      <Parameter Name="RCode" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="GuardianPic" Mode="In" Type="Binary" />
+      <Parameter Name="Sibling1Name" Mode="In" Type="String" />
+      <Parameter Name="Sibling1Rel" Mode="In" Type="String" />
+      <Parameter Name="Sibling1DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling1Ql" Mode="In" Type="String" />
+      <Parameter Name="Sibling2Name" Mode="In" Type="String" />
+      <Parameter Name="Sibling2Rel" Mode="In" Type="String" />
+      <Parameter Name="Sibling2DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling2Ql" Mode="In" Type="String" />
+      <Parameter Name="Sibling3Name" Mode="In" Type="String" />
+      <Parameter Name="Sibling3Rel" Mode="In" Type="String" />
+      <Parameter Name="Sibling3DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling3Ql" Mode="In" Type="String" />
+      <Parameter Name="Sibling4Name" Mode="In" Type="String" />
+      <Parameter Name="Sibling4Rel" Mode="In" Type="String" />
+      <Parameter Name="Sibling4DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling4Ql" Mode="In" Type="String" />
+      <Parameter Name="ParishName" Mode="In" Type="String" />
+      <Parameter Name="DioceseName" Mode="In" Type="String" />
+      <Parameter Name="DocumentType" Mode="In" Type="String" />
+      <Parameter Name="DocumentIDNo" Mode="In" Type="String" />
+      <Parameter Name="Dept_Id" Mode="In" Type="Int32" />
+      <Parameter Name="app_id" Mode="In" Type="String" />
+      <Parameter Name="ug_id" Mode="In" Type="String" />
+      <Parameter Name="pincode" Mode="In" Type="String" />
+      <Parameter Name="doc_typename" Mode="In" Type="String" />
+      <Parameter Name="courseyearid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherOtherOccName" Mode="In" Type="String" />
+      <Parameter Name="FatherOtherQualName" Mode="In" Type="String" />
+      <Parameter Name="GuardianOtherOccName" Mode="In" Type="String" />
+      <Parameter Name="GuardianOtherQalName" Mode="In" Type="String" />
+      <Parameter Name="MotherOtherOccName" Mode="In" Type="String" />
+      <Parameter Name="MotherOtherQualName" Mode="In" Type="String" />
+      <Parameter Name="StdMobNo" Mode="In" Type="String" />
+      <Parameter Name="StdRegNo" Mode="In" Type="String" />
+      <Parameter Name="empContactRel" Mode="In" Type="String" />
+      <Parameter Name="subject1" Mode="In" Type="String" />
+      <Parameter Name="subject2" Mode="In" Type="String" />
+      <Parameter Name="subject3" Mode="In" Type="String" />
+      <Parameter Name="subject4" Mode="In" Type="String" />
+      <Parameter Name="subject5" Mode="In" Type="String" />
+      <Parameter Name="subject6" Mode="In" Type="String" />
+      <Parameter Name="marks1" Mode="In" Type="Decimal" />
+      <Parameter Name="marks2" Mode="In" Type="Decimal" />
+      <Parameter Name="marks3" Mode="In" Type="Decimal" />
+      <Parameter Name="marks4" Mode="In" Type="Decimal" />
+      <Parameter Name="marks5" Mode="In" Type="Decimal" />
+      <Parameter Name="marks6" Mode="In" Type="Decimal" />
+      <Parameter Name="max1" Mode="In" Type="Decimal" />
+      <Parameter Name="max2" Mode="In" Type="Decimal" />
+      <Parameter Name="max3" Mode="In" Type="Decimal" />
+      <Parameter Name="max4" Mode="In" Type="Decimal" />
+      <Parameter Name="max5" Mode="In" Type="Decimal" />
+      <Parameter Name="max6" Mode="In" Type="Decimal" />
+      <Parameter Name="obtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="totalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="yearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="registerno1" Mode="In" Type="String" />
+      <Parameter Name="attempts1" Mode="In" Type="Int32" />
+      <Parameter Name="gradee" Mode="In" Type="String" />
+      <Parameter Name="precentage" Mode="In" Type="Double" />
+      <Parameter Name="radio1" Mode="In" Type="String" />
+      <Parameter Name="radio2" Mode="In" Type="String" />
+      <Parameter Name="radio3" Mode="In" Type="String" />
+      <Parameter Name="radio4" Mode="In" Type="String" />
+      <Parameter Name="radio5" Mode="In" Type="String" />
+      <Parameter Name="namelocation" Mode="In" Type="String" />
+      <Parameter Name="qualifyingexamination" Mode="In" Type="String" />
+      <Parameter Name="sanswer1" Mode="In" Type="String" />
+      <Parameter Name="sanswer2" Mode="In" Type="String" />
+      <Parameter Name="spreviouschool" Mode="In" Type="String" />
+      <Parameter Name="srefname" Mode="In" Type="String" />
+      <Parameter Name="sreferencenumber" Mode="In" Type="String" />
+      <Parameter Name="scode" Mode="In" Type="String" />
+      <Parameter Name="sreferenceletter" Mode="In" Type="Binary" />
+      <Parameter Name="stcscan" Mode="In" Type="Binary" />
+      <Parameter Name="smarksSheet" Mode="In" Type="Binary" />
+      <Parameter Name="syearleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="tcno" Mode="In" Type="String" />
+      <Parameter Name="psubject1" Mode="In" Type="String" />
+      <Parameter Name="psubject2" Mode="In" Type="String" />
+      <Parameter Name="psubject3" Mode="In" Type="String" />
+      <Parameter Name="psubject4" Mode="In" Type="String" />
+      <Parameter Name="psubject5" Mode="In" Type="String" />
+      <Parameter Name="psubject6" Mode="In" Type="String" />
+      <Parameter Name="pmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="pmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="pmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="pobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="ptotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="pregisterno1" Mode="In" Type="String" />
+      <Parameter Name="pattempts1" Mode="In" Type="Int32" />
+      <Parameter Name="pgradee" Mode="In" Type="String" />
+      <Parameter Name="pprecentage" Mode="In" Type="Double" />
+      <Parameter Name="pradio1" Mode="In" Type="String" />
+      <Parameter Name="pradio2" Mode="In" Type="String" />
+      <Parameter Name="pradio3" Mode="In" Type="String" />
+      <Parameter Name="pradio4" Mode="In" Type="String" />
+      <Parameter Name="pradio5" Mode="In" Type="String" />
+      <Parameter Name="pnamelocation" Mode="In" Type="String" />
+      <Parameter Name="pqualifyingexamination" Mode="In" Type="String" />
+      <Parameter Name="ucourseid" Mode="In" Type="Int32" />
+      <Parameter Name="udepartmetid" Mode="In" Type="Int32" />
+      <Parameter Name="uanswer1" Mode="In" Type="String" />
+      <Parameter Name="uanswer2" Mode="In" Type="String" />
+      <Parameter Name="uprevioucollage" Mode="In" Type="String" />
+      <Parameter Name="uaffliateduniversity" Mode="In" Type="String" />
+      <Parameter Name="uyearofleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="urefname" Mode="In" Type="String" />
+      <Parameter Name="ureferencenumber" Mode="In" Type="String" />
+      <Parameter Name="ucode" Mode="In" Type="Int32" />
+      <Parameter Name="ucollageugscan" Mode="In" Type="Binary" />
+      <Parameter Name="uuniversityrank" Mode="In" Type="String" />
+      <Parameter Name="uoptions" Mode="In" Type="Int32" />
+      <Parameter Name="uclass1" Mode="In" Type="Int32" />
+      <Parameter Name="uclass2" Mode="In" Type="Int32" />
+      <Parameter Name="uclass3" Mode="In" Type="Int32" />
+      <Parameter Name="uclass4" Mode="In" Type="Int32" />
+      <Parameter Name="uclass5" Mode="In" Type="Int32" />
+      <Parameter Name="uclass6" Mode="In" Type="Int32" />
+      <Parameter Name="hsubject1" Mode="In" Type="String" />
+      <Parameter Name="hsubject2" Mode="In" Type="String" />
+      <Parameter Name="hsubject3" Mode="In" Type="String" />
+      <Parameter Name="hsubject4" Mode="In" Type="String" />
+      <Parameter Name="hsubject5" Mode="In" Type="String" />
+      <Parameter Name="hsubject6" Mode="In" Type="String" />
+      <Parameter Name="hmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="hmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="hmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="hobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="htotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="hgradee" Mode="In" Type="String" />
+      <Parameter Name="hprecentage" Mode="In" Type="Double" />
+      <Parameter Name="hyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="hregisterno1" Mode="In" Type="String" />
+      <Parameter Name="hattempts1" Mode="In" Type="Int32" />
+      <Parameter Name="hradio1" Mode="In" Type="String" />
+      <Parameter Name="hradio2" Mode="In" Type="String" />
+      <Parameter Name="hradio3" Mode="In" Type="String" />
+      <Parameter Name="hradio4" Mode="In" Type="String" />
+      <Parameter Name="hradio5" Mode="In" Type="String" />
+      <Parameter Name="hnamelocation" Mode="In" Type="String" />
+      <Parameter Name="hqexam" Mode="In" Type="String" />
+      <Parameter Name="hprschool" Mode="In" Type="String" />
+      <Parameter Name="hrefname" Mode="In" Type="String" />
+      <Parameter Name="hrefno" Mode="In" Type="String" />
+      <Parameter Name="hrefcode" Mode="In" Type="Int32" />
+      <Parameter Name="htcno" Mode="In" Type="String" />
+      <Parameter Name="htcscan" Mode="In" Type="Binary" />
+      <Parameter Name="hreflatter" Mode="In" Type="Binary" />
+      <Parameter Name="hmarksheet" Mode="In" Type="Binary" />
+      <Parameter Name="hanswer1" Mode="In" Type="String" />
+      <Parameter Name="hanswer2" Mode="In" Type="String" />
+      <Parameter Name="hyearleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="pgsubject1" Mode="In" Type="String" />
+      <Parameter Name="pgsubject2" Mode="In" Type="String" />
+      <Parameter Name="pgsubject3" Mode="In" Type="String" />
+      <Parameter Name="pgsubject4" Mode="In" Type="String" />
+      <Parameter Name="pgsubject5" Mode="In" Type="String" />
+      <Parameter Name="pgsubject6" Mode="In" Type="String" />
+      <Parameter Name="pgmarks1" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks2" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks3" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks4" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks5" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmarks6" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax1" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax2" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax3" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax4" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax5" Mode="In" Type="Decimal" />
+      <Parameter Name="pgmax6" Mode="In" Type="Decimal" />
+      <Parameter Name="pgobtainmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pgtotalmarks" Mode="In" Type="Int32" />
+      <Parameter Name="pggradee" Mode="In" Type="String" />
+      <Parameter Name="pgprecentage" Mode="In" Type="Double" />
+      <Parameter Name="pgyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="pgregisterno1" Mode="In" Type="String" />
+      <Parameter Name="pgattempts1" Mode="In" Type="Int32" />
+      <Parameter Name="pgradio1" Mode="In" Type="String" />
+      <Parameter Name="pgradio2" Mode="In" Type="String" />
+      <Parameter Name="pgradio3" Mode="In" Type="String" />
+      <Parameter Name="pgradio4" Mode="In" Type="String" />
+      <Parameter Name="pgradio5" Mode="In" Type="String" />
+      <Parameter Name="pgnamelocation" Mode="In" Type="String" />
+      <Parameter Name="pgqexam" Mode="In" Type="String" />
+      <Parameter Name="pcourseid" Mode="In" Type="Int32" />
+      <Parameter Name="pdepartmetid" Mode="In" Type="Int32" />
+      <Parameter Name="panswer1" Mode="In" Type="String" />
+      <Parameter Name="panswer2" Mode="In" Type="String" />
+      <Parameter Name="pprevioucollage" Mode="In" Type="String" />
+      <Parameter Name="paffliateduniversity" Mode="In" Type="String" />
+      <Parameter Name="pyearofleaving" Mode="In" Type="DateTime" />
+      <Parameter Name="prefname" Mode="In" Type="String" />
+      <Parameter Name="preferencenumber" Mode="In" Type="String" />
+      <Parameter Name="pcode" Mode="In" Type="Int32" />
+      <Parameter Name="pcollagepgscan" Mode="In" Type="Binary" />
+      <Parameter Name="puniversityrank" Mode="In" Type="String" />
+      <Parameter Name="poptions" Mode="In" Type="Int32" />
+      <Parameter Name="pclass1" Mode="In" Type="Int32" />
+      <Parameter Name="pclass2" Mode="In" Type="Int32" />
+      <Parameter Name="pclass3" Mode="In" Type="Int32" />
+      <Parameter Name="pclass4" Mode="In" Type="Int32" />
+      <Parameter Name="pclass5" Mode="In" Type="Int32" />
+      <Parameter Name="pclass6" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_ExamTImeTable" EntityType="SchoolMgmtSysModel.tbl_ExamTImeTable" />
+    <FunctionImport Name="sp_ExamMarksAllotment" ReturnType="Collection(SchoolMgmtSysModel.sp_ExamMarksAllotment_Result)">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="examid" Mode="In" Type="Int32" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="accadmicyear" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_CourseMaster" EntityType="SchoolMgmtSysModel.tbl_CourseMaster" />
+    <FunctionImport Name="sp_coursemaster_DML">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="CourseName" Mode="In" Type="String" />
+      <Parameter Name="coursetype" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_teachersubject_DML">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="teacherid" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="departmenid" Mode="In" Type="Int32" />
+      <Parameter Name="yearid" Mode="In" Type="Int32" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="subjectid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.tbl_StudentMark" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -1722,33 +1725,6 @@
     <Property Type="String" Name="ExaminationType" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="Boolean" Name="Status" />
   </EntityType>
-  <EntityType Name="tbl_ExamTImeTable">
-    <Key>
-      <PropertyRef Name="ExamId" />
-    </Key>
-    <Property Type="Int32" Name="ExamId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="ExamName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="ExamStartTime" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="ExamEndTime" Nullable="false" Precision="3" />
-    <Property Type="Int32" Name="ExamTypeId" Nullable="false" />
-    <Property Type="Int32" Name="ExamClassId" Nullable="false" />
-    <Property Type="Int32" Name="ExamSubjectId" Nullable="false" />
-    <Property Type="String" Name="ExamYear" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsPublish" />
-  </EntityType>
-  <EntityType Name="tbl_StudentMark">
-    <Key>
-      <PropertyRef Name="Marksid" />
-    </Key>
-    <Property Type="Int32" Name="Marksid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Studentid" />
-    <Property Type="Int32" Name="Examid" />
-    <Property Type="Int32" Name="Subjectid" />
-    <Property Type="Decimal" Name="Marks" Precision="18" Scale="0" />
-    <Property Type="Decimal" Name="TotalMarks" Precision="18" Scale="0" />
-    <Property Type="String" Name="AcadamicYear" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Remark" />
-  </EntityType>
   <ComplexType Name="sp_ExaminationDetailbyId_Result">
     <Property Type="Int32" Name="ExamId" Nullable="false" />
     <Property Type="String" Name="ExamName" Nullable="false" MaxLength="255" />
@@ -2010,6 +1986,7 @@
     <Property Type="DateTime" Name="busDateTime" Precision="3" />
     <Property Type="Boolean" Name="status" Nullable="false" />
     <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BusTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <ComplexType Name="sp_gettransport_Result">
     <Property Type="Int32" Name="busid" Nullable="false" />
@@ -2301,14 +2278,6 @@
     <Property Name="createdby" Type="Int32" />
     <Property Name="IsActive" Type="Boolean" />
   </EntityType>
-  <EntityType Name="tbl_CourseMaster">
-    <Key>
-      <PropertyRef Name="Courseid" />
-    </Key>
-    <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Boolean" />
-  </EntityType>
   <ComplexType Name="sp_getCourseMaster_Result">
     <Property Type="Int32" Name="Courseid" Nullable="false" />
     <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
@@ -2585,153 +2554,6 @@
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsApprove" Type="Boolean" />
     <Property Name="LeaveType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_student">
-    <Key>
-      <PropertyRef Name="Studid" />
-    </Key>
-    <Property Name="Studid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DOB" Type="DateTime" Precision="7" />
-    <Property Name="Weight" Type="Int32" Nullable="false" />
-    <Property Name="Height" Type="Int32" Nullable="false" />
-    <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
-    <Property Name="StudEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Disease" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Religionid" Type="Int32" Nullable="false" />
-    <Property Name="Casteid" Type="Int32" Nullable="false" />
-    <Property Name="Classid" Type="Int32" Nullable="false" />
-    <Property Name="RollNo" Type="Int32" Nullable="false" />
-    <Property Name="Gender" Type="Int32" Nullable="false" />
-    <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PreviousSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="LastClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Grade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="LeaveYear" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="LeaveReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PrincipalNm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ReferenceNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ReferenceContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="BusFacility" Type="Boolean" Nullable="false" />
-    <Property Name="BusNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="BusRTONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmergencyPhysicianNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmergencyPhysicianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="EmergencyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="StudPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="FatherOccpationid" Type="Int32" Nullable="false" />
-    <Property Name="FatherQualificationid" Type="Int32" Nullable="false" />
-    <Property Name="FatherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FatherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="FatherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="FatherBldGrpid" Type="Int32" />
-    <Property Name="FatherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="MotherOccpationid" Type="Int32" Nullable="false" />
-    <Property Name="MotherQualificationid" Type="Int32" Nullable="false" />
-    <Property Name="MotherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MotherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="MotherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="MotherBldGrpid" Type="Int32" />
-    <Property Name="MotherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="Countryid" Type="Int32" Nullable="false" />
-    <Property Name="Stateid" Type="Int32" Nullable="false" />
-    <Property Name="Cityid" Type="Int32" Nullable="false" />
-    <Property Name="CurrentAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="SysDt" Type="DateTime" Precision="7" />
-    <Property Name="busid" Type="Int32" />
-    <Property Name="cats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="prds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Docs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="subcats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="StudCategoryid" Type="Int32" />
-    <Property Name="GuardianOccpationid" Type="Int32" />
-    <Property Name="GuardianQualificationid" Type="Int32" />
-    <Property Name="GuardianEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="GuardianOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="GuardianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FCode" Type="Int32" />
-    <Property Name="MCode" Type="Int32" />
-    <Property Name="GCode" Type="Int32" />
-    <Property Name="RCode" Type="Int32" />
-    <Property Name="ECode" Type="Int32" />
-    <Property Name="GuardianPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="SecondaryTotalMarks" Type="Int32" />
-    <Property Name="SecondaryObtainMarks" Type="Int32" />
-    <Property Name="SecondaryPercetage" Type="Double" />
-    <Property Name="SecondaryTCScanCopy" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="SecondaryMarksheetCopy" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="PrUgCollegeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgCollegeAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgAffilatedUniversity" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="PrUgRefContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgTotalMark" Type="Int32" />
-    <Property Name="PrUgObtainMark" Type="Int32" />
-    <Property Name="PrUgPercentage" Type="Double" />
-    <Property Name="PrUgGradeLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgYearLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgReasonofLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgPrincipalName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrUgRefContactName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="UGMarksheet" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="PrPgCollegeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgCollegeAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgAffilatedUniversity" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="PrPgRefContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgTotalMark" Type="Int32" />
-    <Property Name="PrPgObtainMark" Type="Int32" />
-    <Property Name="PrPgPercentage" Type="Double" />
-    <Property Name="PrPgGradeLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgYearLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgReasonofLeaving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgPrincipalName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PrPgRefContactName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PGMarksheet" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling2DOB" Type="DateTime" Precision="7" />
-    <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling1DOB" Type="DateTime" Precision="7" />
-    <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling3DOB" Type="DateTime" Precision="7" />
-    <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling4DOB" Type="DateTime" Precision="7" />
-    <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DocumentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DocumentIDNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Dept_Id" Type="Int32" />
-    <Property Name="app_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ug_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="sc_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="sc_refletter" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="sc_tcno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="prug_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="prpg_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="courseyearid" Type="Int32" />
-    <Property Name="FatherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FatherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="GuardianOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="GuardianOtherQalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MotherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MotherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbl_StudentAttendance">
     <Key>
@@ -3021,6 +2843,14 @@
     <Property Type="String" Name="referencenumber" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="code" />
     <Property Type="Binary" Name="collageugscan" MaxLength="Max" FixedLength="false" />
+    <Property Name="universityrank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="options" Type="Int32" />
+    <Property Name="class1" Type="Int32" />
+    <Property Name="class2" Type="Int32" />
+    <Property Name="class3" Type="Int32" />
+    <Property Name="class4" Type="Int32" />
+    <Property Name="class5" Type="Int32" />
+    <Property Name="class6" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_subject">
     <Key>
@@ -3105,6 +2935,7 @@
     <Property Type="Binary" Name="marksheet" MaxLength="Max" FixedLength="false" />
     <Property Type="String" Name="answer1" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="answer2" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="yearleaving" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="pgeducationdetail">
     <Key>
@@ -3155,6 +2986,14 @@
     <Property Type="String" Name="referencenumber" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="code" />
     <Property Type="Binary" Name="collagepgscan" MaxLength="Max" FixedLength="false" />
+    <Property Name="universityrank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="options" Type="Int32" />
+    <Property Name="class1" Type="Int32" />
+    <Property Name="class2" Type="Int32" />
+    <Property Name="class3" Type="Int32" />
+    <Property Name="class4" Type="Int32" />
+    <Property Name="class5" Type="Int32" />
+    <Property Name="class6" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_ContentComplete">
     <Key>
@@ -3355,6 +3194,26 @@
     <Property Type="String" Name="SubjectCode" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
   </ComplexType>
+  <EntityType Name="tbl_ExamTimetableSubject">
+    <Key>
+      <PropertyRef Name="ExSubId" />
+    </Key>
+    <Property Name="ExSubId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExamId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="ExamDate" Type="DateTime" Precision="7" />
+    <Property Name="ExamStartTime" Type="Time" Precision="7" />
+    <Property Name="ExamEndTime" Type="Time" Precision="7" />
+  </EntityType>
+  <ComplexType Name="sp_GetSubjectlistbyExamId_Result">
+    <Property Type="Int32" Name="ExSubId" Nullable="false" />
+    <Property Type="Int32" Name="SubjectId" Nullable="true" />
+    <Property Type="String" Name="subjectcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ExamDate" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ExamStartTime" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ExamEndTime" Nullable="true" MaxLength="15" />
+  </ComplexType>
   <EntityType Name="secondaryeducationdetail">
     <Key>
       <PropertyRef Name="educationid" />
@@ -3393,7 +3252,6 @@
     <Property Name="radio5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="namelocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="qualifyingexamination" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="test" Type="Int32" />
     <Property Name="answer1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="answer2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="previouschool" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -3403,5 +3261,183 @@
     <Property Name="referenceletter" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="tcscan" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="marksSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="yearleaving" Type="DateTime" Precision="3" />
+    <Property Name="tcno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_GetSubjectlistEditbyExamId_Result">
+    <Property Type="Int32" Name="ExSubId" Nullable="false" />
+    <Property Type="Int32" Name="SubjectId" Nullable="true" />
+    <Property Type="String" Name="subjectcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubjectNm" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ExamDate" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ExamStartTime" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ExamEndTime" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_GetExamDetailsByExamId_Result">
+    <Property Type="Int32" Name="ExamId" Nullable="false" />
+    <Property Type="String" Name="ExamName" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="tbl_student">
+    <Key>
+      <PropertyRef Name="Studid" />
+    </Key>
+    <Property Name="Studid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="7" />
+    <Property Name="Weight" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
+    <Property Name="StudEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Disease" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Religionid" Type="Int32" Nullable="false" />
+    <Property Name="Casteid" Type="Int32" Nullable="false" />
+    <Property Name="Classid" Type="Int32" Nullable="false" />
+    <Property Name="RollNo" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PreviousSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Grade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LeaveYear" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LeaveReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PrincipalNm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BusFacility" Type="Boolean" Nullable="false" />
+    <Property Name="BusNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BusRTONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyPhysicianNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyPhysicianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StudPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FatherOccpationid" Type="Int32" Nullable="false" />
+    <Property Name="FatherQualificationid" Type="Int32" Nullable="false" />
+    <Property Name="FatherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FatherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FatherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FatherBldGrpid" Type="Int32" />
+    <Property Name="FatherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MotherOccpationid" Type="Int32" Nullable="false" />
+    <Property Name="MotherQualificationid" Type="Int32" Nullable="false" />
+    <Property Name="MotherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MotherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MotherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MotherBldGrpid" Type="Int32" />
+    <Property Name="MotherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Countryid" Type="Int32" Nullable="false" />
+    <Property Name="Stateid" Type="Int32" Nullable="false" />
+    <Property Name="Cityid" Type="Int32" Nullable="false" />
+    <Property Name="CurrentAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SysDt" Type="DateTime" Precision="7" />
+    <Property Name="busid" Type="Int32" />
+    <Property Name="cats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="prds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Docs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="subcats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StudCategoryid" Type="Int32" />
+    <Property Name="GuardianOccpationid" Type="Int32" />
+    <Property Name="GuardianQualificationid" Type="Int32" />
+    <Property Name="GuardianEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GuardianOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GuardianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FCode" Type="Int32" />
+    <Property Name="MCode" Type="Int32" />
+    <Property Name="GCode" Type="Int32" />
+    <Property Name="RCode" Type="Int32" />
+    <Property Name="ECode" Type="Int32" />
+    <Property Name="GuardianPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling2DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling1DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling3DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sibling4DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentIDNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dept_Id" Type="Int32" />
+    <Property Name="app_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ug_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sc_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="courseyearid" Type="Int32" />
+    <Property Name="FatherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FatherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GuardianOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GuardianOtherQalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MotherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MotherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_ExamTImeTable">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExamName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExamTypeId" Type="Int32" Nullable="false" />
+    <Property Name="IsPublish" Type="Boolean" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="deptid" Type="Int32" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Createdby" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="sp_ExamMarksAllotment_Result">
+    <Property Type="Int32" Name="Studid" Nullable="false" />
+    <Property Type="String" Name="studentname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RollNo" Nullable="false" />
+    <Property Type="Int32" Name="ExamId" Nullable="true" />
+    <Property Type="Int32" Name="Subjectid" Nullable="true" />
+    <Property Type="Decimal" Name="Marks" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="TotalMarks" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="Remark" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_CourseMaster">
+    <Key>
+      <PropertyRef Name="Courseid" />
+    </Key>
+    <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="CourseType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_StudentMark">
+    <Key>
+      <PropertyRef Name="Marksid" />
+    </Key>
+    <Property Name="Marksid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Studentid" Type="Int32" />
+    <Property Name="Examid" Type="Int32" />
+    <Property Name="Subjectid" Type="Int32" />
+    <Property Name="Marks" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TotalMarks" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="AcadamicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="Boolean" />
+    <Property Name="Createdby" Type="Int32" />
   </EntityType>
 </Schema>

@@ -18,10 +18,13 @@
                 }
             }
         }
-
+        debugger;
         var aExamyear = GetParameterValues('ExamYear');
-        var aExamTypeid = GetParameterValues('ExamTypeid');
-        var aClassid = GetParameterValues('Classid');
+        var aExamTypeid = GetParameterValues('Examtypeid');
+        var aCourseid = GetParameterValues('CourseId');
+        var aDeptId = GetParameterValues('DeptId');
+        var ayearid = GetParameterValues('yearid');
+        var aExamid = GetParameterValues('Examid');
 
         $("#display").click(function (e) {
             if (Validations(e) == false)
@@ -141,7 +144,7 @@
                                                        <div class="controls">
                                                 @Html.TextBoxFor(model => model.ExamYear, new { id = "ExamYear", disabled = "disabled",@class="input" })
                                           </div>
-                                            </div>@class="input"
+                                            </div>
                                               <div class="control-group">
                                                 @Html.LabelFor(model => model.Studentid, new { @class="control-label"  })
                                               <div class="controls">

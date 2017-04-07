@@ -33,7 +33,7 @@
                     $("#Feeslblid").show();
                     $('#Feeslblid input').val(data.feeslblid);
                     $("#ctrlcnt").val(data.ctrlcnt);
-                    $("#classid").val(data.classid);
+                    $("#courseyearid").val(data.classid);
                     var ctrlcnt = $('#ctrlcnt').val();
                     var table = $('#dynamiclbl');
                     if (ctrlcnt > 0) {
@@ -65,7 +65,7 @@
             $("#Feeslblid").hide();
             $('#Feeslblid input').val('0');
             $("#ctrlcnt").val('');
-            $("#classid").val('');
+            $("#courseyearid").val('');
             var table = $('#dynamiclbl');
             table.html('');
         }
@@ -77,8 +77,8 @@
         }
 
 
-        $('#classid').change(function () {
-            var classid = $('#classid').val();
+        $('#courseyearid').change(function () {
+            var classid = $('#courseyearid').val();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_feeslabels")',
@@ -107,6 +107,7 @@
                         FeesLabels += $("#FeesNm" + i).val() + '|';
                     }
                 }
+                debugger;
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("DMLFeesLabels")',
@@ -129,35 +130,35 @@
             clearmsg();
         });
 
-        //        $("#result").on("click", ".btn_delete", function (evt) {
-        //            var feeslblid = this.id;
-        //            var flag = confirm('Are you sure you want to delete this Designation?');
-        //            if (flag) {
-        //                $.ajax({
-        //                    type: 'POST',
-        //                    url: '@Url.Action("DMLPosition")',
-        //                    data: $('#frm').serialize() + "&evt=Delete&id=" + feeslblid + "",
-        //                    success: function (result) {
-        //                        $("#lblmsg").text("Designation deleted successfully!..");
-        //                        $("#lblmsg").css({ "color": "orange" });
-        //                        $("#lblmsg").css({ "font-size": "25px" });
-        //                        $("#result").html(result);
-        //                        clear();
-        //                    }
-        //                });
-        //            }
-        //        });
+                $("#result").on("click", ".btn_delete", function (evt) {
+                    var feeslblid = this.id;
+                    var flag = confirm('Are you sure you want to delete this Designation?');
+                    if (flag) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("DMLPosition")',
+                            data: $('#frm').serialize() + "&evt=Delete&id=" + feeslblid + "",
+                            success: function (result) {
+                                $("#lblmsg").text("Designation deleted successfully!..");
+                                $("#lblmsg").css({ "color": "orange" });
+                                $("#lblmsg").css({ "font-size": "25px" });
+                                $("#result").html(result);
+                                clear();
+                            }
+                        });
+                    }
+                });
 
         function validations() {
             var cnt = 0;
-            if ($("#classid").val() == '') {
+            if ($("#courseyearid").val() == '') {
                 cnt++;
-                $("#classid").css({
+                $("#courseyearid").css({
                     "border": "2px solid red"
                 });
             }
             else {
-                $("#classid").css({
+                $("#courseyearid").css({
                     "border": "",
                     "background": ""
                 });
@@ -257,15 +258,15 @@
                                     <div id="Feeslblid" class="control-group">
                                         @Html.LabelFor(model => model.feeslblid, new { @class="control-label", @for="focusedInput" })
                                           <div class="controls">
-                                        @Html.EditorFor(model => model.feeslblid, new { @class="input-xlarge focused" ,@id="focusedInput" })
+                                        @Html.EditorFor(model => model.feeslblid, new { @class="input-xlarge focused"})
                                         @Html.ValidationMessageFor(model => model.feeslblid)
                                               </div>
                                     </div>
                                     <div class="control-group">
-                                        @Html.LabelFor(model => model.classid, new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.courseyearid, new { @class = "control-label" })
                                         <div class="controls">
-                                            @Html.DropDownListFor(model => model.classid, new SelectList(Model.Classlist, "Classid", "Classnm", "Select Class"), "Select Class", new { @class = "select" })
-                                            @Html.ValidationMessageFor(model => model.classid)
+                                            @Html.DropDownListFor(model => model.courseyearid, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.courseyearid)
                                             </div>
                                         </div>
                                     <div class="control-group">

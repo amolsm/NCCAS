@@ -42,6 +42,9 @@ namespace Entity
         [DisplayName("Exam End Time ")]
         public string ExamEndTime { get; set; }
 
+        [DisplayName("Status")]
+        public bool IsActive { get; set; }
+
         [DisplayName("Accadmic Year ")]
         public List<string> AccadmicYear { get; set; }
 
@@ -58,17 +61,18 @@ namespace Entity
 
         public List<ExaminationCollection> ExamCollection { get; set; }
 
+        public int Createdby { get; set; }
 
     }
 
-    public class MarkAllocation
+    public class MarkAllocation : Examinationviewmodel
     {
         public int markid { get; set; }
 
         [DisplayName("Student Name ")]
         public int Studentid { get; set; }
 
-        public int Examid { get; set;}
+       
 
         [DisplayName("Exam Name ")]
         public string Examname { get; set; }
@@ -79,17 +83,10 @@ namespace Entity
         [DisplayName("Marks ")]
         public decimal Marks { get; set; }
 
-        [DisplayName("Class Name ")]
-        public int Classid { get; set; }
+      
         
         [DisplayName("Class Name : ")]
         public string Classname { get; set; }
-
-        [DisplayName("Subject Name ")]
-        public int Subjectid { get; set; }
-
-        [DisplayName("Examination Type ")]
-        public int ExaminationTypeid { get; set; }
 
         [DisplayName("Subject : ")]
         public string Subject { get; set; }
@@ -106,15 +103,7 @@ namespace Entity
         [DisplayName("Remark ")]
         public bool Remark { get; set; }
 
-        //public List<String> ExamTable { get; set; }
-
-        public List<tbl_class> Classlist { get; set; }
-
-        public List<tbl_ExaminationType> ExaminationTypeList { get; set; }
-
-        public List<tbl_subject> SubjectList { get; set; }
-
-        public List<tbl_ExamTImeTable> ExamTable { get; set; }
+       public List<tbl_ExamTImeTable> ExamTable { get; set; }
 
         public List<tbl_student> StudentDetail { get; set; }
     }

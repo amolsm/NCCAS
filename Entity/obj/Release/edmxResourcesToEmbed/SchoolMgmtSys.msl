@@ -395,35 +395,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_ExamTImeTable">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
-        <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
-          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
-          <ScalarProperty Name="ExamYear" ColumnName="ExamYear" />
-          <ScalarProperty Name="ExamSubjectId" ColumnName="ExamSubjectId" />
-          <ScalarProperty Name="ExamClassId" ColumnName="ExamClassId" />
-          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
-          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
-          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
-          <ScalarProperty Name="ExamName" ColumnName="ExamName" />
-          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_StudentMark">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentMark">
-        <MappingFragment StoreEntitySet="tbl_StudentMark">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="AcadamicYear" ColumnName="AcadamicYear" />
-          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
-          <ScalarProperty Name="Marks" ColumnName="Marks" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="Examid" ColumnName="Examid" />
-          <ScalarProperty Name="Studentid" ColumnName="Studentid" />
-          <ScalarProperty Name="Marksid" ColumnName="Marksid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_ExaminationDetailbyId" FunctionName="SchoolMgmtSysModel.Store.sp_ExaminationDetailbyId">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_ExaminationDetailbyId_Result">
@@ -769,6 +740,7 @@
     <EntitySetMapping Name="tbl_transport">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_transport">
         <MappingFragment StoreEntitySet="tbl_transport">
+          <ScalarProperty Name="BusTime" ColumnName="BusTime" />
           <ScalarProperty Name="academicyear" ColumnName="academicyear" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
@@ -1158,16 +1130,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_CourseMaster">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseMaster">
-        <MappingFragment StoreEntitySet="tbl_CourseMaster">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_coursemaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_coursemaster_DML" />
     <FunctionImportMapping FunctionImportName="sp_getCourseMaster" FunctionName="SchoolMgmtSysModel.Store.sp_getCourseMaster">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getCourseMaster_Result">
@@ -1461,154 +1423,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_student">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
-        <MappingFragment StoreEntitySet="tbl_student">
-          <ScalarProperty Name="emContactRel" ColumnName="emContactRel" />
-          <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
-          <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
-          <ScalarProperty Name="MotherOtherQualName" ColumnName="MotherOtherQualName" />
-          <ScalarProperty Name="MotherOtherOccName" ColumnName="MotherOtherOccName" />
-          <ScalarProperty Name="GuardianOtherQalName" ColumnName="GuardianOtherQalName" />
-          <ScalarProperty Name="GuardianOtherOccName" ColumnName="GuardianOtherOccName" />
-          <ScalarProperty Name="FatherOtherQualName" ColumnName="FatherOtherQualName" />
-          <ScalarProperty Name="FatherOtherOccName" ColumnName="FatherOtherOccName" />
-          <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
-          <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
-          <ScalarProperty Name="prpg_regno" ColumnName="prpg_regno" />
-          <ScalarProperty Name="prug_regno" ColumnName="prug_regno" />
-          <ScalarProperty Name="sc_tcno" ColumnName="sc_tcno" />
-          <ScalarProperty Name="sc_refletter" ColumnName="sc_refletter" />
-          <ScalarProperty Name="sc_regno" ColumnName="sc_regno" />
-          <ScalarProperty Name="pincode" ColumnName="pincode" />
-          <ScalarProperty Name="ug_id" ColumnName="ug_id" />
-          <ScalarProperty Name="app_id" ColumnName="app_id" />
-          <ScalarProperty Name="Dept_Id" ColumnName="Dept_Id" />
-          <ScalarProperty Name="DocumentIDNo" ColumnName="DocumentIDNo" />
-          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
-          <ScalarProperty Name="DioceseName" ColumnName="DioceseName" />
-          <ScalarProperty Name="ParishName" ColumnName="ParishName" />
-          <ScalarProperty Name="Sibling4Ql" ColumnName="Sibling4Ql" />
-          <ScalarProperty Name="Sibling4DOB" ColumnName="Sibling4DOB" />
-          <ScalarProperty Name="Sibling4Rel" ColumnName="Sibling4Rel" />
-          <ScalarProperty Name="Sibling4Name" ColumnName="Sibling4Name" />
-          <ScalarProperty Name="Sibling3Ql" ColumnName="Sibling3Ql" />
-          <ScalarProperty Name="Sibling3DOB" ColumnName="Sibling3DOB" />
-          <ScalarProperty Name="Sibling3Rel" ColumnName="Sibling3Rel" />
-          <ScalarProperty Name="Sibling3Name" ColumnName="Sibling3Name" />
-          <ScalarProperty Name="Sibling1Ql" ColumnName="Sibling1Ql" />
-          <ScalarProperty Name="Sibling1DOB" ColumnName="Sibling1DOB" />
-          <ScalarProperty Name="Sibling1Rel" ColumnName="Sibling1Rel" />
-          <ScalarProperty Name="Sibling1Name" ColumnName="Sibling1Name" />
-          <ScalarProperty Name="Sibling2Ql" ColumnName="Sibling2Ql" />
-          <ScalarProperty Name="Sibling2DOB" ColumnName="Sibling2DOB" />
-          <ScalarProperty Name="Sibling2Rel" ColumnName="Sibling2Rel" />
-          <ScalarProperty Name="Sibling2Name" ColumnName="Sibling2Name" />
-          <ScalarProperty Name="PGMarksheet" ColumnName="PGMarksheet" />
-          <ScalarProperty Name="PrPgRefContactName" ColumnName="PrPgRefContactName" />
-          <ScalarProperty Name="PrPgPrincipalName" ColumnName="PrPgPrincipalName" />
-          <ScalarProperty Name="PrPgReasonofLeaving" ColumnName="PrPgReasonofLeaving" />
-          <ScalarProperty Name="PrPgYearLeaving" ColumnName="PrPgYearLeaving" />
-          <ScalarProperty Name="PrPgGradeLeaving" ColumnName="PrPgGradeLeaving" />
-          <ScalarProperty Name="PrPgPercentage" ColumnName="PrPgPercentage" />
-          <ScalarProperty Name="PrPgObtainMark" ColumnName="PrPgObtainMark" />
-          <ScalarProperty Name="PrPgTotalMark" ColumnName="PrPgTotalMark" />
-          <ScalarProperty Name="PrPgRefContactNo" ColumnName="PrPgRefContactNo" />
-          <ScalarProperty Name="PrPgAffilatedUniversity" ColumnName="PrPgAffilatedUniversity" />
-          <ScalarProperty Name="PrPgCollegeAddress" ColumnName="PrPgCollegeAddress" />
-          <ScalarProperty Name="PrPgCollegeName" ColumnName="PrPgCollegeName" />
-          <ScalarProperty Name="UGMarksheet" ColumnName="UGMarksheet" />
-          <ScalarProperty Name="PrUgRefContactName" ColumnName="PrUgRefContactName" />
-          <ScalarProperty Name="PrUgPrincipalName" ColumnName="PrUgPrincipalName" />
-          <ScalarProperty Name="PrUgReasonofLeaving" ColumnName="PrUgReasonofLeaving" />
-          <ScalarProperty Name="PrUgYearLeaving" ColumnName="PrUgYearLeaving" />
-          <ScalarProperty Name="PrUgGradeLeaving" ColumnName="PrUgGradeLeaving" />
-          <ScalarProperty Name="PrUgPercentage" ColumnName="PrUgPercentage" />
-          <ScalarProperty Name="PrUgObtainMark" ColumnName="PrUgObtainMark" />
-          <ScalarProperty Name="PrUgTotalMark" ColumnName="PrUgTotalMark" />
-          <ScalarProperty Name="PrUgRefContactNo" ColumnName="PrUgRefContactNo" />
-          <ScalarProperty Name="PrUgAffilatedUniversity" ColumnName="PrUgAffilatedUniversity" />
-          <ScalarProperty Name="PrUgCollegeAddress" ColumnName="PrUgCollegeAddress" />
-          <ScalarProperty Name="PrUgCollegeName" ColumnName="PrUgCollegeName" />
-          <ScalarProperty Name="SecondaryMarksheetCopy" ColumnName="SecondaryMarksheetCopy" />
-          <ScalarProperty Name="SecondaryTCScanCopy" ColumnName="SecondaryTCScanCopy" />
-          <ScalarProperty Name="SecondaryPercetage" ColumnName="SecondaryPercetage" />
-          <ScalarProperty Name="SecondaryObtainMarks" ColumnName="SecondaryObtainMarks" />
-          <ScalarProperty Name="SecondaryTotalMarks" ColumnName="SecondaryTotalMarks" />
-          <ScalarProperty Name="GuardianPic" ColumnName="GuardianPic" />
-          <ScalarProperty Name="ECode" ColumnName="ECode" />
-          <ScalarProperty Name="RCode" ColumnName="RCode" />
-          <ScalarProperty Name="GCode" ColumnName="GCode" />
-          <ScalarProperty Name="MCode" ColumnName="MCode" />
-          <ScalarProperty Name="FCode" ColumnName="FCode" />
-          <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
-          <ScalarProperty Name="GuardianContact" ColumnName="GuardianContact" />
-          <ScalarProperty Name="GuardianOfficeAddress" ColumnName="GuardianOfficeAddress" />
-          <ScalarProperty Name="GuardianEmail" ColumnName="GuardianEmail" />
-          <ScalarProperty Name="GuardianQualificationid" ColumnName="GuardianQualificationid" />
-          <ScalarProperty Name="GuardianOccpationid" ColumnName="GuardianOccpationid" />
-          <ScalarProperty Name="StudCategoryid" ColumnName="StudCategoryid" />
-          <ScalarProperty Name="subcats" ColumnName="subcats" />
-          <ScalarProperty Name="Docs" ColumnName="Docs" />
-          <ScalarProperty Name="prds" ColumnName="prds" />
-          <ScalarProperty Name="cats" ColumnName="cats" />
-          <ScalarProperty Name="busid" ColumnName="busid" />
-          <ScalarProperty Name="SysDt" ColumnName="SysDt" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
-          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
-          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-          <ScalarProperty Name="MotherPic" ColumnName="MotherPic" />
-          <ScalarProperty Name="MotherBldGrpid" ColumnName="MotherBldGrpid" />
-          <ScalarProperty Name="MotherContact" ColumnName="MotherContact" />
-          <ScalarProperty Name="MotherOfficeAddress" ColumnName="MotherOfficeAddress" />
-          <ScalarProperty Name="MotherEmail" ColumnName="MotherEmail" />
-          <ScalarProperty Name="MotherQualificationid" ColumnName="MotherQualificationid" />
-          <ScalarProperty Name="MotherOccpationid" ColumnName="MotherOccpationid" />
-          <ScalarProperty Name="FatherPic" ColumnName="FatherPic" />
-          <ScalarProperty Name="FatherBldGrpid" ColumnName="FatherBldGrpid" />
-          <ScalarProperty Name="FatherContact" ColumnName="FatherContact" />
-          <ScalarProperty Name="FatherOfficeAddress" ColumnName="FatherOfficeAddress" />
-          <ScalarProperty Name="FatherEmail" ColumnName="FatherEmail" />
-          <ScalarProperty Name="FatherQualificationid" ColumnName="FatherQualificationid" />
-          <ScalarProperty Name="FatherOccpationid" ColumnName="FatherOccpationid" />
-          <ScalarProperty Name="StudPic" ColumnName="StudPic" />
-          <ScalarProperty Name="EmergencyAddress" ColumnName="EmergencyAddress" />
-          <ScalarProperty Name="EmergencyPhysicianContact" ColumnName="EmergencyPhysicianContact" />
-          <ScalarProperty Name="EmergencyPhysicianNm" ColumnName="EmergencyPhysicianNm" />
-          <ScalarProperty Name="BusRTONo" ColumnName="BusRTONo" />
-          <ScalarProperty Name="BusNo" ColumnName="BusNo" />
-          <ScalarProperty Name="BusFacility" ColumnName="BusFacility" />
-          <ScalarProperty Name="ReferenceContact" ColumnName="ReferenceContact" />
-          <ScalarProperty Name="ReferenceNm" ColumnName="ReferenceNm" />
-          <ScalarProperty Name="PrincipalNm" ColumnName="PrincipalNm" />
-          <ScalarProperty Name="LeaveReason" ColumnName="LeaveReason" />
-          <ScalarProperty Name="LeaveYear" ColumnName="LeaveYear" />
-          <ScalarProperty Name="Grade" ColumnName="Grade" />
-          <ScalarProperty Name="LastClass" ColumnName="LastClass" />
-          <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
-          <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
-          <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="RollNo" ColumnName="RollNo" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="Casteid" ColumnName="Casteid" />
-          <ScalarProperty Name="Religionid" ColumnName="Religionid" />
-          <ScalarProperty Name="Disease" ColumnName="Disease" />
-          <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
-          <ScalarProperty Name="StudBldGrp" ColumnName="StudBldGrp" />
-          <ScalarProperty Name="Height" ColumnName="Height" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="Studmothernm" ColumnName="Studmothernm" />
-          <ScalarProperty Name="Studfathernm" ColumnName="Studfathernm" />
-          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
-          <ScalarProperty Name="Studid" ColumnName="Studid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_GetStdCount" FunctionName="SchoolMgmtSysModel.Store.sp_GetStdCount" />
     <EntitySetMapping Name="tbl_StudentAttendance">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentAttendance">
@@ -1723,7 +1537,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
     <FunctionImportMapping FunctionImportName="sp_ChapterComplete_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ChapterComplete_DML" />
     <FunctionImportMapping FunctionImportName="sp_chapter_DML" FunctionName="SchoolMgmtSysModel.Store.sp_chapter_DML" />
     <EntitySetMapping Name="tbl_lib_Author">
@@ -1903,6 +1716,14 @@
     <EntitySetMapping Name="tbl_collageeducationdetails">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_collageeducationdetails">
         <MappingFragment StoreEntitySet="tbl_collageeducationdetails">
+          <ScalarProperty Name="class6" ColumnName="class6" />
+          <ScalarProperty Name="class5" ColumnName="class5" />
+          <ScalarProperty Name="class4" ColumnName="class4" />
+          <ScalarProperty Name="class3" ColumnName="class3" />
+          <ScalarProperty Name="class2" ColumnName="class2" />
+          <ScalarProperty Name="class1" ColumnName="class1" />
+          <ScalarProperty Name="options" ColumnName="options" />
+          <ScalarProperty Name="universityrank" ColumnName="universityrank" />
           <ScalarProperty Name="collageugscan" ColumnName="collageugscan" />
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="referencenumber" ColumnName="referencenumber" />
@@ -1997,6 +1818,7 @@
     <EntitySetMapping Name="hsceducationdetails">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.hsceducationdetail">
         <MappingFragment StoreEntitySet="hsceducationdetails">
+          <ScalarProperty Name="yearleaving" ColumnName="yearleaving" />
           <ScalarProperty Name="answer2" ColumnName="answer2" />
           <ScalarProperty Name="answer1" ColumnName="answer1" />
           <ScalarProperty Name="marksheet" ColumnName="marksheet" />
@@ -2047,6 +1869,14 @@
     <EntitySetMapping Name="pgeducationdetails">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.pgeducationdetail">
         <MappingFragment StoreEntitySet="pgeducationdetails">
+          <ScalarProperty Name="class6" ColumnName="class6" />
+          <ScalarProperty Name="class5" ColumnName="class5" />
+          <ScalarProperty Name="class4" ColumnName="class4" />
+          <ScalarProperty Name="class3" ColumnName="class3" />
+          <ScalarProperty Name="class2" ColumnName="class2" />
+          <ScalarProperty Name="class1" ColumnName="class1" />
+          <ScalarProperty Name="options" ColumnName="options" />
+          <ScalarProperty Name="universityrank" ColumnName="universityrank" />
           <ScalarProperty Name="collagepgscan" ColumnName="collagepgscan" />
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="referencenumber" ColumnName="referencenumber" />
@@ -2095,7 +1925,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
     <EntitySetMapping Name="tbl_ContentComplete">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ContentComplete">
         <MappingFragment StoreEntitySet="tbl_ContentComplete">
@@ -2378,9 +2207,36 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_ExamTimetableSubject">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTimetableSubject">
+        <MappingFragment StoreEntitySet="tbl_ExamTimetableSubject">
+          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
+          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
+          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="ExSubId" ColumnName="ExSubId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSubjectlistbyExamId" FunctionName="SchoolMgmtSysModel.Store.sp_GetSubjectlistbyExamId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSubjectlistbyExamId_Result">
+          <ScalarProperty Name="ExSubId" ColumnName="ExSubId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="subjectcode" ColumnName="subjectcode" />
+          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
+          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
+          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="secondaryeducationdetails">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.secondaryeducationdetail">
         <MappingFragment StoreEntitySet="secondaryeducationdetails">
+          <ScalarProperty Name="tcno" ColumnName="tcno" />
+          <ScalarProperty Name="yearleaving" ColumnName="yearleaving" />
           <ScalarProperty Name="marksSheet" ColumnName="marksSheet" />
           <ScalarProperty Name="tcscan" ColumnName="tcscan" />
           <ScalarProperty Name="referenceletter" ColumnName="referenceletter" />
@@ -2390,7 +2246,6 @@
           <ScalarProperty Name="previouschool" ColumnName="previouschool" />
           <ScalarProperty Name="answer2" ColumnName="answer2" />
           <ScalarProperty Name="answer1" ColumnName="answer1" />
-          <ScalarProperty Name="test" ColumnName="test" />
           <ScalarProperty Name="qualifyingexamination" ColumnName="qualifyingexamination" />
           <ScalarProperty Name="namelocation" ColumnName="namelocation" />
           <ScalarProperty Name="radio5" ColumnName="radio5" />
@@ -2425,6 +2280,201 @@
           <ScalarProperty Name="subject2" ColumnName="subject2" />
           <ScalarProperty Name="subject1" ColumnName="subject1" />
           <ScalarProperty Name="educationid" ColumnName="educationid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSubjectlistEditbyExamId" FunctionName="SchoolMgmtSysModel.Store.sp_GetSubjectlistEditbyExamId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetSubjectlistEditbyExamId_Result">
+          <ScalarProperty Name="ExSubId" ColumnName="ExSubId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="subjectcode" ColumnName="subjectcode" />
+          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
+          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+          <ScalarProperty Name="ExamStartTime" ColumnName="ExamStartTime" />
+          <ScalarProperty Name="ExamEndTime" ColumnName="ExamEndTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetExamDetailsByExamId" FunctionName="SchoolMgmtSysModel.Store.sp_GetExamDetailsByExamId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetExamDetailsByExamId_Result">
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_student">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
+        <MappingFragment StoreEntitySet="tbl_student">
+          <ScalarProperty Name="emContactRel" ColumnName="emContactRel" />
+          <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
+          <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
+          <ScalarProperty Name="MotherOtherQualName" ColumnName="MotherOtherQualName" />
+          <ScalarProperty Name="MotherOtherOccName" ColumnName="MotherOtherOccName" />
+          <ScalarProperty Name="GuardianOtherQalName" ColumnName="GuardianOtherQalName" />
+          <ScalarProperty Name="GuardianOtherOccName" ColumnName="GuardianOtherOccName" />
+          <ScalarProperty Name="FatherOtherQualName" ColumnName="FatherOtherQualName" />
+          <ScalarProperty Name="FatherOtherOccName" ColumnName="FatherOtherOccName" />
+          <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
+          <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
+          <ScalarProperty Name="sc_regno" ColumnName="sc_regno" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="ug_id" ColumnName="ug_id" />
+          <ScalarProperty Name="app_id" ColumnName="app_id" />
+          <ScalarProperty Name="Dept_Id" ColumnName="Dept_Id" />
+          <ScalarProperty Name="DocumentIDNo" ColumnName="DocumentIDNo" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="DioceseName" ColumnName="DioceseName" />
+          <ScalarProperty Name="ParishName" ColumnName="ParishName" />
+          <ScalarProperty Name="Sibling4Ql" ColumnName="Sibling4Ql" />
+          <ScalarProperty Name="Sibling4DOB" ColumnName="Sibling4DOB" />
+          <ScalarProperty Name="Sibling4Rel" ColumnName="Sibling4Rel" />
+          <ScalarProperty Name="Sibling4Name" ColumnName="Sibling4Name" />
+          <ScalarProperty Name="Sibling3Ql" ColumnName="Sibling3Ql" />
+          <ScalarProperty Name="Sibling3DOB" ColumnName="Sibling3DOB" />
+          <ScalarProperty Name="Sibling3Rel" ColumnName="Sibling3Rel" />
+          <ScalarProperty Name="Sibling3Name" ColumnName="Sibling3Name" />
+          <ScalarProperty Name="Sibling1Ql" ColumnName="Sibling1Ql" />
+          <ScalarProperty Name="Sibling1DOB" ColumnName="Sibling1DOB" />
+          <ScalarProperty Name="Sibling1Rel" ColumnName="Sibling1Rel" />
+          <ScalarProperty Name="Sibling1Name" ColumnName="Sibling1Name" />
+          <ScalarProperty Name="Sibling2Ql" ColumnName="Sibling2Ql" />
+          <ScalarProperty Name="Sibling2DOB" ColumnName="Sibling2DOB" />
+          <ScalarProperty Name="Sibling2Rel" ColumnName="Sibling2Rel" />
+          <ScalarProperty Name="Sibling2Name" ColumnName="Sibling2Name" />
+          <ScalarProperty Name="GuardianPic" ColumnName="GuardianPic" />
+          <ScalarProperty Name="ECode" ColumnName="ECode" />
+          <ScalarProperty Name="RCode" ColumnName="RCode" />
+          <ScalarProperty Name="GCode" ColumnName="GCode" />
+          <ScalarProperty Name="MCode" ColumnName="MCode" />
+          <ScalarProperty Name="FCode" ColumnName="FCode" />
+          <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+          <ScalarProperty Name="GuardianContact" ColumnName="GuardianContact" />
+          <ScalarProperty Name="GuardianOfficeAddress" ColumnName="GuardianOfficeAddress" />
+          <ScalarProperty Name="GuardianEmail" ColumnName="GuardianEmail" />
+          <ScalarProperty Name="GuardianQualificationid" ColumnName="GuardianQualificationid" />
+          <ScalarProperty Name="GuardianOccpationid" ColumnName="GuardianOccpationid" />
+          <ScalarProperty Name="StudCategoryid" ColumnName="StudCategoryid" />
+          <ScalarProperty Name="subcats" ColumnName="subcats" />
+          <ScalarProperty Name="Docs" ColumnName="Docs" />
+          <ScalarProperty Name="prds" ColumnName="prds" />
+          <ScalarProperty Name="cats" ColumnName="cats" />
+          <ScalarProperty Name="busid" ColumnName="busid" />
+          <ScalarProperty Name="SysDt" ColumnName="SysDt" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+          <ScalarProperty Name="MotherPic" ColumnName="MotherPic" />
+          <ScalarProperty Name="MotherBldGrpid" ColumnName="MotherBldGrpid" />
+          <ScalarProperty Name="MotherContact" ColumnName="MotherContact" />
+          <ScalarProperty Name="MotherOfficeAddress" ColumnName="MotherOfficeAddress" />
+          <ScalarProperty Name="MotherEmail" ColumnName="MotherEmail" />
+          <ScalarProperty Name="MotherQualificationid" ColumnName="MotherQualificationid" />
+          <ScalarProperty Name="MotherOccpationid" ColumnName="MotherOccpationid" />
+          <ScalarProperty Name="FatherPic" ColumnName="FatherPic" />
+          <ScalarProperty Name="FatherBldGrpid" ColumnName="FatherBldGrpid" />
+          <ScalarProperty Name="FatherContact" ColumnName="FatherContact" />
+          <ScalarProperty Name="FatherOfficeAddress" ColumnName="FatherOfficeAddress" />
+          <ScalarProperty Name="FatherEmail" ColumnName="FatherEmail" />
+          <ScalarProperty Name="FatherQualificationid" ColumnName="FatherQualificationid" />
+          <ScalarProperty Name="FatherOccpationid" ColumnName="FatherOccpationid" />
+          <ScalarProperty Name="StudPic" ColumnName="StudPic" />
+          <ScalarProperty Name="EmergencyAddress" ColumnName="EmergencyAddress" />
+          <ScalarProperty Name="EmergencyPhysicianContact" ColumnName="EmergencyPhysicianContact" />
+          <ScalarProperty Name="EmergencyPhysicianNm" ColumnName="EmergencyPhysicianNm" />
+          <ScalarProperty Name="BusRTONo" ColumnName="BusRTONo" />
+          <ScalarProperty Name="BusNo" ColumnName="BusNo" />
+          <ScalarProperty Name="BusFacility" ColumnName="BusFacility" />
+          <ScalarProperty Name="ReferenceContact" ColumnName="ReferenceContact" />
+          <ScalarProperty Name="ReferenceNm" ColumnName="ReferenceNm" />
+          <ScalarProperty Name="PrincipalNm" ColumnName="PrincipalNm" />
+          <ScalarProperty Name="LeaveReason" ColumnName="LeaveReason" />
+          <ScalarProperty Name="LeaveYear" ColumnName="LeaveYear" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="LastClass" ColumnName="LastClass" />
+          <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+          <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
+          <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="Casteid" ColumnName="Casteid" />
+          <ScalarProperty Name="Religionid" ColumnName="Religionid" />
+          <ScalarProperty Name="Disease" ColumnName="Disease" />
+          <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
+          <ScalarProperty Name="StudBldGrp" ColumnName="StudBldGrp" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Studmothernm" ColumnName="Studmothernm" />
+          <ScalarProperty Name="Studfathernm" ColumnName="Studfathernm" />
+          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
+          <ScalarProperty Name="Studid" ColumnName="Studid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+    <EntitySetMapping Name="tbl_ExamTImeTable">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_ExamTImeTable">
+        <MappingFragment StoreEntitySet="tbl_ExamTImeTable">
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
+          <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ExamMarksAllotment" FunctionName="SchoolMgmtSysModel.Store.sp_ExamMarksAllotment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_ExamMarksAllotment_Result">
+          <ScalarProperty Name="Studid" ColumnName="Studid" />
+          <ScalarProperty Name="studentname" ColumnName="studentname" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+          <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_CourseMaster">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_CourseMaster">
+        <MappingFragment StoreEntitySet="tbl_CourseMaster">
+          <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_coursemaster_DML" FunctionName="SchoolMgmtSysModel.Store.sp_coursemaster_DML" />
+    <FunctionImportMapping FunctionImportName="sp_teachersubject_DML" FunctionName="SchoolMgmtSysModel.Store.sp_teachersubject_DML" />
+    <EntitySetMapping Name="tbl_StudentMark">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentMark">
+        <MappingFragment StoreEntitySet="tbl_StudentMark">
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AcadamicYear" ColumnName="AcadamicYear" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="Examid" ColumnName="Examid" />
+          <ScalarProperty Name="Studentid" ColumnName="Studentid" />
+          <ScalarProperty Name="Marksid" ColumnName="Marksid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

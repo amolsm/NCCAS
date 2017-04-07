@@ -11,8 +11,8 @@ namespace Entity
         [DisplayName("Fees ID ")]
         public int Feesid { get; set; }
 
-        [DisplayName("Class Name ")]
-        public int Classid { get; set; }
+        [DisplayName("Course Name ")]
+        public int CourseId { get; set; }
 
         [DisplayName("Library Fees ")]
         public double LFees { get; set; }
@@ -38,5 +38,7 @@ namespace Entity
         public List<tbl_class> Classlist { get; set; }
         public List<tbl_payterm> ptypelist { get; set; }
         public List<sp_getFeessetup_Result> _Feessetuplist { get; set; }
+
+        public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
     }
 }

@@ -876,7 +876,8 @@ namespace SchoolManagementSystems.Controllers
         {
             feeslabelviewmodel _pvm = new feeslabelviewmodel();
             FillPermission(48);
-            _pvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _pvm._CourseList = db.sp_GetCoursefordevision().ToList();
+            //  _pvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
             _pvm._feeslabellist = db.sp_getfeeslabels().ToList();
             return View(_pvm);
         }
@@ -900,7 +901,7 @@ namespace SchoolManagementSystems.Controllers
             int Lastfeeslblid = 0;
             if (evt == "submit")
             {
-                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt, _pvm.classid, "").ToString();
+                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt, _pvm.courseyearid, "").ToString();
             }
             if (_pvm.feeslblid == 0)
             {
@@ -1413,11 +1414,11 @@ namespace SchoolManagementSystems.Controllers
 
             if (evt == "submit")
             {
-              db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.Status, "").ToString();
+              db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.CourseType,_cmv.Status, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.Status, "del").ToString();
+                db.sp_coursemaster_DML(_cmv.CourseId, _cmv.CourseName, _cmv.CourseType, _cmv.Status, "del").ToString();
             }
             _cmv._coursemasterlist = db.sp_getCourseMaster().ToList();
             return PartialView("_CoursemasterList", _cmv);

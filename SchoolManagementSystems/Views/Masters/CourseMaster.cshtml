@@ -24,11 +24,11 @@
                 dataType: 'JSON',
                 data: { courseid: Cid },
                 success: function (data) {
-                    debugger;
                     clearmsg();
                     $("#courseId").show();
-                    $("#courseId input").val(data.Course_id);
+                    $("#courseId input").val(data.Courseid);
                     $("#CourseName").val(data.CourseName);
+                    $("#CourseType").val(data.CourseType);
                     $("#Status").prop('checked', data.Status);
 
                 }
@@ -39,6 +39,7 @@
             $("#courseId").hide();
             $('#courseId input').val('0');
             $("#CourseName").val('');
+            $("#CourseType").val('0');
             //            $("#status").prop('checked', false);
             //$("#academicyear").val('');
         }
@@ -186,15 +187,41 @@
                                         <div id="courseId" class="control-group">
                                             @Html.LabelFor(model => model.CourseId, new { @class = "control-label", @for = "focusedInput" })
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.CourseId, new { @class = "input-xlarge focused", @id = "focusedInput", @type = "text" })
+                                                @Html.EditorFor(model => model.CourseId, new { @class = "input-xlarge focused",  @type = "text" })
                                                 @Html.ValidationMessageFor(model => model.CourseId)
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             @Html.LabelFor(model => model.CourseName, new { @class = "control-label", @for = "focusedInput" })
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.CourseName, new { @class = "input-xlarge focused", @id = "focusedInput", @type = "text" })
+                                                @Html.EditorFor(model => model.CourseName, new { @class = "input-xlarge focused",  @type = "text" })
                                                 @Html.ValidationMessageFor(model => model.CourseName)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.CourseType, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @{
+                                                    List<SelectListItem> coursetypelists = new List<SelectListItem>();
+                                                    coursetypelists.Add(new SelectListItem
+                                                    {
+                                                        Text = "HSC",
+                                                        Value = "1"
+                                                    });
+                                                    coursetypelists.Add(new SelectListItem
+                                                    {
+                                                        Text = "UG",
+                                                        Value = "2",
+
+                                                    });
+                                                    coursetypelists.Add(new SelectListItem
+                                                    {
+                                                        Text = "PG",
+                                                        Value = "3",
+                                                       
+                                                    }); }
+                                                @Html.DropDownListFor(model => model.CourseType, coursetypelists,"Select Course Type")
+                                                @Html.ValidationMessageFor(model => model.CourseType)
                                             </div>
                                         </div>
 
