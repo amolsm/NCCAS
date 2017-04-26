@@ -30,9 +30,9 @@ namespace SchoolManagementSystems.Controllers
             return View(_pvm);
         }
         public JsonResult FillPositionDetails(int posid)
+
         {
             var data = db.tbl_position.Where(m => m.posid == posid).FirstOrDefault();
-         
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public JsonResult check_duplicate_position(string posname)
@@ -1744,6 +1744,75 @@ namespace SchoolManagementSystems.Controllers
 
             _lvm._configlist = db.sp_getConfigInfo().ToList();
             return PartialView("_ConfigurationtblList", _lvm);
+        }
+        #endregion
+
+
+        #region InventoryVendorMaster
+        public ActionResult InventoryVendor()
+        {
+            FillPermission(59);
+            InventoryVendorviewmodal ivm = new InventoryVendorviewmodal();
+            ivm._inventoryvendorlist = db.sp_getInventoryVendorInfo().ToList();
+            return View(ivm);
+        }
+        public JsonResult check_duplicate_InventoryVendor(string VendorName)
+        {
+            var data = db.tbl_InventoryVendor.Where(m => m.VendorName == VendorName.Trim() ).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult InventoryVendorbyId(int id)
+        {
+            var data = db.tbl_InventoryVendor.Where(m => m.Ven_Id == id).FirstOrDefault();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLInventoryVendor(InventoryVendorviewmodal _Ivm)
+        {
+
+             db.sp_DMLInventoryVendor(_Ivm.V_Id,_Ivm.VendorName,_Ivm.V_Address,_Ivm.V_MobileNo,_Ivm.V_PhoneNo,_Ivm.status).ToString();
+
+            _Ivm._inventoryvendorlist = db.sp_getInventoryVendorInfo().ToList();
+            return PartialView("_InventoryVendorList", _Ivm);
+        }
+        #endregion
+
+        #region ReceiptType master
+        public ActionResult ReceiptType(string Search_Data)
+        {
+            receipttypeviewmodel _rtypvm = new receipttypeviewmodel();
+            FillPermission(34);
+            if (String.IsNullOrEmpty(Search_Data))
+                _rtypvm._ReceiptTypeList = db.sp_ReceiptType().ToList();
+            else
+                _rtypvm._ReceiptTypeList = db.sp_ReceiptType().Where(x => x.R_Name.ToUpper().Contains(Search_Data.ToUpper())
+                                                        || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            return View(_rtypvm);
+        }
+        public JsonResult FillReceiptType(int receiptypeid)
+        {
+            var data = db.tblReceiptTypes.Where(m => m.R_Id == receiptypeid).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult check_duplicate_ReceiptType(string r_name)
+        {
+            var data = db.tblReceiptTypes.Where(m => m.R_Name == r_name.Trim()).FirstOrDefault();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DMLReceiptType(receipttypeviewmodel _rtypvm, string evt, int id)
+        {
+            if (evt == "submit")
+            {
+               
+                db.sp_ReceiptType_DML(_rtypvm.R_Id, _rtypvm.receiptname.Trim(), _rtypvm.status, "").ToString();
+            }
+            else if (evt == "Delete")
+            {
+               
+                db.sp_payterm_DML(id, _rtypvm.receiptname.Trim(), _rtypvm.status, "", "del").ToString();
+            }
+            _rtypvm._ReceiptTypeList = db.sp_ReceiptType().ToList();
+            return PartialView("_receipttypelist", _rtypvm);
         }
         #endregion
 

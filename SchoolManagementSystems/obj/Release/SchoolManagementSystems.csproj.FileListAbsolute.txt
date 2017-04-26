@@ -38,3 +38,5 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.csprojResolveAssemblyReference.cache
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.pdb
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.dll
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.xml

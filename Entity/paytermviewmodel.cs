@@ -20,6 +20,19 @@ namespace Entity
         [DisplayName("Academic Year ")]
         public string academicyear { get; set; }
 
-        public List<sp_getPayterm_Result> _Paytermlist { get; set; }    
+        public List<sp_getPayterm_Result> _Paytermlist { get; set; }
+    }
+    public class receipttypeviewmodel
+
+    {
+        [DisplayName("ReceiptType ID ")]
+        public int R_Id { get; set; }
+
+        [DisplayName("ReceiptType Name ")]
+        public string receiptname { get; set; }
+        [DisplayName("Active ")]
+        public bool status { get; set; }
+
+        public List<sp_ReceiptType_Result> _ReceiptTypeList { get; set; }
     }
 }

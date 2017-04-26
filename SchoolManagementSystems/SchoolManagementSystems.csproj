@@ -53,6 +53,10 @@
     <Reference Include="Ionic.Zip">
       <HintPath>C:\Users\RICHA\Desktop\2014\DotNetZipLib-DevKit-v1.9\Tools\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -719,6 +723,10 @@
     <Content Include="Views\Masters\_BookCategoryList.cshtml" />
     <Content Include="Views\Masters\ConfigMaster.cshtml" />
     <Content Include="Views\Masters\_ConfigurationtblList.cshtml" />
+    <Content Include="Views\Masters\_InventoryVendorList.cshtml" />
+    <Content Include="Views\Masters\InventoryVendor.cshtml" />
+    <Content Include="Views\Masters\ReceiptType.cshtml" />
+    <Content Include="Views\Masters\_receipttypelist.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

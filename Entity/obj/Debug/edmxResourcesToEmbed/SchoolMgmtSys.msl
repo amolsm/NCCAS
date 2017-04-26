@@ -33,38 +33,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_fees">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_fees">
-        <MappingFragment StoreEntitySet="tbl_fees">
-          <ScalarProperty Name="PTypeid" ColumnName="PTypeid" />
-          <ScalarProperty Name="Feesid" ColumnName="Feesid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="LFees" ColumnName="LFees" />
-          <ScalarProperty Name="TFees" ColumnName="TFees" />
-          <ScalarProperty Name="UFees" ColumnName="UFees" />
-          <ScalarProperty Name="HFees" ColumnName="HFees" />
-          <ScalarProperty Name="OFees" ColumnName="OFees" />
-          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_feespayment">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_feespayment">
-        <MappingFragment StoreEntitySet="tbl_feespayment">
-          <ScalarProperty Name="Pid" ColumnName="Pid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="Studid" ColumnName="Studid" />
-          <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
-          <ScalarProperty Name="ScholarshipFees" ColumnName="ScholarshipFees" />
-          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
-          <ScalarProperty Name="PaidFees" ColumnName="PaidFees" />
-          <ScalarProperty Name="PendingFees" ColumnName="PendingFees" />
-          <ScalarProperty Name="PTypeid" ColumnName="PTypeid" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_menu">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_menu">
         <MappingFragment StoreEntitySet="tbl_menu">
@@ -578,17 +546,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_Product">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Product">
-        <MappingFragment StoreEntitySet="tbl_Product">
-          <ScalarProperty Name="SubCategoryid" ColumnName="SubCategoryid" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Product" ColumnName="Product" />
-          <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
-          <ScalarProperty Name="Productid" ColumnName="Productid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_StudentCategory">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_StudentCategory">
         <MappingFragment StoreEntitySet="tbl_StudentCategory">
@@ -629,7 +586,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_StudentCategory_DML" FunctionName="SchoolMgmtSysModel.Store.sp_StudentCategory_DML" />
-    <FunctionImportMapping FunctionImportName="sp_Product_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Product_DML" />
     <FunctionImportMapping FunctionImportName="sp_SubCategory_DML" FunctionName="SchoolMgmtSysModel.Store.sp_SubCategory_DML" />
     <FunctionImportMapping FunctionImportName="sp_getSubCategory" FunctionName="SchoolMgmtSysModel.Store.sp_getSubCategory">
       <ResultMapping>
@@ -637,17 +593,6 @@
           <ScalarProperty Name="SubCategoryid" ColumnName="SubCategoryid" />
           <ScalarProperty Name="SubCategoryname" ColumnName="SubCategoryname" />
           <ScalarProperty Name="catname" ColumnName="catname" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_getProduct" FunctionName="SchoolMgmtSysModel.Store.sp_getProduct">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getProduct_Result">
-          <ScalarProperty Name="Productid" ColumnName="Productid" />
-          <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
-          <ScalarProperty Name="SubCategoryid" ColumnName="SubCategoryid" />
-          <ScalarProperty Name="Product" ColumnName="Product" />
           <ScalarProperty Name="status" ColumnName="status" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -754,21 +699,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_transport_DML" FunctionName="SchoolMgmtSysModel.Store.sp_transport_DML" />
-    <FunctionImportMapping FunctionImportName="sp_gettransport" FunctionName="SchoolMgmtSysModel.Store.sp_gettransport">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettransport_Result">
-          <ScalarProperty Name="busid" ColumnName="busid" />
-          <ScalarProperty Name="busNo" ColumnName="busNo" />
-          <ScalarProperty Name="busRoute" ColumnName="busRoute" />
-          <ScalarProperty Name="busDriverNm" ColumnName="busDriverNm" />
-          <ScalarProperty Name="busDrivercontact" ColumnName="busDrivercontact" />
-          <ScalarProperty Name="busRTONo" ColumnName="busRTONo" />
-          <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="sys_Module">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.sys_Module">
         <MappingFragment StoreEntitySet="sys_Module">
@@ -2478,5 +2408,122 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_fees">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_fees">
+        <MappingFragment StoreEntitySet="tbl_fees">
+          <ScalarProperty Name="PTypeid" ColumnName="PTypeid" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="OFees" ColumnName="OFees" />
+          <ScalarProperty Name="HFees" ColumnName="HFees" />
+          <ScalarProperty Name="UFees" ColumnName="UFees" />
+          <ScalarProperty Name="TFees" ColumnName="TFees" />
+          <ScalarProperty Name="LFees" ColumnName="LFees" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="Feesid" ColumnName="Feesid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_feespayment">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_feespayment">
+        <MappingFragment StoreEntitySet="tbl_feespayment">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="PTypeid" ColumnName="PTypeid" />
+          <ScalarProperty Name="PendingFees" ColumnName="PendingFees" />
+          <ScalarProperty Name="PaidFees" ColumnName="PaidFees" />
+          <ScalarProperty Name="TotalFees" ColumnName="TotalFees" />
+          <ScalarProperty Name="ScholarshipFees" ColumnName="ScholarshipFees" />
+          <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
+          <ScalarProperty Name="Studid" ColumnName="Studid" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettransport" FunctionName="SchoolMgmtSysModel.Store.sp_gettransport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettransport_Result">
+          <ScalarProperty Name="busid" ColumnName="busid" />
+          <ScalarProperty Name="busNo" ColumnName="busNo" />
+          <ScalarProperty Name="busRoute" ColumnName="busRoute" />
+          <ScalarProperty Name="busDriverNm" ColumnName="busDriverNm" />
+          <ScalarProperty Name="busDrivercontact" ColumnName="busDrivercontact" />
+          <ScalarProperty Name="busRTONo" ColumnName="busRTONo" />
+          <ScalarProperty Name="busDateTime" ColumnName="busDateTime" />
+          <ScalarProperty Name="BusTime" ColumnName="BusTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_InventoryVendor">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_InventoryVendor">
+        <MappingFragment StoreEntitySet="tbl_InventoryVendor">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="V_PhoneNo" ColumnName="V_PhoneNo" />
+          <ScalarProperty Name="V_MobileNo" ColumnName="V_MobileNo" />
+          <ScalarProperty Name="V_Address" ColumnName="V_Address" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="Ven_Id" ColumnName="Ven_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DMLInventoryVendor" FunctionName="SchoolMgmtSysModel.Store.sp_DMLInventoryVendor" />
+    <FunctionImportMapping FunctionImportName="sp_getInventoryVendorInfo" FunctionName="SchoolMgmtSysModel.Store.sp_getInventoryVendorInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getInventoryVendorInfo_Result">
+          <ScalarProperty Name="Ven_Id" ColumnName="Ven_Id" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="V_Address" ColumnName="V_Address" />
+          <ScalarProperty Name="V_MobileNo" ColumnName="V_MobileNo" />
+          <ScalarProperty Name="V_PhoneNo" ColumnName="V_PhoneNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_Product">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Product">
+        <MappingFragment StoreEntitySet="tbl_Product">
+          <ScalarProperty Name="Vendorid" ColumnName="Vendorid" />
+          <ScalarProperty Name="SubCategoryid" ColumnName="SubCategoryid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Product_DML" FunctionName="SchoolMgmtSysModel.Store.sp_Product_DML" />
+    <FunctionImportMapping FunctionImportName="sp_getProduct" FunctionName="SchoolMgmtSysModel.Store.sp_getProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getProduct_Result">
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+          <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+          <ScalarProperty Name="SubCategoryid" ColumnName="SubCategoryid" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblReceiptTypes">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tblReceiptType">
+        <MappingFragment StoreEntitySet="tblReceiptType">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="R_Name" ColumnName="R_Name" />
+          <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ReceiptType" FunctionName="SchoolMgmtSysModel.Store.sp_ReceiptType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_ReceiptType_Result">
+          <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+          <ScalarProperty Name="R_Name" ColumnName="R_Name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ReceiptType_DML" FunctionName="SchoolMgmtSysModel.Store.sp_ReceiptType_DML" />
   </EntityContainerMapping>
 </Mapping>

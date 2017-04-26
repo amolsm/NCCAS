@@ -26,6 +26,7 @@
                     $('#catid').val(data.Categoryid);
                     $('#subcatid').val(data.SubCategoryid);
                     $("#Product").val(data.Product);
+                    $("#VendorId").val(data.Vendorid);
                     $("#status").prop('checked', data.status);
                 }
             });
@@ -36,7 +37,12 @@
             $('#divProductid input').val('0');
             $('#subcatid').val('');
             $("#catid").val('');
-            $("#Product ").val('');
+            $("#Product").val('');
+            $("#VendorId").val('');
+        }
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
         }
 
         $('#Product').blur(function () {
@@ -48,10 +54,12 @@
                 dataType: 'JSON',
                 data: { Product: Product, Categoryid: Catid },
                 success: function (data) {
+                    clearmsg();
                     if (data.Product != null) {
+                        $("#msg").show();
                         $("#lblmsg").text("Product Name Already Exists!..");
                         $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#lblmsg").css({ "font-size": "15px" });
                         $('#Product').val('');
                         return false;
                     }
@@ -69,14 +77,19 @@
             if (subcatid == "") {
                 subcatid = 0;
             }
+            var vendorid = $("#VendorId").val();
+            if (vendorid == "") {
+                vendorid = 0;
+            }
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("DMLProduct")',
-                data: { Productid: $('#divProductid input').val(), catid: $("#catid").val(), subcatid: subcatid, Product: $("#Product").val(), status: remark, evt: 'submit', id: 0 },
+                data: { Productid: $('#divProductid input').val(), catid: $("#catid").val(), subcatid: subcatid, Product: $("#Product").val(), status: remark,vendorid:vendorid, evt: 'submit', id: 0 },
                 success: function (result) {
-                    $("#lblmsg").text("Product updated successfully!..");
-                    $("#lblmsg").css({ "color": "lime" });
-                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Product updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
                     $("#result").html(result);
                     clear();
                     ReloadPaging();
@@ -86,6 +99,7 @@
 
         $("#reset").click(function () {
             clear();
+            clearmsg();
         });
 
         $("#result").on("click", ".btn_delete", function (evt) {
@@ -97,9 +111,10 @@
                     url: '@Url.Action("DMLProduct")',
                     data: { Productid: 0, catid: 0, subcatid: 0, Product: '', status: remark, evt: 'submit', id: catid },
                     success: function (result) {
-                        $("#lblmsg").text("Category deleted successfully!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Product deleted successfully!..");
+                        $("#lblmsgs").css({ "color": "orange" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
                         $("#result").html(result);
                         clear();
                         ReloadPaging();
@@ -199,15 +214,23 @@
                        <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                       @Html.ActionLink("Inventory Management", "Category", "Inventory", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Product Master</li> 
-                        <div style="float: right;">
+                        @*<div style="float: right;">
                             @using (Html.BeginForm())
                             {
 
                                 @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
                                 <input type="submit" value="Find" />
                             }
-                        </div>
+                        </div>*@
                     </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
                      <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>
@@ -226,8 +249,7 @@
                                         @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
                                         {
                                             @Html.ValidationSummary(true)
-                                            <div id="lblmsg" class="control-group">
-                                            </div>
+                                         
                                             <div id="divProductid" class="control-group span-11">
                                                 @Html.LabelFor(model => model.Productid, new { @class = "control-label" })
                                                   <div class="controls"> 
@@ -255,6 +277,14 @@
                                                 @Html.EditorFor(model => model.Product, new { @class = "col-md-5 form-control form_in" })
                                                 @Html.ValidationMessageFor(model => model.Product)
                                                       </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                @Html.LabelFor(model => model.VendorId, new { @class = "control-label" })
+                                                <div class="controls">
+                                                    @Html.DropDownListFor(model => model.VendorId, new SelectList(Model._vendorlist, "Ven_Id", "VendorName", "Select Vendor"), "Select Vendor", new { @class = "select" })
+                                                    @Html.ValidationMessageFor(model => model.VendorId)
+                                                </div>
                                             </div>
                                             <div class="control-group">
                                                 @Html.LabelFor(model => model.status, new { @class = "control-label" })

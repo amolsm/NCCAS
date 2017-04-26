@@ -7,8 +7,8 @@
   
     $(document).ready(function () {
         FillPermission();
-        $('#status').attr("checked", "checked");
-        $("#M_Position td").css({ "background-color": "orange" });
+       $('#status').attr("checked", "checked");
+       $("#M_Position td").css({ "background-color": "orange" });
         $("#lblmsg").text('');
         $('#positionid input').attr("readonly", true);
         if ($("#posid").val() == "0") {
@@ -25,11 +25,12 @@
                 data: { posid: posid },
                 success: function (data) {
                     clearmsg();
+                 
                     $("#positionid").show();
                     $('#positionid input').val(data.posid);
                     $("#posname").val(data.posname);
-                    $("#status").prop('checked', data.status);
-               
+                    $("#status").attr('checked', data.status);
+                   
             
                   
                 

@@ -38,3 +38,5 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Deployment.x
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\System.Web.WebPages.Razor.xml
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Debug\SchoolManagementSystems.pdb
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.dll
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.xml

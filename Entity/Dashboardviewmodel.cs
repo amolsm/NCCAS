@@ -36,7 +36,10 @@ namespace Entity
             [DisplayName("News Status ")]
             public bool Status { get; set; }
 
+            public string Course { get; set; }
+            [DisplayName("Name")]
             public string Studnm { get; set; }
+            [DisplayName("Birth Day")]
             public DateTime Birthday { get; set; }
             public byte[] StudPic { get; set; }
        

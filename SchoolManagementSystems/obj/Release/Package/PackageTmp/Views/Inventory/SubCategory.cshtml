@@ -38,7 +38,10 @@
             $('#catid').val('');
             //$("#academicyear").val('');
         }
-
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
+        }
         $('#subcatname').blur(function () {
             var posname = $('#subcatname').val();
             var categoryid = $('#catid').val();
@@ -48,10 +51,12 @@
                 dataType: 'JSON',
                 data: { Categoryname: posname, catid: categoryid },
                 success: function (data) {
+                    clearmsg();
                     if (data.SubCategoryname != null) {
-                        $("#lblmsg").text("Designation Name Already Exists!..");
+                        $("#msg").show();
+                        $("#lblmsg").text("Sub Category Name Already Exists!..");
                         $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#lblmsg").css({ "font-size": "15px" });
                         $('#subcatname').val('');
                         return false;
                     }
@@ -70,9 +75,10 @@
                 url: '@Url.Action("DMLSubCategory")',
                 data: { subcatid: $('#positionid input').val(), subcatname: $("#subcatname").val(), status: remark, catid: $("#catid").val(), evt: 'submit', id: 0 },
                 success: function (result) {
-                    $("#lblmsg").text("Designation updated successfully!..");
-                    $("#lblmsg").css({ "color": "lime" });
-                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Sub Category updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
                     $("#result").html(result);
                     clear();
                     ReloadPaging();
@@ -82,6 +88,7 @@
 
         $("#reset").click(function () {
             clear();
+            clearmsg();
         });
 
         $("#result").on("click", ".btn_delete", function (evt) {
@@ -93,9 +100,10 @@
                     url: '@Url.Action("DMLSubCategory")',
                     data: { subcatid: 0, subcatname: '', status: false, catid: 0, evt: 'Delete', id: posid },
                     success: function (result) {
-                        $("#lblmsg").text("Designation deleted successfully!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Sub Category deleted successfully!..");
+                        $("#lblmsgs").css({ "color": "orange" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
                         $("#result").html(result);
                         clear();
                         ReloadPaging();
@@ -152,15 +160,23 @@
                     <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                       @Html.ActionLink("Inventory Management", "SubCategory", "Inventory", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Sub Category </li>
-                        <div style="float: right;">
+                        @*<div style="float: right;">
                             @using (Html.BeginForm())
                             {
 
                                 @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
                                 <input type="submit" value="Find" />
                             }
-                        </div>
+                        </div>*@
                     </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
                  <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>

@@ -2483,7 +2483,7 @@
                         $("#trans_details").html('');
                         if (data != "") {
                             $("#trans_details").show();
-                            var html = '<div class="control-group span5"><label class="control-label" for="busRoute"> Bus Route : </label>';
+                            var html = '</br><div class="control-group span5"><label class="control-label" for="busRoute"> Bus Route : </label>';
                             html = html + "<div class='controls' for='busRoute'>" + data.busRoute + "</div></div>";
                             html = html + '<div class="control-group span5"><label class="control-label" for="busDriverNm"> Bus Driver Name : </label>';
                             html = html + "<div class='controls' for='busRoute'>" + data.busDriverNm + "</div></div>";
@@ -2492,12 +2492,7 @@
                             html = html + '<div class="control-group span5"><label class="control-label" for="busRTONo"> Bus RTO Number: </label>';
                             html = html + "<div class='controls'  for='busRoute'>" + data.busRTONo + "</div></div>";
                             html = html + '<div class="control-group span5"><label class="control-label" for="busDateTime"> Bus Time: </label>';
-                            var dateString = data.busDateTime.substr(6);
-                            var currentTime = new Date(parseInt(dateString));
-                            var hrs = currentTime.getHours();
-                            var min = currentTime.getMinutes();
-                            var time = hrs + ":" + min;
-                            html = html + "<div class='control-group span5'><label class='form-control mar' for='busRoute'>" + time + "</label></div>";
+                            html = html + "<div class='controls'><label  for='busRoute'>" + data.BusTime + "</label></div>";
                             $("#trans_details").append(html);
                         }
                         else {

@@ -130,6 +130,11 @@
             $("#Quantity").val('0.00');
         }
 
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
+        }
+
         $("#catid").change(function () {
             $("#Productid").empty();
             $("#subcatid").empty();
@@ -222,10 +227,12 @@
                 dataType: 'JSON',
                 data: { Productid: $('#Productid').val() },
                 success: function (data) {
+                    clearmsg();
                     if (data != null) {
+                        $("#msg").show();
                         $("#lblmsg").text("Inventory Already Exists!..");
                         $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#lblmsg").css({ "font-size": "15px" });
                         $('#Productid').val('');
                         return false;
                     }
@@ -237,6 +244,7 @@
 
         $("#reset").click(function () {
             clear();
+            clearmsg();
         });
 
         $("#result").on("click", ".btn_delete", function (evt) {
@@ -248,9 +256,10 @@
                     url: '@Url.Action("DMLInventory")',
                     data: { evt: "Delete", id: catid, price: 0, Qty: 0, Prodid: 0 },
                     success: function (result) {
-                        $("#lblmsg").text("Category deleted successfully!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "25px" });
+                        $("#msgs").show();
+                        $("#lblmsgs").text("Category deleted successfully!..");
+                        $("#lblmsgs").css({ "color": "orange" });
+                        $("#lblmsgs").css({ "font-size": "15px" });
                         $("#result").html(result);
                         clear();
                         ReloadPaging();
@@ -330,9 +339,10 @@
                 url: '@Url.Action("DMLInventory")',
                 data: { evt: "submit", id: intid, price: tprice, Qty: tqty, Prodid: prodid },
                 success: function (result) {
-                    $("#lblmsg").text("Product updated successfully!..");
-                    $("#lblmsg").css({ "color": "lime" });
-                    $("#lblmsg").css({ "font-size": "25px" });
+                    $("#msgs").show();
+                    $("#lblmsgs").text("Product updated successfully!..");
+                    $("#lblmsgs").css({ "color": "green" });
+                    $("#lblmsgs").css({ "font-size": "15px" });
                     $("#result").html(result);
                     clear();
                     ReloadPaging();
@@ -357,15 +367,23 @@
                       <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                        @Html.ActionLink("Inventory Management", "Category", "Inventory", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Inventory Master</li>
-                         <div style="float: right;">
+                         @*<div style="float: right;">
                             @using (Html.BeginForm())
                             {
 
                                 @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
                                 <input type="submit" value="Find" />
                             }
-                        </div>
+                        </div>*@
                     </ul>
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
                       <div class="row-fluid sortable">
               <div class="box span12">
 					<div class="box-header" data-original-title>

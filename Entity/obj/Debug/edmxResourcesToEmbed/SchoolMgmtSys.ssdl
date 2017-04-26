@@ -817,7 +817,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
       <PropertyRef Name="Feesid" />
     </Key>
     <Property Name="Feesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="Courseid" Type="int" Nullable="false" />
     <Property Name="LFees" Type="money" Nullable="false" />
     <Property Name="TFees" Type="money" Nullable="false" />
     <Property Name="UFees" Type="money" Nullable="false" />
@@ -860,7 +860,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
       <PropertyRef Name="Pid" />
     </Key>
     <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Classid" Type="int" Nullable="false" />
+    <Property Name="Courseid" Type="int" Nullable="false" />
     <Property Name="Studid" Type="int" Nullable="false" />
     <Property Name="Scholarship" Type="bit" Nullable="false" />
     <Property Name="ScholarshipFees" Type="money" Nullable="false" />
@@ -879,6 +879,17 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Productid" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbl_InventoryVendor">
+    <Key>
+      <PropertyRef Name="Ven_Id" />
+    </Key>
+    <Property Name="Ven_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="100" />
+    <Property Name="V_Address" Type="nvarchar" MaxLength="350" />
+    <Property Name="V_MobileNo" Type="varchar" MaxLength="20" />
+    <Property Name="V_PhoneNo" Type="varchar" MaxLength="20" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_leave">
     <Key>
@@ -1094,6 +1105,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Product" Type="varchar" MaxLength="255" />
     <Property Name="Status" Type="bit" />
     <Property Name="SubCategoryid" Type="int" />
+    <Property Name="Vendorid" Type="int" />
   </EntityType>
   <EntityType Name="tbl_qualification">
     <Key>
@@ -1416,6 +1428,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
   </EntityType>
+  <EntityType Name="tblReceiptType">
+    <Key>
+      <PropertyRef Name="R_Id" />
+    </Key>
+    <Property Name="R_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="R_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
   <Function Name="AddBookAllotment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="studentid" Type="int" Mode="In" />
     <Parameter Name="bookid" Type="int" Mode="In" />
@@ -1643,6 +1663,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="ConfigValue" Type="varchar" Mode="In" />
     <Parameter Name="CreatedBy" Type="int" Mode="In" />
     <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_DMLInventoryVendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ven_Id" Type="int" Mode="In" />
+    <Parameter Name="VendorName" Type="varchar" Mode="In" />
+    <Parameter Name="V_Address" Type="varchar" Mode="In" />
+    <Parameter Name="V_MobileNo" Type="varchar" Mode="In" />
+    <Parameter Name="V_PhoneNo" Type="varchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
   <Function Name="sp_empleave_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="leaveid" Type="int" Mode="In" />
@@ -1986,6 +2014,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getFeespaymentlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getFeessetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getInventoryVendorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getJType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Sp_GetLibBookDetailsbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2146,6 +2175,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="productname" Type="varchar" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="vendorid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Publisher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PublisherId" Type="int" Mode="In" />
@@ -2162,6 +2192,13 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Qualificationnm" Type="varchar" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
+    <Parameter Name="act" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ReceiptType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ReceiptType_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_religion_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2746,6 +2783,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_InventoryVendor" EntityType="Self.tbl_InventoryVendor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_BookCategory" EntityType="Self.tbl_lib_BookCategory" Schema="dbo" store:Type="Tables" />
@@ -2782,6 +2820,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReceiptType" EntityType="Self.tblReceiptType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pgeducationdetails" EntityType="Self.pgeducationdetails" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [pgeducationdetails].[id] AS [id], 

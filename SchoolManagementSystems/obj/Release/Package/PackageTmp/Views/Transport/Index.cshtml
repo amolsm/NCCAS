@@ -44,14 +44,14 @@
                         @Html.ActionLink("Transport Management", "Index", "Student", "")<i class="icon-angle-right"></i>
                     </li>
                     <li class="active">Bus Information</li>
-                    <div style="float: right;">
+                    @*<div style="float: right;">
                         @using (Html.BeginForm())
                         {
 
                             @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
                             <input type="submit" value="Find" />
                         }
-                    </div>
+                    </div>*@
                 </ul>
                 <div class="row-fluid sortable">
                     <div class="box span12">

@@ -11,8 +11,8 @@ namespace Entity
         [DisplayName("Payment ID ")]
         public int Pid { get; set; }
 
-        [DisplayName("Class Name ")]
-        public int Classid { get; set; }
+        [DisplayName("Course Name ")]
+        public int CourseId { get; set; }
 
         [DisplayName("Student Name ")]
         public int Studid { get; set; }
@@ -44,6 +44,8 @@ namespace Entity
         public bool Status { get; set; }
 
         public List<tbl_class> Classlist { get; set; }
+
+        public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
         public List<tbl_student> studlist { get; set; }
         public List<tbl_payterm> ptypelist { get; set; }
         public List<sp_getPaymentHistory_Result> _Feespaymenthistory { get; set; }

@@ -61,6 +61,7 @@ namespace SchoolManagementSystems.Controllers
             FillPermission(23);
             _cvm.Categorylist = db.tbl_category.Where(x => x.status == true).ToList();
             _cvm._subCategorylist = db.tbl_SubCategory.Where(x => x.status == true).ToList();
+            _cvm._vendorlist = db.tbl_InventoryVendor.Where(x => x.IsActive == true).ToList();
             if (Search_Data == null || Search_Data == "")
                 _cvm._Productlist = db.sp_getProduct().OrderBy(m => m.Productid).ToList();
             else
@@ -72,20 +73,21 @@ namespace SchoolManagementSystems.Controllers
             return View(_cvm);
         }
 
-        public ActionResult DMLProduct(int Productid, int catid, int subcatid, string Product, bool status, string evt, int id)
+        public ActionResult DMLProduct(int Productid, int catid, int subcatid, string Product, bool status,int vendorid, string evt, int id)
         {
             Categoryviewmodel _cvm = new Categoryviewmodel();
             if (evt == "submit")
             {
                 //db.sp_position_DML(_cvm.catid, _cvm.catname, _cvm.status, _cvm.academicyear, "").ToString();
-                db.sp_Product_DML(Productid, catid, subcatid, Product, status, "").ToString();
+                db.sp_Product_DML(Productid, catid, subcatid, Product, status, "",vendorid).ToString();
             }
             else if (evt == "Delete")
             {
                 //db.sp_position_DML(id, _cvm.catname, _cvm.status, _cvm.academicyear, "del").ToString();
-                db.sp_Product_DML(id, catid, subcatid, Product, status, "del").ToString();
+                db.sp_Product_DML(id, catid, subcatid, Product, status, "del", vendorid).ToString();
             }
             _cvm._Productlist = db.sp_getProduct().ToList();
+            _cvm._vendorlist = db.tbl_InventoryVendor.Where(x => x.IsActive == true).ToList();
             return PartialView("_Productlist", _cvm);
         }
 

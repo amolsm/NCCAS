@@ -48,7 +48,7 @@ namespace SchoolManagementSystems.Controllers
                                                         x.PTypeid.ToUpper().Contains(Search_Data.ToUpper()) ||
                                                         x.TotalFees.ToString().Contains(Search_Data.ToUpper())).OrderBy(m => m.Feesid).ToList();
             _fvm.ptypelist = db.tbl_payterm.Where(c => c.status == true).ToList();
-            _fvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _fvm._CourseList = db.sp_GetCoursefordevision().ToList();
             return View(_fvm);
         }
         public JsonResult FillFeessetupDetails(int Feesid)
@@ -58,14 +58,21 @@ namespace SchoolManagementSystems.Controllers
         }
         public JsonResult check_duplicate_Class(int Classid)
         {
-            var data = db.tbl_fees.Where(m => m.Classid == Classid).FirstOrDefault();
+            var data = db.tbl_fees.Where(m => m.Courseid == Classid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public JsonResult FillFeesLabels(int Classid)
         {
-            var duplicateclass = db.tbl_fees.Where(m => m.Classid == Classid).FirstOrDefault();
+            var duplicateclass = db.tbl_fees.Where(m => m.Courseid == Classid).FirstOrDefault();
             var lblid = db.tbl_feeslabel.Where(m => m.classid == Classid).FirstOrDefault();
-            var feeslabels = db.tbl_feeslabelchild.Where(m => m.feeslblid == lblid.feeslblid).Select(m => m.ctrlnm).ToList();
+            int feeslabelid = 0;
+            try
+            {
+                feeslabelid = lblid.feeslblid;
+            }
+            catch { }
+            var  feeslabels = db.tbl_feeslabelchild.Where(m => m.feeslblid == feeslabelid).Select(m => m.ctrlnm).ToList();
+            
             return Json(new { duplicateclass = duplicateclass, feeslabels = feeslabels }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLFeessetup(feesviewmodel _fvm, string evt, int id, string FeesLabels)
@@ -88,9 +95,8 @@ namespace SchoolManagementSystems.Controllers
                 Lastfeeslblid = _fvm.Feesid;
             }
             db.sp_feeschild_DML(Lastfeeslblid,"", 0, "del").ToString();
-            
-            //var lblid = db.tbl_feeslabel.Where(m => m.classid == _fvm.Classid).FirstOrDefault();
-            var lblid = db.tbl_feeslabel.Where(m => m.classid == 0).FirstOrDefault();
+
+            var lblid = db.tbl_feeslabel.Where(m => m.classid == _fvm.CourseId).FirstOrDefault();
             var data = db.tbl_feeslabelchild.Where(m => m.feeslblid == lblid.feeslblid).Select(m => m.ctrlnm).ToList();
             string[] labels = FeesLabels.ToString().Replace("undefined", "").Split('|');
             string lbl,ctrl;
@@ -116,7 +122,7 @@ namespace SchoolManagementSystems.Controllers
         {
             paymentviewmodel _pvm = new paymentviewmodel();
             FillPermission(30);
-            _pvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _pvm._CourseList = db.sp_GetCoursefordevision().ToList();
             _pvm.studlist = new List<tbl_student>();
             _pvm.ptypelist = db.tbl_payterm.Where(c => c.status == true).ToList();
             if (Search_Data == null || Search_Data == "")
@@ -135,42 +141,49 @@ namespace SchoolManagementSystems.Controllers
             
             return View(_pvm);
         }
-        public JsonResult check_duplicate_Payment(int Studid, int Classid)
+        public JsonResult check_duplicate_Payment(int Studid, int CourseId)
         {
-            var data = db.tbl_feespayment.Where(m => m.Studid == Studid && m.Classid == Classid).FirstOrDefault();
+            var data = db.tbl_feespayment.Where(m => m.Studid == Studid && m.Courseid == CourseId).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLFeespayment(paymentviewmodel _pvm, string evt, int id)
         {
             if (evt == "submit")
             {
-                db.sp_feespayment_DML(_pvm.Pid, _pvm.Classid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "").ToString();
+                db.sp_feespayment_DML(_pvm.Pid, _pvm.CourseId, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_feespayment_DML(id, _pvm.Classid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "del").ToString();
+                db.sp_feespayment_DML(id, _pvm.CourseId, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "del").ToString();
             }
             _pvm._Feespaymentlist = db.sp_getFeespaymentlist().ToList();
             return PartialView("_Feespaymentlist", _pvm);
         }
         public JsonResult GetStudents(string id)
         {
-            int Classid = 0;
+            int courseyearid = 0;
             if (id != null && id != "")
             {
-                Classid = Convert.ToInt32(id);
+                courseyearid = Convert.ToInt32(id);
             }
-            var students = db.tbl_student.Where(m => m.Classid == Classid).ToList();
+            int? courseid = 0;
+            int? deptid = 0;
+            int? yearid = 0;
+            var courseyear = db.tbl_CourseYearMaster.Where(m => m.id == courseyearid).FirstOrDefault();
+            courseid = courseyear.courseid;
+            deptid = courseyear.dept_id;
+            yearid = courseyear.academicyear;   
+            var students = db.tbl_student.Where(m => m.Classid == courseid &&  m.Dept_Id == deptid &&  m.courseyearid==yearid).ToList();
             return Json(new SelectList(students, "Studid", "Studnm"));
         }
         public JsonResult GetFeesDetails(string id)
         {
-            int Classid = 0;
+            int Courseid = 0;
             if (id != null && id != "")
             {
-                Classid = Convert.ToInt32(id);
+                Courseid = Convert.ToInt32(id);
             }
-            var feesdetails = db.tbl_fees.Where(m => m.Classid == Classid).FirstOrDefault();
+            var feesdetails = db.tbl_fees.Where(m => m.Courseid == Courseid).FirstOrDefault();
             return Json(feesdetails, JsonRequestBehavior.AllowGet);
         }
         public JsonResult FillPaymentDetails(int Pid)
