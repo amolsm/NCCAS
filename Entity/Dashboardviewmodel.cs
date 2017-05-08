@@ -46,7 +46,7 @@ namespace Entity
         //public List<sp_menudatacollection_Result> Menudatacollection { get; set; }
         public List<tbl_submenu> SubMenudatacollection { get; set; }
         public List<tbl_news> Newsdatacollection { get; set; }
-        public List<tbl_student> BirthdaylistDetails { get; set; }
+        public List<sp_GetBirthdayListDetails_Result> BirthdaylistDetails { get; set; }
         public List<sp_getNewslist_Result> _Newslist { get; set; }
         public List<DateofBirth_Result> _BirthDayList { get; set; }
      

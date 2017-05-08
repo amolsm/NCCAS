@@ -25,7 +25,8 @@
                     $("#feesid").show();
                     $("#feesid input").val(data.Feesid);
                     $("#CourseId").val(data.Courseid);
-                    $("#PTypeid").val(data.PTypeid);
+                    $("#receipttypeid").val(data.receipttypeid);
+                  //  $("#PTypeid").val(data.PTypeid);
                                         //$("#LFees").val(data.LFees);
                                         //$("#TFees").val(data.TFees);
                                         //$("#UFees").val(data.UFees);
@@ -36,7 +37,7 @@
                         type: 'GET',
                         url: '@Url.Action("FillFeesLabels")',
                         dataType: 'JSON',
-                        data: { Classid: $("#CourseId").val() },
+                        data: { Classid: $("#CourseId").val(), receipttypeid: $("#receipttypeid").val() },
                         success: function (data) {
                             var table = $('#dynamiclbl');
                             table.html('');
@@ -69,10 +70,11 @@
         function clear() {
             var table = $('#dynamiclbl');
             table.html('');
-            $("#PTypeid").val('');
+          //  $("#PTypeid").val('');
             $("#feesid").hide();
             $('#feesid input').val('0');
             $("#CourseId").val('');
+            $("#receipttypeid").val('');
                         //$("#LFees").val('0');
                         //$("#TFees").val('0');
                         //$("#UFees").val('0');
@@ -101,16 +103,17 @@
         }
 
 
-        $('#CourseId').change(function () {
+        $('#receipttypeid').change(function () {
             $("#lblmsg").text("");
 
             var Classid = $('#CourseId').val();
+            var receipttypeid = $('#receipttypeid').val();
             clearmsg();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("FillFeesLabels")',
                 dataType: 'JSON',
-                data: { Classid: Classid },
+                data: { Classid: Classid, receipttypeid: receipttypeid },
                 success: function (data) {
                    
                     if (data.duplicateclass != null) {
@@ -119,7 +122,7 @@
                         $("#lblmsg").text("Fees Setup Already Exists for this Course!..");
                         $("#lblmsg").css({ "color": "orange" });
                         $("#lblmsg").css({ "font-size": "15px" });
-                        $('#CourseId').val('');
+                        $('#receipttypeid').val('');
                         return false;
                     }
                     else {
@@ -129,7 +132,7 @@
                                                         var table = $('#dynamiclbl');
                                                         table.html('<br />');
                                                         $.each(data.feeslabels, function (i, dt) {
-                                                            table.append('<div class="control-group span5"><label class="control-label">' + dt + '</label><div class="controls"><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div></div>');
+                                                            table.append('<div class="control-group"><label class="control-label">' + dt + '</label><div class="controls"><input class="text-box single-line dynamic" id=Fees' + i + ' name=Fees' + i + ' value="" type="text"></div></div>');
                                                         });
                     }
                     
@@ -170,7 +173,7 @@
         $("#reset").click(function () {
             clear();
             clearmsg();
-            FillFeesMaster();
+           FillFeesMaster();
         });
 
         $(document).on(".dynamic").each(function () {
@@ -225,19 +228,30 @@
                     "background": ""
                 });
             }
-
-            if ($("#PTypeid").val() == '') {
+            if ($("#receipttypeid").val() == '') {
                 cnt++;
-                $("#PTypeid").css({
+                $("#receipttypeid").css({
                     "border": "2px solid red"
                 });
             }
             else {
-                $("#PTypeid").css({
+                $("#receipttypeid").css({
                     "border": "",
                     "background": ""
                 });
             }
+            //if ($("#PTypeid").val() == '') {
+            //    cnt++;
+            //    $("#PTypeid").css({
+            //        "border": "2px solid red"
+            //    });
+            //}
+            //else {
+            //    $("#PTypeid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
             var ctrlcnt = $('#ctrlcnt').val();
             if (ctrlcnt > 0) {
@@ -474,20 +488,29 @@
                                 @Html.ValidationMessageFor(model => model.Feesid)
                                      </div>
                             </div>
-                            <div class="control-group">
+                            @*<div class="control-group">
                                 @Html.LabelFor(model => model.PTypeid, new { @class = "control-label" })
                                  <div class="controls"> 
                                 @Html.DropDownListFor(model => model.PTypeid, new SelectList(Model.ptypelist, "paytermid", "paytermname", "Select Payment Type"), "Select Payment Type", new { @class = "form-control form_in col-md-5" })
                                 @Html.ValidationMessageFor(model => model.PTypeid)
                                      </div>
-                            </div>
+                            </div>*@
                             <div class="control-group">
                                 @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
-                                 <div class="controls"> 
-                                @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
-                                @Html.ValidationMessageFor(model => model.CourseId)
-                                     </div>
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
+                                    @Html.ValidationMessageFor(model => model.CourseId)
+                                </div>
                             </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.receipttypeid, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.receipttypeid, new SelectList(Model._receipttype, "R_Id", "R_Name", "Select Receipt Type"), "Select Receipt Type", new { @for = "select" })
+                                    @Html.ValidationMessageFor(model => model.receipttypeid)
+                                </div>
+                            </div>
+                         
+                          
                             <br/>
 @*<div class="control-group">
                                     @Html.LabelFor(model => model.LFees, new { @class = "control-label" })

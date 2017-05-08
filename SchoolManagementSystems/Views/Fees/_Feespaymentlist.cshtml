@@ -10,6 +10,9 @@
                 @Html.DisplayName("Course")
             </th>
             <th>
+                @Html.DisplayName("Receipt Type")
+            </th>
+            <th>
                 @Html.DisplayName("Student")
             </th>
             <th>
@@ -27,18 +30,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.PendingFees)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PTypeid)
-            </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Remarks)
+                @Html.DisplayNameFor(model => model.PTypeid)
             </th>*@
             <th>
-                @Html.DisplayName("Stat")
+                @Html.DisplayName("Print Receipt")
             </th>
-            <th class="edt">
+            <th>
+                @Html.DisplayName("ReceiptStatus")
+            </th>
+            @*<th class="edt">
                 @Html.DisplayName("Action")
-            </th>
+            </th>*@
         </tr>
         </thead>
                                     <tbody>
@@ -50,6 +53,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Classid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.R_Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Studid)
@@ -69,27 +75,28 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PendingFees)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PTypeid)
-                </td>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.Remarks)
+                    @Html.DisplayFor(modelItem => item.PTypeid)
                 </td>*@
+                <td>
+                    @Html.ActionLink("Print", "PrintReceipt", new { paymentid = item.Pid }, new { @class = "viewDialog" }) 
+                   </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.status)
                 </td>
-                <td>
+              
+                @*<td>
                     @if (item.status != "Paid")
                     {
                         <input type="button" id="@item.Pid" class="btn btn-default btn_edit" value="Pay Now" />                                                
-@*<input type="button" id="@item.Pid" class="delete" value="Delete" />*@
+
                     }
                     else
                     {
                         <input type="button" id="@item.Pid" disabled="disabled" class="btn btn-default btn_edit" value="Pay Now" />                                                
-@*<input type="button" id="@item.Pid" class="delete" value="Delete" />*@
+
                     }
-                </td>
+                </td>*@
             </tr>
         }
         </tbody>

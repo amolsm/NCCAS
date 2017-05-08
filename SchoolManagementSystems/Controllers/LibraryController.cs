@@ -78,8 +78,18 @@ namespace SchoolManagementSystems.Controllers
             lb._bookcategorylist = db.tbl_lib_BookCategory.Where(m => m.status == true).ToList();
             int count = (from p in db.lib_Bookentry
                          select p).Count();
-            count=count + 1;
-            lb.AccessorNo = count.ToString();
+            count = count + 1;
+            if (count != 1)
+            {
+                var lastaccessorno = (from t in db.lib_Bookentry
+                                      orderby t.AccessorNo descending
+                                      select t.AccessorNo).First();
+                int accessorno = 0;
+                accessorno = Convert.ToInt32(lastaccessorno) + 1;
+                lb.AccessorNo = accessorno.ToString();
+            }
+            else { lb.AccessorNo = count.ToString(); }
+            lb.SerielNumber = count.ToString();
             int count1 = (from q in db.lib_Journal
                          select q).Count();
             count1 = count1 + 1;

@@ -10,8 +10,11 @@
                 @Html.DisplayNameFor(model => model.CourseId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PTypeid)
+                @Html.DisplayNameFor(model => model.receipttypeid)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.PTypeid)
+            </th>*@
             @*<th>
                 @Html.DisplayNameFor(model => model.LFees)
             </th>
@@ -46,8 +49,12 @@
                     @Html.DisplayFor(modelItem => item.Classid)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PTypeid)
+                    @Html.DisplayFor(modelItem => item.R_Name)
                 </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.PTypeid)
+                </td>*@
+
                 @*<td>
                     @Html.DisplayFor(modelItem => item.LFees)
                 </td>

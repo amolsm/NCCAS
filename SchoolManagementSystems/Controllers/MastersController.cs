@@ -876,9 +876,10 @@ namespace SchoolManagementSystems.Controllers
         {
             feeslabelviewmodel _pvm = new feeslabelviewmodel();
             FillPermission(48);
-            _pvm._CourseList = db.sp_GetCoursefordevision().ToList();
+           // _pvm._CourseList = db.sp_GetCoursefordevision().ToList();
             //  _pvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
             _pvm._feeslabellist = db.sp_getfeeslabels().ToList();
+            _pvm._receipttype = db.tblReceiptTypes.Where(m=>m.Status==true).ToList();
             return View(_pvm);
         }
         public JsonResult FillfeeslabelsDetails(int feeslblid)
@@ -891,9 +892,9 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_feeslabelchild.Where(m => m.feeslblid == feeslblid).Select(m => m.ctrlnm).ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_feeslabels(int classid)
+        public JsonResult check_duplicate_feeslabels(int receipttypeid)
         {
-            var data = db.tbl_feeslabel.Where(m => m.classid == classid).FirstOrDefault();
+            var data = db.tbl_feeslabel.Where(m => m.receipttypeid==receipttypeid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLFeesLabels(feeslabelviewmodel _pvm, string evt, int id, string FeesLabels)
@@ -901,7 +902,7 @@ namespace SchoolManagementSystems.Controllers
             int Lastfeeslblid = 0;
             if (evt == "submit")
             {
-                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt, _pvm.courseyearid, "").ToString();
+                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt,_pvm.receipttypeid, "").ToString();
             }
             if (_pvm.feeslblid == 0)
             {
@@ -920,6 +921,7 @@ namespace SchoolManagementSystems.Controllers
                 db.sp_feeslabelchild_DML(Lastfeeslblid, lbl, "").ToString();
             }
             _pvm._feeslabellist = db.sp_getfeeslabels().ToList();
+           
             return PartialView("_FeesLabelsList", _pvm);
         }
         #endregion

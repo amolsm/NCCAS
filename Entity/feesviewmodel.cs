@@ -14,6 +14,10 @@ namespace Entity
         [DisplayName("Course Name ")]
         public int CourseId { get; set; }
 
+        [DisplayName("Receipt Type")]
+        public int receipttypeid { get; set; }
+
+
         [DisplayName("Library Fees ")]
         public double LFees { get; set; }
 
@@ -34,6 +38,8 @@ namespace Entity
 
         [DisplayName("Payment Type ")]
         public int PTypeid { get; set; }
+
+        public List<tblReceiptType> _receipttype { get; set; }
 
         public List<tbl_class> Classlist { get; set; }
         public List<tbl_payterm> ptypelist { get; set; }

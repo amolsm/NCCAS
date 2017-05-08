@@ -78,25 +78,10 @@
     <FunctionImport Name="sp_getPayterm" ReturnType="Collection(SchoolMgmtSysModel.sp_getPayterm_Result)" />
     <FunctionImport Name="sp_getPaymentHistory" ReturnType="Collection(SchoolMgmtSysModel.sp_getPaymentHistory_Result)" />
     <FunctionImport Name="sp_getOccupation" ReturnType="Collection(SchoolMgmtSysModel.sp_getOccupation_Result)" />
-    <FunctionImport Name="sp_getFeespaymentlist" ReturnType="Collection(SchoolMgmtSysModel.sp_getFeespaymentlist_Result)" />
     <FunctionImport Name="sp_getCountry" ReturnType="Collection(SchoolMgmtSysModel.sp_getCountry_Result)" />
     <FunctionImport Name="sp_getCity" ReturnType="Collection(SchoolMgmtSysModel.sp_getCity_Result)" />
     <FunctionImport Name="sp_getCaste" ReturnType="Collection(SchoolMgmtSysModel.sp_getCaste_Result)" />
     <FunctionImport Name="sp_getBloodgroup" ReturnType="Collection(SchoolMgmtSysModel.sp_getBloodgroup_Result)" />
-    <FunctionImport Name="sp_feespayment_DML">
-      <Parameter Name="Pid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="Studid" Mode="In" Type="Int32" />
-      <Parameter Name="Scholarship" Mode="In" Type="Boolean" />
-      <Parameter Name="ScholarshipFees" Mode="In" Type="Decimal" />
-      <Parameter Name="TotalFees" Mode="In" Type="Decimal" />
-      <Parameter Name="PaidFees" Mode="In" Type="Decimal" />
-      <Parameter Name="PendingFees" Mode="In" Type="Decimal" />
-      <Parameter Name="PTypeid" Mode="In" Type="Int32" />
-      <Parameter Name="Remarks" Mode="In" Type="String" />
-      <Parameter Name="Status" Mode="In" Type="Boolean" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_Country_DML">
       <Parameter Name="Countryid" Mode="In" Type="Int32" />
       <Parameter Name="CountryName" Mode="In" Type="String" />
@@ -211,20 +196,12 @@
     <FunctionImport Name="sp_EmployeeAttendance">
       <Parameter Name="AttendanceDate" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="tbl_feeslabel" EntityType="SchoolMgmtSysModel.tbl_feeslabel" />
     <EntitySet Name="tbl_feeslabelchild" EntityType="SchoolMgmtSysModel.tbl_feeslabelchild" />
-    <FunctionImport Name="sp_feeslabel_DML">
-      <Parameter Name="feeslblid" Mode="In" Type="Int32" />
-      <Parameter Name="ctrlcnt" Mode="In" Type="Int32" />
-      <Parameter Name="classid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_feeslabelchild_DML">
       <Parameter Name="feeslblid" Mode="In" Type="Int32" />
       <Parameter Name="ctrlnm" Mode="In" Type="String" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_getfeeslabels" ReturnType="Collection(SchoolMgmtSysModel.sp_getfeeslabels_Result)" />
     <EntitySet Name="tbl_feeschild" EntityType="SchoolMgmtSysModel.tbl_feeschild" />
     <FunctionImport Name="sp_feeschild_DML">
       <Parameter Name="Feesid" Mode="In" Type="Int32" />
@@ -232,19 +209,6 @@
       <Parameter Name="Fees" Mode="In" Type="Decimal" />
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_feessetup_DML">
-      <Parameter Name="Feesid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="LFees" Mode="In" Type="Decimal" />
-      <Parameter Name="TFees" Mode="In" Type="Decimal" />
-      <Parameter Name="UFees" Mode="In" Type="Decimal" />
-      <Parameter Name="HFees" Mode="In" Type="Decimal" />
-      <Parameter Name="OFees" Mode="In" Type="Decimal" />
-      <Parameter Name="TotalFees" Mode="In" Type="Decimal" />
-      <Parameter Name="PTypeid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getFeessetup" ReturnType="Collection(SchoolMgmtSysModel.sp_getFeessetup_Result)" />
     <EntitySet Name="tbl_StudentCategory" EntityType="SchoolMgmtSysModel.tbl_StudentCategory" />
     <EntitySet Name="tbl_SubCategory" EntityType="SchoolMgmtSysModel.tbl_SubCategory" />
     <FunctionImport Name="sp_getInventory" ReturnType="Collection(SchoolMgmtSysModel.sp_getInventory_Result)" />
@@ -849,8 +813,6 @@
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
     <EntitySet Name="tbl_lib_BookIssue" EntityType="SchoolMgmtSysModel.tbl_lib_BookIssue" />
-    <EntitySet Name="tbl_BookDetails" EntityType="SchoolMgmtSysModel.tbl_BookDetails" />
-    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
     <EntitySet Name="tbl_collageeducationdetails" EntityType="SchoolMgmtSysModel.tbl_collageeducationdetails" />
     <EntitySet Name="tbl_subject" EntityType="SchoolMgmtSysModel.tbl_subject" />
     <FunctionImport Name="sp_getsubjectcode" ReturnType="Collection(SchoolMgmtSysModel.sp_getsubjectcode_Result)">
@@ -1071,9 +1033,6 @@
       <Parameter Name="bookid" Mode="In" Type="Int32" />
       <Parameter Name="cretedby" Mode="In" Type="Int32" />
       <Parameter Name="BookStatusId" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Sp_GetLibBookDetailsbyId" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetLibBookDetailsbyId_Result)">
-      <Parameter Name="bookid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_StudentMarks" ReturnType="Collection(SchoolMgmtSysModel.sp_StudentMarks_Result)">
       <Parameter Name="Examid" Mode="In" Type="Int32" />
@@ -1418,8 +1377,6 @@
       <Parameter Name="subjectid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="tbl_StudentMark" EntityType="SchoolMgmtSysModel.tbl_StudentMark" />
-    <EntitySet Name="tbl_fees" EntityType="SchoolMgmtSysModel.tbl_fees" />
-    <EntitySet Name="tbl_feespayment" EntityType="SchoolMgmtSysModel.tbl_feespayment" />
     <FunctionImport Name="sp_gettransport" ReturnType="Collection(SchoolMgmtSysModel.sp_gettransport_Result)" />
     <EntitySet Name="tbl_InventoryVendor" EntityType="SchoolMgmtSysModel.tbl_InventoryVendor" />
     <FunctionImport Name="sp_DMLInventoryVendor">
@@ -1449,6 +1406,65 @@
       <Parameter Name="R_Name" Mode="In" Type="String" />
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_fees" EntityType="SchoolMgmtSysModel.tbl_fees" />
+    <EntitySet Name="tbl_feeslabel" EntityType="SchoolMgmtSysModel.tbl_feeslabel" />
+    <FunctionImport Name="sp_getfeeslabels" ReturnType="Collection(SchoolMgmtSysModel.sp_getfeeslabels_Result)" />
+    <FunctionImport Name="sp_feessetup_DML">
+      <Parameter Name="Feesid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="receipttypeid" Mode="In" Type="Int32" />
+      <Parameter Name="LFees" Mode="In" Type="Decimal" />
+      <Parameter Name="TFees" Mode="In" Type="Decimal" />
+      <Parameter Name="UFees" Mode="In" Type="Decimal" />
+      <Parameter Name="HFees" Mode="In" Type="Decimal" />
+      <Parameter Name="OFees" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalFees" Mode="In" Type="Decimal" />
+      <Parameter Name="PTypeid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getFeessetup" ReturnType="Collection(SchoolMgmtSysModel.sp_getFeessetup_Result)" />
+    <FunctionImport Name="sp_GetFeeReceiptdetailsbyFeeId" ReturnType="Collection(SchoolMgmtSysModel.sp_GetFeeReceiptdetailsbyFeeId_Result)">
+      <Parameter Name="feePid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_feeslabel_DML">
+      <Parameter Name="feeslblid" Mode="In" Type="Int32" />
+      <Parameter Name="ctrlcnt" Mode="In" Type="Int32" />
+      <Parameter Name="receipttypeid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbl_feespayment" EntityType="SchoolMgmtSysModel.tbl_feespayment" />
+    <FunctionImport Name="sp_checkPreviousFeesPaymentAmt" ReturnType="Collection(SchoolMgmtSysModel.sp_checkPreviousFeesPaymentAmt_Result)">
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="receipttypeid" Mode="In" Type="Int32" />
+      <Parameter Name="accademicyear" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_feespayment_DML">
+      <Parameter Name="Pid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="receipttypeid" Mode="In" Type="Int32" />
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="Scholarship" Mode="In" Type="Boolean" />
+      <Parameter Name="ScholarshipFees" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalFees" Mode="In" Type="Decimal" />
+      <Parameter Name="PaidFees" Mode="In" Type="Decimal" />
+      <Parameter Name="PendingFees" Mode="In" Type="Decimal" />
+      <Parameter Name="PTypeid" Mode="In" Type="Int32" />
+      <Parameter Name="Remarks" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="academicyear" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetFeeReceiptbyFeeId" ReturnType="Collection(SchoolMgmtSysModel.sp_GetFeeReceiptbyFeeId_Result)">
+      <Parameter Name="feePid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getFeespaymentlist" ReturnType="Collection(SchoolMgmtSysModel.sp_getFeespaymentlist_Result)" />
+    <FunctionImport Name="sp_GetBirthdayListDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_GetBirthdayListDetails_Result)" />
+    <EntitySet Name="lib_Bookentry" EntityType="SchoolMgmtSysModel.lib_Bookentry" />
+    <EntitySet Name="tbl_BookDetails" EntityType="SchoolMgmtSysModel.tbl_BookDetails" />
+    <FunctionImport Name="Sp_GetLibBookDetailsbyId" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetLibBookDetailsbyId_Result)">
+      <Parameter Name="bookid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
@@ -1640,19 +1656,6 @@
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
     <Property Type="String" Name="academicyear" Nullable="false" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="sp_getFeespaymentlist_Result">
-    <Property Type="Int32" Name="Pid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Studid" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="scholarship" Nullable="false" MaxLength="3" />
-    <Property Type="Decimal" Name="ScholarshipFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="TotalFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="PaidFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="PendingFees" Nullable="false" Precision="19" />
-    <Property Type="String" Name="PTypeid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Remarks" Nullable="true" />
-    <Property Type="String" Name="status" Nullable="false" MaxLength="6" />
-  </ComplexType>
   <ComplexType Name="sp_getCountry_Result">
     <Property Type="Int32" Name="Countryid" Nullable="false" />
     <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
@@ -1809,14 +1812,6 @@
     <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
     <Property Type="Boolean" Name="IsApprove" Nullable="false" />
   </ComplexType>
-  <EntityType Name="tbl_feeslabel">
-    <Key>
-      <PropertyRef Name="feeslblid" />
-    </Key>
-    <Property Type="Int32" Name="feeslblid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="ctrlcnt" Nullable="false" />
-    <Property Type="Int32" Name="classid" Nullable="false" />
-  </EntityType>
   <EntityType Name="tbl_feeslabelchild">
     <Key>
       <PropertyRef Name="feeslblid" />
@@ -1824,12 +1819,6 @@
     <Property Type="Int32" Name="feeslblid" Nullable="false" />
     <Property Type="String" Name="ctrlnm" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <ComplexType Name="sp_getfeeslabels_Result">
-    <Property Type="Int32" Name="feeslblid" Nullable="false" />
-    <Property Type="Int32" Name="ctrlcnt" Nullable="false" />
-    <Property Type="String" Name="classid" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Controls" Nullable="true" />
-  </ComplexType>
   <EntityType Name="tbl_feeschild">
     <Key>
       <PropertyRef Name="Feesid" />
@@ -1840,17 +1829,6 @@
     <Property Type="String" Name="FeesNm" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="Decimal" Name="Fees" Nullable="false" Precision="19" Scale="4" />
   </EntityType>
-  <ComplexType Name="sp_getFeessetup_Result">
-    <Property Type="Int32" Name="Feesid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="LFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="TFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="UFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="HFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="OFees" Nullable="false" Precision="19" />
-    <Property Type="Decimal" Name="TotalFees" Nullable="false" Precision="19" />
-    <Property Type="String" Name="PTypeid" Nullable="false" MaxLength="50" />
-  </ComplexType>
   <EntityType Name="tbl_StudentCategory">
     <Key>
       <PropertyRef Name="StudCategoryid" />
@@ -2714,47 +2692,6 @@
     <Property Name="flag" Type="Int32" />
     <Property Type="Int32" Name="BookStatus" />
   </EntityType>
-  <EntityType Name="tbl_BookDetails">
-    <Key>
-      <PropertyRef Name="BookDetailsId" />
-    </Key>
-    <Property Name="BookDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="BookName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SerialNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Authorid" Type="Int32" />
-    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Publisherid" Type="Int32" />
-    <Property Name="PublisherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Vendorid" Type="Int32" />
-    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
-    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Active" Type="Boolean" />
-    <Property Type="Int32" Name="createdby" />
-    <Property Type="Int32" Name="BookQty" />
-    <Property Type="Int32" Name="AllocateQty" />
-    <Property Type="Int32" Name="AvailQty" />
-    <Property Type="Int32" Name="LostQty" />
-    <Property Type="Int32" Name="CourseId" />
-    <Property Type="Int32" Name="DeptId" />
-    <Property Type="Int32" Name="CategoryId" />
-  </EntityType>
-  <EntityType Name="lib_Bookentry">
-    <Key>
-      <PropertyRef Name="bookid" />
-    </Key>
-    <Property Type="Int32" Name="bookid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="CallNo" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="AccessorNo" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="SelfNo" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Status" />
-    <Property Type="Boolean" Name="IsActive" />
-    <Property Type="Int32" Name="createdby" />
-  </EntityType>
   <EntityType Name="tbl_collageeducationdetails">
     <Key>
       <PropertyRef Name="collageid" />
@@ -3117,29 +3054,6 @@
     <Property Type="String" Name="JBillNo" Nullable="true" />
     <Property Type="String" Name="shelfno" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="Sp_GetLibBookDetailsbyId_Result">
-    <Property Type="Int32" Name="bookid" Nullable="false" />
-    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="IsActive" Nullable="true" />
-    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Authorid" Nullable="true" />
-    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Publisherid" Nullable="true" />
-    <Property Type="String" Name="PublisherName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Vendorid" Nullable="true" />
-    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
-    <Property Type="String" Name="BillNo" Nullable="true" />
-    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
-    <Property Type="Int32" Name="CourseId" Nullable="true" />
-    <Property Type="Int32" Name="DeptId" Nullable="true" />
-    <Property Type="Int32" Name="CategoryId" Nullable="true" />
-  </ComplexType>
   <ComplexType Name="sp_StudentMarks_Result">
     <Property Type="Int32" Name="Studid" Nullable="false" />
     <Property Type="String" Name="studentname" Nullable="true" MaxLength="50" />
@@ -3401,36 +3315,6 @@
     <Property Name="Remark" Type="Boolean" />
     <Property Name="Createdby" Type="Int32" />
   </EntityType>
-  <EntityType Name="tbl_fees">
-    <Key>
-      <PropertyRef Name="Feesid" />
-    </Key>
-    <Property Name="Feesid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Courseid" Type="Int32" Nullable="false" />
-    <Property Name="LFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="TFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="UFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="HFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="OFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="TotalFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="PTypeid" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tbl_feespayment">
-    <Key>
-      <PropertyRef Name="Pid" />
-    </Key>
-    <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Courseid" Type="Int32" Nullable="false" />
-    <Property Name="Studid" Type="Int32" Nullable="false" />
-    <Property Name="Scholarship" Type="Boolean" Nullable="false" />
-    <Property Name="ScholarshipFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="TotalFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="PaidFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="PendingFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="PTypeid" Type="Int32" Nullable="false" />
-    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-  </EntityType>
   <ComplexType Name="sp_gettransport_Result">
     <Property Type="Int32" Name="busid" Nullable="false" />
     <Property Type="String" Name="busNo" Nullable="true" MaxLength="50" />
@@ -3493,5 +3377,178 @@
     <Property Type="Int32" Name="R_Id" Nullable="false" />
     <Property Type="String" Name="R_Name" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <EntityType Name="tbl_fees">
+    <Key>
+      <PropertyRef Name="Feesid" />
+    </Key>
+    <Property Name="Feesid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Courseid" Type="Int32" Nullable="false" />
+    <Property Name="LFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="HFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="OFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TotalFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PTypeid" Type="Int32" Nullable="false" />
+    <Property Name="receipttypeid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_feeslabel">
+    <Key>
+      <PropertyRef Name="feeslblid" />
+    </Key>
+    <Property Name="feeslblid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ctrlcnt" Type="Int32" Nullable="false" />
+    <Property Name="classid" Type="Int32" Nullable="false" />
+    <Property Name="receipttypeid" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="sp_getfeeslabels_Result">
+    <Property Type="Int32" Name="feeslblid" Nullable="false" />
+    <Property Type="Int32" Name="ctrlcnt" Nullable="false" />
+    <Property Type="String" Name="classid" Nullable="true" MaxLength="306" />
+    <Property Type="String" Name="R_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Controls" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_getFeessetup_Result">
+    <Property Type="Int32" Name="Feesid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="306" />
+    <Property Type="String" Name="R_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="LFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="UFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="HFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="OFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="false" Precision="19" />
+    <Property Type="String" Name="PTypeid" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_GetFeeReceiptdetailsbyFeeId_Result">
+    <Property Type="Int32" Name="Feesid" Nullable="false" />
+    <Property Type="String" Name="FeesNm" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Fees" Nullable="false" Precision="19" />
+  </ComplexType>
+  <EntityType Name="tbl_feespayment">
+    <Key>
+      <PropertyRef Name="Pid" />
+    </Key>
+    <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Courseid" Type="Int32" Nullable="false" />
+    <Property Name="Studid" Type="Int32" Nullable="false" />
+    <Property Name="Scholarship" Type="Boolean" Nullable="false" />
+    <Property Name="ScholarshipFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TotalFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PaidFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PendingFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PTypeid" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="receipttypeid" Type="Int32" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_checkPreviousFeesPaymentAmt_Result">
+    <Property Type="Int32" Name="Courseid" Nullable="false" />
+    <Property Type="Int32" Name="Studid" Nullable="false" />
+    <Property Type="Int32" Name="receipttypeid" Nullable="true" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="ScholarshipFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PaidFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PendingFees" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_GetFeeReceiptbyFeeId_Result">
+    <Property Type="Int32" Name="No" Nullable="false" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Course" Nullable="true" MaxLength="306" />
+    <Property Type="Int32" Name="RollNo" Nullable="false" />
+    <Property Type="Decimal" Name="ScholarshipFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PaidFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PendingFees" Nullable="false" Precision="19" />
+    <Property Type="String" Name="R_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="P_Date" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_getFeespaymentlist_Result">
+    <Property Type="Int32" Name="Pid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="306" />
+    <Property Type="String" Name="R_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Studid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="P_Date" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="scholarship" Nullable="false" MaxLength="3" />
+    <Property Type="Decimal" Name="ScholarshipFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TotalFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PaidFees" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="PendingFees" Nullable="false" Precision="19" />
+    <Property Type="String" Name="PTypeid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="6" />
+  </ComplexType>
+  <ComplexType Name="sp_GetBirthdayListDetails_Result">
+    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOB" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Course" Nullable="true" MaxLength="306" />
+  </ComplexType>
+  <EntityType Name="lib_Bookentry">
+    <Key>
+      <PropertyRef Name="bookid" />
+    </Key>
+    <Property Name="bookid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccessorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SelfNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="SerialNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_BookDetails">
+    <Key>
+      <PropertyRef Name="BookDetailsId" />
+    </Key>
+    <Property Name="BookDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CallNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BookName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Volume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Authorid" Type="Int32" />
+    <Property Name="Authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Publisherid" Type="Int32" />
+    <Property Name="PublisherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Vendorid" Type="Int32" />
+    <Property Name="Vendorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dateofpurchase" Type="DateTime" Precision="7" />
+    <Property Name="BillNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="BookQty" Type="Int32" />
+    <Property Name="AllocateQty" Type="Int32" />
+    <Property Name="AvailQty" Type="Int32" />
+    <Property Name="LostQty" Type="Int32" />
+    <Property Name="CourseId" Type="Int32" />
+    <Property Name="DeptId" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Sp_GetLibBookDetailsbyId_Result">
+    <Property Type="Int32" Name="bookid" Nullable="false" />
+    <Property Type="String" Name="CallNo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccessorNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SelfNo" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="BookName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Volume" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="SerialNo" Nullable="true" />
+    <Property Type="Int32" Name="Authorid" Nullable="true" />
+    <Property Type="String" Name="Authorname" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Publisherid" Nullable="true" />
+    <Property Type="String" Name="PublisherName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Edition" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Vendorid" Nullable="true" />
+    <Property Type="String" Name="Vendorname" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Dateofpurchase" Nullable="true" />
+    <Property Type="String" Name="BillNo" Nullable="true" />
+    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="CourseId" Nullable="true" />
+    <Property Type="Int32" Name="DeptId" Nullable="true" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
   </ComplexType>
 </Schema>

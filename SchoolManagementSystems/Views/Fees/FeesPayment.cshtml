@@ -3,33 +3,105 @@
     ViewBag.Title = "Fees Payment";
     Layout = "~/Views/shared/_SharedLayout.cshtml";
 }
+<style>
+    @@media print {
+        #print_btn {
+            display: none;
+        }
+
+        #back_btn {
+            display: none;
+        }
+    }
+
+    .fee_receipt table td {
+        font-size: 12px;
+    }
+
+    .date_fee {
+        margin: 0px;
+    }
+
+    h5 {
+        margin: 0px;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 4px;
+    }
+   
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         FillPermission();
         $("#lblmsg").text('');
         $('#totalFees input').attr("readonly", true);
         $('#pendingFees input').attr("readonly", true);
+        $('#previouspaiddetails input').attr("readonly", true);
         $('#pid input').attr("readonly", true);
-        $('#PTypeid1').attr("disabled", "disabled");
+        $('#payableamt input').attr("readonly", true);
         $("#feesdetails").html('');
         if ($("#pid input").val() == "0") {
             $("#pid").hide();
         }
         $("#scholarshipFees").hide();
+        //view dialog
+        $(".viewDialog").live("click", function (e) {
+            var url = $(this).attr('href');
+            $("#dialog-view").dialog({
+                title: 'Fees Receipt',
+                autoOpen: false,
+                resizable: false,
+                height: 650,
+                width: 750,
+                position:'top',
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(this).load(url);
+
+                },
+                buttons: {
+                   
+                    
+                    "Print": function () {
+                      printDiv('receiptprint')
+                    },
+
+                     "Close": function () {
+                      $(this).dialog("close");
+
+                   },
+                    
+
+                },
+                close: function (event, ui) {
+                    $(this).dialog('close');
+                }
+            });
+
+            $("#dialog-view").dialog('open');
+            return false;
+        });
 
         function clear() {
             $("#feesdetails").html('');
             $("#pid").hide();
             $('#pid input').val('0');
             $("#CourseId").val('');
+            $("#receipttypeid").val('');
             $("#Studid").val('');
             $("#Scholarship").prop('checked', false);
             $("#ScholarshipFees").val('0');
             $("#TotalFees").val('0');
             $("#PendingFees").val('0');
             $("#PaidFees").val('0');
-            $("#PTypeid").val('');
-            $("#PTypeid1").val('');
+            $("#Pr_PaymentAmt").val('0');
+            $("#FeesAmt").val('0');
             $("#Remarks").val('');
             $("#Status").prop('checked', false);
         }
@@ -39,14 +111,19 @@
                 type: 'POST',
                 url: '@Url.Action("GetFeesDetails")',
                 dataType: 'json',
-                data: { id: $("#CourseId").val() },
+                data: { id: $("#CourseId").val(), receipttypeid: $("#receipttypeid").val() },
                 success: function (feesdetails) {
                     if (feesdetails != "" && feesdetails != null) {
                         $("#TotalFees").val(feesdetails.TotalFees);
+                        var totalfees = $("#TotalFees").val();
+                        var pr_paymentamt = $("#Pr_PaymentAmt").val();
                         $("#PaidFees").val(0);
                         $("#PendingFees").val(0);
-                        $("#PTypeid").val(feesdetails.PTypeid);
-                        $("#PTypeid1").val(feesdetails.PTypeid);
+                        $("#Pr_PaymentAmt").val(0);
+                        var feeamt = parseInt((parseInt(totalfees) - parseInt(pr_paymentamt)));
+                        $("#FeesAmt").val(feeamt);
+                        // $("#PTypeid").val(feesdetails.PTypeid);
+                        //$("#PTypeid1").val(feesdetails.PTypeid);
                         //                        $("#feesdetails").html('');
                         //                        var html = "<fieldset><legend>Fees Setup Details</legend><label class = 'col-md-6 form_out'>Library Fees : </label><label  class = 'col-md-5 form-control form_in'>" + feesdetails.LFees + "</label>" +
                         //                        "<label class = 'col-md-6 form_out'>Transport Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.TFees + "</label>" +
@@ -62,7 +139,7 @@
                                 if (data != "" && data != null) {
                                     $("#feesdetails").html('');
                                     var html = "";
-                                    html = "<fieldset><legend>Fees Setup Details</legend>";
+                                    html = "<fieldset><legend>Fees  Details</legend>";
                                     $.each(data, function (i, dt) {
                                         html += "<div class='control-group'><label class = 'control-label'>" + dt.FeesNm + " :</label> <div class='controls'> <label  class = 'col-md-5 form-control form_in'>" + dt.Fees + "</label></div></div>";
                                     });
@@ -72,7 +149,7 @@
                                 else {
                                     $("#feesdetails").html('');
                                 }
-                            },  
+                            },
                             error: function (ex) {
                                 $("#feesdetails").html('');
                                 alert('Fees setup not done for this course.' + ex);
@@ -86,10 +163,14 @@
                         $("#TotalFees").val(0);
                         $("#PaidFees").val(0);
                         $("#PendingFees").val(0);
-                        $("#PTypeid").val(0);
-                        $("#PTypeid1").val(0);
+                        $("#FeesAmt").val(0);
+                        $("#Pr_PaymentAmt").val(0);
+                        //$("#PTypeid").val(0);
+                        //$("#PTypeid1").val(0);
                         $("#feesdetails").html('');
                         $("#CourseId").val('');
+                        // $("#receipttypeid").val('');
+
                         alert('Fees setup not done for this course.');
                     }
                 },
@@ -97,9 +178,12 @@
                     $("#TotalFees").val(0);
                     $("#PaidFees").val(0);
                     $("#PendingFees").val(0);
-                    $("#PTypeid").val(0);
-                    $("#PTypeid1").val(0);
+                    $("#FeesAmt").val(0);
+                    $("#Pr_PaymentAmt").val(0);
+                    //$("#PTypeid").val(0);
+                    //$("#PTypeid1").val(0);
                     $("#CourseId").val('');
+                    // $("#receipttypeid").val('');
                     alert('Fees setup not done for this course.' + ex);
                 }
             });
@@ -135,21 +219,44 @@
         $('#Studid').change(function () {
             var Studid = $('#Studid').val();
             var CourseId = $("#CourseId").val();
+            var receipttypeid = $("#receipttypeid").val();
+            var academicyear = $("#academicyear").val();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_Payment")',
                 dataType: 'JSON',
-                data: { Studid: Studid, CourseId: CourseId },
+                data: { Studid: Studid, CourseId: CourseId, receipttypeid: receipttypeid, academicyear: academicyear },
                 success: function (data) {
-                    if (data.Studid != null) {
+                    if (data != null) {
+
                         clearmsg();
-                        $("#msg").show();
-                        $("#lblmsg").text("Fees Payment Status Already Exists for this student!..");
-                        $("#lblmsg").css({ "color": "orange" });
-                        $("#lblmsg").css({ "font-size": "15px" });
-                        $('#Studid').val('');
-                        return false;
+
+                        $("#PaidFees").val(0);
+                        $("#PendingFees").val(0);
+                        $("#Pr_PaymentAmt").val(data.PaidFees);
+                        var totalfee = $("#TotalFees").val();
+                        var pr_paymentamt = $("#Pr_PaymentAmt").val();
+                        var cals = parseInt((parseInt(totalfee) - parseInt(pr_paymentamt) - parseInt(data.ScholarshipFees)));
+                        $("#TotalFees").val(cals);
+                        $("#FeesAmt").val(parseInt((parseInt(totalfee) - parseInt(data.ScholarshipFees))));
+                        $("#scholardetails").html('');
+                        var html = "";
+                        html += "<div class='control-group'><label class = 'control-label'>" + "ScholarShip" + " :</label> <div class='controls'> <label  class = 'col-md-5 form-control form_in'>" + data.ScholarshipFees + "</label></div></div>";
+                        $("#scholardetails").append(html);
+                        $("#scholarshipFees").hide();
+                        $("#scholar").hide();
+
+                    } else {
+                        $("#Pr_PaymentAmt").val(0);
+                        $("#PaidFees").val(0);
+                        $("#PendingFees").val(0);
+                        $("#scholarshipFees").show();
+                        $("#scholar").show();
+                        $("#scholardetails").html('');
+                        $("input.Scholarship").removeAttr("disabled");
+
                     }
+                    return false;
                 }
             });
         });
@@ -191,6 +298,7 @@
                 success: function (data) {
                     $("#Pid").val(data.Pid);
                     $("#CourseId").val(data.Courseid);
+                    $("#receipttypeid").val(data.receipttypeid);
                     $("#Studid").empty();
                     $.ajax({
                         type: 'POST',
@@ -238,16 +346,16 @@
                         type: 'POST',
                         url: '@Url.Action("GetFeesDetails")',
                         dataType: 'json',
-                        data: { id: $("#CourseId").val() },
+                        data: { id: $("#CourseId").val(), receipttypeid: $("#receipttypeid").val() },
                         success: function (feesdetails) {
                             //if (feesdetails != "") {
-//                                $("#feesdetails").html('');
-//                                var html = "<fieldset><legend>Fees Setup Details</legend><div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Library Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.LFees + "</label></div>" +
-//                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Transport Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.TFees + "</label></div>" +
-//                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Uniform Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.UFees + "</label></div>" +
-//                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Hostel Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.HFees + "</label></div>" +
-//                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Other Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.OFees + "</label></div></fieldset>";
-//                                $("#feesdetails").append(html);
+                            //                                $("#feesdetails").html('');
+                            //                                var html = "<fieldset><legend>Fees Setup Details</legend><div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Library Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.LFees + "</label></div>" +
+                            //                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Transport Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.TFees + "</label></div>" +
+                            //                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Uniform Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.UFees + "</label></div>" +
+                            //                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Hostel Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.HFees + "</label></div>" +
+                            //                        "<div class='form-group col-md-9'><label class = 'col-md-6 form_out'>Other Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.OFees + "</label></div></fieldset>";
+                            //                                $("#feesdetails").append(html);
                             //}
                             if (feesdetails != "" && feesdetails != null) {
                                 $("#TotalFees").val(feesdetails.TotalFees);
@@ -267,7 +375,7 @@
                                 var PaidFees = $("#PaidFees").val();
                                 var calc1 = parseInt((parseInt($("#TotalFees").val()) - parseInt(PaidFees)));
                                 $("#PendingFees").val(calc1);
-                                
+
                                 //                        $("#feesdetails").html('');
                                 //                        var html = "<fieldset><legend>Fees Setup Details</legend><label class = 'col-md-6 form_out'>Library Fees : </label><label  class = 'col-md-5 form-control form_in'>" + feesdetails.LFees + "</label>" +
                                 //                        "<label class = 'col-md-6 form_out'>Transport Fees : </label><label class = 'col-md-5 form-control form_in'>" + feesdetails.TFees + "</label>" +
@@ -305,11 +413,13 @@
                             else {
                                 $("#TotalFees").val(0);
                                 $("#PaidFees").val(0);
-                                $("#PendingFees").val(0);       
+                                $("#PendingFees").val(0);
                                 $("#PTypeid").val(0);
                                 $("#PTypeid1").val(0);
                                 $("#feesdetails").html('');
                                 $("#CourseId").val('');
+
+                                $("#receipttypeid").val('');
                                 alert('Fees setup not done for this course.');
                             }
                         },
@@ -341,8 +451,8 @@
                 });
             }
         });
-
-        function validations() {    
+    
+        function validations() {
             var cnt = 0;
             if ($("#CourseId").val() == '') {
                 cnt++;
@@ -352,6 +462,18 @@
             }
             else {
                 $("#CourseId").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#receipttypeid").val() == '') {
+                cnt++;
+                $("#receipttypeid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#receipttypeid").css({
                     "border": "",
                     "background": ""
                 });
@@ -370,18 +492,18 @@
                 });
             }
 
-            if ($("#PTypeid1").val() == '') {
-                cnt++;
-                $("#PTypeid1").css({
-                    "border": "2px solid red"
-                });
-            }
-            else {
-                $("#PTypeid1s").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#PTypeid1").val() == '') {
+            //    cnt++;
+            //    $("#PTypeid1").css({
+            //        "border": "2px solid red"
+            //    });
+            //}
+            //else {
+            //    $("#PTypeid1s").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
             //
             //            if ($("#ScholarshipFees").val() == '0' || $("#ScholarshipFees").val() == '') {
             //                cnt++;
@@ -448,6 +570,18 @@
                 return false;
             }
         });
+        $("#FeesAmt").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#Pr_PaymentAmt").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
 
         $("#PaidFees").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -472,13 +606,13 @@
                 FillUpFeesDetails();
                 $("#ScholarshipFees").val(0);
             }
-//            $("#PaidFees").val(0);
-//            $("#PendingFees").val(0);
+            //            $("#PaidFees").val(0);
+            //            $("#PendingFees").val(0);
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GetFeesDetails")',
                 dataType: 'json',
-                data: { id: $("#CourseId").val() },
+                data: { id: $("#CourseId").val(), receipttypeid: $("#receipttypeid").val() },
                 success: function (feesdetails) {
                     if (feesdetails != "" && feesdetails != null) {
                         $("#TotalFees").val(feesdetails.TotalFees);
@@ -493,6 +627,8 @@
                             $("#PaidFees").val(0);
                         }
                         var PaidFees = $("#PaidFees").val();
+                        if ($("#FeesAmt").val() == "") { $("#FeesAmt").val(0); }
+                        if ($("#Pr_PaymentAmt").val() == "") { $("#Pr_PaymentAmt").val(0); }
                         var calc1 = parseInt((parseInt($("#TotalFees").val()) - parseInt(PaidFees)));
                         $("#PendingFees").val(calc1);
                     }
@@ -502,19 +638,23 @@
                         $("#PendingFees").val(0);
                         $("#PTypeid").val(0);
                         $("#PTypeid1").val(0);
+                        $("#FeesAmt").val(0);
+                        $("#Pr_PaymentAmt").val(0);
                         $("#feesdetails").html('');
                         $("#CourseId").val('');
-                        alert('Fees setup not done for this class.');
+                        $("#receipttypeid").val('');
+                        alert('Fees setup not done for this course.');
                     }
                 },
                 error: function (ex) {
-                    alert('Fees setup not done for this class.' + ex);
+                    alert('Fees setup not done for this course.' + ex);
                 }
             });
 
             var TotalFees = $("#TotalFees").val();
             var ScholarshipFees = $("#ScholarshipFees").val();
-            var calc = parseInt((parseInt(TotalFees) - parseInt(ScholarshipFees)));
+            var Pr_PaymentAmt = $("#Pr_PaymentAmt").val();
+            var calc = parseInt((parseInt(TotalFees) - parseInt(ScholarshipFees) - parseInt(Pr_PaymentAmt)));
             $("#TotalFees").val(calc);
             $("#PendingFees").val($("#TotalFees").val());
         });
@@ -531,20 +671,30 @@
         ReloadPaging();
     });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 @Html.HiddenFor(m => m.Pid)
 @Html.Partial("_PermissionHiddenFlds")
+
+<div id="dialog-view" style="display: none">
+</div>
+
+         
 <div class="container-fluid-full">
-             
-		<div class="row-fluid">
-                       @Html.Partial("_FeesSubMenu")
-	<div id="content" class="span10">
-        	<div class="row-fluid">
-             
-                    <ul class="breadcrumb">
-                   <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
-                        @Html.ActionLink("Fees Management", "Index", "Fees", "")<i class="icon-angle-right"></i></li>
-                        <li class="active">Fees Payment</li>
-                        @*<div style="float: right;">
+
+    <div class="row-fluid">
+        @Html.Partial("_FeesSubMenu")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Fees Management", "Index", "Fees", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">Fees Payment</li>
+                    @*<div style="float: right;">
                             @using (Html.BeginForm())
                             {
 
@@ -552,7 +702,7 @@
                                 <input type="submit" value="Find" />
                             }
                         </div>*@
-                    </ul>
+                </ul>
                 <div class="panel-body">
                     <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
                         <strong><label id="lblmsg"></label></strong>
@@ -561,131 +711,176 @@
                         <strong><label id="lblmsgs"></label></strong>
                     </div>
                 </div>
-                  <div class="row-fluid sortable">
-              <div class="box span12">
-					<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
-						<div class="box-icon">
-						
-							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-						
-						</div>
-					</div>
-                               		<div class="box-content">
-                        <form id="frm" class="form-horizontal" role="form">
-                        <div id="lblmsg" class="control-group">
-                        </div>
-                        <div id="pid" class="control-group">
-                            @Html.LabelFor(model => model.Pid, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.EditorFor(model => model.Pid, new { @class = "col-md-5 form-control form_in" })
-                            @Html.ValidationMessageFor(model => model.Pid)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.CourseId, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
-                            @Html.ValidationMessageFor(model => model.CourseId)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.Studid, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.DropDownListFor(model => model.Studid, new SelectList(Model.studlist, "Studid", "Studnm", "Select Student"), "Select Student", new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.Studid)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.PTypeid, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.DropDownListFor(model => model.PTypeid1, new SelectList(Model.ptypelist, "paytermid", "paytermname", "Select Payment Type"), "Select Payment Type", new { @class = "form-control form_in col-md-5" })
-                            @Html.HiddenFor(model => model.PTypeid)
-                            @Html.ValidationMessageFor(model => model.PTypeid)
-                                   </div>
-                        </div>
-                        <div id="feesdetails" class="control-group">
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.Scholarship, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.CheckBoxFor(model => model.Scholarship, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.Scholarship)
-                                   </div>
-                        </div>
-                        <div id="scholarshipFees" class="control-group">
-                            @Html.LabelFor(model => model.ScholarshipFees, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.EditorFor(model => model.ScholarshipFees, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.ScholarshipFees)
-                                   </div>
-                        </div>
-                        <div id="totalFees" class="control-group">
-                            @Html.LabelFor(model => model.TotalFees, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.EditorFor(model => model.TotalFees, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.TotalFees)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.PaidFees, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.EditorFor(model => model.PaidFees, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.PaidFees)
-                                   </div>
-                        </div>
-                        <div id="pendingFees" class="control-group">
-                            @Html.LabelFor(model => model.PendingFees, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.EditorFor(model => model.PendingFees, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.PendingFees)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.Remarks, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.Remarks)
-                                   </div>
-                        </div>
-                        <div class="control-group">
-                            @Html.LabelFor(model => model.Status, new {@class = "control-label"})
-                               <div class="controls"> 
-                            @Html.CheckBoxFor(model => model.Status, new { @class = "form-control form_in col-md-5" })
-                            @Html.ValidationMessageFor(model => model.Status)
-                                   </div>
-                        </div>
-                         <div class="form-actions">
-                            <input type="button" class="btn btn-primary" id="insert" value="Pay Now" />
-                            <input type="button" id="reset" class="btn btn-primary" value="Reset" />
-                        </div>
-                        </form>
-                        </div>
-                  </div>
-                      </div>
-               
-                         <div class="row-fluid sortable">
-              <div class="box span12">
-					<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
-						<div class="box-icon">
-						
-							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-						
-						</div>
-					</div>
-                               		<div class="box-content">
-                            @Html.Partial("_Feespaymentlist")
-                        </div>
-                  </div>
-                                             
-                                                
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
 
-                                         </div>
-        </div>
-             
-    </div>
-</div>
-   
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal" role="form">
+                                <div id="lblmsg" class="control-group">
+                                </div>
+                                <div id="pid" class="control-group">
+                                    @Html.LabelFor(model => model.Pid, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.Pid, new { @class = "col-md-5 form-control form_in" })
+                                        @Html.ValidationMessageFor(model => model.Pid)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.receipttypeid, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.DropDownListFor(model => model.receipttypeid, new SelectList(Model._receipttype, "R_Id", "R_Name", "Select Receipt Type"), "Select Receipt Type", new { @for = "select" })
+                                        @Html.ValidationMessageFor(model => model.receipttypeid)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
+                                        @Html.ValidationMessageFor(model => model.CourseId)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.academicyear, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.DropDownListFor(model => model.academicyear, new SelectList(Model.academicyear), "Select Year", new { @for = "select" })
+                                        @Html.ValidationMessageFor(model => model.academicyear)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Studid, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.DropDownListFor(model => model.Studid, new SelectList(Model.studlist, "Studid", "Studnm", "Select Student"), "Select Student", new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.Studid)
+                                    </div>
+                                </div>
+
+
+                                <div id="feesdetails" class="control-group">
+                                </div>
+                                <div id="scholardetails" class="control-group">
+                                </div>
+                                <div id="scholar" class="control-group">
+                                    @Html.LabelFor(model => model.Scholarship, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.CheckBoxFor(model => model.Scholarship, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.Scholarship)
+                                    </div>
+                                </div>
+                                <div id="payableamt" class="control-group">
+                                    @Html.LabelFor(model => model.FeesAmt, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.FeesAmt, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.FeesAmt)
+                                    </div>
+                                </div>
+                                <div id="scholarshipFees" class="control-group">
+                                    @Html.LabelFor(model => model.ScholarshipFees, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.ScholarshipFees, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.ScholarshipFees)
+                                    </div>
+                                </div>
+                                <div id="previouspaiddetails" class="control-group">
+                                    @Html.LabelFor(model => model.Pr_PaymentAmt, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.Pr_PaymentAmt, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.Pr_PaymentAmt)
+                                    </div>
+                                </div>
+                                <div id="totalFees" class="control-group">
+                                    @Html.LabelFor(model => model.TotalFees, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.TotalFees, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.TotalFees)
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.PaidFees, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.PaidFees, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.PaidFees)
+                                    </div>
+                                </div>
+                                <div id="pendingFees" class="control-group">
+                                    @Html.LabelFor(model => model.PendingFees, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.PendingFees, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.PendingFees)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Remarks, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.Remarks)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Status, new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.CheckBoxFor(model => model.Status, new { @class = "form-control form_in col-md-5" })
+                                        @Html.ValidationMessageFor(model => model.Status)
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <input type="button" class="btn btn-primary" id="insert" value="Pay Now" />
+                                    <input type="button" id="reset" class="btn btn-primary" value="Reset" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            @Html.Partial("_Feespaymentlist")
+
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    var originalContents = document.body.innerHTML;
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+          
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+        
+            document.body.innerHTML = originalContents;
+         
+            
+            window.location.reload(true);
+        }
+       
+</script>
 

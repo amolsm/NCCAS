@@ -77,6 +77,7 @@
     <Property Name="Status" Type="bit" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="createdby" Type="int" />
+    <Property Name="SerialNo" Type="int" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -277,7 +278,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
     <Property Name="BookName" Type="varchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
-    <Property Name="SerialNo" Type="nvarchar" MaxLength="100" />
     <Property Name="Authorid" Type="int" />
     <Property Name="Authorname" Type="varchar" MaxLength="100" />
     <Property Name="Publisherid" Type="int" />
@@ -825,6 +825,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="OFees" Type="money" Nullable="false" />
     <Property Name="TotalFees" Type="money" Nullable="false" />
     <Property Name="PTypeid" Type="int" Nullable="false" />
+    <Property Name="receipttypeid" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -845,6 +846,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a pr
     <Property Name="feeslblid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ctrlcnt" Type="int" Nullable="false" />
     <Property Name="classid" Type="int" Nullable="false" />
+    <Property Name="receipttypeid" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -870,6 +872,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="PTypeid" Type="int" Nullable="false" />
     <Property Name="Remarks" Type="varchar(max)" />
     <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="receipttypeid" Type="int" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="academicyear" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="tbl_Inventory">
     <Key>
@@ -1573,6 +1578,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="createdby" Type="int" Mode="In" />
     <Parameter Name="contentid" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_checkPreviousFeesPaymentAmt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Studid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="receipttypeid" Type="int" Mode="In" />
+    <Parameter Name="accademicyear" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_checkUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1904,7 +1915,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_feeslabel_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="feeslblid" Type="int" Mode="In" />
     <Parameter Name="ctrlcnt" Type="int" Mode="In" />
-    <Parameter Name="classid" Type="int" Mode="In" />
+    <Parameter Name="receipttypeid" Type="int" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_feeslabelchild_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1915,6 +1926,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_feespayment_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Pid" Type="int" Mode="In" />
     <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="receipttypeid" Type="int" Mode="In" />
     <Parameter Name="Studid" Type="int" Mode="In" />
     <Parameter Name="Scholarship" Type="bit" Mode="In" />
     <Parameter Name="ScholarshipFees" Type="money" Mode="In" />
@@ -1925,10 +1937,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Remarks" Type="varchar(max)" Mode="In" />
     <Parameter Name="Status" Type="bit" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_feessetup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Feesid" Type="int" Mode="In" />
     <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="receipttypeid" Type="int" Mode="In" />
     <Parameter Name="LFees" Type="money" Mode="In" />
     <Parameter Name="TFees" Type="money" Mode="In" />
     <Parameter Name="UFees" Type="money" Mode="In" />
@@ -1949,6 +1963,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_GetAvailableLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetBirthdayListDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getBookCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetBookDetailsbyBookid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2009,6 +2024,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_GetEmployeeLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetExamDetailsByExamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ExamId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetFeeReceiptbyFeeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="feePid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetFeeReceiptdetailsbyFeeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="feePid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getfeeslabels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getFeespaymentlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />

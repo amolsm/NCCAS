@@ -11,16 +11,22 @@ namespace Entity
         [DisplayName("Fees Label ID ")]
         public int feeslblid { get; set; }
 
-        [DisplayName("Select Control count ")]
+        [DisplayName("Control count ")]
         public int ctrlcnt { get; set; }
 
-        [DisplayName("Select Course : ")]
+        [DisplayName("Course")]
         public int courseyearid { get; set; }
 
         [DisplayName("Control Name ")]  
         public string ctrlnm { get; set; }
 
+        [DisplayName("Receipt Type")]
+        public int receipttypeid { get; set; }
+
         public List<tbl_class> Classlist { get; set; }
+
+        public List<tblReceiptType> _receipttype { get; set; }
+
         public List<sp_getfeeslabels_Result> _feeslabellist { get; set; }
         public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
 

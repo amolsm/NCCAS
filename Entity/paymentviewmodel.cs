@@ -14,6 +14,9 @@ namespace Entity
         [DisplayName("Course Name ")]
         public int CourseId { get; set; }
 
+        [DisplayName("Receipt Type")]
+        public int receipttypeid { get; set; }
+
         [DisplayName("Student Name ")]
         public int Studid { get; set; }
 
@@ -23,10 +26,16 @@ namespace Entity
         [DisplayName("Scholarship Fees ")]
         public double ScholarshipFees { get; set; }
 
-        [DisplayName("Total Fees ")]
+        [DisplayName("Total Fees Amount ")]
         public double TotalFees { get; set; }
 
-        [DisplayName("Paid Fees ")]
+        [DisplayName("Previous Payment Amount ")]
+        public double Pr_PaymentAmt { get; set; }
+
+        [DisplayName("Fees Amount ")]
+        public double FeesAmt { get; set; }
+
+        [DisplayName("Payment Amount ")]
         public double PaidFees { get; set; }
         
         [DisplayName("Pending Fees ")]
@@ -37,14 +46,19 @@ namespace Entity
 
         public int PTypeid1 { get; set; }
 
+        [DisplayName("Academic Year : ")]
+        public List<string> academicyear { get; set; }
+
         [DisplayName("Remarks ")]
         public string Remarks { get; set; }
 
         [DisplayName("Status(Paid/Unpaid) ")]
         public bool Status { get; set; }
 
+        public int paymentid { get; set; }
         public List<tbl_class> Classlist { get; set; }
 
+        public List<tblReceiptType> _receipttype { get; set; }
         public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }
         public List<tbl_student> studlist { get; set; }
         public List<tbl_payterm> ptypelist { get; set; }

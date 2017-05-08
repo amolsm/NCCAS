@@ -272,6 +272,7 @@
     <Content Include="img\icons\Transportmanagement.png" />
     <Content Include="img\login.png" />
     <Content Include="img\loginnew2 .png" />
+    <Content Include="img\logo.png" />
     <Content Include="img\NACCASImage.jpg" />
     <Content Include="img\report.png" />
     <Content Include="img\sms.png" />
@@ -458,6 +459,14 @@
     <ProjectReference Include="..\BAL\BAL.csproj">
       <Project>{E03F880A-534C-4995-BCB1-1226A82368A3}</Project>
       <Name>BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0bc20ccc-0ec6-43c7-8ca4-f4327e60518f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{1d18d281-675b-489c-9917-98762b619f57}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{875AC1D8-77F0-4347-88DA-F1DFA606C80E}</Project>
@@ -727,6 +736,7 @@
     <Content Include="Views\Masters\InventoryVendor.cshtml" />
     <Content Include="Views\Masters\ReceiptType.cshtml" />
     <Content Include="Views\Masters\_receipttypelist.cshtml" />
+    <Content Include="Views\Fees\_printreceipt.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Entity;
+using Common;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -21,11 +22,12 @@ namespace SchoolManagementSystems.Controllers
             ViewData["Error"] = "";
             Userviewmodel uvm = new Userviewmodel();
             Dashboardviewmodel dvm = new Dashboardviewmodel();
-
-            if (Session["Userid"] != null && Session["Userid"] != "")
+            string currentdate = CommonUtility.FormatedDateString(DateTime.Now);
+            string datemonth = currentdate.Substring(0, 5);
+            if (Session["Userid"] != null && Session["Userid"].ToString() != "")
             {
                 dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
-                dvm.BirthdaylistDetails = db.tbl_student.Where(m => m.Studid != 0).ToList();
+                dvm.BirthdaylistDetails = db.sp_GetBirthdayListDetails().Where(m => m.DOB.ToUpper().Contains(datemonth.ToString())).OrderBy(m => m.Studnm).ToList();
 
                 return View("DashBoard", dvm);
             }
@@ -45,7 +47,7 @@ namespace SchoolManagementSystems.Controllers
                         Session["Role"] = uvm.Userdatacollection[0].Type.ToString();
                         Session["Genid"] = uvm.Userdatacollection[0].Genid.ToString();
                         dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
-                        dvm.BirthdaylistDetails = db.tbl_student.Where(m => m.Studid != 0).ToList();
+                        dvm.BirthdaylistDetails = db.sp_GetBirthdayListDetails().Where(m => m.DOB.ToUpper().Contains(datemonth.ToString())).OrderBy(m => m.Studnm).ToList();
                         return View("DashBoard", dvm);
                     }
                     else

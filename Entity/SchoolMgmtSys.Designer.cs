@@ -388,22 +388,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_feeslabel> tbl_feeslabel
-        {
-            get
-            {
-                if ((_tbl_feeslabel == null))
-                {
-                    _tbl_feeslabel = base.CreateObjectSet<tbl_feeslabel>("tbl_feeslabel");
-                }
-                return _tbl_feeslabel;
-            }
-        }
-        private ObjectSet<tbl_feeslabel> _tbl_feeslabel;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_feeslabelchild> tbl_feeslabelchild
         {
             get
@@ -996,38 +980,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_BookDetails> tbl_BookDetails
-        {
-            get
-            {
-                if ((_tbl_BookDetails == null))
-                {
-                    _tbl_BookDetails = base.CreateObjectSet<tbl_BookDetails>("tbl_BookDetails");
-                }
-                return _tbl_BookDetails;
-            }
-        }
-        private ObjectSet<tbl_BookDetails> _tbl_BookDetails;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<lib_Bookentry> lib_Bookentry
-        {
-            get
-            {
-                if ((_lib_Bookentry == null))
-                {
-                    _lib_Bookentry = base.CreateObjectSet<lib_Bookentry>("lib_Bookentry");
-                }
-                return _lib_Bookentry;
-            }
-        }
-        private ObjectSet<lib_Bookentry> _lib_Bookentry;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_collageeducationdetails> tbl_collageeducationdetails
         {
             get
@@ -1268,38 +1220,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_fees> tbl_fees
-        {
-            get
-            {
-                if ((_tbl_fees == null))
-                {
-                    _tbl_fees = base.CreateObjectSet<tbl_fees>("tbl_fees");
-                }
-                return _tbl_fees;
-            }
-        }
-        private ObjectSet<tbl_fees> _tbl_fees;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_feespayment> tbl_feespayment
-        {
-            get
-            {
-                if ((_tbl_feespayment == null))
-                {
-                    _tbl_feespayment = base.CreateObjectSet<tbl_feespayment>("tbl_feespayment");
-                }
-                return _tbl_feespayment;
-            }
-        }
-        private ObjectSet<tbl_feespayment> _tbl_feespayment;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_InventoryVendor> tbl_InventoryVendor
         {
             get
@@ -1344,6 +1264,86 @@ namespace Entity
             }
         }
         private ObjectSet<tblReceiptType> _tblReceiptTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_fees> tbl_fees
+        {
+            get
+            {
+                if ((_tbl_fees == null))
+                {
+                    _tbl_fees = base.CreateObjectSet<tbl_fees>("tbl_fees");
+                }
+                return _tbl_fees;
+            }
+        }
+        private ObjectSet<tbl_fees> _tbl_fees;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_feeslabel> tbl_feeslabel
+        {
+            get
+            {
+                if ((_tbl_feeslabel == null))
+                {
+                    _tbl_feeslabel = base.CreateObjectSet<tbl_feeslabel>("tbl_feeslabel");
+                }
+                return _tbl_feeslabel;
+            }
+        }
+        private ObjectSet<tbl_feeslabel> _tbl_feeslabel;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_feespayment> tbl_feespayment
+        {
+            get
+            {
+                if ((_tbl_feespayment == null))
+                {
+                    _tbl_feespayment = base.CreateObjectSet<tbl_feespayment>("tbl_feespayment");
+                }
+                return _tbl_feespayment;
+            }
+        }
+        private ObjectSet<tbl_feespayment> _tbl_feespayment;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lib_Bookentry> lib_Bookentry
+        {
+            get
+            {
+                if ((_lib_Bookentry == null))
+                {
+                    _lib_Bookentry = base.CreateObjectSet<lib_Bookentry>("lib_Bookentry");
+                }
+                return _lib_Bookentry;
+            }
+        }
+        private ObjectSet<lib_Bookentry> _lib_Bookentry;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_BookDetails> tbl_BookDetails
+        {
+            get
+            {
+                if ((_tbl_BookDetails == null))
+                {
+                    _tbl_BookDetails = base.CreateObjectSet<tbl_BookDetails>("tbl_BookDetails");
+                }
+                return _tbl_BookDetails;
+            }
+        }
+        private ObjectSet<tbl_BookDetails> _tbl_BookDetails;
 
         #endregion
 
@@ -1507,14 +1507,6 @@ namespace Entity
         public void AddTotbl_timetable(tbl_timetable tbl_timetable)
         {
             base.AddObject("tbl_timetable", tbl_timetable);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_feeslabel EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_feeslabel(tbl_feeslabel tbl_feeslabel)
-        {
-            base.AddObject("tbl_feeslabel", tbl_feeslabel);
         }
     
         /// <summary>
@@ -1814,22 +1806,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_BookDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_BookDetails(tbl_BookDetails tbl_BookDetails)
-        {
-            base.AddObject("tbl_BookDetails", tbl_BookDetails);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the lib_Bookentry EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTolib_Bookentry(lib_Bookentry lib_Bookentry)
-        {
-            base.AddObject("lib_Bookentry", lib_Bookentry);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_collageeducationdetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_collageeducationdetails(tbl_collageeducationdetails tbl_collageeducationdetails)
@@ -1950,22 +1926,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_fees EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_fees(tbl_fees tbl_fees)
-        {
-            base.AddObject("tbl_fees", tbl_fees);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_feespayment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_feespayment(tbl_feespayment tbl_feespayment)
-        {
-            base.AddObject("tbl_feespayment", tbl_feespayment);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_InventoryVendor EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_InventoryVendor(tbl_InventoryVendor tbl_InventoryVendor)
@@ -1987,6 +1947,46 @@ namespace Entity
         public void AddTotblReceiptTypes(tblReceiptType tblReceiptType)
         {
             base.AddObject("tblReceiptTypes", tblReceiptType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_fees EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_fees(tbl_fees tbl_fees)
+        {
+            base.AddObject("tbl_fees", tbl_fees);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_feeslabel EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_feeslabel(tbl_feeslabel tbl_feeslabel)
+        {
+            base.AddObject("tbl_feeslabel", tbl_feeslabel);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_feespayment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_feespayment(tbl_feespayment tbl_feespayment)
+        {
+            base.AddObject("tbl_feespayment", tbl_feespayment);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lib_Bookentry EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolib_Bookentry(lib_Bookentry lib_Bookentry)
+        {
+            base.AddObject("lib_Bookentry", lib_Bookentry);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_BookDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_BookDetails(tbl_BookDetails tbl_BookDetails)
+        {
+            base.AddObject("tbl_BookDetails", tbl_BookDetails);
         }
 
         #endregion
@@ -2561,14 +2561,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectResult<sp_getFeespaymentlist_Result> sp_getFeespaymentlist()
-        {
-            return base.ExecuteFunction<sp_getFeespaymentlist_Result>("sp_getFeespaymentlist");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectResult<sp_getCountry_Result> sp_getCountry()
         {
             return base.ExecuteFunction<sp_getCountry_Result>("sp_getCountry");
@@ -2596,146 +2588,6 @@ namespace Entity
         public ObjectResult<sp_getBloodgroup_Result> sp_getBloodgroup()
         {
             return base.ExecuteFunction<sp_getBloodgroup_Result>("sp_getBloodgroup");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="pid">No Metadata Documentation available.</param>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="studid">No Metadata Documentation available.</param>
-        /// <param name="scholarship">No Metadata Documentation available.</param>
-        /// <param name="scholarshipFees">No Metadata Documentation available.</param>
-        /// <param name="totalFees">No Metadata Documentation available.</param>
-        /// <param name="paidFees">No Metadata Documentation available.</param>
-        /// <param name="pendingFees">No Metadata Documentation available.</param>
-        /// <param name="pTypeid">No Metadata Documentation available.</param>
-        /// <param name="remarks">No Metadata Documentation available.</param>
-        /// <param name="status">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_feespayment_DML(Nullable<global::System.Int32> pid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> studid, Nullable<global::System.Boolean> scholarship, Nullable<global::System.Decimal> scholarshipFees, Nullable<global::System.Decimal> totalFees, Nullable<global::System.Decimal> paidFees, Nullable<global::System.Decimal> pendingFees, Nullable<global::System.Int32> pTypeid, global::System.String remarks, Nullable<global::System.Boolean> status, global::System.String act)
-        {
-            ObjectParameter pidParameter;
-            if (pid.HasValue)
-            {
-                pidParameter = new ObjectParameter("Pid", pid);
-            }
-            else
-            {
-                pidParameter = new ObjectParameter("Pid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("Classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter studidParameter;
-            if (studid.HasValue)
-            {
-                studidParameter = new ObjectParameter("Studid", studid);
-            }
-            else
-            {
-                studidParameter = new ObjectParameter("Studid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter scholarshipParameter;
-            if (scholarship.HasValue)
-            {
-                scholarshipParameter = new ObjectParameter("Scholarship", scholarship);
-            }
-            else
-            {
-                scholarshipParameter = new ObjectParameter("Scholarship", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter scholarshipFeesParameter;
-            if (scholarshipFees.HasValue)
-            {
-                scholarshipFeesParameter = new ObjectParameter("ScholarshipFees", scholarshipFees);
-            }
-            else
-            {
-                scholarshipFeesParameter = new ObjectParameter("ScholarshipFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter totalFeesParameter;
-            if (totalFees.HasValue)
-            {
-                totalFeesParameter = new ObjectParameter("TotalFees", totalFees);
-            }
-            else
-            {
-                totalFeesParameter = new ObjectParameter("TotalFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter paidFeesParameter;
-            if (paidFees.HasValue)
-            {
-                paidFeesParameter = new ObjectParameter("PaidFees", paidFees);
-            }
-            else
-            {
-                paidFeesParameter = new ObjectParameter("PaidFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter pendingFeesParameter;
-            if (pendingFees.HasValue)
-            {
-                pendingFeesParameter = new ObjectParameter("PendingFees", pendingFees);
-            }
-            else
-            {
-                pendingFeesParameter = new ObjectParameter("PendingFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter pTypeidParameter;
-            if (pTypeid.HasValue)
-            {
-                pTypeidParameter = new ObjectParameter("PTypeid", pTypeid);
-            }
-            else
-            {
-                pTypeidParameter = new ObjectParameter("PTypeid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter remarksParameter;
-            if (remarks != null)
-            {
-                remarksParameter = new ObjectParameter("Remarks", remarks);
-            }
-            else
-            {
-                remarksParameter = new ObjectParameter("Remarks", typeof(global::System.String));
-            }
-    
-            ObjectParameter statusParameter;
-            if (status.HasValue)
-            {
-                statusParameter = new ObjectParameter("Status", status);
-            }
-            else
-            {
-                statusParameter = new ObjectParameter("Status", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_feespayment_DML", pidParameter, classidParameter, studidParameter, scholarshipParameter, scholarshipFeesParameter, totalFeesParameter, paidFeesParameter, pendingFeesParameter, pTypeidParameter, remarksParameter, statusParameter, actParameter);
         }
     
         /// <summary>
@@ -3661,58 +3513,6 @@ namespace Entity
         /// No Metadata Documentation available.
         /// </summary>
         /// <param name="feeslblid">No Metadata Documentation available.</param>
-        /// <param name="ctrlcnt">No Metadata Documentation available.</param>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_feeslabel_DML(Nullable<global::System.Int32> feeslblid, Nullable<global::System.Int32> ctrlcnt, Nullable<global::System.Int32> classid, global::System.String act)
-        {
-            ObjectParameter feeslblidParameter;
-            if (feeslblid.HasValue)
-            {
-                feeslblidParameter = new ObjectParameter("feeslblid", feeslblid);
-            }
-            else
-            {
-                feeslblidParameter = new ObjectParameter("feeslblid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter ctrlcntParameter;
-            if (ctrlcnt.HasValue)
-            {
-                ctrlcntParameter = new ObjectParameter("ctrlcnt", ctrlcnt);
-            }
-            else
-            {
-                ctrlcntParameter = new ObjectParameter("ctrlcnt", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_feeslabel_DML", feeslblidParameter, ctrlcntParameter, classidParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="feeslblid">No Metadata Documentation available.</param>
         /// <param name="ctrlnm">No Metadata Documentation available.</param>
         /// <param name="act">No Metadata Documentation available.</param>
         public int sp_feeslabelchild_DML(Nullable<global::System.Int32> feeslblid, global::System.String ctrlnm, global::System.String act)
@@ -3748,14 +3548,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_feeslabelchild_DML", feeslblidParameter, ctrlnmParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getfeeslabels_Result> sp_getfeeslabels()
-        {
-            return base.ExecuteFunction<sp_getfeeslabels_Result>("sp_getfeeslabels");
         }
     
         /// <summary>
@@ -3808,132 +3600,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_feeschild_DML", feesidParameter, feesNmParameter, feesParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="feesid">No Metadata Documentation available.</param>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="lFees">No Metadata Documentation available.</param>
-        /// <param name="tFees">No Metadata Documentation available.</param>
-        /// <param name="uFees">No Metadata Documentation available.</param>
-        /// <param name="hFees">No Metadata Documentation available.</param>
-        /// <param name="oFees">No Metadata Documentation available.</param>
-        /// <param name="totalFees">No Metadata Documentation available.</param>
-        /// <param name="pTypeid">No Metadata Documentation available.</param>
-        /// <param name="act">No Metadata Documentation available.</param>
-        public int sp_feessetup_DML(Nullable<global::System.Int32> feesid, Nullable<global::System.Int32> classid, Nullable<global::System.Decimal> lFees, Nullable<global::System.Decimal> tFees, Nullable<global::System.Decimal> uFees, Nullable<global::System.Decimal> hFees, Nullable<global::System.Decimal> oFees, Nullable<global::System.Decimal> totalFees, Nullable<global::System.Int32> pTypeid, global::System.String act)
-        {
-            ObjectParameter feesidParameter;
-            if (feesid.HasValue)
-            {
-                feesidParameter = new ObjectParameter("Feesid", feesid);
-            }
-            else
-            {
-                feesidParameter = new ObjectParameter("Feesid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("Classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter lFeesParameter;
-            if (lFees.HasValue)
-            {
-                lFeesParameter = new ObjectParameter("LFees", lFees);
-            }
-            else
-            {
-                lFeesParameter = new ObjectParameter("LFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter tFeesParameter;
-            if (tFees.HasValue)
-            {
-                tFeesParameter = new ObjectParameter("TFees", tFees);
-            }
-            else
-            {
-                tFeesParameter = new ObjectParameter("TFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter uFeesParameter;
-            if (uFees.HasValue)
-            {
-                uFeesParameter = new ObjectParameter("UFees", uFees);
-            }
-            else
-            {
-                uFeesParameter = new ObjectParameter("UFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter hFeesParameter;
-            if (hFees.HasValue)
-            {
-                hFeesParameter = new ObjectParameter("HFees", hFees);
-            }
-            else
-            {
-                hFeesParameter = new ObjectParameter("HFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter oFeesParameter;
-            if (oFees.HasValue)
-            {
-                oFeesParameter = new ObjectParameter("OFees", oFees);
-            }
-            else
-            {
-                oFeesParameter = new ObjectParameter("OFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter totalFeesParameter;
-            if (totalFees.HasValue)
-            {
-                totalFeesParameter = new ObjectParameter("TotalFees", totalFees);
-            }
-            else
-            {
-                totalFeesParameter = new ObjectParameter("TotalFees", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter pTypeidParameter;
-            if (pTypeid.HasValue)
-            {
-                pTypeidParameter = new ObjectParameter("PTypeid", pTypeid);
-            }
-            else
-            {
-                pTypeidParameter = new ObjectParameter("PTypeid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter actParameter;
-            if (act != null)
-            {
-                actParameter = new ObjectParameter("act", act);
-            }
-            else
-            {
-                actParameter = new ObjectParameter("act", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction("sp_feessetup_DML", feesidParameter, classidParameter, lFeesParameter, tFeesParameter, uFeesParameter, hFeesParameter, oFeesParameter, totalFeesParameter, pTypeidParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getFeessetup_Result> sp_getFeessetup()
-        {
-            return base.ExecuteFunction<sp_getFeessetup_Result>("sp_getFeessetup");
         }
     
         /// <summary>
@@ -11678,25 +11344,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="bookid">No Metadata Documentation available.</param>
-        public ObjectResult<Sp_GetLibBookDetailsbyId_Result> Sp_GetLibBookDetailsbyId(Nullable<global::System.Int32> bookid)
-        {
-            ObjectParameter bookidParameter;
-            if (bookid.HasValue)
-            {
-                bookidParameter = new ObjectParameter("bookid", bookid);
-            }
-            else
-            {
-                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<Sp_GetLibBookDetailsbyId_Result>("Sp_GetLibBookDetailsbyId", bookidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="examid">No Metadata Documentation available.</param>
         public ObjectResult<sp_StudentMarks_Result> sp_StudentMarks(Nullable<global::System.Int32> examid)
         {
@@ -15517,6 +15164,490 @@ namespace Entity
     
             return base.ExecuteFunction("sp_ReceiptType_DML", r_IdParameter, r_NameParameter, statusParameter, actParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getfeeslabels_Result> sp_getfeeslabels()
+        {
+            return base.ExecuteFunction<sp_getfeeslabels_Result>("sp_getfeeslabels");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="feesid">No Metadata Documentation available.</param>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="receipttypeid">No Metadata Documentation available.</param>
+        /// <param name="lFees">No Metadata Documentation available.</param>
+        /// <param name="tFees">No Metadata Documentation available.</param>
+        /// <param name="uFees">No Metadata Documentation available.</param>
+        /// <param name="hFees">No Metadata Documentation available.</param>
+        /// <param name="oFees">No Metadata Documentation available.</param>
+        /// <param name="totalFees">No Metadata Documentation available.</param>
+        /// <param name="pTypeid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_feessetup_DML(Nullable<global::System.Int32> feesid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> receipttypeid, Nullable<global::System.Decimal> lFees, Nullable<global::System.Decimal> tFees, Nullable<global::System.Decimal> uFees, Nullable<global::System.Decimal> hFees, Nullable<global::System.Decimal> oFees, Nullable<global::System.Decimal> totalFees, Nullable<global::System.Int32> pTypeid, global::System.String act)
+        {
+            ObjectParameter feesidParameter;
+            if (feesid.HasValue)
+            {
+                feesidParameter = new ObjectParameter("Feesid", feesid);
+            }
+            else
+            {
+                feesidParameter = new ObjectParameter("Feesid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("Classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter receipttypeidParameter;
+            if (receipttypeid.HasValue)
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", receipttypeid);
+            }
+            else
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter lFeesParameter;
+            if (lFees.HasValue)
+            {
+                lFeesParameter = new ObjectParameter("LFees", lFees);
+            }
+            else
+            {
+                lFeesParameter = new ObjectParameter("LFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter tFeesParameter;
+            if (tFees.HasValue)
+            {
+                tFeesParameter = new ObjectParameter("TFees", tFees);
+            }
+            else
+            {
+                tFeesParameter = new ObjectParameter("TFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter uFeesParameter;
+            if (uFees.HasValue)
+            {
+                uFeesParameter = new ObjectParameter("UFees", uFees);
+            }
+            else
+            {
+                uFeesParameter = new ObjectParameter("UFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter hFeesParameter;
+            if (hFees.HasValue)
+            {
+                hFeesParameter = new ObjectParameter("HFees", hFees);
+            }
+            else
+            {
+                hFeesParameter = new ObjectParameter("HFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter oFeesParameter;
+            if (oFees.HasValue)
+            {
+                oFeesParameter = new ObjectParameter("OFees", oFees);
+            }
+            else
+            {
+                oFeesParameter = new ObjectParameter("OFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter totalFeesParameter;
+            if (totalFees.HasValue)
+            {
+                totalFeesParameter = new ObjectParameter("TotalFees", totalFees);
+            }
+            else
+            {
+                totalFeesParameter = new ObjectParameter("TotalFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter pTypeidParameter;
+            if (pTypeid.HasValue)
+            {
+                pTypeidParameter = new ObjectParameter("PTypeid", pTypeid);
+            }
+            else
+            {
+                pTypeidParameter = new ObjectParameter("PTypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_feessetup_DML", feesidParameter, classidParameter, receipttypeidParameter, lFeesParameter, tFeesParameter, uFeesParameter, hFeesParameter, oFeesParameter, totalFeesParameter, pTypeidParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getFeessetup_Result> sp_getFeessetup()
+        {
+            return base.ExecuteFunction<sp_getFeessetup_Result>("sp_getFeessetup");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="feePid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetFeeReceiptdetailsbyFeeId_Result> sp_GetFeeReceiptdetailsbyFeeId(Nullable<global::System.Int32> feePid)
+        {
+            ObjectParameter feePidParameter;
+            if (feePid.HasValue)
+            {
+                feePidParameter = new ObjectParameter("feePid", feePid);
+            }
+            else
+            {
+                feePidParameter = new ObjectParameter("feePid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_GetFeeReceiptdetailsbyFeeId_Result>("sp_GetFeeReceiptdetailsbyFeeId", feePidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="feeslblid">No Metadata Documentation available.</param>
+        /// <param name="ctrlcnt">No Metadata Documentation available.</param>
+        /// <param name="receipttypeid">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        public int sp_feeslabel_DML(Nullable<global::System.Int32> feeslblid, Nullable<global::System.Int32> ctrlcnt, Nullable<global::System.Int32> receipttypeid, global::System.String act)
+        {
+            ObjectParameter feeslblidParameter;
+            if (feeslblid.HasValue)
+            {
+                feeslblidParameter = new ObjectParameter("feeslblid", feeslblid);
+            }
+            else
+            {
+                feeslblidParameter = new ObjectParameter("feeslblid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter ctrlcntParameter;
+            if (ctrlcnt.HasValue)
+            {
+                ctrlcntParameter = new ObjectParameter("ctrlcnt", ctrlcnt);
+            }
+            else
+            {
+                ctrlcntParameter = new ObjectParameter("ctrlcnt", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter receipttypeidParameter;
+            if (receipttypeid.HasValue)
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", receipttypeid);
+            }
+            else
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_feeslabel_DML", feeslblidParameter, ctrlcntParameter, receipttypeidParameter, actParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="studid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="receipttypeid">No Metadata Documentation available.</param>
+        /// <param name="accademicyear">No Metadata Documentation available.</param>
+        public ObjectResult<sp_checkPreviousFeesPaymentAmt_Result> sp_checkPreviousFeesPaymentAmt(Nullable<global::System.Int32> studid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> receipttypeid, global::System.String accademicyear)
+        {
+            ObjectParameter studidParameter;
+            if (studid.HasValue)
+            {
+                studidParameter = new ObjectParameter("Studid", studid);
+            }
+            else
+            {
+                studidParameter = new ObjectParameter("Studid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter receipttypeidParameter;
+            if (receipttypeid.HasValue)
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", receipttypeid);
+            }
+            else
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter accademicyearParameter;
+            if (accademicyear != null)
+            {
+                accademicyearParameter = new ObjectParameter("accademicyear", accademicyear);
+            }
+            else
+            {
+                accademicyearParameter = new ObjectParameter("accademicyear", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<sp_checkPreviousFeesPaymentAmt_Result>("sp_checkPreviousFeesPaymentAmt", studidParameter, courseidParameter, receipttypeidParameter, accademicyearParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="pid">No Metadata Documentation available.</param>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="receipttypeid">No Metadata Documentation available.</param>
+        /// <param name="studid">No Metadata Documentation available.</param>
+        /// <param name="scholarship">No Metadata Documentation available.</param>
+        /// <param name="scholarshipFees">No Metadata Documentation available.</param>
+        /// <param name="totalFees">No Metadata Documentation available.</param>
+        /// <param name="paidFees">No Metadata Documentation available.</param>
+        /// <param name="pendingFees">No Metadata Documentation available.</param>
+        /// <param name="pTypeid">No Metadata Documentation available.</param>
+        /// <param name="remarks">No Metadata Documentation available.</param>
+        /// <param name="status">No Metadata Documentation available.</param>
+        /// <param name="act">No Metadata Documentation available.</param>
+        /// <param name="academicyear">No Metadata Documentation available.</param>
+        public int sp_feespayment_DML(Nullable<global::System.Int32> pid, Nullable<global::System.Int32> classid, Nullable<global::System.Int32> receipttypeid, Nullable<global::System.Int32> studid, Nullable<global::System.Boolean> scholarship, Nullable<global::System.Decimal> scholarshipFees, Nullable<global::System.Decimal> totalFees, Nullable<global::System.Decimal> paidFees, Nullable<global::System.Decimal> pendingFees, Nullable<global::System.Int32> pTypeid, global::System.String remarks, Nullable<global::System.Boolean> status, global::System.String act, global::System.String academicyear)
+        {
+            ObjectParameter pidParameter;
+            if (pid.HasValue)
+            {
+                pidParameter = new ObjectParameter("Pid", pid);
+            }
+            else
+            {
+                pidParameter = new ObjectParameter("Pid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("Classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter receipttypeidParameter;
+            if (receipttypeid.HasValue)
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", receipttypeid);
+            }
+            else
+            {
+                receipttypeidParameter = new ObjectParameter("receipttypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter studidParameter;
+            if (studid.HasValue)
+            {
+                studidParameter = new ObjectParameter("Studid", studid);
+            }
+            else
+            {
+                studidParameter = new ObjectParameter("Studid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter scholarshipParameter;
+            if (scholarship.HasValue)
+            {
+                scholarshipParameter = new ObjectParameter("Scholarship", scholarship);
+            }
+            else
+            {
+                scholarshipParameter = new ObjectParameter("Scholarship", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter scholarshipFeesParameter;
+            if (scholarshipFees.HasValue)
+            {
+                scholarshipFeesParameter = new ObjectParameter("ScholarshipFees", scholarshipFees);
+            }
+            else
+            {
+                scholarshipFeesParameter = new ObjectParameter("ScholarshipFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter totalFeesParameter;
+            if (totalFees.HasValue)
+            {
+                totalFeesParameter = new ObjectParameter("TotalFees", totalFees);
+            }
+            else
+            {
+                totalFeesParameter = new ObjectParameter("TotalFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter paidFeesParameter;
+            if (paidFees.HasValue)
+            {
+                paidFeesParameter = new ObjectParameter("PaidFees", paidFees);
+            }
+            else
+            {
+                paidFeesParameter = new ObjectParameter("PaidFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter pendingFeesParameter;
+            if (pendingFees.HasValue)
+            {
+                pendingFeesParameter = new ObjectParameter("PendingFees", pendingFees);
+            }
+            else
+            {
+                pendingFeesParameter = new ObjectParameter("PendingFees", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter pTypeidParameter;
+            if (pTypeid.HasValue)
+            {
+                pTypeidParameter = new ObjectParameter("PTypeid", pTypeid);
+            }
+            else
+            {
+                pTypeidParameter = new ObjectParameter("PTypeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter remarksParameter;
+            if (remarks != null)
+            {
+                remarksParameter = new ObjectParameter("Remarks", remarks);
+            }
+            else
+            {
+                remarksParameter = new ObjectParameter("Remarks", typeof(global::System.String));
+            }
+    
+            ObjectParameter statusParameter;
+            if (status.HasValue)
+            {
+                statusParameter = new ObjectParameter("Status", status);
+            }
+            else
+            {
+                statusParameter = new ObjectParameter("Status", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter actParameter;
+            if (act != null)
+            {
+                actParameter = new ObjectParameter("act", act);
+            }
+            else
+            {
+                actParameter = new ObjectParameter("act", typeof(global::System.String));
+            }
+    
+            ObjectParameter academicyearParameter;
+            if (academicyear != null)
+            {
+                academicyearParameter = new ObjectParameter("academicyear", academicyear);
+            }
+            else
+            {
+                academicyearParameter = new ObjectParameter("academicyear", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_feespayment_DML", pidParameter, classidParameter, receipttypeidParameter, studidParameter, scholarshipParameter, scholarshipFeesParameter, totalFeesParameter, paidFeesParameter, pendingFeesParameter, pTypeidParameter, remarksParameter, statusParameter, actParameter, academicyearParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="feePid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetFeeReceiptbyFeeId_Result> sp_GetFeeReceiptbyFeeId(Nullable<global::System.Int32> feePid)
+        {
+            ObjectParameter feePidParameter;
+            if (feePid.HasValue)
+            {
+                feePidParameter = new ObjectParameter("feePid", feePid);
+            }
+            else
+            {
+                feePidParameter = new ObjectParameter("feePid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_GetFeeReceiptbyFeeId_Result>("sp_GetFeeReceiptbyFeeId", feePidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getFeespaymentlist_Result> sp_getFeespaymentlist()
+        {
+            return base.ExecuteFunction<sp_getFeespaymentlist_Result>("sp_getFeespaymentlist");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_GetBirthdayListDetails_Result> sp_GetBirthdayListDetails()
+        {
+            return base.ExecuteFunction<sp_GetBirthdayListDetails_Result>("sp_GetBirthdayListDetails");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="bookid">No Metadata Documentation available.</param>
+        public ObjectResult<Sp_GetLibBookDetailsbyId_Result> Sp_GetLibBookDetailsbyId(Nullable<global::System.Int32> bookid)
+        {
+            ObjectParameter bookidParameter;
+            if (bookid.HasValue)
+            {
+                bookidParameter = new ObjectParameter("bookid", bookid);
+            }
+            else
+            {
+                bookidParameter = new ObjectParameter("bookid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<Sp_GetLibBookDetailsbyId_Result>("Sp_GetLibBookDetailsbyId", bookidParameter);
+        }
 
         #endregion
 
@@ -17131,6 +17262,30 @@ namespace Entity
         private Nullable<global::System.Int32> _createdby;
         partial void OncreatedbyChanging(Nullable<global::System.Int32> value);
         partial void OncreatedbyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SerialNo
+        {
+            get
+            {
+                return _SerialNo;
+            }
+            set
+            {
+                OnSerialNoChanging(value);
+                ReportPropertyChanging("SerialNo");
+                _SerialNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SerialNo");
+                OnSerialNoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SerialNo;
+        partial void OnSerialNoChanging(Nullable<global::System.Int32> value);
+        partial void OnSerialNoChanged();
 
         #endregion
 
@@ -20882,30 +21037,6 @@ namespace Entity
         private global::System.String _Volume;
         partial void OnVolumeChanging(global::System.String value);
         partial void OnVolumeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SerialNo
-        {
-            get
-            {
-                return _SerialNo;
-            }
-            set
-            {
-                OnSerialNoChanging(value);
-                ReportPropertyChanging("SerialNo");
-                _SerialNo = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SerialNo");
-                OnSerialNoChanged();
-            }
-        }
-        private global::System.String _SerialNo;
-        partial void OnSerialNoChanging(global::System.String value);
-        partial void OnSerialNoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -32037,6 +32168,30 @@ namespace Entity
         private global::System.Int32 _PTypeid;
         partial void OnPTypeidChanging(global::System.Int32 value);
         partial void OnPTypeidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> receipttypeid
+        {
+            get
+            {
+                return _receipttypeid;
+            }
+            set
+            {
+                OnreceipttypeidChanging(value);
+                ReportPropertyChanging("receipttypeid");
+                _receipttypeid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("receipttypeid");
+                OnreceipttypeidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _receipttypeid;
+        partial void OnreceipttypeidChanging(Nullable<global::System.Int32> value);
+        partial void OnreceipttypeidChanged();
 
         #endregion
 
@@ -32261,6 +32416,30 @@ namespace Entity
         private global::System.Int32 _classid;
         partial void OnclassidChanging(global::System.Int32 value);
         partial void OnclassidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> receipttypeid
+        {
+            get
+            {
+                return _receipttypeid;
+            }
+            set
+            {
+                OnreceipttypeidChanging(value);
+                ReportPropertyChanging("receipttypeid");
+                _receipttypeid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("receipttypeid");
+                OnreceipttypeidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _receipttypeid;
+        partial void OnreceipttypeidChanging(Nullable<global::System.Int32> value);
+        partial void OnreceipttypeidChanged();
 
         #endregion
 
@@ -32657,6 +32836,78 @@ namespace Entity
         private global::System.Boolean _Status;
         partial void OnStatusChanging(global::System.Boolean value);
         partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> receipttypeid
+        {
+            get
+            {
+                return _receipttypeid;
+            }
+            set
+            {
+                OnreceipttypeidChanging(value);
+                ReportPropertyChanging("receipttypeid");
+                _receipttypeid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("receipttypeid");
+                OnreceipttypeidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _receipttypeid;
+        partial void OnreceipttypeidChanging(Nullable<global::System.Int32> value);
+        partial void OnreceipttypeidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> PaymentDate
+        {
+            get
+            {
+                return _PaymentDate;
+            }
+            set
+            {
+                OnPaymentDateChanging(value);
+                ReportPropertyChanging("PaymentDate");
+                _PaymentDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PaymentDate");
+                OnPaymentDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _PaymentDate;
+        partial void OnPaymentDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnPaymentDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String academicyear
+        {
+            get
+            {
+                return _academicyear;
+            }
+            set
+            {
+                OnacademicyearChanging(value);
+                ReportPropertyChanging("academicyear");
+                _academicyear = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("academicyear");
+                OnacademicyearChanged();
+            }
+        }
+        private global::System.String _academicyear;
+        partial void OnacademicyearChanging(global::System.String value);
+        partial void OnacademicyearChanged();
 
         #endregion
 
@@ -43127,6 +43378,211 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_checkPreviousFeesPaymentAmt_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_checkPreviousFeesPaymentAmt_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_checkPreviousFeesPaymentAmt_Result object.
+        /// </summary>
+        /// <param name="courseid">Initial value of the Courseid property.</param>
+        /// <param name="studid">Initial value of the Studid property.</param>
+        /// <param name="scholarshipFees">Initial value of the ScholarshipFees property.</param>
+        /// <param name="paidFees">Initial value of the PaidFees property.</param>
+        /// <param name="pendingFees">Initial value of the PendingFees property.</param>
+        public static sp_checkPreviousFeesPaymentAmt_Result Createsp_checkPreviousFeesPaymentAmt_Result(global::System.Int32 courseid, global::System.Int32 studid, global::System.Decimal scholarshipFees, global::System.Decimal paidFees, global::System.Decimal pendingFees)
+        {
+            sp_checkPreviousFeesPaymentAmt_Result sp_checkPreviousFeesPaymentAmt_Result = new sp_checkPreviousFeesPaymentAmt_Result();
+            sp_checkPreviousFeesPaymentAmt_Result.Courseid = courseid;
+            sp_checkPreviousFeesPaymentAmt_Result.Studid = studid;
+            sp_checkPreviousFeesPaymentAmt_Result.ScholarshipFees = scholarshipFees;
+            sp_checkPreviousFeesPaymentAmt_Result.PaidFees = paidFees;
+            sp_checkPreviousFeesPaymentAmt_Result.PendingFees = pendingFees;
+            return sp_checkPreviousFeesPaymentAmt_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private global::System.Int32 _Courseid;
+        partial void OnCourseidChanging(global::System.Int32 value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Studid
+        {
+            get
+            {
+                return _Studid;
+            }
+            set
+            {
+                OnStudidChanging(value);
+                ReportPropertyChanging("Studid");
+                _Studid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Studid");
+                OnStudidChanged();
+            }
+        }
+        private global::System.Int32 _Studid;
+        partial void OnStudidChanging(global::System.Int32 value);
+        partial void OnStudidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> receipttypeid
+        {
+            get
+            {
+                return _receipttypeid;
+            }
+            set
+            {
+                OnreceipttypeidChanging(value);
+                ReportPropertyChanging("receipttypeid");
+                _receipttypeid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("receipttypeid");
+                OnreceipttypeidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _receipttypeid;
+        partial void OnreceipttypeidChanging(Nullable<global::System.Int32> value);
+        partial void OnreceipttypeidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String academicyear
+        {
+            get
+            {
+                return _academicyear;
+            }
+            set
+            {
+                OnacademicyearChanging(value);
+                ReportPropertyChanging("academicyear");
+                _academicyear = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("academicyear");
+                OnacademicyearChanged();
+            }
+        }
+        private global::System.String _academicyear;
+        partial void OnacademicyearChanging(global::System.String value);
+        partial void OnacademicyearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ScholarshipFees
+        {
+            get
+            {
+                return _ScholarshipFees;
+            }
+            set
+            {
+                OnScholarshipFeesChanging(value);
+                ReportPropertyChanging("ScholarshipFees");
+                _ScholarshipFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScholarshipFees");
+                OnScholarshipFeesChanged();
+            }
+        }
+        private global::System.Decimal _ScholarshipFees;
+        partial void OnScholarshipFeesChanging(global::System.Decimal value);
+        partial void OnScholarshipFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal PaidFees
+        {
+            get
+            {
+                return _PaidFees;
+            }
+            set
+            {
+                OnPaidFeesChanging(value);
+                ReportPropertyChanging("PaidFees");
+                _PaidFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PaidFees");
+                OnPaidFeesChanged();
+            }
+        }
+        private global::System.Decimal _PaidFees;
+        partial void OnPaidFeesChanging(global::System.Decimal value);
+        partial void OnPaidFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal PendingFees
+        {
+            get
+            {
+                return _PendingFees;
+            }
+            set
+            {
+                OnPendingFeesChanging(value);
+                ReportPropertyChanging("PendingFees");
+                _PendingFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PendingFees");
+                OnPendingFeesChanged();
+            }
+        }
+        private global::System.Decimal _PendingFees;
+        partial void OnPendingFeesChanging(global::System.Decimal value);
+        partial void OnPendingFeesChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_checkUserLogin_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -44450,6 +44906,92 @@ namespace Entity
         private Nullable<global::System.Int32> _AvailableLeave;
         partial void OnAvailableLeaveChanging(Nullable<global::System.Int32> value);
         partial void OnAvailableLeaveChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetBirthdayListDetails_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetBirthdayListDetails_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Studnm
+        {
+            get
+            {
+                return _Studnm;
+            }
+            set
+            {
+                OnStudnmChanging(value);
+                ReportPropertyChanging("Studnm");
+                _Studnm = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Studnm");
+                OnStudnmChanged();
+            }
+        }
+        private global::System.String _Studnm;
+        partial void OnStudnmChanging(global::System.String value);
+        partial void OnStudnmChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DOB
+        {
+            get
+            {
+                return _DOB;
+            }
+            set
+            {
+                OnDOBChanging(value);
+                ReportPropertyChanging("DOB");
+                _DOB = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DOB");
+                OnDOBChanged();
+            }
+        }
+        private global::System.String _DOB;
+        partial void OnDOBChanging(global::System.String value);
+        partial void OnDOBChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Course
+        {
+            get
+            {
+                return _Course;
+            }
+            set
+            {
+                OnCourseChanging(value);
+                ReportPropertyChanging("Course");
+                _Course = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Course");
+                OnCourseChanged();
+            }
+        }
+        private global::System.String _Course;
+        partial void OnCourseChanging(global::System.String value);
+        partial void OnCourseChanged();
 
         #endregion
 
@@ -48816,6 +49358,414 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetFeeReceiptbyFeeId_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetFeeReceiptbyFeeId_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetFeeReceiptbyFeeId_Result object.
+        /// </summary>
+        /// <param name="no">Initial value of the No property.</param>
+        /// <param name="rollNo">Initial value of the RollNo property.</param>
+        /// <param name="scholarshipFees">Initial value of the ScholarshipFees property.</param>
+        /// <param name="totalFees">Initial value of the TotalFees property.</param>
+        /// <param name="paidFees">Initial value of the PaidFees property.</param>
+        /// <param name="pendingFees">Initial value of the PendingFees property.</param>
+        public static sp_GetFeeReceiptbyFeeId_Result Createsp_GetFeeReceiptbyFeeId_Result(global::System.Int32 no, global::System.Int32 rollNo, global::System.Decimal scholarshipFees, global::System.Decimal totalFees, global::System.Decimal paidFees, global::System.Decimal pendingFees)
+        {
+            sp_GetFeeReceiptbyFeeId_Result sp_GetFeeReceiptbyFeeId_Result = new sp_GetFeeReceiptbyFeeId_Result();
+            sp_GetFeeReceiptbyFeeId_Result.No = no;
+            sp_GetFeeReceiptbyFeeId_Result.RollNo = rollNo;
+            sp_GetFeeReceiptbyFeeId_Result.ScholarshipFees = scholarshipFees;
+            sp_GetFeeReceiptbyFeeId_Result.TotalFees = totalFees;
+            sp_GetFeeReceiptbyFeeId_Result.PaidFees = paidFees;
+            sp_GetFeeReceiptbyFeeId_Result.PendingFees = pendingFees;
+            return sp_GetFeeReceiptbyFeeId_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 No
+        {
+            get
+            {
+                return _No;
+            }
+            set
+            {
+                OnNoChanging(value);
+                ReportPropertyChanging("No");
+                _No = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("No");
+                OnNoChanged();
+            }
+        }
+        private global::System.Int32 _No;
+        partial void OnNoChanging(global::System.Int32 value);
+        partial void OnNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StudentName
+        {
+            get
+            {
+                return _StudentName;
+            }
+            set
+            {
+                OnStudentNameChanging(value);
+                ReportPropertyChanging("StudentName");
+                _StudentName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StudentName");
+                OnStudentNameChanged();
+            }
+        }
+        private global::System.String _StudentName;
+        partial void OnStudentNameChanging(global::System.String value);
+        partial void OnStudentNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Course
+        {
+            get
+            {
+                return _Course;
+            }
+            set
+            {
+                OnCourseChanging(value);
+                ReportPropertyChanging("Course");
+                _Course = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Course");
+                OnCourseChanged();
+            }
+        }
+        private global::System.String _Course;
+        partial void OnCourseChanging(global::System.String value);
+        partial void OnCourseChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RollNo
+        {
+            get
+            {
+                return _RollNo;
+            }
+            set
+            {
+                OnRollNoChanging(value);
+                ReportPropertyChanging("RollNo");
+                _RollNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RollNo");
+                OnRollNoChanged();
+            }
+        }
+        private global::System.Int32 _RollNo;
+        partial void OnRollNoChanging(global::System.Int32 value);
+        partial void OnRollNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ScholarshipFees
+        {
+            get
+            {
+                return _ScholarshipFees;
+            }
+            set
+            {
+                OnScholarshipFeesChanging(value);
+                ReportPropertyChanging("ScholarshipFees");
+                _ScholarshipFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScholarshipFees");
+                OnScholarshipFeesChanged();
+            }
+        }
+        private global::System.Decimal _ScholarshipFees;
+        partial void OnScholarshipFeesChanging(global::System.Decimal value);
+        partial void OnScholarshipFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal TotalFees
+        {
+            get
+            {
+                return _TotalFees;
+            }
+            set
+            {
+                OnTotalFeesChanging(value);
+                ReportPropertyChanging("TotalFees");
+                _TotalFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalFees");
+                OnTotalFeesChanged();
+            }
+        }
+        private global::System.Decimal _TotalFees;
+        partial void OnTotalFeesChanging(global::System.Decimal value);
+        partial void OnTotalFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal PaidFees
+        {
+            get
+            {
+                return _PaidFees;
+            }
+            set
+            {
+                OnPaidFeesChanging(value);
+                ReportPropertyChanging("PaidFees");
+                _PaidFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PaidFees");
+                OnPaidFeesChanged();
+            }
+        }
+        private global::System.Decimal _PaidFees;
+        partial void OnPaidFeesChanging(global::System.Decimal value);
+        partial void OnPaidFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal PendingFees
+        {
+            get
+            {
+                return _PendingFees;
+            }
+            set
+            {
+                OnPendingFeesChanging(value);
+                ReportPropertyChanging("PendingFees");
+                _PendingFees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PendingFees");
+                OnPendingFeesChanged();
+            }
+        }
+        private global::System.Decimal _PendingFees;
+        partial void OnPendingFeesChanging(global::System.Decimal value);
+        partial void OnPendingFeesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String R_Name
+        {
+            get
+            {
+                return _R_Name;
+            }
+            set
+            {
+                OnR_NameChanging(value);
+                ReportPropertyChanging("R_Name");
+                _R_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("R_Name");
+                OnR_NameChanged();
+            }
+        }
+        private global::System.String _R_Name;
+        partial void OnR_NameChanging(global::System.String value);
+        partial void OnR_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String P_Date
+        {
+            get
+            {
+                return _P_Date;
+            }
+            set
+            {
+                OnP_DateChanging(value);
+                ReportPropertyChanging("P_Date");
+                _P_Date = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("P_Date");
+                OnP_DateChanged();
+            }
+        }
+        private global::System.String _P_Date;
+        partial void OnP_DateChanging(global::System.String value);
+        partial void OnP_DateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String academicyear
+        {
+            get
+            {
+                return _academicyear;
+            }
+            set
+            {
+                OnacademicyearChanging(value);
+                ReportPropertyChanging("academicyear");
+                _academicyear = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("academicyear");
+                OnacademicyearChanged();
+            }
+        }
+        private global::System.String _academicyear;
+        partial void OnacademicyearChanging(global::System.String value);
+        partial void OnacademicyearChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetFeeReceiptdetailsbyFeeId_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetFeeReceiptdetailsbyFeeId_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetFeeReceiptdetailsbyFeeId_Result object.
+        /// </summary>
+        /// <param name="feesid">Initial value of the Feesid property.</param>
+        /// <param name="feesNm">Initial value of the FeesNm property.</param>
+        /// <param name="fees">Initial value of the Fees property.</param>
+        public static sp_GetFeeReceiptdetailsbyFeeId_Result Createsp_GetFeeReceiptdetailsbyFeeId_Result(global::System.Int32 feesid, global::System.String feesNm, global::System.Decimal fees)
+        {
+            sp_GetFeeReceiptdetailsbyFeeId_Result sp_GetFeeReceiptdetailsbyFeeId_Result = new sp_GetFeeReceiptdetailsbyFeeId_Result();
+            sp_GetFeeReceiptdetailsbyFeeId_Result.Feesid = feesid;
+            sp_GetFeeReceiptdetailsbyFeeId_Result.FeesNm = feesNm;
+            sp_GetFeeReceiptdetailsbyFeeId_Result.Fees = fees;
+            return sp_GetFeeReceiptdetailsbyFeeId_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Feesid
+        {
+            get
+            {
+                return _Feesid;
+            }
+            set
+            {
+                OnFeesidChanging(value);
+                ReportPropertyChanging("Feesid");
+                _Feesid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Feesid");
+                OnFeesidChanged();
+            }
+        }
+        private global::System.Int32 _Feesid;
+        partial void OnFeesidChanging(global::System.Int32 value);
+        partial void OnFeesidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FeesNm
+        {
+            get
+            {
+                return _FeesNm;
+            }
+            set
+            {
+                OnFeesNmChanging(value);
+                ReportPropertyChanging("FeesNm");
+                _FeesNm = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FeesNm");
+                OnFeesNmChanged();
+            }
+        }
+        private global::System.String _FeesNm;
+        partial void OnFeesNmChanging(global::System.String value);
+        partial void OnFeesNmChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Fees
+        {
+            get
+            {
+                return _Fees;
+            }
+            set
+            {
+                OnFeesChanging(value);
+                ReportPropertyChanging("Fees");
+                _Fees = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Fees");
+                OnFeesChanged();
+            }
+        }
+        private global::System.Decimal _Fees;
+        partial void OnFeesChanging(global::System.Decimal value);
+        partial void OnFeesChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getfeeslabels_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -48911,6 +49861,30 @@ namespace Entity
         private global::System.String _classid;
         partial void OnclassidChanging(global::System.String value);
         partial void OnclassidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String R_Name
+        {
+            get
+            {
+                return _R_Name;
+            }
+            set
+            {
+                OnR_NameChanging(value);
+                ReportPropertyChanging("R_Name");
+                _R_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("R_Name");
+                OnR_NameChanged();
+            }
+        }
+        private global::System.String _R_Name;
+        partial void OnR_NameChanging(global::System.String value);
+        partial void OnR_NameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -49032,6 +50006,30 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String R_Name
+        {
+            get
+            {
+                return _R_Name;
+            }
+            set
+            {
+                OnR_NameChanging(value);
+                ReportPropertyChanging("R_Name");
+                _R_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("R_Name");
+                OnR_NameChanged();
+            }
+        }
+        private global::System.String _R_Name;
+        partial void OnR_NameChanging(global::System.String value);
+        partial void OnR_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Studid
         {
             get
@@ -49050,6 +50048,30 @@ namespace Entity
         private global::System.String _Studid;
         partial void OnStudidChanging(global::System.String value);
         partial void OnStudidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String P_Date
+        {
+            get
+            {
+                return _P_Date;
+            }
+            set
+            {
+                OnP_DateChanging(value);
+                ReportPropertyChanging("P_Date");
+                _P_Date = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("P_Date");
+                OnP_DateChanged();
+            }
+        }
+        private global::System.String _P_Date;
+        partial void OnP_DateChanging(global::System.String value);
+        partial void OnP_DateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -49333,6 +50355,30 @@ namespace Entity
         private global::System.String _Classid;
         partial void OnClassidChanging(global::System.String value);
         partial void OnClassidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String R_Name
+        {
+            get
+            {
+                return _R_Name;
+            }
+            set
+            {
+                OnR_NameChanging(value);
+                ReportPropertyChanging("R_Name");
+                _R_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("R_Name");
+                OnR_NameChanged();
+            }
+        }
+        private global::System.String _R_Name;
+        partial void OnR_NameChanging(global::System.String value);
+        partial void OnR_NameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -50286,7 +51332,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String SerialNo
+        public Nullable<global::System.Int32> SerialNo
         {
             get
             {
@@ -50296,13 +51342,13 @@ namespace Entity
             {
                 OnSerialNoChanging(value);
                 ReportPropertyChanging("SerialNo");
-                _SerialNo = StructuralObject.SetValidValue(value, true);
+                _SerialNo = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SerialNo");
                 OnSerialNoChanged();
             }
         }
-        private global::System.String _SerialNo;
-        partial void OnSerialNoChanging(global::System.String value);
+        private Nullable<global::System.Int32> _SerialNo;
+        partial void OnSerialNoChanging(Nullable<global::System.Int32> value);
         partial void OnSerialNoChanged();
     
         /// <summary>

@@ -1,0 +1,7 @@
+D:\NCCProject\NCCAS\Common\bin\Release\Common.dll
+D:\NCCProject\NCCAS\Common\bin\Release\Common.pdb
+D:\NCCProject\NCCAS\Common\bin\Release\System.Net.Http.dll
+D:\NCCProject\NCCAS\Common\bin\Release\System.Net.Http.xml
+D:\NCCProject\NCCAS\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+D:\NCCProject\NCCAS\Common\obj\Release\Common.dll
+D:\NCCProject\NCCAS\Common\obj\Release\Common.pdb

@@ -40,3 +40,7 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.
 D:\NCCProject\NCCAS\SchoolManagementSystems\obj\Release\SchoolManagementSystems.pdb
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\log4net.xml
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Common.dll
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\DAL.dll
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Common.pdb
+D:\NCCProject\NCCAS\SchoolManagementSystems\bin\DAL.pdb
