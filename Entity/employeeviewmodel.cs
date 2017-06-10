@@ -42,7 +42,7 @@ namespace Entity
         public string MobileNo { get; set; }
 
         [DisplayName("Code ")]
-        public string Code { get; set; }
+        public string Code { get; set; } = "+91";
 
         [DisplayName("Address ")]
         public string Address { get; set; }
@@ -59,7 +59,7 @@ namespace Entity
         [DisplayName("DateOfJoin ")]
         public DateTime DateOfJoin { get; set; }
 
-        [DisplayName("Typeid ")]
+        [DisplayName("Staff Type")]
         public int Typeid { get; set; }
 
         [DisplayName("Other Qualification")]
@@ -454,13 +454,16 @@ namespace Entity
         public string daddress { get; set; }
 
         [DisplayName("Reference Code")]
-        public string DCode { get; set; }
+        public string DCode { get; set; } = "+91";
 
         [DisplayName("Employee Blood Group ")]
         public int eblood { get; set; }
 
-        [DisplayName("Qualication ")]
+        [DisplayName("Course ")]
         public int equalification1 { get; set; }
+
+        [DisplayName("Department ")]
+        public int q_department1 { get; set; }
 
         [DisplayName("University ")]
         public string euniversity1 { get; set; }
@@ -471,8 +474,11 @@ namespace Entity
         [DisplayName("Year of Passing ")]
         public string eYearofpassing1 { get; set; }
 
-        [DisplayName("Qualication ")]
+        [DisplayName("Course ")]
         public int equalification2 { get; set; }
+
+        [DisplayName("Department ")]
+        public int q_department2 { get; set; }
 
         [DisplayName("University ")]
         public string euniversity2 { get; set; }
@@ -483,8 +489,11 @@ namespace Entity
         [DisplayName("Year of Passing ")]
         public string eYearofpassing2 { get; set; }
 
-        [DisplayName("Qualication ")]
+        [DisplayName("Course ")]
         public int equalification3 { get; set; }
+
+        [DisplayName("Department ")]
+        public int q_department3 { get; set; }
 
         [DisplayName("University ")]
         public string euniversity3 { get; set; }
@@ -495,8 +504,11 @@ namespace Entity
         [DisplayName("Year of Passing ")]
         public string eYearofpassing3 { get; set; }
 
-        [DisplayName("Qualication ")]
+        [DisplayName("Course ")]
         public int equalification4 { get; set; }
+
+        [DisplayName("Department ")]
+        public int q_department4 { get; set; }
 
         [DisplayName("University ")]
         public string euniversity4 { get; set; }
@@ -507,8 +519,11 @@ namespace Entity
         [DisplayName("Year of Passing ")]
         public string eYearofpassing4 { get; set; }
 
-        [DisplayName("Qualication ")]
+        [DisplayName("Course ")]
         public int equalification5 { get; set; }
+
+        [DisplayName("Department ")]
+        public int q_department5 { get; set; }
 
         [DisplayName("University ")]
         public string euniversity5 { get; set; }
@@ -548,7 +563,7 @@ namespace Entity
         public string pcontact { get; set; }
 
         [DisplayName("Code ")]
-        public int PCODE { get; set; }
+        public string PCODE { get; set; } = "+91";
 
         [DisplayName("Pic ")]
         public byte[] ppic { get; set; }
@@ -587,13 +602,13 @@ namespace Entity
         public string phome { get; set; }
 
         [DisplayName("Code ")]
-        public int PHCODE { get; set; }
+        public string PHCODE { get; set; }
 
         [DisplayName("Mobile ")]
         public string hmobile { get; set; }
 
         [DisplayName("Code ")]
-        public int MCODE { get; set; }
+        public string MCODE { get; set; } = "+91";
 
         [DisplayName("Name of the Bank ")]
         public string bankname { get; set; }
@@ -620,11 +635,24 @@ namespace Entity
         [DisplayName("Diocese name : ")]
         public string DioceseName { get; set; }
 
+        [DisplayName("SET")]
+        public bool q_Set { get; set; }
+
+        [DisplayName("NET")]
+        public bool q_Net { get; set; }
+
+        [DisplayName("Passing Year")]
+        public string q_SetPassingYear { get; set; }
+
+        [DisplayName("Passing Year")]
+        public string q_NetPassingYear { get; set; }
+
 
 
         public string SelectGender { get; set; }
        public List<sp_getemp_Result> _emplist { get; set; }
         public List<tbl_state> statelist { get; set; }
+        public List<tbl_CourseMaster> courselist { get; set; }
         public List<tbl_city> citylist { get; set; }
         public List<tbl_qualification> qualificationlist { get; set; }
 

@@ -22,6 +22,7 @@ namespace SchoolManagementSystems.Controllers
             ViewData["Error"] = "";
             Userviewmodel uvm = new Userviewmodel();
             Dashboardviewmodel dvm = new Dashboardviewmodel();
+            Dashboardviewmodel.MyProfileView mpv = new Dashboardviewmodel.MyProfileView();
             string currentdate = CommonUtility.FormatedDateString(DateTime.Now);
             string datemonth = currentdate.Substring(0, 5);
             if (Session["Userid"] != null && Session["Userid"].ToString() != "")
@@ -29,7 +30,9 @@ namespace SchoolManagementSystems.Controllers
                 dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
                 dvm.BirthdaylistDetails = db.sp_GetBirthdayListDetails().Where(m => m.DOB.ToUpper().Contains(datemonth.ToString())).OrderBy(m => m.Studnm).ToList();
 
-                return View("DashBoard", dvm);
+                if (Convert.ToString(Session["Role"]) == "1")
+                { return View("../MyProfile/Index", mpv); }
+                else { return View("DashBoard", dvm); }
             }
             else
             {
@@ -48,7 +51,10 @@ namespace SchoolManagementSystems.Controllers
                         Session["Genid"] = uvm.Userdatacollection[0].Genid.ToString();
                         dvm.Newsdatacollection = db.tbl_news.Where(m => m.Status == true).ToList();
                         dvm.BirthdaylistDetails = db.sp_GetBirthdayListDetails().Where(m => m.DOB.ToUpper().Contains(datemonth.ToString())).OrderBy(m => m.Studnm).ToList();
-                        return View("DashBoard", dvm);
+                        if (Convert.ToString(Session["Role"]) == "1")
+                        { return View("../MyProfile/Index", mpv); }
+                        else { return View("DashBoard", dvm); }
+                       
                     }
                     else
                     {

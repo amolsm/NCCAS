@@ -243,19 +243,19 @@ namespace Entity
         public int StudCategoryid { get; set; }
 
         [DisplayName("Father Code")]
-        public string FCode { get; set; }
+        public string FCode { get; set; } = "+91";
 
         [DisplayName("Mother Code")]
-        public string MCode { get; set; }
+        public string MCode { get; set; } = "+91";
 
         [DisplayName("Gaurdiam Code")]
-        public string GCode { get; set; }
+        public string GCode { get; set; } = "+91";
 
         [DisplayName("Reference Code")]
-        public string RCode { get; set; }
+        public string RCode { get; set; } = "+91";
 
         [DisplayName("Reference Code")]
-        public string ECode { get; set; }
+        public string ECode { get; set; } = "+91";
 
         public string FormType { get; set; }
 
@@ -444,6 +444,9 @@ namespace Entity
 
         [DisplayName("RelationShip:")]
         public string emcontactrel { get; set; }
+
+        [DisplayName("Status:")]
+        public int St_Status { get; set; }
 
         [DisplayName("Subject")]
         public string subject1 { get; set; }

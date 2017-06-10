@@ -31,7 +31,9 @@
     $(document).ready(function () {
         
         $('#Bookid input').attr("readonly", true);
-        $('#AccessorNo').attr("readonly", true);
+        $('#AccessorNo').attr("readonly", false);
+        $('#SerielNumber').attr("readonly", true);
+        $('#CallNo').attr("readonly", false);
         if ($("#Bookid input").val() == "0") {
             $("#Bookid").hide();
 
@@ -45,7 +47,7 @@
                 dataType: 'JSON',
                 data: { bookid: bookid },
                 success: function (data) {
-                   
+                    $('#CallNo').attr("readonly", true);
                     $("#Bookid input").val(data.bookid);
                     $("#booktitle").val(data.BookName);
                     $("#CallNo").val(data.CallNo);
@@ -133,8 +135,10 @@
         })
 
 
-
-
+        function clearmsg() {
+            $("#msg").hide();
+            $("#msgs").hide();
+        }
 
         function ReloadDepartment1() {
             $("#Department").empty();
@@ -693,6 +697,7 @@
             var Call_number = $('#CallNo').val();
             clear();
           
+            clearmsg();
            // BookDetailShow();
             $.ajax({
                 type: 'GET',
@@ -712,10 +717,7 @@
                             $("#CallNo").val(data.CallNo);
 
                             $("#Volume").val(data.Volume);
-
-                            $("#SerielNumber").val(data.SerialNo);
-
-                            $("#Authorid").val(data.Authorid);
+                             $("#Authorid").val(data.Authorid);
 
                             $("#Authorname").val(data.Authorname);
 
@@ -743,10 +745,10 @@
                        
                         
                         });
-                        debugger;
+                      
                         clear();
                      
-                      
+                        clearmsg();
                        return false;
                     } 
                 }
@@ -800,7 +802,7 @@
         function BookDetailShow() {
             $('#booktitle').attr("readonly", false);
             $('#Volume').attr("readonly", false);
-            $('#SerielNumber').attr("readonly", false);
+            //$('#SerielNumber').attr("readonly", false);
             $('#Authorid').attr("readonly", false);
             $('#Authorname').attr("readonly", false);
             $('#PublishedByid').attr("readonly", false);
@@ -882,7 +884,7 @@
             $("#booktitle").val('');
           
             $("#Volume").val('');
-            $("#SerielNumber").val('');
+         
             $("#Authorid").val('0');
             $("#PublishedByid").val('0');
             $("#Authorname").val('');
@@ -930,7 +932,12 @@
         $('#author input').attr("readonly", true);
         $('#publisher input').attr("readonly", true);
         $('#vendor input').attr("readonly", true);
-       
+        $("#SerielNumber").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
     });
    
 </script>
@@ -1070,7 +1077,15 @@
 
                     </div>
                 </div>
-               
+                <div class="control-group span5 required">
+
+                    @Html.LabelFor(model => model.SerielNumber, new { @class = "control-label", @for = "focusedInput" })
+
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.SerielNumber, new { placeholder = "Enter Serial Number", @class = "input" })
+
+                    </div>
+                </div>
                 <div class="control-group span5 required">
 
                     @Html.LabelFor(model => model.AccessorNo, new { @class = "control-label", @for = "focusedInput" })
@@ -1144,15 +1159,7 @@
                     </div>
                 </div>
 
-                <div class="control-group span5 required">
-
-                    @Html.LabelFor(model => model.SerielNumber, new { @class = "control-label", @for = "focusedInput" })
-
-                    <div class="controls">
-                        @Html.TextBoxFor(model => model.SerielNumber, new { placeholder = "Enter Serial Number", @class = "input" })
-
-                    </div>
-                </div>
+               
                 <div class="control-group span5 required">
 
                     @Html.LabelFor(model => model.Authorid, new { @class = "control-label", @for = "focusedInput" })

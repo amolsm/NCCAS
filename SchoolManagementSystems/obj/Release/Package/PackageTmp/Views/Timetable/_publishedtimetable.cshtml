@@ -9,6 +9,9 @@
                 @Html.DisplayName("LecNo.")
             </th>
             <th>
+                @Html.DisplayName("Semester")
+            </th>
+            <th>
                 @Html.DisplayName("1")
             </th>
             <th>
@@ -35,6 +38,9 @@
                 </td>                
                 <td>
                     @Html.DisplayFor(modelItem => item.LecNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Monday)

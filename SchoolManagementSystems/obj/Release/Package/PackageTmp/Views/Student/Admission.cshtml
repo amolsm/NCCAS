@@ -119,14 +119,25 @@
                 $('#answer8').hide();
             }
         });
-        if ($("#DocumentType").val() == 7)
+        if ($("#DocumentType option:selected").text() == 'Others')
         { $("#doctype").show(); }
         else { $("#doctype").hide(); }
 
         $("#insert").click(function (e) {
             Validations(e);
         });
+        $("#DocumentIDNo").keypress(function (e) {
 
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                if ($("#DocumentType option:selected").text() == 'Aadhar') {
+                    return false;
+                } else { return true; }
+            }
+
+
+
+        });
 
         $('#cbxShowHide').change(function () {
             if (this.checked) {
@@ -589,7 +600,7 @@
                     dataType: 'json',
                     data: {
                         acadmicyear:  $("#academicyear option:selected").text(),
-                        deptname: $("#DepartmentId option:selected").text()
+                        deptid: $("#DepartmentId").val()
                     },
                     success: function (data) {
                         if (data != "") {
@@ -598,8 +609,24 @@
                             var year = accadmic.substring(0, 4);
                             var dept = $("#DepartmentId option:selected").text();
                             var deptname = dept.substring(0, 3);
-                            var count = data;
-                            var stdreg = (year + deptname.toUpperCase() + "0000" + count)
+                            var count = parseInt(data) + 1;
+                            var stdreg;
+                            if ((count >= 0) && (count <= 9)) {
+                                stdreg = (year + deptname.toUpperCase() + "0000" + count)
+                            }
+                            else if ((count >= 9) && (count <= 99)) {
+                                stdreg = (year + deptname.toUpperCase() + "000" + count)
+                            }
+                            else if ((count >= 99) && (count <= 999)) {
+                                stdreg = (year + deptname.toUpperCase() + "00" + count)
+                            }
+                            else if ((count >= 999) && (count <= 9999)) {
+                                stdreg = (year + deptname.toUpperCase() + "0" + count)
+                            }
+                            else if ((count >= 9999) && (count <= 99999)) {
+                                stdreg = (year + deptname.toUpperCase() + count)
+                            }
+                         
                             $("#StdRegNo").val(stdreg);
                         }
                         else {
@@ -836,9 +863,8 @@
             }
             else {
                 act = '@Url.Action("FillStudentDetails")';
-                $("#stat").hide();
-                $('input:radio[name=group1]').filter('[value=0]').prop("checked", true);
-                $('input:radio[name=group1]').filter('[value=0]').prop("checked", false);
+              //  $("#stat").hide();
+              
             }
             var studid = $("#studid input").val();
             $.ajax({
@@ -847,14 +873,17 @@
                 dataType: 'JSON',
                 data: { studid: studid },
                 success: function (data) {
+                    debugger;
                     $("#Studnm").val(data.Studnm);
                     $("#Studfathernm").val(data.Studfathernm);
                     $("#Studmothernm").val(data.Studmothernm);
                     var value = new Date(parseInt(data.DOB.substr(6)));
                     $('#datepicker').datepicker('setDate', value);
                     //$('#datepicker').focus();
+                    //status
                     
-
+                      $('input:radio[name=group1]').filter('[value='+data.St_Status+']').prop("checked", true);
+                      
                     $("#Weight").val(data.Weight);
                     $("#Height").val(data.Height);
                     $("#StudBldGrp").val(data.StudBldGrp);
@@ -1778,95 +1807,96 @@
                     "background": ""
                 });
             }
-            if ($("#hiddencourstype").val() == 2) {
+            ///comment for entry dump data..?--
+            //if ($("#hiddencourstype").val() == 2) {
 
-                if ($("#ssccondionyearofleaving").val() == '') {
-                    cnt++;
-                    $("#msgerrorssc").show();
-                    e.preventDefault();
-                    $("#ssccondionyearofleaving").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorssc").hide();
-                }
-                if ($("#ssccondionyearofpassing").val() == '') {
-                    cnt++;
-                    $("#msgerrorssc").show();
-                    e.preventDefault();
-                    $("#ssccondionyearofpassing").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorssc").hide();
-                }
+            //    if ($("#ssccondionyearofleaving").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorssc").show();
+            //        e.preventDefault();
+            //        $("#ssccondionyearofleaving").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorssc").hide();
+            //    }
+            //    if ($("#ssccondionyearofpassing").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorssc").show();
+            //        e.preventDefault();
+            //        $("#ssccondionyearofpassing").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorssc").hide();
+            //    }
               
-                if ($("#ssccondionobtainmarks").val() == '') {
-                    cnt++;
-                    $("#msgerrorssc").show();
-                    e.preventDefault();
-                    $("#ssccondionobtainmarks").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorssc").hide();
-                }
-                if ($("#ssccondiontotalmarks").val() == '') {
-                    cnt++;
-                    $("#msgerrorssc").show();
-                    e.preventDefault();
-                    $("#ssccondiontotalmarks").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorssc").hide();
-                }
-            }
+            //    if ($("#ssccondionobtainmarks").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorssc").show();
+            //        e.preventDefault();
+            //        $("#ssccondionobtainmarks").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorssc").hide();
+            //    }
+            //    if ($("#ssccondiontotalmarks").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorssc").show();
+            //        e.preventDefault();
+            //        $("#ssccondiontotalmarks").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorssc").hide();
+            //    }
+            //}
 
-            if ($("#hiddencourstype").val() == 3) {
+            //if ($("#hiddencourstype").val() == 3) {
 
-                if ($("#hsccondionyearofleaving").val() == '') {
-                    cnt++;
-                    $("#msgerrorhsc").show();
-                    e.preventDefault();
-                    $("#hsccondionyearofleaving").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorhsc").hide();
-                }
-                if ($("#hsccondionyearofpassing").val() == '') {
-                    cnt++;
-                    $("#msgerrorhsc").show();
-                    e.preventDefault();
-                    $("#hsccondionyearofpassing").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorhsc").hide();
-                }
-                if ($("#hsccondionobtainmarks").val() == '') {
-                    cnt++;
-                    $("#msgerrorhsc").show();
-                    e.preventDefault();
-                    $("#hsccondionobtainmarks").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorhsc").hide();
-                }
-                if ($("#hsccondiontotalmarks").val() == '') {
-                    cnt++;
-                    $("#msgerrorhsc").show();
-                    e.preventDefault();
-                    $("#hsccondiontotalmarks").focus();
-                    return false;
-                }
-                else {
-                    $("#msgerrorhsc").hide();
-                }
+            //    if ($("#hsccondionyearofleaving").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorhsc").show();
+            //        e.preventDefault();
+            //        $("#hsccondionyearofleaving").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorhsc").hide();
+            //    }
+            //    if ($("#hsccondionyearofpassing").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorhsc").show();
+            //        e.preventDefault();
+            //        $("#hsccondionyearofpassing").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorhsc").hide();
+            //    }
+            //    if ($("#hsccondionobtainmarks").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorhsc").show();
+            //        e.preventDefault();
+            //        $("#hsccondionobtainmarks").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorhsc").hide();
+            //    }
+            //    if ($("#hsccondiontotalmarks").val() == '') {
+            //        cnt++;
+            //        $("#msgerrorhsc").show();
+            //        e.preventDefault();
+            //        $("#hsccondiontotalmarks").focus();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#msgerrorhsc").hide();
+            //    }
                
-            }
+            //}//-------?-------
 
             if ($("#DepartmentId").val() == '' || $("#DepartmentId").val() == 0) {
                 cnt++;
@@ -1934,23 +1964,39 @@
                     "background": ""
                 });
             }
-            if ($("#ApplicationID").val() == '') {
+            //if ($("#ApplicationID").val() == '') {
+            //    cnt++;
+            //    $("#ApplicationID").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("Application Id is Mandatory!");
+            //    e.preventDefault();
+            //    $("#ApplicationID").focus();
+            //    return false;
+            //}
+            //else {
+            //    $("#ApplicationID").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
+            if ($("#StdRegMob").val() == '')
+            {
                 cnt++;
-                $("#ApplicationID").css({
+                $("#StdRegMob").css({
                     "border": "1px solid red"
                 });
-                alert("Application Id is Mandatory!");
+                alert("Register Mobile number is Mandatory!");
                 e.preventDefault();
-                $("#ApplicationID").focus();
+                $("#StdRegMob").focus();
                 return false;
             }
             else {
-                $("#ApplicationID").css({
+                $("#StdRegMob").css({
                     "border": "",
                     "background": ""
                 });
             }
-
             if ($("#RollNo").val() == '' || $("#RollNo").val() == 0) {
                 cnt++;
                 $("#RollNo").css({
@@ -2017,441 +2063,443 @@
                     "background": ""
                 });
             }
-            if ($("#Religionid").val() == '' || $("#Religionid").val() == 0) {
-                cnt++;
-                $("#Religionid").css({
-                    "border": "1px solid red"
-                });
-                alert("Religion  is Mandatory!");
-                e.preventDefault();
-                $("#Religionid").focus();
-                return false;
-            }
-            else {
-                $("#Religionid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-            if ($("#StudCategoryid").val() == '' || $("#StudCategoryid").val() == 0) {
-                cnt++;
-                $("#StudCategoryid").css({
-                    "border": "1px solid red"
-                });
-                alert("Category  is Mandatory!");
-                e.preventDefault();
-                $("#StudCategoryid").focus();
-                return false;
-            }
-            else {
-                $("#StudCategoryid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-            if ($("#MotherTongue").val() == '') {
-                cnt++;
-                $("#MotherTongue").css({
-                    "border": "1px solid red"
-                });
-                alert("Mother Tongue  is Mandatory!");
-                e.preventDefault();
-                $("#MotherTongue").focus();
-                return false;
-            }
-            else {
-                $("#MotherTongue").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-            if ($("#DocumentType").val() == '' || $("#DocumentType").val()==7) {
-                cnt++;
-                $("#Documenttypename").css({
-                    "border": "1px solid red"
-                });
-                alert("Document Type  is Mandatory!");
-                e.preventDefault();
-                $("#Documenttypename").focus();
-                return false;
-            }
-            else {
-                $("#doctype").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-            if ($("#DocumentIDNo").val() == '') {
-                cnt++;
-                $("#DocumentIDNo").css({
-                    "border": "1px solid red"
-                });
-                alert("Document ID No.  is Mandatory!");
-                e.preventDefault();
-                $("#DocumentIDNo").focus();
-                return false;
-            }
-            else {
-                $("#DocumentIDNo").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //?comment for data entry.......
+  //          if ($("#Religionid").val() == '' || $("#Religionid").val() == 0) {
+  //              cnt++;
+  //              $("#Religionid").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Religion  is Mandatory!");
+  //              e.preventDefault();
+  //              $("#Religionid").focus();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#Religionid").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+  //          if ($("#StudCategoryid").val() == '' || $("#StudCategoryid").val() == 0) {
+  //              cnt++;
+  //              $("#StudCategoryid").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Category  is Mandatory!");
+  //              e.preventDefault();
+  //              $("#StudCategoryid").focus();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#StudCategoryid").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+  //          if ($("#MotherTongue").val() == '') {
+  //              cnt++;
+  //              $("#MotherTongue").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Mother Tongue  is Mandatory!");
+  //              e.preventDefault();
+  //              $("#MotherTongue").focus();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#MotherTongue").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+  //          if ($("#DocumentType").val() == '' || $("#DocumentType").val()==7) {
+  //              cnt++;
+  //              $("#Documenttypename").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Document Type  is Mandatory!");
+  //              e.preventDefault();
+  //              $("#Documenttypename").focus();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#doctype").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+  //          if ($("#DocumentIDNo").val() == '') {
+  //              cnt++;
+  //              $("#DocumentIDNo").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Document ID No.  is Mandatory!");
+  //              e.preventDefault();
+  //              $("#DocumentIDNo").focus();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#DocumentIDNo").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
 
-            if ($("#Religionid").val() == 2 && $("#Casteid").val() == 2)
-            {
-                if ($("#ParishName").val() == ''){
-                    cnt++;
-                    $("#ParishName").css({
-                        "border": "1px solid red"
-                    });
+  //          if ($("#Religionid").val() == 2 && $("#Casteid").val() == 2)
+  //          {
+  //              if ($("#ParishName").val() == ''){
+  //                  cnt++;
+  //                  $("#ParishName").css({
+  //                      "border": "1px solid red"
+  //                  });
 
-                    alert("Parish Name Mandatory!");
-                    e.preventDefault();
-                    return false;
-                }
-                else {
-                    $("#parish").css({
-                    "border": "",
-                    "background": ""
-                    });
+  //                  alert("Parish Name Mandatory!");
+  //                  e.preventDefault();
+  //                  return false;
+  //              }
+  //              else {
+  //                  $("#parish").css({
+  //                  "border": "",
+  //                  "background": ""
+  //                  });
 
-                }
+  //              }
 
-                if ($("#DioceseName").val() == '') {
-                    cnt++;
-                    $("#DioceseName").css({
-                        "border": "1px solid red"
-                    });
+  //              if ($("#DioceseName").val() == '') {
+  //                  cnt++;
+  //                  $("#DioceseName").css({
+  //                      "border": "1px solid red"
+  //                  });
 
-                    alert("DioceseName Name Mandatory!");
-                    e.preventDefault();
-                    return false;
-                }
-                else {
-                    $("#DioceseName").css({
-                        "border": "",
-                        "background": ""
-                    });
+  //                  alert("DioceseName Name Mandatory!");
+  //                  e.preventDefault();
+  //                  return false;
+  //              }
+  //              else {
+  //                  $("#DioceseName").css({
+  //                      "border": "",
+  //                      "background": ""
+  //                  });
 
-                }
+  //              }
 
-            }
-
-
-
-
-            if ($("#Weight").val() == '0' || $("#Weight").val() == '') {
-                cnt++;
-                $("#Weight").css({
-                    "border": "1px solid red"
-                });
-                alert("weight Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Weight").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#Height").val() == '0' || $("#Height").val() == '') {
-                cnt++;
-                $("#Height").css({
-                    "border": "1px solid red"
-                });
-                alert("height Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Height").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#StudBldGrp").val() == ''|| $("#StudBldGrp").val() == 0) {
-                cnt++;
-                $("#StudBldGrp").css({
-                    "border": "1px solid red"
-                });
-                alert("blood group Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#StudBldGrp").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-      if ($("#Casteid").val() == '') {
-                cnt++;
-                $("#Casteid").css({
-                    "border": "1px solid red"
-                });
-                alert("caste Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Casteid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-  if ($("#EmergencyPhysicianNm").val() == '') {
-                cnt++;
-                $("#EmergencyPhysicianNm").css({
-                    "border": "1px solid red"
-                });
-                alert("Emergency Contact Name Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyPhysicianNm").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#EmergencyPhysicianContact").val() == '') {
-                cnt++;
-                $("#EmergencyPhysicianContact").css({
-                    "border": "1px solid red"
-                });
-                alert("Emergecy Contact Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyPhysicianContact").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+  //          }
 
 
 
-            if ($("#EmergencyAddress").val() == '') {
-                cnt++;
-                $("#EmergencyAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("Emergency address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#EmergencyAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+
+  //          if ($("#Weight").val() == '0' || $("#Weight").val() == '') {
+  //              cnt++;
+  //              $("#Weight").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("weight Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#Weight").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+
+  //          if ($("#Height").val() == '0' || $("#Height").val() == '') {
+  //              cnt++;
+  //              $("#Height").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("height Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#Height").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+
+  //          if ($("#StudBldGrp").val() == ''|| $("#StudBldGrp").val() == 0) {
+  //              cnt++;
+  //              $("#StudBldGrp").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("blood group Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#StudBldGrp").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+  //    if ($("#Casteid").val() == '') {
+  //              cnt++;
+  //              $("#Casteid").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("caste Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#Casteid").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+
+  //if ($("#EmergencyPhysicianNm").val() == '') {
+  //              cnt++;
+  //              $("#EmergencyPhysicianNm").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Emergency Contact Name Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#EmergencyPhysicianNm").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
+
+  //          if ($("#EmergencyPhysicianContact").val() == '') {
+  //              cnt++;
+  //              $("#EmergencyPhysicianContact").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Emergecy Contact Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#EmergencyPhysicianContact").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
 
 
 
-            if ($("#Studfathernm").val() == '') {
-                cnt++;
-                $("#Studfathernm").css({
-                    "border": "1px solid red"
-                });
-                alert("Father email Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Studfathernm").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-
-            if ($("#FatherEmail").val() == '') {
-                cnt++;
-                $("#FatherEmail").css({
-                    "border": "1px solid red"
-                });
-                alert("father email Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FatherEmail").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+  //          if ($("#EmergencyAddress").val() == '') {
+  //              cnt++;
+  //              $("#EmergencyAddress").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Emergency address Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#EmergencyAddress").css({
+  //                  "border": "",
+  //                  "background": ""
+  //              });
+  //          }
 
 
-            if ($("#FatherOfficeAddress").val() == '') {
-                cnt++;
-                $("#FatherOfficeAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("office address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FatherOfficeAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
 
-            if ($("#FatherContact").val() == '') {
-                cnt++;
-                $("#FatherContact").css({
-                    "border": "1px solid red"
-                });
-                alert("father contact Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#FatherContact").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+  //          if ($("#Studfathernm").val() == '') {
+  //              cnt++;
+  //              $("#Studfathernm").css({
+  //                  "border": "1px solid red"
+  //              });
+  //              alert("Father email Mandatory!");
+  //              e.preventDefault();
+  //              return false;
+  //          }
+  //          else {
+  //              $("#Studfathernm").css({
+  //                  "border": "",
+            //        "background": ""
+            //    });
+            //}
+
+            //if ($("#FatherEmail").val() == '') {
+            //    cnt++;
+            //    $("#FatherEmail").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("father email Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#FatherEmail").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
 
-            if ($("#Countryid").val() == '') {
-                cnt++;
-                $("#Countryid").css({
-                    "border": "1px solid red"
-                });
-                alert("country Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Countryid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#FatherOfficeAddress").val() == '') {
+            //    cnt++;
+            //    $("#FatherOfficeAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("office address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#FatherOfficeAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#Stateid").val() == '') {
-                cnt++;
-                $("#Stateid").css({
-                    "border": "1px solid red"
-                });
-                alert("state Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Stateid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#FatherContact").val() == '') {
+            //    cnt++;
+            //    $("#FatherContact").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("father contact Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#FatherContact").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#Cityid").val() == '') {
-                cnt++;
-                $("#Cityid").css({
-                    "border": "1px solid red"
-                });
-                alert("city Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#Cityid").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
 
-            if ($("#CurrentAddress").val() == '') {
-                cnt++;
-                $("#CurrentAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("current address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#CurrentAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Countryid").val() == '') {
+            //    cnt++;
+            //    $("#Countryid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("country Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Countryid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#PermanentAddress").val() == '') {
-                cnt++;
-                $("#PermanentAddress").css({
-                    "border": "1px solid red"
-                });
-                alert("permanent address Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#PermanentAddress").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Stateid").val() == '') {
+            //    cnt++;
+            //    $("#Stateid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("state Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Stateid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#Pincode").val() == '') {
-                cnt++;
-                $("#Pincode").css({
-                    "border": "1px solid red"
-                });
-                alert("Pincode is Mandatory!");
-                e.preventDefault();
-                return false;
-                $("#Pincode").focus();
-            }
-            else {
-                $("#Pincode").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#Cityid").val() == '') {
+            //    cnt++;
+            //    $("#Cityid").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("city Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#Cityid").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#BusFacility").prop('checked') == true) {
-                if ($("#busid").val() == '') {
-                    cnt++;
-                    $("#busid").css({
-                        "border": "1px solid red"
-                    });
-                    alert("bus facility Mandatory!");
-                    e.preventDefault();
-                    return false;
-                }
-                else {
-                    $("#busid").css({
-                        "border": "",
-                        "background": ""
-                    });
-                }
-            }
+            //if ($("#CurrentAddress").val() == '') {
+            //    cnt++;
+            //    $("#CurrentAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("current address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#CurrentAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
-            if ($("#academicyear").val() == '') {
-                cnt++;
-                $("#academicyear").css({
-                    "border": "1px solid red"
-                });
-                alert("academic year Mandatory!");
-                e.preventDefault();
-                return false;
-            }
-            else {
-                $("#academicyear").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#PermanentAddress").val() == '') {
+            //    cnt++;
+            //    $("#PermanentAddress").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("permanent address Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#PermanentAddress").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
+
+            //if ($("#Pincode").val() == '') {
+            //    cnt++;
+            //    $("#Pincode").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("Pincode is Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //    $("#Pincode").focus();
+            //}
+            //else {
+            //    $("#Pincode").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
+
+            //if ($("#BusFacility").prop('checked') == true) {
+            //    if ($("#busid").val() == '') {
+            //        cnt++;
+            //        $("#busid").css({
+            //            "border": "1px solid red"
+            //        });
+            //        alert("bus facility Mandatory!");
+            //        e.preventDefault();
+            //        return false;
+            //    }
+            //    else {
+            //        $("#busid").css({
+            //            "border": "",
+            //            "background": ""
+            //        });
+            //    }
+            //}
+            ///?---comment for data entry-------
+
+            //if ($("#academicyear").val() == '') {
+            //    cnt++;
+            //    $("#academicyear").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("academic year Mandatory!");
+            //    e.preventDefault();
+            //    return false;
+            //}
+            //else {
+            //    $("#academicyear").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
 
 
             if (cnt != 0) {
@@ -3659,7 +3707,7 @@
                                                         <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.RollNo, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.RollNo, new { placeholder = "Enter Roll No", maxlength = "3", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.RollNo, new { placeholder = "Enter Roll No", maxlength = "4", @class = "input" })
                                                                 @Html.ValidationMessageFor(model => model.RollNo)
                                                             </div>
                                                         </div>
@@ -3806,7 +3854,7 @@
                                                         <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DocumentIDNo, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "50", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "12", @class = "input" })
                                                             </div>
                                                         </div>
 
@@ -4461,6 +4509,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                     <input type="radio" checked="checked" name="group1" value="1" />Approve
                                                                 </label>
                                                                 <label class="radio inline"> <input type="radio" name="group1" value="0" />Unapprove   </label>
+                                                                <label class="radio inline"> <input type="radio" name="group1" value="2" />Pending   </label>
                                                             </div>
                                                         </div>
                                                     </fieldset>

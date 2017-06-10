@@ -49,7 +49,14 @@ namespace Entity
         public List<sp_GetBirthdayListDetails_Result> BirthdaylistDetails { get; set; }
         public List<sp_getNewslist_Result> _Newslist { get; set; }
         public List<DateofBirth_Result> _BirthDayList { get; set; }
-     
-       
+
+        public class MyProfileView
+        {
+            public int UserId { get; set; }
+            public string UserName { get; set; }
+
+           
+        } 
     }
+
 }

@@ -1,0 +1,49 @@
+﻿@model Entity.LectureTimeSetviewmodel
+<div id="result" class="table-responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                <th>
+                   Lecture NO.
+                </th>
+                <th>
+                    Lecture Start Time
+                </th>
+                <th>
+                   Lecture End Time
+                </th>
+                <th>
+                   Status
+                </th>
+
+                <th class="edt">
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._LecttimeSetupList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LecNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LecTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LectETime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+
+                    <td>
+                        <input type="button" id="@item.LecTimeid" class="btn btn-default btn_edit edit" value="Edit" />
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

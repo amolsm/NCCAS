@@ -131,17 +131,10 @@
                       <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                  @Html.ActionLink("Timetable Management", "Index", "Student", "")<i class="icon-angle-right"></i></li>
                         <li class="active">Timetable History</li>
-                        <div style="float: right;">
-                           @* @using (Html.BeginForm())
-                            {
-
-                                @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
-                                <input type="submit" value="Find" style="margin-bottom:10px" class="btn btn-default" />
-                            }*@
-                        </div> 
+                        
                     </ul>
                <div class="box-content">
-						<form id="frm" class="form-horizontal">
+						<div id="frm" class="form-horizontal">
 
                                 <form class="navbar-form navbar-left" role="search" style="text-align:center">
                                     @using (Html.BeginForm())
@@ -152,7 +145,7 @@
                                 <div  class="control-group span5">
                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
                                       <div class="controls"> 
-                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
+                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @class = "col-md-5 form-control form_in" })
                                           </div>
                                         </div>
                                         </td>
@@ -200,9 +193,9 @@
                                 </form>
                             </div>
                     </div>
-                
+                <br/>
                             <div id="result1" class="table-responsive">
-                                   <table class="table table-striped table-bordered bootstrap-datatable datatable" id="printt1">
+                                   <table  class="table table-striped table-bordered bootstrap-datatable datatable" id="printt1">
                                 <thead>
                                     <tr>
                                         <th>
@@ -223,12 +216,12 @@
                                         <th>
                                             @Html.DisplayName("Subject")
                                         </th>
-                                        <th>
+                                        @*<th>
                                             @Html.DisplayName("Start Time")
                                         </th>
                                         <th>
                                             @Html.DisplayName("End Time")
-                                        </th>
+                                        </th>*@
                                         <th>
                                             @Html.DisplayName("Teacher")
                                        
@@ -256,12 +249,12 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Subjectid)
                                             </td>
-                                            <td>
+                                            @*<td>
                                                 @Html.DisplayFor(modelItem => item.LecTime)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.LecETime)
-                                            </td>
+                                            </td>*@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Empid)
                                             </td>

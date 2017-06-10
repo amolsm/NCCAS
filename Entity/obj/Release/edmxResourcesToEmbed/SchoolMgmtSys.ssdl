@@ -77,6 +77,7 @@
     <Property Name="Status" Type="bit" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="createdby" Type="int" />
+    <Property Name="SerialNo" Type="int" />
   </EntityType>
   <EntityType Name="lib_Journal">
     <Key>
@@ -277,7 +278,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.sys_UserPermission' does not have
     <Property Name="CallNo" Type="nvarchar" MaxLength="100" />
     <Property Name="BookName" Type="varchar" MaxLength="100" />
     <Property Name="Volume" Type="nvarchar" MaxLength="100" />
-    <Property Name="SerialNo" Type="nvarchar" MaxLength="100" />
     <Property Name="Authorid" Type="int" />
     <Property Name="Authorname" Type="varchar" MaxLength="100" />
     <Property Name="Publisherid" Type="int" />
@@ -670,7 +670,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="Payrollid" Type="int" Nullable="false" />
     <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
     <Property Name="Typeid" Type="int" Nullable="false" />
-    <Property Name="Code" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="5" />
     <Property Name="OtherQualification" Type="varchar(max)" />
     <Property Name="department" Type="int" />
     <Property Name="bloodgroup" Type="int" />
@@ -704,7 +704,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="parentqualification" Type="varchar" MaxLength="50" />
     <Property Name="parentsemail" Type="varchar" MaxLength="50" />
     <Property Name="parentsaddress" Type="text" />
-    <Property Name="parentscode" Type="int" />
+    <Property Name="parentscode" Type="varchar" MaxLength="5" />
     <Property Name="parentscontact" Type="varchar" MaxLength="15" />
     <Property Name="parentspic" Type="image" />
     <Property Name="pstreet" Type="text" />
@@ -717,9 +717,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="cstate" Type="int" />
     <Property Name="ccountry" Type="int" />
     <Property Name="cpin" Type="varchar" MaxLength="6" />
-    <Property Name="homecode" Type="int" />
+    <Property Name="homecode" Type="varchar" MaxLength="5" />
     <Property Name="homecontact" Type="varchar" MaxLength="15" />
-    <Property Name="cmobilecode" Type="int" />
+    <Property Name="cmobilecode" Type="varchar" MaxLength="5" />
     <Property Name="cmobile" Type="varchar" MaxLength="15" />
     <Property Name="bankname" Type="varchar" MaxLength="50" />
     <Property Name="branch" Type="varchar" MaxLength="50" />
@@ -758,6 +758,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="contrelation" Type="varchar" MaxLength="50" />
     <Property Name="ParishName" Type="varchar" MaxLength="100" />
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
+    <Property Name="q_department1" Type="int" />
+    <Property Name="q_department2" Type="int" />
+    <Property Name="q_department3" Type="int" />
+    <Property Name="q_department4" Type="int" />
+    <Property Name="q_Set" Type="bit" />
+    <Property Name="q_Net" Type="bit" />
+    <Property Name="q_SetPassingYear" Type="varchar" MaxLength="10" />
+    <Property Name="q_NetPassingYear" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="tbl_EmployeeLeave">
     <Key>
@@ -817,27 +825,17 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
       <PropertyRef Name="Feesid" />
     </Key>
     <Property Name="Feesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Courseid" Type="int" Nullable="false" />
-    <Property Name="LFees" Type="money" Nullable="false" />
-    <Property Name="TFees" Type="money" Nullable="false" />
-    <Property Name="UFees" Type="money" Nullable="false" />
-    <Property Name="HFees" Type="money" Nullable="false" />
-    <Property Name="OFees" Type="money" Nullable="false" />
     <Property Name="TotalFees" Type="money" Nullable="false" />
-    <Property Name="PTypeid" Type="int" Nullable="false" />
     <Property Name="receipttypeid" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_feeschild">
     <Key>
-      <PropertyRef Name="Feesid" />
-      <PropertyRef Name="FeesNm" />
-      <PropertyRef Name="Fees" />
+      <PropertyRef Name="Fchildid" />
     </Key>
     <Property Name="Feesid" Type="int" Nullable="false" />
     <Property Name="FeesNm" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Fees" Type="money" Nullable="false" />
+    <Property Name="Fees" Type="money" />
+    <Property Name="Fchildid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_feeslabel">
     <Key>
@@ -845,7 +843,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeschild' does not have a pr
     </Key>
     <Property Name="feeslblid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ctrlcnt" Type="int" Nullable="false" />
-    <Property Name="classid" Type="int" Nullable="false" />
     <Property Name="receipttypeid" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -865,7 +862,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Courseid" Type="int" Nullable="false" />
     <Property Name="Studid" Type="int" Nullable="false" />
     <Property Name="Scholarship" Type="bit" Nullable="false" />
-    <Property Name="ScholarshipFees" Type="money" Nullable="false" />
+    <Property Name="ScholarshipFees" Type="money" />
     <Property Name="TotalFees" Type="money" Nullable="false" />
     <Property Name="PaidFees" Type="money" Nullable="false" />
     <Property Name="PendingFees" Type="money" Nullable="false" />
@@ -905,6 +902,16 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="academicyear" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LeaveBalance" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_LectTimeSetUp">
+    <Key>
+      <PropertyRef Name="LecTimeid" />
+    </Key>
+    <Property Name="LecTimeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LecNo" Type="int" Nullable="false" />
+    <Property Name="LecTime" Type="varchar" MaxLength="25" />
+    <Property Name="LectETime" Type="varchar" MaxLength="25" />
+    <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_lib_Author">
     <Key>
@@ -1168,24 +1175,26 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_student">
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="datetime2" Precision="7" />
-    <Property Name="Weight" Type="int" Nullable="false" />
-    <Property Name="Height" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="int" />
+    <Property Name="Height" Type="int" />
     <Property Name="StudBldGrp" Type="int" Nullable="false" />
     <Property Name="StudEmail" Type="varchar" MaxLength="50" />
     <Property Name="Disease" Type="varchar" MaxLength="20" />
     <Property Name="Religionid" Type="int" Nullable="false" />
     <Property Name="Casteid" Type="int" Nullable="false" />
     <Property Name="Classid" Type="int" Nullable="false" />
-    <Property Name="RollNo" Type="int" Nullable="false" />
+    <Property Name="RollNo" Type="int" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="MotherTongue" Type="varchar" MaxLength="50" />
     <Property Name="PreviousSchool" Type="varchar" MaxLength="100" />
@@ -1197,7 +1206,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="PrincipalNm" Type="varchar" MaxLength="20" />
     <Property Name="ReferenceNm" Type="varchar" MaxLength="50" />
     <Property Name="ReferenceContact" Type="varchar" MaxLength="20" />
-    <Property Name="BusFacility" Type="bit" Nullable="false" />
+    <Property Name="BusFacility" Type="bit" />
     <Property Name="BusNo" Type="varchar" MaxLength="50" />
     <Property Name="BusRTONo" Type="varchar" MaxLength="50" />
     <Property Name="EmergencyPhysicianNm" Type="varchar" MaxLength="50" />
@@ -1211,8 +1220,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="FatherContact" Type="varchar" MaxLength="20" />
     <Property Name="FatherBldGrpid" Type="int" />
     <Property Name="FatherPic" Type="image" />
-    <Property Name="MotherOccpationid" Type="int" Nullable="false" />
-    <Property Name="MotherQualificationid" Type="int" Nullable="false" />
+    <Property Name="MotherOccpationid" Type="int" />
+    <Property Name="MotherQualificationid" Type="int" />
     <Property Name="MotherEmail" Type="varchar" MaxLength="50" />
     <Property Name="MotherOfficeAddress" Type="varchar(max)" />
     <Property Name="MotherContact" Type="varchar" MaxLength="20" />
@@ -1221,14 +1230,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="Stateid" Type="int" Nullable="false" />
     <Property Name="Cityid" Type="int" Nullable="false" />
-    <Property Name="CurrentAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentAddress" Type="varchar(max)" />
     <Property Name="PermanentAddress" Type="varchar(max)" />
     <Property Name="academicyear" Type="varchar" MaxLength="10" />
     <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="busid" Type="int" />
     <Property Name="cats" Type="varchar(max)" />
     <Property Name="prds" Type="varchar(max)" />
-    <Property Name="Docs" Type="nvarchar(max)" />
+    <Property Name="Docs" Type="varchar(max)" />
     <Property Name="subcats" Type="varchar(max)" />
     <Property Name="StudCategoryid" Type="int" />
     <Property Name="GuardianOccpationid" Type="int" />
@@ -1237,11 +1246,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="GuardianOfficeAddress" Type="varchar(max)" />
     <Property Name="GuardianContact" Type="varchar" MaxLength="20" />
     <Property Name="GuardianName" Type="varchar" MaxLength="50" />
-    <Property Name="FCode" Type="int" />
-    <Property Name="MCode" Type="int" />
-    <Property Name="GCode" Type="int" />
-    <Property Name="RCode" Type="int" />
-    <Property Name="ECode" Type="int" />
+    <Property Name="FCode" Type="varchar" MaxLength="5" />
+    <Property Name="MCode" Type="varchar" MaxLength="5" />
+    <Property Name="GCode" Type="varchar" MaxLength="5" />
+    <Property Name="RCode" Type="varchar" MaxLength="5" />
+    <Property Name="ECode" Type="varchar" MaxLength="5" />
     <Property Name="GuardianPic" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
@@ -1263,7 +1272,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
     <Property Name="DocumentType" Type="varchar" MaxLength="100" />
     <Property Name="DocumentIDNo" Type="varchar" MaxLength="100" />
-    <Property Name="Dept_Id" Type="int" />
+    <Property Name="Dept_Id" Type="int" Nullable="false" />
     <Property Name="app_id" Type="nvarchar" MaxLength="100" />
     <Property Name="ug_id" Type="nvarchar" MaxLength="100" />
     <Property Name="pincode" Type="varchar" MaxLength="10" />
@@ -1279,6 +1288,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="StdMobNo" Type="varchar" MaxLength="15" />
     <Property Name="StdRegNo" Type="varchar(max)" />
     <Property Name="emContactRel" Type="varchar" MaxLength="15" />
+    <Property Name="St_Status" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_StudentAttendance">
     <Key>
@@ -1384,11 +1394,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Day" Type="int" Nullable="false" />
     <Property Name="LecNo" Type="int" Nullable="false" />
     <Property Name="Subjectid" Type="int" Nullable="false" />
-    <Property Name="LecTime" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="LecETime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Empid" Type="int" Nullable="false" />
     <Property Name="yearid" Type="int" />
     <Property Name="deptid" Type="int" />
+    <Property Name="Semester" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbl_transport">
     <Key>
@@ -1432,6 +1441,20 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Dept_name" Type="varchar" MaxLength="100" />
     <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblfeespaymentinfo">
+    <Key>
+      <PropertyRef Name="PInfoid" />
+    </Key>
+    <Property Name="PInfoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Courseid" Type="int" />
+    <Property Name="Studid" Type="int" />
+    <Property Name="receipttypeid" Type="int" />
+    <Property Name="academicyear" Type="varchar" MaxLength="10" />
+    <Property Name="fchildid" Type="int" />
+    <Property Name="FeesAmt" Type="money" />
+    <Property Name="PaymentAmt" Type="money" />
+    <Property Name="PendingAmt" Type="money" />
   </EntityType>
   <EntityType Name="tblReceiptType">
     <Key>
@@ -1709,7 +1732,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Quallification" Type="int" Mode="In" />
     <Parameter Name="DateOfJoin" Type="datetime2" Mode="In" />
     <Parameter Name="Typeid" Type="int" Mode="In" />
-    <Parameter Name="Code" Type="int" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
     <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
     <Parameter Name="department" Type="int" Mode="In" />
@@ -1744,7 +1767,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="parentqualification" Type="varchar" Mode="In" />
     <Parameter Name="parentsemail" Type="varchar" Mode="In" />
     <Parameter Name="parentsaddress" Type="text" Mode="In" />
-    <Parameter Name="parentscode" Type="int" Mode="In" />
+    <Parameter Name="parentscode" Type="varchar" Mode="In" />
     <Parameter Name="parentscontact" Type="varchar" Mode="In" />
     <Parameter Name="parentspic" Type="image" Mode="In" />
     <Parameter Name="pstreet" Type="text" Mode="In" />
@@ -1757,9 +1780,9 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="cstate" Type="int" Mode="In" />
     <Parameter Name="ccountry" Type="int" Mode="In" />
     <Parameter Name="cpin" Type="varchar" Mode="In" />
-    <Parameter Name="homecode" Type="int" Mode="In" />
+    <Parameter Name="homecode" Type="varchar" Mode="In" />
     <Parameter Name="homecontact" Type="varchar" Mode="In" />
-    <Parameter Name="cmobilecode" Type="int" Mode="In" />
+    <Parameter Name="cmobilecode" Type="varchar" Mode="In" />
     <Parameter Name="cmobile" Type="varchar" Mode="In" />
     <Parameter Name="bankname" Type="varchar" Mode="In" />
     <Parameter Name="branch" Type="varchar" Mode="In" />
@@ -1886,6 +1909,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="cjoiningdate_exp10" Type="datetime2" Mode="In" />
     <Parameter Name="clastdate_exp10" Type="datetime2" Mode="In" />
     <Parameter Name="ctotalexperience_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="q_department1" Type="int" Mode="In" />
+    <Parameter Name="q_department2" Type="int" Mode="In" />
+    <Parameter Name="q_department3" Type="int" Mode="In" />
+    <Parameter Name="q_department4" Type="int" Mode="In" />
+    <Parameter Name="q_Set" Type="bit" Mode="In" />
+    <Parameter Name="q_Net" Type="bit" Mode="In" />
+    <Parameter Name="q_SetPassingYear" Type="varchar" Mode="In" />
+    <Parameter Name="q_NetPassingYear" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_EmployeeAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
@@ -1941,15 +1972,8 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_feessetup_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Feesid" Type="int" Mode="In" />
-    <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="receipttypeid" Type="int" Mode="In" />
-    <Parameter Name="LFees" Type="money" Mode="In" />
-    <Parameter Name="TFees" Type="money" Mode="In" />
-    <Parameter Name="UFees" Type="money" Mode="In" />
-    <Parameter Name="HFees" Type="money" Mode="In" />
-    <Parameter Name="OFees" Type="money" Mode="In" />
     <Parameter Name="TotalFees" Type="money" Mode="In" />
-    <Parameter Name="PTypeid" Type="int" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_get_permission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1963,6 +1987,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_GetAvailableLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Empid" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetBirthdayListDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getBloodgroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getBookCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetBookDetailsbyBookid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2037,6 +2062,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_getInventoryVendorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getJType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getLeave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetLectTimeSetUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Sp_GetLibBookDetailsbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="bookid" Type="int" Mode="In" />
   </Function>
@@ -2082,7 +2108,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_getSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetStdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Dept_Id" Type="int" Mode="In" />
+    <Parameter Name="academicyear" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetStudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
@@ -2111,6 +2140,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   <Function Name="sp_GetSubjectlistEditbyExamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Examid" Type="int" Mode="In" />
   </Function>
+  <Function Name="Sp_GetSubjectName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getteacheremail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
   </Function>
@@ -2362,6 +2392,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="StdMobNo" Type="varchar" Mode="In" />
     <Parameter Name="StdRegNo" Type="varchar" Mode="In" />
     <Parameter Name="empContactRel" Type="varchar" Mode="In" />
+    <Parameter Name="St_Status" Type="int" Mode="In" />
     <Parameter Name="subject1" Type="varchar" Mode="In" />
     <Parameter Name="subject2" Type="varchar" Mode="In" />
     <Parameter Name="subject3" Type="varchar" Mode="In" />
@@ -2725,8 +2756,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Day" Type="int" Mode="In" />
     <Parameter Name="LecNo" Type="int" Mode="In" />
     <Parameter Name="Subjectid" Type="int" Mode="In" />
-    <Parameter Name="LecTime" Type="varchar" Mode="In" />
-    <Parameter Name="LecETime" Type="varchar" Mode="In" />
+    <Parameter Name="Semester" Type="nvarchar" Mode="In" />
     <Parameter Name="Empid" Type="int" Mode="In" />
     <Parameter Name="year" Type="int" Mode="In" />
     <Parameter Name="deptid" Type="int" Mode="In" />
@@ -2800,11 +2830,13 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_ExamTImeTable" EntityType="Self.tbl_ExamTImeTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ExamTimetableSubject" EntityType="Self.tbl_ExamTimetableSubject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_fees" EntityType="Self.tbl_fees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_feeschild" EntityType="Self.tbl_feeschild" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feeslabel" EntityType="Self.tbl_feeslabel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_feespayment" EntityType="Self.tbl_feespayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Inventory" EntityType="Self.tbl_Inventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_InventoryVendor" EntityType="Self.tbl_InventoryVendor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_leave" EntityType="Self.tbl_leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_LectTimeSetUp" EntityType="Self.tbl_LectTimeSetUp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_Author" EntityType="Self.tbl_lib_Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_BookCategory" EntityType="Self.tbl_lib_BookCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_lib_BookIssue" EntityType="Self.tbl_lib_BookIssue" Schema="dbo" store:Type="Tables" />
@@ -2826,7 +2858,6 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_SessionMaster" EntityType="Self.tbl_SessionMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="Self.tbl_StudentAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentCategory" EntityType="Self.tbl_StudentCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_studentdivision" EntityType="Self.tbl_studentdivision" Schema="dbo" store:Type="Tables" />
@@ -2840,6 +2871,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_YearMaster" EntityType="Self.tbl_YearMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblfeespaymentinfo" EntityType="Self.tblfeespaymentinfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblReceiptType" EntityType="Self.tblReceiptType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pgeducationdetails" EntityType="Self.pgeducationdetails" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -2911,18 +2943,123 @@ FROM [dbo].[sys_UserPermission] AS [sys_UserPermission]</DefiningQuery>
 [tbl_days].[daynm] AS [daynm]
 FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="tbl_feeschild" EntityType="Self.tbl_feeschild" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[tbl_feeschild].[Feesid] AS [Feesid], 
-[tbl_feeschild].[FeesNm] AS [FeesNm], 
-[tbl_feeschild].[Fees] AS [Fees]
-FROM [dbo].[tbl_feeschild] AS [tbl_feeschild]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="tbl_feeslabelchild" EntityType="Self.tbl_feeslabelchild" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
 [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[tbl_student].[Studid] AS [Studid], 
+[tbl_student].[Studnm] AS [Studnm], 
+[tbl_student].[Studfathernm] AS [Studfathernm], 
+[tbl_student].[Studmothernm] AS [Studmothernm], 
+[tbl_student].[DOB] AS [DOB], 
+[tbl_student].[Weight] AS [Weight], 
+[tbl_student].[Height] AS [Height], 
+[tbl_student].[StudBldGrp] AS [StudBldGrp], 
+[tbl_student].[StudEmail] AS [StudEmail], 
+[tbl_student].[Disease] AS [Disease], 
+[tbl_student].[Religionid] AS [Religionid], 
+[tbl_student].[Casteid] AS [Casteid], 
+[tbl_student].[Classid] AS [Classid], 
+[tbl_student].[RollNo] AS [RollNo], 
+[tbl_student].[Gender] AS [Gender], 
+[tbl_student].[MotherTongue] AS [MotherTongue], 
+[tbl_student].[PreviousSchool] AS [PreviousSchool], 
+[tbl_student].[SchoolAddress] AS [SchoolAddress], 
+[tbl_student].[LastClass] AS [LastClass], 
+[tbl_student].[Grade] AS [Grade], 
+[tbl_student].[LeaveYear] AS [LeaveYear], 
+[tbl_student].[LeaveReason] AS [LeaveReason], 
+[tbl_student].[PrincipalNm] AS [PrincipalNm], 
+[tbl_student].[ReferenceNm] AS [ReferenceNm], 
+[tbl_student].[ReferenceContact] AS [ReferenceContact], 
+[tbl_student].[BusFacility] AS [BusFacility], 
+[tbl_student].[BusNo] AS [BusNo], 
+[tbl_student].[BusRTONo] AS [BusRTONo], 
+[tbl_student].[EmergencyPhysicianNm] AS [EmergencyPhysicianNm], 
+[tbl_student].[EmergencyPhysicianContact] AS [EmergencyPhysicianContact], 
+[tbl_student].[EmergencyAddress] AS [EmergencyAddress], 
+[tbl_student].[StudPic] AS [StudPic], 
+[tbl_student].[FatherOccpationid] AS [FatherOccpationid], 
+[tbl_student].[FatherQualificationid] AS [FatherQualificationid], 
+[tbl_student].[FatherEmail] AS [FatherEmail], 
+[tbl_student].[FatherOfficeAddress] AS [FatherOfficeAddress], 
+[tbl_student].[FatherContact] AS [FatherContact], 
+[tbl_student].[FatherBldGrpid] AS [FatherBldGrpid], 
+[tbl_student].[FatherPic] AS [FatherPic], 
+[tbl_student].[MotherOccpationid] AS [MotherOccpationid], 
+[tbl_student].[MotherQualificationid] AS [MotherQualificationid], 
+[tbl_student].[MotherEmail] AS [MotherEmail], 
+[tbl_student].[MotherOfficeAddress] AS [MotherOfficeAddress], 
+[tbl_student].[MotherContact] AS [MotherContact], 
+[tbl_student].[MotherBldGrpid] AS [MotherBldGrpid], 
+[tbl_student].[MotherPic] AS [MotherPic], 
+[tbl_student].[Countryid] AS [Countryid], 
+[tbl_student].[Stateid] AS [Stateid], 
+[tbl_student].[Cityid] AS [Cityid], 
+[tbl_student].[CurrentAddress] AS [CurrentAddress], 
+[tbl_student].[PermanentAddress] AS [PermanentAddress], 
+[tbl_student].[academicyear] AS [academicyear], 
+[tbl_student].[SysDt] AS [SysDt], 
+[tbl_student].[busid] AS [busid], 
+[tbl_student].[cats] AS [cats], 
+[tbl_student].[prds] AS [prds], 
+[tbl_student].[Docs] AS [Docs], 
+[tbl_student].[subcats] AS [subcats], 
+[tbl_student].[StudCategoryid] AS [StudCategoryid], 
+[tbl_student].[GuardianOccpationid] AS [GuardianOccpationid], 
+[tbl_student].[GuardianQualificationid] AS [GuardianQualificationid], 
+[tbl_student].[GuardianEmail] AS [GuardianEmail], 
+[tbl_student].[GuardianOfficeAddress] AS [GuardianOfficeAddress], 
+[tbl_student].[GuardianContact] AS [GuardianContact], 
+[tbl_student].[GuardianName] AS [GuardianName], 
+[tbl_student].[FCode] AS [FCode], 
+[tbl_student].[MCode] AS [MCode], 
+[tbl_student].[GCode] AS [GCode], 
+[tbl_student].[RCode] AS [RCode], 
+[tbl_student].[ECode] AS [ECode], 
+[tbl_student].[GuardianPic] AS [GuardianPic], 
+[tbl_student].[Sibling2Name] AS [Sibling2Name], 
+[tbl_student].[Sibling2Rel] AS [Sibling2Rel], 
+[tbl_student].[Sibling2DOB] AS [Sibling2DOB], 
+[tbl_student].[Sibling2Ql] AS [Sibling2Ql], 
+[tbl_student].[Sibling1Name] AS [Sibling1Name], 
+[tbl_student].[Sibling1Rel] AS [Sibling1Rel], 
+[tbl_student].[Sibling1DOB] AS [Sibling1DOB], 
+[tbl_student].[Sibling1Ql] AS [Sibling1Ql], 
+[tbl_student].[Sibling3Name] AS [Sibling3Name], 
+[tbl_student].[Sibling3Rel] AS [Sibling3Rel], 
+[tbl_student].[Sibling3DOB] AS [Sibling3DOB], 
+[tbl_student].[Sibling3Ql] AS [Sibling3Ql], 
+[tbl_student].[Sibling4Name] AS [Sibling4Name], 
+[tbl_student].[Sibling4Rel] AS [Sibling4Rel], 
+[tbl_student].[Sibling4DOB] AS [Sibling4DOB], 
+[tbl_student].[Sibling4Ql] AS [Sibling4Ql], 
+[tbl_student].[ParishName] AS [ParishName], 
+[tbl_student].[DioceseName] AS [DioceseName], 
+[tbl_student].[DocumentType] AS [DocumentType], 
+[tbl_student].[DocumentIDNo] AS [DocumentIDNo], 
+[tbl_student].[Dept_Id] AS [Dept_Id], 
+[tbl_student].[app_id] AS [app_id], 
+[tbl_student].[ug_id] AS [ug_id], 
+[tbl_student].[pincode] AS [pincode], 
+[tbl_student].[sc_regno] AS [sc_regno], 
+[tbl_student].[doc_typename] AS [doc_typename], 
+[tbl_student].[courseyearid] AS [courseyearid], 
+[tbl_student].[FatherOtherOccName] AS [FatherOtherOccName], 
+[tbl_student].[FatherOtherQualName] AS [FatherOtherQualName], 
+[tbl_student].[GuardianOtherOccName] AS [GuardianOtherOccName], 
+[tbl_student].[GuardianOtherQalName] AS [GuardianOtherQalName], 
+[tbl_student].[MotherOtherOccName] AS [MotherOtherOccName], 
+[tbl_student].[MotherOtherQualName] AS [MotherOtherQualName], 
+[tbl_student].[StdMobNo] AS [StdMobNo], 
+[tbl_student].[StdRegNo] AS [StdRegNo], 
+[tbl_student].[emContactRel] AS [emContactRel], 
+[tbl_student].[St_Status] AS [St_Status]
+FROM [dbo].[tbl_student] AS [tbl_student]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

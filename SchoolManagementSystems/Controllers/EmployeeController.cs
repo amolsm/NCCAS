@@ -65,8 +65,8 @@ namespace SchoolManagementSystems.Controllers
         {
             employeeviewmodel _bgv = new employeeviewmodel();
             FillPermission(54);
-         
-                _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
+            _bgv.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            _bgv.statelist = db.tbl_state.Where(m => m.status == true).ToList();
             _bgv.departmentlistdetails = db.tblDepartment.Where(m => m.Dept_id != 0).ToList();
             _bgv._emplist = db.sp_getemp().ToList();
             _bgv.citylist = db.tbl_city.Where(m => m.Status == true).ToList();
@@ -84,10 +84,11 @@ namespace SchoolManagementSystems.Controllers
         [HttpGet]
         public JsonResult FillEmpDetails(int empid)
         {
-         
+          
             //var empexperience = db.tbl_Empexperience.Where(m => m.empId == empid).ToString();
-           
+            
             var data = db.tbl_employee.Where(m => m.Empid == empid).FirstOrDefault();
+         
             return Json( data, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -140,25 +141,22 @@ namespace SchoolManagementSystems.Controllers
                     _bgv.ppic = db.tbl_employee.Where(m => m.Empid == _bgv.Empid).Select(m => m.parentspic).FirstOrDefault();
                 }
             }
-            if (action != "delete")
-            {
-                //db.sp_bloodgroup_DML(_bgv.bloodgroupid, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "").ToString();
-                try
-                {
-                    db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "NA", _bgv.edepartment, _bgv.eblood, _bgv.equalification1, _bgv.euniversity1, _bgv.eprecentage1, _bgv.eYearofpassing1, _bgv.equalification2, _bgv.euniversity2, _bgv.eprecentage2, _bgv.eYearofpassing2, _bgv.equalification3, _bgv.euniversity3, _bgv.eprecentage3, _bgv.eYearofpassing3, _bgv.equalification4, _bgv.euniversity4, _bgv.eprecentage4, _bgv.eYearofpassing4, _bgv.eweight, _bgv.eheight, _bgv.emppic, _bgv.eidtype, _bgv.dname, _bgv.DCode, _bgv.dcontact, _bgv.daddress, _bgv.relationship, _bgv.pname, _bgv.poccupation, _bgv.pqualification, _bgv.pemail, _bgv.pofficeaddress, _bgv.PCODE, _bgv.pcontact, _bgv.ppic, _bgv.pastreet, _bgv.pacity, _bgv.pastate, _bgv.pacountry, _bgv.papin, _bgv.cstreet, _bgv.ccity, _bgv.cstate, _bgv.ccountry, _bgv.cpin, _bgv.PHCODE, _bgv.phome, _bgv.MCODE, _bgv.hmobile, _bgv.bankname, _bgv.branch, _bgv.ifsccode, _bgv.accountno, _bgv.acname, _bgv.collagename, _bgv.university, _bgv.joiningdate, _bgv.lastdate, _bgv.total, _bgv.ldesignation, _bgv.companyname, _bgv.clastdesignation, _bgv.cjoiningdate, _bgv.clastdate, _bgv.ctotal, _bgv.employeeemail, _bgv.empreligion, _bgv.empcategory, _bgv.empcast, _bgv.mtongue, _bgv.collagename1, _bgv.university1, _bgv.joiningdate1, _bgv.lastdate1,
-                         _bgv.total1, _bgv.ldesignation1, _bgv.companyname1, _bgv.clastdesignation1, _bgv.cjoiningdate1, _bgv.clastdate1, _bgv.ctotal1, _bgv.Documenttypename, _bgv.DocumentIDNo, _bgv.conttactrelation, _bgv.ParishName, _bgv.DioceseName,_bgv.collagename2,_bgv.university2,_bgv.joiningdate2, _bgv.lastdate2,
-                         _bgv.total2, _bgv.ldesignation2, _bgv.companyname2, _bgv.clastdesignation2, _bgv.cjoiningdate2, _bgv.clastdate2, _bgv.ctotal2, _bgv.collagename3, _bgv.university3, _bgv.joiningdate3, _bgv.lastdate3,
-                         _bgv.total3, _bgv.ldesignation3, _bgv.companyname3, _bgv.clastdesignation3, _bgv.cjoiningdate3, _bgv.clastdate3, _bgv.ctotal3, _bgv.collagename4, _bgv.university4, _bgv.joiningdate4, _bgv.lastdate4,
-                         _bgv.total4, _bgv.ldesignation4, _bgv.companyname4, _bgv.clastdesignation4, _bgv.cjoiningdate4, _bgv.clastdate4, _bgv.ctotal4, _bgv.collagename5, _bgv.university5, _bgv.joiningdate5, _bgv.lastdate5,
-                         _bgv.total5, _bgv.ldesignation5, _bgv.companyname5, _bgv.clastdesignation5, _bgv.cjoiningdate5, _bgv.clastdate5, _bgv.ctotal5, _bgv.collagename6, _bgv.university6, _bgv.joiningdate6, _bgv.lastdate6,
-                         _bgv.total6, _bgv.ldesignation6, _bgv.companyname6, _bgv.clastdesignation6, _bgv.cjoiningdate6, _bgv.clastdate6, _bgv.ctotal6, _bgv.collagename7, _bgv.university7, _bgv.joiningdate7, _bgv.lastdate7,
-                         _bgv.total7, _bgv.ldesignation7, _bgv.companyname7, _bgv.clastdesignation7, _bgv.cjoiningdate7, _bgv.clastdate7, _bgv.ctotal7, _bgv.collagename8, _bgv.university8, _bgv.joiningdate8, _bgv.lastdate8,
-                         _bgv.total8, _bgv.ldesignation8, _bgv.companyname8, _bgv.clastdesignation8, _bgv.cjoiningdate8, _bgv.clastdate8, _bgv.ctotal8, _bgv.collagename9, _bgv.university9, _bgv.joiningdate9, _bgv.lastdate9,
-                         _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9
-                         ).ToString();
+                 try
+                 {
+                db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, _bgv.Code, _bgv.OQualification, "NA", _bgv.edepartment, _bgv.eblood, _bgv.equalification1, _bgv.euniversity1, _bgv.eprecentage1, _bgv.eYearofpassing1, _bgv.equalification2, _bgv.euniversity2, _bgv.eprecentage2, _bgv.eYearofpassing2, _bgv.equalification3, _bgv.euniversity3, _bgv.eprecentage3, _bgv.eYearofpassing3, _bgv.equalification4, _bgv.euniversity4, _bgv.eprecentage4, _bgv.eYearofpassing4, _bgv.eweight, _bgv.eheight, _bgv.emppic, _bgv.eidtype, _bgv.dname, _bgv.DCode, _bgv.dcontact, _bgv.daddress, _bgv.relationship, _bgv.pname, _bgv.poccupation, _bgv.pqualification, _bgv.pemail, _bgv.pofficeaddress, _bgv.PCODE, _bgv.pcontact, _bgv.ppic, _bgv.pastreet, _bgv.pacity, _bgv.pastate, _bgv.pacountry, _bgv.papin, _bgv.cstreet, _bgv.ccity, _bgv.cstate, _bgv.ccountry, _bgv.cpin, _bgv.PHCODE, _bgv.phome, _bgv.MCODE, _bgv.hmobile, _bgv.bankname, _bgv.branch, _bgv.ifsccode, _bgv.accountno, _bgv.acname, _bgv.collagename, _bgv.university, _bgv.joiningdate, _bgv.lastdate, _bgv.total, _bgv.ldesignation, _bgv.companyname, _bgv.clastdesignation, _bgv.cjoiningdate, _bgv.clastdate, _bgv.ctotal, _bgv.employeeemail, _bgv.empreligion, _bgv.empcategory, _bgv.empcast, _bgv.mtongue, _bgv.collagename1, _bgv.university1, _bgv.joiningdate1, _bgv.lastdate1,
+                     _bgv.total1, _bgv.ldesignation1, _bgv.companyname1, _bgv.clastdesignation1, _bgv.cjoiningdate1, _bgv.clastdate1, _bgv.ctotal1, _bgv.Documenttypename, _bgv.DocumentIDNo, _bgv.conttactrelation, _bgv.ParishName, _bgv.DioceseName, _bgv.collagename2, _bgv.university2, _bgv.joiningdate2, _bgv.lastdate2,
+                     _bgv.total2, _bgv.ldesignation2, _bgv.companyname2, _bgv.clastdesignation2, _bgv.cjoiningdate2, _bgv.clastdate2, _bgv.ctotal2, _bgv.collagename3, _bgv.university3, _bgv.joiningdate3, _bgv.lastdate3,
+                     _bgv.total3, _bgv.ldesignation3, _bgv.companyname3, _bgv.clastdesignation3, _bgv.cjoiningdate3, _bgv.clastdate3, _bgv.ctotal3, _bgv.collagename4, _bgv.university4, _bgv.joiningdate4, _bgv.lastdate4,
+                     _bgv.total4, _bgv.ldesignation4, _bgv.companyname4, _bgv.clastdesignation4, _bgv.cjoiningdate4, _bgv.clastdate4, _bgv.ctotal4, _bgv.collagename5, _bgv.university5, _bgv.joiningdate5, _bgv.lastdate5,
+                     _bgv.total5, _bgv.ldesignation5, _bgv.companyname5, _bgv.clastdesignation5, _bgv.cjoiningdate5, _bgv.clastdate5, _bgv.ctotal5, _bgv.collagename6, _bgv.university6, _bgv.joiningdate6, _bgv.lastdate6,
+                     _bgv.total6, _bgv.ldesignation6, _bgv.companyname6, _bgv.clastdesignation6, _bgv.cjoiningdate6, _bgv.clastdate6, _bgv.ctotal6, _bgv.collagename7, _bgv.university7, _bgv.joiningdate7, _bgv.lastdate7,
+                     _bgv.total7, _bgv.ldesignation7, _bgv.companyname7, _bgv.clastdesignation7, _bgv.cjoiningdate7, _bgv.clastdate7, _bgv.ctotal7, _bgv.collagename8, _bgv.university8, _bgv.joiningdate8, _bgv.lastdate8,
+                     _bgv.total8, _bgv.ldesignation8, _bgv.companyname8, _bgv.clastdesignation8, _bgv.cjoiningdate8, _bgv.clastdate8, _bgv.ctotal8, _bgv.collagename9, _bgv.university9, _bgv.joiningdate9, _bgv.lastdate9,
+                     _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9, _bgv.q_department1, _bgv.q_department2, _bgv.q_department3, _bgv.q_department4, _bgv.q_Set, _bgv.q_Net, _bgv.q_SetPassingYear, _bgv.q_NetPassingYear
+                     ).ToString();
 
-                    if (_bgv.Empid == 0)
-                    {
+                       }
+                           catch { }
                         try
                         {
                             DateTime dt = new DateTime();
@@ -166,53 +164,15 @@ namespace SchoolManagementSystems.Controllers
                             int empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
                             int typeid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Typeid).FirstOrDefault();
                             CreateUsers(_bgv.Emailid, typeid, empid, yr);
-                            SendSMS(empid);
-                            SendUserEmails(_bgv.Emailid);
+                           
 
                         }
                         catch { }
-                    }
-                    else
-                    {
-                        SendEmails(_bgv.Emailid);
-                        int empid = db.tbl_employee.Where(m => m.Emailid == _bgv.Emailid).Select(m => m.Empid).FirstOrDefault();
-                        SendUpdateSMS(empid);
-                    }
-                    //if (_bgv.Empid == 0)
-                    //SendSMS();
+        
+                   
+                      return RedirectToAction("Index");
 
-                }
-                catch (Exception ex)
-                {
-                    string msg = ex.ToString();
-                }
-              
-
-               
-
-                }
-            else if (action == "Delete")
-            {
-                //db.sp_bloodgroup_DML(id, _bgv.bloodgroupnm, _bgv.status, _bgv.academicyear, "del").ToString();
-
-                //   db.sp_employee_DML(id, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "del").ToString();
-
-                db.sp_employee_DML(_bgv.Empid, _bgv.FirstName, _bgv.MiddleName, _bgv.LastName, _bgv.Cityid, _bgv.Stateid, _bgv.Zipcode, _bgv.Emailid, _bgv.PhoneNo, _bgv.MobileNo, _bgv.Address, _bgv.DOB, _bgv.Gender, _bgv.Quallification, _bgv.DateOfJoin, _bgv.Typeid, Convert.ToInt32(_bgv.Code), _bgv.OQualification, "NA", _bgv.edepartment, _bgv.eblood, _bgv.equalification1, _bgv.euniversity1, _bgv.eprecentage1, _bgv.eYearofpassing1, _bgv.equalification2, _bgv.euniversity2, _bgv.eprecentage2, _bgv.eYearofpassing2, _bgv.equalification3, _bgv.euniversity3, _bgv.eprecentage3, _bgv.eYearofpassing3, _bgv.equalification4, _bgv.euniversity4, _bgv.eprecentage4, _bgv.eYearofpassing4, _bgv.eweight, _bgv.eheight, _bgv.emppic, _bgv.eidtype, _bgv.dname, _bgv.DCode, _bgv.dcontact, _bgv.daddress, _bgv.relationship, _bgv.pname, _bgv.poccupation, _bgv.pqualification, _bgv.pemail, _bgv.pofficeaddress, _bgv.PCODE, _bgv.pcontact, _bgv.ppic, _bgv.pastreet, _bgv.pacity, _bgv.pastate, _bgv.pacountry, _bgv.papin, _bgv.cstreet, _bgv.ccity, _bgv.cstate, _bgv.ccountry, _bgv.cpin, _bgv.PHCODE, _bgv.phome, _bgv.MCODE, _bgv.hmobile, _bgv.bankname, _bgv.branch, _bgv.ifsccode, _bgv.accountno, _bgv.acname, _bgv.collagename, _bgv.university, _bgv.joiningdate, _bgv.lastdate, _bgv.total, _bgv.ldesignation, _bgv.companyname, _bgv.clastdesignation, _bgv.cjoiningdate, _bgv.clastdate, _bgv.ctotal, _bgv.employeeemail, _bgv.empreligion, _bgv.empcategory, _bgv.empcast, _bgv.mtongue, _bgv.collagename1, _bgv.university1, _bgv.joiningdate1, _bgv.lastdate1,
-                         _bgv.total1, _bgv.ldesignation1, _bgv.companyname1, _bgv.clastdesignation1, _bgv.cjoiningdate1, _bgv.clastdate1, _bgv.ctotal1, _bgv.Documenttypename, _bgv.DocumentIDNo, _bgv.conttactrelation, _bgv.ParishName, _bgv.DioceseName, _bgv.collagename2, _bgv.university2, _bgv.joiningdate2, _bgv.lastdate2,
-                         _bgv.total2, _bgv.ldesignation2, _bgv.companyname2, _bgv.clastdesignation2, _bgv.cjoiningdate2, _bgv.clastdate2, _bgv.ctotal2, _bgv.collagename3, _bgv.university3, _bgv.joiningdate3, _bgv.lastdate3,
-                         _bgv.total3, _bgv.ldesignation3, _bgv.companyname3, _bgv.clastdesignation3, _bgv.cjoiningdate3, _bgv.clastdate3, _bgv.ctotal3, _bgv.collagename4, _bgv.university4, _bgv.joiningdate4, _bgv.lastdate4,
-                         _bgv.total4, _bgv.ldesignation4, _bgv.companyname4, _bgv.clastdesignation4, _bgv.cjoiningdate4, _bgv.clastdate4, _bgv.ctotal4, _bgv.collagename5, _bgv.university5, _bgv.joiningdate5, _bgv.lastdate5,
-                         _bgv.total5, _bgv.ldesignation5, _bgv.companyname5, _bgv.clastdesignation5, _bgv.cjoiningdate5, _bgv.clastdate5, _bgv.ctotal5, _bgv.collagename6, _bgv.university6, _bgv.joiningdate6, _bgv.lastdate6,
-                         _bgv.total6, _bgv.ldesignation6, _bgv.companyname6, _bgv.clastdesignation6, _bgv.cjoiningdate6, _bgv.clastdate6, _bgv.ctotal6, _bgv.collagename7, _bgv.university7, _bgv.joiningdate7, _bgv.lastdate7,
-                         _bgv.total7, _bgv.ldesignation7, _bgv.companyname7, _bgv.clastdesignation7, _bgv.cjoiningdate7, _bgv.clastdate7, _bgv.ctotal7, _bgv.collagename8, _bgv.university8, _bgv.joiningdate8, _bgv.lastdate8,
-                         _bgv.total8, _bgv.ldesignation8, _bgv.companyname8, _bgv.clastdesignation8, _bgv.cjoiningdate8, _bgv.clastdate8, _bgv.ctotal8, _bgv.collagename9, _bgv.university9, _bgv.joiningdate9, _bgv.lastdate9,
-                         _bgv.total9, _bgv.ldesignation9, _bgv.companyname9, _bgv.clastdesignation9, _bgv.cjoiningdate9, _bgv.clastdate9, _bgv.ctotal9
-                         ).ToString();
-            }
-              
-            //_bgv._emplist = db.sp_getemp().ToList();
-            return RedirectToAction("Index");
-        }
+               }
         public JsonResult GetCities(string id)
         {
             int stateid = 0;
@@ -254,9 +214,15 @@ namespace SchoolManagementSystems.Controllers
             var x = (from y in db.tbl_user where y.UserName == UserName select y).FirstOrDefault();
             if (x == null)
             {
-                db.sp_User_DML(0, UserName, Password, Type, Genid, 1, academicyear, "");
+                db.sp_User_DML(0, UserName, Password, Type, Genid, 0, academicyear, "");
                 SendUserEmails(UserName);
-
+                SendSMS(Genid);
+            }
+            else
+            {
+                SendEmails(UserName);
+                int empid = db.tbl_employee.Where(m => m.Emailid == UserName).Select(m => m.Empid).FirstOrDefault();
+                SendUpdateSMS(empid);
             }
         }
         private void SendUserEmails(string Email)
@@ -303,10 +269,10 @@ namespace SchoolManagementSystems.Controllers
                 byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
                 {
                 {"username" , "ranjithkumar01@gmail.com"},
-                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"hash" , "e399e1b41bbe615c57453488771c9ac83e102d9b87f3b7ae41654d2a8e3c4cb1"},
                 {"numbers" , mobileno},
                 {"message" , message},
-                {"sender" , "24HDS"}
+                {"sender" , "TXTLCL"}
                 });
                 string result = System.Text.Encoding.UTF8.GetString(response);
                 return result;
@@ -354,14 +320,29 @@ namespace SchoolManagementSystems.Controllers
                 byte[] response = wb.UploadValues("http://api.textlocal.in/send/", new NameValueCollection()
                 {
                 {"username" , "ranjithkumar01@gmail.com"},
-                {"hash" , "7ddf766152c1e491ae183d793dd1e94bd93e3231"},
+                {"hash" , "e399e1b41bbe615c57453488771c9ac83e102d9b87f3b7ae41654d2a8e3c4cb1"},
                 {"numbers" , mobileno},
                 {"message" , message},
-                {"sender" , "24HDS"}
+                {"sender" , "TXTLCL"}
                 });
                 string result = System.Text.Encoding.UTF8.GetString(response);
                 return result;
             }
+        }
+        public JsonResult GetCourse(string id)
+        {
+            int coureid = 0;
+            if (id != null && id != "")
+            {
+                coureid = Convert.ToInt32(id);
+            }
+            var course = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == coureid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
+            var courselist = new SelectList(course, "Dept_id", "Dept_name");
+            var coursetypelist = db.tbl_CourseMaster.Where(x => x.Courseid == coureid).FirstOrDefault().CourseType;
+            return Json(new { courselist = courselist, coursetypelist = coursetypelist }, JsonRequestBehavior.AllowGet);
         }
     }
 }

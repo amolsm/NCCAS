@@ -1011,7 +1011,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
     }
 
 input[type="radio"], input[type="checkbox"] {
-    margin: 4px 0 0;
+    margin: 0px 0 0;
     margin-top: 1px \9;
     *margin-top: 0;
     line-height: normal;

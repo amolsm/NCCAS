@@ -23,12 +23,211 @@
         });
         FillType();
         $("#eidtype").change(function () {
-            if ($("#eidtype").val() == 7)
+            debugger; 
+            if ($("#eidtype option:selected").text() == 'Others')
             { $("#doctype").show(); }
             else { $("#doctype").hide(); }
+           
 
         });
+        $("#DocumentIDNo").keypress(function (e) {
+         
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    if ($("#eidtype option:selected").text() == 'Aadhar') {
+                        return false;
+                    } else { return true; }
+                }
+          
+            
+           
+        });
+        //---basis course select department//
+        function ReloadDept1() {
+            $("#q_department1").empty();
+            var item = '<option value="">Select Department</option>';
+            $("#q_department1").append(item);
+        }
 
+        function ReloadCourse1() {
+            if ($("#equalification1").val() == "") {
+                ReloadDept1();
+            }
+            else {
+
+                $("#q_department1").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#equalification1").val() },
+                    success: function (data) {
+                        if ($(data.courselist).length != 0) {
+                            
+                            var item = '<option value="">Select Department</option>';
+                            $.each(data.courselist, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#q_department1").append(item);
+                        }
+                        else {
+                            var item = '<option value="">Select Department</option>';
+                            $("#q_department1").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#equalification1").change(function () {
+
+            ReloadCourse1();
+        });
+        //---2 course
+        function ReloadDept2() {
+            $("#q_department2").empty();
+            var item = '<option value="">Select Department</option>';
+            $("#q_department2").append(item);
+        }
+
+        function ReloadCourse2() {
+            if ($("#equalification2").val() == "") {
+                ReloadDept2();
+            }
+            else {
+
+                $("#q_department2").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#equalification2").val() },
+                    success: function (data) {
+                        if ($(data.courselist).length != 0) {
+
+                            var item = '<option value="">Select Department</option>';
+                            $.each(data.courselist, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#q_department2").append(item);
+                        }
+                        else {
+                            var item = '<option value="">Select Department</option>';
+                            $("#q_department2").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#equalification2").change(function () {
+
+            ReloadCourse2();
+        });
+
+        //
+        //3 rd
+        function ReloadDept3() {
+            $("#q_department3").empty();
+            var item = '<option value="">Select Department</option>';
+            $("#q_department3").append(item);
+        }
+
+        function ReloadCourse3() {
+            if ($("#equalification3").val() == "") {
+                ReloadDept3();
+            }
+            else {
+
+                $("#q_department3").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#equalification3").val() },
+                    success: function (data) {
+                        if ($(data.courselist).length != 0) {
+
+                            var item = '<option value="">Select Department</option>';
+                            $.each(data.courselist, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#q_department3").append(item);
+                        }
+                        else {
+                            var item = '<option value="">Select Department</option>';
+                            $("#q_department3").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#equalification3").change(function () {
+
+            ReloadCourse3();
+        });
+
+        //
+        //4 qualification
+        function ReloadDept4() {
+            $("#q_department4").empty();
+            var item = '<option value="">Select Department</option>';
+            $("#q_department4").append(item);
+        }
+
+        function ReloadCourse4() {
+            if ($("#equalification4").val() == "") {
+                ReloadDept4();
+            }
+            else {
+
+                $("#q_department4").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#equalification4").val() },
+                    success: function (data) {
+                        if ($(data.courselist).length != 0) {
+
+                            var item = '<option value="">Select Department</option>';
+                            $.each(data.courselist, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#q_department4").append(item);
+                        }
+                        else {
+                            var item = '<option value="">Select Department</option>';
+                            $("#q_department4").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
+        $("#equalification4").change(function () {
+
+            ReloadCourse4();
+        });
+
+        //
         $('#cbxShowHide').change(function () {
             if (this.checked) {
                 $('#autoUpdate').show();
@@ -342,8 +541,8 @@
         })
         function FillType() {
             var item = '<option value="">select Type</option>';
-            item += '<option value="4">Teacher</option>';
-            item += '<option value="5">Employee</option>';
+            item += '<option value="4">Teaching Staff</option>';
+            item += '<option value="5">Non Teaching Staff</option>';
             $("#Typeid").append(item);
         }
 
@@ -559,6 +758,14 @@
                     $("#DocumentIDNo").val(data.docnumber);
                     $("#Documenttypename").val(data.doctypename);
                     $("#conttactrelation").val(data.contrelation);
+                    $("#q_department1").val(data.q_department1);
+                    $("#q_department2").val(data.q_department2);
+                    $("#q_department3").val(data.q_department3);
+                    $("#q_department4").val(data.q_department4);
+                    $("#q_Set").prop('checked',data.q_Set);
+                    $("#q_Net").prop('checked', data.q_Net);
+                    $("#q_SetPassingYear").val(data.q_SetPassingYear);
+                    $("#q_NetPassingYear").val(data.q_NetPassingYear);
                     $("#pic1").append('<img src="/Employee/getImg1/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Pic">');
                     $("#pic2").append('<img src="/Employee/getImg2/' + $("#Empid").val() + '" style="width: 190px;height: 220px;" alt="Employee Parent Pic">');
                     $.ajax({
@@ -2168,7 +2375,19 @@
                 return false;
             }
         });
-
+        $("#q_SetPassingYear").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        $("#q_NetPassingYear").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+        
         function ValidateEmail(email) {
             var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
             return expr.test(email);
@@ -3071,7 +3290,7 @@
                                                         <div class="control-group required span5">
                                                             @Html.LabelFor(model => model.DocumentIDNo, new { @class = "control-label" })
                                                             <div class="controls">
-                                                                @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "50", @class = "input" })
+                                                                @Html.TextBoxFor(model => model.DocumentIDNo, new { placeholder = "Enter DocumnetIDNo.", maxlength = "12", @class = "input" })
                                                             </div>
                                                         </div>
 
@@ -3139,11 +3358,12 @@
                                                     </fieldset>
                                                     <br />
                                                     <fieldset class="test" style="width: 100%;">
-                                                        <legend>Qualication</legend>
+                                                        <legend>Qualification</legend>
                                                         <table style="width: 100%;" class="table table-striped table-bordered">
                                                             <thead>
                                                                 <tr>
-                                                                    <td>Qualication</td>
+                                                                    <td>Course</td>
+                                                                    <td>Department</td>
                                                                     <td>University</td>
                                                                     <td>Precentage</td>
                                                                     <td>Year of Passing</td>
@@ -3153,12 +3373,17 @@
                                                                 <tr>
                                                                     <td id="Equalification1">
                                                                         
-                                                                        @Html.DropDownListFor(model => model.equalification1,new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
+                                                                        @Html.DropDownListFor(model => model.equalification1,new SelectList(Model.courselist, "CourseId", "CourseName", "Select Course"), "Select Course", new { @for = "select", @style="width:150px"})
+                                                                        <span style="color:red">&nbsp;*</span>
+                                                                    </td>
+                                                                    <td id="Q_department1">
+
+                                                                        @Html.DropDownListFor(model => model.q_department1, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select", @style = "width:150px" })
                                                                         <span style="color:red">&nbsp;*</span>
                                                                     </td>
                                                                     <td>
                                                                        
-                                                                        @Html.TextBoxFor(model => model.euniversity1, new { placeholder = "Enter University Name", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.euniversity1, new { placeholder = "Enter University Name", @class = "input", @style = "width:150px" })
                                                                         <span style="color:red">&nbsp;*</span>
                                                                         @Html.ValidationMessageFor(model => model.euniversity1)
 
@@ -3166,78 +3391,105 @@
                                                                     </td>
                                                                     <td id="Eprecentage1">
 
-                                                                        @Html.TextBoxFor(model => model.eprecentage1, new { placeholder = "Enter Precentage", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.eprecentage1, new { placeholder = "Enter Precentage", @class = "input", @style = "width:150px" })
                                                                         <span style="color:red">&nbsp;*</span>
                                                                         @Html.ValidationMessageFor(model => model.eprecentage1)
                                                                     </td>
                                                                     <td>
-                                                                        @Html.TextBoxFor(model => model.eYearofpassing1, new { @class="date-own form-control", placeholder = "Enter Year of Passing"})
+                                                                        @Html.TextBoxFor(model => model.eYearofpassing1, new { @class="date-own form-control", placeholder = "Enter Year of Passing", @style = "width:150px" })
                                                                       
                                                                         @Html.ValidationMessageFor(model => model.eYearofpassing1)
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="Equalification2">
-                                                                        @Html.DropDownListFor(model => model.equalification2, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
+                                                                        @Html.DropDownListFor(model => model.equalification2, new SelectList(Model.courselist, "CourseId", "CourseName", "Select Course"), "Select Course", new { @for = "select", @style = "width:150px" })
+                                                                    </td>
+                                                                    <td id="Q_department2">
+                                                                        @Html.DropDownListFor(model => model.q_department2, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" , @style = "width:150px" })
                                                                     </td>
                                                                     <td>
 
-                                                                        @Html.TextBoxFor(model => model.euniversity2, new { placeholder = "Enter University Name", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.euniversity2, new { placeholder = "Enter University Name", @class = "input", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity2)
 
                                                                     </td>
                                                                     <td id="Eprecentage2">
 
-                                                                        @Html.TextBoxFor(model => model.eprecentage2, new { placeholder = "Enter Precentage", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.eprecentage2, new { placeholder = "Enter Precentage", @class = "input", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eprecentage2)
                                                                     </td>
                                                                     <td>
-                                                                        @Html.TextBoxFor(model => model.eYearofpassing2, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
+                                                                        @Html.TextBoxFor(model => model.eYearofpassing2, new { @class = "date-own form-control", placeholder = "Enter Year of Passing", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eYearofpassing2)
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="Equalification3">
-                                                                        @Html.DropDownListFor(model => model.equalification3, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
+                                                                        @Html.DropDownListFor(model => model.equalification3, new SelectList(Model.courselist, "CourseId", "CourseName", "Select Course"), "Select Course", new { @for = "select", @style = "width:150px" })
+                                                                    </td>
+                                                                    <td id="Q_department3">
+                                                                        @Html.DropDownListFor(model => model.q_department3, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select" , @style = "width:150px" })
                                                                     </td>
                                                                     <td>
 
-                                                                        @Html.TextBoxFor(model => model.euniversity3, new { placeholder = "Enter University Name", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.euniversity3, new { placeholder = "Enter University Name", @class = "input", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity3)
 
                                                                     </td>
                                                                     <td id="Eprecentage3">
 
-                                                                        @Html.TextBoxFor(model => model.eprecentage3, new { placeholder = "Enter Precentage", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.eprecentage3, new { placeholder = "Enter Precentage", @class = "input" , @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eprecentage3)
                                                                     </td>
                                                                     <td>
-                                                                        @Html.TextBoxFor(model => model.eYearofpassing3, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
+                                                                        @Html.TextBoxFor(model => model.eYearofpassing3, new { @class = "date-own form-control", placeholder = "Enter Year of Passing", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eYearofpassing3)
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="Equalification4">
 
-                                                                        @Html.DropDownListFor(model => model.equalification4, new SelectList(Model.qualificationlist, "qualificationid", "qualificationnm", "Select Qualification"), "Select Qualification", new { @for = "select" })
+                                                                        @Html.DropDownListFor(model => model.equalification4, new SelectList(Model.courselist, "CourseId", "CourseName", "Select Course"), "Select Course", new { @for = "select", @style = "width:150px" })
+                                                                    </td>
+                                                                    <td id="Q_department4">
+                                                                        @Html.DropDownListFor(model => model.q_department4, new SelectList(Model.departmentlistdetails, "Dept_id", "Dept_name", "Select Department"), "Select Department", new { @for = "select", @style = "width:150px" })
                                                                     </td>
                                                                     <td>
 
-                                                                        @Html.TextBoxFor(model => model.euniversity4, new { placeholder = "Enter University Name", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.euniversity4, new { placeholder = "Enter University Name", @class = "input", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.euniversity4)
 
                                                                     </td>
                                                                     <td id="Eprecentage4">
 
-                                                                        @Html.TextBoxFor(model => model.eprecentage4, new { placeholder = "Enter Precentage", @class = "input" })
+                                                                        @Html.TextBoxFor(model => model.eprecentage4, new { placeholder = "Enter Precentage", @class = "input", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eprecentage4)
                                                                     </td>
                                                                     <td>
-                                                                        @Html.TextBoxFor(model => model.eYearofpassing4, new { @class = "date-own form-control", placeholder = "Enter Year of Passing" })
+                                                                        @Html.TextBoxFor(model => model.eYearofpassing4, new { @class = "date-own form-control", placeholder = "Enter Year of Passing", @style = "width:150px" })
                                                                         @Html.ValidationMessageFor(model => model.eYearofpassing4)
                                                                     </td>
                                                                 </tr>
-                                                            </tbody>
+                                                                <tr>
+                                                                  
+                                                                       <td>
+                                                                           SET
+                                                                        @Html.CheckBoxFor(m => m.q_Set, new { @checked = Model.q_Set })
+                                                                    </td>
+                                                                    <td>
+                                                                       
+                                                                        @Html.TextBoxFor(m => m.q_SetPassingYear, new { placeholder = "Enter SET Passing Year", @class = "input", maxlength = "4", @style = "width:150px" })
+                                                                    </td>
+                                                                    <td>
+                                                                   NET @Html.CheckBoxFor(m => m.q_Net, new { @checked = Model.q_Net })
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                     
+                                                                        @Html.TextBoxFor(m => m.q_NetPassingYear, new { placeholder = "Enter NET Passing Year", @class = "input", maxlength = "4", @style = "width:150px" })
+                                                                    </td>
+                                                                    </tr>
+</tbody>
 
                                                         </table>
 
@@ -3456,7 +3708,7 @@
                                                     <div class="control-group required span5">
                                                         @Html.LabelFor(model => model.hmobile, new { @class = "control-label" })
                                                         <div class="controls" style="width:25%">
-                                                            @Html.TextBoxFor(model => model.MCODE, new { placeholder = "Code", maxlength = "4", @class = "input-small", @Style = "width:86.5%" })
+                                                            @Html.TextBoxFor(model => model.MCODE, new { placeholder = "Code", maxlength = "4" ,@value="+91", @class = "input-small", @Style = "width:86.5%" })
                                                         </div><div class="controls">
                                                             @Html.TextBoxFor(model => model.hmobile, new { placeholder = "Enter Mobile Number", maxlength = "10" })
                                                             @Html.ValidationMessageFor(model => model.hmobile)

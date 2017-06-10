@@ -14,10 +14,13 @@ namespace Entity
         [DisplayName("Course Name ")]
         public int CourseId { get; set; }
 
+        [DisplayName("Course")]
+        public string Course { get; set; }
+
         [DisplayName("Receipt Type")]
         public int receipttypeid { get; set; }
 
-        [DisplayName("Student Name ")]
+        [DisplayName("RollNo ")]
         public int Studid { get; set; }
 
         [DisplayName("Scholarship(Yes/No) ")]
@@ -26,7 +29,7 @@ namespace Entity
         [DisplayName("Scholarship Fees ")]
         public double ScholarshipFees { get; set; }
 
-        [DisplayName("Total Fees Amount ")]
+        [DisplayName("Fees Amount ")]
         public double TotalFees { get; set; }
 
         [DisplayName("Previous Payment Amount ")]
@@ -51,6 +54,10 @@ namespace Entity
 
         [DisplayName("Remarks ")]
         public string Remarks { get; set; }
+
+        [DisplayName("Student Name ")]
+        public string StudentName { get; set; }
+
 
         [DisplayName("Status(Paid/Unpaid) ")]
         public bool Status { get; set; }

@@ -44,10 +44,11 @@
         }
 
         $('#Classid').change(function () {
+            var course = $("#Classid option:selected").text();
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("FillTimetable_classwise")',
-                data: $('#frm').serialize() + "",
+                data: $('#frm').serialize() + "&CourseName=" + course + "",
                 success: function (result) {
                     $("#result").html(result);
                     $("#result").show();
@@ -95,8 +96,8 @@
                                 <div  class="control-group">
                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
                                       <div class="controls"> 
-                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Class"), "Select Class", new { @class = "col-md-5 form-control form_in" })
-                                    @Html.ValidationMessageFor(model => model.Classid)
+                                          @Html.DropDownListFor(model => model.Classid, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
+                                          @Html.ValidationMessageFor(model => model.Classid)
                                           </div>
                                 </div>
 

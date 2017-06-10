@@ -59,7 +59,10 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                               RollNo.
+                                               RegistrationNo.
+                                            </th>
+                                            <th>
+                                                RollNo.
                                             </th>
                                             <th>
                                                 @Html.DisplayName("Student Name")
@@ -80,8 +83,11 @@
                                         {
                                             <tr>
                                                 <td>
+                                                @Html.DisplayFor(modelItem => item.StdRegNo)
+                                                </td>
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.RollNo)
-</td>
+                                                  </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Studnm)
                                                 </td>
@@ -89,7 +95,7 @@
                                                     @Html.DisplayFor(modelItem => item.StudEmail)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.FatherContact)
+                                                    @Html.DisplayFor(modelItem => item.StdMobNo)
                                                 </td>
                                                 <td>
                                                     <input type="button" id="@item.Studid"  class="btn btn-default btn_edit" value="Edit" />

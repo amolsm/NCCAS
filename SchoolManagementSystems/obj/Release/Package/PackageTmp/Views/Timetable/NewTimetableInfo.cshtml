@@ -141,15 +141,10 @@
             var Subjectid = $("#Subjectid").val();
             var yearid = $("#year").val();
             var deptid = $("#department").val();
-            var LecTime = $("#timepicker1").val();
-            var LecETime = $("#timepicker2").val();
-            if (LecTime == LecETime) {
-                $("#lblmsgs").show();
-                $("#lblmsg").text("Both time are equal ! Please change time..");
-            }
-            else if (LecNo == "" || LecNo == "0", Day == "" || Day == "0", Classid == "" || Classid == "0", Subjectid == "" || Subjectid == "0", yearid == "" || yearid == "0") {
+            var semester = $("#semester").val();
+            if (LecNo == "" || LecNo == "0", Day == "" || Day == "0", Classid == "" || Classid == "0", deptid == "" || deptid == "0", Subjectid == "" || Subjectid == "0", yearid == "" || yearid == "0", semester == "" || semester == "0") {
              $("#lblmsgs").show();
-             $("#lblmsg").text("Are Fields are required !..");
+             $("#lblmsg").text("All Fields are required !..");
             }
 
             else {
@@ -185,8 +180,8 @@
                     $("#Classid").val(data.Classid);
                     $("#Day").val(data.Day);
                     $("#LecNo").val(data.LecNo);
-                    $("#timepicker1").val(data.LecTime);
-                    $("#timepicker2").val(data.LecETime);
+                    
+                    $("#semester").val(data.Semester);
                     $("#Empid").val(data.Empid);
                     $("#Subjectid").val(data.Subjectid);
                     $("#year").val(data.yearid);
@@ -213,6 +208,7 @@
             $("#Empid").val('');
             $("#year").val('');
             $("#department").val('');
+            $("#semester").val('');
 
         }
 
@@ -223,16 +219,15 @@
             var Subjectid = $("#Subjectid").val();
             var yearid = $("#year").val();
             var deptid = $("#department").val();
-            var LecTime = $("#timepicker1").val();
-            var LecETime = $("#timepicker2").val();
-
+            var semester = $("#semester").val();
+          
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_LecNo")',
                 dataType: 'JSON',
-                data: { Classid: Classid, yearid: yearid, deptid: deptid, Day: Day, LecNo: LecNo, LecTime: LecTime, LecETime: LecETime, Subjectid: Subjectid },
+                data: { Classid: Classid, yearid: yearid, deptid: deptid, Day: Day, LecNo: LecNo, Subjectid: Subjectid, semester: semester },
                 success: function (data) {
-                    if (data.LecNo != null) {
+                    if (data != null) {
                         $("#lblmsgs").show();
                         $("#lblmsg").text("Lecture Number Already Exists for this Day!..");
                         $("#lblmsgs").css({ "color": "green" });
@@ -246,8 +241,12 @@
 
         $("#reset").click(function () {
             clear();
+            clearmsg();
         });
-
+        function clearmsg() {
+            $("#lblmsgss1").hide();
+            $("#lblmsgs").hide();
+        }
         FillPermission();
 
     });
@@ -313,6 +312,29 @@
                                                             @Html.ValidationMessageFor(model => model.Tid)
                                                         </div>
                                                     </div>
+                                                    <div style="margin-bottom:10px">
+                                                        @Html.LabelFor(model => model.semester, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                           
+                                                                @{
+                                                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                                                    listItems.Add(new SelectListItem
+                                                                    {
+                                                                        Text = "Odd Semester",
+                                                                        Value = "Odd Semester"
+                                                                    });
+                                                                    listItems.Add(new SelectListItem
+                                                                    {
+                                                                        Text = "Even Semester",
+                                                                        Value = "Even Semester",
+
+                                                                    });
+                                                                }
+                                                                @Html.DropDownListFor(model => model.semester, listItems, "-- Select Semester --")
+
+                                                          
+                                                        </div>
+                                                    </div>
                                                     <div style="margin-bottom:10px;">
                                                         @Html.LabelFor(model => model.Classid, new { @class = "control-label" })
                                                         <div class="controls">
@@ -342,29 +364,7 @@
                                                             @Html.ValidationMessageFor(model => model.Subjectid)
                                                         </div>
                                                     </div>
-                                                    <div style="margin-bottom:10px">
-                                                        @Html.LabelFor(model => model.semester, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            <div class="pull-left">
-                                                                @{
-                                                                    List<SelectListItem> listItems = new List<SelectListItem>();
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Odd Semester",
-                                                                        Value = "1"
-                                                                    });
-                                                                    listItems.Add(new SelectListItem
-                                                                    {
-                                                                        Text = "Even Semester",
-                                                                        Value = "2",
-
-                                                                    });
-                                                                }
-                                                                @Html.DropDownListFor(model => model.semester, listItems, "-- Select Semester --")
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                  
                                                 </td>
                                                 <td class="span5">
                                                     <div style="margin-bottom:10px">
@@ -374,29 +374,15 @@
                                                             @Html.ValidationMessageFor(model => model.Day)
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        @Html.LabelFor(model => model.LecTime, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @Html.TextBoxFor(model => model.LecTime, new { id = "timepicker1", @Style = "width:220px", @readonly = "readonly", placeholder = "Select Time" })
-                                                            @Html.HiddenFor(model => model.LecTime)
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        @Html.LabelFor(model => model.LecETime, new { @class = "control-label" })
-                                                        <div class="controls">
-                                                            @Html.TextBoxFor(model => model.LecETime, new { id = "timepicker2", @readonly = "readonly", @Style = "width:220px", placeholder = "Select Time" })
-                                                            @Html.ValidationMessageFor(model => model.LecETime)
-                                                            @Html.HiddenFor(model => model.LecETime)
-                                                        </div>
-                                                    </div>
-                                                    <div>
+                                                
+                                                    <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @Html.TextBoxFor(model => model.LecNo, new { @Style = "width: 220px;", placeholder = "Enter Lecture Number" })
+                                                            @Html.DropDownListFor(model => model.LecNo, new SelectList(Model._Lecturelist, "LecNo", "LecNo", "Select LecNo"), "Select LecNo")
                                                             @Html.ValidationMessageFor(model => model.LecNo)
                                                         </div>
                                                     </div>
-                                                    <div>
+                                                    <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.Empid, new { @class = "control-label" })
                                                         <div class="controls">
                                                             @Html.DropDownListFor(model => model.Empid, new SelectList(Model.Emplist, "Empid", "fullnm", "Select Teacher"), "Select Teacher", new { @class = "col-md-5 form-control form_in" })
