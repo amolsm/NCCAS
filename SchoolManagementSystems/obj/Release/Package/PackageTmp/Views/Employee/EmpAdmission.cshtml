@@ -567,16 +567,12 @@
                     $("#FirstName").val(data.FirstName);
                     $("#MiddleName").val(data.MiddleName);
                     $("#LastName").val(data.LastName);
-                    var value = new Date(parseInt(data.DOB.substr(6)));
-                    $('#datepicker').datepicker('setDate', value);
-                    //$('#datepicker').focus();
-                    if (data.DateOfJoin != null) {
-                        var value1 = new Date(parseInt(data.DateOfJoin.substr(6)));
-                        $('#datepicker1').datepicker('setDate', value1);
-                    }
-                    else {
-                        $('#datepicker1').datepicker('setDate', new Date());
-                    }
+                   
+                    $('#datepicker').datepicker('setDate', data.DOB);
+                 
+                  
+                    $('#datepicker1').datepicker('setDate', data.DateOfJoin);
+                  
 
 
                     $("#Emailid").val(data.Emailid);
@@ -782,87 +778,87 @@
                             $("#companyname").val(exp.companyname_exp1);
                             $("#clastdesignation").val(exp.clastdesignation_exp1);
                             $("#ctotal").val(exp.ctotalexperience_exp1);
-                            var value1 = new Date(parseInt(exp.joiningdate_exp1.substr(6)));
-                            $('#datepicker2').datepicker('setDate', value1);
-                            var value2 = new Date(parseInt(exp.lastdate1_exp1.substr(6)));
-                            $('#datepicker3').datepicker('setDate', value2);
-                            var value3 = new Date(parseInt(exp.cjoiningdate_exp1.substr(6)));
-                            $('#datepicker4').datepicker('setDate', value3);
-                            var value4 = new Date(parseInt(exp.clastdate_exp1.substr(6)));
-                            $('#datepicker5').datepicker('setDate', value4);
-                           var value5 = new Date(parseInt(exp.joiningdate_exp2.substr(6)));
-                            $('#datepicker6').datepicker('setDate', value5);
-                            var value6 = new Date(parseInt(exp.lastdate1_exp2.substr(6)));
-                            $('#datepicker7').datepicker('setDate', value6);
-                            var value7 = new Date(parseInt(exp.cjoiningdate_exp2.substr(6)));
-                            $('#datepicker8').datepicker('setDate', value7);
-                            var value8 = new Date(parseInt(exp.clastdate_exp2.substr(6)));
-                            $('#datepicker9').datepicker('setDate', value8);
+                           
+                            $('#datepicker2').datepicker('setDate', exp.joiningdate_exp1);
+                          
+                            $('#datepicker3').datepicker('setDate', exp.lastdate1_exp1);
+                          
+                            $('#datepicker4').datepicker('setDate', exp.cjoiningdate_exp1);
+                         
+                            $('#datepicker5').datepicker('setDate', exp.clastdate_exp1);
+                        
+                           $('#datepicker6').datepicker('setDate', exp.joiningdate_exp2);
+                         
+                            $('#datepicker7').datepicker('setDate', exp.lastdate1_exp2);
+                         
+                            $('#datepicker8').datepicker('setDate', exp.cjoiningdate_exp2);
+                           
+                            $('#datepicker9').datepicker('setDate', exp.clastdate_exp2);
                             //
-                            var value9 = new Date(parseInt(exp.joiningdate_exp3.substr(6)));
-                            $('#datepicker10').datepicker('setDate', value9);
-                            var value10 = new Date(parseInt(exp.lastdate1_exp3.substr(6)));
-                            $('#datepicker11').datepicker('setDate', value10);
-                            var value11 = new Date(parseInt(exp.joiningdate_exp4.substr(6)));
-                            $('#datepicker12').datepicker('setDate', value11);
-                            var value12 = new Date(parseInt(exp.lastdate1_exp4.substr(6)));
-                            $('#datepicker13').datepicker('setDate', value12);
-                            var value13 = new Date(parseInt(exp.joiningdate_exp5.substr(6)));
-                            $('#datepicker14').datepicker('setDate', value13);
-                            var value14 = new Date(parseInt(exp.lastdate1_exp5.substr(6)));
-                            $('#datepicker15').datepicker('setDate', value14);
-                            var value15 = new Date(parseInt(exp.joiningdate_exp6.substr(6)));
-                            $('#datepicker16').datepicker('setDate', value15);
-                            var value16 = new Date(parseInt(exp.lastdate1_exp6.substr(6)));
-                            $('#datepicker17').datepicker('setDate', value16);
-                            var value17 = new Date(parseInt(exp.joiningdate_exp7.substr(6)));
-                            $('#datepicker18').datepicker('setDate', value17);
-                            var value18 = new Date(parseInt(exp.lastdate1_exp7.substr(6)));
-                            $('#datepicker19').datepicker('setDate', value18);
-                            var value19 = new Date(parseInt(exp.joiningdate_exp8.substr(6)));
-                            $('#datepicker20').datepicker('setDate', value19);
-                            var value20 = new Date(parseInt(exp.lastdate1_exp8.substr(6)));
-                            $('#datepicker21').datepicker('setDate', value20);
-                            var value21 = new Date(parseInt(exp.joiningdate_exp9.substr(6)));
-                            $('#datepicker22').datepicker('setDate', value21);
-                            var value22 = new Date(parseInt(exp.lastdate1_exp9.substr(6)));
-                            $('#datepicker23').datepicker('setDate', value22);
-                            var value23 = new Date(parseInt(exp.joiningdate_exp10.substr(6)));
-                            $('#datepicker24').datepicker('setDate', value23);
-                            var value24 = new Date(parseInt(exp.lastdate1_exp10.substr(6)));
-                            $('#datepicker25').datepicker('setDate', value24);
-                            var value25 = new Date(parseInt(exp.cjoiningdate_exp3.substr(6)));
-                            $('#datepicker26').datepicker('setDate', value25);
-                            var value26 = new Date(parseInt(exp.clastdate_exp3.substr(6)));
-                            $('#datepicker27').datepicker('setDate', value26);
-                            var value27 = new Date(parseInt(exp.cjoiningdate_exp4.substr(6)));
-                            $('#datepicker28').datepicker('setDate', value27);
-                            var value28 = new Date(parseInt(exp.clastdate_exp4.substr(6)));
-                            $('#datepicker29').datepicker('setDate', value28);
-                            var value29 = new Date(parseInt(exp.cjoiningdate_exp5.substr(6)));
-                            $('#datepicker30').datepicker('setDate', value29);
-                            var value30 = new Date(parseInt(exp.clastdate_exp5.substr(6)));
-                            $('#datepicker31').datepicker('setDate', value30);
-                            var value29 = new Date(parseInt(exp.cjoiningdate_exp6.substr(6)));
-                            $('#datepicker32').datepicker('setDate', value29);
-                            var value30 = new Date(parseInt(exp.clastdate_exp6.substr(6)));
-                            $('#datepicker33').datepicker('setDate', value30);
-                            var value31 = new Date(parseInt(exp.cjoiningdate_exp7.substr(6)));
-                            $('#datepicker34').datepicker('setDate', value31);
-                            var value32 = new Date(parseInt(exp.clastdate_exp7.substr(6)));
-                            $('#datepicker35').datepicker('setDate', value32);
-                            var value33 = new Date(parseInt(exp.cjoiningdate_exp8.substr(6)));
-                            $('#datepicker36').datepicker('setDate', value33);
-                            var value34 = new Date(parseInt(exp.clastdate_exp8.substr(6)));
-                            $('#datepicker37').datepicker('setDate', value34);
-                            var value35 = new Date(parseInt(exp.cjoiningdate_exp9.substr(6)));
-                            $('#datepicker38').datepicker('setDate', value35);
-                            var value36 = new Date(parseInt(exp.clastdate_exp9.substr(6)));
-                            $('#datepicker39').datepicker('setDate', value36);
-                            var value37 = new Date(parseInt(exp.cjoiningdate_exp10.substr(6)));
-                            $('#datepicker40').datepicker('setDate', value37);
-                            var value38 = new Date(parseInt(exp.clastdate_exp10.substr(6)));
-                            $('#datepicker41').datepicker('setDate', value38);
+                           
+                            $('#datepicker10').datepicker('setDate', exp.joiningdate_exp3);
+                           
+                            $('#datepicker11').datepicker('setDate', exp.lastdate1_exp3);
+                          
+                            $('#datepicker12').datepicker('setDate', exp.joiningdate_exp4);
+                          
+                            $('#datepicker13').datepicker('setDate', exp.lastdate1_exp4);
+                           
+                            $('#datepicker14').datepicker('setDate', exp.joiningdate_exp5);
+                         
+                            $('#datepicker15').datepicker('setDate', exp.lastdate1_exp5);
+                            
+                            $('#datepicker16').datepicker('setDate', exp.joiningdate_exp6);
+                          
+                            $('#datepicker17').datepicker('setDate', exp.lastdate1_exp6);
+                          
+                            $('#datepicker18').datepicker('setDate', exp.joiningdate_exp7);
+                          
+                            $('#datepicker19').datepicker('setDate', exp.lastdate1_exp7);
+                           
+                            $('#datepicker20').datepicker('setDate', exp.joiningdate_exp8);
+                           
+                            $('#datepicker21').datepicker('setDate', exp.lastdate1_exp8);
+                            
+                            $('#datepicker22').datepicker('setDate', exp.joiningdate_exp9);
+                          
+                            $('#datepicker23').datepicker('setDate', exp.lastdate1_exp9);
+                           
+                            $('#datepicker24').datepicker('setDate', exp.joiningdate_exp10);
+                           
+                            $('#datepicker25').datepicker('setDate', exp.lastdate1_exp10);
+                          
+                            $('#datepicker26').datepicker('setDate', exp.cjoiningdate_exp3);
+                           
+                            $('#datepicker27').datepicker('setDate', exp.clastdate_exp3);
+                           
+                            $('#datepicker28').datepicker('setDate', exp.cjoiningdate_exp4);
+                            
+                            $('#datepicker29').datepicker('setDate', exp.clastdate_exp4);
+                           
+                            $('#datepicker30').datepicker('setDate', exp.cjoiningdate_exp5);
+                         
+                            $('#datepicker31').datepicker('setDate', exp.clastdate_exp5);
+                         
+                            $('#datepicker32').datepicker('setDate', exp.cjoiningdate_exp6);
+                           
+                            $('#datepicker33').datepicker('setDate', exp.clastdate_exp6);
+                          
+                            $('#datepicker34').datepicker('setDate', exp.cjoiningdate_exp7);
+                       
+                            $('#datepicker35').datepicker('setDate', exp.clastdate_exp7);
+                           
+                            $('#datepicker36').datepicker('setDate', exp.cjoiningdate_exp8);
+                           
+                            $('#datepicker37').datepicker('setDate', exp.clastdate_exp8);
+                           
+                            $('#datepicker38').datepicker('setDate', exp.cjoiningdate_exp9);
+                           
+                            $('#datepicker39').datepicker('setDate', exp.clastdate_exp9);
+                            
+                            $('#datepicker40').datepicker('setDate', exp.cjoiningdate_exp10);
+                           
+                            $('#datepicker41').datepicker('setDate', exp.clastdate_exp10);
                     
                             $("#collagename1").val(exp.collagename_exp2);
                             $("#university1").val(exp.affliateduniversity_exp2);
@@ -951,7 +947,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -964,7 +960,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -978,7 +974,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -993,7 +989,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1007,7 +1003,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1021,7 +1017,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1036,7 +1032,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1051,7 +1047,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1066,7 +1062,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1081,7 +1077,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1098,7 +1094,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1112,7 +1108,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1127,7 +1123,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1141,7 +1137,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1155,7 +1151,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1169,7 +1165,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1183,7 +1179,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1197,7 +1193,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1211,7 +1207,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1225,7 +1221,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1239,7 +1235,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1253,7 +1249,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1267,7 +1263,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1281,7 +1277,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1295,7 +1291,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1309,7 +1305,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1323,7 +1319,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1337,7 +1333,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1351,7 +1347,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1365,7 +1361,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1379,7 +1375,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1393,7 +1389,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1407,7 +1403,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1421,7 +1417,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1435,7 +1431,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1449,7 +1445,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1463,7 +1459,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1477,7 +1473,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1491,7 +1487,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1505,7 +1501,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1519,7 +1515,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1533,7 +1529,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1547,7 +1543,7 @@
             showOtherMonths: true,
             showOtherYears: true,
             dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             yearRange: "-100:+0",
             changeYear: true
@@ -1725,6 +1721,21 @@
             }
             else {
                 $("#datepicker").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            if ($("#datepicker1").val() == '') {
+                cnt++;
+                $("#datepicker1").css({
+                    "border": "1px solid red"
+                });
+                alert("Date of Joining is Mandatory!");
+                e.preventDefault();
+                return false;
+            }
+            else {
+                $("#datepicker1").css({
                     "border": "",
                     "background": ""
                 });

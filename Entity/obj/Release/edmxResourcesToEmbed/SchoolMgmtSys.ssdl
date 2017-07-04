@@ -522,121 +522,121 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="empId" Type="int" />
     <Property Name="collagename_exp1" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp1" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp1" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp1" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp1" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp1" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp1" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp1" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp2" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp2" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp2" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp2" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp2" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp2" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp2" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp3" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp3" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp3" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp3" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp3" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp3" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp3" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp4" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp4" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp4" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp4" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp4" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp4" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp4" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp5" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp5" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp5" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp5" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp5" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp5" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp5" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp6" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp6" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp6" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp6" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp6" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp6" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp6" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp7" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp7" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp7" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp7" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp7" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp7" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp7" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp8" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp8" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp8" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp8" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp8" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp8" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp8" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp9" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp9" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp9" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp9" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp9" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp9" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp9" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
     <Property Name="affliateduniversity_exp10" Type="varchar" MaxLength="100" />
-    <Property Name="joiningdate_exp10" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1_exp10" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate_exp10" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1_exp10" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="lastdesignation_exp10" Type="varchar" MaxLength="100" />
     <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate_exp10" Type="varchar" MaxLength="11" />
     <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
     <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
@@ -658,7 +658,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="Address" Type="varchar(max)" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="DOB" Type="datetime2" Precision="7" />
+    <Property Name="DOB" Type="varchar" MaxLength="11" />
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="Gender" Type="int" Nullable="false" />
     <Property Name="Quallification" Type="varchar" MaxLength="250" />
@@ -668,7 +668,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="Schedule" Type="varchar" MaxLength="50" />
     <Property Name="SysDt" Type="datetime2" Precision="7" />
     <Property Name="Payrollid" Type="int" Nullable="false" />
-    <Property Name="DateOfJoin" Type="datetime2" Precision="7" />
+    <Property Name="DateOfJoin" Type="varchar" MaxLength="11" />
     <Property Name="Typeid" Type="int" Nullable="false" />
     <Property Name="Code" Type="varchar" MaxLength="5" />
     <Property Name="OtherQualification" Type="varchar(max)" />
@@ -728,14 +728,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="accountname" Type="varchar" MaxLength="50" />
     <Property Name="collagename" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate" Type="datetime2" Precision="7" />
-    <Property Name="lastdate" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation" Type="varchar" MaxLength="50" />
     <Property Name="companyname" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate" Type="datetime2" Precision="7" />
-    <Property Name="clastdate" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate" Type="varchar" MaxLength="11" />
+    <Property Name="clastdate" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience" Type="varchar" MaxLength="30" />
     <Property Name="empemail" Type="varchar" MaxLength="50" />
     <Property Name="empreligion" Type="int" />
@@ -744,14 +744,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="empmothertongue" Type="varchar" MaxLength="100" />
     <Property Name="collagename1" Type="varchar" MaxLength="50" />
     <Property Name="affliateduniversity1" Type="varchar" MaxLength="50" />
-    <Property Name="joiningdate1" Type="datetime2" Precision="7" />
-    <Property Name="lastdate1" Type="datetime2" Precision="7" />
+    <Property Name="joiningdate1" Type="varchar" MaxLength="11" />
+    <Property Name="lastdate1" Type="varchar" MaxLength="11" />
     <Property Name="totalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="lastdesignation1" Type="varchar" MaxLength="50" />
     <Property Name="companyname1" Type="varchar" MaxLength="50" />
     <Property Name="clastdesignation1" Type="varchar" MaxLength="50" />
-    <Property Name="cjoiningdate1" Type="datetime2" Precision="7" />
-    <Property Name="clastdate1" Type="datetime2" Precision="7" />
+    <Property Name="cjoiningdate1" Type="varchar" MaxLength="11" />
+    <Property Name="clastdate1" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience1" Type="varchar" MaxLength="30" />
     <Property Name="doctypename" Type="varchar" MaxLength="50" />
     <Property Name="docnumber" Type="nvarchar" MaxLength="100" />
@@ -1175,17 +1175,15 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="Countryid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tbl_student">
     <Key>
       <PropertyRef Name="Studid" />
     </Key>
-    <Property Name="Studid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Studid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Studnm" Type="varchar" MaxLength="50" />
     <Property Name="Studfathernm" Type="varchar" MaxLength="50" />
     <Property Name="Studmothernm" Type="varchar" MaxLength="50" />
-    <Property Name="DOB" Type="datetime2" Precision="7" />
+    <Property Name="DOB" Type="varchar" MaxLength="11" />
     <Property Name="Weight" Type="int" />
     <Property Name="Height" Type="int" />
     <Property Name="StudBldGrp" Type="int" Nullable="false" />
@@ -1254,19 +1252,19 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Property Name="GuardianPic" Type="image" />
     <Property Name="Sibling2Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling2Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling2DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling2DOB" Type="varchar" MaxLength="11" />
     <Property Name="Sibling2Ql" Type="varchar(max)" />
     <Property Name="Sibling1Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling1Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling1DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling1DOB" Type="varchar" MaxLength="11" />
     <Property Name="Sibling1Ql" Type="varchar(max)" />
     <Property Name="Sibling3Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling3Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling3DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling3DOB" Type="varchar" MaxLength="11" />
     <Property Name="Sibling3Ql" Type="varchar(max)" />
     <Property Name="Sibling4Name" Type="varchar" MaxLength="100" />
     <Property Name="Sibling4Rel" Type="varchar" MaxLength="100" />
-    <Property Name="Sibling4DOB" Type="datetime2" Precision="7" />
+    <Property Name="Sibling4DOB" Type="varchar" MaxLength="11" />
     <Property Name="Sibling4Ql" Type="varchar(max)" />
     <Property Name="ParishName" Type="varchar" MaxLength="100" />
     <Property Name="DioceseName" Type="varchar" MaxLength="100" />
@@ -1398,6 +1396,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Property Name="yearid" Type="int" />
     <Property Name="deptid" Type="int" />
     <Property Name="Semester" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubjectCode" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_transport">
     <Key>
@@ -1727,10 +1726,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
     <Parameter Name="MobileNo" Type="varchar" Mode="In" />
     <Parameter Name="Address" Type="varchar(max)" Mode="In" />
-    <Parameter Name="DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="DOB" Type="varchar" Mode="In" />
     <Parameter Name="Gender" Type="int" Mode="In" />
     <Parameter Name="Quallification" Type="int" Mode="In" />
-    <Parameter Name="DateOfJoin" Type="datetime2" Mode="In" />
+    <Parameter Name="DateOfJoin" Type="varchar" Mode="In" />
     <Parameter Name="Typeid" Type="int" Mode="In" />
     <Parameter Name="Code" Type="varchar" Mode="In" />
     <Parameter Name="OQualification" Type="varchar(max)" Mode="In" />
@@ -1791,14 +1790,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="accountname" Type="varchar" Mode="In" />
     <Parameter Name="collagename" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation" Type="varchar" Mode="In" />
     <Parameter Name="companyname" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience" Type="varchar" Mode="In" />
     <Parameter Name="empemail" Type="varchar" Mode="In" />
     <Parameter Name="empreligion" Type="int" Mode="In" />
@@ -1807,14 +1806,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="empmothertongue" Type="varchar" Mode="In" />
     <Parameter Name="collagename1" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity1" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate1" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate1" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience1" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation1" Type="varchar" Mode="In" />
     <Parameter Name="companyname1" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation1" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate1" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate1" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate1" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate1" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience1" Type="varchar" Mode="In" />
     <Parameter Name="doctypename" Type="varchar" Mode="In" />
     <Parameter Name="docnumber" Type="nvarchar" Mode="In" />
@@ -1823,91 +1822,91 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="DioceseName" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp3" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp3" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp3" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp3" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp3" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp3" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp3" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp3" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp3" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp3" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp3" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp3" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp3" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp4" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp4" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp4" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp4" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp4" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp4" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp4" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp4" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp4" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp4" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp4" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp4" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp4" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp5" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp5" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp5" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp5" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp5" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp5" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp5" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp5" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp5" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp5" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp5" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp5" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp5" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp6" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp6" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp6" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp6" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp6" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp6" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp6" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp6" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp6" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp6" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp6" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp6" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp6" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp7" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp7" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp7" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp7" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp7" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp7" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp7" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp7" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp7" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp7" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp7" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp7" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp7" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp8" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp8" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp8" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp8" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp8" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp8" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp8" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp8" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp8" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp8" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp8" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp8" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp8" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp9" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp9" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp9" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp9" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp9" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp9" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp9" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp9" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp9" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp9" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp9" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp9" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp9" Type="varchar" Mode="In" />
     <Parameter Name="collagename_exp10" Type="varchar" Mode="In" />
     <Parameter Name="affliateduniversity_exp10" Type="varchar" Mode="In" />
-    <Parameter Name="joiningdate_exp10" Type="datetime2" Mode="In" />
-    <Parameter Name="lastdate1_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="joiningdate_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="lastdate1_exp10" Type="varchar" Mode="In" />
     <Parameter Name="totalexperience_exp10" Type="varchar" Mode="In" />
     <Parameter Name="lastdesignation_exp10" Type="varchar" Mode="In" />
     <Parameter Name="companyname_exp10" Type="varchar" Mode="In" />
     <Parameter Name="clastdesignation_exp10" Type="varchar" Mode="In" />
-    <Parameter Name="cjoiningdate_exp10" Type="datetime2" Mode="In" />
-    <Parameter Name="clastdate_exp10" Type="datetime2" Mode="In" />
+    <Parameter Name="cjoiningdate_exp10" Type="varchar" Mode="In" />
+    <Parameter Name="clastdate_exp10" Type="varchar" Mode="In" />
     <Parameter Name="ctotalexperience_exp10" Type="varchar" Mode="In" />
     <Parameter Name="q_department1" Type="int" Mode="In" />
     <Parameter Name="q_department2" Type="int" Mode="In" />
@@ -2119,6 +2118,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="ExamYear" Type="varchar" Mode="In" />
     <Parameter Name="Studentid" Type="int" Mode="In" />
   </Function>
+  <Function Name="Sp_GetStudentProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getsubcatbycat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cats" Type="varchar(max)" Mode="In" />
   </Function>
@@ -2290,7 +2290,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="Studnm" Type="varchar" Mode="In" />
     <Parameter Name="Studfathernm" Type="varchar" Mode="In" />
     <Parameter Name="Studmothernm" Type="varchar" Mode="In" />
-    <Parameter Name="DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="DOB" Type="varchar" Mode="In" />
     <Parameter Name="Weight" Type="int" Mode="In" />
     <Parameter Name="Height" Type="int" Mode="In" />
     <Parameter Name="StudBldGrp" Type="int" Mode="In" />
@@ -2359,19 +2359,19 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="GuardianPic" Type="image" Mode="In" />
     <Parameter Name="Sibling1Name" Type="varchar" Mode="In" />
     <Parameter Name="Sibling1Rel" Type="varchar" Mode="In" />
-    <Parameter Name="Sibling1DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling1DOB" Type="varchar" Mode="In" />
     <Parameter Name="Sibling1Ql" Type="varchar" Mode="In" />
     <Parameter Name="Sibling2Name" Type="varchar" Mode="In" />
     <Parameter Name="Sibling2Rel" Type="varchar" Mode="In" />
-    <Parameter Name="Sibling2DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling2DOB" Type="varchar" Mode="In" />
     <Parameter Name="Sibling2Ql" Type="varchar" Mode="In" />
     <Parameter Name="Sibling3Name" Type="varchar" Mode="In" />
     <Parameter Name="Sibling3Rel" Type="varchar" Mode="In" />
-    <Parameter Name="Sibling3DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling3DOB" Type="varchar" Mode="In" />
     <Parameter Name="Sibling3Ql" Type="varchar" Mode="In" />
     <Parameter Name="Sibling4Name" Type="varchar" Mode="In" />
     <Parameter Name="Sibling4Rel" Type="varchar" Mode="In" />
-    <Parameter Name="Sibling4DOB" Type="datetime2" Mode="In" />
+    <Parameter Name="Sibling4DOB" Type="varchar" Mode="In" />
     <Parameter Name="Sibling4Ql" Type="varchar" Mode="In" />
     <Parameter Name="ParishName" Type="varchar" Mode="In" />
     <Parameter Name="DioceseName" Type="varchar" Mode="In" />
@@ -2509,7 +2509,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="htotalmarks" Type="int" Mode="In" />
     <Parameter Name="hgradee" Type="varchar" Mode="In" />
     <Parameter Name="hprecentage" Type="float" Mode="In" />
-    <Parameter Name="hyearpassing1" Type="datetime2" Mode="In" />
+    <Parameter Name="hyearpassing1" Type="varchar" Mode="In" />
     <Parameter Name="hregisterno1" Type="varchar" Mode="In" />
     <Parameter Name="hattempts1" Type="int" Mode="In" />
     <Parameter Name="hradio1" Type="varchar" Mode="In" />
@@ -2552,7 +2552,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="pgtotalmarks" Type="int" Mode="In" />
     <Parameter Name="pggradee" Type="varchar" Mode="In" />
     <Parameter Name="pgprecentage" Type="float" Mode="In" />
-    <Parameter Name="pgyearpassing1" Type="datetime2" Mode="In" />
+    <Parameter Name="pgyearpassing1" Type="varchar" Mode="In" />
     <Parameter Name="pgregisterno1" Type="varchar" Mode="In" />
     <Parameter Name="pgattempts1" Type="int" Mode="In" />
     <Parameter Name="pgradio1" Type="varchar" Mode="In" />
@@ -2761,6 +2761,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <Parameter Name="year" Type="int" Mode="In" />
     <Parameter Name="deptid" Type="int" Mode="In" />
     <Parameter Name="act" Type="varchar" Mode="In" />
+    <Parameter Name="subjectcode" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_transport_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="busid" Type="int" Mode="In" />
@@ -2858,6 +2859,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_student' does not have a prim
     <EntitySet Name="tbl_SessionMaster" EntityType="Self.tbl_SessionMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StaffAttendance" EntityType="Self.tbl_StaffAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentAttendance" EntityType="Self.tbl_StudentAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_StudentCategory" EntityType="Self.tbl_StudentCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_studentdivision" EntityType="Self.tbl_studentdivision" Schema="dbo" store:Type="Tables" />
@@ -2948,118 +2950,6 @@ FROM [dbo].[tbl_days] AS [tbl_days]</DefiningQuery>
 [tbl_feeslabelchild].[feeslblid] AS [feeslblid], 
 [tbl_feeslabelchild].[ctrlnm] AS [ctrlnm]
 FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[tbl_student].[Studid] AS [Studid], 
-[tbl_student].[Studnm] AS [Studnm], 
-[tbl_student].[Studfathernm] AS [Studfathernm], 
-[tbl_student].[Studmothernm] AS [Studmothernm], 
-[tbl_student].[DOB] AS [DOB], 
-[tbl_student].[Weight] AS [Weight], 
-[tbl_student].[Height] AS [Height], 
-[tbl_student].[StudBldGrp] AS [StudBldGrp], 
-[tbl_student].[StudEmail] AS [StudEmail], 
-[tbl_student].[Disease] AS [Disease], 
-[tbl_student].[Religionid] AS [Religionid], 
-[tbl_student].[Casteid] AS [Casteid], 
-[tbl_student].[Classid] AS [Classid], 
-[tbl_student].[RollNo] AS [RollNo], 
-[tbl_student].[Gender] AS [Gender], 
-[tbl_student].[MotherTongue] AS [MotherTongue], 
-[tbl_student].[PreviousSchool] AS [PreviousSchool], 
-[tbl_student].[SchoolAddress] AS [SchoolAddress], 
-[tbl_student].[LastClass] AS [LastClass], 
-[tbl_student].[Grade] AS [Grade], 
-[tbl_student].[LeaveYear] AS [LeaveYear], 
-[tbl_student].[LeaveReason] AS [LeaveReason], 
-[tbl_student].[PrincipalNm] AS [PrincipalNm], 
-[tbl_student].[ReferenceNm] AS [ReferenceNm], 
-[tbl_student].[ReferenceContact] AS [ReferenceContact], 
-[tbl_student].[BusFacility] AS [BusFacility], 
-[tbl_student].[BusNo] AS [BusNo], 
-[tbl_student].[BusRTONo] AS [BusRTONo], 
-[tbl_student].[EmergencyPhysicianNm] AS [EmergencyPhysicianNm], 
-[tbl_student].[EmergencyPhysicianContact] AS [EmergencyPhysicianContact], 
-[tbl_student].[EmergencyAddress] AS [EmergencyAddress], 
-[tbl_student].[StudPic] AS [StudPic], 
-[tbl_student].[FatherOccpationid] AS [FatherOccpationid], 
-[tbl_student].[FatherQualificationid] AS [FatherQualificationid], 
-[tbl_student].[FatherEmail] AS [FatherEmail], 
-[tbl_student].[FatherOfficeAddress] AS [FatherOfficeAddress], 
-[tbl_student].[FatherContact] AS [FatherContact], 
-[tbl_student].[FatherBldGrpid] AS [FatherBldGrpid], 
-[tbl_student].[FatherPic] AS [FatherPic], 
-[tbl_student].[MotherOccpationid] AS [MotherOccpationid], 
-[tbl_student].[MotherQualificationid] AS [MotherQualificationid], 
-[tbl_student].[MotherEmail] AS [MotherEmail], 
-[tbl_student].[MotherOfficeAddress] AS [MotherOfficeAddress], 
-[tbl_student].[MotherContact] AS [MotherContact], 
-[tbl_student].[MotherBldGrpid] AS [MotherBldGrpid], 
-[tbl_student].[MotherPic] AS [MotherPic], 
-[tbl_student].[Countryid] AS [Countryid], 
-[tbl_student].[Stateid] AS [Stateid], 
-[tbl_student].[Cityid] AS [Cityid], 
-[tbl_student].[CurrentAddress] AS [CurrentAddress], 
-[tbl_student].[PermanentAddress] AS [PermanentAddress], 
-[tbl_student].[academicyear] AS [academicyear], 
-[tbl_student].[SysDt] AS [SysDt], 
-[tbl_student].[busid] AS [busid], 
-[tbl_student].[cats] AS [cats], 
-[tbl_student].[prds] AS [prds], 
-[tbl_student].[Docs] AS [Docs], 
-[tbl_student].[subcats] AS [subcats], 
-[tbl_student].[StudCategoryid] AS [StudCategoryid], 
-[tbl_student].[GuardianOccpationid] AS [GuardianOccpationid], 
-[tbl_student].[GuardianQualificationid] AS [GuardianQualificationid], 
-[tbl_student].[GuardianEmail] AS [GuardianEmail], 
-[tbl_student].[GuardianOfficeAddress] AS [GuardianOfficeAddress], 
-[tbl_student].[GuardianContact] AS [GuardianContact], 
-[tbl_student].[GuardianName] AS [GuardianName], 
-[tbl_student].[FCode] AS [FCode], 
-[tbl_student].[MCode] AS [MCode], 
-[tbl_student].[GCode] AS [GCode], 
-[tbl_student].[RCode] AS [RCode], 
-[tbl_student].[ECode] AS [ECode], 
-[tbl_student].[GuardianPic] AS [GuardianPic], 
-[tbl_student].[Sibling2Name] AS [Sibling2Name], 
-[tbl_student].[Sibling2Rel] AS [Sibling2Rel], 
-[tbl_student].[Sibling2DOB] AS [Sibling2DOB], 
-[tbl_student].[Sibling2Ql] AS [Sibling2Ql], 
-[tbl_student].[Sibling1Name] AS [Sibling1Name], 
-[tbl_student].[Sibling1Rel] AS [Sibling1Rel], 
-[tbl_student].[Sibling1DOB] AS [Sibling1DOB], 
-[tbl_student].[Sibling1Ql] AS [Sibling1Ql], 
-[tbl_student].[Sibling3Name] AS [Sibling3Name], 
-[tbl_student].[Sibling3Rel] AS [Sibling3Rel], 
-[tbl_student].[Sibling3DOB] AS [Sibling3DOB], 
-[tbl_student].[Sibling3Ql] AS [Sibling3Ql], 
-[tbl_student].[Sibling4Name] AS [Sibling4Name], 
-[tbl_student].[Sibling4Rel] AS [Sibling4Rel], 
-[tbl_student].[Sibling4DOB] AS [Sibling4DOB], 
-[tbl_student].[Sibling4Ql] AS [Sibling4Ql], 
-[tbl_student].[ParishName] AS [ParishName], 
-[tbl_student].[DioceseName] AS [DioceseName], 
-[tbl_student].[DocumentType] AS [DocumentType], 
-[tbl_student].[DocumentIDNo] AS [DocumentIDNo], 
-[tbl_student].[Dept_Id] AS [Dept_Id], 
-[tbl_student].[app_id] AS [app_id], 
-[tbl_student].[ug_id] AS [ug_id], 
-[tbl_student].[pincode] AS [pincode], 
-[tbl_student].[sc_regno] AS [sc_regno], 
-[tbl_student].[doc_typename] AS [doc_typename], 
-[tbl_student].[courseyearid] AS [courseyearid], 
-[tbl_student].[FatherOtherOccName] AS [FatherOtherOccName], 
-[tbl_student].[FatherOtherQualName] AS [FatherOtherQualName], 
-[tbl_student].[GuardianOtherOccName] AS [GuardianOtherOccName], 
-[tbl_student].[GuardianOtherQalName] AS [GuardianOtherQalName], 
-[tbl_student].[MotherOtherOccName] AS [MotherOtherOccName], 
-[tbl_student].[MotherOtherQualName] AS [MotherOtherQualName], 
-[tbl_student].[StdMobNo] AS [StdMobNo], 
-[tbl_student].[StdRegNo] AS [StdRegNo], 
-[tbl_student].[emContactRel] AS [emContactRel], 
-[tbl_student].[St_Status] AS [St_Status]
-FROM [dbo].[tbl_student] AS [tbl_student]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

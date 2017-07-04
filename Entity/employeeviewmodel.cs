@@ -48,7 +48,7 @@ namespace Entity
         public string Address { get; set; }
 
         [DisplayName("DOB ")]
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
 
         [DisplayName("Gender ")]
         public int Gender { get; set; }
@@ -57,7 +57,7 @@ namespace Entity
         public int Quallification { get; set; }
 
         [DisplayName("DateOfJoin ")]
-        public DateTime DateOfJoin { get; set; }
+        public string DateOfJoin { get; set; }
 
         [DisplayName("Staff Type")]
         public int Typeid { get; set; }
@@ -193,74 +193,74 @@ namespace Entity
         public string university9 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate { get; set; }
+        public string joiningdate { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate1 { get; set; }
+        public string joiningdate1 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate2 { get; set; }
+        public string joiningdate2 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate3 { get; set; }
+        public string joiningdate3 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate4 { get; set; }
+        public string joiningdate4 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate5 { get; set; }
+        public string joiningdate5 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate6 { get; set; }
+        public string joiningdate6 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate7 { get; set; }
+        public string joiningdate7 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate8 { get; set; }
+        public string joiningdate8 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime joiningdate9{ get; set; }
+        public string joiningdate9{ get; set; }
 
 
         [DisplayName("last Date ")]
-        public DateTime lastdate { get; set; }
+        public string lastdate { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime lastdate1 { get; set; }
-
-
-        [DisplayName("last Date ")]
-        public DateTime lastdate2 { get; set; }
+        public string lastdate1 { get; set; }
 
 
         [DisplayName("last Date ")]
-        public DateTime lastdate3 { get; set; }
+        public string lastdate2 { get; set; }
 
 
         [DisplayName("last Date ")]
-        public DateTime lastdate4 { get; set; }
-        [DisplayName("last Date ")]
-        public DateTime lastdate5 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime lastdate6 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime lastdate7 { get; set; }
+        public string lastdate3 { get; set; }
 
 
         [DisplayName("last Date ")]
-        public DateTime lastdate8 { get; set; }
+        public string lastdate4 { get; set; }
+        [DisplayName("last Date ")]
+        public string lastdate5 { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime lastdate9 { get; set; }
+        public string lastdate6 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string lastdate7 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public string lastdate8 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string lastdate9 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate { get; set; }
+        public string cjoiningdate { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime clastdate { get; set; }
+        public string clastdate { get; set; }
 
         [DisplayName("Last designation ")]
         public string ldesignation { get; set; }
@@ -272,61 +272,61 @@ namespace Entity
         public string clastdesignation { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate1 { get; set; }
+        public string cjoiningdate1 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate2 { get; set; }
+        public string cjoiningdate2 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate3 { get; set; }
+        public string cjoiningdate3 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate4 { get; set; }
+        public string cjoiningdate4 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate5 { get; set; }
+        public string cjoiningdate5 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate6 { get; set; }
+        public string cjoiningdate6 { get; set; }
 
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate7 { get; set; }
+        public string cjoiningdate7 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate8 { get; set; }
+        public string cjoiningdate8 { get; set; }
 
         [DisplayName("Joining Date ")]
-        public DateTime cjoiningdate9 { get; set; }
+        public string cjoiningdate9 { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime clastdate1 { get; set; }
+        public string clastdate1 { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime clastdate2 { get; set; }
-
-
-        [DisplayName("last Date ")]
-        public DateTime clastdate3 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime clastdate4 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime clastdate5 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime clastdate6 { get; set; }
-
-        [DisplayName("last Date ")]
-        public DateTime clastdate7 { get; set; }
+        public string clastdate2 { get; set; }
 
 
         [DisplayName("last Date ")]
-        public DateTime clastdate8 { get; set; }
+        public string clastdate3 { get; set; }
 
         [DisplayName("last Date ")]
-        public DateTime clastdate9 { get; set; }
+        public string clastdate4 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string clastdate5 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string clastdate6 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string clastdate7 { get; set; }
+
+
+        [DisplayName("last Date ")]
+        public string clastdate8 { get; set; }
+
+        [DisplayName("last Date ")]
+        public string clastdate9 { get; set; }
 
 
         [DisplayName("Last designation ")]

@@ -186,6 +186,7 @@
                     $("#Subjectid").val(data.Subjectid);
                     $("#year").val(data.yearid);
                     $("#department").val(data.deptid);
+                    $("#SubjectCode").val(data.SubjectCode);
 
 
                 }
@@ -209,6 +210,7 @@
             $("#year").val('');
             $("#department").val('');
             $("#semester").val('');
+            $("#SubjectCode").val('');
 
         }
 
@@ -358,15 +360,23 @@
                                                         </div>
                                                     </div>
                                                     <div style="margin-bottom:10px">
+                                                        @Html.LabelFor(model => model.SubjectCode, new { @class = "control-label" })
+                                                        <div class="controls">
+                                                            @Html.TextBoxFor(model => model.SubjectCode, new { @Style = "width:220px" })
+                                                            @Html.ValidationMessageFor(model => model.SubjectCode)
+                                                        </div>
+                                                        </div>
+                                                      
+
+</td>
+                                                <td class="span5">
+                                                    <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
                                                         <div class="controls">
                                                             @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
                                                             @Html.ValidationMessageFor(model => model.Subjectid)
                                                         </div>
                                                     </div>
-                                                  
-                                                </td>
-                                                <td class="span5">
                                                     <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.Day, new { @class = "control-label" })
                                                         <div class="controls">
@@ -378,7 +388,7 @@
                                                     <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @Html.DropDownListFor(model => model.LecNo, new SelectList(Model._Lecturelist, "LecNo", "LecNo", "Select LecNo"), "Select LecNo")
+                                                            @Html.DropDownListFor(model => model.LecNo, new SelectList(Model._Lecturelist, "LecNo", "LecNo", "Select Hour"), "Select Hour")
                                                             @Html.ValidationMessageFor(model => model.LecNo)
                                                         </div>
                                                     </div>

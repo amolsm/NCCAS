@@ -1009,135 +1009,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_Empexperience">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Empexperience">
-        <MappingFragment StoreEntitySet="tbl_Empexperience">
-          <ScalarProperty Name="companyemail_exp10" ColumnName="companyemail_exp10" />
-          <ScalarProperty Name="ctotalexperience_exp10" ColumnName="ctotalexperience_exp10" />
-          <ScalarProperty Name="clastdate_exp10" ColumnName="clastdate_exp10" />
-          <ScalarProperty Name="cjoiningdate_exp10" ColumnName="cjoiningdate_exp10" />
-          <ScalarProperty Name="clastdesignation_exp10" ColumnName="clastdesignation_exp10" />
-          <ScalarProperty Name="companyname_exp10" ColumnName="companyname_exp10" />
-          <ScalarProperty Name="lastdesignation_exp10" ColumnName="lastdesignation_exp10" />
-          <ScalarProperty Name="totalexperience_exp10" ColumnName="totalexperience_exp10" />
-          <ScalarProperty Name="lastdate1_exp10" ColumnName="lastdate1_exp10" />
-          <ScalarProperty Name="joiningdate_exp10" ColumnName="joiningdate_exp10" />
-          <ScalarProperty Name="affliateduniversity_exp10" ColumnName="affliateduniversity_exp10" />
-          <ScalarProperty Name="collagename_exp10" ColumnName="collagename_exp10" />
-          <ScalarProperty Name="companyemail_exp9" ColumnName="companyemail_exp9" />
-          <ScalarProperty Name="ctotalexperience_exp9" ColumnName="ctotalexperience_exp9" />
-          <ScalarProperty Name="clastdate_exp9" ColumnName="clastdate_exp9" />
-          <ScalarProperty Name="cjoiningdate_exp9" ColumnName="cjoiningdate_exp9" />
-          <ScalarProperty Name="clastdesignation_exp9" ColumnName="clastdesignation_exp9" />
-          <ScalarProperty Name="companyname_exp9" ColumnName="companyname_exp9" />
-          <ScalarProperty Name="lastdesignation_exp9" ColumnName="lastdesignation_exp9" />
-          <ScalarProperty Name="totalexperience_exp9" ColumnName="totalexperience_exp9" />
-          <ScalarProperty Name="lastdate1_exp9" ColumnName="lastdate1_exp9" />
-          <ScalarProperty Name="joiningdate_exp9" ColumnName="joiningdate_exp9" />
-          <ScalarProperty Name="affliateduniversity_exp9" ColumnName="affliateduniversity_exp9" />
-          <ScalarProperty Name="collagename_exp9" ColumnName="collagename_exp9" />
-          <ScalarProperty Name="companyemail_exp8" ColumnName="companyemail_exp8" />
-          <ScalarProperty Name="ctotalexperience_exp8" ColumnName="ctotalexperience_exp8" />
-          <ScalarProperty Name="clastdate_exp8" ColumnName="clastdate_exp8" />
-          <ScalarProperty Name="cjoiningdate_exp8" ColumnName="cjoiningdate_exp8" />
-          <ScalarProperty Name="clastdesignation_exp8" ColumnName="clastdesignation_exp8" />
-          <ScalarProperty Name="companyname_exp8" ColumnName="companyname_exp8" />
-          <ScalarProperty Name="lastdesignation_exp8" ColumnName="lastdesignation_exp8" />
-          <ScalarProperty Name="totalexperience_exp8" ColumnName="totalexperience_exp8" />
-          <ScalarProperty Name="lastdate1_exp8" ColumnName="lastdate1_exp8" />
-          <ScalarProperty Name="joiningdate_exp8" ColumnName="joiningdate_exp8" />
-          <ScalarProperty Name="affliateduniversity_exp8" ColumnName="affliateduniversity_exp8" />
-          <ScalarProperty Name="collagename_exp8" ColumnName="collagename_exp8" />
-          <ScalarProperty Name="companyemail_exp7" ColumnName="companyemail_exp7" />
-          <ScalarProperty Name="ctotalexperience_exp7" ColumnName="ctotalexperience_exp7" />
-          <ScalarProperty Name="clastdate_exp7" ColumnName="clastdate_exp7" />
-          <ScalarProperty Name="cjoiningdate_exp7" ColumnName="cjoiningdate_exp7" />
-          <ScalarProperty Name="clastdesignation_exp7" ColumnName="clastdesignation_exp7" />
-          <ScalarProperty Name="companyname_exp7" ColumnName="companyname_exp7" />
-          <ScalarProperty Name="lastdesignation_exp7" ColumnName="lastdesignation_exp7" />
-          <ScalarProperty Name="totalexperience_exp7" ColumnName="totalexperience_exp7" />
-          <ScalarProperty Name="lastdate1_exp7" ColumnName="lastdate1_exp7" />
-          <ScalarProperty Name="joiningdate_exp7" ColumnName="joiningdate_exp7" />
-          <ScalarProperty Name="affliateduniversity_exp7" ColumnName="affliateduniversity_exp7" />
-          <ScalarProperty Name="collagename_exp7" ColumnName="collagename_exp7" />
-          <ScalarProperty Name="companyemail_exp6" ColumnName="companyemail_exp6" />
-          <ScalarProperty Name="ctotalexperience_exp6" ColumnName="ctotalexperience_exp6" />
-          <ScalarProperty Name="clastdate_exp6" ColumnName="clastdate_exp6" />
-          <ScalarProperty Name="cjoiningdate_exp6" ColumnName="cjoiningdate_exp6" />
-          <ScalarProperty Name="clastdesignation_exp6" ColumnName="clastdesignation_exp6" />
-          <ScalarProperty Name="companyname_exp6" ColumnName="companyname_exp6" />
-          <ScalarProperty Name="lastdesignation_exp6" ColumnName="lastdesignation_exp6" />
-          <ScalarProperty Name="totalexperience_exp6" ColumnName="totalexperience_exp6" />
-          <ScalarProperty Name="lastdate1_exp6" ColumnName="lastdate1_exp6" />
-          <ScalarProperty Name="joiningdate_exp6" ColumnName="joiningdate_exp6" />
-          <ScalarProperty Name="affliateduniversity_exp6" ColumnName="affliateduniversity_exp6" />
-          <ScalarProperty Name="collagename_exp6" ColumnName="collagename_exp6" />
-          <ScalarProperty Name="companyemail_exp5" ColumnName="companyemail_exp5" />
-          <ScalarProperty Name="ctotalexperience_exp5" ColumnName="ctotalexperience_exp5" />
-          <ScalarProperty Name="clastdate_exp5" ColumnName="clastdate_exp5" />
-          <ScalarProperty Name="cjoiningdate_exp5" ColumnName="cjoiningdate_exp5" />
-          <ScalarProperty Name="clastdesignation_exp5" ColumnName="clastdesignation_exp5" />
-          <ScalarProperty Name="companyname_exp5" ColumnName="companyname_exp5" />
-          <ScalarProperty Name="lastdesignation_exp5" ColumnName="lastdesignation_exp5" />
-          <ScalarProperty Name="totalexperience_exp5" ColumnName="totalexperience_exp5" />
-          <ScalarProperty Name="lastdate1_exp5" ColumnName="lastdate1_exp5" />
-          <ScalarProperty Name="joiningdate_exp5" ColumnName="joiningdate_exp5" />
-          <ScalarProperty Name="affliateduniversity_exp5" ColumnName="affliateduniversity_exp5" />
-          <ScalarProperty Name="collagename_exp5" ColumnName="collagename_exp5" />
-          <ScalarProperty Name="companyemail_exp4" ColumnName="companyemail_exp4" />
-          <ScalarProperty Name="ctotalexperience_exp4" ColumnName="ctotalexperience_exp4" />
-          <ScalarProperty Name="clastdate_exp4" ColumnName="clastdate_exp4" />
-          <ScalarProperty Name="cjoiningdate_exp4" ColumnName="cjoiningdate_exp4" />
-          <ScalarProperty Name="clastdesignation_exp4" ColumnName="clastdesignation_exp4" />
-          <ScalarProperty Name="companyname_exp4" ColumnName="companyname_exp4" />
-          <ScalarProperty Name="lastdesignation_exp4" ColumnName="lastdesignation_exp4" />
-          <ScalarProperty Name="totalexperience_exp4" ColumnName="totalexperience_exp4" />
-          <ScalarProperty Name="lastdate1_exp4" ColumnName="lastdate1_exp4" />
-          <ScalarProperty Name="joiningdate_exp4" ColumnName="joiningdate_exp4" />
-          <ScalarProperty Name="affliateduniversity_exp4" ColumnName="affliateduniversity_exp4" />
-          <ScalarProperty Name="collagename_exp4" ColumnName="collagename_exp4" />
-          <ScalarProperty Name="companyemail_exp3" ColumnName="companyemail_exp3" />
-          <ScalarProperty Name="ctotalexperience_exp3" ColumnName="ctotalexperience_exp3" />
-          <ScalarProperty Name="clastdate_exp3" ColumnName="clastdate_exp3" />
-          <ScalarProperty Name="cjoiningdate_exp3" ColumnName="cjoiningdate_exp3" />
-          <ScalarProperty Name="clastdesignation_exp3" ColumnName="clastdesignation_exp3" />
-          <ScalarProperty Name="companyname_exp3" ColumnName="companyname_exp3" />
-          <ScalarProperty Name="lastdesignation_exp3" ColumnName="lastdesignation_exp3" />
-          <ScalarProperty Name="totalexperience_exp3" ColumnName="totalexperience_exp3" />
-          <ScalarProperty Name="lastdate1_exp3" ColumnName="lastdate1_exp3" />
-          <ScalarProperty Name="joiningdate_exp3" ColumnName="joiningdate_exp3" />
-          <ScalarProperty Name="affliateduniversity_exp3" ColumnName="affliateduniversity_exp3" />
-          <ScalarProperty Name="collagename_exp3" ColumnName="collagename_exp3" />
-          <ScalarProperty Name="companyemail_exp2" ColumnName="companyemail_exp2" />
-          <ScalarProperty Name="ctotalexperience_exp2" ColumnName="ctotalexperience_exp2" />
-          <ScalarProperty Name="clastdate_exp2" ColumnName="clastdate_exp2" />
-          <ScalarProperty Name="cjoiningdate_exp2" ColumnName="cjoiningdate_exp2" />
-          <ScalarProperty Name="clastdesignation_exp2" ColumnName="clastdesignation_exp2" />
-          <ScalarProperty Name="companyname_exp2" ColumnName="companyname_exp2" />
-          <ScalarProperty Name="lastdesignation_exp2" ColumnName="lastdesignation_exp2" />
-          <ScalarProperty Name="totalexperience_exp2" ColumnName="totalexperience_exp2" />
-          <ScalarProperty Name="lastdate1_exp2" ColumnName="lastdate1_exp2" />
-          <ScalarProperty Name="joiningdate_exp2" ColumnName="joiningdate_exp2" />
-          <ScalarProperty Name="affliateduniversity_exp2" ColumnName="affliateduniversity_exp2" />
-          <ScalarProperty Name="collagename_exp2" ColumnName="collagename_exp2" />
-          <ScalarProperty Name="companyemail_exp1" ColumnName="companyemail_exp1" />
-          <ScalarProperty Name="ctotalexperience_exp1" ColumnName="ctotalexperience_exp1" />
-          <ScalarProperty Name="clastdate_exp1" ColumnName="clastdate_exp1" />
-          <ScalarProperty Name="cjoiningdate_exp1" ColumnName="cjoiningdate_exp1" />
-          <ScalarProperty Name="clastdesignation_exp1" ColumnName="clastdesignation_exp1" />
-          <ScalarProperty Name="companyname_exp1" ColumnName="companyname_exp1" />
-          <ScalarProperty Name="lastdesignation_exp1" ColumnName="lastdesignation_exp1" />
-          <ScalarProperty Name="totalexperience_exp1" ColumnName="totalexperience_exp1" />
-          <ScalarProperty Name="lastdate1_exp1" ColumnName="lastdate1_exp1" />
-          <ScalarProperty Name="joiningdate_exp1" ColumnName="joiningdate_exp1" />
-          <ScalarProperty Name="affliateduniversity_exp1" ColumnName="affliateduniversity_exp1" />
-          <ScalarProperty Name="collagename_exp1" ColumnName="collagename_exp1" />
-          <ScalarProperty Name="empId" ColumnName="empId" />
-          <ScalarProperty Name="empexpid" ColumnName="empexpid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
     <FunctionImportMapping FunctionImportName="sp_StaffAttandance_DML" FunctionName="SchoolMgmtSysModel.Store.sp_StaffAttandance_DML" />
     <EntitySetMapping Name="tbl_EmployeeLeave">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_EmployeeLeave">
@@ -2278,6 +2149,127 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_GetStdCount" FunctionName="SchoolMgmtSysModel.Store.sp_GetStdCount" />
+    <FunctionImportMapping FunctionImportName="sp_student_online_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
+    <FunctionImportMapping FunctionImportName="Sp_GetSubjectName" FunctionName="SchoolMgmtSysModel.Store.Sp_GetSubjectName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetSubjectName_Result">
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getteachers" FunctionName="SchoolMgmtSysModel.Store.sp_getteachers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteachers_Result">
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="fullnm" ColumnName="fullnm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_LectTimeSetUp">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_LectTimeSetUp">
+        <MappingFragment StoreEntitySet="tbl_LectTimeSetUp">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="LecTimeid" ColumnName="LecTimeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetLectTimeSetUp" FunctionName="SchoolMgmtSysModel.Store.sp_GetLectTimeSetUp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetLectTimeSetUp_Result">
+          <ScalarProperty Name="LecTimeid" ColumnName="LecTimeid" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettimetable_pivot" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable_pivot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_pivot_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Monday" ColumnName="Monday" />
+          <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+          <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+          <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+          <ScalarProperty Name="Friday" ColumnName="Friday" />
+          <ScalarProperty Name="Saturday" ColumnName="Saturday" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_GetStudentProfile" FunctionName="SchoolMgmtSysModel.Store.Sp_GetStudentProfile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetStudentProfile_Result">
+          <ScalarProperty Name="Studid" ColumnName="Studid" />
+          <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
+          <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
+          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
+          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+          <ScalarProperty Name="YearName" ColumnName="YearName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_timetable">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
+        <MappingFragment StoreEntitySet="tbl_timetable">
+          <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_gettimetable" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_Result">
+          <ScalarProperty Name="Tid" ColumnName="Tid" />
+          <ScalarProperty Name="Classid" ColumnName="Classid" />
+          <ScalarProperty Name="yearid" ColumnName="yearid" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
+          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
+          <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
+          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
+    <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
+    <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
+    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
     <EntitySetMapping Name="tbl_student">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
         <MappingFragment StoreEntitySet="tbl_student">
@@ -2392,8 +2384,134 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
-    <FunctionImportMapping FunctionImportName="sp_student_online_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_online_admission" />
+    <EntitySetMapping Name="tbl_Empexperience">
+      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Empexperience">
+        <MappingFragment StoreEntitySet="tbl_Empexperience">
+          <ScalarProperty Name="companyemail_exp10" ColumnName="companyemail_exp10" />
+          <ScalarProperty Name="ctotalexperience_exp10" ColumnName="ctotalexperience_exp10" />
+          <ScalarProperty Name="clastdate_exp10" ColumnName="clastdate_exp10" />
+          <ScalarProperty Name="cjoiningdate_exp10" ColumnName="cjoiningdate_exp10" />
+          <ScalarProperty Name="clastdesignation_exp10" ColumnName="clastdesignation_exp10" />
+          <ScalarProperty Name="companyname_exp10" ColumnName="companyname_exp10" />
+          <ScalarProperty Name="lastdesignation_exp10" ColumnName="lastdesignation_exp10" />
+          <ScalarProperty Name="totalexperience_exp10" ColumnName="totalexperience_exp10" />
+          <ScalarProperty Name="lastdate1_exp10" ColumnName="lastdate1_exp10" />
+          <ScalarProperty Name="joiningdate_exp10" ColumnName="joiningdate_exp10" />
+          <ScalarProperty Name="affliateduniversity_exp10" ColumnName="affliateduniversity_exp10" />
+          <ScalarProperty Name="collagename_exp10" ColumnName="collagename_exp10" />
+          <ScalarProperty Name="companyemail_exp9" ColumnName="companyemail_exp9" />
+          <ScalarProperty Name="ctotalexperience_exp9" ColumnName="ctotalexperience_exp9" />
+          <ScalarProperty Name="clastdate_exp9" ColumnName="clastdate_exp9" />
+          <ScalarProperty Name="cjoiningdate_exp9" ColumnName="cjoiningdate_exp9" />
+          <ScalarProperty Name="clastdesignation_exp9" ColumnName="clastdesignation_exp9" />
+          <ScalarProperty Name="companyname_exp9" ColumnName="companyname_exp9" />
+          <ScalarProperty Name="lastdesignation_exp9" ColumnName="lastdesignation_exp9" />
+          <ScalarProperty Name="totalexperience_exp9" ColumnName="totalexperience_exp9" />
+          <ScalarProperty Name="lastdate1_exp9" ColumnName="lastdate1_exp9" />
+          <ScalarProperty Name="joiningdate_exp9" ColumnName="joiningdate_exp9" />
+          <ScalarProperty Name="affliateduniversity_exp9" ColumnName="affliateduniversity_exp9" />
+          <ScalarProperty Name="collagename_exp9" ColumnName="collagename_exp9" />
+          <ScalarProperty Name="companyemail_exp8" ColumnName="companyemail_exp8" />
+          <ScalarProperty Name="ctotalexperience_exp8" ColumnName="ctotalexperience_exp8" />
+          <ScalarProperty Name="clastdate_exp8" ColumnName="clastdate_exp8" />
+          <ScalarProperty Name="cjoiningdate_exp8" ColumnName="cjoiningdate_exp8" />
+          <ScalarProperty Name="clastdesignation_exp8" ColumnName="clastdesignation_exp8" />
+          <ScalarProperty Name="companyname_exp8" ColumnName="companyname_exp8" />
+          <ScalarProperty Name="lastdesignation_exp8" ColumnName="lastdesignation_exp8" />
+          <ScalarProperty Name="totalexperience_exp8" ColumnName="totalexperience_exp8" />
+          <ScalarProperty Name="lastdate1_exp8" ColumnName="lastdate1_exp8" />
+          <ScalarProperty Name="joiningdate_exp8" ColumnName="joiningdate_exp8" />
+          <ScalarProperty Name="affliateduniversity_exp8" ColumnName="affliateduniversity_exp8" />
+          <ScalarProperty Name="collagename_exp8" ColumnName="collagename_exp8" />
+          <ScalarProperty Name="companyemail_exp7" ColumnName="companyemail_exp7" />
+          <ScalarProperty Name="ctotalexperience_exp7" ColumnName="ctotalexperience_exp7" />
+          <ScalarProperty Name="clastdate_exp7" ColumnName="clastdate_exp7" />
+          <ScalarProperty Name="cjoiningdate_exp7" ColumnName="cjoiningdate_exp7" />
+          <ScalarProperty Name="clastdesignation_exp7" ColumnName="clastdesignation_exp7" />
+          <ScalarProperty Name="companyname_exp7" ColumnName="companyname_exp7" />
+          <ScalarProperty Name="lastdesignation_exp7" ColumnName="lastdesignation_exp7" />
+          <ScalarProperty Name="totalexperience_exp7" ColumnName="totalexperience_exp7" />
+          <ScalarProperty Name="lastdate1_exp7" ColumnName="lastdate1_exp7" />
+          <ScalarProperty Name="joiningdate_exp7" ColumnName="joiningdate_exp7" />
+          <ScalarProperty Name="affliateduniversity_exp7" ColumnName="affliateduniversity_exp7" />
+          <ScalarProperty Name="collagename_exp7" ColumnName="collagename_exp7" />
+          <ScalarProperty Name="companyemail_exp6" ColumnName="companyemail_exp6" />
+          <ScalarProperty Name="ctotalexperience_exp6" ColumnName="ctotalexperience_exp6" />
+          <ScalarProperty Name="clastdate_exp6" ColumnName="clastdate_exp6" />
+          <ScalarProperty Name="cjoiningdate_exp6" ColumnName="cjoiningdate_exp6" />
+          <ScalarProperty Name="clastdesignation_exp6" ColumnName="clastdesignation_exp6" />
+          <ScalarProperty Name="companyname_exp6" ColumnName="companyname_exp6" />
+          <ScalarProperty Name="lastdesignation_exp6" ColumnName="lastdesignation_exp6" />
+          <ScalarProperty Name="totalexperience_exp6" ColumnName="totalexperience_exp6" />
+          <ScalarProperty Name="lastdate1_exp6" ColumnName="lastdate1_exp6" />
+          <ScalarProperty Name="joiningdate_exp6" ColumnName="joiningdate_exp6" />
+          <ScalarProperty Name="affliateduniversity_exp6" ColumnName="affliateduniversity_exp6" />
+          <ScalarProperty Name="collagename_exp6" ColumnName="collagename_exp6" />
+          <ScalarProperty Name="companyemail_exp5" ColumnName="companyemail_exp5" />
+          <ScalarProperty Name="ctotalexperience_exp5" ColumnName="ctotalexperience_exp5" />
+          <ScalarProperty Name="clastdate_exp5" ColumnName="clastdate_exp5" />
+          <ScalarProperty Name="cjoiningdate_exp5" ColumnName="cjoiningdate_exp5" />
+          <ScalarProperty Name="clastdesignation_exp5" ColumnName="clastdesignation_exp5" />
+          <ScalarProperty Name="companyname_exp5" ColumnName="companyname_exp5" />
+          <ScalarProperty Name="lastdesignation_exp5" ColumnName="lastdesignation_exp5" />
+          <ScalarProperty Name="totalexperience_exp5" ColumnName="totalexperience_exp5" />
+          <ScalarProperty Name="lastdate1_exp5" ColumnName="lastdate1_exp5" />
+          <ScalarProperty Name="joiningdate_exp5" ColumnName="joiningdate_exp5" />
+          <ScalarProperty Name="affliateduniversity_exp5" ColumnName="affliateduniversity_exp5" />
+          <ScalarProperty Name="collagename_exp5" ColumnName="collagename_exp5" />
+          <ScalarProperty Name="companyemail_exp4" ColumnName="companyemail_exp4" />
+          <ScalarProperty Name="ctotalexperience_exp4" ColumnName="ctotalexperience_exp4" />
+          <ScalarProperty Name="clastdate_exp4" ColumnName="clastdate_exp4" />
+          <ScalarProperty Name="cjoiningdate_exp4" ColumnName="cjoiningdate_exp4" />
+          <ScalarProperty Name="clastdesignation_exp4" ColumnName="clastdesignation_exp4" />
+          <ScalarProperty Name="companyname_exp4" ColumnName="companyname_exp4" />
+          <ScalarProperty Name="lastdesignation_exp4" ColumnName="lastdesignation_exp4" />
+          <ScalarProperty Name="totalexperience_exp4" ColumnName="totalexperience_exp4" />
+          <ScalarProperty Name="lastdate1_exp4" ColumnName="lastdate1_exp4" />
+          <ScalarProperty Name="joiningdate_exp4" ColumnName="joiningdate_exp4" />
+          <ScalarProperty Name="affliateduniversity_exp4" ColumnName="affliateduniversity_exp4" />
+          <ScalarProperty Name="collagename_exp4" ColumnName="collagename_exp4" />
+          <ScalarProperty Name="companyemail_exp3" ColumnName="companyemail_exp3" />
+          <ScalarProperty Name="ctotalexperience_exp3" ColumnName="ctotalexperience_exp3" />
+          <ScalarProperty Name="clastdate_exp3" ColumnName="clastdate_exp3" />
+          <ScalarProperty Name="cjoiningdate_exp3" ColumnName="cjoiningdate_exp3" />
+          <ScalarProperty Name="clastdesignation_exp3" ColumnName="clastdesignation_exp3" />
+          <ScalarProperty Name="companyname_exp3" ColumnName="companyname_exp3" />
+          <ScalarProperty Name="lastdesignation_exp3" ColumnName="lastdesignation_exp3" />
+          <ScalarProperty Name="totalexperience_exp3" ColumnName="totalexperience_exp3" />
+          <ScalarProperty Name="lastdate1_exp3" ColumnName="lastdate1_exp3" />
+          <ScalarProperty Name="joiningdate_exp3" ColumnName="joiningdate_exp3" />
+          <ScalarProperty Name="affliateduniversity_exp3" ColumnName="affliateduniversity_exp3" />
+          <ScalarProperty Name="collagename_exp3" ColumnName="collagename_exp3" />
+          <ScalarProperty Name="companyemail_exp2" ColumnName="companyemail_exp2" />
+          <ScalarProperty Name="ctotalexperience_exp2" ColumnName="ctotalexperience_exp2" />
+          <ScalarProperty Name="clastdate_exp2" ColumnName="clastdate_exp2" />
+          <ScalarProperty Name="cjoiningdate_exp2" ColumnName="cjoiningdate_exp2" />
+          <ScalarProperty Name="clastdesignation_exp2" ColumnName="clastdesignation_exp2" />
+          <ScalarProperty Name="companyname_exp2" ColumnName="companyname_exp2" />
+          <ScalarProperty Name="lastdesignation_exp2" ColumnName="lastdesignation_exp2" />
+          <ScalarProperty Name="totalexperience_exp2" ColumnName="totalexperience_exp2" />
+          <ScalarProperty Name="lastdate1_exp2" ColumnName="lastdate1_exp2" />
+          <ScalarProperty Name="joiningdate_exp2" ColumnName="joiningdate_exp2" />
+          <ScalarProperty Name="affliateduniversity_exp2" ColumnName="affliateduniversity_exp2" />
+          <ScalarProperty Name="collagename_exp2" ColumnName="collagename_exp2" />
+          <ScalarProperty Name="companyemail_exp1" ColumnName="companyemail_exp1" />
+          <ScalarProperty Name="ctotalexperience_exp1" ColumnName="ctotalexperience_exp1" />
+          <ScalarProperty Name="clastdate_exp1" ColumnName="clastdate_exp1" />
+          <ScalarProperty Name="cjoiningdate_exp1" ColumnName="cjoiningdate_exp1" />
+          <ScalarProperty Name="clastdesignation_exp1" ColumnName="clastdesignation_exp1" />
+          <ScalarProperty Name="companyname_exp1" ColumnName="companyname_exp1" />
+          <ScalarProperty Name="lastdesignation_exp1" ColumnName="lastdesignation_exp1" />
+          <ScalarProperty Name="totalexperience_exp1" ColumnName="totalexperience_exp1" />
+          <ScalarProperty Name="lastdate1_exp1" ColumnName="lastdate1_exp1" />
+          <ScalarProperty Name="joiningdate_exp1" ColumnName="joiningdate_exp1" />
+          <ScalarProperty Name="affliateduniversity_exp1" ColumnName="affliateduniversity_exp1" />
+          <ScalarProperty Name="collagename_exp1" ColumnName="collagename_exp1" />
+          <ScalarProperty Name="empId" ColumnName="empId" />
+          <ScalarProperty Name="empexpid" ColumnName="empexpid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbl_employee">
       <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_employee">
         <MappingFragment StoreEntitySet="tbl_employee">
@@ -2521,121 +2639,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-    <FunctionImportMapping FunctionImportName="Sp_GetSubjectName" FunctionName="SchoolMgmtSysModel.Store.Sp_GetSubjectName">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetSubjectName_Result">
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="SubjectNm" ColumnName="SubjectNm" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_getteachers" FunctionName="SchoolMgmtSysModel.Store.sp_getteachers">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_getteachers_Result">
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="fullnm" ColumnName="fullnm" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_LectTimeSetUp">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_LectTimeSetUp">
-        <MappingFragment StoreEntitySet="tbl_LectTimeSetUp">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="LecTimeid" ColumnName="LecTimeid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_GetLectTimeSetUp" FunctionName="SchoolMgmtSysModel.Store.sp_GetLectTimeSetUp">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_GetLectTimeSetUp_Result">
-          <ScalarProperty Name="LecTimeid" ColumnName="LecTimeid" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_timetable">
-      <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_timetable">
-        <MappingFragment StoreEntitySet="tbl_timetable">
-          <ScalarProperty Name="Semester" ColumnName="Semester" />
-          <ScalarProperty Name="deptid" ColumnName="deptid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetable" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_gettimetableclass" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetableclass">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetableclass_Result">
-          <ScalarProperty Name="Tid" ColumnName="Tid" />
-          <ScalarProperty Name="Classid" ColumnName="Classid" />
-          <ScalarProperty Name="yearid" ColumnName="yearid" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Subjectid" ColumnName="Subjectid" />
-          <ScalarProperty Name="LecTime" ColumnName="LecTime" />
-          <ScalarProperty Name="LectETime" ColumnName="LectETime" />
-          <ScalarProperty Name="Empid" ColumnName="Empid" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_timetable_DML" FunctionName="SchoolMgmtSysModel.Store.sp_timetable_DML" />
-    <FunctionImportMapping FunctionImportName="sp_gettimetable_pivot" FunctionName="SchoolMgmtSysModel.Store.sp_gettimetable_pivot">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.sp_gettimetable_pivot_Result">
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="LecNo" ColumnName="LecNo" />
-          <ScalarProperty Name="Semester" ColumnName="Semester" />
-          <ScalarProperty Name="Monday" ColumnName="Monday" />
-          <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
-          <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
-          <ScalarProperty Name="Thursday" ColumnName="Thursday" />
-          <ScalarProperty Name="Friday" ColumnName="Friday" />
-          <ScalarProperty Name="Saturday" ColumnName="Saturday" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Sp_GetStudentProfile" FunctionName="SchoolMgmtSysModel.Store.Sp_GetStudentProfile">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SchoolMgmtSysModel.Sp_GetStudentProfile_Result">
-          <ScalarProperty Name="Studid" ColumnName="Studid" />
-          <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
-          <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
-          <ScalarProperty Name="Studnm" ColumnName="Studnm" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
-          <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
-          <ScalarProperty Name="YearName" ColumnName="YearName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

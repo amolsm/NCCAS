@@ -328,7 +328,10 @@
 
         $ssccondition = $('.ssccondition');
         $ssccondition.blur(function () {
-            ;
+        
+            var previousschool = $("#ssccondionPreviousSchool").val();
+            var sscnamelocation = $("#ssccondionnamelocation").val();
+            var sscattempts1 = $("#ssccondionattempts1").val();
             var yearofleaving = $("#ssccondionyearofleaving").val();
             var yearofpassing = $("#ssccondionyearofpassing").val();
             var totalmarks = $("#ssccondiontotalmarks").val();
@@ -336,6 +339,9 @@
             var gradeforsum = (btainmarks / totalmarks) * 100;
             $("#ssccondionpercentage").val(parseFloat(gradeforsum.toFixed(2)));
             var percentage = $("#ssccondionpercentage").val();
+            $("#PreviousSchool").val(previousschool);
+            $("#namelocation").val(sscnamelocation);
+            $("#attempts1").val(sscattempts1);
             $("#sleaving1").val(yearofleaving);
             $("#pyear1").val(yearofpassing);
             $("#PrScTotalMarks").val(totalmarks);
@@ -344,7 +350,9 @@
         });
         $ssccondition = $('.hsccondition');
         $ssccondition.blur(function () {
-
+            var hscpreviousschool = $("#hsccondionhschool").val();
+            var hscnamelocation = $("#hsccondionhnamelocation").val();
+            var hscattempts1 = $("#hsccondionhattempts1").val();
             var yearofleaving = $("#hsccondionyearofleaving").val();
             var yearofpassing = $("#hsccondionyearofpassing").val();
             var totalmarks = $("#hsccondiontotalmarks").val();
@@ -352,6 +360,9 @@
             var gradeforsum = (btainmarks / totalmarks) * 100;
             $("#hsccondionpercentage").val(parseFloat(gradeforsum.toFixed(2)));
             var percentage = $("#hsccondionpercentage").val();
+            $("#hschool").val(hscpreviousschool);
+            $("#hnamelocation").val(hscnamelocation);
+            $("#hattempts1").val(sscattempts1);
             $("#hleaving1").val(yearofleaving);
             $("#Dpyear2").val(yearofpassing);
             $("#htotalmark").val(totalmarks);
@@ -873,19 +884,19 @@
                 dataType: 'JSON',
                 data: { studid: studid },
                 success: function (data) {
-                    debugger;
+                   
                     $("#Studnm").val(data.Studnm);
                     $("#Studfathernm").val(data.Studfathernm);
                     $("#Studmothernm").val(data.Studmothernm);
-                    var value = new Date(parseInt(data.DOB.substr(6)));
-                    $('#datepicker').datepicker('setDate', value);
-                    //$('#datepicker').focus();
-                    //status
+                   
+                    $('#datepicker').datepicker('setDate', data.DOB);
+                   
                     
                       $('input:radio[name=group1]').filter('[value='+data.St_Status+']').prop("checked", true);
                       
                     $("#Weight").val(data.Weight);
                     $("#Height").val(data.Height);
+                    $("#academicyear option:contains(" + data.academicyear + ")").attr('selected', 'selected');
                     $("#StudBldGrp").val(data.StudBldGrp);
                     $("#StudEmail").val(data.StudEmail);
                     $("#Disease").val(data.Disease);
@@ -1005,34 +1016,30 @@
 
 
                     //               sibbling
-
+                 
                     $("#Sibling1Name").val(data.Sibling1Name);
                     $("#Sibling1Rel").val(data.Sibling1Rel);
-                    var s1dob = new Date(parseInt(data.Sibling1DOB.substr(6)));
-                    $('#datepicker1').datepicker('setDate', s1dob);
+              
+                    $('#datepicker1').datepicker('setDate', data.Sibling1DOB);
 
                     $("#Sibling1Ql").val(data.Sibling1Ql);
                     $("#Sibling2Name").val(data.Sibling2Name);
                     $("#Sibling2Rel").val(data.Sibling2Rel);
-                    var s2dob = new Date(parseInt(data.Sibling2DOB.substr(6)));
-                    $('#datepicker2').datepicker('setDate', s2dob);
+                   
+                    $('#datepicker2').datepicker('setDate', data.Sibling2DOB);
 
                     $("#Sibling2Ql").val(data.Sibling2Ql);
                     $("#Sibling3Name").val(data.Sibling3Name);
                     $("#Sibling3Rel").val(data.Sibling3Rel);
-                    var s3dob = new Date(parseInt(data.Sibling3DOB.substr(6)));
-                    $('#datepicker3').datepicker('setDate', s3dob);
+                  
+                    $('#datepicker3').datepicker('setDate', data.Sibling3DOB);
                     $("#Sibling3Ql").val(data.Sibling3Ql);
                     $("#Sibling4Name").val(data.Sibling4Name);
                     $("#Sibling4Rel").val(data.Sibling4Rel);
-                    var s4dob = new Date(parseInt(data.Sibling4DOB.substr(6)));
-                    $('#datepicker4').datepicker('setDate', s4dob);
+                  
+                    $('#datepicker4').datepicker('setDate', data.Sibling4DOB);
                     $("#Sibling4Ql").val(data.Sibling4Ql);
-                    //                        $("#LastClass").val('');
-                    //                    }
-                    //                    else {
-                    //                        $("#LastClass").val(data.LastClass);
-                    //                    }
+                  
                     $("#LastClass").val(data.LastClass);
 
 
@@ -1145,7 +1152,7 @@
                         "display": "block"
                     });
 
-                  @*  var selectedValues = new Array();
+                    var selectedValues = new Array();
                     var array = data.cats.split(",");
                     $.each(array, function (i) {
 
@@ -1252,7 +1259,7 @@
                                 alert('Failed to retrieve sub categories.' + ex);
                             }
                         });
-                    }*@
+                    }
 
                     $("#StudCategoryid").val(data.StudCategoryid);
                     $("#Countryid").val(data.Countryid);
@@ -1336,6 +1343,8 @@
                             $("#pyear1").val(school.yearpassing1);
                             $("#rnumber1").val(school.registerno1);
                             $("#attempts1").val(school.attempts1);
+                            $("#ssccondionattempts1").val(school.attempts1);
+                            
                             $("#PrScObtainMark").val(school.obtainmarks);
                             $("#ssccondionobtainmarks").val(school.obtainmarks);
                             $("#PrScTotalMarks").val(school.totalmarks);
@@ -1349,8 +1358,11 @@
                             $("#c4").val(school.radio4);
                             $("#c5").val(school.radio5);
                             $("#namelocation").val(school.namelocation);
+                            $("#ssccondionnamelocation").val(school.namelocation);
+                            
                             $("#examinationpassed").val(school.qualifyingexamination);
-
+                            $("#ssccondionPreviousSchool").val(school.previouschool);
+                            
                             $("#PreviousSchool").val(school.previouschool);
                             $("#ReferenceNm").val(school.refname);
                             $("#RCode").val(school.code);
@@ -1614,6 +1626,7 @@
                             $("#hpyear").val(hca.yearpassing1);
                             $("#hrnumber1").val(hca.registerno1);
                             $("#hattempts1").val(hca.attempts1);
+                            $("#hsccondionhattempts1").val(hca.attempts1);
                             $("#hobtain").val(hca.obtainmarks);
                             $("#hsccondionobtainmarks").val(hca.obtainmarks);
                             $("#htotalmark").val(hca.totalmarks);
@@ -1627,6 +1640,7 @@
                             $("#hc4").val(hca.radio4);
                             $("#hc5").val(hca.radio5);
                             $("#hnamelocation").val(hca.namelocation);
+                            $("#hsccondionhnamelocation").val(hca.namelocation);
                             $("#hexaminationpassed").val(hca.qualifyingexamination);
                             if ($("#hc4").val() == 5) {
                                 $('#answer3').show();
@@ -1655,6 +1669,7 @@
                             $('#hleaving1').datepicker('setDate', value);
                             $('#hsccondionyearofleaving').datepicker('setDate', value);
                             $("#hschool").val(hca.prschool);
+                            $("#hsccondionhschool").val(hca.prschool);
                             $("#hrefname").val(hca.refname);
                             $("#hrefcode").val(hca.refcode);
                             $("#hrefno").val(hca.refno);
@@ -1980,23 +1995,23 @@
             //        "background": ""
             //    });
             //}
-            if ($("#StdRegMob").val() == '')
-            {
-                cnt++;
-                $("#StdRegMob").css({
-                    "border": "1px solid red"
-                });
-                alert("Register Mobile number is Mandatory!");
-                e.preventDefault();
-                $("#StdRegMob").focus();
-                return false;
-            }
-            else {
-                $("#StdRegMob").css({
-                    "border": "",
-                    "background": ""
-                });
-            }
+            //if ($("#StdRegMob").val() == '')
+            //{
+            //    cnt++;
+            //    $("#StdRegMob").css({
+            //        "border": "1px solid red"
+            //    });
+            //    alert("Register Mobile number is Mandatory!");
+            //    e.preventDefault();
+            //    $("#StdRegMob").focus();
+            //    return false;
+            //}
+            //else {
+            //    $("#StdRegMob").css({
+            //        "border": "",
+            //        "background": ""
+            //    });
+            //}
             if ($("#RollNo").val() == '' || $("#RollNo").val() == 0) {
                 cnt++;
                 $("#RollNo").css({
@@ -6196,9 +6211,37 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                     <div class="modal-body">
                                                                                                         <div class="form-horizontal">
                                                                                                         <table>
-                                                                                                            
                                                                                                             <tr>
-                                                                                                               
+                                                                                                                <td>
+                                                                                                                    <div class="control-group required span5">
+
+                                                                                                                        <div class="control-label">
+                                                                                                                            Previous School :
+                                                                                                                        </div>
+                                                                                                                        <div class="control">
+                                                                                                                            <input type="text" id="ssccondionPreviousSchool" class="ssccondition" placeholder="Enter Previous School Name">
+                                                                                                                        </div>
+                                                                                                                    
+                                                                                                                    </div>
+                                                                                                                </td>
+
+                                                                                                                <td>
+                                                                                                                    <div class="control-group required span5">
+                                                                                                                        <div class="control-label">
+                                                                                                                            Name & Location (District) Of School Last Studied:
+                                                                                                                        </div>
+                                                                                                                        <div class="control">
+                                                                                                                            <textarea rows="4" cols="50" name="ssccondionnamelocation" id="ssccondionnamelocation" class="ssccondition">
+                                                                                                                             
+                                                                                                                            </textarea> 
+                                                                                                                        </div>
+                                                                                                                    
+                                                                                                                    </div>
+                                                                                                                </td>
+                                                                                                                </tr>
+<tr>
+                                                                                                              
+                                                                                                               <tr>
                                                                                                                 <td>
                                                                                                                     <div class="control-group required span5">
                                                                                                                         <div class="control-label">
@@ -6224,7 +6267,19 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                
                                                                                                               
                                                                                                             </tr>
+
                                                                                                             <tr>
+                                                                                                                <td>
+                                                                                                                    <div class="control-group required span5">
+                                                                                                                        <div class="control-label">
+                                                                                                                            No. Of Attempts
+                                                                                                                        </div>
+                                                                                                                        <div class="control">
+                                                                                                                            <input type="number" id="ssccondionattempts1" class="ssccondition" placeholder="No Of Attempts">
+                                                                                                                        </div>
+                                                                                                                       
+                                                                                                                    </div>
+                                                                                                                </td>
                                                                                                                 <td>
                                                                                                                     <div class="control-group required span5">
                                                                                                                         <div class="control-label">
@@ -6235,21 +6290,22 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </td>
-                                                                                                                <td>
-                                                                                                                    <div class="control-group required span5">
-                                                                                                                        <div class="control-label">
-                                                                                                                            Total Marks
-                                                                                                                            </div>
-                                                                                                                        <div class="control">
-                                                                                                                            <input type="number" id="ssccondiontotalmarks" class="ssccondition">
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                </td>
+                                                                                                              
                                                                                                               
                                                                                                                
                                                                                                                
                                                                                                             </tr>
                                                                                                             <tr>
+                                                                                                                <td>
+                                                                                                                    <div class="control-group required span5">
+                                                                                                                        <div class="control-label">
+                                                                                                                            Total Marks
+                                                                                                                        </div>
+                                                                                                                        <div class="control">
+                                                                                                                            <input type="number" id="ssccondiontotalmarks" class="ssccondition">
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td>
                                                                                                                 <td>
                                                                                                                     <div class="control-group required span5">
                                                                                                                         <div class="control-label">
@@ -6281,7 +6337,34 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                 <div class="modal-body">
                                                                                                                     <div class="form-horizontal">
                                                                                                                         <table>
+                                                                                                                            <tr>
+                                                                                                                                <td>
+                                                                                                                                    <div class="control-group required span5">
 
+                                                                                                                                        <div class="control-label">
+                                                                                                                                            Previous School :
+                                                                                                                                        </div>
+                                                                                                                                        <div class="control">
+                                                                                                                                            <input type="text" id="hsccondionhschool" class="hsccondition" placeholder="Enter Previous School Name">
+                                                                                                                                        </div>
+
+                                                                                                                                    </div>
+                                                                                                                                </td>
+
+                                                                                                                                <td>
+                                                                                                                                    <div class="control-group required span5">
+                                                                                                                                        <div class="control-label">
+                                                                                                                                            Name & Location (District) Of School Last Studied:
+                                                                                                                                        </div>
+                                                                                                                                        <div class="control">
+                                                                                                                                            <textarea rows="4" cols="50" name="hsccondionhnamelocation" id="hsccondionhnamelocation" class="hsccondition">
+                                                                                                                                              
+                                                                                                                                            </textarea>
+                                                                                                                                        </div>
+
+                                                                                                                                    </div>
+                                                                                                                                </td>
+                                                                                                                            </tr>
                                                                                                                             <tr>
 
                                                                                                                                 <td>
@@ -6311,7 +6394,17 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                             </tr>
                                                                                                                             <tr>
                                                                                                                               
+                                                                                                                                <td>
+                                                                                                                                    <div class="control-group required span5">
+                                                                                                                                        <div class="control-label">
+                                                                                                                                            No. Of Attempts
+                                                                                                                                        </div>
+                                                                                                                                        <div class="control">
+                                                                                                                                            <input type="number" id="hsccondionhattempts1" class="hsccondition" placeholder="No Of Attempts">
+                                                                                                                                        </div>
 
+                                                                                                                                    </div>
+                                                                                                                                </td>
                                                                                                                                 <td>
                                                                                                                                     <div class="control-group required span5">
                                                                                                                                         <div class="control-label">
@@ -6322,6 +6415,9 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                                         </div>
                                                                                                                                     </div>
                                                                                                                                 </td>
+                                                                                                                               
+                                                                                                                            </tr>
+                                                                                                                            <tr>
                                                                                                                                 <td>
                                                                                                                                     <div class="control-group required span5">
                                                                                                                                         <div class="control-label">
@@ -6332,8 +6428,6 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                                         </div>
                                                                                                                                     </div>
                                                                                                                                 </td>
-                                                                                                                            </tr>
-                                                                                                                            <tr>
                                                                                                                                 <td>
                                                                                                                                     <div class="control-group required span5">
                                                                                                                                         <div class="control-label">
@@ -6344,6 +6438,7 @@ new { style = "display:block;width:200px;height:178px;" })
                                                                                                                                         </div>
                                                                                                                                     </div>
                                                                                                                                 </td>
+                                                                                                                               
                                                                                                                             </tr>
                                                                                                                         </table>
                                                                                                                     </div>

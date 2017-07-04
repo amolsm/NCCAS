@@ -335,16 +335,6 @@
       <Parameter Name="act" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_getCourseDetails" ReturnType="Collection(SchoolMgmtSysModel.sp_getCourseDetails_Result)" />
-    <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.tbl_Empexperience" />
-    <FunctionImport Name="sp_empleave_DML">
-      <Parameter Name="leaveid" Mode="In" Type="Int32" />
-      <Parameter Name="empid" Mode="In" Type="Int32" />
-      <Parameter Name="startdate" Mode="In" Type="DateTime" />
-      <Parameter Name="enddate" Mode="In" Type="DateTime" />
-      <Parameter Name="leavetype" Mode="In" Type="String" />
-      <Parameter Name="description" Mode="In" Type="String" />
-      <Parameter Name="isapprove" Mode="In" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="sp_StaffAttandance_DML">
       <Parameter Name="staffid" Mode="In" Type="Int32" />
       <Parameter Name="attendancedate" Mode="In" Type="DateTime" />
@@ -803,8 +793,7 @@
       <Parameter Name="Dept_Id" Mode="In" Type="Int32" />
       <Parameter Name="academicyear" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
-    <FunctionImport Name="sp_student_admission">
+    <FunctionImport Name="sp_student_online_admission">
       <Parameter Name="Studid" Mode="In" Type="Int32" />
       <Parameter Name="Studnm" Mode="In" Type="String" />
       <Parameter Name="Studfathernm" Mode="In" Type="String" />
@@ -875,22 +864,121 @@
       <Parameter Name="ECode" Mode="In" Type="String" />
       <Parameter Name="RCode" Mode="In" Type="String" />
       <Parameter Name="act" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GetSubjectName" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetSubjectName_Result)" />
+    <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
+    <EntitySet Name="tbl_LectTimeSetUp" EntityType="SchoolMgmtSysModel.tbl_LectTimeSetUp" />
+    <FunctionImport Name="sp_GetLectTimeSetUp" ReturnType="Collection(SchoolMgmtSysModel.sp_GetLectTimeSetUp_Result)" />
+    <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
+      <Parameter Name="courseid" Mode="In" Type="Int32" />
+      <Parameter Name="day" Mode="In" Type="Int32" />
+      <Parameter Name="subject" Mode="In" Type="Int32" />
+      <Parameter Name="teacher" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
+    <FunctionImport Name="Sp_GetStudentProfile" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetStudentProfile_Result)" />
+    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
+    <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
+    <FunctionImport Name="sp_timetable_DML">
+      <Parameter Name="Tid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="Day" Mode="In" Type="Int32" />
+      <Parameter Name="LecNo" Mode="In" Type="Int32" />
+      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
+      <Parameter Name="Semester" Mode="In" Type="String" />
+      <Parameter Name="Empid" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+      <Parameter Name="deptid" Mode="In" Type="Int32" />
+      <Parameter Name="act" Mode="In" Type="String" />
+      <Parameter Name="subjectcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_student_admission">
+      <Parameter Name="Studid" Mode="In" Type="Int32" />
+      <Parameter Name="Studnm" Mode="In" Type="String" />
+      <Parameter Name="Studfathernm" Mode="In" Type="String" />
+      <Parameter Name="Studmothernm" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="Int32" />
+      <Parameter Name="Height" Mode="In" Type="Int32" />
+      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
+      <Parameter Name="StudEmail" Mode="In" Type="String" />
+      <Parameter Name="Disease" Mode="In" Type="String" />
+      <Parameter Name="Religionid" Mode="In" Type="Int32" />
+      <Parameter Name="Casteid" Mode="In" Type="Int32" />
+      <Parameter Name="Classid" Mode="In" Type="Int32" />
+      <Parameter Name="RollNo" Mode="In" Type="Int32" />
+      <Parameter Name="Gender" Mode="In" Type="Int32" />
+      <Parameter Name="MotherTongue" Mode="In" Type="String" />
+      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
+      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
+      <Parameter Name="LastClass" Mode="In" Type="String" />
+      <Parameter Name="Grade" Mode="In" Type="String" />
+      <Parameter Name="LeaveYear" Mode="In" Type="String" />
+      <Parameter Name="LeaveReason" Mode="In" Type="String" />
+      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
+      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
+      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
+      <Parameter Name="BusNo" Mode="In" Type="String" />
+      <Parameter Name="BusRTONo" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
+      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
+      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
+      <Parameter Name="StudPic" Mode="In" Type="Binary" />
+      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherEmail" Mode="In" Type="String" />
+      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="FatherContact" Mode="In" Type="String" />
+      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
+      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherEmail" Mode="In" Type="String" />
+      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="MotherContact" Mode="In" Type="String" />
+      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
+      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
+      <Parameter Name="Countryid" Mode="In" Type="Int32" />
+      <Parameter Name="Stateid" Mode="In" Type="Int32" />
+      <Parameter Name="Cityid" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
+      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
+      <Parameter Name="academicyear" Mode="In" Type="String" />
+      <Parameter Name="busid" Mode="In" Type="Int32" />
+      <Parameter Name="cats" Mode="In" Type="String" />
+      <Parameter Name="prds" Mode="In" Type="String" />
+      <Parameter Name="Docs" Mode="In" Type="String" />
+      <Parameter Name="subcats" Mode="In" Type="String" />
+      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
+      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
+      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
+      <Parameter Name="GuardianContact" Mode="In" Type="String" />
+      <Parameter Name="GuardianName" Mode="In" Type="String" />
+      <Parameter Name="FCode" Mode="In" Type="String" />
+      <Parameter Name="MCode" Mode="In" Type="String" />
+      <Parameter Name="GCode" Mode="In" Type="String" />
+      <Parameter Name="ECode" Mode="In" Type="String" />
+      <Parameter Name="RCode" Mode="In" Type="String" />
+      <Parameter Name="act" Mode="In" Type="String" />
       <Parameter Name="GuardianPic" Mode="In" Type="Binary" />
       <Parameter Name="Sibling1Name" Mode="In" Type="String" />
       <Parameter Name="Sibling1Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling1DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling1DOB" Mode="In" Type="String" />
       <Parameter Name="Sibling1Ql" Mode="In" Type="String" />
       <Parameter Name="Sibling2Name" Mode="In" Type="String" />
       <Parameter Name="Sibling2Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling2DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling2DOB" Mode="In" Type="String" />
       <Parameter Name="Sibling2Ql" Mode="In" Type="String" />
       <Parameter Name="Sibling3Name" Mode="In" Type="String" />
       <Parameter Name="Sibling3Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling3DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling3DOB" Mode="In" Type="String" />
       <Parameter Name="Sibling3Ql" Mode="In" Type="String" />
       <Parameter Name="Sibling4Name" Mode="In" Type="String" />
       <Parameter Name="Sibling4Rel" Mode="In" Type="String" />
-      <Parameter Name="Sibling4DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Sibling4DOB" Mode="In" Type="String" />
       <Parameter Name="Sibling4Ql" Mode="In" Type="String" />
       <Parameter Name="ParishName" Mode="In" Type="String" />
       <Parameter Name="DioceseName" Mode="In" Type="String" />
@@ -1028,7 +1116,7 @@
       <Parameter Name="htotalmarks" Mode="In" Type="Int32" />
       <Parameter Name="hgradee" Mode="In" Type="String" />
       <Parameter Name="hprecentage" Mode="In" Type="Double" />
-      <Parameter Name="hyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="hyearpassing1" Mode="In" Type="String" />
       <Parameter Name="hregisterno1" Mode="In" Type="String" />
       <Parameter Name="hattempts1" Mode="In" Type="Int32" />
       <Parameter Name="hradio1" Mode="In" Type="String" />
@@ -1071,7 +1159,7 @@
       <Parameter Name="pgtotalmarks" Mode="In" Type="Int32" />
       <Parameter Name="pggradee" Mode="In" Type="String" />
       <Parameter Name="pgprecentage" Mode="In" Type="Double" />
-      <Parameter Name="pgyearpassing1" Mode="In" Type="DateTime" />
+      <Parameter Name="pgyearpassing1" Mode="In" Type="String" />
       <Parameter Name="pgregisterno1" Mode="In" Type="String" />
       <Parameter Name="pgattempts1" Mode="In" Type="Int32" />
       <Parameter Name="pgradio1" Mode="In" Type="String" />
@@ -1101,79 +1189,15 @@
       <Parameter Name="pclass5" Mode="In" Type="Int32" />
       <Parameter Name="pclass6" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_student_online_admission">
-      <Parameter Name="Studid" Mode="In" Type="Int32" />
-      <Parameter Name="Studnm" Mode="In" Type="String" />
-      <Parameter Name="Studfathernm" Mode="In" Type="String" />
-      <Parameter Name="Studmothernm" Mode="In" Type="String" />
-      <Parameter Name="DOB" Mode="In" Type="DateTime" />
-      <Parameter Name="Weight" Mode="In" Type="Int32" />
-      <Parameter Name="Height" Mode="In" Type="Int32" />
-      <Parameter Name="StudBldGrp" Mode="In" Type="Int32" />
-      <Parameter Name="StudEmail" Mode="In" Type="String" />
-      <Parameter Name="Disease" Mode="In" Type="String" />
-      <Parameter Name="Religionid" Mode="In" Type="Int32" />
-      <Parameter Name="Casteid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="RollNo" Mode="In" Type="Int32" />
-      <Parameter Name="Gender" Mode="In" Type="Int32" />
-      <Parameter Name="MotherTongue" Mode="In" Type="String" />
-      <Parameter Name="PreviousSchool" Mode="In" Type="String" />
-      <Parameter Name="SchoolAddress" Mode="In" Type="String" />
-      <Parameter Name="LastClass" Mode="In" Type="String" />
-      <Parameter Name="Grade" Mode="In" Type="String" />
-      <Parameter Name="LeaveYear" Mode="In" Type="String" />
-      <Parameter Name="LeaveReason" Mode="In" Type="String" />
-      <Parameter Name="PrincipalNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceNm" Mode="In" Type="String" />
-      <Parameter Name="ReferenceContact" Mode="In" Type="String" />
-      <Parameter Name="BusFacility" Mode="In" Type="Boolean" />
-      <Parameter Name="BusNo" Mode="In" Type="String" />
-      <Parameter Name="BusRTONo" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianNm" Mode="In" Type="String" />
-      <Parameter Name="EmergencyPhysicianContact" Mode="In" Type="String" />
-      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
-      <Parameter Name="StudPic" Mode="In" Type="Binary" />
-      <Parameter Name="FatherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherEmail" Mode="In" Type="String" />
-      <Parameter Name="FatherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="FatherContact" Mode="In" Type="String" />
-      <Parameter Name="FatherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="FatherPic" Mode="In" Type="Binary" />
-      <Parameter Name="MotherOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherEmail" Mode="In" Type="String" />
-      <Parameter Name="MotherOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="MotherContact" Mode="In" Type="String" />
-      <Parameter Name="MotherBldGrpid" Mode="In" Type="Int32" />
-      <Parameter Name="MotherPic" Mode="In" Type="Binary" />
-      <Parameter Name="Countryid" Mode="In" Type="Int32" />
-      <Parameter Name="Stateid" Mode="In" Type="Int32" />
-      <Parameter Name="Cityid" Mode="In" Type="Int32" />
-      <Parameter Name="CurrentAddress" Mode="In" Type="String" />
-      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
-      <Parameter Name="academicyear" Mode="In" Type="String" />
-      <Parameter Name="busid" Mode="In" Type="Int32" />
-      <Parameter Name="cats" Mode="In" Type="String" />
-      <Parameter Name="prds" Mode="In" Type="String" />
-      <Parameter Name="Docs" Mode="In" Type="String" />
-      <Parameter Name="subcats" Mode="In" Type="String" />
-      <Parameter Name="StudCategoryid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianOccpationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianQualificationid" Mode="In" Type="Int32" />
-      <Parameter Name="GuardianEmail" Mode="In" Type="String" />
-      <Parameter Name="GuardianOfficeAddress" Mode="In" Type="String" />
-      <Parameter Name="GuardianContact" Mode="In" Type="String" />
-      <Parameter Name="GuardianName" Mode="In" Type="String" />
-      <Parameter Name="FCode" Mode="In" Type="String" />
-      <Parameter Name="MCode" Mode="In" Type="String" />
-      <Parameter Name="GCode" Mode="In" Type="String" />
-      <Parameter Name="ECode" Mode="In" Type="String" />
-      <Parameter Name="RCode" Mode="In" Type="String" />
-      <Parameter Name="act" Mode="In" Type="String" />
+    <FunctionImport Name="sp_empleave_DML">
+      <Parameter Name="leaveid" Mode="In" Type="Int32" />
+      <Parameter Name="empid" Mode="In" Type="Int32" />
+      <Parameter Name="startdate" Mode="In" Type="DateTime" />
+      <Parameter Name="enddate" Mode="In" Type="DateTime" />
+      <Parameter Name="leavetype" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="isapprove" Mode="In" Type="Boolean" />
     </FunctionImport>
-    <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.tbl_employee" />
     <FunctionImport Name="sp_employee_DML">
       <Parameter Name="Empid" Mode="In" Type="Int32" />
       <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -1186,10 +1210,10 @@
       <Parameter Name="PhoneNo" Mode="In" Type="String" />
       <Parameter Name="MobileNo" Mode="In" Type="String" />
       <Parameter Name="Address" Mode="In" Type="String" />
-      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="DOB" Mode="In" Type="String" />
       <Parameter Name="Gender" Mode="In" Type="Int32" />
       <Parameter Name="Quallification" Mode="In" Type="Int32" />
-      <Parameter Name="DateOfJoin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateOfJoin" Mode="In" Type="String" />
       <Parameter Name="Typeid" Mode="In" Type="Int32" />
       <Parameter Name="Code" Mode="In" Type="String" />
       <Parameter Name="OQualification" Mode="In" Type="String" />
@@ -1250,14 +1274,14 @@
       <Parameter Name="accountname" Mode="In" Type="String" />
       <Parameter Name="collagename" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity" Mode="In" Type="String" />
-      <Parameter Name="joiningdate" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate" Mode="In" Type="String" />
+      <Parameter Name="lastdate" Mode="In" Type="String" />
       <Parameter Name="totalexperience" Mode="In" Type="String" />
       <Parameter Name="lastdesignation" Mode="In" Type="String" />
       <Parameter Name="companyname" Mode="In" Type="String" />
       <Parameter Name="clastdesignation" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate" Mode="In" Type="String" />
+      <Parameter Name="clastdate" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience" Mode="In" Type="String" />
       <Parameter Name="empemail" Mode="In" Type="String" />
       <Parameter Name="empreligion" Mode="In" Type="Int32" />
@@ -1266,14 +1290,14 @@
       <Parameter Name="empmothertongue" Mode="In" Type="String" />
       <Parameter Name="collagename1" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity1" Mode="In" Type="String" />
-      <Parameter Name="joiningdate1" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate1" Mode="In" Type="String" />
+      <Parameter Name="lastdate1" Mode="In" Type="String" />
       <Parameter Name="totalexperience1" Mode="In" Type="String" />
       <Parameter Name="lastdesignation1" Mode="In" Type="String" />
       <Parameter Name="companyname1" Mode="In" Type="String" />
       <Parameter Name="clastdesignation1" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate1" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate1" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate1" Mode="In" Type="String" />
+      <Parameter Name="clastdate1" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience1" Mode="In" Type="String" />
       <Parameter Name="doctypename" Mode="In" Type="String" />
       <Parameter Name="docnumber" Mode="In" Type="String" />
@@ -1282,91 +1306,91 @@
       <Parameter Name="DioceseName" Mode="In" Type="String" />
       <Parameter Name="collagename_exp3" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp3" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp3" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp3" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp3" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp3" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp3" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp3" Mode="In" Type="String" />
       <Parameter Name="companyname_exp3" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp3" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp3" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp3" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp3" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp3" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp3" Mode="In" Type="String" />
       <Parameter Name="collagename_exp4" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp4" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp4" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp4" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp4" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp4" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp4" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp4" Mode="In" Type="String" />
       <Parameter Name="companyname_exp4" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp4" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp4" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp4" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp4" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp4" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp4" Mode="In" Type="String" />
       <Parameter Name="collagename_exp5" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp5" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp5" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp5" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp5" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp5" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp5" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp5" Mode="In" Type="String" />
       <Parameter Name="companyname_exp5" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp5" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp5" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp5" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp5" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp5" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp5" Mode="In" Type="String" />
       <Parameter Name="collagename_exp6" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp6" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp6" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp6" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp6" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp6" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp6" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp6" Mode="In" Type="String" />
       <Parameter Name="companyname_exp6" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp6" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp6" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp6" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp6" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp6" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp6" Mode="In" Type="String" />
       <Parameter Name="collagename_exp7" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp7" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp7" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp7" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp7" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp7" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp7" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp7" Mode="In" Type="String" />
       <Parameter Name="companyname_exp7" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp7" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp7" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp7" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp7" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp7" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp7" Mode="In" Type="String" />
       <Parameter Name="collagename_exp8" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp8" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp8" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp8" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp8" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp8" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp8" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp8" Mode="In" Type="String" />
       <Parameter Name="companyname_exp8" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp8" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp8" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp8" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp8" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp8" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp8" Mode="In" Type="String" />
       <Parameter Name="collagename_exp9" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp9" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp9" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp9" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp9" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp9" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp9" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp9" Mode="In" Type="String" />
       <Parameter Name="companyname_exp9" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp9" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp9" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp9" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp9" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp9" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp9" Mode="In" Type="String" />
       <Parameter Name="collagename_exp10" Mode="In" Type="String" />
       <Parameter Name="affliateduniversity_exp10" Mode="In" Type="String" />
-      <Parameter Name="joiningdate_exp10" Mode="In" Type="DateTime" />
-      <Parameter Name="lastdate1_exp10" Mode="In" Type="DateTime" />
+      <Parameter Name="joiningdate_exp10" Mode="In" Type="String" />
+      <Parameter Name="lastdate1_exp10" Mode="In" Type="String" />
       <Parameter Name="totalexperience_exp10" Mode="In" Type="String" />
       <Parameter Name="lastdesignation_exp10" Mode="In" Type="String" />
       <Parameter Name="companyname_exp10" Mode="In" Type="String" />
       <Parameter Name="clastdesignation_exp10" Mode="In" Type="String" />
-      <Parameter Name="cjoiningdate_exp10" Mode="In" Type="DateTime" />
-      <Parameter Name="clastdate_exp10" Mode="In" Type="DateTime" />
+      <Parameter Name="cjoiningdate_exp10" Mode="In" Type="String" />
+      <Parameter Name="clastdate_exp10" Mode="In" Type="String" />
       <Parameter Name="ctotalexperience_exp10" Mode="In" Type="String" />
       <Parameter Name="q_department1" Mode="In" Type="Int32" />
       <Parameter Name="q_department2" Mode="In" Type="Int32" />
@@ -1377,32 +1401,9 @@
       <Parameter Name="q_SetPassingYear" Mode="In" Type="String" />
       <Parameter Name="q_NetPassingYear" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Sp_GetSubjectName" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetSubjectName_Result)" />
-    <FunctionImport Name="sp_getteachers" ReturnType="Collection(SchoolMgmtSysModel.sp_getteachers_Result)" />
-    <EntitySet Name="tbl_LectTimeSetUp" EntityType="SchoolMgmtSysModel.tbl_LectTimeSetUp" />
-    <FunctionImport Name="sp_GetLectTimeSetUp" ReturnType="Collection(SchoolMgmtSysModel.sp_GetLectTimeSetUp_Result)" />
-    <EntitySet Name="tbl_timetable" EntityType="SchoolMgmtSysModel.tbl_timetable" />
-    <FunctionImport Name="sp_gettimetable" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_Result)" />
-    <FunctionImport Name="sp_gettimetableclass" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetableclass_Result)">
-      <Parameter Name="courseid" Mode="In" Type="Int32" />
-      <Parameter Name="day" Mode="In" Type="Int32" />
-      <Parameter Name="subject" Mode="In" Type="Int32" />
-      <Parameter Name="teacher" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_timetable_DML">
-      <Parameter Name="Tid" Mode="In" Type="Int32" />
-      <Parameter Name="Classid" Mode="In" Type="Int32" />
-      <Parameter Name="Day" Mode="In" Type="Int32" />
-      <Parameter Name="LecNo" Mode="In" Type="Int32" />
-      <Parameter Name="Subjectid" Mode="In" Type="Int32" />
-      <Parameter Name="Semester" Mode="In" Type="String" />
-      <Parameter Name="Empid" Mode="In" Type="Int32" />
-      <Parameter Name="year" Mode="In" Type="Int32" />
-      <Parameter Name="deptid" Mode="In" Type="Int32" />
-      <Parameter Name="act" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_gettimetable_pivot" ReturnType="Collection(SchoolMgmtSysModel.sp_gettimetable_pivot_Result)" />
-    <FunctionImport Name="Sp_GetStudentProfile" ReturnType="Collection(SchoolMgmtSysModel.Sp_GetStudentProfile_Result)" />
+    <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
+    <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.tbl_Empexperience" />
+    <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.tbl_employee" />
   </EntityContainer>
   <EntityType Name="tbl_bloodgroup">
     <Key>
@@ -2149,133 +2150,6 @@
     <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
   </ComplexType>
-  <EntityType Name="tbl_Empexperience">
-    <Key>
-      <PropertyRef Name="empexpid" />
-    </Key>
-    <Property Name="empexpid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="empId" Type="Int32" />
-    <Property Name="collagename_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp1" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp1" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp1" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp1" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp2" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp2" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp2" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp2" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp3" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp3" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp3" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp3" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp4" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp4" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp4" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp4" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp5" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp5" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp5" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp5" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp6" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp6" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp6" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp6" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp7" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp7" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp7" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp7" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp8" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp8" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp8" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp8" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp9" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp9" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp9" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp9" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="collagename_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="affliateduniversity_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate_exp10" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1_exp10" Type="DateTime" Precision="7" />
-    <Property Name="totalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lastdesignation_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="companyname_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clastdesignation_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate_exp10" Type="DateTime" Precision="7" />
-    <Property Name="clastdate_exp10" Type="DateTime" Precision="7" />
-    <Property Name="ctotalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="companyemail_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="tbl_EmployeeLeave">
     <Key>
       <PropertyRef Name="Leaveid" />
@@ -3204,6 +3078,104 @@
     <Property Name="PaymentAmt" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="PendingAmt" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
+  <ComplexType Name="Sp_GetSubjectName_Result">
+    <Property Type="Int32" Name="Subjectid" Nullable="false" />
+    <Property Type="String" Name="SubjectNm" Nullable="true" MaxLength="102" />
+  </ComplexType>
+  <ComplexType Name="sp_getteachers_Result">
+    <Property Type="Int32" Name="Empid" Nullable="false" />
+    <Property Type="String" Name="fullnm" Nullable="false" MaxLength="152" />
+  </ComplexType>
+  <EntityType Name="tbl_LectTimeSetUp">
+    <Key>
+      <PropertyRef Name="LecTimeid" />
+    </Key>
+    <Property Name="LecTimeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LecNo" Type="Int32" Nullable="false" />
+    <Property Name="LecTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LectETime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="sp_GetLectTimeSetUp_Result">
+    <Property Type="Int32" Name="LecTimeid" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetableclass_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="sp_gettimetable_pivot_Result">
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="306" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Semester" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
+    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
+  </ComplexType>
+  <ComplexType Name="GetStudentProfile_Result">
+    <Property Type="Int32" Name="Studid" Nullable="false" />
+    <Property Type="String" Name="StdRegNo" Nullable="true" />
+    <Property Type="String" Name="StdMobNo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOB" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="StudEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Sp_GetStudentProfile_Result">
+    <Property Type="Int32" Name="Studid" Nullable="false" />
+    <Property Type="String" Name="StdRegNo" Nullable="true" />
+    <Property Type="String" Name="StdMobNo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOB" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="StudEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="tbl_timetable">
+    <Key>
+      <PropertyRef Name="Tid" />
+    </Key>
+    <Property Name="Tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Classid" Type="Int32" Nullable="false" />
+    <Property Name="Day" Type="Int32" Nullable="false" />
+    <Property Name="LecNo" Type="Int32" Nullable="false" />
+    <Property Name="Subjectid" Type="Int32" Nullable="false" />
+    <Property Name="Empid" Type="Int32" Nullable="false" />
+    <Property Name="yearid" Type="Int32" />
+    <Property Name="deptid" Type="Int32" />
+    <Property Name="Semester" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_gettimetable_Result">
+    <Property Type="Int32" Name="Tid" Nullable="false" />
+    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Day" Nullable="false" />
+    <Property Type="Int32" Name="LecNo" Nullable="false" />
+    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SubjectCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
+  </ComplexType>
   <EntityType Name="tbl_student">
     <Key>
       <PropertyRef Name="Studid" />
@@ -3212,7 +3184,7 @@
     <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DOB" Type="DateTime" Precision="7" />
+    <Property Name="DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Weight" Type="Int32" />
     <Property Name="Height" Type="Int32" />
     <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
@@ -3281,19 +3253,19 @@
     <Property Name="GuardianPic" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling2DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling2DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling1DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling1DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling3DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling3DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Sibling4DOB" Type="DateTime" Precision="7" />
+    <Property Name="Sibling4DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -3317,6 +3289,133 @@
     <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="St_Status" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_Empexperience">
+    <Key>
+      <PropertyRef Name="empexpid" />
+    </Key>
+    <Property Name="empexpid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="empId" Type="Int32" />
+    <Property Name="collagename_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp1" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp2" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp3" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp3" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp3" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp3" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp4" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp4" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp4" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp4" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp5" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp5" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp5" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp5" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp6" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp6" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp6" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp6" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp7" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp7" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp7" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp7" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp8" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp8" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp8" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp8" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp9" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp9" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp9" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp9" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="collagename_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="affliateduniversity_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate_exp10" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1_exp10" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="totalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastdesignation_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companyname_exp10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clastdesignation_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cjoiningdate_exp10" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate_exp10" Type="DateTime" Precision="7" />
+    <Property Name="ctotalexperience_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail_exp10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="tbl_employee">
     <Key>
       <PropertyRef Name="Empid" />
@@ -3334,7 +3433,7 @@
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="DOB" Type="DateTime" Precision="7" />
+    <Property Name="DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Gender" Type="Int32" Nullable="false" />
     <Property Name="Quallification" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -3344,7 +3443,7 @@
     <Property Name="Schedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="SysDt" Type="DateTime" Precision="7" />
     <Property Name="Payrollid" Type="Int32" Nullable="false" />
-    <Property Name="DateOfJoin" Type="DateTime" Precision="7" />
+    <Property Name="DateOfJoin" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Typeid" Type="Int32" Nullable="false" />
     <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="OtherQualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -3404,14 +3503,14 @@
     <Property Name="accountname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="collagename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="affliateduniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate" Type="DateTime" Precision="7" />
-    <Property Name="lastdate" Type="DateTime" Precision="7" />
+    <Property Name="joiningdate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="totalexperience" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="lastdesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="companyname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="clastdesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate" Type="DateTime" Precision="7" />
-    <Property Name="clastdate" Type="DateTime" Precision="7" />
+    <Property Name="cjoiningdate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="ctotalexperience" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="empemail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="empreligion" Type="Int32" />
@@ -3420,14 +3519,14 @@
     <Property Name="empmothertongue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="collagename1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="affliateduniversity1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="joiningdate1" Type="DateTime" Precision="7" />
-    <Property Name="lastdate1" Type="DateTime" Precision="7" />
+    <Property Name="joiningdate1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="lastdate1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="totalexperience1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="lastdesignation1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="companyname1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="clastdesignation1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cjoiningdate1" Type="DateTime" Precision="7" />
-    <Property Name="clastdate1" Type="DateTime" Precision="7" />
+    <Property Name="cjoiningdate1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="clastdate1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="ctotalexperience1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="doctypename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="docnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -3443,100 +3542,4 @@
     <Property Name="q_SetPassingYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="q_NetPassingYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <ComplexType Name="Sp_GetSubjectName_Result">
-    <Property Type="Int32" Name="Subjectid" Nullable="false" />
-    <Property Type="String" Name="SubjectNm" Nullable="true" MaxLength="102" />
-  </ComplexType>
-  <ComplexType Name="sp_getteachers_Result">
-    <Property Type="Int32" Name="Empid" Nullable="false" />
-    <Property Type="String" Name="fullnm" Nullable="false" MaxLength="152" />
-  </ComplexType>
-  <EntityType Name="tbl_LectTimeSetUp">
-    <Key>
-      <PropertyRef Name="LecTimeid" />
-    </Key>
-    <Property Name="LecTimeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LecNo" Type="Int32" Nullable="false" />
-    <Property Name="LecTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="LectETime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Boolean" />
-  </EntityType>
-  <ComplexType Name="sp_GetLectTimeSetUp_Result">
-    <Property Type="Int32" Name="LecTimeid" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="status" Nullable="false" MaxLength="8" />
-  </ComplexType>
-  <EntityType Name="tbl_timetable">
-    <Key>
-      <PropertyRef Name="Tid" />
-    </Key>
-    <Property Name="Tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Classid" Type="Int32" Nullable="false" />
-    <Property Name="Day" Type="Int32" Nullable="false" />
-    <Property Name="LecNo" Type="Int32" Nullable="false" />
-    <Property Name="Subjectid" Type="Int32" Nullable="false" />
-    <Property Name="Empid" Type="Int32" Nullable="false" />
-    <Property Name="yearid" Type="Int32" />
-    <Property Name="deptid" Type="Int32" />
-    <Property Name="Semester" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <ComplexType Name="sp_gettimetable_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetableclass_Result">
-    <Property Type="Int32" Name="Tid" Nullable="false" />
-    <Property Type="String" Name="Classid" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="yearid" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="Day" Nullable="false" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Subjectid" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="LecTime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="Empid" Nullable="false" MaxLength="101" />
-  </ComplexType>
-  <ComplexType Name="sp_gettimetable_pivot_Result">
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="306" />
-    <Property Type="Int32" Name="LecNo" Nullable="false" />
-    <Property Type="String" Name="Semester" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Monday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Tuesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Wednesday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Thursday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Friday" Nullable="true" MaxLength="106" />
-    <Property Type="String" Name="Saturday" Nullable="true" MaxLength="106" />
-  </ComplexType>
-  <ComplexType Name="GetStudentProfile_Result">
-    <Property Type="Int32" Name="Studid" Nullable="false" />
-    <Property Type="String" Name="StdRegNo" Nullable="true" />
-    <Property Type="String" Name="StdMobNo" Nullable="true" MaxLength="15" />
-    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="DOB" Nullable="true" MaxLength="11" />
-    <Property Type="String" Name="StudEmail" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
-  </ComplexType>
-  <ComplexType Name="Sp_GetStudentProfile_Result">
-    <Property Type="Int32" Name="Studid" Nullable="false" />
-    <Property Type="String" Name="StdRegNo" Nullable="true" />
-    <Property Type="String" Name="StdMobNo" Nullable="true" MaxLength="15" />
-    <Property Type="String" Name="Studnm" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="DOB" Nullable="true" MaxLength="11" />
-    <Property Type="String" Name="StudEmail" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="academicyear" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="YearName" Nullable="true" MaxLength="100" />
-  </ComplexType>
 </Schema>

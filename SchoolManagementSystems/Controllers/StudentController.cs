@@ -16,6 +16,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.Net;
 using System.Collections.Specialized;
+using Common;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -819,6 +820,7 @@ namespace SchoolManagementSystems.Controllers
 
                 try
                 {
+                    
                     db.sp_student_admission(svm.Studid, svm.Studnm, svm.Studfathernm, svm.Studmothernm, svm.DOB, svm.Weight, svm.Height, svm.StudBldGrp, svm.StudEmail, svm.Disease, svm.Religionid, svm.Casteid,
                  svm.Classid, svm.RollNo, svm.Gender, svm.MotherTongue, svm.PreviousSchool, svm.SchoolAddress, svm.LastClass, svm.Grade, "", svm.LeaveReason, svm.PrincipalNm, svm.ReferenceNm,
                  svm.ReferenceContact, svm.BusFacility, svm.BusNo, svm.BusRTONo, svm.EmergencyPhysicianNm, svm.EmergencyPhysicianContact, svm.EmergencyAddress, svm.StudPic,
@@ -847,9 +849,9 @@ namespace SchoolManagementSystems.Controllers
                  svm.hmarks1, svm.hmarks2, svm.hmarks3, svm.hmarks4, svm.hmarks5, svm.hmarks6,
                  svm.hmaximum1, svm.hmaximum2, svm.hmaximum3, svm.hmaximum4, svm.hmaximum5, svm.hmaximum6,
                  svm.hobtain, svm.htotalmark, svm.hgrade, svm.hpercentage,
-                 svm.hpyear, svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8, svm.hleaving,
+                 Convert.ToString(svm.hpyear), svm.hrnumber1, svm.hattempts1, svm.hc1, svm.hc2, svm.hc3, svm.hc4, svm.hc5, svm.hnamelocation, svm.hexaminationpassed, svm.hschool, svm.hrefname, svm.hrefno, svm.hrefcode, svm.htcno, svm.htcscan, svm.hrefscan, svm.hmarksheetscan, svm.answer6, svm.answer8, svm.hleaving,
                  svm.pgsubject1, svm.pgsubject2, svm.pgsubject3, svm.pgsubject4, svm.pgsubject5, svm.pgsubject6, svm.pgmarks1, svm.pgmarks2, svm.pgmarks3, svm.pgmarks4, svm.pgmarks5, svm.pgmarks6, svm.pgmaximum1, svm.pgmaximum2, svm.pgmaximum3,
-                 svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, svm.pgpyear, svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, svm.prefcode, svm.PGMarksheet, svm.UniversityRank, svm.goldm, svm.pclass1, svm.pclass2, svm.pclass3, svm.pclass4, svm.pclass5, svm.pclass6).ToString();
+                 svm.pgmaximum4, svm.pgmaximum5, svm.pgmaximum6, svm.PrPgObtainMark, svm.PrPgTotalMark, svm.PrPgGradeLeaving, svm.PrScPercentage, Convert.ToString(svm.pgpyear), svm.PrPgRegisterNumber, svm.pgattempts1, svm.pgc1, svm.pgc2, svm.pgc3, svm.pgc4, svm.pgc5, svm.pgnamelocation, svm.pgexaminationpassed, svm.coursepg, svm.deptpg, svm.answer7, svm.answer8, svm.PrPgCollegeName, svm.PrPgAffilatedUniversity, svm.PrPgYearLeaving, svm.PrPgRefContactName, svm.PrPgRefContactNo, svm.prefcode, svm.PGMarksheet, svm.UniversityRank, svm.goldm, svm.pclass1, svm.pclass2, svm.pclass3, svm.pclass4, svm.pclass5, svm.pclass6).ToString();
 
 
 

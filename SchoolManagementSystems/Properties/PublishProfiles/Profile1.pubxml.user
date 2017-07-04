@@ -19,16 +19,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2017 17:16:57</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>06/07/2017 18:37:24</publishTime>
+      <publishTime>07/04/2017 19:48:04</publishTime>
     </File>
     <File Include="bin/Common.dll">
-      <publishTime>05/03/2017 19:25:19</publishTime>
+      <publishTime>07/04/2017 16:36:44</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>06/07/2017 18:37:24</publishTime>
+      <publishTime>07/04/2017 19:48:03</publishTime>
     </File>
     <File Include="bin/Entity.dll">
-      <publishTime>06/07/2017 18:37:24</publishTime>
+      <publishTime>07/04/2017 19:48:03</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/27/2017 20:04:26</publishTime>
@@ -49,7 +49,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:26</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystems.dll">
-      <publishTime>06/07/2017 18:37:26</publishTime>
+      <publishTime>07/04/2017 19:48:06</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>01/27/2017 20:04:26</publishTime>
@@ -6406,7 +6406,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2017 20:04:23</publishTime>
     </File>
     <File Include="Views/Employee/EmpAdmission.cshtml">
-      <publishTime>06/05/2017 19:21:18</publishTime>
+      <publishTime>07/04/2017 19:23:39</publishTime>
     </File>
     <File Include="Views/Employee/Index.cshtml">
       <publishTime>02/03/2017 20:38:29</publishTime>
@@ -6778,7 +6778,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2017 12:38:45</publishTime>
     </File>
     <File Include="Views/shared/_MenuItems.cshtml">
-      <publishTime>05/10/2017 12:00:58</publishTime>
+      <publishTime>06/29/2017 19:24:35</publishTime>
     </File>
     <File Include="Views/shared/_Message.cshtml">
       <publishTime>01/27/2017 20:04:24</publishTime>
@@ -6820,7 +6820,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 19:24:10</publishTime>
     </File>
     <File Include="Views/Student/Admission.cshtml">
-      <publishTime>06/06/2017 11:34:51</publishTime>
+      <publishTime>07/04/2017 18:48:31</publishTime>
     </File>
     <File Include="Views/Student/GuardianList.cshtml">
       <publishTime>02/11/2017 21:32:19</publishTime>
@@ -6844,7 +6844,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/06/2017 17:16:32</publishTime>
     </File>
     <File Include="Views/Timetable/NewTimetableInfo.cshtml">
-      <publishTime>06/07/2017 17:59:24</publishTime>
+      <publishTime>06/14/2017 20:46:56</publishTime>
     </File>
     <File Include="Views/Timetable/publish.cshtml">
       <publishTime>06/07/2017 17:16:57</publishTime>
@@ -6853,7 +6853,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2017 16:56:44</publishTime>
     </File>
     <File Include="Views/Timetable/_Timetablelist.cshtml">
-      <publishTime>05/28/2017 23:11:42</publishTime>
+      <publishTime>06/14/2017 20:39:46</publishTime>
     </File>
     <File Include="Views/Transport/Index.cshtml">
       <publishTime>04/11/2017 11:46:36</publishTime>

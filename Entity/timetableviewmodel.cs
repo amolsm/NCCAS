@@ -17,7 +17,7 @@ namespace Entity
         [DisplayName("Day Order")]
         public int Day { get; set; }
 
-        [DisplayName("Lecture No.")]
+        [DisplayName("Hour")]
         public int LecNo { get; set; }
 
         [DisplayName("year")]
@@ -46,6 +46,9 @@ namespace Entity
 
         [DisplayName("Semester")]
         public string semester { get; set; }
+
+        [DisplayName("Subject Code ")]
+        public string SubjectCode { get; set; }
 
         public List<sp_gettimetable_Result> _Timetablelist { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }

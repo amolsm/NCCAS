@@ -25,7 +25,8 @@ namespace Entity
 
         [DisplayName("Date Of Birth : ")]
 
-        public DateTime DOB { get; set; }
+      
+        public string DOB { get; set; }
 
         [DisplayName("Weight in KG : ")]
         public int Weight { get; set; }
@@ -387,13 +388,13 @@ namespace Entity
 
         public string Sibling4Rel { get; set; }
 
-        public DateTime Sibling1DOB { get; set; }
+        public string Sibling1DOB { get; set; }
 
-        public DateTime Sibling2DOB { get; set; }
+        public string Sibling2DOB { get; set; }
 
-        public DateTime Sibling3DOB { get; set; }
+        public string Sibling3DOB { get; set; }
 
-        public DateTime Sibling4DOB { get; set; }
+        public string Sibling4DOB { get; set; }
         public string Sibling1Ql { get; set; }
 
 

@@ -126,12 +126,12 @@ namespace SchoolManagementSystems.Controllers
             {
                 if (_tvm.Tid.ToString() == null) { _tvm.Tid = 0; }
 
-                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.semester, _tvm.Empid, _tvm.year, _tvm.department, "").ToString();
+                db.sp_timetable_DML(_tvm.Tid, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.semester, _tvm.Empid, _tvm.year, _tvm.department, "",_tvm.SubjectCode).ToString();
             }
         
             else if (evt == "Delete")
             {
-                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.semester, _tvm.Empid, _tvm.year, _tvm.department, "del").ToString();
+                db.sp_timetable_DML(id, _tvm.Classid, _tvm.Day, _tvm.LecNo, _tvm.Subjectid, _tvm.semester, _tvm.Empid, _tvm.year, _tvm.department, "del", _tvm.SubjectCode).ToString();
 
             }
             _tvm._Timetablelist = db.sp_gettimetable().ToList();
