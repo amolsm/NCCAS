@@ -116,11 +116,22 @@
                         $("#txtStudentName").text(data.studentdetails.Studnm);
                         $("#txtCourseId").text(data.coursename.Course);
                         $("#txtacademicyear").text(data.studentdetails.academicyear);
-                        if (data.previousfeesdetails.PaidFees != null)
-                        { $("#Pr_PaymentAmt").val(data.previousfeesdetails.PaidFees); }
+                        var previouspaidfees = 0;
+                        try {
+                            previouspaidfees = data.previousfeesdetails.PaidFees;
+                            $("#Pr_PaymentAmt").val(previouspaidfees);
+                            if (data.previousfeesdetails.PendingFees == 0.00)
+                            { $("#txtStatus").text("Paid");}
+                            
+                        }catch(err)
+                        {
+                            previouspaidfees = 0;
+                            $("#Pr_PaymentAmt").val(previouspaidfees)
+                            $("#txtStatus").val("Pending");
+                        }
                         $("#PaidFees").val(0);
                         $("#PendingFees").val(0);
-                        var feeamt = parseInt((parseInt(data.feesdetails.TotalFees) - parseInt(data.previousfeesdetails.PaidFees)));
+                        var feeamt = parseInt((parseInt(data.feesdetails.TotalFees) - parseInt(previouspaidfees)));
                         $("#TotalFees").val(feeamt);
 
 
@@ -130,14 +141,15 @@
                                     html = "<fieldset><legend>Fees  Details</legend>";
                                     $("#ctrlcnt").val(data.feeschilddetails.length);
                                     $.each(data.feeschilddetails, function (i, dt) {
-
-                                        html += "<div class='control-group'><label class = 'control-label'>" + dt.FeesNm + " :</label> <div class='controls'> ";
-                                        html += '<input class="addcls" type="hidden" id=hfeeschildlblid_' + dt.Fchildid + ' value=' + dt.Fchildid + '< />';
-                                        if (dt.Fees == null)
+                                        debugger;
+                                        html += "<div class='control-group'><label class = 'control-label'>" + dt.Foo.FeesNm + " :</label> <div class='controls'> ";
+                                        html += '<input class="addcls" type="hidden" id=hfeeschildlblid_' + i + ' value=' + dt.Foo.Fchildid + '>';
+                                        if (dt.Foo.Fees == null)
                                         {
-                                            html += '<input class="text-box single-line dynamic" type="text"  id=feechildlblval_' + dt.Fchildid + ' value=' + dt.FeesAmt + ' />';
+                                        var feeamt = ((dt.Foo.FeesAmt == undefined) ? 0 : dt.Foo.FeesAmt);
+                                        html += '<input class="text-box single-line dynamic" type="text" readonly id=feechildlblval_' + i + ' value=' + feeamt + '>';
                                         }
-                                        else { html += '<input type="text" class="text-box single-line dynamic" readonly id=feechildlblval_' + dt.Fchildid + ' value=' + dt.Fees + ' />'; }
+                                        else { html += '<input type="text" class="text-box single-line dynamic" readonly id=feechildlblval_' + i + ' value=' + dt.Foo.Fees + '>'; }
                                         html +="</div></div>";
                                     });
                                     html += "</fieldset>";
@@ -257,13 +269,14 @@
 
         $("#insert").click(function () {
             validations();
+            debugger;
             var ctrlcnt = $('#ctrlcnt').val();
             var feesdetails = [];
             if (ctrlcnt > 0) {
 
                 for (var i = 0; i < ctrlcnt; i++) {
                     var feeschildlblid = ($("#hfeeschildlblid_" + i).val());
-                    var feechildlblval = ($("#feechildlblval_" + feeschildlblid).val());
+                    var feechildlblval = ($("#feechildlblval_" + i).val());
                     feesdetails.push(feeschildlblid + "|" + feechildlblval);
 
                 }
@@ -759,6 +772,15 @@
                                                 <div class="controls">
                                                   @Html.LabelFor(model => model.academicyear, "_____________________", new { id= "txtacademicyear" })
                                                   
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                @Html.Label("Fees Status", new { @class = "control-label" })
+
+                                                <div class="controls">
+                                                    @Html.LabelFor(model => model.Status, "", new { id = "txtStatus" })
+
                                                 </div>
                                             </div>
                                         </td>

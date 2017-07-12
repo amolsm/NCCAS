@@ -17,6 +17,7 @@ using System.Web.UI;
 using System.Net;
 using System.Collections.Specialized;
 using Common;
+using System.Web.Script.Serialization;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -72,12 +73,14 @@ namespace SchoolManagementSystems.Controllers
         {
             var data = db.tbl_student.Where(m => m.Studid == studid).FirstOrDefault();
             TempData["Docs"] = data.Docs;
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data,JsonRequestBehavior.AllowGet);
         }
         public JsonResult FillOnlineStudentDetails(int studid)
         {
             var data = db.tbl_online_student.Where(m => m.Studid == studid).FirstOrDefault();
             TempData["Docs"] = data.Docs;
+            //JavaScriptSerializer jss = new JavaScriptSerializer();
+            //jss.MaxJsonLength = Int32.MaxValue;
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public JsonResult CheckStudEmail(string Email)

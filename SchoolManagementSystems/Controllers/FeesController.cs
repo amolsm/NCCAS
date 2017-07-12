@@ -148,14 +148,17 @@ namespace SchoolManagementSystems.Controllers
         }
         public ActionResult DMLFeespayment(paymentviewmodel _pvm, string evt, int id, string[] feesdetails)
         {
-            string yr = _pvm.academicyear[0].ToString();
+            var studentdetails = db.tbl_student.Where(m => m.Studid == _pvm.Studid).FirstOrDefault();
+            var coursedetails = db.tbl_CourseYearMaster.Where(m => m.courseid == studentdetails.Classid && m.dept_id == studentdetails.Dept_Id && m.academicyear == studentdetails.courseyearid).FirstOrDefault();
+
+           
             if (evt == "submit")
             {
-                db.sp_feespayment_DML(_pvm.Pid, _pvm.CourseId,_pvm.receipttypeid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "", yr).ToString();
+                db.sp_feespayment_DML(_pvm.Pid, coursedetails.id, _pvm.receipttypeid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "", studentdetails.academicyear).ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_feespayment_DML(id, _pvm.CourseId, _pvm.receipttypeid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "del", yr).ToString();
+                db.sp_feespayment_DML(id, coursedetails.id, _pvm.receipttypeid, _pvm.Studid, _pvm.Scholarship, Convert.ToDecimal(_pvm.ScholarshipFees), Convert.ToDecimal(_pvm.TotalFees), Convert.ToDecimal(_pvm.PaidFees), Convert.ToDecimal(_pvm.PendingFees), _pvm.PTypeid, _pvm.Remarks, _pvm.Status, "del", studentdetails.academicyear).ToString();
             }
             //var recordsToDelete = (from c in db.tbl_ExamTimetableSubject where c.ExamId == evm.Examid select c).ToList<tbl_ExamTimetableSubject>();
             //if (recordsToDelete.Count > 0)
@@ -223,7 +226,7 @@ namespace SchoolManagementSystems.Controllers
                 r_typeid = Convert.ToInt32(receipttypeid);
                 st_did = Convert.ToInt32(Stdid);
             }
-            var studentdetails = db.tbl_student.Where(m=>m.RollNo== st_did).FirstOrDefault();
+            var studentdetails = db.tbl_student.Where(m=>m.Studid== st_did).FirstOrDefault();
             var coursedetails = db.tbl_CourseYearMaster.Where(m => m.courseid == studentdetails.Classid && m.dept_id==studentdetails.Dept_Id && m.academicyear==studentdetails.courseyearid).FirstOrDefault();
             var coursename = db.sp_GetCoursefordevision().Where(m => m.id == coursedetails.id).FirstOrDefault();
             var previousfeesdetails = db.sp_checkPreviousFeesPaymentAmt(studentdetails.Studid, coursedetails.id, r_typeid, studentdetails.academicyear).FirstOrDefault();
@@ -240,17 +243,7 @@ namespace SchoolManagementSystems.Controllers
                     Bar = fchildid
                 }
             );
-            //var feeschilddetails = from q1 in feeschild
-            //                       join q2 in feeschild1
-            //                    on q1.Fchildid equals q2.fchildid
-            //                    into a
-            //                    from b in a.DefaultIfEmpty(new Order())
-            //                    select new
-            //                    {
-            //                        bk.BookID,
-            //                        Name = bk.BookNm,
-            //                        b.PaymentMode
-            //                    };
+         
 
 
             return Json(new { studentdetails = studentdetails, feesdetails= feesdetails, coursename = coursename, previousfeesdetails= previousfeesdetails, feeschilddetails = feeschilddetails }, JsonRequestBehavior.AllowGet);

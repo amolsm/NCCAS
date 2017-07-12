@@ -4362,9 +4362,9 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
             <Parameter Name="q_SetPassingYear" Mode="In" Type="String" />
             <Parameter Name="q_NetPassingYear" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
           <EntitySet Name="tbl_Empexperience" EntityType="SchoolMgmtSysModel.tbl_Empexperience" />
           <EntitySet Name="tbl_employee" EntityType="SchoolMgmtSysModel.tbl_employee" />
+          <EntitySet Name="tbl_student" EntityType="SchoolMgmtSysModel.tbl_student" />
         </EntityContainer>
         <EntityType Name="tbl_bloodgroup">
           <Key>
@@ -6137,119 +6137,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Type="String" Name="LectETime" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="Empid" Nullable="true" MaxLength="101" />
         </ComplexType>
-        <EntityType Name="tbl_student">
-          <Key>
-            <PropertyRef Name="Studid" />
-          </Key>
-          <Property Name="Studid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="Int32" />
-          <Property Name="Height" Type="Int32" />
-          <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
-          <Property Name="StudEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Disease" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Religionid" Type="Int32" Nullable="false" />
-          <Property Name="Casteid" Type="Int32" Nullable="false" />
-          <Property Name="Classid" Type="Int32" Nullable="false" />
-          <Property Name="RollNo" Type="Int32" />
-          <Property Name="Gender" Type="Int32" Nullable="false" />
-          <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PreviousSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LastClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Grade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LeaveYear" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LeaveReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PrincipalNm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ReferenceNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReferenceContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="BusFacility" Type="Boolean" />
-          <Property Name="BusNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BusRTONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmergencyPhysicianNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmergencyPhysicianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EmergencyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="StudPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="FatherOccpationid" Type="Int32" Nullable="false" />
-          <Property Name="FatherQualificationid" Type="Int32" Nullable="false" />
-          <Property Name="FatherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FatherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FatherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FatherBldGrpid" Type="Int32" />
-          <Property Name="FatherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="MotherOccpationid" Type="Int32" />
-          <Property Name="MotherQualificationid" Type="Int32" />
-          <Property Name="MotherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MotherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MotherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MotherBldGrpid" Type="Int32" />
-          <Property Name="MotherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Countryid" Type="Int32" Nullable="false" />
-          <Property Name="Stateid" Type="Int32" Nullable="false" />
-          <Property Name="Cityid" Type="Int32" Nullable="false" />
-          <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="SysDt" Type="DateTime" Precision="7" />
-          <Property Name="busid" Type="Int32" />
-          <Property Name="cats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="prds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Docs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="subcats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="StudCategoryid" Type="Int32" />
-          <Property Name="GuardianOccpationid" Type="Int32" />
-          <Property Name="GuardianQualificationid" Type="Int32" />
-          <Property Name="GuardianEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="MCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="GCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="RCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="ECode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianPic" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling2DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling1DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling3DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling4DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DocumentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DocumentIDNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Dept_Id" Type="Int32" Nullable="false" />
-          <Property Name="app_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ug_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="sc_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="courseyearid" Type="Int32" />
-          <Property Name="FatherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FatherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianOtherQalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MotherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MotherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="St_Status" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbl_Empexperience">
           <Key>
             <PropertyRef Name="empexpid" />
@@ -6502,6 +6389,119 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <Property Name="q_Net" Type="Boolean" />
           <Property Name="q_SetPassingYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="q_NetPassingYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_student">
+          <Key>
+            <PropertyRef Name="Studid" />
+          </Key>
+          <Property Name="Studid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Studnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Studfathernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Studmothernm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="StudBldGrp" Type="Int32" Nullable="false" />
+          <Property Name="StudEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disease" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Religionid" Type="Int32" Nullable="false" />
+          <Property Name="Casteid" Type="Int32" Nullable="false" />
+          <Property Name="Classid" Type="Int32" Nullable="false" />
+          <Property Name="RollNo" Type="Int32" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreviousSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LastClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Grade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveYear" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PrincipalNm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BusFacility" Type="Boolean" />
+          <Property Name="BusNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusRTONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyPhysicianNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyPhysicianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StudPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FatherOccpationid" Type="Int32" Nullable="false" />
+          <Property Name="FatherQualificationid" Type="Int32" Nullable="false" />
+          <Property Name="FatherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FatherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FatherBldGrpid" Type="Int32" />
+          <Property Name="FatherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MotherOccpationid" Type="Int32" />
+          <Property Name="MotherQualificationid" Type="Int32" />
+          <Property Name="MotherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MotherContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotherBldGrpid" Type="Int32" />
+          <Property Name="MotherPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Countryid" Type="Int32" Nullable="false" />
+          <Property Name="Stateid" Type="Int32" Nullable="false" />
+          <Property Name="Cityid" Type="Int32" Nullable="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="academicyear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SysDt" Type="DateTime" Precision="7" />
+          <Property Name="busid" Type="Int32" />
+          <Property Name="cats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="prds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Docs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subcats" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StudCategoryid" Type="Int32" />
+          <Property Name="GuardianOccpationid" Type="Int32" />
+          <Property Name="GuardianQualificationid" Type="Int32" />
+          <Property Name="GuardianEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianContact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ECode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Sibling2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling2Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling2DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling2Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling1Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling1DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling1Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling3Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling3DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling3Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling4Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling4Rel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling4DOB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sibling4Ql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParishName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DioceseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentIDNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Dept_Id" Type="Int32" Nullable="false" />
+          <Property Name="app_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ug_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sc_regno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="doc_typename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="courseyearid" Type="Int32" />
+          <Property Name="FatherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FatherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianOtherQalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherOtherOccName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherOtherQualName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StdMobNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StdRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emContactRel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="St_Status" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -8778,120 +8778,6 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_student_admission" FunctionName="SchoolMgmtSysModel.Store.sp_student_admission" />
           <FunctionImportMapping FunctionImportName="sp_empleave_DML" FunctionName="SchoolMgmtSysModel.Store.sp_empleave_DML" />
           <FunctionImportMapping FunctionImportName="sp_employee_DML" FunctionName="SchoolMgmtSysModel.Store.sp_employee_DML" />
-          <EntitySetMapping Name="tbl_student">
-            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
-              <MappingFragment StoreEntitySet="tbl_student">
-                <ScalarProperty Name="St_Status" ColumnName="St_Status" />
-                <ScalarProperty Name="emContactRel" ColumnName="emContactRel" />
-                <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
-                <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
-                <ScalarProperty Name="MotherOtherQualName" ColumnName="MotherOtherQualName" />
-                <ScalarProperty Name="MotherOtherOccName" ColumnName="MotherOtherOccName" />
-                <ScalarProperty Name="GuardianOtherQalName" ColumnName="GuardianOtherQalName" />
-                <ScalarProperty Name="GuardianOtherOccName" ColumnName="GuardianOtherOccName" />
-                <ScalarProperty Name="FatherOtherQualName" ColumnName="FatherOtherQualName" />
-                <ScalarProperty Name="FatherOtherOccName" ColumnName="FatherOtherOccName" />
-                <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
-                <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
-                <ScalarProperty Name="sc_regno" ColumnName="sc_regno" />
-                <ScalarProperty Name="pincode" ColumnName="pincode" />
-                <ScalarProperty Name="ug_id" ColumnName="ug_id" />
-                <ScalarProperty Name="app_id" ColumnName="app_id" />
-                <ScalarProperty Name="Dept_Id" ColumnName="Dept_Id" />
-                <ScalarProperty Name="DocumentIDNo" ColumnName="DocumentIDNo" />
-                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
-                <ScalarProperty Name="DioceseName" ColumnName="DioceseName" />
-                <ScalarProperty Name="ParishName" ColumnName="ParishName" />
-                <ScalarProperty Name="Sibling4Ql" ColumnName="Sibling4Ql" />
-                <ScalarProperty Name="Sibling4DOB" ColumnName="Sibling4DOB" />
-                <ScalarProperty Name="Sibling4Rel" ColumnName="Sibling4Rel" />
-                <ScalarProperty Name="Sibling4Name" ColumnName="Sibling4Name" />
-                <ScalarProperty Name="Sibling3Ql" ColumnName="Sibling3Ql" />
-                <ScalarProperty Name="Sibling3DOB" ColumnName="Sibling3DOB" />
-                <ScalarProperty Name="Sibling3Rel" ColumnName="Sibling3Rel" />
-                <ScalarProperty Name="Sibling3Name" ColumnName="Sibling3Name" />
-                <ScalarProperty Name="Sibling1Ql" ColumnName="Sibling1Ql" />
-                <ScalarProperty Name="Sibling1DOB" ColumnName="Sibling1DOB" />
-                <ScalarProperty Name="Sibling1Rel" ColumnName="Sibling1Rel" />
-                <ScalarProperty Name="Sibling1Name" ColumnName="Sibling1Name" />
-                <ScalarProperty Name="Sibling2Ql" ColumnName="Sibling2Ql" />
-                <ScalarProperty Name="Sibling2DOB" ColumnName="Sibling2DOB" />
-                <ScalarProperty Name="Sibling2Rel" ColumnName="Sibling2Rel" />
-                <ScalarProperty Name="Sibling2Name" ColumnName="Sibling2Name" />
-                <ScalarProperty Name="GuardianPic" ColumnName="GuardianPic" />
-                <ScalarProperty Name="ECode" ColumnName="ECode" />
-                <ScalarProperty Name="RCode" ColumnName="RCode" />
-                <ScalarProperty Name="GCode" ColumnName="GCode" />
-                <ScalarProperty Name="MCode" ColumnName="MCode" />
-                <ScalarProperty Name="FCode" ColumnName="FCode" />
-                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
-                <ScalarProperty Name="GuardianContact" ColumnName="GuardianContact" />
-                <ScalarProperty Name="GuardianOfficeAddress" ColumnName="GuardianOfficeAddress" />
-                <ScalarProperty Name="GuardianEmail" ColumnName="GuardianEmail" />
-                <ScalarProperty Name="GuardianQualificationid" ColumnName="GuardianQualificationid" />
-                <ScalarProperty Name="GuardianOccpationid" ColumnName="GuardianOccpationid" />
-                <ScalarProperty Name="StudCategoryid" ColumnName="StudCategoryid" />
-                <ScalarProperty Name="subcats" ColumnName="subcats" />
-                <ScalarProperty Name="Docs" ColumnName="Docs" />
-                <ScalarProperty Name="prds" ColumnName="prds" />
-                <ScalarProperty Name="cats" ColumnName="cats" />
-                <ScalarProperty Name="busid" ColumnName="busid" />
-                <ScalarProperty Name="SysDt" ColumnName="SysDt" />
-                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
-                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
-                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
-                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
-                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
-                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
-                <ScalarProperty Name="MotherPic" ColumnName="MotherPic" />
-                <ScalarProperty Name="MotherBldGrpid" ColumnName="MotherBldGrpid" />
-                <ScalarProperty Name="MotherContact" ColumnName="MotherContact" />
-                <ScalarProperty Name="MotherOfficeAddress" ColumnName="MotherOfficeAddress" />
-                <ScalarProperty Name="MotherEmail" ColumnName="MotherEmail" />
-                <ScalarProperty Name="MotherQualificationid" ColumnName="MotherQualificationid" />
-                <ScalarProperty Name="MotherOccpationid" ColumnName="MotherOccpationid" />
-                <ScalarProperty Name="FatherPic" ColumnName="FatherPic" />
-                <ScalarProperty Name="FatherBldGrpid" ColumnName="FatherBldGrpid" />
-                <ScalarProperty Name="FatherContact" ColumnName="FatherContact" />
-                <ScalarProperty Name="FatherOfficeAddress" ColumnName="FatherOfficeAddress" />
-                <ScalarProperty Name="FatherEmail" ColumnName="FatherEmail" />
-                <ScalarProperty Name="FatherQualificationid" ColumnName="FatherQualificationid" />
-                <ScalarProperty Name="FatherOccpationid" ColumnName="FatherOccpationid" />
-                <ScalarProperty Name="StudPic" ColumnName="StudPic" />
-                <ScalarProperty Name="EmergencyAddress" ColumnName="EmergencyAddress" />
-                <ScalarProperty Name="EmergencyPhysicianContact" ColumnName="EmergencyPhysicianContact" />
-                <ScalarProperty Name="EmergencyPhysicianNm" ColumnName="EmergencyPhysicianNm" />
-                <ScalarProperty Name="BusRTONo" ColumnName="BusRTONo" />
-                <ScalarProperty Name="BusNo" ColumnName="BusNo" />
-                <ScalarProperty Name="BusFacility" ColumnName="BusFacility" />
-                <ScalarProperty Name="ReferenceContact" ColumnName="ReferenceContact" />
-                <ScalarProperty Name="ReferenceNm" ColumnName="ReferenceNm" />
-                <ScalarProperty Name="PrincipalNm" ColumnName="PrincipalNm" />
-                <ScalarProperty Name="LeaveReason" ColumnName="LeaveReason" />
-                <ScalarProperty Name="LeaveYear" ColumnName="LeaveYear" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="LastClass" ColumnName="LastClass" />
-                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
-                <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
-                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="RollNo" ColumnName="RollNo" />
-                <ScalarProperty Name="Classid" ColumnName="Classid" />
-                <ScalarProperty Name="Casteid" ColumnName="Casteid" />
-                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
-                <ScalarProperty Name="Disease" ColumnName="Disease" />
-                <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
-                <ScalarProperty Name="StudBldGrp" ColumnName="StudBldGrp" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="Studmothernm" ColumnName="Studmothernm" />
-                <ScalarProperty Name="Studfathernm" ColumnName="Studfathernm" />
-                <ScalarProperty Name="Studnm" ColumnName="Studnm" />
-                <ScalarProperty Name="Studid" ColumnName="Studid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Empexperience">
             <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_Empexperience">
               <MappingFragment StoreEntitySet="tbl_Empexperience">
@@ -9147,6 +9033,120 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_student">
+            <EntityTypeMapping TypeName="SchoolMgmtSysModel.tbl_student">
+              <MappingFragment StoreEntitySet="tbl_student">
+                <ScalarProperty Name="St_Status" ColumnName="St_Status" />
+                <ScalarProperty Name="emContactRel" ColumnName="emContactRel" />
+                <ScalarProperty Name="StdRegNo" ColumnName="StdRegNo" />
+                <ScalarProperty Name="StdMobNo" ColumnName="StdMobNo" />
+                <ScalarProperty Name="MotherOtherQualName" ColumnName="MotherOtherQualName" />
+                <ScalarProperty Name="MotherOtherOccName" ColumnName="MotherOtherOccName" />
+                <ScalarProperty Name="GuardianOtherQalName" ColumnName="GuardianOtherQalName" />
+                <ScalarProperty Name="GuardianOtherOccName" ColumnName="GuardianOtherOccName" />
+                <ScalarProperty Name="FatherOtherQualName" ColumnName="FatherOtherQualName" />
+                <ScalarProperty Name="FatherOtherOccName" ColumnName="FatherOtherOccName" />
+                <ScalarProperty Name="courseyearid" ColumnName="courseyearid" />
+                <ScalarProperty Name="doc_typename" ColumnName="doc_typename" />
+                <ScalarProperty Name="sc_regno" ColumnName="sc_regno" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="ug_id" ColumnName="ug_id" />
+                <ScalarProperty Name="app_id" ColumnName="app_id" />
+                <ScalarProperty Name="Dept_Id" ColumnName="Dept_Id" />
+                <ScalarProperty Name="DocumentIDNo" ColumnName="DocumentIDNo" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="DioceseName" ColumnName="DioceseName" />
+                <ScalarProperty Name="ParishName" ColumnName="ParishName" />
+                <ScalarProperty Name="Sibling4Ql" ColumnName="Sibling4Ql" />
+                <ScalarProperty Name="Sibling4DOB" ColumnName="Sibling4DOB" />
+                <ScalarProperty Name="Sibling4Rel" ColumnName="Sibling4Rel" />
+                <ScalarProperty Name="Sibling4Name" ColumnName="Sibling4Name" />
+                <ScalarProperty Name="Sibling3Ql" ColumnName="Sibling3Ql" />
+                <ScalarProperty Name="Sibling3DOB" ColumnName="Sibling3DOB" />
+                <ScalarProperty Name="Sibling3Rel" ColumnName="Sibling3Rel" />
+                <ScalarProperty Name="Sibling3Name" ColumnName="Sibling3Name" />
+                <ScalarProperty Name="Sibling1Ql" ColumnName="Sibling1Ql" />
+                <ScalarProperty Name="Sibling1DOB" ColumnName="Sibling1DOB" />
+                <ScalarProperty Name="Sibling1Rel" ColumnName="Sibling1Rel" />
+                <ScalarProperty Name="Sibling1Name" ColumnName="Sibling1Name" />
+                <ScalarProperty Name="Sibling2Ql" ColumnName="Sibling2Ql" />
+                <ScalarProperty Name="Sibling2DOB" ColumnName="Sibling2DOB" />
+                <ScalarProperty Name="Sibling2Rel" ColumnName="Sibling2Rel" />
+                <ScalarProperty Name="Sibling2Name" ColumnName="Sibling2Name" />
+                <ScalarProperty Name="GuardianPic" ColumnName="GuardianPic" />
+                <ScalarProperty Name="ECode" ColumnName="ECode" />
+                <ScalarProperty Name="RCode" ColumnName="RCode" />
+                <ScalarProperty Name="GCode" ColumnName="GCode" />
+                <ScalarProperty Name="MCode" ColumnName="MCode" />
+                <ScalarProperty Name="FCode" ColumnName="FCode" />
+                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+                <ScalarProperty Name="GuardianContact" ColumnName="GuardianContact" />
+                <ScalarProperty Name="GuardianOfficeAddress" ColumnName="GuardianOfficeAddress" />
+                <ScalarProperty Name="GuardianEmail" ColumnName="GuardianEmail" />
+                <ScalarProperty Name="GuardianQualificationid" ColumnName="GuardianQualificationid" />
+                <ScalarProperty Name="GuardianOccpationid" ColumnName="GuardianOccpationid" />
+                <ScalarProperty Name="StudCategoryid" ColumnName="StudCategoryid" />
+                <ScalarProperty Name="subcats" ColumnName="subcats" />
+                <ScalarProperty Name="Docs" ColumnName="Docs" />
+                <ScalarProperty Name="prds" ColumnName="prds" />
+                <ScalarProperty Name="cats" ColumnName="cats" />
+                <ScalarProperty Name="busid" ColumnName="busid" />
+                <ScalarProperty Name="SysDt" ColumnName="SysDt" />
+                <ScalarProperty Name="academicyear" ColumnName="academicyear" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+                <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="MotherPic" ColumnName="MotherPic" />
+                <ScalarProperty Name="MotherBldGrpid" ColumnName="MotherBldGrpid" />
+                <ScalarProperty Name="MotherContact" ColumnName="MotherContact" />
+                <ScalarProperty Name="MotherOfficeAddress" ColumnName="MotherOfficeAddress" />
+                <ScalarProperty Name="MotherEmail" ColumnName="MotherEmail" />
+                <ScalarProperty Name="MotherQualificationid" ColumnName="MotherQualificationid" />
+                <ScalarProperty Name="MotherOccpationid" ColumnName="MotherOccpationid" />
+                <ScalarProperty Name="FatherPic" ColumnName="FatherPic" />
+                <ScalarProperty Name="FatherBldGrpid" ColumnName="FatherBldGrpid" />
+                <ScalarProperty Name="FatherContact" ColumnName="FatherContact" />
+                <ScalarProperty Name="FatherOfficeAddress" ColumnName="FatherOfficeAddress" />
+                <ScalarProperty Name="FatherEmail" ColumnName="FatherEmail" />
+                <ScalarProperty Name="FatherQualificationid" ColumnName="FatherQualificationid" />
+                <ScalarProperty Name="FatherOccpationid" ColumnName="FatherOccpationid" />
+                <ScalarProperty Name="StudPic" ColumnName="StudPic" />
+                <ScalarProperty Name="EmergencyAddress" ColumnName="EmergencyAddress" />
+                <ScalarProperty Name="EmergencyPhysicianContact" ColumnName="EmergencyPhysicianContact" />
+                <ScalarProperty Name="EmergencyPhysicianNm" ColumnName="EmergencyPhysicianNm" />
+                <ScalarProperty Name="BusRTONo" ColumnName="BusRTONo" />
+                <ScalarProperty Name="BusNo" ColumnName="BusNo" />
+                <ScalarProperty Name="BusFacility" ColumnName="BusFacility" />
+                <ScalarProperty Name="ReferenceContact" ColumnName="ReferenceContact" />
+                <ScalarProperty Name="ReferenceNm" ColumnName="ReferenceNm" />
+                <ScalarProperty Name="PrincipalNm" ColumnName="PrincipalNm" />
+                <ScalarProperty Name="LeaveReason" ColumnName="LeaveReason" />
+                <ScalarProperty Name="LeaveYear" ColumnName="LeaveYear" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="LastClass" ColumnName="LastClass" />
+                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+                <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
+                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+                <ScalarProperty Name="Classid" ColumnName="Classid" />
+                <ScalarProperty Name="Casteid" ColumnName="Casteid" />
+                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
+                <ScalarProperty Name="Disease" ColumnName="Disease" />
+                <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
+                <ScalarProperty Name="StudBldGrp" ColumnName="StudBldGrp" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Studmothernm" ColumnName="Studmothernm" />
+                <ScalarProperty Name="Studfathernm" ColumnName="Studfathernm" />
+                <ScalarProperty Name="Studnm" ColumnName="Studnm" />
+                <ScalarProperty Name="Studid" ColumnName="Studid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -9248,9 +9248,9 @@ FROM [dbo].[tbl_feeslabelchild] AS [tbl_feeslabelchild]</DefiningQuery>
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tblfeespaymentinfo" Width="1.5" PointX="28.375" PointY="8.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_LectTimeSetUp" Width="1.5" PointX="3.375" PointY="29.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_timetable" Width="1.5" PointX="16.375" PointY="28.75" />
-        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="28.375" PointY="12.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_Empexperience" Width="1.5" PointX="19.375" PointY="12.75" />
         <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_employee" Width="1.5" PointX="21.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SchoolMgmtSysModel.tbl_student" Width="1.5" PointX="23.375" PointY="11.75" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -884,7 +884,7 @@
                 dataType: 'JSON',
                 data: { studid: studid },
                 success: function (data) {
-                   
+                    debugger;
                     $("#Studnm").val(data.Studnm);
                     $("#Studfathernm").val(data.Studfathernm);
                     $("#Studmothernm").val(data.Studmothernm);
@@ -1321,7 +1321,7 @@
                         dataType: 'json',
                         data: { Studid: data.Studid },
                         success: function (school) {
-                           
+                         
                             $("#subject1").val(school.subject1);
                             $("#subject2").val(school.subject2);
                             $("#subject3").val(school.subject3);
@@ -1420,7 +1420,7 @@
                         dataType: 'json',
                         data: { Studid: data.Studid },
                         success: function (collage) {
-                        
+                         
                             $("#psubject1").val(collage.subject1);
                             $("#psubject2").val(collage.subject2);
                             $("#psubject3").val(collage.subject3);
@@ -1512,7 +1512,7 @@
                         dataType: 'json',
                         data: { Studid: data.Studid },
                         success: function (pg) {
-                            
+                         
                             $("#pgsubject1").val(pg.subject1);
                             $("#pgsubject2").val(pg.subject2);
                             $("#pgsubject3").val(pg.subject3);
@@ -1604,7 +1604,7 @@
                         dataType: 'json',
                         data: { Studid: data.Studid },
                         success: function (hca) {
-                            
+                         
                             $("#hsubject1").val(hca.subject1);
                             $("#hsubject2").val(hca.subject2);
                             $("#hsubject3").val(hca.subject3);

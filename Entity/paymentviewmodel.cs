@@ -20,7 +20,7 @@ namespace Entity
         [DisplayName("Receipt Type")]
         public int receipttypeid { get; set; }
 
-        [DisplayName("RollNo ")]
+        [DisplayName("Student ID")]
         public int Studid { get; set; }
 
         [DisplayName("Scholarship(Yes/No) ")]
