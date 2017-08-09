@@ -8,6 +8,7 @@
         $("#result").hide();
         FillPermission();
         $("#Send").click(function () {
+            debugger;
             validations();
             $.ajax({
                 type: 'POST',
@@ -22,7 +23,19 @@
                 }
             });
         });
-
+        $("#ViewTimetable").click(function () {
+        validations();
+            var course = $("#Classid option:selected").text();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("FillTimetable_classwise")',
+                data: $('#frm').serialize() + "&CourseName=" + course + "",
+                success: function (result) {
+                    $("#result").html(result);
+                    $("#result").show();
+                }
+            });
+        });
         function validations() {
             var cnt = 0;
 
@@ -43,19 +56,23 @@
                 e.preventDefault();
         }
 
-        $('#Classid').change(function () {
-            var course = $("#Classid option:selected").text();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("FillTimetable_classwise")',
-                data: $('#frm').serialize() + "&CourseName=" + course + "",
-                success: function (result) {
-                    $("#result").html(result);
-                    $("#result").show();
-                }
-            });
-        });
+      
     });
+</script>
+<script type="text/javascript">
+    function printContent(el) {
+           var panel = document.getElementById(el);
+           var printWindow = window.open('', '', 'height=400,width=800');
+           printWindow.document.write("<html> <head>");
+           printWindow.document.write('</head><body><table>');
+           printWindow.document.write(panel.innerHTML);
+           printWindow.document.write('</table></body></html>');
+           printWindow.document.close();
+           setTimeout(function () {
+               printWindow.print();
+           }, 500);
+           return true;
+       }
 </script>
 @Html.Hidden("Add", ViewData["Add"])
 @Html.Hidden("Modify", ViewData["Modify"])
@@ -93,21 +110,24 @@
                             {
                                 <div id="lblmsg"  class="control-group">
                                 </div>
-                                <div  class="control-group">
+                                <div  class="control-group span5">
                                     @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
                                       <div class="controls"> 
                                           @Html.DropDownListFor(model => model.Classid, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
                                           @Html.ValidationMessageFor(model => model.Classid)
                                           </div>
                                 </div>
+                                <div class="control-group span5">
+                                    <input type="button" class="btn-primary" id="ViewTimetable" value="ViewTimetable" />
+                                   &nbsp;&nbsp;&nbsp;
+                                    <input type="button" class="btn-primary" id="Print" onclick="printContent('result')" value="Print" />
+                                    &nbsp;&nbsp;&nbsp;
+                                    <input type="button" class="btn-primary" id="Send" value="Publish" />
+                                    </div>
+                                  
 
-                                     <div class="form-actions" style="height:20px; padding-left:40%">
-                                   <input type="button" class="btn btn-primary" id="Send" value="Publish" />
-                                    <br />
-                                    <br />
-                                </div>
-                            }
-                               </fieldset>
+                                    }
+</fieldset>
                                 </form>
 					
 					</div>
@@ -117,7 +137,7 @@
                  <div class="row-fluid sortable">
               <div class="box span12">
                   	<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+						<h2><i class="fa fa-edit"></i><span class="break"></span>List View</h2>
 						<div class="box-icon">
 						
 							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

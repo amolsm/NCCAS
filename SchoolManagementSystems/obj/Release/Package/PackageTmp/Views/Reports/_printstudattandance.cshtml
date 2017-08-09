@@ -1,0 +1,129 @@
+﻿@model Entity.ReportsViewModel
+<div id="receiptprint" class="col-lg-8 col-md-8 col-centered">
+    <div id="result" class="table-responsive">
+    @if(Model._studentreportlist!=null)
+        {
+        <text>
+        
+        <table class="table table-striped table-bordered bootstrap-datatable datatable">
+            <thead>
+                
+                <tr>
+                    <th colspan="7">
+                        <div class="panel-heading text-center">
+                            <img src="../../img/NACCASImage.jpg" height="39" width="45" /><br>
+                            <font size="1">
+                                <b>NANJIL CATHOLIC COLLEGE OF ARTS AND SCIENCE</b><br /><b>
+                                    Student Attendance Report<br />
+                                    <br />
+                                </b>
+                            </font>
+                        </div>
+                    </th>
+
+                   
+
+                </tr>
+                <tr>
+                    <th align="left" colspan="2">
+                       Course : @Model.CourseName
+                    </th>
+                   
+                    <th align="left" colspan="2">
+                        Department:@Model.DepartmentName
+                    </th>
+                  
+                    <th align="left" colspan="2">
+                       CourseYear : @Model.CourseYearName
+                    </th>
+                    <th align="center">
+                       Date: @Model.Date
+                    </th>
+                   
+                </tr>
+                <tr>
+                    <th align="left">
+                        Student ID
+                    </th>
+                    <th align="left">
+                       Student Name
+                    </th>
+                    <th align="center">
+                        I Hour
+                    </th>
+                    <th align="center">
+                       II Hour
+                    </th>
+                    <th align="center">
+                        III Hour
+                    </th>
+                    <th align="center">
+                        IV Hour
+                    </th>
+                    <th align="center">
+                        V Hour
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model._studentreportlist)
+                    {
+                        <tr>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => item.StudentID)
+                            </td>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => item.StudentName)
+                            </td>
+                            <td align="center">
+                                @if (item.I_Hour == 1)
+                                {<text>P</text>;
+                                }
+                                else
+                                {<text>A</text>;
+                                }
+                          </td>
+                            <td align="center">
+                                @if (item.II_Hour == 1)
+                                {<text>P</text>;
+                                }
+                                else {<text>A</text>;
+}
+
+                            
+                            </td>
+                            <td align="center">
+                                @if (item.III_Hour == 1)
+                                {<text>P</text>;
+                                }
+                                else
+                                {<text>A</text>;
+                                }
+                            </td>
+                            <td align="center">
+                                @if (item.IV_Hour == 1)
+                                {<text>P</text>;
+                                }
+                                else
+                                {<text>A</text>;
+                                }
+                            </td>
+                            <td align="center">
+                                @if (item.V_Hour == 1)
+                                {<text>P</text>;
+                                }
+                                else
+                                {<text>A</text>;
+                                }
+                            </td>
+                        </tr>
+                            }
+</tbody>
+        </table>
+        </text>
+        }
+    </div>
+    </div>
+ 
+
+

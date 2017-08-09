@@ -10,6 +10,9 @@
                 @Html.DisplayName("Course")
             </th>
             <th>
+                @Html.DisplayName("Department")
+            </th>
+            <th>
                 @Html.DisplayName("Year")
             </th>
             <th>
@@ -49,6 +52,9 @@
                     @Html.DisplayFor(modelItem => item.Classid)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Dept_name)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.yearid)
                 </td>
                 <td>
@@ -70,7 +76,7 @@
                     @Html.DisplayFor(modelItem => item.LecETime)
                 </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.Empid)
+                    @Html.DisplayFor(modelItem => item.EmpId)
                 </td>
                 <td>
                     <input type="button" id="@item.Tid" class="btn btn-default btn_edit edit" value="Edit" />

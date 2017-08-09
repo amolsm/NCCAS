@@ -165,7 +165,7 @@ namespace SchoolManagementSystems.Controllers
             var data = (from a in db.tbl_Inventory
                         join e in db.tbl_Product on a.Productid equals e.Productid
                         from d in db.tbl_SubCategory.Where(dt => dt.Categoryid == e.Categoryid).DefaultIfEmpty()
-                        select new { a.Inventoryid, a.Productid, a.Quantity, a.Price, e.Categoryid, SubCategoryid = d.SubCategoryid == null ? 0 : d.SubCategoryid }).FirstOrDefault();
+                        select new { a.Inventoryid, a.Productid, a.Quantity, a.Price, e.Categoryid, SubCategoryid = d.SubCategoryid.ToString() == null ? 0 : d.SubCategoryid }).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 

@@ -74,7 +74,7 @@
                 type: 'POST',
                 url: '@Url.Action("GetSubject")',
                 dataType: 'json',
-                data: { id: $("#Classid").val(), year: $("#year").val() },
+                data: { id: $("#Classid").val(), dept: $("#department").val(), year: $("#year").val() },
                 success: function (subject) {
                     if (subject != "") {
                         var item = '<option value="0">Select Subject</option>';

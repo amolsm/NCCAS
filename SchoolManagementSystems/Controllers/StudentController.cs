@@ -30,11 +30,12 @@ namespace SchoolManagementSystems.Controllers
             Studentviewmodel svm = new Studentviewmodel();
             FillPermission(4);
             if (Search_Data == null || Search_Data == "")
-                svm.StudentDataCollection = db.tbl_student.OrderByDescending(m => m.Studid).ToList();
+                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).ToList();
             else
-                svm.StudentDataCollection = db.tbl_student.Where(x => x.Studnm.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.StudEmail.ToUpper().Contains(Search_Data.ToUpper()) ||
-                                                        x.FatherContact.ToUpper().Contains(Search_Data.ToUpper())).OrderBy(m => m.Studid).ToList();
+                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).Where(x => x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.StdMobNo.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.StudEmail.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.YearName.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             return View(svm);
         }
         public ActionResult Admission(int? Studid)
@@ -952,12 +953,12 @@ namespace SchoolManagementSystems.Controllers
             Studentviewmodel svm = new Studentviewmodel();
             FillPermission(6);
             if (Search_Data == null || Search_Data == "")
-                svm.StudentDataCollection = db.tbl_student.OrderBy(m => m.Studid).ToList();
+                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).ToList();
             else
-                svm.StudentDataCollection = db.tbl_student.OrderBy(m => m.Studid).Where(x => x.GuardianName.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.GuardianEmail.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.GuardianContact.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).Where(x => x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.StdMobNo.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.StudEmail.ToUpper().Contains(Search_Data.ToUpper())
+                                                                                        || x.YearName.ToUpper().Contains(Search_Data.ToUpper())).ToList();
             return View(svm);
         }
         public ActionResult Online_Admission(int? Studid, HttpPostedFileBase FileUpload1)

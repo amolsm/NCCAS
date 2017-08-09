@@ -1,66 +1,95 @@
 ﻿@model Entity.timetableviewmodel
 <div id="result" class="table-responsive">
-    <table class="table tb-parshav">
-        <tr>
-            <th>
-                @Html.DisplayName("CourseName")
-            </th>            
-            <th>
-                @Html.DisplayName("LecNo.")
-            </th>
-            <th>
-                @Html.DisplayName("Semester")
-            </th>
-            <th>
-                @Html.DisplayName("1")
-            </th>
-            <th>
-                @Html.DisplayName("2")
-            </th>
-            <th>
-                @Html.DisplayName("3")
-            </th>
-            <th>
-                @Html.DisplayName("4")
-            </th>
-            <th>
-                @Html.DisplayName("5")
-            </th>
-            <th>
-                @Html.DisplayName("6")
-            </th>
-        </tr>
-        @foreach (var item in Model._Timetablelistpivot)
-        {
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseName)
-                </td>                
-                <td>
-                    @Html.DisplayFor(modelItem => item.LecNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Semester)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Monday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tuesday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Wednesday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Thursday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Friday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Saturday)
-                </td>                
+                <th colspan="7">
+                    <div class="panel-heading text-center">
+                        <img src="../../img/NACCASImage.jpg" height="39" width="45" /><br>
+                        <font size="1">
+                            <b>NANJIL CATHOLIC COLLEGE OF ARTS AND SCIENCE</b><br /><b>
+                               Time Table List<br />
+                                <br />
+                            </b>
+                        </font>
+                    </div>
+                </th>
+
+
+
             </tr>
-        }
-    </table>
+            <tr>
+                <th colspan="2">
+                    @Html.DisplayName("CourseName")
+                </th>
+                <th colspan="6">
+                    @if (Model.CourseName != null)
+            {
+                        @Model.CourseName
+                    }
+
+                </th>
+            </tr>
+            <tr>
+
+                <th>
+                    @Html.DisplayName("LecNo.")
+                </th>
+                <th>
+                    @Html.DisplayName("Semester")
+                </th>
+                <th>
+                    @Html.DisplayName("1")
+                </th>
+                <th>
+                    @Html.DisplayName("2")
+                </th>
+                <th>
+                    @Html.DisplayName("3")
+                </th>
+                <th>
+                    @Html.DisplayName("4")
+                </th>
+                <th>
+                    @Html.DisplayName("5")
+                </th>
+                <th>
+                    @Html.DisplayName("6")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._Timetablelistpivot)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LecNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Monday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tuesday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wednesday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thursday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Friday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Saturday)
+                    </td>
+                </tr>
+
+            }
+        <tbody>
+</table>
 </div>

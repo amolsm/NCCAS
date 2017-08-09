@@ -1,0 +1,228 @@
+﻿@model Entity.ReportsViewModel
+@{
+    ViewBag.Title = "Student Attandance Report";
+    Layout = "~/Views/shared/_SharedLayout.cshtml";
+}
+<script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CourseId").change(function () {
+            $("#DepartmentId").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDepartment")',
+                dataType: 'json',
+                data: { id: $("#CourseId").val() },
+                success: function (DClass) {
+                    if (DClass != "") {
+                        var item = '<option value="0">Select Department</option>';
+                        $.each(DClass, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#DepartmentId").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Department</option>';
+                        $("#DepartmentId").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Course.' + ex);
+                }
+            });
+            return false;
+        })
+        $("#DepartmentId").change(function () {
+            $("#CourseYearId").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#DepartmentId").val(), cid: $("#CourseId").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#CourseYearId").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#CourseYearId").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+            return false;
+        });
+    
+  $('#datepicker').attr("readonly", true);
+
+        $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            showOtherYears: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            yearRange: "-100:+0",
+            changeYear: true
+        });
+        $('#datepicker').datepicker('setDate', new Date());
+
+
+        $("#insert").click(function () {
+            debugger;
+            setTimeout(function () {
+                //validations();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ViewStudentAttandanceReport")',
+                    data: $('#frm').serialize() + "&evt=submit&id=0",
+                    success: function (result) {
+                      
+                        $("#result").html(result);
+                       
+
+                    }
+                });
+            }, 1000);
+        });
+    });
+  
+</script>
+<script type="text/javascript">
+    function printContent(el) {
+           var panel = document.getElementById(el);
+           var printWindow = window.open('', '', 'height=400,width=800');
+           printWindow.document.write("<html> <head>");
+           printWindow.document.write('</head><body><table>');
+           printWindow.document.write(panel.innerHTML);
+           printWindow.document.write('</table></body></html>');
+           printWindow.document.close();
+           setTimeout(function () {
+               printWindow.print();
+           }, 500);
+           return true;
+       }
+</script>
+      
+<div class="container-fluid-full">
+
+    <div class="row-fluid">
+        @Html.Partial("_AttendanceMenuList")
+        <div id="content" class="span10">
+            <div class="row-fluid">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Attendance Management", "Index", "Attendance", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">Student Attendances</li>
+
+                </ul>
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa fa-book"></i><span class="break"></span>Student Attendance Report</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal">
+
+
+                                <fieldset>
+                                 @using (Html.BeginForm("StudentAttandanceReport", "Reports", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
+                                 {
+                                        @Html.ValidationSummary(true)
+                                        <div>
+
+                                        </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.CourseId, new SelectList(Model.Courselist, "Courseid", "CourseName", "Select Course"), "Select Course")
+                                                        @Html.ValidationMessageFor(model => model.CourseId)
+                                                    </div>
+                                                </div>
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.DepartmentList, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                        @Html.ValidationMessageFor(model => model.DepartmentId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.CourseYearId, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.DropDownListFor(model => model.CourseYearId, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
+                                                        @Html.ValidationMessageFor(model => model.CourseYearId)
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group span5">
+                                                    @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                                                    <div class="controls">
+                                                        @Html.TextBoxFor(model => model.Date, new { id = "datepicker", placeholder = "Select Date of Attendance" })
+                                                        @Html.ValidationMessageFor(model => model.Date)
+                                                    </div>
+                                                </div>
+
+
+                                                <div>
+                                                    <input type="button" class="btn btn-primary" id="insert" value="View" />&nbsp;&nbsp;
+                                                    <input type="button" id="print"  value="Print" onclick="printContent('receiptprint')" class="btn btn-primary"/>
+
+                                                </div>
+
+
+
+
+
+                                    }
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!--/span-->
+
+                </div><!--/row-->
+
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa fa-book"></i><span class="break"></span>Student Attendance Report</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div  class="box-content">
+                       @Html.Partial("_printstudattandance")
+                            </div>
+                          </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+

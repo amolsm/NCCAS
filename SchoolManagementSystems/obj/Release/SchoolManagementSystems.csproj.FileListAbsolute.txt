@@ -1,7 +1,6 @@
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\SchoolManagementSystems.dll.config
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\SchoolManagementSystems.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\SchoolManagementSystems.pdb
-D:\NCCProject\NCCAS\SchoolManagementSystems\bin\ASPSnippets.SmsAPI.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\BAL.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Entity.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\EntityFramework.dll
@@ -43,4 +42,3 @@ D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Common.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\DAL.dll
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Common.pdb
 D:\NCCProject\NCCAS\SchoolManagementSystems\bin\DAL.pdb
-D:\NCCProject\NCCAS\SchoolManagementSystems\bin\Antlr3.Runtime.dll

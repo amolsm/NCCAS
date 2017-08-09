@@ -10,6 +10,12 @@
                     @Html.DisplayNameFor(model => model.Courseid)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Dept_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.academicyear)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.SubjectNm)
                 </th>
                 <th>
@@ -21,9 +27,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.status)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.academicyear)
-                </th>
+             
                 <th class="edt">
                     @Html.DisplayName("Action")
                 </th>
@@ -40,6 +44,12 @@
                         @Html.DisplayFor(modelItem => item.Classnm)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Dept_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.academicyear)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.SubjectNm)
                     </td>
                     <td>
@@ -51,9 +61,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.status)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.academicyear)
-                    </td>
+                 
                     <td>
                         <input type="button" id="@item.Subjectid" class="btn btn-default btn_edit edit" value="Edit" />
                         @*<input type="button" id="@item.Subjectid" class="btn btn-default btn_delete delete" value="Delete" />*@

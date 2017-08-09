@@ -33,7 +33,7 @@ namespace SchoolManagementSystems
 
             log.Error("App_Error", ex);
             Server.ClearError();
-            Response.Redirect("~/Login/Login");
+            //Response.Redirect("~/Login/Login");
         }
 
         public class SessionExpireAttribute : ActionFilterAttribute

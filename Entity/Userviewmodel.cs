@@ -15,6 +15,12 @@ namespace Entity
         [DisplayName("UserName ")]
         public string UserName { get; set; }
 
+        [DisplayName("UserName ")]
+        public string User { get; set; }
+
+        [DisplayName("Password ")]
+        public string Pass { get; set; }
+
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DisplayName("Password ")]
         [DataType(DataType.Password)]

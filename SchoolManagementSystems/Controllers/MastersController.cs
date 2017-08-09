@@ -542,11 +542,11 @@ namespace SchoolManagementSystems.Controllers
         {
             if (evt == "submit")
             {
-                db.sp_User_DML(_uvm.Userid, _uvm.UserName, _uvm.Password, _uvm.Type, _uvm.Genid, _uvm.Status, _uvm.academicyear, "").ToString();
+                db.sp_User_DML(_uvm.Userid, _uvm.User, _uvm.Pass, _uvm.Type, _uvm.Genid, _uvm.Status, _uvm.academicyear, "").ToString();
             }
             else if (evt == "Delete")
             {
-                db.sp_User_DML(id, _uvm.UserName, _uvm.Password, _uvm.Type, _uvm.Genid, _uvm.Status, _uvm.academicyear, "del").ToString();
+                db.sp_User_DML(id, _uvm.User, _uvm.Pass, _uvm.Type, _uvm.Genid, _uvm.Status, _uvm.academicyear, "del").ToString();
             }
             _uvm._Userlist = db.sp_getUser().ToList();
             return PartialView("_UserList", _uvm);
@@ -1005,16 +1005,18 @@ namespace SchoolManagementSystems.Controllers
 
             return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
         }
-        public JsonResult GetSubject(string id, string year)
+        public JsonResult GetSubject(string id, string dept, string year)
         {
             int yearid = 0;
             int Courseid = 0;
-            if (id != null && id != "" && year != null && year != "")
+            int deptid = 0;
+            if (id != null && id != "" && dept != null && dept != "" && year != null && year != "")
             {
                 Courseid = Convert.ToInt32(id);
                 yearid = Convert.ToInt32(year);
+                deptid=Convert.ToInt32(dept);
             }
-            var subject = db.tbl_subject.Where(m => m.Courseid == Courseid && m.yearid == yearid).ToList();
+            var subject = db.tbl_subject.Where(m => m.Courseid == Courseid && m.DeptId == deptid && m.yearid == yearid).ToList();
             return Json(new SelectList(subject, "Subjectid", "SubjectNm"));
         }
         public JsonResult GetSubjects(string id, string year,string department)
@@ -1820,6 +1822,7 @@ namespace SchoolManagementSystems.Controllers
         {
             LectureTimeSetviewmodel _ltsvm = new LectureTimeSetviewmodel();
             FillPermission(34);
+            _ltsvm._SessionList = db.tbl_SessionMaster.Where(m => m.IsActive == true).ToList();
             if (String.IsNullOrEmpty(Search_Data))
                 _ltsvm._LecttimeSetupList = db.sp_GetLectTimeSetUp().ToList();
             else
@@ -1832,9 +1835,9 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_LectTimeSetUp.Where(m => m.LecTimeid == LecTimeid).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_LectureSetUp(int LecNo)
+        public JsonResult check_duplicate_LectureSetUp(string LecNo)
         {
-            var data = db.tbl_LectTimeSetUp.Where(m => m.LecNo == LecNo).FirstOrDefault();
+            var data = db.tbl_LectTimeSetUp.Where(m => m.LecNo.Trim() == LecNo.Trim()).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLLectureSetUp(LectureTimeSetviewmodel _ltsvm)
@@ -1847,6 +1850,7 @@ namespace SchoolManagementSystems.Controllers
                 tbl.LecTime = _ltsvm.LecTime;
                 tbl.LectETime = _ltsvm.LecETime;
                 tbl.Status = _ltsvm.status;
+                tbl.SessionId = _ltsvm.SessionId;
                 db.SaveChanges();
             }
             else
@@ -1856,6 +1860,7 @@ namespace SchoolManagementSystems.Controllers
                 tbl.LecTime = _ltsvm.LecTime;
                 tbl.LectETime = _ltsvm.LecETime;
                 tbl.Status = _ltsvm.status;
+                tbl.SessionId = _ltsvm.SessionId;
                 db.tbl_LectTimeSetUp.AddObject(tbl);
                 db.SaveChanges();
             }

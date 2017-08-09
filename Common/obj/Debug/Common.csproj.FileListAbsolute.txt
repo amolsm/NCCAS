@@ -2,6 +2,4 @@ D:\NCCProject\NCCAS\Common\bin\Debug\Common.dll
 D:\NCCProject\NCCAS\Common\bin\Debug\Common.pdb
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.dll
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.pdb
-D:\NCCProject\NCCAS\Common\bin\Debug\System.Net.Http.dll
-D:\NCCProject\NCCAS\Common\bin\Debug\System.Net.Http.xml
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

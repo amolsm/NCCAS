@@ -51,6 +51,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+     
+
         $("#year").change(function () {
             $("#Subjectid").empty();
             $.ajax({
@@ -75,6 +77,7 @@
                     alert('Failed to retrieve subjects.' + ex);
                 }
             });
+            return false;
         })
 
         $("#Classid").change(function () {
@@ -133,6 +136,8 @@
             return false;
         });
 
+     
+
         $("#insert").click(function () {
             debugger;
             var LecNo = $('#LecNo').val();
@@ -180,18 +185,21 @@
                     $("#Classid").val(data.Classid);
                     $("#Day").val(data.Day);
                     $("#LecNo").val(data.LecNo);
-                    
+
                     $("#semester").val(data.Semester);
                     $("#Empid").val(data.Empid);
                     $("#Subjectid").val(data.Subjectid);
                     $("#year").val(data.yearid);
                     $("#department").val(data.deptid);
                     $("#SubjectCode").val(data.SubjectCode);
-
+                 
+                   
 
                 }
             });
         });
+                
+        
 
         $("#lblmsg").text('');
         $('#tid input').attr("readonly", true);
@@ -222,7 +230,7 @@
             var yearid = $("#year").val();
             var deptid = $("#department").val();
             var semester = $("#semester").val();
-          
+
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_LecNo")',
@@ -270,7 +278,7 @@
                         <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
                         @Html.ActionLink("Timetable Management", "Index", "Student", "")<i class="icon-angle-right"></i>
                     </li>
-                    <li class="active">Customize New Timetable Information</li>
+                    <li class="active">New Timetable</li>
                     @*<div style="float: right;">
                             @using (Html.BeginForm())
                             {
@@ -289,7 +297,7 @@
                 <div class="row-fluid sortable">
                     <div class="box span12">
                         <div class="box-header">
-                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>New Timetable</h2>
                             <div class="box-icon">
 
                                 <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
@@ -359,13 +367,13 @@
                                                             @Html.ValidationMessageFor(model => model.year)
                                                         </div>
                                                     </div>
-                                                    <div style="margin-bottom:10px">
+                                                    @*<div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.SubjectCode, new { @class = "control-label" })
                                                         <div class="controls">
                                                             @Html.TextBoxFor(model => model.SubjectCode, new { @Style = "width:220px" })
                                                             @Html.ValidationMessageFor(model => model.SubjectCode)
                                                         </div>
-                                                        </div>
+                                                        </div>*@
                                                       
 
 </td>
@@ -388,7 +396,7 @@
                                                     <div style="margin-bottom:10px">
                                                         @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
                                                         <div class="controls">
-                                                            @Html.DropDownListFor(model => model.LecNo, new SelectList(Model._Lecturelist, "LecNo", "LecNo", "Select Hour"), "Select Hour")
+                                                            @Html.DropDownListFor(model => model.LecNo, new SelectList(Model._Lecturelist, "LecTimeid", "LecNo", "Select Hour"), "Select Hour")
                                                             @Html.ValidationMessageFor(model => model.LecNo)
                                                         </div>
                                                     </div>
@@ -419,7 +427,7 @@
                 <div class="row-fluid sortable">
                     <div class="box span12">
                         <div class="box-header">
-                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>List View</h2>
                             <div class="box-icon">
 
                                 <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

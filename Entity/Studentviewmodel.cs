@@ -980,7 +980,7 @@ namespace Entity
         public List<tbl_YearMaster> yearlist { get; set; }
 
         public List<tblDepartment> departmentlistdetails { get; set; }
-        public List<tbl_student> StudentDataCollection { get; set; }
+        public List<sp_GetStudentDataCollection_Result> StudentDataCollection { get; set; }
         public List<tbl_online_student> online_StudentDataCollection { get; set; }
         public List<tbl_class> classlist { get; set; }
         public List<tbl_transport> Translist { get; set; }

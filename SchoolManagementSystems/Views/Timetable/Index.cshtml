@@ -7,10 +7,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $("#Classid").val('');
-        $("#Subjectid").val('');
-        $("#Day").val('');
-        $("#Empid").val('');
+     
 
         FillPermission();        
         $(".test").click(function () {
@@ -58,13 +55,13 @@
             });
         });*@
 
-        $("#Classid").change(function () {
+        $("#year").change(function () {
             $("#Subjectid").empty();
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetSubjectsc")',
+                url: '@Url.Action("GetSubjects")',
                 dataType: 'json',
-                data: { id: $("#Classid").val()},
+                data: { id: $("#Classid").val(), year: $("#year").val(), dept: $("#department").val() },
                 success: function (subjects) {
                     if (subjects != "") {
                         var item = '<option value="">Select Subject</option>';
@@ -82,7 +79,63 @@
                     alert('Failed to retrieve subjects.' + ex);
                 }
             });
-         })
+        })
+
+        $("#Classid").change(function () {
+            $("#department").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDepartment")',
+                dataType: 'json',
+                data: { id: $("#Classid").val() },
+                success: function (DClass) {
+                    if (DClass != "") {
+                        var item = '<option value="0">Select Department</option>';
+                        $.each(DClass, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#department").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Department</option>';
+                        $("#department").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Department.' + ex);
+                }
+            });
+            return false;
+        })
+
+        $("#department").change(function () {
+            $("#year").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetYearClass")',
+                dataType: 'json',
+                data: { depid: $("#department").val(), cid: $("#Classid").val() },
+                success: function (yeardata) {
+                    if (yeardata != "") {
+                        var item = '<option value="0">Select Year</option>';
+                        $.each(yeardata, function (i, dclass) {
+                            item += '<option value="' + dclass.Value + '">' + dclass.Text + '</option>';
+                        });
+                        $("#year").append(item);
+                    }
+                    else {
+                        var item = '<option value="0">Select Year</option>';
+                        $("#year").append(item);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Year.' + ex);
+                }
+            });
+            return false;
+        });
         ReloadPaging();
     });
 </script>
@@ -140,36 +193,58 @@
                                     @using (Html.BeginForm())
                             {
                                          <table>
-                                <tr>
-                                    <td class="span5">
-                                <div  class="control-group span5">
-                                    @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
-                                      <div class="controls"> 
-                                    @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @class = "col-md-5 form-control form_in" })
-                                          </div>
-                                        </div>
-                                        </td>
-                                    <td class="span5">
-                                       <div  class="control-group span5">
-                                    @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
-                                     <div class="controls">
-                                    @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
-                                   
-                                         </div>
-                                </div>
-                              
-                                         </td>
-                                    </tr>
+                                             <tr>
+                                                 <td class="span5">
+                                                     <div class="control-group span5">
+                                                         @Html.LabelFor(model => model.Classid, new { @class = "control-label"  })
+                                                         <div class="controls">
+                                                             @Html.DropDownListFor(model => model.Classid, new SelectList(Model.Classlist, "Courseid", "CourseName", "Select Course"), "Select Course", new { @class = "col-md-5 form-control form_in" })
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td class="span5">
+                                                     <div class="control-group span5">
+                                                         @Html.LabelFor(model => model.Subjectid, new { @class = "control-label" })
+                                                         <div class="controls">
+                                                             @Html.DropDownListFor(model => model.Subjectid, new SelectList(Model.subjectlist, "Subjectid", "SubjectNm", "Select Subject"), "Select Subject")
+
+                                                         </div>
+                                                     </div>
+                                                  
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                                 <td class="span5">
+                                                     <div class="control-group span5">
+                                                         @Html.LabelFor(model => model.department, new { @class = "control-label" })
+                                                         <div class="controls">
+                                                             @Html.DropDownListFor(model => model.department, new SelectList(Model.DepartmentList, "Dept_id", "Dept_name", "Select Department"), "Select Department")
+                                                             @Html.ValidationMessageFor(model => model.department)
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td class="span5">
+                                                     <div class="control-group span5">
+                                                         @Html.LabelFor(model => model.Day, new { @class = "control-label" })
+                                                         <div class="controls">
+                                                             @Html.DropDownListFor(model => model.Day, new SelectList(Model.Daylist, "dayid", "dayid", "Select Day"), "Select Day")
+                                                         </div>
+                                                     </div>
+
+                                                 </td>
+                                             </tr>
                                 <tr>
                                    <td class="span5">
-                                         <div class="control-group span5">
-                                    @Html.LabelFor(model => model.Day, new { @class = "control-label" })
-                                     <div class="controls">
-                                    @Html.DropDownListFor(model => model.Day, new SelectList(Model.Daylist, "dayid", "dayid", "Select Day"), "Select Day")
-                                         </div>
-                                </div>
+                                       <div class="control-group span5">
+                                           @Html.LabelFor(model => model.year, new { @class = "control-label" })
+                                           <div class="controls">
+                                               @Html.DropDownListFor(model => model.year, new SelectList(Model.YearList, "yearid", "YearName", "Select Year"), "Select Year")
+                                               @Html.ValidationMessageFor(model => model.year)
+                                           </div>
+                                       </div>
                                     </td>
                                     <td class="span5">
+                                       
                                 <div class="control-group span5">
                                     @Html.LabelFor(model => model.Empid, new { @class = "control-label" })
                                      <div class="controls">
@@ -205,6 +280,9 @@
                                             @Html.DisplayName("Course")
                                         </th>
                                         <th>
+                                            @Html.DisplayName("Department")
+                                        </th>
+                                        <th>
                                             @Html.DisplayName("Year")
                                         </th>
                                         <th>
@@ -236,6 +314,9 @@
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Classid)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Dept_name)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.yearid)

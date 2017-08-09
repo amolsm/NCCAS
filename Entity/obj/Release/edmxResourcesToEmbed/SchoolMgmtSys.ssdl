@@ -529,7 +529,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp1" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp1" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp1" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp1" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp1" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp1" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp1" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp2" Type="varchar" MaxLength="100" />
@@ -541,7 +541,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp2" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp2" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp2" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp2" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp2" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp2" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp2" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp3" Type="varchar" MaxLength="100" />
@@ -553,7 +553,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp3" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp3" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp3" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp3" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp3" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp3" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp3" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp4" Type="varchar" MaxLength="100" />
@@ -565,7 +565,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp4" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp4" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp4" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp4" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp4" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp4" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp4" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp5" Type="varchar" MaxLength="100" />
@@ -577,7 +577,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp5" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp5" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp5" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp5" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp5" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp5" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp5" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp6" Type="varchar" MaxLength="100" />
@@ -589,7 +589,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp6" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp6" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp6" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp6" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp6" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp6" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp6" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp7" Type="varchar" MaxLength="100" />
@@ -601,7 +601,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp7" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp7" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp7" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp7" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp7" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp7" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp7" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp8" Type="varchar" MaxLength="100" />
@@ -613,7 +613,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp8" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp8" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp8" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp8" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp8" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp8" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp8" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp9" Type="varchar" MaxLength="100" />
@@ -625,7 +625,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp9" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp9" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp9" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp9" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp9" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp9" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp9" Type="varchar" MaxLength="50" />
     <Property Name="collagename_exp10" Type="varchar" MaxLength="100" />
@@ -637,7 +637,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_days' does not have a primary
     <Property Name="companyname_exp10" Type="varchar" MaxLength="100" />
     <Property Name="clastdesignation_exp10" Type="varchar" MaxLength="50" />
     <Property Name="cjoiningdate_exp10" Type="varchar" MaxLength="11" />
-    <Property Name="clastdate_exp10" Type="datetime2" Precision="7" />
+    <Property Name="clastdate_exp10" Type="varchar" MaxLength="11" />
     <Property Name="ctotalexperience_exp10" Type="varchar" MaxLength="50" />
     <Property Name="companyemail_exp10" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -868,10 +868,10 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="PendingFees" Type="money" Nullable="false" />
     <Property Name="PTypeid" Type="int" Nullable="false" />
     <Property Name="Remarks" Type="varchar(max)" />
-    <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="receipttypeid" Type="int" />
     <Property Name="PaymentDate" Type="datetime" />
     <Property Name="academicyear" Type="varchar" MaxLength="10" />
+    <Property Name="Status" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_Inventory">
     <Key>
@@ -908,10 +908,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
       <PropertyRef Name="LecTimeid" />
     </Key>
     <Property Name="LecTimeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LecNo" Type="int" Nullable="false" />
+    <Property Name="LecNo" Type="nvarchar" MaxLength="50" />
     <Property Name="LecTime" Type="varchar" MaxLength="25" />
     <Property Name="LectETime" Type="varchar" MaxLength="25" />
     <Property Name="Status" Type="bit" />
+    <Property Name="SessionId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_lib_Author">
     <Key>
@@ -1296,10 +1297,12 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="Present" Type="bit" />
     <Property Name="Reason" Type="varchar" MaxLength="500" />
-    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="AttendanceDate" Type="varchar" MaxLength="11" />
     <Property Name="CreatedBy" Type="int" />
     <Property Name="Subjectid" Type="int" />
     <Property Name="Session" Type="int" />
+    <Property Name="DayId" Type="int" />
+    <Property Name="LecttimeId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_StudentCategory">
     <Key>
@@ -1532,9 +1535,11 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Present" Type="bit" Mode="In" />
     <Parameter Name="Reason" Type="nvarchar" Mode="In" />
     <Parameter Name="createdby" Type="int" Mode="In" />
-    <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="varchar" Mode="In" />
     <Parameter Name="subjectid" Type="int" Mode="In" />
     <Parameter Name="session" Type="int" Mode="In" />
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="lecttimeid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Author" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Authorid" Type="int" Mode="In" />
@@ -2111,7 +2116,14 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Dept_Id" Type="int" Mode="In" />
     <Parameter Name="academicyear" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_getstudent_attandance_pivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendanceDate" Type="varchar" Mode="In" />
+    <Parameter Name="CourseId" Type="int" Mode="In" />
+    <Parameter Name="Dept_Id" Type="int" Mode="In" />
+    <Parameter Name="courseyearid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getStudentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetStudentDataCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetStudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Classid" Type="int" Mode="In" />
     <Parameter Name="ExamTypeid" Type="int" Mode="In" />
@@ -2141,17 +2153,43 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
     <Parameter Name="Examid" Type="int" Mode="In" />
   </Function>
   <Function Name="Sp_GetSubjectName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getTeacherCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="Typeid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getTeacherCourseDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="Typeid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getTeacherCourseYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="Typeid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getteacheremail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Classid" Type="int" Mode="In" />
+    <Parameter Name="courseid" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_getteachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetTeacherSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="TypeId" Type="int" Mode="In" />
+    <Parameter Name="CourseId" Type="int" Mode="In" />
+    <Parameter Name="DeptId" Type="int" Mode="In" />
+    <Parameter Name="YearId" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_gettimetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_gettimetable_pivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_gettimetableclass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="courseid" Type="int" Mode="In" />
-    <Parameter Name="day" Type="int" Mode="In" />
-    <Parameter Name="subject" Type="int" Mode="In" />
-    <Parameter Name="teacher" Type="int" Mode="In" />
+    <Parameter Name="deptid" Type="int" Mode="In" />
+    <Parameter Name="yearid" Type="int" Mode="In" />
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="subjectid" Type="int" Mode="In" />
+    <Parameter Name="teacherid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_gettransport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2710,7 +2748,7 @@ warning 6002: The table/view 'hourdesi_ims.dbo.tbl_feeslabelchild' does not have
   </Function>
   <Function Name="sp_StudentAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="classid" Type="int" Mode="In" />
-    <Parameter Name="AttendanceDate" Type="datetime" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_StudentCategory_DML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="StudCategoryid" Type="int" Mode="In" />

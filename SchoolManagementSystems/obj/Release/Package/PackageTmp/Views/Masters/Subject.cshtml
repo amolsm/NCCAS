@@ -25,19 +25,25 @@
                 data: { Subjectid: Subjectid },
                 success: function (data) {
                     clearmsg();
-                    $("#Courseid").val(data.Courseid)
+                    $("#Courseid").val(data.Courseid);
+                    $("#Dept_Id").val(data.DeptId);
+                    $("#academicyear").val(data.yearid);
                     $("#subjectid").show();
                     $("#subjectid input").val(data.Subjectid);
                     $("#SubjectNm").val(data.SubjectNm);
-                    $("#Dept_Id").val(data.DeptId);
-                    $("#Courseid").val(data.Courseid);
                     $("#subjectcode").val(data.subjectcode);
                     $("#Marks").val(data.Marks);
                     $("#Pass_Marks").val(data.Pass_Marks);
                     $("#status").prop('checked', data.Status);
+                    $("#Courseid").val(data.Courseid);
+                    $("#Dept_Id").val(data.DeptId);
                     $("#academicyear").val(data.yearid);
                 }
-            });
+                });
+
+                
+          
+                   
         });
 
         function clear() {
@@ -343,7 +349,7 @@
                 <div class="row-fluid sortable">
                     <div class="box span12">
                         <div class="box-header" data-original-title>
-                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Subject Master</h2>
                             <div class="box-icon">
 
                                 <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
@@ -442,7 +448,7 @@
                 <div class="row-fluid sortable">
                     <div class="box span12">
                         <div class="box-header" data-original-title>
-                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>List View</h2>
                             <div class="box-icon">
 
                                 <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

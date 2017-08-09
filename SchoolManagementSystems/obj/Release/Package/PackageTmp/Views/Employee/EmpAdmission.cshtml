@@ -21,9 +21,11 @@
         $("#insert").click(function (e) {
             Validations(e);
         });
+       
+      
         FillType();
         $("#eidtype").change(function () {
-            debugger; 
+           
             if ($("#eidtype option:selected").text() == 'Others')
             { $("#doctype").show(); }
             else { $("#doctype").hide(); }
@@ -614,6 +616,9 @@
                     $('#edepartment').val(data.department);
                     $("#employeeemail").val(data.empemail);
                     $("#empreligion").val(data.empreligion);
+                    if ($("#empreligion").val() != 2)
+                    { $("#parish").hide(); $("#diocese").hide(); $("#cast").hide(); }
+                    else { $("#parish").show(); $("#diocese").show(); $("#cast").show(); }
                     if ($("#empreligion").val() == 2 && $("#empcast").val() == 2)
                     { $("#parish").show(); $("#diocese").show() }
                     else { $("#parish").hide(); $("#diocese").hide() }
@@ -3732,7 +3737,7 @@
                                                 <fieldset class="test" style="width: 100%;">
                                                     <legend>Permanant Address</legend>
                                                     <div class="control-group span10">
-                                                        <input type="checkbox" class="control-group" name="sameasabovecheckbox" id="cbxFillCurrentAdd" value="sameasabovecheckbox"> Same as above
+                                                        <input type="checkbox"  name="sameasabovecheckbox" id="cbxFillCurrentAdd" value="sameasabovecheckbox"> Same as above
                                                    
                                                         </div>
                                                     <br />
@@ -3845,7 +3850,7 @@
                                                         @Html.LabelFor(model => model.joiningdate, new { @class = "control-label" })
 
                                                         <div class="controls">
-                                                            @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining" })
+                                                            @Html.TextBoxFor(model => model.joiningdate, new { id = "datepicker2", @readonly = "readonly", placeholder = "Select Date of Joining",@class="StartDate" })
                                                             @Html.ValidationMessageFor(model => model.joiningdate)
                                                         </div>
                                                     </div>
@@ -3853,7 +3858,7 @@
                                                         @Html.LabelFor(model => model.lastdate, new { @class = "control-label" })
 
                                                         <div class="controls">
-                                                            @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker3", @readonly = "readonly", placeholder = "Select Last Date" })
+                                                            @Html.TextBoxFor(model => model.lastdate, new { id = "datepicker3", @readonly = "readonly", placeholder = "Select Last Date",@class = "EndDate" })
                                                             @Html.ValidationMessageFor(model => model.lastdate)
                                                         </div>
                                                     </div>
@@ -3875,7 +3880,7 @@
                                                     </div>
                                                     <!--College exp_2-->
                                                     <div class="control-group span10" id="colexp2">
-                                                        <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide" value="gcheckbox"> Click here to fill More Experience
+                                                        <input type="checkbox"  name="gcheckbox" id="cbxShowHide" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                         <div id="autoUpdate" class="autoUpdate" hidden>
                                                             <br />
@@ -3932,7 +3937,7 @@
                                                     <div id="colexp3" hidden>
                                                         <br />
                                                         <div class="control-group span10">
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide1" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide1" value="gcheckbox"> Click here to fill More Experience
                                                             </div>
                                                         </div>
                                                     <div id="autoUpdate1" class="autoUpdate1" hidden>
@@ -3991,7 +3996,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                          
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide2" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide2" value="gcheckbox"> Click here to fill More Experience
                                                             </div>
                                                         </div>
                                                     <div id="autoUpdate2" class="autoUpdate2" hidden>
@@ -4050,7 +4055,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                             
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide3" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide3" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                     </div>
                                                     <div id="autoUpdate3" class="autoUpdate3" hidden>
@@ -4109,7 +4114,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                           
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide4" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide4" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                     </div>
                                                     <div id="autoUpdate4" class="autoUpdate4" hidden>
@@ -4168,7 +4173,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                            
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide5" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide5" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                     </div>
                                                     <div id="autoUpdate5" class="autoUpdate5" hidden>
@@ -4227,7 +4232,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                            
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide6" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide6" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                         </div>
                                                     <div id="autoUpdate6" class="autoUpdate6" hidden>
@@ -4286,7 +4291,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                            
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide7" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide7" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                     </div>
                                                     <div id="autoUpdate7" class="autoUpdate7" hidden>
@@ -4345,7 +4350,7 @@
                                                         <br />
                                                         <div class="control-group span10">
                                                           
-                                                            <input type="checkbox" class="control-group" name="gcheckbox" id="cbxShowHide8" value="gcheckbox"> Click here to fill More Experience
+                                                            <input type="checkbox"  name="gcheckbox" id="cbxShowHide8" value="gcheckbox"> Click here to fill More Experience
                                                         </div>
                                                     </div>
                                                     <div id="autoUpdate8" class="autoUpdate8" hidden>

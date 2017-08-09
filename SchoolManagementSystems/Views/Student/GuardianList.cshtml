@@ -51,19 +51,32 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                RollNo.
-                                            </th>
-                                            <th>
                                                 @Html.DisplayName("Student Name")
                                             </th>
                                             <th>
-                                                @Html.DisplayName("Guardian's Email")
+                                                @Html.DisplayName("RollNo")
                                             </th>
                                             <th>
-                                                @Html.DisplayName("Guardian's Name")
+                                                @Html.DisplayName("Course")
                                             </th>
                                             <th>
-                                                @Html.DisplayName("Contact No")
+                                                @Html.DisplayName("Department")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Year")
+                                            </th>
+                                            
+                                            <th>
+                                                @Html.DisplayName("Father's Email")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Father's Contact")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Mother's Email")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Mother's Contact")
                                             </th>
                                             <th class="edt">
                                                 @Html.DisplayName("Action")
@@ -74,20 +87,33 @@
                                         @foreach (var item in Model.StudentDataCollection)
                                         {
                                             <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.RollNo)
-                                                </td>
+                                               
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Studnm)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.GuardianEmail)
+                                                    @Html.DisplayFor(modelItem => item.RollNo)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.GuardianName)
+                                                    @Html.DisplayFor(modelItem => item.CourseName)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.GuardianContact)
+                                                    @Html.DisplayFor(modelItem => item.Dept_name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.YearName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FatherEmail)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FatherContact)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MotherEmail)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MotherContact)
                                                 </td>
                                                 <td>
                                                 <input type="button" id="@item.Studid" class="btn btn-default btn_edit" value="Edit" />

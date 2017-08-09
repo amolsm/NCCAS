@@ -75,6 +75,7 @@
                     $("#LecNo").val(data.LecNo);
                     $("#timepicker1").val(data.LecTime);
                     $("#timepicker2").val(data.LectETime);
+                    $("#SessionId").val(data.SessionId);
                     $("#status").prop('checked', data.Status);
 
                 }
@@ -84,7 +85,8 @@
         function clear() {
             $("#LecTimeIddiv").hide();
             $('#LecTimeIddiv input').val('0');
-            $("#LecNo").val('0');
+            $("#LecNo").val('');
+            $("#SessionId").val('0');
             $("#timepicker1").val('');
             $("#timepicker2").val('');
           
@@ -158,6 +160,18 @@
                 "background": ""
             });
         }
+        if ($("#SessionId").val() == '' || $("#SessionId").val() == '0') {
+            cnt++;
+            $("#SessionId").css({
+                "border": "2px solid red"
+            });
+        }
+        else {
+            $("#SessionId").css({
+                "border": "",
+                "background": ""
+            });
+        }
 
         if (cnt != 0)
             e.preventDefault();
@@ -211,31 +225,38 @@
                                         @Html.ValidationSummary(true)
 
                                         <div id="LecTimeIddiv" class="control-group">
-                                            @Html.LabelFor(model => model.LecTimeId, new { @class = "control-label", @for = "focusedInput" })
+                                            @Html.LabelFor(model => model.LecTimeId, new { @class = "control-label" })
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.LecTimeId, new {  @id = "focusedInput", @type = "number" })
+                                                @Html.TextBoxFor(model => model.LecTimeId, new { @type = "number", @Style = "width:220px" })
                                                 @Html.ValidationMessageFor(model => model.LecTimeId)
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.LecNo, new { @class = "control-label", @for = "focusedInput" })
+                                            @Html.LabelFor(model => model.LecNo, new { @class = "control-label" })
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.LecNo, new {  @id = "focusedInput", @type = "number" })
+                                                @Html.TextBoxFor(model => model.LecNo, new { @type = "text", @Style = "width:220px" })
                                                 @Html.ValidationMessageFor(model => model.LecNo)
                                             </div>
                                         </div>
                                         <div>
                                             @Html.LabelFor(model => model.LecTime, new { @class = "control-label" })
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.LecTime, new { id = "timepicker1", @readonly = "readonly", placeholder = "Select Start Time" })
+                                                @Html.TextBoxFor(model => model.LecTime, new { id = "timepicker1", @readonly = "readonly", placeholder = "Select Start Time" , @Style = "width:220px" })
                                                 @Html.HiddenFor(model => model.LecTime)
                                             </div>
                                         </div>
                                         <div>
                                             @Html.LabelFor(model => model.LecETime, new { @class = "control-label" })
                                             <div class="controls">
-                                                @Html.TextBoxFor(model => model.LecETime, new { id = "timepicker2", @readonly = "readonly",  placeholder = "Select End Time" })
+                                                @Html.TextBoxFor(model => model.LecETime, new { id = "timepicker2", @readonly = "readonly",  placeholder = "Select End Time", @Style = "width:220px" })
                                                 @Html.HiddenFor(model => model.LecETime)
+                                            </div>
+                                        </div>
+                                        <div>
+                                            @Html.LabelFor(model => model.SessionId, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.SessionId, new SelectList(Model._SessionList, "ID", "SessionName", "Select Session"),"Select Session")
+                                                @Html.ValidationMessageFor(model => model.SessionId)
                                             </div>
                                         </div>
                                         <div class="control-group">

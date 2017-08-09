@@ -90,15 +90,16 @@
                 data: { deptid: deptid, courseid: courseid, accadmicyear: accadmicyear },
                 success: function (data) {
                     if (data != null) {
+                        clearmsg();
                         $("#msg").show();
-                        $("#lblmsg").text("Cobination of Selected Course and Department and Year  Already Exists!..");
+                        $("#lblmsg").text("Combination of Selected Course and Department and Year  Already Exists!..");
                         $("#lblmsg").css({ "color": "orange" });
                         $("#lblmsg").css({ "font-size": "15px" });
                         $('#academicyear').val('');
                        
                     }
                     else {
-                        debugger;
+                       
                         clearmsg();
                     }
                 }

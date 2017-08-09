@@ -9,9 +9,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.UserName)
                 </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Password)
-                </th>*@
+                <th>
+                   Full Name
+                </th>
+              
                 <th>
                     @Html.DisplayNameFor(model => model.Type)
                 </th>
@@ -36,9 +37,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Password)
-                    </td>*@
+                    <td>
+                        @if (item.Studnm == null)
+                        {
+                            @Html.DisplayFor(modelItem => item.EmpName)
+                        }
+                        else {@Html.DisplayFor(modelItem => item.Studnm) }
+                   
+
+                    </td>
+
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Type)
                     </td>

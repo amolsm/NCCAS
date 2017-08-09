@@ -184,15 +184,16 @@
         $('#year').change(function () {
             $("#insert").show();
             var Classid = $('#Classid').val();
+            var department = $("#department").val();
             if (Classid == '') {
-                //$("#insert").hide();
+                
                 $('#result').html('');
             }
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("GettSubject")',
                 dataType: 'json',
-                data: { id: $("#Classid").val(), year: $("#year").val() },
+                data: { id: $("#Classid").val(),dept:$("#department").val(), year: $("#year").val()},
                 success: function (data) {
 
                     var result = $('#result');

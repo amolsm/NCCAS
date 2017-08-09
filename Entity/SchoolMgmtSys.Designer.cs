@@ -724,22 +724,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_StudentAttendance> tbl_StudentAttendance
-        {
-            get
-            {
-                if ((_tbl_StudentAttendance == null))
-                {
-                    _tbl_StudentAttendance = base.CreateObjectSet<tbl_StudentAttendance>("tbl_StudentAttendance");
-                }
-                return _tbl_StudentAttendance;
-            }
-        }
-        private ObjectSet<tbl_StudentAttendance> _tbl_StudentAttendance;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<lib_Journal> lib_Journal
         {
             get
@@ -1188,22 +1172,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_feespayment> tbl_feespayment
-        {
-            get
-            {
-                if ((_tbl_feespayment == null))
-                {
-                    _tbl_feespayment = base.CreateObjectSet<tbl_feespayment>("tbl_feespayment");
-                }
-                return _tbl_feespayment;
-            }
-        }
-        private ObjectSet<tbl_feespayment> _tbl_feespayment;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<lib_Bookentry> lib_Bookentry
         {
             get
@@ -1300,22 +1268,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_LectTimeSetUp> tbl_LectTimeSetUp
-        {
-            get
-            {
-                if ((_tbl_LectTimeSetUp == null))
-                {
-                    _tbl_LectTimeSetUp = base.CreateObjectSet<tbl_LectTimeSetUp>("tbl_LectTimeSetUp");
-                }
-                return _tbl_LectTimeSetUp;
-            }
-        }
-        private ObjectSet<tbl_LectTimeSetUp> _tbl_LectTimeSetUp;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_timetable> tbl_timetable
         {
             get
@@ -1328,22 +1280,6 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_timetable> _tbl_timetable;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_Empexperience> tbl_Empexperience
-        {
-            get
-            {
-                if ((_tbl_Empexperience == null))
-                {
-                    _tbl_Empexperience = base.CreateObjectSet<tbl_Empexperience>("tbl_Empexperience");
-                }
-                return _tbl_Empexperience;
-            }
-        }
-        private ObjectSet<tbl_Empexperience> _tbl_Empexperience;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1376,6 +1312,70 @@ namespace Entity
             }
         }
         private ObjectSet<tbl_student> _tbl_student;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Empexperience> tbl_Empexperience
+        {
+            get
+            {
+                if ((_tbl_Empexperience == null))
+                {
+                    _tbl_Empexperience = base.CreateObjectSet<tbl_Empexperience>("tbl_Empexperience");
+                }
+                return _tbl_Empexperience;
+            }
+        }
+        private ObjectSet<tbl_Empexperience> _tbl_Empexperience;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_feespayment> tbl_feespayment
+        {
+            get
+            {
+                if ((_tbl_feespayment == null))
+                {
+                    _tbl_feespayment = base.CreateObjectSet<tbl_feespayment>("tbl_feespayment");
+                }
+                return _tbl_feespayment;
+            }
+        }
+        private ObjectSet<tbl_feespayment> _tbl_feespayment;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_LectTimeSetUp> tbl_LectTimeSetUp
+        {
+            get
+            {
+                if ((_tbl_LectTimeSetUp == null))
+                {
+                    _tbl_LectTimeSetUp = base.CreateObjectSet<tbl_LectTimeSetUp>("tbl_LectTimeSetUp");
+                }
+                return _tbl_LectTimeSetUp;
+            }
+        }
+        private ObjectSet<tbl_LectTimeSetUp> _tbl_LectTimeSetUp;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_StudentAttendance> tbl_StudentAttendance
+        {
+            get
+            {
+                if ((_tbl_StudentAttendance == null))
+                {
+                    _tbl_StudentAttendance = base.CreateObjectSet<tbl_StudentAttendance>("tbl_StudentAttendance");
+                }
+                return _tbl_StudentAttendance;
+            }
+        }
+        private ObjectSet<tbl_StudentAttendance> _tbl_StudentAttendance;
 
         #endregion
 
@@ -1710,14 +1710,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_StudentAttendance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_StudentAttendance(tbl_StudentAttendance tbl_StudentAttendance)
-        {
-            base.AddObject("tbl_StudentAttendance", tbl_StudentAttendance);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the lib_Journal EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTolib_Journal(lib_Journal lib_Journal)
@@ -1942,14 +1934,6 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_feespayment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_feespayment(tbl_feespayment tbl_feespayment)
-        {
-            base.AddObject("tbl_feespayment", tbl_feespayment);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the lib_Bookentry EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTolib_Bookentry(lib_Bookentry lib_Bookentry)
@@ -1998,27 +1982,11 @@ namespace Entity
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_LectTimeSetUp EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_LectTimeSetUp(tbl_LectTimeSetUp tbl_LectTimeSetUp)
-        {
-            base.AddObject("tbl_LectTimeSetUp", tbl_LectTimeSetUp);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_timetable EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_timetable(tbl_timetable tbl_timetable)
         {
             base.AddObject("tbl_timetable", tbl_timetable);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Empexperience EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Empexperience(tbl_Empexperience tbl_Empexperience)
-        {
-            base.AddObject("tbl_Empexperience", tbl_Empexperience);
         }
     
         /// <summary>
@@ -2035,6 +2003,38 @@ namespace Entity
         public void AddTotbl_student(tbl_student tbl_student)
         {
             base.AddObject("tbl_student", tbl_student);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Empexperience EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Empexperience(tbl_Empexperience tbl_Empexperience)
+        {
+            base.AddObject("tbl_Empexperience", tbl_Empexperience);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_feespayment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_feespayment(tbl_feespayment tbl_feespayment)
+        {
+            base.AddObject("tbl_feespayment", tbl_feespayment);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_LectTimeSetUp EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_LectTimeSetUp(tbl_LectTimeSetUp tbl_LectTimeSetUp)
+        {
+            base.AddObject("tbl_LectTimeSetUp", tbl_LectTimeSetUp);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_StudentAttendance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_StudentAttendance(tbl_StudentAttendance tbl_StudentAttendance)
+        {
+            base.AddObject("tbl_StudentAttendance", tbl_StudentAttendance);
         }
 
         #endregion
@@ -2532,22 +2532,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_menudatacollection", menuidParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getUser_Result> sp_getUser()
-        {
-            return base.ExecuteFunction<sp_getUser_Result>("sp_getUser");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_getSubject_Result> sp_getSubject()
-        {
-            return base.ExecuteFunction<sp_getSubject_Result>("sp_getSubject");
         }
     
         /// <summary>
@@ -3055,55 +3039,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_bloodgroup_DML", bloodgroupidParameter, bloodgroupnmParameter, statusParameter, academicyearParameter, actParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        /// <param name="attendanceDate">No Metadata Documentation available.</param>
-        public int sp_StudentAttendance(Nullable<global::System.Int32> classid, Nullable<global::System.DateTime> attendanceDate)
-        {
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("classid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter attendanceDateParameter;
-            if (attendanceDate.HasValue)
-            {
-                attendanceDateParameter = new ObjectParameter("AttendanceDate", attendanceDate);
-            }
-            else
-            {
-                attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.DateTime));
-            }
-    
-            return base.ExecuteFunction("sp_StudentAttendance", classidParameter, attendanceDateParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="classid">No Metadata Documentation available.</param>
-        public ObjectResult<sp_getteacheremail_Result> sp_getteacheremail(Nullable<global::System.Int32> classid)
-        {
-            ObjectParameter classidParameter;
-            if (classid.HasValue)
-            {
-                classidParameter = new ObjectParameter("Classid", classid);
-            }
-            else
-            {
-                classidParameter = new ObjectParameter("Classid", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<sp_getteacheremail_Result>("sp_getteacheremail", classidParameter);
         }
     
         /// <summary>
@@ -4615,91 +4550,6 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_StaffAttandance_DML", staffidParameter, attendancedateParameter, intimeParameter, outtimeParameter, absentParameter, reasonParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="studentID">No Metadata Documentation available.</param>
-        /// <param name="present">No Metadata Documentation available.</param>
-        /// <param name="reason">No Metadata Documentation available.</param>
-        /// <param name="createdby">No Metadata Documentation available.</param>
-        /// <param name="attendanceDate">No Metadata Documentation available.</param>
-        /// <param name="subjectid">No Metadata Documentation available.</param>
-        /// <param name="session">No Metadata Documentation available.</param>
-        public int sp_Attandance_DML(Nullable<global::System.Int32> studentID, Nullable<global::System.Boolean> present, global::System.String reason, Nullable<global::System.Int32> createdby, Nullable<global::System.DateTime> attendanceDate, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> session)
-        {
-            ObjectParameter studentIDParameter;
-            if (studentID.HasValue)
-            {
-                studentIDParameter = new ObjectParameter("StudentID", studentID);
-            }
-            else
-            {
-                studentIDParameter = new ObjectParameter("StudentID", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter presentParameter;
-            if (present.HasValue)
-            {
-                presentParameter = new ObjectParameter("Present", present);
-            }
-            else
-            {
-                presentParameter = new ObjectParameter("Present", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter reasonParameter;
-            if (reason != null)
-            {
-                reasonParameter = new ObjectParameter("Reason", reason);
-            }
-            else
-            {
-                reasonParameter = new ObjectParameter("Reason", typeof(global::System.String));
-            }
-    
-            ObjectParameter createdbyParameter;
-            if (createdby.HasValue)
-            {
-                createdbyParameter = new ObjectParameter("createdby", createdby);
-            }
-            else
-            {
-                createdbyParameter = new ObjectParameter("createdby", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter attendanceDateParameter;
-            if (attendanceDate.HasValue)
-            {
-                attendanceDateParameter = new ObjectParameter("AttendanceDate", attendanceDate);
-            }
-            else
-            {
-                attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter subjectidParameter;
-            if (subjectid.HasValue)
-            {
-                subjectidParameter = new ObjectParameter("subjectid", subjectid);
-            }
-            else
-            {
-                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter sessionParameter;
-            if (session.HasValue)
-            {
-                sessionParameter = new ObjectParameter("session", session);
-            }
-            else
-            {
-                sessionParameter = new ObjectParameter("session", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_Attandance_DML", studentIDParameter, presentParameter, reasonParameter, createdbyParameter, attendanceDateParameter, subjectidParameter, sessionParameter);
         }
     
         /// <summary>
@@ -9220,85 +9070,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectResult<sp_GetLectTimeSetUp_Result> sp_GetLectTimeSetUp()
-        {
-            return base.ExecuteFunction<sp_GetLectTimeSetUp_Result>("sp_GetLectTimeSetUp");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="courseid">No Metadata Documentation available.</param>
-        /// <param name="day">No Metadata Documentation available.</param>
-        /// <param name="subject">No Metadata Documentation available.</param>
-        /// <param name="teacher">No Metadata Documentation available.</param>
-        public ObjectResult<sp_gettimetableclass_Result> sp_gettimetableclass(Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> day, Nullable<global::System.Int32> subject, Nullable<global::System.Int32> teacher)
-        {
-            ObjectParameter courseidParameter;
-            if (courseid.HasValue)
-            {
-                courseidParameter = new ObjectParameter("courseid", courseid);
-            }
-            else
-            {
-                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter dayParameter;
-            if (day.HasValue)
-            {
-                dayParameter = new ObjectParameter("day", day);
-            }
-            else
-            {
-                dayParameter = new ObjectParameter("day", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter subjectParameter;
-            if (subject.HasValue)
-            {
-                subjectParameter = new ObjectParameter("subject", subject);
-            }
-            else
-            {
-                subjectParameter = new ObjectParameter("subject", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter teacherParameter;
-            if (teacher.HasValue)
-            {
-                teacherParameter = new ObjectParameter("teacher", teacher);
-            }
-            else
-            {
-                teacherParameter = new ObjectParameter("teacher", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<sp_gettimetableclass_Result>("sp_gettimetableclass", courseidParameter, dayParameter, subjectParameter, teacherParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_gettimetable_pivot_Result> sp_gettimetable_pivot()
-        {
-            return base.ExecuteFunction<sp_gettimetable_pivot_Result>("sp_gettimetable_pivot");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectResult<Sp_GetStudentProfile_Result> Sp_GetStudentProfile()
         {
             return base.ExecuteFunction<Sp_GetStudentProfile_Result>("Sp_GetStudentProfile");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<sp_gettimetable_Result> sp_gettimetable()
-        {
-            return base.ExecuteFunction<sp_gettimetable_Result>("sp_gettimetable");
         }
     
         /// <summary>
@@ -14985,6 +14759,544 @@ namespace Entity
             }
     
             return base.ExecuteFunction("sp_employee_DML", empidParameter, firstNameParameter, middleNameParameter, lastNameParameter, cityidParameter, stateidParameter, zipcodeParameter, emailidParameter, phoneNoParameter, mobileNoParameter, addressParameter, dOBParameter, genderParameter, quallificationParameter, dateOfJoinParameter, typeidParameter, codeParameter, oQualificationParameter, actParameter, departmentParameter, bloodgroupParameter, qualication1Parameter, university1Parameter, precentage1Parameter, yearpasing1Parameter, qualication2Parameter, university2Parameter, precentage2Parameter, yearpasing2Parameter, qualication3Parameter, university3Parameter, precentage3Parameter, yearpasing3Parameter, qualication4Parameter, university4Parameter, precentage4Parameter, yearpasing4Parameter, weightinkgParameter, heightcParameter, emppicParameter, eidtypeParameter, doctornameParameter, doctorcodeParameter, doctorcontactParameter, doctoraddressParameter, relationParameter, parentsnameParameter, parentoccupationParameter, parentqualificationParameter, parentsemailParameter, parentsaddressParameter, parentscodeParameter, parentscontactParameter, parentspicParameter, pstreetParameter, pcityParameter, pstateParameter, pcountryParameter, ppinParameter, cstreetParameter, ccityParameter, cstateParameter, ccountryParameter, cpinParameter, homecodeParameter, homecontactParameter, cmobilecodeParameter, cmobileParameter, banknameParameter, branchParameter, ifsccodeParameter, accountnoParameter, accountnameParameter, collagenameParameter, affliateduniversityParameter, joiningdateParameter, lastdateParameter, totalexperienceParameter, lastdesignationParameter, companynameParameter, clastdesignationParameter, cjoiningdateParameter, clastdateParameter, ctotalexperienceParameter, empemailParameter, empreligionParameter, empcategoryParameter, empcastParameter, empmothertongueParameter, collagename1Parameter, affliateduniversity1Parameter, joiningdate1Parameter, lastdate1Parameter, totalexperience1Parameter, lastdesignation1Parameter, companyname1Parameter, clastdesignation1Parameter, cjoiningdate1Parameter, clastdate1Parameter, ctotalexperience1Parameter, doctypenameParameter, docnumberParameter, contrelationParameter, parishNameParameter, dioceseNameParameter, collagename_exp3Parameter, affliateduniversity_exp3Parameter, joiningdate_exp3Parameter, lastdate1_exp3Parameter, totalexperience_exp3Parameter, lastdesignation_exp3Parameter, companyname_exp3Parameter, clastdesignation_exp3Parameter, cjoiningdate_exp3Parameter, clastdate_exp3Parameter, ctotalexperience_exp3Parameter, collagename_exp4Parameter, affliateduniversity_exp4Parameter, joiningdate_exp4Parameter, lastdate1_exp4Parameter, totalexperience_exp4Parameter, lastdesignation_exp4Parameter, companyname_exp4Parameter, clastdesignation_exp4Parameter, cjoiningdate_exp4Parameter, clastdate_exp4Parameter, ctotalexperience_exp4Parameter, collagename_exp5Parameter, affliateduniversity_exp5Parameter, joiningdate_exp5Parameter, lastdate1_exp5Parameter, totalexperience_exp5Parameter, lastdesignation_exp5Parameter, companyname_exp5Parameter, clastdesignation_exp5Parameter, cjoiningdate_exp5Parameter, clastdate_exp5Parameter, ctotalexperience_exp5Parameter, collagename_exp6Parameter, affliateduniversity_exp6Parameter, joiningdate_exp6Parameter, lastdate1_exp6Parameter, totalexperience_exp6Parameter, lastdesignation_exp6Parameter, companyname_exp6Parameter, clastdesignation_exp6Parameter, cjoiningdate_exp6Parameter, clastdate_exp6Parameter, ctotalexperience_exp6Parameter, collagename_exp7Parameter, affliateduniversity_exp7Parameter, joiningdate_exp7Parameter, lastdate1_exp7Parameter, totalexperience_exp7Parameter, lastdesignation_exp7Parameter, companyname_exp7Parameter, clastdesignation_exp7Parameter, cjoiningdate_exp7Parameter, clastdate_exp7Parameter, ctotalexperience_exp7Parameter, collagename_exp8Parameter, affliateduniversity_exp8Parameter, joiningdate_exp8Parameter, lastdate1_exp8Parameter, totalexperience_exp8Parameter, lastdesignation_exp8Parameter, companyname_exp8Parameter, clastdesignation_exp8Parameter, cjoiningdate_exp8Parameter, clastdate_exp8Parameter, ctotalexperience_exp8Parameter, collagename_exp9Parameter, affliateduniversity_exp9Parameter, joiningdate_exp9Parameter, lastdate1_exp9Parameter, totalexperience_exp9Parameter, lastdesignation_exp9Parameter, companyname_exp9Parameter, clastdesignation_exp9Parameter, cjoiningdate_exp9Parameter, clastdate_exp9Parameter, ctotalexperience_exp9Parameter, collagename_exp10Parameter, affliateduniversity_exp10Parameter, joiningdate_exp10Parameter, lastdate1_exp10Parameter, totalexperience_exp10Parameter, lastdesignation_exp10Parameter, companyname_exp10Parameter, clastdesignation_exp10Parameter, cjoiningdate_exp10Parameter, clastdate_exp10Parameter, ctotalexperience_exp10Parameter, q_department1Parameter, q_department2Parameter, q_department3Parameter, q_department4Parameter, q_SetParameter, q_NetParameter, q_SetPassingYearParameter, q_NetPassingYearParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_GetLectTimeSetUp_Result> sp_GetLectTimeSetUp()
+        {
+            return base.ExecuteFunction<sp_GetLectTimeSetUp_Result>("sp_GetLectTimeSetUp");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_gettimetable_pivot_Result> sp_gettimetable_pivot()
+        {
+            return base.ExecuteFunction<sp_gettimetable_pivot_Result>("sp_gettimetable_pivot");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="attendanceDate">No Metadata Documentation available.</param>
+        /// <param name="courseId">No Metadata Documentation available.</param>
+        /// <param name="dept_Id">No Metadata Documentation available.</param>
+        /// <param name="courseyearid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getstudent_attandance_pivot_Result> sp_getstudent_attandance_pivot(global::System.String attendanceDate, Nullable<global::System.Int32> courseId, Nullable<global::System.Int32> dept_Id, Nullable<global::System.Int32> courseyearid)
+        {
+            ObjectParameter attendanceDateParameter;
+            if (attendanceDate != null)
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", attendanceDate);
+            }
+            else
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.String));
+            }
+    
+            ObjectParameter courseIdParameter;
+            if (courseId.HasValue)
+            {
+                courseIdParameter = new ObjectParameter("CourseId", courseId);
+            }
+            else
+            {
+                courseIdParameter = new ObjectParameter("CourseId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dept_IdParameter;
+            if (dept_Id.HasValue)
+            {
+                dept_IdParameter = new ObjectParameter("Dept_Id", dept_Id);
+            }
+            else
+            {
+                dept_IdParameter = new ObjectParameter("Dept_Id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseyearidParameter;
+            if (courseyearid.HasValue)
+            {
+                courseyearidParameter = new ObjectParameter("courseyearid", courseyearid);
+            }
+            else
+            {
+                courseyearidParameter = new ObjectParameter("courseyearid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getstudent_attandance_pivot_Result>("sp_getstudent_attandance_pivot", attendanceDateParameter, courseIdParameter, dept_IdParameter, courseyearidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="studentID">No Metadata Documentation available.</param>
+        /// <param name="present">No Metadata Documentation available.</param>
+        /// <param name="reason">No Metadata Documentation available.</param>
+        /// <param name="createdby">No Metadata Documentation available.</param>
+        /// <param name="attendanceDate">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="session">No Metadata Documentation available.</param>
+        /// <param name="dayid">No Metadata Documentation available.</param>
+        /// <param name="lecttimeid">No Metadata Documentation available.</param>
+        public int sp_Attandance_DML(Nullable<global::System.Int32> studentID, Nullable<global::System.Boolean> present, global::System.String reason, Nullable<global::System.Int32> createdby, global::System.String attendanceDate, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> session, Nullable<global::System.Int32> dayid, Nullable<global::System.Int32> lecttimeid)
+        {
+            ObjectParameter studentIDParameter;
+            if (studentID.HasValue)
+            {
+                studentIDParameter = new ObjectParameter("StudentID", studentID);
+            }
+            else
+            {
+                studentIDParameter = new ObjectParameter("StudentID", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter presentParameter;
+            if (present.HasValue)
+            {
+                presentParameter = new ObjectParameter("Present", present);
+            }
+            else
+            {
+                presentParameter = new ObjectParameter("Present", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter reasonParameter;
+            if (reason != null)
+            {
+                reasonParameter = new ObjectParameter("Reason", reason);
+            }
+            else
+            {
+                reasonParameter = new ObjectParameter("Reason", typeof(global::System.String));
+            }
+    
+            ObjectParameter createdbyParameter;
+            if (createdby.HasValue)
+            {
+                createdbyParameter = new ObjectParameter("createdby", createdby);
+            }
+            else
+            {
+                createdbyParameter = new ObjectParameter("createdby", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter attendanceDateParameter;
+            if (attendanceDate != null)
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", attendanceDate);
+            }
+            else
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.String));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter sessionParameter;
+            if (session.HasValue)
+            {
+                sessionParameter = new ObjectParameter("session", session);
+            }
+            else
+            {
+                sessionParameter = new ObjectParameter("session", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dayidParameter;
+            if (dayid.HasValue)
+            {
+                dayidParameter = new ObjectParameter("dayid", dayid);
+            }
+            else
+            {
+                dayidParameter = new ObjectParameter("dayid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter lecttimeidParameter;
+            if (lecttimeid.HasValue)
+            {
+                lecttimeidParameter = new ObjectParameter("lecttimeid", lecttimeid);
+            }
+            else
+            {
+                lecttimeidParameter = new ObjectParameter("lecttimeid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_Attandance_DML", studentIDParameter, presentParameter, reasonParameter, createdbyParameter, attendanceDateParameter, subjectidParameter, sessionParameter, dayidParameter, lecttimeidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="classid">No Metadata Documentation available.</param>
+        /// <param name="attendanceDate">No Metadata Documentation available.</param>
+        public int sp_StudentAttendance(Nullable<global::System.Int32> classid, global::System.String attendanceDate)
+        {
+            ObjectParameter classidParameter;
+            if (classid.HasValue)
+            {
+                classidParameter = new ObjectParameter("classid", classid);
+            }
+            else
+            {
+                classidParameter = new ObjectParameter("classid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter attendanceDateParameter;
+            if (attendanceDate != null)
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", attendanceDate);
+            }
+            else
+            {
+                attendanceDateParameter = new ObjectParameter("AttendanceDate", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_StudentAttendance", classidParameter, attendanceDateParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_gettimetable_Result> sp_gettimetable()
+        {
+            return base.ExecuteFunction<sp_gettimetable_Result>("sp_gettimetable");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getSubject_Result> sp_getSubject()
+        {
+            return base.ExecuteFunction<sp_getSubject_Result>("sp_getSubject");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        /// <param name="dayid">No Metadata Documentation available.</param>
+        /// <param name="subjectid">No Metadata Documentation available.</param>
+        /// <param name="teacherid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_gettimetableclass_Result> sp_gettimetableclass(Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> deptid, Nullable<global::System.Int32> yearid, Nullable<global::System.Int32> dayid, Nullable<global::System.Int32> subjectid, Nullable<global::System.Int32> teacherid)
+        {
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter dayidParameter;
+            if (dayid.HasValue)
+            {
+                dayidParameter = new ObjectParameter("dayid", dayid);
+            }
+            else
+            {
+                dayidParameter = new ObjectParameter("dayid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter subjectidParameter;
+            if (subjectid.HasValue)
+            {
+                subjectidParameter = new ObjectParameter("subjectid", subjectid);
+            }
+            else
+            {
+                subjectidParameter = new ObjectParameter("subjectid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter teacheridParameter;
+            if (teacherid.HasValue)
+            {
+                teacheridParameter = new ObjectParameter("teacherid", teacherid);
+            }
+            else
+            {
+                teacheridParameter = new ObjectParameter("teacherid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_gettimetableclass_Result>("sp_gettimetableclass", courseidParameter, deptidParameter, yearidParameter, dayidParameter, subjectidParameter, teacheridParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="typeId">No Metadata Documentation available.</param>
+        /// <param name="courseId">No Metadata Documentation available.</param>
+        /// <param name="deptId">No Metadata Documentation available.</param>
+        /// <param name="yearId">No Metadata Documentation available.</param>
+        public ObjectResult<sp_GetTeacherSubject_Result> sp_GetTeacherSubject(Nullable<global::System.Int32> empid, Nullable<global::System.Int32> typeId, Nullable<global::System.Int32> courseId, Nullable<global::System.Int32> deptId, Nullable<global::System.Int32> yearId)
+        {
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
+            {
+                empidParameter = new ObjectParameter("Empid", empid);
+            }
+            else
+            {
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter typeIdParameter;
+            if (typeId.HasValue)
+            {
+                typeIdParameter = new ObjectParameter("TypeId", typeId);
+            }
+            else
+            {
+                typeIdParameter = new ObjectParameter("TypeId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseIdParameter;
+            if (courseId.HasValue)
+            {
+                courseIdParameter = new ObjectParameter("CourseId", courseId);
+            }
+            else
+            {
+                courseIdParameter = new ObjectParameter("CourseId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptIdParameter;
+            if (deptId.HasValue)
+            {
+                deptIdParameter = new ObjectParameter("DeptId", deptId);
+            }
+            else
+            {
+                deptIdParameter = new ObjectParameter("DeptId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearIdParameter;
+            if (yearId.HasValue)
+            {
+                yearIdParameter = new ObjectParameter("YearId", yearId);
+            }
+            else
+            {
+                yearIdParameter = new ObjectParameter("YearId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_GetTeacherSubject_Result>("sp_GetTeacherSubject", empidParameter, typeIdParameter, courseIdParameter, deptIdParameter, yearIdParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_GetStudentDataCollection_Result> sp_GetStudentDataCollection()
+        {
+            return base.ExecuteFunction<sp_GetStudentDataCollection_Result>("sp_GetStudentDataCollection");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_getUser_Result> sp_getUser()
+        {
+            return base.ExecuteFunction<sp_getUser_Result>("sp_getUser");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="typeid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getTeacherCourse_Result> sp_getTeacherCourse(Nullable<global::System.Int32> empid, Nullable<global::System.Int32> typeid)
+        {
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
+            {
+                empidParameter = new ObjectParameter("Empid", empid);
+            }
+            else
+            {
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter typeidParameter;
+            if (typeid.HasValue)
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeid);
+            }
+            else
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getTeacherCourse_Result>("sp_getTeacherCourse", empidParameter, typeidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="typeid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getTeacherCourseDepartment_Result> sp_getTeacherCourseDepartment(Nullable<global::System.Int32> empid, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> courseid)
+        {
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
+            {
+                empidParameter = new ObjectParameter("Empid", empid);
+            }
+            else
+            {
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter typeidParameter;
+            if (typeid.HasValue)
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeid);
+            }
+            else
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getTeacherCourseDepartment_Result>("sp_getTeacherCourseDepartment", empidParameter, typeidParameter, courseidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="empid">No Metadata Documentation available.</param>
+        /// <param name="typeid">No Metadata Documentation available.</param>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getTeacherCourseYear_Result> sp_getTeacherCourseYear(Nullable<global::System.Int32> empid, Nullable<global::System.Int32> typeid, Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> deptid)
+        {
+            ObjectParameter empidParameter;
+            if (empid.HasValue)
+            {
+                empidParameter = new ObjectParameter("Empid", empid);
+            }
+            else
+            {
+                empidParameter = new ObjectParameter("Empid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter typeidParameter;
+            if (typeid.HasValue)
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeid);
+            }
+            else
+            {
+                typeidParameter = new ObjectParameter("Typeid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getTeacherCourseYear_Result>("sp_getTeacherCourseYear", empidParameter, typeidParameter, courseidParameter, deptidParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="courseid">No Metadata Documentation available.</param>
+        /// <param name="deptid">No Metadata Documentation available.</param>
+        /// <param name="yearid">No Metadata Documentation available.</param>
+        public ObjectResult<sp_getteacheremail_Result> sp_getteacheremail(Nullable<global::System.Int32> courseid, Nullable<global::System.Int32> deptid, Nullable<global::System.Int32> yearid)
+        {
+            ObjectParameter courseidParameter;
+            if (courseid.HasValue)
+            {
+                courseidParameter = new ObjectParameter("courseid", courseid);
+            }
+            else
+            {
+                courseidParameter = new ObjectParameter("courseid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter deptidParameter;
+            if (deptid.HasValue)
+            {
+                deptidParameter = new ObjectParameter("deptid", deptid);
+            }
+            else
+            {
+                deptidParameter = new ObjectParameter("deptid", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yearidParameter;
+            if (yearid.HasValue)
+            {
+                yearidParameter = new ObjectParameter("yearid", yearid);
+            }
+            else
+            {
+                yearidParameter = new ObjectParameter("yearid", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_getteacheremail_Result>("sp_getteacheremail", courseidParameter, deptidParameter, yearidParameter);
         }
 
         #endregion
@@ -24983,7 +25295,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp1
+        public global::System.String clastdate_exp1
         {
             get
             {
@@ -24993,13 +25305,13 @@ namespace Entity
             {
                 Onclastdate_exp1Changing(value);
                 ReportPropertyChanging("clastdate_exp1");
-                _clastdate_exp1 = StructuralObject.SetValidValue(value);
+                _clastdate_exp1 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp1");
                 Onclastdate_exp1Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp1;
-        partial void Onclastdate_exp1Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp1;
+        partial void Onclastdate_exp1Changing(global::System.String value);
         partial void Onclastdate_exp1Changed();
     
         /// <summary>
@@ -25271,7 +25583,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp2
+        public global::System.String clastdate_exp2
         {
             get
             {
@@ -25281,13 +25593,13 @@ namespace Entity
             {
                 Onclastdate_exp2Changing(value);
                 ReportPropertyChanging("clastdate_exp2");
-                _clastdate_exp2 = StructuralObject.SetValidValue(value);
+                _clastdate_exp2 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp2");
                 Onclastdate_exp2Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp2;
-        partial void Onclastdate_exp2Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp2;
+        partial void Onclastdate_exp2Changing(global::System.String value);
         partial void Onclastdate_exp2Changed();
     
         /// <summary>
@@ -25559,7 +25871,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp3
+        public global::System.String clastdate_exp3
         {
             get
             {
@@ -25569,13 +25881,13 @@ namespace Entity
             {
                 Onclastdate_exp3Changing(value);
                 ReportPropertyChanging("clastdate_exp3");
-                _clastdate_exp3 = StructuralObject.SetValidValue(value);
+                _clastdate_exp3 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp3");
                 Onclastdate_exp3Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp3;
-        partial void Onclastdate_exp3Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp3;
+        partial void Onclastdate_exp3Changing(global::System.String value);
         partial void Onclastdate_exp3Changed();
     
         /// <summary>
@@ -25847,7 +26159,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp4
+        public global::System.String clastdate_exp4
         {
             get
             {
@@ -25857,13 +26169,13 @@ namespace Entity
             {
                 Onclastdate_exp4Changing(value);
                 ReportPropertyChanging("clastdate_exp4");
-                _clastdate_exp4 = StructuralObject.SetValidValue(value);
+                _clastdate_exp4 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp4");
                 Onclastdate_exp4Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp4;
-        partial void Onclastdate_exp4Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp4;
+        partial void Onclastdate_exp4Changing(global::System.String value);
         partial void Onclastdate_exp4Changed();
     
         /// <summary>
@@ -26135,7 +26447,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp5
+        public global::System.String clastdate_exp5
         {
             get
             {
@@ -26145,13 +26457,13 @@ namespace Entity
             {
                 Onclastdate_exp5Changing(value);
                 ReportPropertyChanging("clastdate_exp5");
-                _clastdate_exp5 = StructuralObject.SetValidValue(value);
+                _clastdate_exp5 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp5");
                 Onclastdate_exp5Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp5;
-        partial void Onclastdate_exp5Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp5;
+        partial void Onclastdate_exp5Changing(global::System.String value);
         partial void Onclastdate_exp5Changed();
     
         /// <summary>
@@ -26423,7 +26735,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp6
+        public global::System.String clastdate_exp6
         {
             get
             {
@@ -26433,13 +26745,13 @@ namespace Entity
             {
                 Onclastdate_exp6Changing(value);
                 ReportPropertyChanging("clastdate_exp6");
-                _clastdate_exp6 = StructuralObject.SetValidValue(value);
+                _clastdate_exp6 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp6");
                 Onclastdate_exp6Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp6;
-        partial void Onclastdate_exp6Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp6;
+        partial void Onclastdate_exp6Changing(global::System.String value);
         partial void Onclastdate_exp6Changed();
     
         /// <summary>
@@ -26711,7 +27023,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp7
+        public global::System.String clastdate_exp7
         {
             get
             {
@@ -26721,13 +27033,13 @@ namespace Entity
             {
                 Onclastdate_exp7Changing(value);
                 ReportPropertyChanging("clastdate_exp7");
-                _clastdate_exp7 = StructuralObject.SetValidValue(value);
+                _clastdate_exp7 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp7");
                 Onclastdate_exp7Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp7;
-        partial void Onclastdate_exp7Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp7;
+        partial void Onclastdate_exp7Changing(global::System.String value);
         partial void Onclastdate_exp7Changed();
     
         /// <summary>
@@ -26999,7 +27311,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp8
+        public global::System.String clastdate_exp8
         {
             get
             {
@@ -27009,13 +27321,13 @@ namespace Entity
             {
                 Onclastdate_exp8Changing(value);
                 ReportPropertyChanging("clastdate_exp8");
-                _clastdate_exp8 = StructuralObject.SetValidValue(value);
+                _clastdate_exp8 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp8");
                 Onclastdate_exp8Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp8;
-        partial void Onclastdate_exp8Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp8;
+        partial void Onclastdate_exp8Changing(global::System.String value);
         partial void Onclastdate_exp8Changed();
     
         /// <summary>
@@ -27287,7 +27599,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp9
+        public global::System.String clastdate_exp9
         {
             get
             {
@@ -27297,13 +27609,13 @@ namespace Entity
             {
                 Onclastdate_exp9Changing(value);
                 ReportPropertyChanging("clastdate_exp9");
-                _clastdate_exp9 = StructuralObject.SetValidValue(value);
+                _clastdate_exp9 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp9");
                 Onclastdate_exp9Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp9;
-        partial void Onclastdate_exp9Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp9;
+        partial void Onclastdate_exp9Changing(global::System.String value);
         partial void Onclastdate_exp9Changed();
     
         /// <summary>
@@ -27575,7 +27887,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> clastdate_exp10
+        public global::System.String clastdate_exp10
         {
             get
             {
@@ -27585,13 +27897,13 @@ namespace Entity
             {
                 Onclastdate_exp10Changing(value);
                 ReportPropertyChanging("clastdate_exp10");
-                _clastdate_exp10 = StructuralObject.SetValidValue(value);
+                _clastdate_exp10 = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("clastdate_exp10");
                 Onclastdate_exp10Changed();
             }
         }
-        private Nullable<global::System.DateTime> _clastdate_exp10;
-        partial void Onclastdate_exp10Changing(Nullable<global::System.DateTime> value);
+        private global::System.String _clastdate_exp10;
+        partial void Onclastdate_exp10Changing(global::System.String value);
         partial void Onclastdate_exp10Changed();
     
         /// <summary>
@@ -31889,7 +32201,7 @@ namespace Entity
         /// <param name="pendingFees">Initial value of the PendingFees property.</param>
         /// <param name="pTypeid">Initial value of the PTypeid property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static tbl_feespayment Createtbl_feespayment(global::System.Int32 pid, global::System.Int32 courseid, global::System.Int32 studid, global::System.Boolean scholarship, global::System.Decimal totalFees, global::System.Decimal paidFees, global::System.Decimal pendingFees, global::System.Int32 pTypeid, global::System.Boolean status)
+        public static tbl_feespayment Createtbl_feespayment(global::System.Int32 pid, global::System.Int32 courseid, global::System.Int32 studid, global::System.Boolean scholarship, global::System.Decimal totalFees, global::System.Decimal paidFees, global::System.Decimal pendingFees, global::System.Int32 pTypeid, global::System.Int32 status)
         {
             tbl_feespayment tbl_feespayment = new tbl_feespayment();
             tbl_feespayment.Pid = pid;
@@ -32154,30 +32466,6 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean Status
-        {
-            get
-            {
-                return _Status;
-            }
-            set
-            {
-                OnStatusChanging(value);
-                ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Status");
-                OnStatusChanged();
-            }
-        }
-        private global::System.Boolean _Status;
-        partial void OnStatusChanging(global::System.Boolean value);
-        partial void OnStatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> receipttypeid
@@ -32246,6 +32534,30 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
 
         #endregion
 
@@ -32731,12 +33043,10 @@ namespace Entity
         /// Create a new tbl_LectTimeSetUp object.
         /// </summary>
         /// <param name="lecTimeid">Initial value of the LecTimeid property.</param>
-        /// <param name="lecNo">Initial value of the LecNo property.</param>
-        public static tbl_LectTimeSetUp Createtbl_LectTimeSetUp(global::System.Int32 lecTimeid, global::System.Int32 lecNo)
+        public static tbl_LectTimeSetUp Createtbl_LectTimeSetUp(global::System.Int32 lecTimeid)
         {
             tbl_LectTimeSetUp tbl_LectTimeSetUp = new tbl_LectTimeSetUp();
             tbl_LectTimeSetUp.LecTimeid = lecTimeid;
-            tbl_LectTimeSetUp.LecNo = lecNo;
             return tbl_LectTimeSetUp;
         }
 
@@ -32774,9 +33084,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LecNo
+        public global::System.String LecNo
         {
             get
             {
@@ -32786,13 +33096,13 @@ namespace Entity
             {
                 OnLecNoChanging(value);
                 ReportPropertyChanging("LecNo");
-                _LecNo = StructuralObject.SetValidValue(value);
+                _LecNo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LecNo");
                 OnLecNoChanged();
             }
         }
-        private global::System.Int32 _LecNo;
-        partial void OnLecNoChanging(global::System.Int32 value);
+        private global::System.String _LecNo;
+        partial void OnLecNoChanging(global::System.String value);
         partial void OnLecNoChanged();
     
         /// <summary>
@@ -32866,6 +33176,30 @@ namespace Entity
         private Nullable<global::System.Boolean> _Status;
         partial void OnStatusChanging(Nullable<global::System.Boolean> value);
         partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SessionId
+        {
+            get
+            {
+                return _SessionId;
+            }
+            set
+            {
+                OnSessionIdChanging(value);
+                ReportPropertyChanging("SessionId");
+                _SessionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SessionId");
+                OnSessionIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SessionId;
+        partial void OnSessionIdChanging(Nullable<global::System.Int32> value);
+        partial void OnSessionIdChanged();
 
         #endregion
 
@@ -40189,7 +40523,7 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> AttendanceDate
+        public global::System.String AttendanceDate
         {
             get
             {
@@ -40199,13 +40533,13 @@ namespace Entity
             {
                 OnAttendanceDateChanging(value);
                 ReportPropertyChanging("AttendanceDate");
-                _AttendanceDate = StructuralObject.SetValidValue(value);
+                _AttendanceDate = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("AttendanceDate");
                 OnAttendanceDateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _AttendanceDate;
-        partial void OnAttendanceDateChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _AttendanceDate;
+        partial void OnAttendanceDateChanging(global::System.String value);
         partial void OnAttendanceDateChanged();
     
         /// <summary>
@@ -40279,6 +40613,54 @@ namespace Entity
         private Nullable<global::System.Int32> _Session;
         partial void OnSessionChanging(Nullable<global::System.Int32> value);
         partial void OnSessionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DayId
+        {
+            get
+            {
+                return _DayId;
+            }
+            set
+            {
+                OnDayIdChanging(value);
+                ReportPropertyChanging("DayId");
+                _DayId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DayId");
+                OnDayIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DayId;
+        partial void OnDayIdChanging(Nullable<global::System.Int32> value);
+        partial void OnDayIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> LecttimeId
+        {
+            get
+            {
+                return _LecttimeId;
+            }
+            set
+            {
+                OnLecttimeIdChanging(value);
+                ReportPropertyChanging("LecttimeId");
+                _LecttimeId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LecttimeId");
+                OnLecttimeIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _LecttimeId;
+        partial void OnLecttimeIdChanging(Nullable<global::System.Int32> value);
+        partial void OnLecttimeIdChanged();
 
         #endregion
 
@@ -50965,13 +51347,11 @@ namespace Entity
         /// Create a new sp_GetLectTimeSetUp_Result object.
         /// </summary>
         /// <param name="lecTimeid">Initial value of the LecTimeid property.</param>
-        /// <param name="lecNo">Initial value of the LecNo property.</param>
         /// <param name="status">Initial value of the status property.</param>
-        public static sp_GetLectTimeSetUp_Result Createsp_GetLectTimeSetUp_Result(global::System.Int32 lecTimeid, global::System.Int32 lecNo, global::System.String status)
+        public static sp_GetLectTimeSetUp_Result Createsp_GetLectTimeSetUp_Result(global::System.Int32 lecTimeid, global::System.String status)
         {
             sp_GetLectTimeSetUp_Result sp_GetLectTimeSetUp_Result = new sp_GetLectTimeSetUp_Result();
             sp_GetLectTimeSetUp_Result.LecTimeid = lecTimeid;
-            sp_GetLectTimeSetUp_Result.LecNo = lecNo;
             sp_GetLectTimeSetUp_Result.status = status;
             return sp_GetLectTimeSetUp_Result;
         }
@@ -51007,9 +51387,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LecNo
+        public global::System.String LecNo
         {
             get
             {
@@ -51019,13 +51399,13 @@ namespace Entity
             {
                 OnLecNoChanging(value);
                 ReportPropertyChanging("LecNo");
-                _LecNo = StructuralObject.SetValidValue(value);
+                _LecNo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LecNo");
                 OnLecNoChanged();
             }
         }
-        private global::System.Int32 _LecNo;
-        partial void OnLecNoChanging(global::System.Int32 value);
+        private global::System.String _LecNo;
+        partial void OnLecNoChanging(global::System.String value);
         partial void OnLecNoChanged();
     
         /// <summary>
@@ -51075,6 +51455,30 @@ namespace Entity
         private global::System.String _LectETime;
         partial void OnLectETimeChanging(global::System.String value);
         partial void OnLectETimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SessionName
+        {
+            get
+            {
+                return _SessionName;
+            }
+            set
+            {
+                OnSessionNameChanging(value);
+                ReportPropertyChanging("SessionName");
+                _SessionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SessionName");
+                OnSessionNameChanged();
+            }
+        }
+        private global::System.String _SessionName;
+        partial void OnSessionNameChanging(global::System.String value);
+        partial void OnSessionNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -54222,6 +54626,188 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getstudent_attandance_pivot_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getstudent_attandance_pivot_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> StudentID
+        {
+            get
+            {
+                return _StudentID;
+            }
+            set
+            {
+                OnStudentIDChanging(value);
+                ReportPropertyChanging("StudentID");
+                _StudentID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StudentID");
+                OnStudentIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _StudentID;
+        partial void OnStudentIDChanging(Nullable<global::System.Int32> value);
+        partial void OnStudentIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StudentName
+        {
+            get
+            {
+                return _StudentName;
+            }
+            set
+            {
+                OnStudentNameChanging(value);
+                ReportPropertyChanging("StudentName");
+                _StudentName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StudentName");
+                OnStudentNameChanged();
+            }
+        }
+        private global::System.String _StudentName;
+        partial void OnStudentNameChanging(global::System.String value);
+        partial void OnStudentNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> I_Hour
+        {
+            get
+            {
+                return _I_Hour;
+            }
+            set
+            {
+                OnI_HourChanging(value);
+                ReportPropertyChanging("I_Hour");
+                _I_Hour = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("I_Hour");
+                OnI_HourChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _I_Hour;
+        partial void OnI_HourChanging(Nullable<global::System.Int32> value);
+        partial void OnI_HourChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> II_Hour
+        {
+            get
+            {
+                return _II_Hour;
+            }
+            set
+            {
+                OnII_HourChanging(value);
+                ReportPropertyChanging("II_Hour");
+                _II_Hour = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("II_Hour");
+                OnII_HourChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _II_Hour;
+        partial void OnII_HourChanging(Nullable<global::System.Int32> value);
+        partial void OnII_HourChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> III_Hour
+        {
+            get
+            {
+                return _III_Hour;
+            }
+            set
+            {
+                OnIII_HourChanging(value);
+                ReportPropertyChanging("III_Hour");
+                _III_Hour = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("III_Hour");
+                OnIII_HourChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _III_Hour;
+        partial void OnIII_HourChanging(Nullable<global::System.Int32> value);
+        partial void OnIII_HourChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IV_Hour
+        {
+            get
+            {
+                return _IV_Hour;
+            }
+            set
+            {
+                OnIV_HourChanging(value);
+                ReportPropertyChanging("IV_Hour");
+                _IV_Hour = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IV_Hour");
+                OnIV_HourChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IV_Hour;
+        partial void OnIV_HourChanging(Nullable<global::System.Int32> value);
+        partial void OnIV_HourChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> V_Hour
+        {
+            get
+            {
+                return _V_Hour;
+            }
+            set
+            {
+                OnV_HourChanging(value);
+                ReportPropertyChanging("V_Hour");
+                _V_Hour = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("V_Hour");
+                OnV_HourChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _V_Hour;
+        partial void OnV_HourChanging(Nullable<global::System.Int32> value);
+        partial void OnV_HourChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getStudentCategory_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -54317,6 +54903,423 @@ namespace Entity
         private global::System.String _status;
         partial void OnstatusChanging(global::System.String value);
         partial void OnstatusChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetStudentDataCollection_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetStudentDataCollection_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetStudentDataCollection_Result object.
+        /// </summary>
+        /// <param name="studid">Initial value of the Studid property.</param>
+        /// <param name="classid">Initial value of the Classid property.</param>
+        /// <param name="dept_id">Initial value of the Dept_id property.</param>
+        public static sp_GetStudentDataCollection_Result Createsp_GetStudentDataCollection_Result(global::System.Int32 studid, global::System.Int32 classid, global::System.Int32 dept_id)
+        {
+            sp_GetStudentDataCollection_Result sp_GetStudentDataCollection_Result = new sp_GetStudentDataCollection_Result();
+            sp_GetStudentDataCollection_Result.Studid = studid;
+            sp_GetStudentDataCollection_Result.Classid = classid;
+            sp_GetStudentDataCollection_Result.Dept_id = dept_id;
+            return sp_GetStudentDataCollection_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Studid
+        {
+            get
+            {
+                return _Studid;
+            }
+            set
+            {
+                OnStudidChanging(value);
+                ReportPropertyChanging("Studid");
+                _Studid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Studid");
+                OnStudidChanged();
+            }
+        }
+        private global::System.Int32 _Studid;
+        partial void OnStudidChanging(global::System.Int32 value);
+        partial void OnStudidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Studnm
+        {
+            get
+            {
+                return _Studnm;
+            }
+            set
+            {
+                OnStudnmChanging(value);
+                ReportPropertyChanging("Studnm");
+                _Studnm = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Studnm");
+                OnStudnmChanged();
+            }
+        }
+        private global::System.String _Studnm;
+        partial void OnStudnmChanging(global::System.String value);
+        partial void OnStudnmChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StdRegNo
+        {
+            get
+            {
+                return _StdRegNo;
+            }
+            set
+            {
+                OnStdRegNoChanging(value);
+                ReportPropertyChanging("StdRegNo");
+                _StdRegNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StdRegNo");
+                OnStdRegNoChanged();
+            }
+        }
+        private global::System.String _StdRegNo;
+        partial void OnStdRegNoChanging(global::System.String value);
+        partial void OnStdRegNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RollNo
+        {
+            get
+            {
+                return _RollNo;
+            }
+            set
+            {
+                OnRollNoChanging(value);
+                ReportPropertyChanging("RollNo");
+                _RollNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RollNo");
+                OnRollNoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RollNo;
+        partial void OnRollNoChanging(Nullable<global::System.Int32> value);
+        partial void OnRollNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StdMobNo
+        {
+            get
+            {
+                return _StdMobNo;
+            }
+            set
+            {
+                OnStdMobNoChanging(value);
+                ReportPropertyChanging("StdMobNo");
+                _StdMobNo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StdMobNo");
+                OnStdMobNoChanged();
+            }
+        }
+        private global::System.String _StdMobNo;
+        partial void OnStdMobNoChanging(global::System.String value);
+        partial void OnStdMobNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StudEmail
+        {
+            get
+            {
+                return _StudEmail;
+            }
+            set
+            {
+                OnStudEmailChanging(value);
+                ReportPropertyChanging("StudEmail");
+                _StudEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StudEmail");
+                OnStudEmailChanged();
+            }
+        }
+        private global::System.String _StudEmail;
+        partial void OnStudEmailChanging(global::System.String value);
+        partial void OnStudEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CourseName
+        {
+            get
+            {
+                return _CourseName;
+            }
+            set
+            {
+                OnCourseNameChanging(value);
+                ReportPropertyChanging("CourseName");
+                _CourseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CourseName");
+                OnCourseNameChanged();
+            }
+        }
+        private global::System.String _CourseName;
+        partial void OnCourseNameChanging(global::System.String value);
+        partial void OnCourseNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String YearName
+        {
+            get
+            {
+                return _YearName;
+            }
+            set
+            {
+                OnYearNameChanging(value);
+                ReportPropertyChanging("YearName");
+                _YearName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("YearName");
+                OnYearNameChanged();
+            }
+        }
+        private global::System.String _YearName;
+        partial void OnYearNameChanging(global::System.String value);
+        partial void OnYearNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Classid
+        {
+            get
+            {
+                return _Classid;
+            }
+            set
+            {
+                OnClassidChanging(value);
+                ReportPropertyChanging("Classid");
+                _Classid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Classid");
+                OnClassidChanged();
+            }
+        }
+        private global::System.Int32 _Classid;
+        partial void OnClassidChanging(global::System.Int32 value);
+        partial void OnClassidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Dept_id
+        {
+            get
+            {
+                return _Dept_id;
+            }
+            set
+            {
+                OnDept_idChanging(value);
+                ReportPropertyChanging("Dept_id");
+                _Dept_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dept_id");
+                OnDept_idChanged();
+            }
+        }
+        private global::System.Int32 _Dept_id;
+        partial void OnDept_idChanging(global::System.Int32 value);
+        partial void OnDept_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> courseyearid
+        {
+            get
+            {
+                return _courseyearid;
+            }
+            set
+            {
+                OncourseyearidChanging(value);
+                ReportPropertyChanging("courseyearid");
+                _courseyearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("courseyearid");
+                OncourseyearidChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _courseyearid;
+        partial void OncourseyearidChanging(Nullable<global::System.Int32> value);
+        partial void OncourseyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FatherEmail
+        {
+            get
+            {
+                return _FatherEmail;
+            }
+            set
+            {
+                OnFatherEmailChanging(value);
+                ReportPropertyChanging("FatherEmail");
+                _FatherEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FatherEmail");
+                OnFatherEmailChanged();
+            }
+        }
+        private global::System.String _FatherEmail;
+        partial void OnFatherEmailChanging(global::System.String value);
+        partial void OnFatherEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FatherContact
+        {
+            get
+            {
+                return _FatherContact;
+            }
+            set
+            {
+                OnFatherContactChanging(value);
+                ReportPropertyChanging("FatherContact");
+                _FatherContact = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FatherContact");
+                OnFatherContactChanged();
+            }
+        }
+        private global::System.String _FatherContact;
+        partial void OnFatherContactChanging(global::System.String value);
+        partial void OnFatherContactChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MotherEmail
+        {
+            get
+            {
+                return _MotherEmail;
+            }
+            set
+            {
+                OnMotherEmailChanging(value);
+                ReportPropertyChanging("MotherEmail");
+                _MotherEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MotherEmail");
+                OnMotherEmailChanged();
+            }
+        }
+        private global::System.String _MotherEmail;
+        partial void OnMotherEmailChanging(global::System.String value);
+        partial void OnMotherEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MotherContact
+        {
+            get
+            {
+                return _MotherContact;
+            }
+            set
+            {
+                OnMotherContactChanging(value);
+                ReportPropertyChanging("MotherContact");
+                _MotherContact = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MotherContact");
+                OnMotherContactChanged();
+            }
+        }
+        private global::System.String _MotherContact;
+        partial void OnMotherContactChanging(global::System.String value);
+        partial void OnMotherContactChanged();
 
         #endregion
 
@@ -55090,8 +56093,7 @@ namespace Entity
         /// <param name="marks">Initial value of the Marks property.</param>
         /// <param name="pass_Marks">Initial value of the Pass_Marks property.</param>
         /// <param name="status">Initial value of the status property.</param>
-        /// <param name="academicyear">Initial value of the academicyear property.</param>
-        public static sp_getSubject_Result Createsp_getSubject_Result(global::System.Int32 subjectid, global::System.String subjectNm, global::System.Double marks, global::System.Double pass_Marks, global::System.String status, global::System.String academicyear)
+        public static sp_getSubject_Result Createsp_getSubject_Result(global::System.Int32 subjectid, global::System.String subjectNm, global::System.Double marks, global::System.Double pass_Marks, global::System.String status)
         {
             sp_getSubject_Result sp_getSubject_Result = new sp_getSubject_Result();
             sp_getSubject_Result.Subjectid = subjectid;
@@ -55099,7 +56101,6 @@ namespace Entity
             sp_getSubject_Result.Marks = marks;
             sp_getSubject_Result.Pass_Marks = pass_Marks;
             sp_getSubject_Result.status = status;
-            sp_getSubject_Result.academicyear = academicyear;
             return sp_getSubject_Result;
         }
 
@@ -55154,6 +56155,54 @@ namespace Entity
         private global::System.String _Classnm;
         partial void OnClassnmChanging(global::System.String value);
         partial void OnClassnmChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String academicyear
+        {
+            get
+            {
+                return _academicyear;
+            }
+            set
+            {
+                OnacademicyearChanging(value);
+                ReportPropertyChanging("academicyear");
+                _academicyear = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("academicyear");
+                OnacademicyearChanged();
+            }
+        }
+        private global::System.String _academicyear;
+        partial void OnacademicyearChanging(global::System.String value);
+        partial void OnacademicyearChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -55250,30 +56299,6 @@ namespace Entity
         private global::System.String _status;
         partial void OnstatusChanging(global::System.String value);
         partial void OnstatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String academicyear
-        {
-            get
-            {
-                return _academicyear;
-            }
-            set
-            {
-                OnacademicyearChanging(value);
-                ReportPropertyChanging("academicyear");
-                _academicyear = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("academicyear");
-                OnacademicyearChanged();
-            }
-        }
-        private global::System.String _academicyear;
-        partial void OnacademicyearChanging(global::System.String value);
-        partial void OnacademicyearChanged();
 
         #endregion
 
@@ -55937,12 +56962,330 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getTeacherCourse_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getTeacherCourse_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getTeacherCourse_Result object.
+        /// </summary>
+        /// <param name="courseid">Initial value of the Courseid property.</param>
+        public static sp_getTeacherCourse_Result Createsp_getTeacherCourse_Result(global::System.Int32 courseid)
+        {
+            sp_getTeacherCourse_Result sp_getTeacherCourse_Result = new sp_getTeacherCourse_Result();
+            sp_getTeacherCourse_Result.Courseid = courseid;
+            return sp_getTeacherCourse_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Courseid
+        {
+            get
+            {
+                return _Courseid;
+            }
+            set
+            {
+                OnCourseidChanging(value);
+                ReportPropertyChanging("Courseid");
+                _Courseid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Courseid");
+                OnCourseidChanged();
+            }
+        }
+        private global::System.Int32 _Courseid;
+        partial void OnCourseidChanging(global::System.Int32 value);
+        partial void OnCourseidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CourseName
+        {
+            get
+            {
+                return _CourseName;
+            }
+            set
+            {
+                OnCourseNameChanging(value);
+                ReportPropertyChanging("CourseName");
+                _CourseName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CourseName");
+                OnCourseNameChanged();
+            }
+        }
+        private global::System.String _CourseName;
+        partial void OnCourseNameChanging(global::System.String value);
+        partial void OnCourseNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Status;
+        partial void OnStatusChanging(Nullable<global::System.Boolean> value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CourseType
+        {
+            get
+            {
+                return _CourseType;
+            }
+            set
+            {
+                OnCourseTypeChanging(value);
+                ReportPropertyChanging("CourseType");
+                _CourseType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CourseType");
+                OnCourseTypeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CourseType;
+        partial void OnCourseTypeChanging(Nullable<global::System.Int32> value);
+        partial void OnCourseTypeChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getTeacherCourseDepartment_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getTeacherCourseDepartment_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getTeacherCourseDepartment_Result object.
+        /// </summary>
+        /// <param name="dept_id">Initial value of the Dept_id property.</param>
+        public static sp_getTeacherCourseDepartment_Result Createsp_getTeacherCourseDepartment_Result(global::System.Int32 dept_id)
+        {
+            sp_getTeacherCourseDepartment_Result sp_getTeacherCourseDepartment_Result = new sp_getTeacherCourseDepartment_Result();
+            sp_getTeacherCourseDepartment_Result.Dept_id = dept_id;
+            return sp_getTeacherCourseDepartment_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Dept_id
+        {
+            get
+            {
+                return _Dept_id;
+            }
+            set
+            {
+                OnDept_idChanging(value);
+                ReportPropertyChanging("Dept_id");
+                _Dept_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dept_id");
+                OnDept_idChanged();
+            }
+        }
+        private global::System.Int32 _Dept_id;
+        partial void OnDept_idChanging(global::System.Int32 value);
+        partial void OnDept_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getTeacherCourseYear_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_getTeacherCourseYear_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getTeacherCourseYear_Result object.
+        /// </summary>
+        /// <param name="yearid">Initial value of the yearid property.</param>
+        public static sp_getTeacherCourseYear_Result Createsp_getTeacherCourseYear_Result(global::System.Int32 yearid)
+        {
+            sp_getTeacherCourseYear_Result sp_getTeacherCourseYear_Result = new sp_getTeacherCourseYear_Result();
+            sp_getTeacherCourseYear_Result.yearid = yearid;
+            return sp_getTeacherCourseYear_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 yearid
+        {
+            get
+            {
+                return _yearid;
+            }
+            set
+            {
+                OnyearidChanging(value);
+                ReportPropertyChanging("yearid");
+                _yearid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("yearid");
+                OnyearidChanged();
+            }
+        }
+        private global::System.Int32 _yearid;
+        partial void OnyearidChanging(global::System.Int32 value);
+        partial void OnyearidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String YearName
+        {
+            get
+            {
+                return _YearName;
+            }
+            set
+            {
+                OnYearNameChanging(value);
+                ReportPropertyChanging("YearName");
+                _YearName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("YearName");
+                OnYearNameChanged();
+            }
+        }
+        private global::System.String _YearName;
+        partial void OnYearNameChanging(global::System.String value);
+        partial void OnYearNameChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_getteacheremail_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
     public partial class sp_getteacheremail_Result : ComplexObject
     {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_getteacheremail_Result object.
+        /// </summary>
+        /// <param name="empid">Initial value of the Empid property.</param>
+        public static sp_getteacheremail_Result Createsp_getteacheremail_Result(global::System.Int32 empid)
+        {
+            sp_getteacheremail_Result sp_getteacheremail_Result = new sp_getteacheremail_Result();
+            sp_getteacheremail_Result.Empid = empid;
+            return sp_getteacheremail_Result;
+        }
+
+        #endregion
+
         #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Empid
+        {
+            get
+            {
+                return _Empid;
+            }
+            set
+            {
+                OnEmpidChanging(value);
+                ReportPropertyChanging("Empid");
+                _Empid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Empid");
+                OnEmpidChanged();
+            }
+        }
+        private global::System.Int32 _Empid;
+        partial void OnEmpidChanging(global::System.Int32 value);
+        partial void OnEmpidChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -56054,26 +57397,88 @@ namespace Entity
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_GetTeacherSubject_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_GetTeacherSubject_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_GetTeacherSubject_Result object.
+        /// </summary>
+        /// <param name="subjectid">Initial value of the Subjectid property.</param>
+        public static sp_GetTeacherSubject_Result Createsp_GetTeacherSubject_Result(global::System.Int32 subjectid)
+        {
+            sp_GetTeacherSubject_Result sp_GetTeacherSubject_Result = new sp_GetTeacherSubject_Result();
+            sp_GetTeacherSubject_Result.Subjectid = subjectid;
+            return sp_GetTeacherSubject_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Subjectid
+        {
+            get
+            {
+                return _Subjectid;
+            }
+            set
+            {
+                OnSubjectidChanging(value);
+                ReportPropertyChanging("Subjectid");
+                _Subjectid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Subjectid");
+                OnSubjectidChanged();
+            }
+        }
+        private global::System.Int32 _Subjectid;
+        partial void OnSubjectidChanging(global::System.Int32 value);
+        partial void OnSubjectidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SubjectNm
+        {
+            get
+            {
+                return _SubjectNm;
+            }
+            set
+            {
+                OnSubjectNmChanging(value);
+                ReportPropertyChanging("SubjectNm");
+                _SubjectNm = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SubjectNm");
+                OnSubjectNmChanged();
+            }
+        }
+        private global::System.String _SubjectNm;
+        partial void OnSubjectNmChanging(global::System.String value);
+        partial void OnSubjectNmChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="SchoolMgmtSysModel", Name="sp_gettimetable_pivot_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
     public partial class sp_gettimetable_pivot_Result : ComplexObject
     {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new sp_gettimetable_pivot_Result object.
-        /// </summary>
-        /// <param name="lecNo">Initial value of the LecNo property.</param>
-        public static sp_gettimetable_pivot_Result Createsp_gettimetable_pivot_Result(global::System.Int32 lecNo)
-        {
-            sp_gettimetable_pivot_Result sp_gettimetable_pivot_Result = new sp_gettimetable_pivot_Result();
-            sp_gettimetable_pivot_Result.LecNo = lecNo;
-            return sp_gettimetable_pivot_Result;
-        }
-
-        #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -56103,9 +57508,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LecNo
+        public global::System.String LecNo
         {
             get
             {
@@ -56115,13 +57520,13 @@ namespace Entity
             {
                 OnLecNoChanging(value);
                 ReportPropertyChanging("LecNo");
-                _LecNo = StructuralObject.SetValidValue(value);
+                _LecNo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LecNo");
                 OnLecNoChanged();
             }
         }
-        private global::System.Int32 _LecNo;
-        partial void OnLecNoChanging(global::System.Int32 value);
+        private global::System.String _LecNo;
+        partial void OnLecNoChanging(global::System.String value);
         partial void OnLecNoChanged();
     
         /// <summary>
@@ -56311,14 +57716,12 @@ namespace Entity
         /// </summary>
         /// <param name="tid">Initial value of the Tid property.</param>
         /// <param name="day">Initial value of the Day property.</param>
-        /// <param name="lecNo">Initial value of the LecNo property.</param>
         /// <param name="subjectid">Initial value of the Subjectid property.</param>
-        public static sp_gettimetable_Result Createsp_gettimetable_Result(global::System.Int32 tid, global::System.Int32 day, global::System.Int32 lecNo, global::System.String subjectid)
+        public static sp_gettimetable_Result Createsp_gettimetable_Result(global::System.Int32 tid, global::System.Int32 day, global::System.String subjectid)
         {
             sp_gettimetable_Result sp_gettimetable_Result = new sp_gettimetable_Result();
             sp_gettimetable_Result.Tid = tid;
             sp_gettimetable_Result.Day = day;
-            sp_gettimetable_Result.LecNo = lecNo;
             sp_gettimetable_Result.Subjectid = subjectid;
             return sp_gettimetable_Result;
         }
@@ -56380,6 +57783,30 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String yearid
         {
             get
@@ -56426,9 +57853,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LecNo
+        public global::System.String LecNo
         {
             get
             {
@@ -56438,13 +57865,13 @@ namespace Entity
             {
                 OnLecNoChanging(value);
                 ReportPropertyChanging("LecNo");
-                _LecNo = StructuralObject.SetValidValue(value);
+                _LecNo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LecNo");
                 OnLecNoChanged();
             }
         }
-        private global::System.Int32 _LecNo;
-        partial void OnLecNoChanging(global::System.Int32 value);
+        private global::System.String _LecNo;
+        partial void OnLecNoChanging(global::System.String value);
         partial void OnLecNoChanged();
     
         /// <summary>
@@ -56548,24 +57975,24 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Empid
+        public global::System.String EmpId
         {
             get
             {
-                return _Empid;
+                return _EmpId;
             }
             set
             {
-                OnEmpidChanging(value);
-                ReportPropertyChanging("Empid");
-                _Empid = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Empid");
-                OnEmpidChanged();
+                OnEmpIdChanging(value);
+                ReportPropertyChanging("EmpId");
+                _EmpId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EmpId");
+                OnEmpIdChanged();
             }
         }
-        private global::System.String _Empid;
-        partial void OnEmpidChanging(global::System.String value);
-        partial void OnEmpidChanged();
+        private global::System.String _EmpId;
+        partial void OnEmpIdChanging(global::System.String value);
+        partial void OnEmpIdChanged();
 
         #endregion
 
@@ -56586,15 +58013,13 @@ namespace Entity
         /// </summary>
         /// <param name="tid">Initial value of the Tid property.</param>
         /// <param name="day">Initial value of the Day property.</param>
-        /// <param name="lecNo">Initial value of the LecNo property.</param>
         /// <param name="subjectid">Initial value of the Subjectid property.</param>
         /// <param name="empid">Initial value of the Empid property.</param>
-        public static sp_gettimetableclass_Result Createsp_gettimetableclass_Result(global::System.Int32 tid, global::System.Int32 day, global::System.Int32 lecNo, global::System.String subjectid, global::System.String empid)
+        public static sp_gettimetableclass_Result Createsp_gettimetableclass_Result(global::System.Int32 tid, global::System.Int32 day, global::System.String subjectid, global::System.String empid)
         {
             sp_gettimetableclass_Result sp_gettimetableclass_Result = new sp_gettimetableclass_Result();
             sp_gettimetableclass_Result.Tid = tid;
             sp_gettimetableclass_Result.Day = day;
-            sp_gettimetableclass_Result.LecNo = lecNo;
             sp_gettimetableclass_Result.Subjectid = subjectid;
             sp_gettimetableclass_Result.Empid = empid;
             return sp_gettimetableclass_Result;
@@ -56657,6 +58082,30 @@ namespace Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String Dept_name
+        {
+            get
+            {
+                return _Dept_name;
+            }
+            set
+            {
+                OnDept_nameChanging(value);
+                ReportPropertyChanging("Dept_name");
+                _Dept_name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Dept_name");
+                OnDept_nameChanged();
+            }
+        }
+        private global::System.String _Dept_name;
+        partial void OnDept_nameChanging(global::System.String value);
+        partial void OnDept_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String yearid
         {
             get
@@ -56703,9 +58152,9 @@ namespace Entity
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LecNo
+        public global::System.String LecNo
         {
             get
             {
@@ -56715,13 +58164,13 @@ namespace Entity
             {
                 OnLecNoChanging(value);
                 ReportPropertyChanging("LecNo");
-                _LecNo = StructuralObject.SetValidValue(value);
+                _LecNo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LecNo");
                 OnLecNoChanged();
             }
         }
-        private global::System.Int32 _LecNo;
-        partial void OnLecNoChanging(global::System.Int32 value);
+        private global::System.String _LecNo;
+        partial void OnLecNoChanging(global::System.String value);
         partial void OnLecNoChanged();
     
         /// <summary>
@@ -57271,6 +58720,54 @@ namespace Entity
         private global::System.String _academicyear;
         partial void OnacademicyearChanging(global::System.String value);
         partial void OnacademicyearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Studnm
+        {
+            get
+            {
+                return _Studnm;
+            }
+            set
+            {
+                OnStudnmChanging(value);
+                ReportPropertyChanging("Studnm");
+                _Studnm = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Studnm");
+                OnStudnmChanged();
+            }
+        }
+        private global::System.String _Studnm;
+        partial void OnStudnmChanging(global::System.String value);
+        partial void OnStudnmChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmpName
+        {
+            get
+            {
+                return _EmpName;
+            }
+            set
+            {
+                OnEmpNameChanging(value);
+                ReportPropertyChanging("EmpName");
+                _EmpName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EmpName");
+                OnEmpNameChanged();
+            }
+        }
+        private global::System.String _EmpName;
+        partial void OnEmpNameChanging(global::System.String value);
+        partial void OnEmpNameChanged();
 
         #endregion
 

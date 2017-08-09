@@ -79,6 +79,7 @@
     <Compile Include="lib_JTypemodule.cs" />
     <Compile Include="lib_publishermodel.cs" />
     <Compile Include="lib_vendormodel.cs" />
+    <Compile Include="ReportsViewModel.cs" />
     <Compile Include="SchoolMgmtSys.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

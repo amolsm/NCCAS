@@ -6,13 +6,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
         FillPermission();
-
+       
         $("#remark").hide();
         $("#M_Usr td").css({ "background-color": "orange" });
         $("#lblmsg").text('');
         $('#userid input').attr("readonly", true);
         if ($("#userid input").val() == "0") {
             $("#userid").hide();
+            $("#User").val('');
+            $("#Pass").val('');
         }
         $("#genid").hide();
         FillType();
@@ -287,8 +289,8 @@
                     $("#genid").show();
                     $("#userid").show();
                     $("#userid input").val(data.Userid);
-                    $("#UserName").val(data.UserName);
-                    $("#Password").val(data.Password);
+                    $("#User").val(data.UserName);
+                    $("#Pass").val(data.Password);
                     $("#Status").val(data.Status);
                     $("#academicyear").val(data.academicyear);
                     if (data.Status == 2) {
@@ -304,8 +306,8 @@
             $("#Type").val('');
             $("#userid").hide();
             $('#userid input').val('0');
-            $("#UserName").val('');
-            $("#Password").val('');
+            $("#User").val('');
+            $("#Pass").val('');
             $("#Genid").val('');
             $("#genid").hide();
             $("#Status").val('');
@@ -318,9 +320,9 @@
         }
 
 
-        $('#UserName').blur(function () {
+        $('#User').blur(function () {
             $("#lblmsg").text("");
-            var UserName = $('#UserName').val();
+            var UserName = $('#User').val();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_User")',
@@ -332,7 +334,7 @@
                         $("#lblmsg").text("UserName Already Exists!..");
                         $("#lblmsg").css({ "color": "orange" });
                         $("#lblmsg").css({ "font-size": "15px" });
-                        $('#UserName').val('');
+                        $('#User').val('');
                         return false;
                     }
                 }
@@ -411,27 +413,27 @@
                 });
             }
 
-            if ($("#UserName").val() == '') {
+            if ($("#User").val() == '') {
                 cnt++;
-                $("#UserName").css({
+                $("#User").css({
                     "border": "2px solid red"
                 });
             }
             else {
-                $("#UserName").css({
+                $("#User").css({
                     "border": "",
                     "background": ""
                 });
             }
 
-            if ($("#Password").val() == '') {
+            if ($("#Pass").val() == '') {
                 cnt++;
-                $("#Password").css({
+                $("#Pass").css({
                     "border": "2px solid red"
                 });
             }
             else {
-                $("#Password").css({
+                $("#Pass").css({
                     "border": "",
                     "background": ""
                 });
@@ -545,17 +547,17 @@
                                                  </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.UserName, new { @class="control-label", @for="focusedInput" })
+                                            @Html.LabelFor(model => model.User, new { @class="control-label", @for="focusedInput" })
                                              <div class="controls">
-                                            @Html.EditorFor(model => model.UserName, new { @class="input-midium" ,@id="focusedInput", @type="text" })
-                                            @Html.ValidationMessageFor(model => model.UserName)
+                                            @Html.EditorFor(model => model.User, new { @class="input-midium" ,@id="focusedInput", @type="text" })
+                                            @Html.ValidationMessageFor(model => model.User)
                                                  </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.Password, new { @class="control-label", @for="focusedInput" })
+                                            @Html.LabelFor(model => model.Pass, new { @class="control-label", @for="focusedInput" })
                                              <div class="controls">
-                                            @Html.PasswordFor(model => model.Password, new { @class="input-midium" ,@id="focusedInput", @type="password" })
-                                            @Html.ValidationMessageFor(model => model.Password)
+                                            @Html.PasswordFor(model => model.Pass, new { @class="input-midium" ,@id="focusedInput", @type="password" })
+                                            @Html.ValidationMessageFor(model => model.Pass)
                                                  </div>
                                         </div>
                                         <div class="control-group">

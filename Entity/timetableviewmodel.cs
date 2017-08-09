@@ -14,6 +14,8 @@ namespace Entity
         [DisplayName("Course Name ")]
         public int Classid { get; set; }
 
+        public string CourseName { get; set; }
+
         [DisplayName("Day Order")]
         public int Day { get; set; }
 
@@ -78,7 +80,7 @@ namespace Entity
         public int LecTimeId { get; set; }
 
         [DisplayName("Lecture No.")]
-        public int LecNo { get; set; }
+        public string LecNo { get; set; }
 
         [DisplayName("Lecture Start Time ")]
         public string LecTime { get; set; }
@@ -86,9 +88,14 @@ namespace Entity
         [DisplayName("Lecture End Time ")]
         public string LecETime { get; set; }
 
+        [DisplayName("Session")]
+        public int SessionId { get; set; }
+
+
         [DisplayName("Active ")]
         public bool status { get; set; }
 
-       public List<sp_GetLectTimeSetUp_Result> _LecttimeSetupList { get; set; }
+        public List<tbl_SessionMaster> _SessionList { get; set; }
+        public List<sp_GetLectTimeSetUp_Result> _LecttimeSetupList { get; set; }
     }
 }

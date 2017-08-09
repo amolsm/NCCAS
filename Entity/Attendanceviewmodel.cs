@@ -13,7 +13,10 @@ namespace Entity
         public int Classid { get; set; }
 
         [DisplayName("Select Date ")]
-        public DateTime AttendanceDate { get; set; }
+        public string AttendanceDate { get; set; }
+
+        [DisplayName("Select Date ")]
+        public DateTime StaffAttendanceDate { get; set; }
 
         [DisplayName("Time In ")]
         public string AttendanceTimeIn { get; set; }
@@ -57,6 +60,8 @@ namespace Entity
         [DisplayName("Session Name")]
         public int session { get; set; }
 
+        [DisplayName("Hour")]
+        public int LecTimeId { get; set; }
 
         [DisplayName("Leave Start Date")]
         public DateTime LeaveStartDate { get; set; }
@@ -70,11 +75,15 @@ namespace Entity
         public SelectList ylist { get; set; }
         public List<tbl_CourseYearMaster> tblcourse { get; set; }
         public List<tbl_SessionMaster> SessionList { get; set; }
+
+        public List<tbl_LectTimeSetUp> _Lecturelist { get; set; }
         public List<tbl_employee> Employeelist { get; set; }
         public List<tbl_division> DivisionList { get; set; }
         public List<tblDepartment> DepartmentList { get; set; }
         public List<tbl_YearMaster> YearList { get; set; }
         public List<tbl_CourseMaster> Classlist { get; set; }
+
+        public List<sp_getTeacherCourse_Result> _courselist { get; set; }
         public List<sp_getyear_Result> yearlist1 { get; set; }
         public List<tbl_leave> Leavelist { get; set; }
         public class presentdetails
@@ -97,6 +106,8 @@ namespace Entity
         public List<sp_GetAvailableLeave_Result> AvailableLeaveList { get; set; }
 
         public List<sp_GetEmpLeaveDetails_Result> EmpLeaveDetail { get; set; }
+
+        public List<sp_GetTeacherSubject_Result> _timetableTeacherSubject { get; set; }
     }
   
         
