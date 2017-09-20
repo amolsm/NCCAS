@@ -17,6 +17,12 @@ namespace Entity
         [DisplayName("Course")]
         public int courseyearid { get; set; }
 
+        [DisplayName("Course")]
+        public int CourseId { get; set; }
+
+        [DisplayName("Department")]
+        public int DeptId { get; set; }
+
         [DisplayName("Control Name ")]  
         public string ctrlnm { get; set; }
 
@@ -26,6 +32,10 @@ namespace Entity
         public List<tbl_class> Classlist { get; set; }
 
         public List<tblReceiptType> _receipttype { get; set; }
+
+        public List<tbl_CourseMaster> _CourseMasterList { get; set; }
+
+        public List<tblDepartment> _DepartmentList { get; set; }
 
         public List<sp_getfeeslabels_Result> _feeslabellist { get; set; }
         public List<sp_GetCoursefordevision_Result> _CourseList { get; set; }

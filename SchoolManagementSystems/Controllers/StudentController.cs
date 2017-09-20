@@ -25,17 +25,46 @@ namespace SchoolManagementSystems.Controllers
     public class StudentController : Controller
     {
         SchoolMgmtSysEntities db = new SchoolMgmtSysEntities();
+        [HttpGet]
         public ActionResult Index(string Search_Data)
         {
             Studentviewmodel svm = new Studentviewmodel();
             FillPermission(4);
-            if (Search_Data == null || Search_Data == "")
-                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).ToList();
+            int Empid;
+            int roleid;
+            try { Empid = Convert.ToInt32(Session["Genid"].ToString()); } catch { Empid = 0; }
+            try { roleid = Convert.ToInt32(Session["Role"].ToString()); } catch { roleid = 0; }
+            svm._courselist = db.sp_getTeacherCourse(Empid, roleid).ToList();
+
+            svm.YearList = new List<tbl_YearMaster>();
+            svm.DepartmentList = new List<tblDepartment>();
+            svm.StudentDataCollection = new List<sp_GetStudentDataCollection_Result>();
+            return View(svm);
+        }
+        [HttpPost]
+        public ActionResult Index(Studentviewmodel svm)
+        {
+
+            int Empid;
+            int roleid;
+            try { Empid = Convert.ToInt32(Session["Genid"].ToString()); } catch { Empid = 0; }
+            try { roleid = Convert.ToInt32(Session["Role"].ToString()); } catch { roleid = 0; }
+            svm._courselist = db.sp_getTeacherCourse(Empid, roleid).ToList();
+
+            svm.YearList = new List<tbl_YearMaster>();
+            svm.DepartmentList = new List<tblDepartment>();
+
+
+            if (svm.Classid.ToString() != null && svm.Classid.ToString() != "" && svm.courseyear.ToString() != null && svm.courseyear.ToString() != "" && svm.DepartmentId.ToString() != null && svm.DepartmentId.ToString() != "")
+            {
+                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).Where(x => x.Classid.ToString().ToUpper().Contains(svm.Classid.ToString()) && x.Dept_id.ToString().Contains(svm.DepartmentId.ToString()) && x.courseyearid.ToString().Contains(svm.courseyear.ToString())).ToList();
+            }
             else
-                svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).Where(x => x.Studnm.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.StdMobNo.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.StudEmail.ToUpper().Contains(Search_Data.ToUpper())
-                                                                                        || x.YearName.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+            {
+                svm.StudentDataCollection = new List<sp_GetStudentDataCollection_Result>();
+            } 
+           
+
             return View(svm);
         }
         public ActionResult Admission(int? Studid)
@@ -1178,6 +1207,35 @@ namespace SchoolManagementSystems.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetStudents(string id, string id2, string id3) // id = Classid, id2 = year, id3 = department
+
+        {
+            Studentviewmodel svm = new Studentviewmodel();
+
+            int Empid;
+            int roleid;
+            try { Empid = Convert.ToInt32(Session["Genid"].ToString()); } catch { Empid = 0; }
+            try { roleid = Convert.ToInt32(Session["Role"].ToString()); } catch { roleid = 0; }
+            svm._courselist = db.sp_getTeacherCourse(Empid, roleid).ToList();
+
+            svm.YearList = new List<tbl_YearMaster>();
+            svm.DepartmentList = new List<tblDepartment>();
+
+            int Classid = 0;
+            int DepartmentId = 0;
+            int yearid = 0;
+            if (id != null && id != "" && id2 != null && id2 != "" && id3 != null && id3 != "")
+            {
+                DepartmentId = Convert.ToInt32(id3);
+                yearid = Convert.ToInt32(id2);
+                Classid = Convert.ToInt32(id);
+            }
+            svm.StudentDataCollection = db.sp_GetStudentDataCollection().OrderBy(m => m.Studid).Where(x => x.Classid.ToString().ToUpper().Contains(Classid.ToString()) && x.Dept_id.ToString().Contains(DepartmentId.ToString()) && x.courseyearid.ToString().Contains(yearid.ToString())).ToList();
+                                                                          
+
+             return View("Index", svm);
+
+        }
         private string SendUpdateSMS(int studentId)
         {
             string stemailid;
@@ -1209,6 +1267,57 @@ namespace SchoolManagementSystems.Controllers
             }
         }
 
+
+        public JsonResult GetCourseTeacherDepartment(string id)
+        {
+            int courseid = 0;
+            if (id != null && id != "")
+            {
+                courseid = Convert.ToInt32(id);
+            }
+            int Empid;
+            int roleid;
+            try { Empid = Convert.ToInt32(Session["Genid"].ToString()); } catch { Empid = 0; }
+            try { roleid = Convert.ToInt32(Session["Role"].ToString()); } catch { roleid = 0; }
+
+            List<sp_getTeacherCourseDepartment_Result> DClass = db.sp_getTeacherCourseDepartment(Empid, roleid, courseid).ToList();
+
+            return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
+        }
+
+        public JsonResult GetYearClass(string depid, string cid)
+        {
+            int coureid = 0;
+            int detid = 0;
+            if (depid != null && depid != "" && cid != null && cid != "")
+            {
+                coureid = Convert.ToInt32(cid);
+                detid = Convert.ToInt32(depid);
+            }
+            int Empid;
+            int roleid;
+            try { Empid = Convert.ToInt32(Session["Genid"].ToString()); } catch { Empid = 0; }
+            try { roleid = Convert.ToInt32(Session["Role"].ToString()); } catch { roleid = 0; }
+            List<sp_getTeacherCourseYear_Result> yeardata = db.sp_getTeacherCourseYear(Empid, roleid, coureid, detid).ToList();
+
+            return Json(new SelectList(yeardata, "yearid", "YearName"));
+
+        }
+        public JsonResult GetDepartment(string id)
+        {
+            int courseid = 0;
+            if (id != null && id != "")
+            {
+                courseid = Convert.ToInt32(id);
+            }
+
+            var DClass = from post in db.tbl_Course
+                         join meta in db.tblDepartment on post.Dept_id equals meta.Dept_id
+                         where post.Course_id == courseid && post.status == true
+                         select new { meta.Dept_id, meta.Dept_name };
+
+            return Json(new SelectList(DClass, "Dept_id", "Dept_name"));
+        }
     }
 }
 

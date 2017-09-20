@@ -6,7 +6,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         FillPermission();
-       
+
         $("#remark").hide();
         $("#M_Usr td").css({ "background-color": "orange" });
         $("#lblmsg").text('');
@@ -27,7 +27,9 @@
             item += '<option value="3">Admin</option>';
             item += '<option value="4">Teacher</option>';
             item += '<option value="5">Employee</option>';
-            item += '<option value="6">TestAdmin</option>';
+            item += '<option value="6">Librarian</option>';
+            item += '<option value="7">StudentAdmin</option>';
+            item += '<option value="8">OfficeAdmin</option>';
             $("#Type").append(item);
         }
 
@@ -47,7 +49,9 @@
             else if (Type == 3) { TypeName = "Admin"; }
             else if (Type == 4) { TypeName = "Teacher"; }
             else if (Type == 5) { TypeName = "Employee"; }
-            else if (Type == 6) { TypeName = "TestAdmin"; }
+            else if (Type == 6) { TypeName = "Librarian"; }
+            else if (Type == 7) { TypeName = "StudentAdmin"; }
+            else if (Type == 8) { TypeName = "OfficeAdmin"; }
             $("#Genid").empty();
             if (Type != "") {
                 if (Type == 1) {
@@ -175,7 +179,10 @@
                     else if (Type == 3) { TypeName = "Admin"; }
                     else if (Type == 4) { TypeName = "Teacher"; }
                     else if (Type == 5) { TypeName = "Employee"; }
-                    else if (Type == 6) { TypeName = "TestAdmin"; }
+                    else if (Type == 6) { TypeName = "Librarian"; }
+                    else if (Type == 7) { TypeName = "StudentAdmin"; }
+                    else if (Type == 8) { TypeName = "OfficeAdmin"; }
+
                     $("#Genid").empty();
                     if (Type != "") {
                         if (Type == 1) {
@@ -492,137 +499,136 @@
 @Html.HiddenFor(m => m.Userid)
 @Html.Partial("_PermissionHiddenFlds")
 <div class="container-fluid-full">
-             
-		<div class="row-fluid">
-             @Html.Partial("_MasterSubMenu")
-	<div id="content" class="span10">
-        	<div class="row-fluid">
-                      
-            <ul class="breadcrumb">
-             <li><i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
-                @Html.ActionLink("Masters", "User", "Masters", "")<i class="icon-angle-right"></i></li>
-                <li class="active">User Master</li>
-               @* <div style="float: right;">
-                    @using (Html.BeginForm())
-                    {
 
-                        @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string)
-                        <input type="submit" value="Find" />
-                    }
-                </div>*@
-            </ul>
+    <div class="row-fluid">
+        @Html.Partial("_MasterSubMenu")
+        <div id="content" class="span10">
+            <div class="row-fluid">
 
-                 <div class="panel-body"> 
-<div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
-	<strong><label id="lblmsg"></label></strong> 
-	</div>
-  <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
-	<strong><label id="lblmsgs"></label></strong> 
-</div>
-</div>
-         <div class="row-fluid sortable">
-              <div class="box span12">
-					<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
-						<div class="box-icon">
-						
-							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-						
-						</div>
-					</div>
-                               		<div class="box-content">
-						<form id="frm" class="form-horizontal">
-                              
-						
-                                  <fieldset>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>@Html.ActionLink("Home", "Login", "Login")<i class="icon-angle-right"></i>
+                        @Html.ActionLink("Masters", "User", "Masters", "")<i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active">User Master</li>
+                    @* <div style="float: right;">
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string)
+                                <input type="submit" value="Find" />
+                            }
+                        </div>*@
+                </ul>
+
+                <div class="panel-body">
+                    <div id="msg" hidden="hidden" class="alert alert-warning" visible="false">
+                        <strong><label id="lblmsg"></label></strong>
+                    </div>
+                    <div id="msgs" hidden="hidden" class="alert alert-success" visible="false">
+                        <strong><label id="lblmsgs"></label></strong>
+                    </div>
+                </div>
+                <div class="row-fluid sortable">
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form id="frm" class="form-horizontal">
+
+
+                                <fieldset>
                                     @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frm", @class = "form-horizontal" }))
                                     {
                                         @Html.ValidationSummary(true)
-                                       
+
                                         <div id="userid" class="control-group">
-                                            @Html.LabelFor(model => model.Userid, new { @class="control-label", @for="focusedInput" })
-                                             <div class="controls">
-                                            @Html.EditorFor(model => model.Userid, new { @class="input-midium" ,@id="focusedInput", @type="text" })
-                                            @Html.ValidationMessageFor(model => model.Userid)
-                                                 </div>
+                                            @Html.LabelFor(model => model.Userid, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.Userid, new { @class = "input-midium", @id = "focusedInput", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.Userid)
+                                            </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.User, new { @class="control-label", @for="focusedInput" })
-                                             <div class="controls">
-                                            @Html.EditorFor(model => model.User, new { @class="input-midium" ,@id="focusedInput", @type="text" })
-                                            @Html.ValidationMessageFor(model => model.User)
-                                                 </div>
+                                            @Html.LabelFor(model => model.User, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.User, new { @class = "input-midium", @id = "focusedInput", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.User)
+                                            </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.Pass, new { @class="control-label", @for="focusedInput" })
-                                             <div class="controls">
-                                            @Html.PasswordFor(model => model.Pass, new { @class="input-midium" ,@id="focusedInput", @type="password" })
-                                            @Html.ValidationMessageFor(model => model.Pass)
-                                                 </div>
+                                            @Html.LabelFor(model => model.Pass, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.PasswordFor(model => model.Pass, new { @class = "input-midium", @id = "focusedInput", @type = "password" })
+                                                @Html.ValidationMessageFor(model => model.Pass)
+                                            </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.Type, new {@class="control-label" ,@for="Type" })
-                                             <div class="controls">
-                                            <select id="Type" name="Type">
-                                            </select>
-                                            @Html.ValidationMessageFor(model => model.Type)
-                                                 </div>
+                                            @Html.LabelFor(model => model.Type, new { @class = "control-label", @for = "Type" })
+                                            <div class="controls">
+                                                <select id="Type" name="Type"></select>
+                                                @Html.ValidationMessageFor(model => model.Type)
+                                            </div>
                                         </div>
                                         <div id="genid" class="control-group">
-                                            @Html.LabelFor(model => model.Genid, new { @class="control-label" ,@for="Genid" })
-                                             <div class="controls">
-                                            <select id="Genid"  name="Genid">
-                                            </select>
-                                            @Html.ValidationMessageFor(model => model.Genid)
-                                                 </div>
+                                            @Html.LabelFor(model => model.Genid, new { @class = "control-label", @for = "Genid" })
+                                            <div class="controls">
+                                                <select id="Genid" name="Genid"></select>
+                                                @Html.ValidationMessageFor(model => model.Genid)
+                                            </div>
                                         </div>
                                         <div class="control-group">
-                                            @Html.LabelFor(model => model.Status, new {  @class="control-label" ,@for="Status"})
-                                             <div class="controls">
-                                            <select id="Status"  name="Status">
-                                            </select>
-                                            @Html.ValidationMessageFor(model => model.Status)
-                                                 </div>
+                                            @Html.LabelFor(model => model.Status, new { @class = "control-label", @for = "Status" })
+                                            <div class="controls">
+                                                <select id="Status" name="Status"></select>
+                                                @Html.ValidationMessageFor(model => model.Status)
+                                            </div>
                                         </div>
                                         <div id="remark" class="control-group">
-                                            @Html.LabelFor(model => model.academicyear, new { @class="control-label", @for="focusedInput"})
-                                             <div class="controls">
-                                            @Html.TextAreaFor(model => model.academicyear, new { @class="input-midium" ,@id="focusedInput", @type="text" })
-                                            @Html.ValidationMessageFor(model => model.academicyear)
-                                                 </div>
+                                            @Html.LabelFor(model => model.academicyear, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.TextAreaFor(model => model.academicyear, new { @class = "input-midium", @id = "focusedInput", @type = "text" })
+                                                @Html.ValidationMessageFor(model => model.academicyear)
+                                            </div>
                                         </div>
-                                        
-                                       <div class="form-actions">
+
+                                        <div class="form-actions">
                                             <input type="button" class="btn btn-primary" id="insert" value="Submit" />
                                             <input type="button" class="btn btn-primary" id="reset" value="Reset" />
                                         </div>
                                     }
-                          </fieldset>
-                                </form>
-					
-					</div>
-				</div><!--/span-->
-			
-			</div><!--/row-->
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!--/span-->
+
+                </div><!--/row-->
                 <div class="row-fluid sortable">
-              <div class="box span12">
-                  	<div class="box-header" data-original-title>
-						<h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
-						<div class="box-icon">
-						
-							<a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-						
-						</div>
-					</div> 
-                  <div class="box-content">
-                                        @Html.Partial("_UserList")
-                                 </div>
-                        
-                
+                    <div class="box span12">
+                        <div class="box-header" data-original-title>
+                            <h2><i class="fa fa-edit"></i><span class="break"></span>Form Elements</h2>
+                            <div class="box-icon">
+
+                                <a href="#" class="btn-minimize"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            @Html.Partial("_UserList")
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
+
     </div>
 </div>
-   
-            </div>
-    </div>

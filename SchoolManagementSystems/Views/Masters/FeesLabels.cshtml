@@ -33,7 +33,8 @@
                     $("#Feeslblid").show();
                     $('#Feeslblid input').val(data.feeslblid);
                     $("#ctrlcnt").val(data.ctrlcnt);
-                    //$("#courseyearid").val(data.classid);
+                    $('#CourseId').val(data.CourseId);
+                    $('#DeptId').val(data.DeptId);
                     $("#receipttypeid").val(data.receipttypeid);
                     var ctrlcnt = $('#ctrlcnt').val();
                     var table = $('#dynamiclbl');
@@ -67,7 +68,8 @@
             $("#Feeslblid").hide();
             $('#Feeslblid input').val('0');
             $("#ctrlcnt").val('');
-          //  $("#courseyearid").val('');
+            $('#CourseId').val('');
+            $('#DeptId').val('');
             $("#receipttypeid").val('');
             var table = $('#dynamiclbl');
             table.html('');
@@ -79,15 +81,61 @@
             $("#msgs").hide();
         }
 
+        function ReloadState() {
+            $("#DeptId").empty();
+            var item = '<option value="">All Department</option>';
+            $("#DeptId").append(item);
+        }
+
+        function ReloadCountry() {
+
+            if ($("#CourseId").val() == "") {
+                ReloadState();
+            }
+            else {
+                $("#DeptId").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCourse")',
+                    dataType: 'json',
+                    data: { id: $("#CourseId").val() },
+                    success: function (course) {
+                        if (course != "") {
+
+                            var item = '<option value="">All Department</option>';
+                            $.each(course, function (i, course) {
+                                item += '<option value="' + course.Value + '">' + course.Text + '</option>';
+                            });
+                            $("#DeptId").append(item);
+                        }
+                        else {
+                            var item = '<option value="">All Department</option>';
+                            $("#DeptId").append(item);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve course.' + ex);
+                    }
+                });
+            }
+            return false;
+        }
+
 
         $('#receipttypeid').change(function () {
-            //var classid = $('#courseyearid').val();
-            var receipttypeid=$('#receipttypeid').val();
+            var CourseId;
+            var DeptId;
+            if($('#CourseId').val()=="")
+            { CourseId = 0 } else { CourseId = $('#CourseId').val() }
+            if ($('#DeptId').val() =="")
+            { DeptId = 0 } else { DeptId = $('#DeptId').val() }
+            var receipttypeid = $('#receipttypeid').val();
+            $("#msg").hide();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("check_duplicate_feeslabels")',
                 dataType: 'JSON',
-                data: {receipttypeid: receipttypeid },
+                data: { receipttypeid: receipttypeid, CourseId: CourseId, DeptId: DeptId },
                 success: function (data) {
                     if (data.ctrlcnt != null) {
                         $("#msg").show();
@@ -155,18 +203,7 @@
 
         function validations() {
             var cnt = 0;
-            //if ($("#courseyearid").val() == '') {
-            //    cnt++;
-            //    $("#courseyearid").css({
-            //        "border": "2px solid red"
-            //    });
-            //}
-            //else {
-            //    $("#courseyearid").css({
-            //        "border": "",
-            //        "background": ""
-            //    });
-            //}
+         
             if ($("#receipttypeid").val() == '') {
                 cnt++;
                 $("#receipttypeid").css({
@@ -277,13 +314,21 @@
                                         @Html.ValidationMessageFor(model => model.feeslblid)
                                               </div>
                                     </div>
-                                    @*<div class="control-group">
-                                        @Html.LabelFor(model => model.courseyearid, new { @class = "control-label" })
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
                                         <div class="controls">
-                                            @Html.DropDownListFor(model => model.courseyearid, new SelectList(Model._CourseList, "id", "Course", "Select Course"), "Select Course", new { @for = "select" })
-                                            @Html.ValidationMessageFor(model => model.courseyearid)
+                                            @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseMasterList, "CourseId", "CourseName", "All Course"), "All Course", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.CourseId)
                                         </div>
-                                    </div>*@
+                                    </div>
+
+                                    <div class="control-group">
+                                        @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                        <div class="controls">
+                                            @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._DepartmentList, "Dept_id", "Dept_name", "All Department"), "All Department", new { @for = "select" })
+                                            @Html.ValidationMessageFor(model => model.DeptId)
+                                        </div>
+                                    </div>
                                     <div class="control-group">
                                         @Html.LabelFor(model => model.receipttypeid, new { @class = "control-label" })
                                         <div class="controls">

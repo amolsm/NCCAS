@@ -134,7 +134,6 @@
                         var feeamt = parseInt((parseInt(data.feesdetails.TotalFees) - parseInt(previouspaidfees)));
                         $("#TotalFees").val(feeamt);
 
-
                         if (data.feeschilddetails != "" && data.feeschilddetails != null) {
                                     $("#feesdetails").html('');
                                     var html = "";
@@ -142,18 +141,21 @@
                                     $("#ctrlcnt").val(data.feeschilddetails.length);
                                     $.each(data.feeschilddetails, function (i, dt) {
                                         debugger;
-                                        html += "<div class='control-group'><label class = 'control-label'>" + dt.Foo.FeesNm + " :</label> <div class='controls'> ";
-                                        html += '<input class="addcls" type="hidden" id=hfeeschildlblid_' + i + ' value=' + dt.Foo.Fchildid + '>';
-                                        if (dt.Foo.Fees == null)
+                                        html += "<div class='control-group'><label class = 'control-label'>" + dt.FeesNm + " :</label> <div class='controls'> ";
+                                        html += '<input class="addcls" type="hidden" id=hfeeschildlblid_' + i + ' value=' + dt.Fchildid + '>';
+                                        if (dt.Fees == 0 || dt.Fees==null)
                                         {
-                                        var feeamt = ((dt.Foo.FeesAmt == undefined) ? 0 : dt.Foo.FeesAmt);
-                                        html += '<input class="text-box single-line dynamic" type="text" readonly id=feechildlblval_' + i + ' value=' + feeamt + '>';
+                                            var feeamt = ((dt.FeesAmt == undefined) ? 0 : dt.FeesAmt);
+                                        html += '<input class="text-box single-line dynamic" type="number"  id=feechildlblval_' + i + ' value=' + feeamt + '>';
                                         }
-                                        else { html += '<input type="text" class="text-box single-line dynamic" readonly id=feechildlblval_' + i + ' value=' + dt.Foo.Fees + '>'; }
+                                        else { html += '<input type="text" class="text-box single-line dynamic" readonly id=feechildlblval_' + i + ' value=' + dt.Fees + '>'; }
                                         html +="</div></div>";
                                     });
                                     html += "</fieldset>";
                                     $("#feesdetails").append(html);
+                                    calculateSum();
+                                    if ($("#TotalFees").val() == 0) { $("#txtStatus").text("Paid"); } else { $("#txtStatus").text("Pending"); }
+                                    
                                 }
                                 else {
                                     $("#feesdetails").html('');
@@ -163,6 +165,7 @@
 
                     }
                     else {
+                        
                         $("#TotalFees").val(0);
                         $("#PaidFees").val(0);
                         $("#PendingFees").val(0);
@@ -189,7 +192,7 @@
                     $("#txtCourseId").text("_____________________");
                     $("#txtacademicyear").text("_____________________");
                     $("#Studid").val('');
-
+                    $("#feesdetails").html('');
                     alert('Fees setup not done for this ReceiptType.' + ex);
                 }
             });
@@ -779,7 +782,7 @@
                                                 @Html.Label("Fees Status", new { @class = "control-label" })
 
                                                 <div class="controls">
-                                                    @Html.LabelFor(model => model.Status, "", new { id = "txtStatus" })
+                                                    @Html.LabelFor(model => model.FessStatus, "_____________________", new { id = "txtStatus" })
 
                                                 </div>
                                             </div>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SchoolManagementSystems.Models.BarCodeModel>
+<style>td {
+  padding-top:30px;
+  padding-bottom:30px;
+  padding-right:30px;
+}
+
+td:first-child {
+  padding-left:0;
+  padding-right:0;
+}
+@@media print {  
+  @@page {
+    margin-left: 10mm;
+    margin-right:0mm; 
+  }
+}
+    </style>
+<table id="tblPrintBarcode" class="table tb-parshav tablesorter">
+    <thead>
+        <tr>
+            
+            <th>
+               0
+
+            </th>
+            <th>
+                1
+            </th>
+            <th>
+               2
+            </th>
+            <th>
+               3
+            </th>
+            <th>
+                4
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+              <tr>
+                
+                <td>
+                    <img src="@item.ColA" wspace="100"/>
+                   
+                 </td>
+                <td>
+                    <img src="@item.ColB" wspace="100"/>
+                </td>
+                <td>
+                    <img src="@item.ColC" wspace="100"/>
+                </td>
+                <td>
+                    <img src="@item.ColD" wspace="100"/>
+                </td>
+                <td>
+                    <img src="@item.ColE" wspace="100" />
+                </td>
+               
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>

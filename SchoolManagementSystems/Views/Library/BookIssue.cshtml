@@ -39,7 +39,10 @@
 </style>
 
 <script type="text/javascript">
-
+    window.onload = function () {
+        document.getElementById("BarCodeNO").focus();
+    };
+  
         $(function () {
             $("#StudentName").autocomplete({
                 source: function (request, response) {
@@ -99,7 +102,9 @@
             });
         });
         $(document).ready(function () {
-
+            $('#myModal').on('hidden.bs.modal', function () {
+                document.getElementById("BarCodeNO").focus();
+            })
 
             $('#btnSubmit').click(function () {
 
@@ -170,13 +175,14 @@
                 var callno = $('#CallNo').val();
                 var accessonno = $('#AccessorNo').val();
                 var authorname = $('#Authorname').val();
+                var barcodeno = $('#BarCodeNO').val();
              
                 $("#tblBooks tbody tr").remove();
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("GetBookDetails")',
                     dataType: 'JSON',
-                    data: { BookName: bookname, callno: callno, accessonno: accessonno, authorname: authorname },
+                    data: { BookName: bookname, callno: callno, accessonno: accessonno, authorname: authorname, barcodeno: barcodeno },
                     success: function (data) {
                         if (data != "") {
                             var items = '';
@@ -469,7 +475,7 @@
                                     @Html.LabelFor(model => model.StudentId, new { @class = "control-label", @for = "focusedInput" })
 
                                     <div class="controls">
-                                        @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @type = "number", @min = "0", @class = "input" })
+                                        @Html.TextBoxFor(model => model.StudentId, new { placeholder = "Enter Student Id", @type = "text", @class = "input" })
                                       
 
                                     </div>
@@ -501,6 +507,13 @@
                                  
                                         <legend>Book Search</legend>
                                         <br />
+                                        <div class="control-group span5">
+                                            @Html.LabelFor(model => model.BarCodeNO, new { @class = "control-label", @for = "focusedInput" })
+
+                                            <div class="controls">
+                                                @Html.TextBoxFor(model => model.BarCodeNO, new { placeholder = "Enter or Scan Barcode", @class = "input" })
+                                            </div>
+                                        </div>
                                         <div class="control-group span5">
                                             @Html.LabelFor(model => model.CallNo, new { @class = "control-label", @for = "focusedInput" })
 

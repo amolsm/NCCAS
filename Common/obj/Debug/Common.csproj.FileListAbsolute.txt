@@ -3,3 +3,8 @@ D:\NCCProject\NCCAS\Common\bin\Debug\Common.pdb
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.dll
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.pdb
 D:\NCCProject\NCCAS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\NCCAS\Common\bin\Debug\Common.dll
+D:\NCCAS\Common\bin\Debug\Common.pdb
+D:\NCCAS\Common\obj\Debug\Common.dll
+D:\NCCAS\Common\obj\Debug\Common.pdb
+D:\NCCAS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

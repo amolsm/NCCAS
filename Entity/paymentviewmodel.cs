@@ -21,15 +21,16 @@ namespace Entity
         public int receipttypeid { get; set; }
 
         [DisplayName("Student ID")]
-        public int Studid { get; set; }
+        public string Studid { get; set; }
 
+       
         [DisplayName("Scholarship(Yes/No) ")]
         public bool Scholarship { get; set; }
 
         [DisplayName("Scholarship Fees ")]
         public double ScholarshipFees { get; set; }
 
-        [DisplayName("Fees Amount ")]
+        [DisplayName("Total Amount ")]
         public double TotalFees { get; set; }
 
         [DisplayName("Previous Payment Amount ")]
@@ -61,6 +62,8 @@ namespace Entity
 
         [DisplayName("Status(Paid/Unpaid) ")]
         public bool Status { get; set; }
+
+        public string FessStatus { get; set; }
 
         public int paymentid { get; set; }
         public List<tbl_class> Classlist { get; set; }

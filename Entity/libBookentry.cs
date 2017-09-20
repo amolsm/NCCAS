@@ -20,6 +20,9 @@ namespace Entity
         [DisplayName("Call No.")]
         public string CallNo { get; set; }
 
+        [DisplayName("BarCode No.")]
+        public string BarCodeNO { get; set; }
+
         [DisplayName("Volume")]
         public string Volume { get; set; }
 
@@ -99,8 +102,14 @@ namespace Entity
 
 
 
+      
+        private int nodays = 1;
         [DisplayName("No Of Days")]
-        public int NoDays { get; set; }
+        public int NoDays
+        {
+            get { return nodays; }
+            set { nodays = value; }
+        }
 
 
         [DisplayName("Accesson No.")]
@@ -116,7 +125,7 @@ namespace Entity
         public string StudentName { get; set; }
 
         [DisplayName("Student ID")]
-        public int StudentId { get; set; }
+        public string StudentId { get; set; }
 
         [DisplayName("Book Status")]
         public int IsActive { get; set; }

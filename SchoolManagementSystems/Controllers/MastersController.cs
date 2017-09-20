@@ -122,13 +122,13 @@ namespace SchoolManagementSystems.Controllers
         {
             if (evt == "submit")
             {
-                //db.sp_payterm_DML(_pvm.paytermid, _pvm.paytermname, _pvm.status, _pvm.academicyear, "").ToString();
-                db.sp_payterm_DML(_pvm.paytermid, _pvm.paytermname, _pvm.status, "", "").ToString();
+                
+                db.sp_payterm_DML(_pvm.paytermid, _pvm.paytermname, _pvm.status, "").ToString();
             }
             else if (evt == "Delete")
             {
-                //db.sp_payterm_DML(id, _pvm.paytermname, _pvm.status, _pvm.academicyear, "del").ToString();
-                db.sp_payterm_DML(id, _pvm.paytermname, _pvm.status, "", "del").ToString();
+                
+                db.sp_payterm_DML(id, _pvm.paytermname, _pvm.status, "del").ToString();
             }
             _pvm._Paytermlist = db.sp_getPayterm().ToList();
             return PartialView("_paytermList", _pvm);
@@ -873,8 +873,8 @@ namespace SchoolManagementSystems.Controllers
         {
             feeslabelviewmodel _pvm = new feeslabelviewmodel();
             FillPermission(48);
-           // _pvm._CourseList = db.sp_GetCoursefordevision().ToList();
-            //  _pvm.Classlist = db.tbl_class.Where(c => c.status == true).ToList();
+            _pvm._CourseMasterList = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            _pvm._DepartmentList = db.tblDepartment.Where(m => m.Status == true).ToList();
             _pvm._feeslabellist = db.sp_getfeeslabels().ToList();
             _pvm._receipttype = db.tblReceiptTypes.Where(m=>m.Status==true).ToList();
             return View(_pvm);
@@ -889,9 +889,9 @@ namespace SchoolManagementSystems.Controllers
             var data = db.tbl_feeslabelchild.Where(m => m.feeslblid == feeslblid).Select(m => m.ctrlnm).ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult check_duplicate_feeslabels(int receipttypeid)
+        public JsonResult check_duplicate_feeslabels(int receipttypeid, int CourseId, int DeptId)
         {
-            var data = db.tbl_feeslabel.Where(m => m.receipttypeid==receipttypeid).FirstOrDefault();
+            var data = db.tbl_feeslabel.Where(m => (m.receipttypeid==receipttypeid) && (m.CourseId == CourseId) && (m.DeptId == DeptId)).FirstOrDefault();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult DMLFeesLabels(feeslabelviewmodel _pvm, string evt, int id, string FeesLabels)
@@ -899,7 +899,7 @@ namespace SchoolManagementSystems.Controllers
             int Lastfeeslblid = 0;
             if (evt == "submit")
             {
-                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt,_pvm.receipttypeid, "").ToString();
+                db.sp_feeslabel_DML(_pvm.feeslblid, _pvm.ctrlcnt,_pvm.receipttypeid,_pvm.CourseId,_pvm.DeptId, "").ToString();
             }
             if (_pvm.feeslblid == 0)
             {
@@ -1783,11 +1783,13 @@ namespace SchoolManagementSystems.Controllers
         {
             receipttypeviewmodel _rtypvm = new receipttypeviewmodel();
             FillPermission(34);
+            _rtypvm._PaytermList = db.tbl_payterm.ToList();
             if (String.IsNullOrEmpty(Search_Data))
                 _rtypvm._ReceiptTypeList = db.sp_ReceiptType().ToList();
             else
                 _rtypvm._ReceiptTypeList = db.sp_ReceiptType().Where(x => x.R_Name.ToUpper().Contains(Search_Data.ToUpper())
                                                         || x.status.ToUpper().Contains(Search_Data.ToUpper())).ToList();
+
             return View(_rtypvm);
         }
         public JsonResult FillReceiptType(int receiptypeid)
@@ -1805,12 +1807,12 @@ namespace SchoolManagementSystems.Controllers
             if (evt == "submit")
             {
                
-                db.sp_ReceiptType_DML(_rtypvm.R_Id, _rtypvm.receiptname.Trim(), _rtypvm.status, "").ToString();
+                db.sp_ReceiptType_DML(_rtypvm.R_Id, _rtypvm.receiptname.Trim(), _rtypvm.status, _rtypvm.paytermid, "").ToString();
             }
             else if (evt == "Delete")
             {
                
-                db.sp_payterm_DML(id, _rtypvm.receiptname.Trim(), _rtypvm.status, "", "del").ToString();
+                db.sp_ReceiptType_DML(id, _rtypvm.receiptname.Trim(), _rtypvm.status, _rtypvm.paytermid, "del").ToString();
             }
             _rtypvm._ReceiptTypeList = db.sp_ReceiptType().ToList();
             return PartialView("_receipttypelist", _rtypvm);

@@ -11,8 +11,11 @@ namespace Entity
         [DisplayName("Fees ID ")]
         public int Feesid { get; set; }
 
-        [DisplayName("Course Name ")]
+        [DisplayName("Course")]
         public int CourseId { get; set; }
+
+        [DisplayName("Department")]
+        public int DeptId { get; set; }
 
         [DisplayName("Receipt Type")]
         public int receipttypeid { get; set; }
@@ -42,6 +45,10 @@ namespace Entity
         public List<tblReceiptType> _receipttype { get; set; }
 
         public List<tbl_class> Classlist { get; set; }
+
+        public List<tbl_CourseMaster> _CourseMasterList { get; set; }
+
+        public List<tblDepartment> _DepartmentList { get; set; }
         public List<tbl_payterm> ptypelist { get; set; }
         public List<sp_getFeessetup_Result> _Feessetuplist { get; set; }
 

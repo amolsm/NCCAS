@@ -26,13 +26,20 @@
                     $("#feesid input").val(data.Feesid);
                
                     $("#receipttypeid").val(data.receipttypeid);
-              
+                    $('#CourseId').val(data.CourseId);
+                    $('#DeptId').val(data.DeptId);
                     $("#TotalFees").val(data.TotalFees);
+                    var CourseId;
+                    var DeptId;
+                    if ($('#CourseId').val() == "")
+                    { CourseId = 0 } else { CourseId = $('#CourseId').val() }
+                    if ($('#DeptId').val() == "")
+                    { DeptId = 0 } else { DeptId = $('#DeptId').val() }
                     $.ajax({
                         type: 'GET',
                         url: '@Url.Action("FillFeesLabels")',
                         dataType: 'JSON',
-                        data: { receipttypeid: $("#receipttypeid").val() },
+                        data: { receipttypeid: $("#receipttypeid").val(), CourseId: CourseId, DeptId: DeptId },
                         success: function (data) {
                             var table = $('#dynamiclbl');
                             table.html('');
@@ -96,15 +103,21 @@
 
         $('#receipttypeid').change(function () {
             $("#lblmsg").text("");
-
-           
+            var table = $('#dynamiclbl');
+            table.html('');
+            var CourseId;
+            var DeptId;
+            if ($('#CourseId').val() == "")
+            { CourseId = 0 } else { CourseId = $('#CourseId').val() }
+            if ($('#DeptId').val() == "")
+            { DeptId = 0 } else { DeptId = $('#DeptId').val() }
             var receipttypeid = $('#receipttypeid').val();
             clearmsg();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("FillFeesLabels")',
                 dataType: 'JSON',
-                data: { receipttypeid: receipttypeid },
+                data: { receipttypeid: receipttypeid, CourseId: CourseId, DeptId: DeptId },
                 success: function (data) {
                    
                     if (data.duplicateclass != null) {
@@ -314,6 +327,24 @@
                                      </div>
                             </div>
                           
+                         
+
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.CourseId, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.CourseId, new SelectList(Model._CourseMasterList, "CourseId", "CourseName", "All Course"), "All Course", new { @for = "select" })
+                                    @Html.ValidationMessageFor(model => model.CourseId)
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.DeptId, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.DeptId, new SelectList(Model._DepartmentList, "Dept_id", "Dept_name", "All Department"), "All Department", new { @for = "select" })
+                                    @Html.ValidationMessageFor(model => model.DeptId)
+                                </div>
+                            </div>
+
                             <div class="control-group">
                                 @Html.LabelFor(model => model.receipttypeid, new { @class = "control-label" })
                                 <div class="controls">
@@ -321,8 +352,8 @@
                                     @Html.ValidationMessageFor(model => model.receipttypeid)
                                 </div>
                             </div>
-                         
-                          
+
+
                             <br/>
 
                             <div id="dynamiclbl">

@@ -10,6 +10,9 @@
                     @Html.DisplayNameFor(model => model.receiptname)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.paytermid)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.status)
                 </th>
              
@@ -28,6 +31,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.R_Name)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paytermname)
+                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.status)
                     </td>

@@ -1004,5 +1004,11 @@ namespace Entity
         public string[] subcategories { get; set; }
         public string[] products { get; set; }
         public byte[] sc_refletter { get; set; }
+
+        public List<sp_getTeacherCourse_Result> _courselist { get; set; }
+
+        public List<tbl_YearMaster> YearList { get; set; }
+
+        public List<tblDepartment> DepartmentList { get; set; }
     }
 }

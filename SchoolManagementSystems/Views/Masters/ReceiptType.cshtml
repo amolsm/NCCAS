@@ -28,6 +28,7 @@
                     $("#Receipttypeid").show();
                     $("#Receipttypeid input").val(data.R_Id);
                     $("#receiptname").val(data.R_Name);
+                    $("#paytermid").val(data.paytermid);
                     $("#status").prop('checked', data.Status);
                   
                 }
@@ -38,8 +39,8 @@
             $("#Receipttypeid").hide();
             $('#Receipttypeid input').val('0');
             $("#receiptname").val('');
-            //            $("#status").prop('checked', false);
-            //$("#academicyear").val('');
+            $("#status").prop('checked', true);
+            $("#paytermid").val('');
         }
         function clearmsg() {
             $("#msg").hide();
@@ -127,6 +128,18 @@
                     "background": ""
                 });
             }
+            if ($("#paytermid").val() == '' || $("#paytermid").val() == 0) {
+                cnt++;
+                $("#paytermid").css({
+                    "border": "2px solid red"
+                });
+            }
+            else {
+                $("#paytermid").css({
+                    "border": "",
+                    "background": ""
+                });
+            }
 
             if (cnt != 0)
                 e.preventDefault();
@@ -197,6 +210,14 @@
                                             <div class="controls">
                                                 @Html.EditorFor(model => model.receiptname, new { @class = "input-xlarge focused", @id = "focusedInput", @type = "text" })
                                                 @Html.ValidationMessageFor(model => model.receiptname)
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group">
+                                            @Html.LabelFor(model => model.paytermid, new { @class = "control-label", @for = "focusedInput" })
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.paytermid, new SelectList(Model._PaytermList, "paytermid", "paytermname", "Select PaytermType"), "Select PaytermType")
+                                                @Html.ValidationMessageFor(model => model.paytermid)
                                             </div>
                                         </div>
                                         <div class="control-group">

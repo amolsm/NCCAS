@@ -11,7 +11,7 @@ namespace Entity
         [DisplayName("Payterm ID ")]
         public int paytermid { get; set; }
 
-        [DisplayName("Payment Type Name ")]
+        [DisplayName("PaytermType Name ")]
         public string paytermname { get; set; }
 
         [DisplayName("Active ")]
@@ -30,8 +30,14 @@ namespace Entity
 
         [DisplayName("ReceiptType Name ")]
         public string receiptname { get; set; }
+
+        [DisplayName("PaytermType")]
+        public int paytermid { get; set; }
+
         [DisplayName("Active ")]
         public bool status { get; set; }
+
+        public List<tbl_payterm> _PaytermList { get; set; }
 
         public List<sp_ReceiptType_Result> _ReceiptTypeList { get; set; }
     }

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="assigndivisionviewmodel.cs" />
     <Compile Include="Attendanceviewmodel.cs" />
+    <Compile Include="barcodeviewmodel.cs" />
     <Compile Include="BookAllocation.cs" />
     <Compile Include="bookCategoryviewmodel.cs" />
     <Compile Include="Chaptercompleteviewmodel.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="lib_JTypemodule.cs" />
     <Compile Include="lib_publishermodel.cs" />
     <Compile Include="lib_vendormodel.cs" />
+    <Compile Include="otherpaymentviewmodel.cs" />
     <Compile Include="ReportsViewModel.cs" />
     <Compile Include="SchoolMgmtSys.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="hourdesi_ims" Class="BookBarcodeEntryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=103.248.81.32;Initial Catalog=hourdesi_ims;Persist Security Info=True;User ID=hourdesi_ims;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="hourdesi_imsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.lib_Bookentry" Member="lib_Bookentries">
+    <Type Name="lib_Bookentry">
+      <Column Name="bookid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallNo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AccessorNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SelfNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createdby" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SerialNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BarCodeImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

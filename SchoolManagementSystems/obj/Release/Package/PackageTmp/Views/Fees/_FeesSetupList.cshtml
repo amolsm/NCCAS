@@ -6,10 +6,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.Feesid)
             </th>   
-           
+            <th>
+                @Html.DisplayName("Course")
+            </th>
+            <th>
+                @Html.DisplayName("Department")
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.receipttypeid)
             </th>
+           
           
             <th>
                 @Html.DisplayNameFor(model => model.TotalFees)
@@ -26,11 +32,25 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Feesid)
                 </td>
+                <td>
+                    @if (item.CourseName == null)
+                {@Html.DisplayName("All Course")}
+                    else
+                    { @Html.DisplayFor(modelItem => item.CourseName) }
+
+                </td>
+                <td>
+                    @if (item.Dept_name == null)
+                {@Html.DisplayName("All Department") }
+                else
+                { @Html.DisplayFor(modelItem => item.Dept_name)}
+                </td>
              
                 <td>
                     @Html.DisplayFor(modelItem => item.R_Name)
                 </td>
-          
+               
+
                 <td>
                     @Html.DisplayFor(modelItem => item.TotalFees)
                 </td>

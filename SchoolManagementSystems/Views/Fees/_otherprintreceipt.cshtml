@@ -1,0 +1,48 @@
+﻿<div id="receiptprint" class="col-lg-8 col-md-8 col-centered">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <table align="center">
+                <tr>
+                    <td align="center" colspan="6">
+                        <img src="../../img/NACCASImage.jpg" height="39" width="45" /><br>
+                        <font size="1">
+                            <b>NANJIL CATHOLIC COLLEGE OF ARTS AND SCIENCE</b><br /><b>
+                                KALIYAKKAVILAI(SELF-FINANCING)<br />
+                                RECEIPT<br />
+                            </b>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel-body">
+
+
+            @Html.Raw(ViewBag.HtmlStr)
+
+
+            <div class="col-md-12">
+
+                <div class="col-md-6">
+                    <div class="col-md-6 fee_date pull-left">
+                        <h6 class="date_fee">
+                            Date:&nbsp;@DateTime.Now&nbsp;&nbsp;
+
+                        </h6>
+                    </div>
+                    <div class="col-md-6 fee_date pull-right">
+                        <h6 class="date_fee">
+                            Authorized Signature
+
+                        </h6>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SchoolManagementSystems.Models.BarCodeModel>
+
+<table id="tblCustomers" class="table tb-parshav tablesorter">
+    <thead>
+        <tr>
+            <th>
+                <input id="chkHeader" type="checkbox">
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CallNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessorNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Barcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input id="chkRow" class="addcls" type="checkbox" value="@item.Id">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CallNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessorNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Barcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>

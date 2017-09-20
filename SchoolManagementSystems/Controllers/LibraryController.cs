@@ -1,11 +1,15 @@
 ﻿using Entity;
+using SchoolManagementSystems.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using Common;
+using System.Data.SqlClient;
 
 namespace SchoolManagementSystems.Controllers
 {
@@ -58,7 +62,7 @@ namespace SchoolManagementSystems.Controllers
                 lb._bookandJournallist = db.sp_GetSearchBookAndJournal(lb.Option, btitle, authorname, bcallno, baccessonno, bpublisher, vendorname, bdeptid, bcourseid).ToList();
                 lb.Option = 1;
             }
-            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(1, null, null, null, null, null, null,null,null).ToList(); }
+            else { lb._bookandJournallist = db.sp_GetSearchBookAndJournal(1, null, null, null, null, null, null,null,null).Take(10).ToList(); }
             return View(lb);
           
         }
@@ -199,7 +203,7 @@ namespace SchoolManagementSystems.Controllers
             var StudentName = (from bi in db.tbl_student
                            where bi.Studnm.StartsWith(prefix)
                            select new {label=bi.Studnm ,
-                           val=bi.Studid}).ToList();
+                           val=bi.StudentID}).ToList();
             return Json(StudentName, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -216,15 +220,16 @@ namespace SchoolManagementSystems.Controllers
         }
        
 
-        public JsonResult GetBookIssueDetails(string StudentName, int Studentid,int Stdid)
+        public JsonResult GetBookIssueDetails(string StudentName, string Studentid,string Stdid)
         {
             int stid;
             int Stdids;
            
-            try { stid = Convert.ToInt32(Studentid);
+            try { stid =db.tbl_student.Where(m=>m.StudentID ==Studentid).Select(m=>m.Studid).FirstOrDefault();
            
             } catch { stid = 0; }
-            try { Stdids = Convert.ToInt32(Stdid); }
+            try { Stdids = db.tbl_student.Where(m => m.StudentID == Stdid).Select(m => m.Studid).FirstOrDefault();
+            }
             catch { Stdids = 0; }
            
             if (Stdids != 0)
@@ -245,7 +250,7 @@ namespace SchoolManagementSystems.Controllers
         }
 
 
-        public JsonResult GetBookDetails(string BookName, string callno,string accessonno,string authorname)
+        public JsonResult GetBookDetails(string BookName, string callno,string accessonno,string authorname,string barcodeno)
         {
              string bookn;
              bookn=(BookName == string.Empty)?null: BookName;
@@ -255,9 +260,11 @@ namespace SchoolManagementSystems.Controllers
              asno = (accessonno == string.Empty) ? null : accessonno;
              string authname;
              authname = (authorname == string.Empty) ? null : authorname;
+             string barcode;
+             barcode = (barcodeno == string.Empty) ? null : barcodeno;
 
 
-            var data = db.sp_GetBookDetailsbyBookidorBookname(bookn, cno, asno, authname).ToList();
+            var data = db.sp_GetBookDetailsbyBookidorBookname(bookn, cno, asno, authname, barcode).ToList();
              return Json(data);
            
         }
@@ -276,7 +283,9 @@ namespace SchoolManagementSystems.Controllers
             {
                 s = bookallotments[i].ToString();
                 string[] s1 = s.ToString().Split(',');
-                int Studentid = Convert.ToInt32(s1[0].ToString());
+                string studids = string.Empty;
+                studids = s1[0].ToString();
+                int Studentid = db.tbl_student.Where(m => m.StudentID == studids).Select(m => m.Studid).FirstOrDefault();
                 int bookid = Convert.ToInt32(s1[1].ToString());
                 int noofdays = Convert.ToInt32(s1[2].ToString());
                 int returnflag = Convert.ToInt32(s1[3].ToString());
@@ -308,10 +317,10 @@ namespace SchoolManagementSystems.Controllers
             //lb._bookissuelist = db.tbl_lib_BookIssue.ToList();
             return View();
         }
-        public JsonResult GetBookreturn(int studid)
+        public JsonResult GetBookreturn(string studid)
         {
-         
-            var bookreturn = db.sp_getbookissue(studid).ToList();
+            int studids = db.tbl_student.Where(m => m.StudentID == studid).Select(m => m.Studid).FirstOrDefault();
+            var bookreturn = db.sp_getbookissue(studids).ToList();
             var bookstatus = db.tbl_libBookReturnStatus.Select(m => new { m.BookStatusId, m.StatusName }).ToList();
             return Json(new { bookreturn = bookreturn, bookstatus = bookstatus }, JsonRequestBehavior.AllowGet);
            
@@ -372,5 +381,103 @@ namespace SchoolManagementSystems.Controllers
             return Json(new SelectList(course, "Dept_id", "Dept_name"));
         }
 
+
+        public ActionResult BarCode(barcodeviewmodel lb)
+        {
+            lb._departmentlist = db.tblDepartment.Where(m => m.Status == true).ToList();
+             lb.courselist = db.tbl_CourseMaster.Where(m => m.Status == true).ToList();
+            lb._bookcategorylist = db.tbl_lib_BookCategory.Where(m => m.status == true).ToList();
+
+            return View(lb);
+
+            
+        }
+
+
+        public JsonResult GenerateBarCode(string[] Generatebarcode)
+        {
+            string s;
+            for (int i = 0; i < Generatebarcode.Count(); i++)
+            {
+                s = Generatebarcode[i].ToString();
+                string[] s2 = s.ToString().Split(',');
+
+                int s3;
+                for (int j = 0; j < s2.Count(); j++)
+                {
+                    s3 = Convert.ToInt32(s2[j]);
+                    barcodecs objbar = new barcodecs();
+                    Entity.lib_Bookentry tbl = db.lib_Bookentry.Where(x => (x.bookid == s3) && (x.IsGenerated==null || x.IsGenerated==false) ).FirstOrDefault();
+                    db.ObjectStateManager.ChangeObjectState(tbl, System.Data.EntityState.Modified);
+                    tbl.IsGenerated = true;
+                    tbl.Barcode = objbar.generateBarcode(s3);
+                    db.SaveChanges();
+                }
+            }
+
+            return Json(Generatebarcode);
+
+
+        }
+
+        [HttpGet]
+        public ActionResult GetGeneratePrintBarCode(string CourseId, string DeptId, string BookCategoryId)
+        {
+            int CourseIds = 0;
+            int DeptIds = 0;
+            int BookCategoryIds = 0;
+            if (CourseId != "")
+            { CourseIds = Convert.ToInt32(CourseId); }
+            if (DeptId != "")
+            { DeptIds = Convert.ToInt32(DeptId); }
+            if (BookCategoryId != "")
+            { BookCategoryIds = Convert.ToInt32(BookCategoryId); }
+            IList<BarCodeModel> model = new List<BarCodeModel>();
+            barcodecs objbar = new barcodecs();
+            var list = db.sp_GetBarCodePrint(CourseIds, DeptIds, BookCategoryIds).ToList();
+            foreach (var n in list)
+            {
+                model.Add(new BarCodeModel()
+                {
+                    ColA =n.C0 !=null? "data:image/png;base64," + Convert.ToBase64String((byte[])objbar.getBarcodeImage(n.C0.ToString(), string.Empty)) : "",
+                    ColB = n.C1!= null ? "data:image/png;base64," + Convert.ToBase64String((byte[])objbar.getBarcodeImage(n.C1.ToString(), string.Empty)) : "",
+                    ColC = n.C2!= null ? "data:image/png;base64," + Convert.ToBase64String((byte[])objbar.getBarcodeImage(n.C2.ToString(), string.Empty)) : "",
+                    ColD = n.C3 != null ? "data:image/png;base64," + Convert.ToBase64String((byte[])objbar.getBarcodeImage(n.C3.ToString(), string.Empty)) : "",
+                    ColE = n.C4 != null ? "data:image/png;base64," + Convert.ToBase64String((byte[])objbar.getBarcodeImage(n.C4.ToString(), string.Empty)) : ""
+
+
+                });
+            }
+            return PartialView("_GeneratePrintBarCode", model);
+        }
+
+
+        [HttpGet]
+        public ActionResult GetGenerateBarCode(string CourseId,string DeptId,string BookCategoryId)
+        {   int CourseIds=0;
+            int DeptIds=0;
+            int BookCategoryIds=0;
+            if (CourseId!="")
+            { CourseIds = Convert.ToInt32(CourseId); }
+            if (DeptId != "")
+            { DeptIds = Convert.ToInt32(DeptId); }
+            if (BookCategoryId != "")
+            { BookCategoryIds = Convert.ToInt32(BookCategoryId); }
+            IList<BarCodeModel> model = new List<BarCodeModel>();
+            var list = db.Sp_GetBookForBarCode(CourseIds, DeptIds, BookCategoryIds).ToList();
+            foreach (var n in list)
+            {
+                model.Add(new BarCodeModel()
+                {
+                    Id = n.bookid,
+                    CallNo = n.CallNo,
+                    AccessorNo = n.AccessorNo,
+                    BookName = n.BookName,
+                    Barcode = n.Barcode
+
+                });
+            }
+            return PartialView("_GenerateBarCode", model);
+        }
     }
 }

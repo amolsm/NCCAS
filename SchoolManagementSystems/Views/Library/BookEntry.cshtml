@@ -60,9 +60,7 @@
                     $("#Edition").val(data.Edition);
                     $("#Vendorid").val(data.Vendorid);
                     $("#Vendorname").val(data.Vendorname);
-                    var date1 = new Date(parseInt(data.Dateofpurchase.substr(6)));
-                    $('#datepicker1').datepicker('setDate', date1);
-                
+
                     $("#BillNo").val(data.BillNo);
                     $("#Cost").val(data.Cost);
                     $("#AccessorNo").val(data.AccessorNo);
@@ -71,7 +69,10 @@
                     $("#CourseId").val(data.CourseId);
                     $("#DeptId").val(data.DeptId);
                     $("#BookCategoryid").val(data.CategoryId);
-                   
+
+                    var date1 = new Date(parseInt(data.Dateofpurchase.substr(6)));
+                    $('#datepicker1').datepicker('setDate', date1);
+                
                   
 
                   
